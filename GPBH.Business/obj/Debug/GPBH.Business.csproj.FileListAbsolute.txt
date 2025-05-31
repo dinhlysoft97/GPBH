@@ -1,0 +1,13 @@
+G:\01.HuynhThu\01.Code\08.GPBH\GPBH\GPBH.Business\bin\Debug\GPBH.Business.dll
+G:\01.HuynhThu\01.Code\08.GPBH\GPBH\GPBH.Business\bin\Debug\GPBH.Business.pdb
+G:\01.HuynhThu\01.Code\08.GPBH\GPBH\GPBH.Business\bin\Debug\EntityFramework.dll
+G:\01.HuynhThu\01.Code\08.GPBH\GPBH\GPBH.Business\bin\Debug\EntityFramework.SqlServer.dll
+G:\01.HuynhThu\01.Code\08.GPBH\GPBH\GPBH.Business\bin\Debug\GPBH.Data.dll
+G:\01.HuynhThu\01.Code\08.GPBH\GPBH\GPBH.Business\bin\Debug\GPBH.Data.pdb
+G:\01.HuynhThu\01.Code\08.GPBH\GPBH\GPBH.Business\bin\Debug\EntityFramework.xml
+G:\01.HuynhThu\01.Code\08.GPBH\GPBH\GPBH.Business\bin\Debug\EntityFramework.SqlServer.xml
+G:\01.HuynhThu\01.Code\08.GPBH\GPBH\GPBH.Business\obj\Debug\GPBH.Business.csproj.AssemblyReference.cache
+G:\01.HuynhThu\01.Code\08.GPBH\GPBH\GPBH.Business\obj\Debug\GPBH.Business.csproj.CoreCompileInputs.cache
+G:\01.HuynhThu\01.Code\08.GPBH\GPBH\GPBH.Business\obj\Debug\GPBH.Bus.9EF1D691.Up2Date
+G:\01.HuynhThu\01.Code\08.GPBH\GPBH\GPBH.Business\obj\Debug\GPBH.Business.dll
+G:\01.HuynhThu\01.Code\08.GPBH\GPBH\GPBH.Business\obj\Debug\GPBH.Business.pdb

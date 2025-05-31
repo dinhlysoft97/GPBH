@@ -1,0 +1,14 @@
+G:\01.HuynhThu\01.Code\08.GPBH\GPBH\GPBH.Data\bin\Debug\GPBH.Data.dll
+G:\01.HuynhThu\01.Code\08.GPBH\GPBH\GPBH.Data\bin\Debug\GPBH.Data.pdb
+G:\01.HuynhThu\01.Code\08.GPBH\GPBH\GPBH.Data\bin\Debug\EntityFramework.dll
+G:\01.HuynhThu\01.Code\08.GPBH\GPBH\GPBH.Data\bin\Debug\EntityFramework.SqlServer.dll
+G:\01.HuynhThu\01.Code\08.GPBH\GPBH\GPBH.Data\bin\Debug\EntityFramework.xml
+G:\01.HuynhThu\01.Code\08.GPBH\GPBH\GPBH.Data\bin\Debug\EntityFramework.SqlServer.xml
+G:\01.HuynhThu\01.Code\08.GPBH\GPBH\GPBH.Data\obj\Debug\GPBH.Data.csproj.AssemblyReference.cache
+G:\01.HuynhThu\01.Code\08.GPBH\GPBH\GPBH.Data\obj\Debug\GPBH.Data.csproj.CoreCompileInputs.cache
+G:\01.HuynhThu\01.Code\08.GPBH\GPBH\GPBH.Data\obj\Debug\GPBH.Data.csproj.Up2Date
+G:\01.HuynhThu\01.Code\08.GPBH\GPBH\GPBH.Data\obj\Debug\GPBH.Data.dll
+G:\01.HuynhThu\01.Code\08.GPBH\GPBH\GPBH.Data\obj\Debug\GPBH.Data.pdb
+G:\01.HuynhThu\01.Code\08.GPBH\GPBH\GPBH.Data\obj\Debug\GPBH.Data.Migrations.Adddb.resources
+G:\01.HuynhThu\01.Code\08.GPBH\GPBH\GPBH.Data\obj\Debug\GPBH.Data.csproj.GenerateResource.cache
+G:\01.HuynhThu\01.Code\08.GPBH\GPBH\GPBH.Data\obj\Debug\GPBH.Data.Migrations.Addca.resources
