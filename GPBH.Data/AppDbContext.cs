@@ -17,6 +17,7 @@ namespace GPBH.Data
         public AppDbContext() : base("name=AppDbContext") { }
 
         public DbSet<SysDMNSD> SysDMNSD { get; set; }
+        public DbSet<SysMenu> SysMenu { get; set; }
 
         public override int SaveChanges()
         {
