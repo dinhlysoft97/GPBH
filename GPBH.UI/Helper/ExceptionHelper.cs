@@ -30,7 +30,7 @@ namespace GPBH.UI.Helper
                     );
                 }
             }
-            catch
+            catch (Exception)
             {
                 // Nếu lỗi trong quá trình log, không làm gì thêm để tránh crash
             }
