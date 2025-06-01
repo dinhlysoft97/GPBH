@@ -1,4 +1,5 @@
-﻿using GPBH.Data;
+﻿using GPBH.Business.Services;
+using GPBH.Data;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace GPBH.Business
@@ -11,6 +12,7 @@ namespace GPBH.Business
 
             // ... các DI khác
             services.AddScoped<SysDMNSDService>();
+            services.AddScoped<SysMenuService>();
         }
     }
 }

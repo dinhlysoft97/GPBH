@@ -88,3 +88,5 @@ G:\01.HuynhThu\01.Code\09.GPBH\GPBH.UI\bin\Debug\System.Runtime.CompilerServices
 G:\01.HuynhThu\01.Code\09.GPBH\GPBH.UI\bin\Debug\System.Threading.Tasks.Extensions.xml
 G:\01.HuynhThu\01.Code\09.GPBH\GPBH.UI\bin\Debug\GPBH.Data.pdb
 G:\01.HuynhThu\01.Code\09.GPBH\GPBH.UI\obj\Debug\GPBH.UI.csproj.Up2Date
+G:\01.HuynhThu\01.Code\09.GPBH\GPBH.UI\bin\Debug\Images\banhang.png
+G:\01.HuynhThu\01.Code\09.GPBH\GPBH.UI\bin\Debug\Images\baocaobanhang.png

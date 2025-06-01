@@ -66,12 +66,18 @@
     <Compile Include="AppDbContext.cs" />
     <Compile Include="Audit\AuditHelper.cs" />
     <Compile Include="Audit\BaseAuditableEntity.cs" />
+    <Compile Include="Configurations\SysMenuConfiguration.cs" />
     <Compile Include="Configurations\SysDMNSDConfiguration.cs" />
     <Compile Include="Entities\SysDMNSD.cs" />
+    <Compile Include="Entities\SysMenu.cs" />
     <Compile Include="Helper\MigrationHelper.cs" />
     <Compile Include="Migrations\202506010905545_Add-SysDMNSD.cs" />
     <Compile Include="Migrations\202506010905545_Add-SysDMNSD.Designer.cs">
       <DependentUpon>202506010905545_Add-SysDMNSD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202506011150172_Add-SysMenu.cs" />
+    <Compile Include="Migrations\202506011150172_Add-SysMenu.Designer.cs">
+      <DependentUpon>202506011150172_Add-SysMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Startup.cs" />
@@ -87,6 +93,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202506010905545_Add-SysDMNSD.resx">
       <DependentUpon>202506010905545_Add-SysDMNSD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202506011150172_Add-SysMenu.resx">
+      <DependentUpon>202506011150172_Add-SysMenu.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

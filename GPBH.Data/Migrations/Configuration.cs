@@ -17,8 +17,30 @@ namespace GPBH.Data.Migrations
         protected override void Seed(AppDbContext context)
         {
             // Seed dữ liệu mẫu nếu cần
-            // tạo user admin
 
+            // tạo user admin
+            AddUserAdmin(context);
+
+            // Add thêm các menu mẫu
+            AddMenu(context);
+        }
+
+        private static void AddMenu(AppDbContext context)
+        {
+            if (!context.SysMenu.Any())
+            {
+                context.SysMenu.AddOrUpdate(
+                    new SysMenu { MenuName = "Đơn hàng", Type = SysMenuType.Document, Key = "DonHang", Report = false, BasicRight = true, Picture = "banhang", Active = true, Stt = 1 },
+                    new SysMenu { MenuName = "Bán hàng theo khách hàng", Type = SysMenuType.Report, Key = "BanHangTheoKhachHang", Report = false, BasicRight = true, Picture = "baocaobanhang", Active = true, Stt = 1 },
+                    new SysMenu { MenuName = "Khách hàng", Key = "KhachHang", Type = SysMenuType.Category, Report = false, BasicRight = true, Picture = "", Active = true, Stt = 1 },
+                    new SysMenu { MenuName = "Quốc gia", Key = "QuocGia", Type = SysMenuType.Category, Report = false, BasicRight = true, Picture = "", Active = true, Stt = 2 }
+                );
+                context.SaveChanges();
+            }
+        }
+
+        private static void AddUserAdmin(AppDbContext context)
+        {
             var userAdmin = context.SysDMNSD.Where(z => z.TenDangNhap == "admin").FirstOrDefault();
             if (userAdmin != null) return;
 
