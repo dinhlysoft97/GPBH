@@ -1,9 +1,9 @@
 ﻿using GPBH.Business;
-using GPBH.Data;
-using GPBH.Data.Helper;
-using GPBH.Data.UnitOfWork;
+using GPBH.UI.Helper;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Configuration;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace GPBH.UI
@@ -17,41 +17,64 @@ namespace GPBH.UI
         [STAThread]
         static void Main()
         {
-            // Bước này sẽ tự động kiểm tra & cập nhật database nếu có migration mới
-            MigrationHelper.EnsureDbMigrated();
-
             // Khởi tạo DI container
             var services = new ServiceCollection();
 
             // Đăng ký các service
-            ConfigureServices(services);
+            services.ConfigureServices();
 
             // Đăng ký các form
-            ConfigureForms(services);
+            services.ConfigureForms();
 
             // Build ServiceProvider
             ServiceProvider = services.BuildServiceProvider();
 
+            // Lấy giá trị dạng config
+            GetVauleConfig();
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+
+            // Đăng ký bắt lỗi cho thread UI
+            Application.ThreadException += Application_ThreadException;
+
+            // Nếu muốn bắt luôn cả lỗi không bắt được ở thread khác:
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+
             // Resolve MainForm từ DI container
-            var mainForm = ServiceProvider.GetRequiredService<MainForm>();
-            Application.Run(mainForm);
+            var login = ServiceProvider.GetRequiredService<Login>();
+            Application.Run(login);
         }
 
-        public static void ConfigureServices(IServiceCollection services)
+        private static void GetVauleConfig()
         {
-            services.AddScoped<AppDbContext>();
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            string maCH = ConfigurationManager.AppSettings["MaCH"];
+            string maQuay = ConfigurationManager.AppSettings["MaQuay"];
+            string maKho = ConfigurationManager.AppSettings["MaKho"];
 
-            // ... các DI khác
-            services.AddScoped<ProductService>();
+            AppGlobals.MaCH = maCH;
+            AppGlobals.MaQuay = maQuay;
+            AppGlobals.MaKho = maKho;
         }
 
-        public static void ConfigureForms(IServiceCollection services)
+        public static void ConfigureForms(this IServiceCollection services)
         {
+            services.AddScoped<Login>();
             services.AddScoped<MainForm>();
+        }
+
+        // Bắt lỗi trên thread UI (WinForms)
+        private static void Application_ThreadException(object sender, ThreadExceptionEventArgs e)
+        {
+            ExceptionHelper.HandleException(e.Exception);
+        }
+
+        // Bắt lỗi trên các thread khác (không phải UI)
+        private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            Exception ex = e.ExceptionObject as Exception ?? new Exception("Unknown error");
+            ExceptionHelper.HandleException(ex);
         }
     }
 }
