@@ -1,4 +1,9 @@
-﻿using System.Data.Entity.Migrations;
+﻿using GPBH.Data.Entities;
+using System;
+using System.Data.Entity.Migrations;
+using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace GPBH.Data.Migrations
 {
@@ -12,6 +17,36 @@ namespace GPBH.Data.Migrations
         protected override void Seed(AppDbContext context)
         {
             // Seed dữ liệu mẫu nếu cần
+            // tạo user admin
+
+            var userAdmin = context.SysDMNSD.Where(z => z.TenDangNhap == "admin").FirstOrDefault();
+            if (userAdmin != null) return;
+
+            var entityUser = new SysDMNSD
+            {
+                TenDangNhap = "admin",
+                TenDayDu = "Quản trị hệ thống",
+                MatKhau = HashPassword("admin"), // Mật khẩu cần được mã hóa trước khi lưu
+                IsAdmin = true,
+                Ksd = true,
+                NguoiTao = "system",
+                NgayTao = DateTime.Now
+            };
+            context.SysDMNSD.Add(entityUser);
+            context.SaveChanges();
+        }
+
+        /// <summary>
+        /// Hàm mã hóa mật khẩu sử dụng SHA-256
+        /// </summary>
+        private static string HashPassword(string password)
+        {
+            using (var sha = SHA256.Create())
+            {
+                var bytes = Encoding.UTF8.GetBytes(password);
+                var hash = sha.ComputeHash(bytes);
+                return BitConverter.ToString(hash).Replace("-", "").ToLower();
+            }
         }
     }
 }

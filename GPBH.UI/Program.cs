@@ -1,7 +1,4 @@
 ﻿using GPBH.Business;
-using GPBH.Data;
-using GPBH.Data.Helper;
-using GPBH.Data.UnitOfWork;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Windows.Forms;
@@ -17,17 +14,14 @@ namespace GPBH.UI
         [STAThread]
         static void Main()
         {
-            // Bước này sẽ tự động kiểm tra & cập nhật database nếu có migration mới
-            MigrationHelper.EnsureDbMigrated();
-
             // Khởi tạo DI container
             var services = new ServiceCollection();
 
             // Đăng ký các service
-            ConfigureServices(services);
+            services.ConfigureServices();
 
             // Đăng ký các form
-            ConfigureForms(services);
+            services.ConfigureForms();
 
             // Build ServiceProvider
             ServiceProvider = services.BuildServiceProvider();
@@ -36,22 +30,13 @@ namespace GPBH.UI
             Application.SetCompatibleTextRenderingDefault(false);
 
             // Resolve MainForm từ DI container
-            var mainForm = ServiceProvider.GetRequiredService<MainForm>();
-            Application.Run(mainForm);
+            var login = ServiceProvider.GetRequiredService<Login>();
+            Application.Run(login);
         }
 
-        public static void ConfigureServices(IServiceCollection services)
+        public static void ConfigureForms(this IServiceCollection services)
         {
-            services.AddScoped<AppDbContext>();
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
-
-            // ... các DI khác
-            services.AddScoped<ProductService>();
-        }
-
-        public static void ConfigureForms(IServiceCollection services)
-        {
-            services.AddScoped<MainForm>();
+            services.AddScoped<Login>();
         }
     }
 }
