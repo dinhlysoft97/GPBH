@@ -28,76 +28,85 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.treeViewMenu = new System.Windows.Forms.TreeView();
-            this.tabControlMain = new System.Windows.Forms.TabControl();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
+            this.sideBar1 = new DevComponents.DotNetBar.SideBar();
+            this.tabControl1 = new DevComponents.DotNetBar.TabControl();
+            this.collapsibleSplitContainer1 = new DevComponents.DotNetBar.Controls.CollapsibleSplitContainer();
+            ((System.ComponentModel.ISupportInitialize)(this.tabControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.collapsibleSplitContainer1)).BeginInit();
+            this.collapsibleSplitContainer1.Panel1.SuspendLayout();
+            this.collapsibleSplitContainer1.Panel2.SuspendLayout();
+            this.collapsibleSplitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // treeViewMenu
+            // sideBar1
             // 
-            this.treeViewMenu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeViewMenu.Location = new System.Drawing.Point(0, 0);
-            this.treeViewMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.treeViewMenu.Name = "treeViewMenu";
-            this.treeViewMenu.Size = new System.Drawing.Size(301, 1047);
-            this.treeViewMenu.TabIndex = 1;
+            this.sideBar1.AccessibleRole = System.Windows.Forms.AccessibleRole.ToolBar;
+            this.sideBar1.BorderStyle = DevComponents.DotNetBar.eBorderType.None;
+            this.sideBar1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sideBar1.ExpandedPanel = null;
+            this.sideBar1.Location = new System.Drawing.Point(0, 0);
+            this.sideBar1.Name = "sideBar1";
+            this.sideBar1.Size = new System.Drawing.Size(290, 780);
+            this.sideBar1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.sideBar1.TabIndex = 0;
+            this.sideBar1.Text = "sideBar1";
             // 
-            // tabControlMain
+            // tabControl1
             // 
-            this.tabControlMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControlMain.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
-            this.tabControlMain.Location = new System.Drawing.Point(0, 0);
-            this.tabControlMain.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tabControlMain.Name = "tabControlMain";
-            this.tabControlMain.SelectedIndex = 0;
-            this.tabControlMain.Size = new System.Drawing.Size(1758, 1047);
-            this.tabControlMain.TabIndex = 0;
+            this.tabControl1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(217)))), ((int)(((byte)(247)))));
+            this.tabControl1.CanReorderTabs = true;
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedTabFont = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold);
+            this.tabControl1.SelectedTabIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(771, 780);
+            this.tabControl1.TabIndex = 1;
+            this.tabControl1.TabLayoutType = DevComponents.DotNetBar.eTabLayoutType.FixedWithNavigationBox;
+            this.tabControl1.Text = "tabControl1";
             // 
-            // splitContainer1
+            // collapsibleSplitContainer1
             // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.splitContainer1.Name = "splitContainer1";
+            this.collapsibleSplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.collapsibleSplitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.collapsibleSplitContainer1.Name = "collapsibleSplitContainer1";
             // 
-            // splitContainer1.Panel1
+            // collapsibleSplitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.treeViewMenu);
+            this.collapsibleSplitContainer1.Panel1.Controls.Add(this.sideBar1);
             // 
-            // splitContainer1.Panel2
+            // collapsibleSplitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.tabControlMain);
-            this.splitContainer1.Size = new System.Drawing.Size(2064, 1047);
-            this.splitContainer1.SplitterDistance = 301;
-            this.splitContainer1.SplitterWidth = 5;
-            this.splitContainer1.TabIndex = 2;
+            this.collapsibleSplitContainer1.Panel2.AllowDrop = true;
+            this.collapsibleSplitContainer1.Panel2.Controls.Add(this.tabControl1);
+            this.collapsibleSplitContainer1.Size = new System.Drawing.Size(1081, 780);
+            this.collapsibleSplitContainer1.SplitterDistance = 290;
+            this.collapsibleSplitContainer1.SplitterWidth = 20;
+            this.collapsibleSplitContainer1.TabIndex = 2;
             // 
-            // MainForm
+            // FormMainDotNetBar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2064, 1047);
-            this.Controls.Add(this.splitContainer1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Name = "MainForm";
-            this.Text = "GPBH";
+            this.ClientSize = new System.Drawing.Size(1081, 780);
+            this.Controls.Add(this.collapsibleSplitContainer1);
+            this.DoubleBuffered = true;
+            this.Name = "FormMainDotNetBar";
+            this.Text = "FormMain";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.tabControl1)).EndInit();
+            this.collapsibleSplitContainer1.Panel1.ResumeLayout(false);
+            this.collapsibleSplitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.collapsibleSplitContainer1)).EndInit();
+            this.collapsibleSplitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.TreeView treeViewMenu;
-        private System.Windows.Forms.TabControl tabControlMain;
-        private System.Windows.Forms.SplitContainer splitContainer1;
+
+        private DevComponents.DotNetBar.SideBar sideBar1;
+        private DevComponents.DotNetBar.TabControl tabControl1;
+        private DevComponents.DotNetBar.Controls.CollapsibleSplitContainer collapsibleSplitContainer1;
     }
 }
-

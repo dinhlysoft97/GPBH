@@ -1,192 +1,151 @@
-﻿using GPBH.Business.Services;
+﻿using DevComponents.DotNetBar;
+using GPBH.Business.Services;
 using GPBH.UI.UserControls;
+using System;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
 namespace GPBH.UI
 {
-    public partial class MainForm : Form
+    public partial class MainForm : Office2007Form
     {
         private readonly SysMenuService _sysMenuService;
+
         public MainForm(SysMenuService sysMenuService)
         {
             InitializeComponent();
             _sysMenuService = sysMenuService;
-
-            CreateMenu();
-            treeViewMenu.AfterSelect += TreeViewMenu_AfterSelect;
-            tabControlMain.DrawItem += TabControlMain_DrawItem;
-            tabControlMain.MouseDown += TabControlMain_MouseDown; // Để đóng tab bằng click giữa
+            BuildMenu();
         }
 
-        // Tạo menu 2 cấp mẫu
-        private void CreateMenu()
+        private void BuildMenu()
         {
-            ImageList imgList = new ImageList();
+            var menus = _sysMenuService.GetAllMenus();
+            // Tạo menu mẫu (có thể tạo trong designer hoặc code)
+            var group = new SideBarPanelItem() { Text = "Menu" };
+            var nodeBanHang = new ButtonItem("banHang", "Bán hàng");
+            var nodeBaoCao = new ButtonItem("baoCao", "Báo cáo");
+            var nodeDanhMuc = new ButtonItem("danhMuc", "Danh mục");
+            var nodeCaiDat = new ButtonItem("caiDat", "Cài đặt");
 
+            ImageList imgList = new ImageList();
+            SetImages(imgList);
+
+            foreach (var menu in menus)
+            {
+                var subMenu = new ButtonItem(menu.Key, menu.MenuName);
+
+                int index = imgList.Images.IndexOfKey(menu.Picture);
+                if (index == -1)
+                    index = 0;
+                subMenu.ImageIndex = index;
+
+                if (menu.Type == 1) nodeBanHang.SubItems.Add(subMenu);
+                if (menu.Type == 2) nodeBaoCao.SubItems.Add(subMenu);
+                if (menu.Type == 3) nodeDanhMuc.SubItems.Add(subMenu);
+            }
+
+            group.SubItems.Add(nodeBanHang);
+            group.SubItems.Add(nodeBaoCao);
+            group.SubItems.Add(nodeDanhMuc);
+            group.SubItems.Add(nodeCaiDat);
+            sideBar1.Panels.Add(group);
+
+            // Gắn event click cho toàn bộ menu
+            foreach (ButtonItem btn in group.SubItems)
+            {
+                btn.Click += Menu_Click;
+                if (btn.SubItems.Count > 0)
+                {
+                    foreach (ButtonItem c in btn.SubItems)
+                        c.Click += Menu_Click;
+                }
+            }
+
+            // ======= VẼ DẤU X VÀ ĐÓNG TAB TRÊN TABCONTROL =======
+            // Đăng ký sự kiện vẽ custom nút Close
+            tabControl1.CloseButtonOnTabsVisible = true;     // Hiển thị nút x trên từng tab
+            tabControl1.CloseButtonVisible = false;           // Ẩn nút x tổng
+            tabControl1.CloseButtonPosition = eTabCloseButtonPosition.Right;
+            tabControl1.TabItemClose += TabControl1_TabItemClose;
+        }
+
+        private void SetImages(ImageList imgList)
+        {
             Bitmap emptyBitmap = new Bitmap(16, 16);
             imgList.Images.Add("empty", emptyBitmap);
             imgList.Images
                 .Add("banhang", Image.FromFile(Path.Combine(Application.StartupPath, "Images", "banhang.png")));         // index 0
             imgList.Images
                 .Add("baocaobanhang", Image.FromFile(Path.Combine(Application.StartupPath, "Images", "baocaobanhang.png")));   // index 1
-            treeViewMenu.ImageList = imgList;
+            sideBar1.Images = imgList;
+        }
 
-            var menus = _sysMenuService.GetAllMenus();
-            // Menu gốc
-            TreeNode nodeBanHang = new TreeNode("Bán hàng") { Name = "banHang" };
-            TreeNode nodeBaoCao = new TreeNode("Báo cáo") { Name = "baoCao" };
-            TreeNode nodeDanhMuc = new TreeNode("Danh mục") { Name = "danhMuc" };
-            TreeNode nodeCaiDat = new TreeNode("Cài đặt") { Name = "caiDat" };
-
-
-            foreach (var menu in menus)
+        // Xử lý click menu
+        private void Menu_Click(object sender, EventArgs e)
+        {
+            var btn = sender as ButtonItem;
+            if (btn != null && btn.SubItems.Count > 0)
             {
-                if (menu.Type == 1) // chứng từ
-                {
-                    TreeNode node = new TreeNode(menu.MenuName) { Name = menu.Key };
-                    if (!string.IsNullOrEmpty(menu.Picture))
-                    {
-                        node.ImageKey = menu.Picture;
-                        node.SelectedImageKey = menu.Picture;
-                    }
-                    nodeBanHang.Nodes.Add(node);
-                }
-                if (menu.Type == 2) // báo cáo
-                {
-                    TreeNode node = new TreeNode(menu.MenuName) { Name = menu.Key };
-                    if (!string.IsNullOrEmpty(menu.Picture))
-                    {
-                        node.ImageKey = menu.Picture;
-                        node.SelectedImageKey = menu.Picture;
-                    }
-                    nodeBaoCao.Nodes.Add(node);
-                }
-                if (menu.Type == 3) // danh mục
-                {
-                    TreeNode node = new TreeNode(menu.MenuName) { Name = menu.Key };
-                    if (!string.IsNullOrEmpty(menu.Picture))
-                    {
-                        node.ImageKey = menu.Picture;
-                        node.SelectedImageKey = menu.Picture;
-                    }
-                    nodeDanhMuc.Nodes.Add(node);
-                }
+                // Menu cha có subitems, bỏ qua click
+                return;
             }
 
-            treeViewMenu.Nodes.Add(nodeBanHang);
-            treeViewMenu.Nodes.Add(nodeBaoCao);
-            treeViewMenu.Nodes.Add(nodeDanhMuc);
-            treeViewMenu.Nodes.Add(nodeCaiDat);
-
-            treeViewMenu.ExpandAll();
+            if (btn == null) return;
+            OpenTab(btn.Name, btn.Text);
         }
 
-        // Xử lý chọn menu
-        private void TreeViewMenu_AfterSelect(object sender, TreeViewEventArgs e)
-        {
-            // Chỉ thao tác khi chọn node con
-            if (e.Node.Parent == null) return;
-
-            string key = e.Node.Name;
-            string title = e.Node.Text;
-
-            OpenTab(key, title);
-        }
-
-        // Mở tab động
+        // Mở tab động, mỗi menu 1 UserControl
         private void OpenTab(string key, string title)
         {
-            // Đã có tab chưa?
-            foreach (TabPage page in tabControlMain.TabPages)
+            // Nếu đã có tab thì chuyển qua
+            foreach (TabItem tab in tabControl1.Tabs)
             {
-                if (page.Name == key)
+                if (tab.Name == key)
                 {
-                    tabControlMain.SelectedTab = page;
+                    tabControl1.SelectedTab = tab;
                     return;
                 }
             }
 
-            TabPage newPage = new TabPage(title) { Name = key };
+            // Tạo tab mới
+            var newTab = new TabItem() { Text = title, Name = key };
+            var panel = new TabControlPanel();
+            panel.Dock = DockStyle.Fill;
+            panel.TabItem = newTab;
+
+            // Dùng UserControl tương ứng
             UserControl uc = null;
             switch (key)
             {
                 case "DonHang":
                     uc = new UserControlDonHang();
                     break;
-
                 case "BanHangTheoKhachHang":
                     uc = new UserControlBanHangTheoKhachHang();
                     break;
-
                 default:
                     MessageBox.Show("Tính năng đang phát triển!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
             }
             uc.Dock = DockStyle.Fill;
-            newPage.Controls.Add(uc);
-            tabControlMain.TabPages.Add(newPage);
-            tabControlMain.SelectedTab = newPage;
+            panel.Controls.Add(uc);
+
+            tabControl1.Controls.Add(panel);
+            tabControl1.Tabs.Add(newTab);
+            newTab.AttachedControl = panel;
+
+            tabControl1.SelectedTab = newTab;
         }
 
-        // Đóng tab bằng click x
-        private void TabControlMain_MouseDown(object sender, MouseEventArgs e)
+        // Sự kiện đóng tab
+        private void TabControl1_TabItemClose(object sender, TabStripActionEventArgs e)
         {
-            if (e.Button == MouseButtons.Middle)
-            {
-                for (int i = 0; i < tabControlMain.TabPages.Count; i++)
-                {
-                    if (tabControlMain.GetTabRect(i).Contains(e.Location))
-                    {
-                        tabControlMain.TabPages.RemoveAt(i);
-                        break;
-                    }
-                }
-            }
-
-            for (int i = 0; i < tabControlMain.TabCount; i++)
-            {
-                Rectangle tabRect = tabControlMain.GetTabRect(i);
-                Rectangle closeRect = new Rectangle(tabRect.Right - 18, tabRect.Top + (tabRect.Height - 12) / 2, 12, 12);
-
-                if (closeRect.Contains(e.Location))
-                {
-                    tabControlMain.TabPages.RemoveAt(i);
-                    break;
-                }
-            }
-
-        }
-
-        private void TabControlMain_DrawItem(object sender, DrawItemEventArgs e)
-        {
-            var tabPage = tabControlMain.TabPages[e.Index];
-            var tabRect = tabControlMain.GetTabRect(e.Index);
-            tabRect.Inflate(-2, -2);
-
-            // Vẽ tiêu đề tab
-            TextRenderer.DrawText(e.Graphics, tabPage.Text, e.Font,
-                tabRect, tabPage.ForeColor, TextFormatFlags.Left);
-
-            // Vẽ dấu X bên phải tab
-            int x = tabRect.Right - 15;
-            int y = tabRect.Top + (tabRect.Height - 12) / 2;
-            Rectangle closeRect = new Rectangle(x, y, 12, 12);
-
-            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            using (Pen pen = new Pen(Color.Gray, 2))
-            {
-                // Vẽ hình dấu X
-                e.Graphics.DrawLine(pen, x + 3, y + 3, x + 9, y + 9);
-                e.Graphics.DrawLine(pen, x + 9, y + 3, x + 3, y + 9);
-            }
-
-            // Nếu muốn highlight tab đang chọn
-            if (e.State == DrawItemState.Selected)
-            {
-                e.Graphics.DrawRectangle(Pens.DarkBlue, tabRect);
-            }
+            // Đóng tab khi bấm nút x trên tab
+            tabControl1.Tabs.Remove(e.TabItem);
+            if (e.TabItem.AttachedControl != null)
+                tabControl1.Controls.Remove(e.TabItem.AttachedControl);
         }
     }
 }
