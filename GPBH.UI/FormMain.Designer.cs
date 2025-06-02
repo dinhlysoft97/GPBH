@@ -84,14 +84,14 @@
             this.collapsibleSplitContainer1.SplitterWidth = 20;
             this.collapsibleSplitContainer1.TabIndex = 2;
             // 
-            // FormMain
+            // FormMainDotNetBar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1081, 780);
             this.Controls.Add(this.collapsibleSplitContainer1);
             this.DoubleBuffered = true;
-            this.Name = "FormMain";
+            this.Name = "FormMainDotNetBar";
             this.Text = "FormMain";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.tabControl1)).EndInit();

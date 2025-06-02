@@ -41,8 +41,9 @@
             // 
             this.treeViewMenu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeViewMenu.Location = new System.Drawing.Point(0, 0);
+            this.treeViewMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.treeViewMenu.Name = "treeViewMenu";
-            this.treeViewMenu.Size = new System.Drawing.Size(226, 851);
+            this.treeViewMenu.Size = new System.Drawing.Size(301, 1047);
             this.treeViewMenu.TabIndex = 1;
             // 
             // tabControlMain
@@ -50,15 +51,17 @@
             this.tabControlMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlMain.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.tabControlMain.Location = new System.Drawing.Point(0, 0);
+            this.tabControlMain.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabControlMain.Name = "tabControlMain";
             this.tabControlMain.SelectedIndex = 0;
-            this.tabControlMain.Size = new System.Drawing.Size(1318, 851);
+            this.tabControlMain.Size = new System.Drawing.Size(1758, 1047);
             this.tabControlMain.TabIndex = 0;
             // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -68,16 +71,18 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tabControlMain);
-            this.splitContainer1.Size = new System.Drawing.Size(1548, 851);
-            this.splitContainer1.SplitterDistance = 226;
+            this.splitContainer1.Size = new System.Drawing.Size(2064, 1047);
+            this.splitContainer1.SplitterDistance = 301;
+            this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 2;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1548, 851);
+            this.ClientSize = new System.Drawing.Size(2064, 1047);
             this.Controls.Add(this.splitContainer1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "MainForm";
             this.Text = "GPBH";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
