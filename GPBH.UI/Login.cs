@@ -1,6 +1,5 @@
 ﻿using GPBH.Business;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 using System.Windows.Forms;
 
 namespace GPBH.UI
@@ -35,10 +34,14 @@ namespace GPBH.UI
                 // Lưu thông tin user vào biến global hoặc truyền vào form chính
                 AppGlobals.CurrentUser = user;
 
-
                 // call form con
                 var main = ActivatorUtilities.CreateInstance<MainForm>(Program.ServiceProvider);
                 main.Show();
+                this.Hide();
+
+                // call form dot net bar
+                var main2 = ActivatorUtilities.CreateInstance<FormMainDotNetBar>(Program.ServiceProvider);
+                main2.Show();
                 this.Hide();
             }
             else
