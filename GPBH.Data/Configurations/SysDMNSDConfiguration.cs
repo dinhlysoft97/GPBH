@@ -10,8 +10,8 @@ namespace GPBH.Data.Configurations
             // Table name
             ToTable("SysDMNSD");
 
-            // Primary Key
-            HasKey(t => t.Id);
+            //// Primary Key
+            HasKey(t => t.TenDangNhap);
 
             // Properties
             Property(t => t.TenDangNhap)
@@ -36,15 +36,15 @@ namespace GPBH.Data.Configurations
             Property(t => t.Ksd)
                 .IsRequired();
 
-            Property(t => t.NguoiTao)
+            Property(t => t.Nguoi_tao)
                 .HasMaxLength(20);
 
-            Property(t => t.NgayTao);
+            Property(t => t.Ngay_tao);
 
-            Property(t => t.NguoiSua)
+            Property(t => t.Nguoi_sua)
                 .HasMaxLength(20);
 
-            Property(t => t.NgaySua);
+            Property(t => t.Ngay_sua);
         }
 
     }

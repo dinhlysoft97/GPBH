@@ -12,13 +12,13 @@ namespace GPBH.Data.Audit
             {
                 if (entry.State == EntityState.Added)
                 {
-                    entry.Entity.NguoiTao = userName;
-                    entry.Entity.NgayTao = DateTime.Now;
+                    entry.Entity.Nguoi_tao = userName;
+                    entry.Entity.Ngay_tao = DateTime.Now;
                 }
                 else if (entry.State == EntityState.Modified)
                 {
-                    entry.Entity.NguoiSua = userName;
-                    entry.Entity.NgaySua = DateTime.Now;
+                    entry.Entity.Nguoi_sua = userName;
+                    entry.Entity.Ngay_sua = DateTime.Now;
                 }
             }
         }

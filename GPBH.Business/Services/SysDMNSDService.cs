@@ -36,7 +36,6 @@ namespace GPBH.Business
             AppDbContext.CurrentUserName = tenDangNhap;
             return new SysDMNSDDto
             {
-                Id = user?.Id ?? 0,
                 TenDangNhap = user?.TenDangNhap,
                 TenDayDu = user?.TenDayDu,
                 MatKhau = user?.MatKhau,

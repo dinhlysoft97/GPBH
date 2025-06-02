@@ -4,10 +4,8 @@ namespace GPBH.Business.DTO
 {
     public class SystemMenuDto
     {
-        public int Id { get; set; }
-
         // Khóa định danh của menu, có thể là mã hoặc tên duy nhất
-        public string Key { get; set; }
+        public string MenuId { get; set; }
 
         // Tên hiển thị trên menu
         public string MenuName { get; set; }

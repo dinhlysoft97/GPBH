@@ -11,12 +11,12 @@ namespace GPBH.Data.Configurations
             ToTable("SysMenu");
 
             // Primary Key
-            HasKey(t => t.Id);
+            HasKey(t => t.MenuId);
 
             // Properties
-            Property(t => t.Key)
+            Property(t => t.MenuId)
                 .IsRequired()
-                .HasMaxLength(20);
+                .HasMaxLength(100);
 
             Property(t => t.MenuName)
                 .HasMaxLength(50);

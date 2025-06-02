@@ -20,8 +20,7 @@ namespace GPBH.Business.Services
             return _unitOfWork.Repository<SysMenu>().GetAll()
                 .Select(z => new SystemMenuDto
                 {
-                    Id = z.Id,
-                    Key = z.Key,
+                    MenuId = z.MenuId,
                     MenuName = z.MenuName,
                     Type = (int)z.Type,
                     Report = z.Report,

@@ -27,7 +27,7 @@ namespace GPBH.UI
 
             var user = _productService.DangNhap(tenDangNhap, matKhau);
 
-            if (user != null && user.Id > 0)
+            if (user != null && !string.IsNullOrEmpty(user.TenDangNhap))
             {
                 // Đăng nhập thành công
                 MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

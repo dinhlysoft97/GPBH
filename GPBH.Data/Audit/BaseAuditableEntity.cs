@@ -4,9 +4,9 @@ namespace GPBH.Data.Audit
 {
     public abstract class BaseAuditableEntity
     {
-        public string NguoiTao { get; set; }
-        public DateTime? NgayTao { get; set; }
-        public string NguoiSua { get; set; }
-        public DateTime? NgaySua { get; set; }
+        public string Nguoi_tao { get; set; }        // Người tạo
+        public DateTime? Ngay_tao { get; set; }      // Ngày tạo
+        public string Nguoi_sua { get; set; }        // Người sửa
+        public DateTime? Ngay_sua { get; set; }      // Ngày sửa
     }
 }

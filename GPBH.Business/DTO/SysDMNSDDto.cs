@@ -2,8 +2,6 @@
 {
     public class SysDMNSDDto
     {
-        public int Id { get; set; }
-
         // Tên đăng nhập (Primary Key)
         public string TenDangNhap { get; set; }
 

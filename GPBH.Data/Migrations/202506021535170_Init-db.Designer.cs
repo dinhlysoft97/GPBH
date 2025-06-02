@@ -7,13 +7,13 @@ namespace GPBH.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.5.1")]
-    public sealed partial class AddSysMenu : IMigrationMetadata
+    public sealed partial class Initdb : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddSysMenu));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Initdb));
         
         string IMigrationMetadata.Id
         {
-            get { return "202506011150172_Add-SysMenu"; }
+            get { return "202506021535170_Init-db"; }
         }
         
         string IMigrationMetadata.Source

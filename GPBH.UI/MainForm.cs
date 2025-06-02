@@ -34,7 +34,7 @@ namespace GPBH.UI
 
             foreach (var menu in menus)
             {
-                var subMenu = new ButtonItem(menu.Key, menu.MenuName);
+                var subMenu = new ButtonItem(menu.MenuId, menu.MenuName);
 
                 int index = imgList.Images.IndexOfKey(menu.Picture);
                 if (index == -1)
