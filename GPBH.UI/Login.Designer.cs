@@ -44,7 +44,7 @@
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX1.Location = new System.Drawing.Point(60, 42);
-            this.labelX1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelX1.Margin = new System.Windows.Forms.Padding(4);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(72, 28);
             this.labelX1.TabIndex = 0;
@@ -57,7 +57,7 @@
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX2.Location = new System.Drawing.Point(60, 78);
-            this.labelX2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelX2.Margin = new System.Windows.Forms.Padding(4);
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(72, 28);
             this.labelX2.TabIndex = 1;
@@ -70,7 +70,7 @@
             // 
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX3.Location = new System.Drawing.Point(60, 113);
-            this.labelX3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelX3.Margin = new System.Windows.Forms.Padding(4);
             this.labelX3.Name = "labelX3";
             this.labelX3.Size = new System.Drawing.Size(72, 28);
             this.labelX3.TabIndex = 2;
@@ -84,11 +84,12 @@
             this.txtTenDangNhap.Border.Class = "TextBoxBorder";
             this.txtTenDangNhap.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtTenDangNhap.Location = new System.Drawing.Point(140, 43);
-            this.txtTenDangNhap.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTenDangNhap.Margin = new System.Windows.Forms.Padding(4);
             this.txtTenDangNhap.Name = "txtTenDangNhap";
             this.txtTenDangNhap.PreventEnterBeep = true;
             this.txtTenDangNhap.Size = new System.Drawing.Size(176, 22);
             this.txtTenDangNhap.TabIndex = 3;
+            this.txtTenDangNhap.Text = "admin";
             // 
             // txtMatKhau
             // 
@@ -98,11 +99,12 @@
             this.txtMatKhau.Border.Class = "TextBoxBorder";
             this.txtMatKhau.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtMatKhau.Location = new System.Drawing.Point(140, 78);
-            this.txtMatKhau.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtMatKhau.Margin = new System.Windows.Forms.Padding(4);
             this.txtMatKhau.Name = "txtMatKhau";
             this.txtMatKhau.PreventEnterBeep = true;
             this.txtMatKhau.Size = new System.Drawing.Size(176, 22);
             this.txtMatKhau.TabIndex = 4;
+            this.txtMatKhau.Text = "admin";
             // 
             // cbbCa
             // 
@@ -111,7 +113,7 @@
             this.cbbCa.FormattingEnabled = true;
             this.cbbCa.ItemHeight = 14;
             this.cbbCa.Location = new System.Drawing.Point(140, 112);
-            this.cbbCa.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbbCa.Margin = new System.Windows.Forms.Padding(4);
             this.cbbCa.Name = "cbbCa";
             this.cbbCa.Size = new System.Drawing.Size(175, 20);
             this.cbbCa.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -122,7 +124,7 @@
             this.btnDangNhap.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnDangNhap.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnDangNhap.Location = new System.Drawing.Point(140, 156);
-            this.btnDangNhap.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDangNhap.Margin = new System.Windows.Forms.Padding(4);
             this.btnDangNhap.Name = "btnDangNhap";
             this.btnDangNhap.Size = new System.Drawing.Size(176, 28);
             this.btnDangNhap.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -142,7 +144,8 @@
             this.Controls.Add(this.labelX3);
             this.Controls.Add(this.labelX2);
             this.Controls.Add(this.labelX1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DoubleBuffered = true;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Đăng nhập";

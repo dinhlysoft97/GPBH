@@ -1,4 +1,5 @@
 ﻿using DevComponents.DotNetBar;
+using GPBH.Business;
 using GPBH.Business.Services;
 using GPBH.UI.UserControls;
 using System;
@@ -17,6 +18,19 @@ namespace GPBH.UI
             InitializeComponent();
             _sysMenuService = sysMenuService;
             BuildMenu();
+            SetData();
+        }
+
+        private void SetData()
+        {
+           lbCopyright.Text = $"Copyright© {DateTime.Now.Year}";
+           lbTenDangNhap.Text = $"Tên đăng nhâp: {AppGlobals.CurrentUser.TenDangNhap}";
+           lbMayChu.Text = "Máy chủ: (local)";
+           lbCSDL.Text = "CSDL: GPBHDb";
+           lbMaCH.Text = $"Mã cửa hàng: {AppGlobals.MaCH}";
+           lbMaQuay.Text = $"Mã quầy: {AppGlobals.MaQuay}";
+           lbMaKho.Text = $"Mã kho: {AppGlobals.MaKho}";
+           lbTgDangNhap.Text = $"Thời gian đăng nhập: {AppGlobals.TgDangNhap.ToString("dd:MM:yyyy HH:mm")}";
         }
 
         private void BuildMenu()

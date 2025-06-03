@@ -1,6 +1,7 @@
 ﻿using DevComponents.DotNetBar;
 using GPBH.Business;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Windows.Forms;
 
 namespace GPBH.UI
@@ -34,6 +35,7 @@ namespace GPBH.UI
 
                 // Lưu thông tin user vào biến global hoặc truyền vào form chính
                 AppGlobals.CurrentUser = user;
+                AppGlobals.TgDangNhap = DateTime.Now;
 
                 // call form dot net bar
                 var main = ActivatorUtilities.CreateInstance<MainForm>(Program.ServiceProvider);

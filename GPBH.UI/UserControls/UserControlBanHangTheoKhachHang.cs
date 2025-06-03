@@ -15,6 +15,8 @@ namespace GPBH.UI.UserControls
         public UserControlBanHangTheoKhachHang()
         {
             InitializeComponent();
+            this.Dock = DockStyle.Fill;
+            superGridControl1.PrimaryGrid.EnableFiltering = true;
         }
     }
 }

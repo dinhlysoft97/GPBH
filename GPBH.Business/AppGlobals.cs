@@ -1,11 +1,12 @@
 ﻿using GPBH.Business.DTO;
+using System;
 
 namespace GPBH.Business
 {
-    public class AppGlobals
+    public static class AppGlobals
     {
         public static SysDMNSDDto CurrentUser { get; set; }
-
+        public static DateTime TgDangNhap { get; set; }
         public static string MaCH {  get; set; }
         public static string MaQuay {  get; set; }
         public static string MaKho {  get; set; }
