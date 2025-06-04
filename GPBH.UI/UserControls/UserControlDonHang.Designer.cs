@@ -38,6 +38,8 @@
             this.dtTu = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NameName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewX2 = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,8 +48,6 @@
             this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NameName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -64,6 +64,7 @@
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -75,8 +76,9 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.dataGridViewX2);
-            this.splitContainer1.Size = new System.Drawing.Size(1785, 954);
-            this.splitContainer1.SplitterDistance = 378;
+            this.splitContainer1.Size = new System.Drawing.Size(1339, 775);
+            this.splitContainer1.SplitterDistance = 338;
+            this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 2;
             // 
             // bar1
@@ -92,9 +94,10 @@
             this.bar1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bar1.IsMaximized = false;
             this.bar1.Location = new System.Drawing.Point(0, 0);
-            this.bar1.MinimumSize = new System.Drawing.Size(0, 50);
+            this.bar1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.bar1.MinimumSize = new System.Drawing.Size(0, 41);
             this.bar1.Name = "bar1";
-            this.bar1.Size = new System.Drawing.Size(1785, 50);
+            this.bar1.Size = new System.Drawing.Size(1339, 41);
             this.bar1.Stretch = true;
             this.bar1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.bar1.TabIndex = 1;
@@ -105,9 +108,10 @@
             // 
             this.btnSearch.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnSearch.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnSearch.Location = new System.Drawing.Point(606, 14);
+            this.btnSearch.Location = new System.Drawing.Point(454, 11);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(75, 27);
+            this.btnSearch.Size = new System.Drawing.Size(56, 22);
             this.btnSearch.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnSearch.TabIndex = 5;
             this.btnSearch.Text = "Xem";
@@ -123,7 +127,8 @@
             this.dtDen.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
             this.dtDen.ButtonDropDown.Visible = true;
             this.dtDen.IsPopupCalendarOpen = false;
-            this.dtDen.Location = new System.Drawing.Point(386, 14);
+            this.dtDen.Location = new System.Drawing.Point(290, 11);
+            this.dtDen.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             // 
             // 
             // 
@@ -153,7 +158,7 @@
             this.dtDen.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.dtDen.MonthCalendar.TodayButtonVisible = true;
             this.dtDen.Name = "dtDen";
-            this.dtDen.Size = new System.Drawing.Size(200, 27);
+            this.dtDen.Size = new System.Drawing.Size(150, 23);
             this.dtDen.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.dtDen.TabIndex = 4;
             // 
@@ -165,10 +170,11 @@
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX2.ForeColor = System.Drawing.Color.Black;
-            this.labelX2.Location = new System.Drawing.Point(304, 14);
+            this.labelX2.Location = new System.Drawing.Point(228, 11);
+            this.labelX2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.labelX2.Name = "labelX2";
             this.labelX2.SingleLineColor = System.Drawing.Color.Empty;
-            this.labelX2.Size = new System.Drawing.Size(75, 23);
+            this.labelX2.Size = new System.Drawing.Size(56, 19);
             this.labelX2.TabIndex = 3;
             this.labelX2.Text = "Đến ngày";
             this.labelX2.TextAlignment = System.Drawing.StringAlignment.Center;
@@ -183,7 +189,8 @@
             this.dtTu.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
             this.dtTu.ButtonDropDown.Visible = true;
             this.dtTu.IsPopupCalendarOpen = false;
-            this.dtTu.Location = new System.Drawing.Point(99, 14);
+            this.dtTu.Location = new System.Drawing.Point(74, 11);
+            this.dtTu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             // 
             // 
             // 
@@ -213,7 +220,7 @@
             this.dtTu.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.dtTu.MonthCalendar.TodayButtonVisible = true;
             this.dtTu.Name = "dtTu";
-            this.dtTu.Size = new System.Drawing.Size(200, 27);
+            this.dtTu.Size = new System.Drawing.Size(150, 23);
             this.dtTu.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.dtTu.TabIndex = 2;
             // 
@@ -225,10 +232,11 @@
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX1.ForeColor = System.Drawing.Color.Black;
-            this.labelX1.Location = new System.Drawing.Point(24, 14);
+            this.labelX1.Location = new System.Drawing.Point(18, 11);
+            this.labelX1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.labelX1.Name = "labelX1";
             this.labelX1.SingleLineColor = System.Drawing.Color.Empty;
-            this.labelX1.Size = new System.Drawing.Size(75, 23);
+            this.labelX1.Size = new System.Drawing.Size(56, 19);
             this.labelX1.TabIndex = 1;
             this.labelX1.Text = "Từ ngày";
             this.labelX1.TextAlignment = System.Drawing.StringAlignment.Center;
@@ -237,6 +245,9 @@
             // 
             this.dataGridViewX1.AllowUserToAddRows = false;
             this.dataGridViewX1.AllowUserToDeleteRows = false;
+            this.dataGridViewX1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
@@ -250,15 +261,35 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.dataGridViewX1.Location = new System.Drawing.Point(0, 48);
+            this.dataGridViewX1.Location = new System.Drawing.Point(0, 39);
+            this.dataGridViewX1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridViewX1.Name = "dataGridViewX1";
             this.dataGridViewX1.RowHeadersWidth = 51;
             this.dataGridViewX1.RowTemplate.Height = 24;
-            this.dataGridViewX1.Size = new System.Drawing.Size(1785, 419);
+            this.dataGridViewX1.Size = new System.Drawing.Size(1339, 297);
             this.dataGridViewX1.TabIndex = 0;
+            // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "Id";
+            this.ID.MinimumWidth = 6;
+            this.ID.Name = "ID";
+            this.ID.Width = 125;
+            // 
+            // NameName
+            // 
+            this.NameName.DataPropertyName = "NameName";
+            this.NameName.HeaderText = "Name";
+            this.NameName.MinimumWidth = 6;
+            this.NameName.Name = "NameName";
+            this.NameName.Width = 125;
             // 
             // dataGridViewX2
             // 
+            this.dataGridViewX2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewX2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewX2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column10,
@@ -276,13 +307,13 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewX2.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridViewX2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewX2.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataGridViewX2.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewX2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridViewX2.Name = "dataGridViewX2";
             this.dataGridViewX2.RowHeadersWidth = 51;
             this.dataGridViewX2.RowTemplate.Height = 24;
-            this.dataGridViewX2.Size = new System.Drawing.Size(1785, 572);
+            this.dataGridViewX2.Size = new System.Drawing.Size(1339, 439);
             this.dataGridViewX2.TabIndex = 0;
             // 
             // Column10
@@ -334,29 +365,14 @@
             this.Column16.Name = "Column16";
             this.Column16.Width = 125;
             // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "ID";
-            this.ID.HeaderText = "Id";
-            this.ID.MinimumWidth = 6;
-            this.ID.Name = "ID";
-            this.ID.Width = 125;
-            // 
-            // NameName
-            // 
-            this.NameName.DataPropertyName = "NameName";
-            this.NameName.HeaderText = "Name";
-            this.NameName.MinimumWidth = 6;
-            this.NameName.Name = "NameName";
-            this.NameName.Width = 125;
-            // 
             // UserControlDonHang
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.splitContainer1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "UserControlDonHang";
-            this.Size = new System.Drawing.Size(1785, 954);
+            this.Size = new System.Drawing.Size(1339, 775);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
