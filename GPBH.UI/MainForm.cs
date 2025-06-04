@@ -30,7 +30,7 @@ namespace GPBH.UI
            lbMaCH.Text = $"Mã cửa hàng: {AppGlobals.MaCH}";
            lbMaQuay.Text = $"Mã quầy: {AppGlobals.MaQuay}";
            lbMaKho.Text = $"Mã kho: {AppGlobals.MaKho}";
-           lbTgDangNhap.Text = $"Thời gian đăng nhập: {AppGlobals.TgDangNhap.ToString("dd:MM:yyyy HH:mm")}";
+           lbTgDangNhap.Text = $"Thời gian đăng nhập: {AppGlobals.TgDangNhap.ToString("dd/MM/yyyy HH:mm")}";
         }
 
         private void BuildMenu()

@@ -57,8 +57,9 @@
             this.sideBar1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.sideBar1.ExpandedPanel = null;
             this.sideBar1.Location = new System.Drawing.Point(0, 0);
+            this.sideBar1.Margin = new System.Windows.Forms.Padding(2);
             this.sideBar1.Name = "sideBar1";
-            this.sideBar1.Size = new System.Drawing.Size(414, 1296);
+            this.sideBar1.Size = new System.Drawing.Size(157, 1053);
             this.sideBar1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.sideBar1.TabIndex = 0;
             this.sideBar1.Text = "sideBar1";
@@ -69,10 +70,11 @@
             this.tabControl1.CanReorderTabs = true;
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedTabFont = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold);
             this.tabControl1.SelectedTabIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(2240, 1296);
+            this.tabControl1.Size = new System.Drawing.Size(1832, 1053);
             this.tabControl1.TabIndex = 1;
             this.tabControl1.TabLayoutType = DevComponents.DotNetBar.eTabLayoutType.FixedWithNavigationBox;
             this.tabControl1.Text = "tabControl1";
@@ -82,6 +84,7 @@
             this.collapsibleSplitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.collapsibleSplitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.collapsibleSplitContainer1.Margin = new System.Windows.Forms.Padding(2);
             this.collapsibleSplitContainer1.Name = "collapsibleSplitContainer1";
             // 
             // collapsibleSplitContainer1.Panel1
@@ -92,9 +95,9 @@
             // 
             this.collapsibleSplitContainer1.Panel2.AllowDrop = true;
             this.collapsibleSplitContainer1.Panel2.Controls.Add(this.tabControl1);
-            this.collapsibleSplitContainer1.Size = new System.Drawing.Size(2674, 1296);
-            this.collapsibleSplitContainer1.SplitterDistance = 414;
-            this.collapsibleSplitContainer1.SplitterWidth = 20;
+            this.collapsibleSplitContainer1.Size = new System.Drawing.Size(2006, 1053);
+            this.collapsibleSplitContainer1.SplitterDistance = 157;
+            this.collapsibleSplitContainer1.SplitterWidth = 17;
             this.collapsibleSplitContainer1.TabIndex = 2;
             // 
             // bar1
@@ -113,9 +116,10 @@
             this.lbMayChu,
             this.lbCSDL,
             this.lbTgDangNhap});
-            this.bar1.Location = new System.Drawing.Point(0, 1302);
+            this.bar1.Location = new System.Drawing.Point(0, 843);
+            this.bar1.Margin = new System.Windows.Forms.Padding(2);
             this.bar1.Name = "bar1";
-            this.bar1.Size = new System.Drawing.Size(2674, 23);
+            this.bar1.Size = new System.Drawing.Size(1443, 19);
             this.bar1.Stretch = true;
             this.bar1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.bar1.TabIndex = 3;
@@ -198,12 +202,13 @@
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2674, 1325);
+            this.ClientSize = new System.Drawing.Size(1443, 862);
             this.Controls.Add(this.bar1);
             this.Controls.Add(this.collapsibleSplitContainer1);
             this.DoubleBuffered = true;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainForm";
             this.Text = "FormMain";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
