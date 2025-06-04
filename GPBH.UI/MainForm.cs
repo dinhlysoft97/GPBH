@@ -153,6 +153,35 @@ namespace GPBH.UI
             tabControl1.SelectedTab = newTab;
         }
 
+        public void OpenTab(string key, string title, UserControl uc)
+        {
+            // Nếu đã có tab thì chuyển qua
+            foreach (TabItem tab in tabControl1.Tabs)
+            {
+                if (tab.Name == key)
+                {
+                    tabControl1.SelectedTab = tab;
+                    return;
+                }
+            }
+
+            // Tạo tab mới
+            var newTab = new TabItem() { Text = title, Name = key };
+            var panel = new TabControlPanel();
+            panel.Dock = DockStyle.Fill;
+            panel.TabItem = newTab;
+
+           
+            uc.Dock = DockStyle.Fill;
+            panel.Controls.Add(uc);
+
+            tabControl1.Controls.Add(panel);
+            tabControl1.Tabs.Add(newTab);
+            newTab.AttachedControl = panel;
+
+            tabControl1.SelectedTab = newTab;
+        }
+
         // Sự kiện đóng tab
         private void TabControl1_TabItemClose(object sender, TabStripActionEventArgs e)
         {

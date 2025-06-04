@@ -32,6 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.bar1 = new DevComponents.DotNetBar.Bar();
+            this.btnTaoDonHang = new DevComponents.DotNetBar.ButtonX();
             this.btnSearch = new DevComponents.DotNetBar.ButtonX();
             this.dtDen = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
@@ -64,7 +65,7 @@
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -85,6 +86,7 @@
             // 
             this.bar1.AntiAlias = true;
             this.bar1.BackColor = System.Drawing.Color.White;
+            this.bar1.Controls.Add(this.btnTaoDonHang);
             this.bar1.Controls.Add(this.btnSearch);
             this.bar1.Controls.Add(this.dtDen);
             this.bar1.Controls.Add(this.labelX2);
@@ -94,22 +96,35 @@
             this.bar1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bar1.IsMaximized = false;
             this.bar1.Location = new System.Drawing.Point(0, 0);
-            this.bar1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.bar1.MinimumSize = new System.Drawing.Size(0, 41);
+            this.bar1.Margin = new System.Windows.Forms.Padding(2);
+            this.bar1.MinimumSize = new System.Drawing.Size(0, 40);
             this.bar1.Name = "bar1";
-            this.bar1.Size = new System.Drawing.Size(1339, 41);
+            this.bar1.Size = new System.Drawing.Size(1339, 40);
             this.bar1.Stretch = true;
             this.bar1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.bar1.TabIndex = 1;
             this.bar1.TabStop = false;
             this.bar1.Text = "bar1";
             // 
+            // btnTaoDonHang
+            // 
+            this.btnTaoDonHang.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnTaoDonHang.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnTaoDonHang.Location = new System.Drawing.Point(11, 10);
+            this.btnTaoDonHang.Name = "btnTaoDonHang";
+            this.btnTaoDonHang.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnTaoDonHang.Size = new System.Drawing.Size(84, 23);
+            this.btnTaoDonHang.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnTaoDonHang.TabIndex = 6;
+            this.btnTaoDonHang.Text = "Tạo đơn hàng";
+            this.btnTaoDonHang.Click += new System.EventHandler(this.btnTaoDonHang_Click);
+            // 
             // btnSearch
             // 
             this.btnSearch.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnSearch.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnSearch.Location = new System.Drawing.Point(454, 11);
-            this.btnSearch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSearch.Location = new System.Drawing.Point(536, 11);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(2);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(56, 22);
             this.btnSearch.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -127,8 +142,8 @@
             this.dtDen.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
             this.dtDen.ButtonDropDown.Visible = true;
             this.dtDen.IsPopupCalendarOpen = false;
-            this.dtDen.Location = new System.Drawing.Point(290, 11);
-            this.dtDen.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtDen.Location = new System.Drawing.Point(372, 11);
+            this.dtDen.Margin = new System.Windows.Forms.Padding(2);
             // 
             // 
             // 
@@ -170,8 +185,8 @@
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX2.ForeColor = System.Drawing.Color.Black;
-            this.labelX2.Location = new System.Drawing.Point(228, 11);
-            this.labelX2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.labelX2.Location = new System.Drawing.Point(310, 11);
+            this.labelX2.Margin = new System.Windows.Forms.Padding(2);
             this.labelX2.Name = "labelX2";
             this.labelX2.SingleLineColor = System.Drawing.Color.Empty;
             this.labelX2.Size = new System.Drawing.Size(56, 19);
@@ -189,8 +204,8 @@
             this.dtTu.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
             this.dtTu.ButtonDropDown.Visible = true;
             this.dtTu.IsPopupCalendarOpen = false;
-            this.dtTu.Location = new System.Drawing.Point(74, 11);
-            this.dtTu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtTu.Location = new System.Drawing.Point(156, 11);
+            this.dtTu.Margin = new System.Windows.Forms.Padding(2);
             // 
             // 
             // 
@@ -232,8 +247,8 @@
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX1.ForeColor = System.Drawing.Color.Black;
-            this.labelX1.Location = new System.Drawing.Point(18, 11);
-            this.labelX1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.labelX1.Location = new System.Drawing.Point(100, 11);
+            this.labelX1.Margin = new System.Windows.Forms.Padding(2);
             this.labelX1.Name = "labelX1";
             this.labelX1.SingleLineColor = System.Drawing.Color.Empty;
             this.labelX1.Size = new System.Drawing.Size(56, 19);
@@ -262,7 +277,7 @@
             this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataGridViewX1.Location = new System.Drawing.Point(0, 39);
-            this.dataGridViewX1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridViewX1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewX1.Name = "dataGridViewX1";
             this.dataGridViewX1.RowHeadersWidth = 51;
             this.dataGridViewX1.RowTemplate.Height = 24;
@@ -309,11 +324,11 @@
             this.dataGridViewX2.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewX2.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataGridViewX2.Location = new System.Drawing.Point(0, 0);
-            this.dataGridViewX2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridViewX2.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewX2.Name = "dataGridViewX2";
             this.dataGridViewX2.RowHeadersWidth = 51;
             this.dataGridViewX2.RowTemplate.Height = 24;
-            this.dataGridViewX2.Size = new System.Drawing.Size(1339, 439);
+            this.dataGridViewX2.Size = new System.Drawing.Size(1339, 442);
             this.dataGridViewX2.TabIndex = 0;
             // 
             // Column10
@@ -370,7 +385,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.splitContainer1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "UserControlDonHang";
             this.Size = new System.Drawing.Size(1339, 775);
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -407,5 +422,6 @@
         private DevComponents.Editors.DateTimeAdv.DateTimeInput dtDen;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn NameName;
+        private DevComponents.DotNetBar.ButtonX btnTaoDonHang;
     }
 }

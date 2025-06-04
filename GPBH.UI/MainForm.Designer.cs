@@ -59,7 +59,7 @@
             this.sideBar1.Location = new System.Drawing.Point(0, 0);
             this.sideBar1.Margin = new System.Windows.Forms.Padding(2);
             this.sideBar1.Name = "sideBar1";
-            this.sideBar1.Size = new System.Drawing.Size(157, 1053);
+            this.sideBar1.Size = new System.Drawing.Size(112, 862);
             this.sideBar1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.sideBar1.TabIndex = 0;
             this.sideBar1.Text = "sideBar1";
@@ -74,15 +74,14 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedTabFont = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold);
             this.tabControl1.SelectedTabIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1832, 1053);
+            this.tabControl1.Size = new System.Drawing.Size(1314, 862);
             this.tabControl1.TabIndex = 1;
             this.tabControl1.TabLayoutType = DevComponents.DotNetBar.eTabLayoutType.FixedWithNavigationBox;
             this.tabControl1.Text = "tabControl1";
             // 
             // collapsibleSplitContainer1
             // 
-            this.collapsibleSplitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.collapsibleSplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.collapsibleSplitContainer1.Location = new System.Drawing.Point(0, 0);
             this.collapsibleSplitContainer1.Margin = new System.Windows.Forms.Padding(2);
             this.collapsibleSplitContainer1.Name = "collapsibleSplitContainer1";
@@ -95,8 +94,8 @@
             // 
             this.collapsibleSplitContainer1.Panel2.AllowDrop = true;
             this.collapsibleSplitContainer1.Panel2.Controls.Add(this.tabControl1);
-            this.collapsibleSplitContainer1.Size = new System.Drawing.Size(2006, 1053);
-            this.collapsibleSplitContainer1.SplitterDistance = 157;
+            this.collapsibleSplitContainer1.Size = new System.Drawing.Size(1443, 862);
+            this.collapsibleSplitContainer1.SplitterDistance = 112;
             this.collapsibleSplitContainer1.SplitterWidth = 17;
             this.collapsibleSplitContainer1.TabIndex = 2;
             // 
