@@ -139,6 +139,9 @@ namespace GPBH.UI
                 case "BanHangTheoKhachHang":
                     uc = new UserControlBanHangTheoKhachHang();
                     break;
+                case "Ca":
+                    uc = new UserControlCa();
+                    break;
                 default:
                     MessageBox.Show("Tính năng đang phát triển!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
@@ -160,6 +163,11 @@ namespace GPBH.UI
             tabControl1.Tabs.Remove(e.TabItem);
             if (e.TabItem.AttachedControl != null)
                 tabControl1.Controls.Remove(e.TabItem.AttachedControl);
+        }
+
+        private void sideBar1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

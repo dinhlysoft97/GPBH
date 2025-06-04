@@ -42,7 +42,9 @@
             this.lbMayChu = new DevComponents.DotNetBar.LabelItem();
             this.lbCSDL = new DevComponents.DotNetBar.LabelItem();
             this.lbTgDangNhap = new DevComponents.DotNetBar.LabelItem();
+            this.superGridControl1 = new DevComponents.DotNetBar.SuperGrid.SuperGridControl();
             ((System.ComponentModel.ISupportInitialize)(this.tabControl1)).BeginInit();
+            this.tabControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.collapsibleSplitContainer1)).BeginInit();
             this.collapsibleSplitContainer1.Panel1.SuspendLayout();
             this.collapsibleSplitContainer1.Panel2.SuspendLayout();
@@ -63,11 +65,13 @@
             this.sideBar1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.sideBar1.TabIndex = 0;
             this.sideBar1.Text = "sideBar1";
+            this.sideBar1.Click += new System.EventHandler(this.sideBar1_Click);
             // 
             // tabControl1
             // 
             this.tabControl1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(217)))), ((int)(((byte)(247)))));
             this.tabControl1.CanReorderTabs = true;
+            this.tabControl1.Controls.Add(this.superGridControl1);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
@@ -200,6 +204,15 @@
             this.lbTgDangNhap.Text = "Tg đăng nhập:";
             this.lbTgDangNhap.Width = 268;
             // 
+            // superGridControl1
+            // 
+            this.superGridControl1.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed;
+            this.superGridControl1.Location = new System.Drawing.Point(0, 25);
+            this.superGridControl1.Name = "superGridControl1";
+            this.superGridControl1.Size = new System.Drawing.Size(1269, 825);
+            this.superGridControl1.TabIndex = 1;
+            this.superGridControl1.Text = "superGridControl1";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -213,6 +226,7 @@
             this.Text = "FormMain";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.tabControl1)).EndInit();
+            this.tabControl1.ResumeLayout(false);
             this.collapsibleSplitContainer1.Panel1.ResumeLayout(false);
             this.collapsibleSplitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.collapsibleSplitContainer1)).EndInit();
@@ -238,5 +252,6 @@
         private DevComponents.DotNetBar.LabelItem lbMayChu;
         private DevComponents.DotNetBar.LabelItem lbCSDL;
         private DevComponents.DotNetBar.LabelItem lbTgDangNhap;
+        private DevComponents.DotNetBar.SuperGrid.SuperGridControl superGridControl1;
     }
 }

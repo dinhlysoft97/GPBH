@@ -67,6 +67,7 @@
     <Compile Include="DTO\SysDMDVDto.cs" />
     <Compile Include="DTO\SysDMNSDDto.cs" />
     <Compile Include="DTO\SystemMenuDto.cs" />
+    <Compile Include="Services\DMCaService.cs" />
     <Compile Include="Services\SysDMNSDService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\SysMenuService.cs" />
