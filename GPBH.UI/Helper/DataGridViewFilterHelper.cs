@@ -22,6 +22,7 @@ namespace GPBH.UI.Helper
             private bool isFiltering = false;
             private List<string> propertyNames;
             private int lastSortColumn = -1;
+            private int[] columnWidths;
             private ListSortDirection lastSortDirection = ListSortDirection.Ascending;
 
             public InternalHelper(DataGridView grid, IList<T> data)
@@ -33,12 +34,16 @@ namespace GPBH.UI.Helper
 
             public void Initialize()
             {
+                SaveColumnWidths();
                 grid.DataSource = null;
+                RestoreColumnWidths();
                 var displayList = new List<T> { new T() }; // filter row
                 foreach (var item in sourceData)
                     displayList.Add(item);
 
+                SaveColumnWidths();
                 grid.DataSource = new BindingList<T>(displayList);
+                RestoreColumnWidths();
 
                 grid.Rows[0].DefaultCellStyle.BackColor = System.Drawing.Color.LightYellow;
                 grid.Rows[0].ReadOnly = false;
@@ -127,8 +132,10 @@ namespace GPBH.UI.Helper
                 grid.CurrentCellDirtyStateChanged -= Grid_CurrentCellDirtyStateChanged;
                 grid.ColumnHeaderMouseClick -= Grid_ColumnHeaderMouseClick;
 
+                SaveColumnWidths();
                 grid.DataSource = null;
                 grid.DataSource = new BindingList<T>(displayList);
+                RestoreColumnWidths();
 
                 grid.Rows[0].DefaultCellStyle.BackColor = System.Drawing.Color.LightYellow;
                 grid.Rows[0].ReadOnly = false;
@@ -187,8 +194,10 @@ namespace GPBH.UI.Helper
                 grid.CurrentCellDirtyStateChanged -= Grid_CurrentCellDirtyStateChanged;
                 grid.ColumnHeaderMouseClick -= Grid_ColumnHeaderMouseClick;
 
+                SaveColumnWidths();
                 grid.DataSource = null;
                 grid.DataSource = new BindingList<T>(displayList);
+                RestoreColumnWidths();
 
                 grid.Rows[0].DefaultCellStyle.BackColor = System.Drawing.Color.LightYellow;
                 grid.Rows[0].ReadOnly = false;
@@ -223,6 +232,21 @@ namespace GPBH.UI.Helper
                     grid.Columns[lastSortColumn].HeaderCell.SortGlyphDirection =
                         lastSortDirection == ListSortDirection.Ascending ? SortOrder.Ascending : SortOrder.Descending;
                 }
+            }
+
+            private void SaveColumnWidths()
+            {
+                if (grid.Columns.Count == 0) return;
+                columnWidths = new int[grid.Columns.Count];
+                for (int i = 0; i < grid.Columns.Count; i++)
+                    columnWidths[i] = grid.Columns[i].Width;
+            }
+
+            private void RestoreColumnWidths()
+            {
+                if (columnWidths == null) return;
+                for (int i = 0; i < Math.Min(grid.Columns.Count, columnWidths.Length); i++)
+                    grid.Columns[i].Width = columnWidths[i];
             }
         }
     }
