@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DonHang));
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.comboBoxEx1 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
@@ -46,6 +47,9 @@
             this.multiColumnComboBox1 = new GPBH.UI.UserControls.MultiColumnComboBox();
             this.multiColumnComboBox2 = new GPBH.UI.UserControls.MultiColumnComboBox();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCity = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bar1 = new DevComponents.DotNetBar.Bar();
             this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
             this.textBoxX5 = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -69,9 +73,8 @@
             this.labelItem11 = new DevComponents.DotNetBar.LabelItem();
             this.labelItem12 = new DevComponents.DotNetBar.LabelItem();
             this.labelItem13 = new DevComponents.DotNetBar.LabelItem();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCity = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.multiColumnComboBox3 = new GPBH.UI.UserControls.MultiColumnComboBox();
+            this.multiColumnComboBox4 = new GPBH.UI.UserControls.MultiColumnComboBox();
             this.groupPanel2.SuspendLayout();
             this.groupPanel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -92,10 +95,9 @@
             this.groupPanel2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.groupPanel2.Controls.Add(this.comboBoxEx1);
             this.groupPanel2.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel2.Location = new System.Drawing.Point(956, 4);
-            this.groupPanel2.Margin = new System.Windows.Forms.Padding(4);
+            this.groupPanel2.Location = new System.Drawing.Point(717, 3);
             this.groupPanel2.Name = "groupPanel2";
-            this.groupPanel2.Size = new System.Drawing.Size(942, 141);
+            this.groupPanel2.Size = new System.Drawing.Size(706, 115);
             // 
             // 
             // 
@@ -133,9 +135,10 @@
             this.comboBoxEx1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.comboBoxEx1.FormattingEnabled = true;
             this.comboBoxEx1.ItemHeight = 16;
-            this.comboBoxEx1.Location = new System.Drawing.Point(34, 8);
+            this.comboBoxEx1.Location = new System.Drawing.Point(26, 6);
+            this.comboBoxEx1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboBoxEx1.Name = "comboBoxEx1";
-            this.comboBoxEx1.Size = new System.Drawing.Size(214, 22);
+            this.comboBoxEx1.Size = new System.Drawing.Size(162, 22);
             this.comboBoxEx1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx1.TabIndex = 0;
             // 
@@ -152,10 +155,9 @@
             this.groupPanel1.Controls.Add(this.textBoxX1);
             this.groupPanel1.Controls.Add(this.textBoxX6);
             this.groupPanel1.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel1.Location = new System.Drawing.Point(4, 4);
-            this.groupPanel1.Margin = new System.Windows.Forms.Padding(4);
+            this.groupPanel1.Location = new System.Drawing.Point(3, 3);
             this.groupPanel1.Name = "groupPanel1";
-            this.groupPanel1.Size = new System.Drawing.Size(944, 141);
+            this.groupPanel1.Size = new System.Drawing.Size(708, 115);
             // 
             // 
             // 
@@ -194,10 +196,11 @@
             // 
             this.textBoxX9.Border.Class = "TextBoxBorder";
             this.textBoxX9.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX9.Location = new System.Drawing.Point(253, 64);
+            this.textBoxX9.Location = new System.Drawing.Point(190, 52);
+            this.textBoxX9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBoxX9.Name = "textBoxX9";
             this.textBoxX9.PreventEnterBeep = true;
-            this.textBoxX9.Size = new System.Drawing.Size(568, 22);
+            this.textBoxX9.Size = new System.Drawing.Size(426, 20);
             this.textBoxX9.TabIndex = 15;
             // 
             // textBoxX8
@@ -207,10 +210,11 @@
             // 
             this.textBoxX8.Border.Class = "TextBoxBorder";
             this.textBoxX8.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX8.Location = new System.Drawing.Point(620, 35);
+            this.textBoxX8.Location = new System.Drawing.Point(465, 28);
+            this.textBoxX8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBoxX8.Name = "textBoxX8";
             this.textBoxX8.PreventEnterBeep = true;
-            this.textBoxX8.Size = new System.Drawing.Size(201, 22);
+            this.textBoxX8.Size = new System.Drawing.Size(151, 20);
             this.textBoxX8.TabIndex = 14;
             // 
             // textBoxX7
@@ -220,10 +224,11 @@
             // 
             this.textBoxX7.Border.Class = "TextBoxBorder";
             this.textBoxX7.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX7.Location = new System.Drawing.Point(253, 36);
+            this.textBoxX7.Location = new System.Drawing.Point(190, 29);
+            this.textBoxX7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBoxX7.Name = "textBoxX7";
             this.textBoxX7.PreventEnterBeep = true;
-            this.textBoxX7.Size = new System.Drawing.Size(201, 22);
+            this.textBoxX7.Size = new System.Drawing.Size(151, 20);
             this.textBoxX7.TabIndex = 13;
             // 
             // textBoxX4
@@ -233,10 +238,11 @@
             // 
             this.textBoxX4.Border.Class = "TextBoxBorder";
             this.textBoxX4.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX4.Location = new System.Drawing.Point(475, 35);
+            this.textBoxX4.Location = new System.Drawing.Point(356, 28);
+            this.textBoxX4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBoxX4.Name = "textBoxX4";
             this.textBoxX4.PreventEnterBeep = true;
-            this.textBoxX4.Size = new System.Drawing.Size(127, 22);
+            this.textBoxX4.Size = new System.Drawing.Size(95, 20);
             this.textBoxX4.TabIndex = 12;
             this.textBoxX4.Text = "Địa chỉ";
             // 
@@ -247,10 +253,11 @@
             // 
             this.textBoxX3.Border.Class = "TextBoxBorder";
             this.textBoxX3.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX3.Location = new System.Drawing.Point(115, 64);
+            this.textBoxX3.Location = new System.Drawing.Point(86, 52);
+            this.textBoxX3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBoxX3.Name = "textBoxX3";
             this.textBoxX3.PreventEnterBeep = true;
-            this.textBoxX3.Size = new System.Drawing.Size(127, 22);
+            this.textBoxX3.Size = new System.Drawing.Size(95, 20);
             this.textBoxX3.TabIndex = 11;
             this.textBoxX3.Text = "Địa chỉ";
             // 
@@ -261,10 +268,11 @@
             // 
             this.textBoxX2.Border.Class = "TextBoxBorder";
             this.textBoxX2.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX2.Location = new System.Drawing.Point(115, 36);
+            this.textBoxX2.Location = new System.Drawing.Point(86, 29);
+            this.textBoxX2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBoxX2.Name = "textBoxX2";
             this.textBoxX2.PreventEnterBeep = true;
-            this.textBoxX2.Size = new System.Drawing.Size(127, 22);
+            this.textBoxX2.Size = new System.Drawing.Size(95, 20);
             this.textBoxX2.TabIndex = 10;
             this.textBoxX2.Text = "Địa chỉ";
             // 
@@ -275,10 +283,11 @@
             // 
             this.textBoxX1.Border.Class = "TextBoxBorder";
             this.textBoxX1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX1.Location = new System.Drawing.Point(115, 8);
+            this.textBoxX1.Location = new System.Drawing.Point(86, 6);
+            this.textBoxX1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBoxX1.Name = "textBoxX1";
             this.textBoxX1.PreventEnterBeep = true;
-            this.textBoxX1.Size = new System.Drawing.Size(127, 22);
+            this.textBoxX1.Size = new System.Drawing.Size(95, 20);
             this.textBoxX1.TabIndex = 2;
             this.textBoxX1.Text = "Địa chỉ";
             // 
@@ -289,10 +298,11 @@
             // 
             this.textBoxX6.Border.Class = "TextBoxBorder";
             this.textBoxX6.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX6.Location = new System.Drawing.Point(253, 7);
+            this.textBoxX6.Location = new System.Drawing.Point(190, 6);
+            this.textBoxX6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBoxX6.Name = "textBoxX6";
             this.textBoxX6.PreventEnterBeep = true;
-            this.textBoxX6.Size = new System.Drawing.Size(568, 22);
+            this.textBoxX6.Size = new System.Drawing.Size(426, 20);
             this.textBoxX6.TabIndex = 9;
             // 
             // tableLayoutPanel1
@@ -305,11 +315,10 @@
             this.tableLayoutPanel1.Controls.Add(this.groupPanel2, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1902, 149);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1426, 121);
             this.tableLayoutPanel1.TabIndex = 21;
             // 
             // flowLayoutPanel1
@@ -317,10 +326,9 @@
             this.flowLayoutPanel1.BackColor = System.Drawing.Color.White;
             this.flowLayoutPanel1.Controls.Add(this.groupPanel3);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 149);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 121);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1902, 548);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1426, 445);
             this.flowLayoutPanel1.TabIndex = 22;
             // 
             // groupPanel3
@@ -333,10 +341,9 @@
             this.groupPanel3.Controls.Add(this.dataGridViewX1);
             this.groupPanel3.Controls.Add(this.bar1);
             this.groupPanel3.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel3.Location = new System.Drawing.Point(4, 4);
-            this.groupPanel3.Margin = new System.Windows.Forms.Padding(4);
+            this.groupPanel3.Location = new System.Drawing.Point(3, 3);
             this.groupPanel3.Name = "groupPanel3";
-            this.groupPanel3.Size = new System.Drawing.Size(1894, 544);
+            this.groupPanel3.Size = new System.Drawing.Size(1420, 442);
             // 
             // 
             // 
@@ -373,9 +380,10 @@
             this.multiColumnComboBox1.ColumnWidths = null;
             this.multiColumnComboBox1.DisplayColumns = null;
             this.multiColumnComboBox1.DisplayMember = null;
-            this.multiColumnComboBox1.Location = new System.Drawing.Point(670, 162);
+            this.multiColumnComboBox1.Location = new System.Drawing.Point(502, 132);
+            this.multiColumnComboBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.multiColumnComboBox1.Name = "multiColumnComboBox1";
-            this.multiColumnComboBox1.Size = new System.Drawing.Size(866, 22);
+            this.multiColumnComboBox1.Size = new System.Drawing.Size(650, 18);
             this.multiColumnComboBox1.TabIndex = 2;
             this.multiColumnComboBox1.ValueMember = null;
             // 
@@ -384,9 +392,10 @@
             this.multiColumnComboBox2.ColumnWidths = null;
             this.multiColumnComboBox2.DisplayColumns = null;
             this.multiColumnComboBox2.DisplayMember = null;
-            this.multiColumnComboBox2.Location = new System.Drawing.Point(842, 105);
+            this.multiColumnComboBox2.Location = new System.Drawing.Point(632, 85);
+            this.multiColumnComboBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.multiColumnComboBox2.Name = "multiColumnComboBox2";
-            this.multiColumnComboBox2.Size = new System.Drawing.Size(623, 21);
+            this.multiColumnComboBox2.Size = new System.Drawing.Size(467, 17);
             this.multiColumnComboBox2.TabIndex = 1;
             this.multiColumnComboBox2.ValueMember = null;
             // 
@@ -397,22 +406,45 @@
             this.Column1,
             this.colCity,
             this.Column3});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewX1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.dataGridViewX1.Location = new System.Drawing.Point(0, 49);
-            this.dataGridViewX1.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridViewX1.Location = new System.Drawing.Point(0, 40);
             this.dataGridViewX1.Name = "dataGridViewX1";
             this.dataGridViewX1.RowHeadersWidth = 51;
-            this.dataGridViewX1.Size = new System.Drawing.Size(1888, 472);
+            this.dataGridViewX1.Size = new System.Drawing.Size(1414, 381);
             this.dataGridViewX1.TabIndex = 1;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Column1";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 125;
+            // 
+            // colCity
+            // 
+            this.colCity.DataPropertyName = "colCity";
+            this.colCity.HeaderText = "City";
+            this.colCity.MinimumWidth = 6;
+            this.colCity.Name = "colCity";
+            this.colCity.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colCity.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.colCity.Width = 125;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Column3";
+            this.Column3.MinimumWidth = 6;
+            this.Column3.Name = "Column3";
+            this.Column3.Width = 125;
             // 
             // bar1
             // 
@@ -425,10 +457,9 @@
             this.bar1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bar1.IsMaximized = false;
             this.bar1.Location = new System.Drawing.Point(0, 0);
-            this.bar1.Margin = new System.Windows.Forms.Padding(4);
-            this.bar1.MinimumSize = new System.Drawing.Size(0, 49);
+            this.bar1.MinimumSize = new System.Drawing.Size(0, 40);
             this.bar1.Name = "bar1";
-            this.bar1.Size = new System.Drawing.Size(1888, 49);
+            this.bar1.Size = new System.Drawing.Size(1414, 40);
             this.bar1.Stretch = true;
             this.bar1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.bar1.TabIndex = 0;
@@ -439,10 +470,9 @@
             // 
             this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX1.Location = new System.Drawing.Point(684, 11);
-            this.buttonX1.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonX1.Location = new System.Drawing.Point(513, 9);
             this.buttonX1.Name = "buttonX1";
-            this.buttonX1.Size = new System.Drawing.Size(100, 28);
+            this.buttonX1.Size = new System.Drawing.Size(75, 23);
             this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonX1.TabIndex = 2;
             this.buttonX1.Text = "Tìm kiếm";
@@ -454,11 +484,10 @@
             // 
             this.textBoxX5.Border.Class = "TextBoxBorder";
             this.textBoxX5.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX5.Location = new System.Drawing.Point(209, 11);
-            this.textBoxX5.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxX5.Location = new System.Drawing.Point(157, 9);
             this.textBoxX5.Name = "textBoxX5";
             this.textBoxX5.PreventEnterBeep = true;
-            this.textBoxX5.Size = new System.Drawing.Size(439, 27);
+            this.textBoxX5.Size = new System.Drawing.Size(329, 23);
             this.textBoxX5.TabIndex = 1;
             // 
             // labelX4
@@ -467,10 +496,9 @@
             // 
             // 
             this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX4.Location = new System.Drawing.Point(100, 9);
-            this.labelX4.Margin = new System.Windows.Forms.Padding(4);
+            this.labelX4.Location = new System.Drawing.Point(75, 7);
             this.labelX4.Name = "labelX4";
-            this.labelX4.Size = new System.Drawing.Size(100, 28);
+            this.labelX4.Size = new System.Drawing.Size(75, 23);
             this.labelX4.TabIndex = 0;
             this.labelX4.Text = "Mã vạch";
             this.labelX4.TextAlignment = System.Drawing.StringAlignment.Center;
@@ -481,17 +509,16 @@
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 61.20778F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38.79222F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 427F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 321F));
             this.tableLayoutPanel2.Controls.Add(this.groupPanel4, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.groupPanel6, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.groupPanel5, 2, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 697);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 566);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 34F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1902, 238);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1426, 193);
             this.tableLayoutPanel2.TabIndex = 23;
             // 
             // groupPanel4
@@ -499,10 +526,9 @@
             this.groupPanel4.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel4.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.groupPanel4.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel4.Location = new System.Drawing.Point(4, 4);
-            this.groupPanel4.Margin = new System.Windows.Forms.Padding(4);
+            this.groupPanel4.Location = new System.Drawing.Point(3, 3);
             this.groupPanel4.Name = "groupPanel4";
-            this.groupPanel4.Size = new System.Drawing.Size(894, 230);
+            this.groupPanel4.Size = new System.Drawing.Size(670, 187);
             // 
             // 
             // 
@@ -539,10 +565,9 @@
             this.groupPanel6.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel6.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.groupPanel6.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel6.Location = new System.Drawing.Point(906, 4);
-            this.groupPanel6.Margin = new System.Windows.Forms.Padding(4);
+            this.groupPanel6.Location = new System.Drawing.Point(679, 3);
             this.groupPanel6.Name = "groupPanel6";
-            this.groupPanel6.Size = new System.Drawing.Size(564, 230);
+            this.groupPanel6.Size = new System.Drawing.Size(422, 187);
             // 
             // 
             // 
@@ -579,10 +604,9 @@
             this.groupPanel5.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel5.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.groupPanel5.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel5.Location = new System.Drawing.Point(1478, 4);
-            this.groupPanel5.Margin = new System.Windows.Forms.Padding(4);
+            this.groupPanel5.Location = new System.Drawing.Point(1107, 3);
             this.groupPanel5.Name = "groupPanel5";
-            this.groupPanel5.Size = new System.Drawing.Size(401, 230);
+            this.groupPanel5.Size = new System.Drawing.Size(301, 187);
             // 
             // 
             // 
@@ -617,10 +641,9 @@
             // flowLayoutPanel5
             // 
             this.flowLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flowLayoutPanel5.Location = new System.Drawing.Point(0, 935);
-            this.flowLayoutPanel5.Margin = new System.Windows.Forms.Padding(4);
+            this.flowLayoutPanel5.Location = new System.Drawing.Point(0, 759);
             this.flowLayoutPanel5.Name = "flowLayoutPanel5";
-            this.flowLayoutPanel5.Size = new System.Drawing.Size(1902, 67);
+            this.flowLayoutPanel5.Size = new System.Drawing.Size(1426, 54);
             this.flowLayoutPanel5.TabIndex = 24;
             // 
             // bar2
@@ -643,10 +666,9 @@
             this.labelItem11,
             this.labelItem12,
             this.labelItem13});
-            this.bar2.Location = new System.Drawing.Point(0, 1010);
-            this.bar2.Margin = new System.Windows.Forms.Padding(4);
+            this.bar2.Location = new System.Drawing.Point(0, 820);
             this.bar2.Name = "bar2";
-            this.bar2.Size = new System.Drawing.Size(1902, 23);
+            this.bar2.Size = new System.Drawing.Size(1426, 19);
             this.bar2.Stretch = true;
             this.bar2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.bar2.TabIndex = 25;
@@ -730,42 +752,39 @@
             this.labelItem13.Name = "labelItem13";
             this.labelItem13.Text = "F12: Đóng";
             // 
-            // Column1
+            // multiColumnComboBox3
             // 
-            this.Column1.HeaderText = "Column1";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 125;
+            this.multiColumnComboBox3.ColumnWidths = null;
+            this.multiColumnComboBox3.DisplayMember = null;
+            this.multiColumnComboBox3.Location = new System.Drawing.Point(0, 0);
+            this.multiColumnComboBox3.Name = "multiColumnComboBox3";
+            this.multiColumnComboBox3.Size = new System.Drawing.Size(150, 150);
+            this.multiColumnComboBox3.TabIndex = 0;
+            this.multiColumnComboBox3.ValueMember = null;
             // 
-            // colCity
+            // multiColumnComboBox4
             // 
-            this.colCity.DataPropertyName = "colCity";
-            this.colCity.HeaderText = "City";
-            this.colCity.MinimumWidth = 6;
-            this.colCity.Name = "colCity";
-            this.colCity.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colCity.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.colCity.Width = 125;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Column3";
-            this.Column3.MinimumWidth = 6;
-            this.Column3.Name = "Column3";
-            this.Column3.Width = 125;
+            this.multiColumnComboBox4.ColumnWidths = null;
+            this.multiColumnComboBox4.DisplayMember = null;
+            this.multiColumnComboBox4.Location = new System.Drawing.Point(0, 0);
+            this.multiColumnComboBox4.Name = "multiColumnComboBox4";
+            this.multiColumnComboBox4.Size = new System.Drawing.Size(150, 150);
+            this.multiColumnComboBox4.TabIndex = 0;
+            this.multiColumnComboBox4.ValueMember = null;
             // 
             // DonHang
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1902, 1033);
+            this.ClientSize = new System.Drawing.Size(1426, 839);
             this.Controls.Add(this.bar2);
             this.Controls.Add(this.flowLayoutPanel5);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.DoubleBuffered = true;
-            this.MaximumSize = new System.Drawing.Size(1920, 1080);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MaximumSize = new System.Drawing.Size(1444, 885);
             this.Name = "DonHang";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tạo đơn hàng";
@@ -827,5 +846,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewComboBoxColumn colCity;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private UserControls.MultiColumnComboBox multiColumnComboBox3;
+        private UserControls.MultiColumnComboBox multiColumnComboBox4;
     }
 }

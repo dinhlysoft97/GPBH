@@ -7,41 +7,6 @@ using System.Windows.Forms;
 
 namespace GPBH.UI.UserControls
 {
-    /// <summary>
-    /// Code mãu để dùng
-    /// </summary>
-    //private void LoadDataCombox()
-    //{
-    //    // Dữ liệu mẫu
-    //    List<City> cities = new List<City>
-    //        {
-    //            new City { Id = 1, Name = "Hà Nội", Address = "Miền Bắc" },
-    //            new City { Id = 2, Name = "Hồ Chí Minh", Address = "Miền Nam" },
-    //            new City { Id = 3, Name = "Đà Nẵng", Address = "Miền Trung" }
-    //        };
-
-    //    multiColumnComboBox1.DisplayMember = "Name";
-    //    multiColumnComboBox1.ValueMember = "Id";
-    //    multiColumnComboBox1.DisplayColumns = new List<DisplayColumn>
-    //        {
-    //            new DisplayColumn { Header = "Tên thành phố", Property = "Name", Width = 150 },
-    //            new DisplayColumn { Header = "Khu vực", Property = "Address", Width = 150 }
-    //        };
-    //    multiColumnComboBox1.ColumnWidths = new[] { 150, 150 };
-
-
-    //    // Gán data
-    //    multiColumnComboBox1.SetDataSource(cities);
-
-    //    // Lấy giá trị khi chọn
-    //    multiColumnComboBox1.SelectedValueChanged += (s, e) =>
-    //    {
-    //        var selectedCity = multiColumnComboBox1.SelectedItem as City;
-    //        MessageBox.Show($"Bạn chọn: {selectedCity?.Name} - {selectedCity?.Address}");
-    //    };
-    //}
-
-
     public partial class MultiColumnComboBox : UserControl
     {
       
@@ -76,7 +41,6 @@ namespace GPBH.UI.UserControls
                 txtInput = value;
             }
         }
-
 
         public MultiColumnComboBox()
         {
@@ -285,6 +249,7 @@ namespace GPBH.UI.UserControls
                 e.Graphics.DrawString(e.SubItem.Text, e.Item.Font, brush, e.Bounds);
         }
 
+        [Serializable]
         public class DisplayColumn
         {
             public string Header { get; set; }
