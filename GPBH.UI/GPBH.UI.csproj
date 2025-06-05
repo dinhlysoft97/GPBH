@@ -80,6 +80,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\DonHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DonHang.Designer.cs">
+      <DependentUpon>DonHang.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helper\DataGridViewFilterHelper.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -96,24 +102,21 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserControls\DonHang\UserControlThemDonHang.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\DonHang\UserControlThemDonHang.Designer.cs">
-      <DependentUpon>UserControlThemDonHang.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\UserControlBanHangTheoKhachHang.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControls\UserControlBanHangTheoKhachHang.Designer.cs">
       <DependentUpon>UserControlBanHangTheoKhachHang.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\DonHang\UserControlDonHang.cs">
+    <Compile Include="UserControls\UserControlDonHang.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\DonHang\UserControlDonHang.Designer.cs">
+    <Compile Include="UserControls\UserControlDonHang.Designer.cs">
       <DependentUpon>UserControlDonHang.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\DonHang.resx">
+      <DependentUpon>DonHang.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
@@ -121,13 +124,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\DonHang\UserControlThemDonHang.resx">
-      <DependentUpon>UserControlThemDonHang.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UserControlBanHangTheoKhachHang.resx">
       <DependentUpon>UserControlBanHangTheoKhachHang.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\DonHang\UserControlDonHang.resx">
+    <EmbeddedResource Include="UserControls\UserControlDonHang.resx">
       <DependentUpon>UserControlDonHang.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -161,6 +161,7 @@
   <ItemGroup>
     <Analyzer Include="C:\Windows\assembly\GAC_MSIL\DevComponents.DotNetBar.SuperGrid\14.1.0.37__7eb7c3a35b91de04\DevComponents.DotNetBar.SuperGrid.dll" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

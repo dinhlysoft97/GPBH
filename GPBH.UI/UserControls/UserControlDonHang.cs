@@ -1,5 +1,4 @@
 ﻿using GPBH.UI.Helper;
-using GPBH.UI.UserControls.DonHang;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -40,15 +39,8 @@ namespace GPBH.UI.UserControls
 
         private void btnTaoDonHang_Click(object sender, EventArgs e)
         {
-            // Lấy Form cha
-            var mainForm = this.FindForm() as MainForm;
-            if (mainForm != null)
-            {
-                // Tạo instance UserControlThemDonHang
-                var uc2 = new UserControlThemDonHang();
-                // Gọi hàm mở tab
-                mainForm.OpenTab(nameof(UserControlThemDonHang), "Tạo đơn hàng", uc2);
-            }
+            var form1 = new Forms.DonHang();
+            form1.ShowDialog(); // Hiển thị Form1 như một dialog
         }
     }
 }
