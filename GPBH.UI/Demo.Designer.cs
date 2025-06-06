@@ -28,67 +28,80 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Demo));
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewMultiColumnComboBoxColumn1 = new GPBH.UI.UserControls.DataGridViewMultiColumnComboBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCity = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCity = new GPBH.UI.UserControls.DataGridViewMultiColumnComboBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Column1";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // dataGridViewMultiColumnComboBoxColumn1
+            // 
+            this.dataGridViewMultiColumnComboBoxColumn1.ColumnWidths = null;
+            this.dataGridViewMultiColumnComboBoxColumn1.DataPropertyName = "colCity";
+            this.dataGridViewMultiColumnComboBoxColumn1.DataSource = null;
+            this.dataGridViewMultiColumnComboBoxColumn1.DisplayColumns = null;
+            this.dataGridViewMultiColumnComboBoxColumn1.DisplayMember = null;
+            this.dataGridViewMultiColumnComboBoxColumn1.HeaderText = "Column2";
+            this.dataGridViewMultiColumnComboBoxColumn1.Name = "dataGridViewMultiColumnComboBoxColumn1";
+            this.dataGridViewMultiColumnComboBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewMultiColumnComboBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dataGridViewMultiColumnComboBoxColumn1.ValueMember = null;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "colAddress";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Column3";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // dataGridViewX1
             // 
             this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.colCity,
-            this.Column3});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle11;
+            this.dataGridViewX1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.dataGridViewX1.Location = new System.Drawing.Point(43, 78);
+            this.dataGridViewX1.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewX1.Name = "dataGridViewX1";
-            this.dataGridViewX1.Size = new System.Drawing.Size(347, 150);
+            this.dataGridViewX1.RowTemplate.Height = 24;
+            this.dataGridViewX1.Size = new System.Drawing.Size(1067, 554);
             this.dataGridViewX1.TabIndex = 0;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Column1";
-            this.Column1.Name = "Column1";
-            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // colCity
             // 
+            this.colCity.ColumnWidths = null;
             this.colCity.DataPropertyName = "colCity";
-            this.colCity.DisplayMember = "Text";
-            this.colCity.DropDownHeight = 106;
-            this.colCity.DropDownWidth = 121;
-            this.colCity.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.colCity.HeaderText = "Column2";
-            this.colCity.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.colCity.IntegralHeight = false;
-            this.colCity.ItemHeight = 15;
+            this.colCity.DataSource = null;
+            this.colCity.DisplayMember = null;
+            this.colCity.HeaderText = "colCity";
             this.colCity.Name = "colCity";
             this.colCity.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colCity.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Column3";
-            this.Column3.Name = "Column3";
+            this.colCity.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.colCity.ValueMember = null;
             // 
             // Demo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.dataGridViewX1);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Demo";
             this.Text = "Demo";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
@@ -97,10 +110,10 @@
         }
 
         #endregion
-
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private UserControls.DataGridViewMultiColumnComboBoxColumn dataGridViewMultiColumnComboBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private DevComponents.DotNetBar.Controls.DataGridViewX dataGridViewX1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn colCity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private UserControls.DataGridViewMultiColumnComboBoxColumn colCity;
     }
 }

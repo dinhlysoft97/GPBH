@@ -32,11 +32,12 @@
             // 
             // MultiColumnComboBox
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MultiColumnComboBox";
-            this.Size = new System.Drawing.Size(222, 20);
+            this.Size = new System.Drawing.Size(119, 22);
             this.ResumeLayout(false);
 
         }

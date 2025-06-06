@@ -43,7 +43,7 @@ namespace GPBH.UI
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
 
             // Resolve MainForm từ DI container
-            var login = ServiceProvider.GetRequiredService<Login>();
+            var login = ServiceProvider.GetRequiredService<Demo>();
             Application.Run(login);
         }
 
@@ -60,6 +60,7 @@ namespace GPBH.UI
 
         public static void ConfigureForms(this IServiceCollection services)
         {
+            services.AddScoped<Demo>();
             services.AddScoped<Login>();
             services.AddScoped<MainForm>();
             services.AddScoped<MainForm>();

@@ -9,9 +9,8 @@ namespace GPBH.UI.UserControls
 {
     public partial class MultiColumnComboBox : UserControl
     {
-      
         private Button btnDrop = new Button();
-        private ListView lvDrop = new ListView();
+        protected ListView lvDrop = new ListView();
         private ToolStripDropDown dropDown = new ToolStripDropDown();
         private ToolStripControlHost host;
         private List<object> dataSource = new List<object>();
@@ -19,9 +18,8 @@ namespace GPBH.UI.UserControls
 
         public event EventHandler SelectedValueChanged;
 
-        private List<DisplayColumn> displayColumns = new List<DisplayColumn>();
-
-        public List<DisplayColumn> DisplayColumns
+        private List<DisplayColumnCustom> displayColumns = new List<DisplayColumnCustom>();
+        public List<DisplayColumnCustom> DisplayColumns
         {
             get => displayColumns;
             set
@@ -32,14 +30,10 @@ namespace GPBH.UI.UserControls
         }
 
         private TextBox txtInput = new TextBox();
-
         public TextBox TxtInput
         {
             get => txtInput;
-            set
-            {
-                txtInput = value;
-            }
+            set { txtInput = value; }
         }
 
         public MultiColumnComboBox()
@@ -79,22 +73,24 @@ namespace GPBH.UI.UserControls
             txtInput.KeyDown += TxtInput_KeyDown;
             txtInput.ReadOnly = false;
 
-            // Khi dropdown đóng, trả focus lại cho textbox
             dropDown.Closed += (s, e) => txtInput.Focus();
         }
 
-        public object SelectedItem { get; private set; }
-        public object SelectedValue
-        {
-            get
-            {
-                if (SelectedItem == null || string.IsNullOrEmpty(ValueMember)) return null;
-                var prop = SelectedItem.GetType().GetProperty(ValueMember);
-                return prop?.GetValue(SelectedItem, null);
-            }
-        }
+        public object SelectedItem { get; set; }
         public string DisplayMember { get; set; }
         public string ValueMember { get; set; }
+
+        // Chuẩn hóa property DataSource kiểu IEnumerable<object>
+        public IEnumerable<object> DataSource
+        {
+            get => dataSource;
+            set
+            {
+                dataSource = value?.Cast<object>().ToList() ?? new List<object>();
+                RefreshList();
+            }
+        }
+
         public int[] ColumnWidths
         {
             get => columnWidths;
@@ -104,6 +100,20 @@ namespace GPBH.UI.UserControls
                 RefreshList();
             }
         }
+
+        public object SelectedValue
+        {
+            get
+            {
+                if (SelectedItem == null || string.IsNullOrEmpty(ValueMember)) return null;
+                var prop = SelectedItem.GetType().GetProperty(ValueMember);
+                var value = prop?.GetValue(SelectedItem, null);
+                // Nếu là string và cột là int, ép luôn về int
+                if (value is string s && int.TryParse(s, out int i)) return i;
+                return value;
+            }
+        }
+
 
         public void SetDataSource<T>(IEnumerable<T> data)
         {
@@ -193,7 +203,6 @@ namespace GPBH.UI.UserControls
             {
                 dropDown.Show(this, new Point(0, Height));
             }
-            // KHÔNG gọi lvDrop.Focus() để tránh steal focus TextBox
         }
         private void LvDrop_MouseDoubleClick(object sender, MouseEventArgs e)
         {
@@ -210,7 +219,7 @@ namespace GPBH.UI.UserControls
             }
         }
 
-        private void SelectItem(ListViewItem lvi)
+        protected virtual void SelectItem(ListViewItem lvi)
         {
             SelectedItem = lvi.Tag;
             if (!string.IsNullOrEmpty(DisplayMember))
@@ -250,7 +259,7 @@ namespace GPBH.UI.UserControls
         }
 
         [Serializable]
-        public class DisplayColumn
+        public class DisplayColumnCustom
         {
             public string Header { get; set; }
             public string Property { get; set; }
