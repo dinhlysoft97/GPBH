@@ -56,6 +56,7 @@ namespace GPBH.UI
             AppGlobals.MaCH = maCH;
             AppGlobals.MaQuay = maQuay;
             AppGlobals.MaKho = maKho;
+            AppGlobals.MaCa = "1";
         }
 
         public static void ConfigureForms(this IServiceCollection services)

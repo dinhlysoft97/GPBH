@@ -87,6 +87,8 @@ namespace GPBH.UI.Forms
             txPhuongTien.Text = khachHang.So_hieu ?? "";
             txtTauBay.Text = khachHang.Ten_tau_bay ?? "";
             txtTongTien.Text = khachHang.Han_muc?.ToString("#,##0") ?? "0";
+            cbbGioiTinh.SelectedValue = khachHang.Gioi_tinh;
+            cbbQuocTich.SelectedValue = khachHang.Quoc_gia;
         }
 
         private void ClearCustomerFields()

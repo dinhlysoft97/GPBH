@@ -9,6 +9,7 @@ namespace GPBH.Business
         public static DateTime TgDangNhap { get; set; }
         public static string MaCH {  get; set; }
         public static string MaQuay {  get; set; }
+        public static string MaCa {  get; set; }
         public static string MaKho {  get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using DevComponents.DotNetBar;
+using GPBH.Business;
 using GPBH.Business.DTO;
 using GPBH.UI.UserControls;
 using Microsoft.Extensions.DependencyInjection;
@@ -26,14 +27,36 @@ namespace GPBH.UI.Forms
         public DonHang()
         {
             InitializeComponent();
-            LoadFormKhachHang();
+            LoadData();
             InitUcHangHoaPopup();
             RegisterEvents();
         }
 
+
         #endregion
 
         #region Private Methods
+
+        /// <summary>
+        /// Tải dữ liệu cần thiết cho form, ví dụ như danh sách hàng hóa, khách hàng, v.v.
+        /// </summary>
+        /// <exception cref="NotImplementedException"></exception>
+        private void LoadData()
+        {
+            LoadFormKhachHang();
+            LoadInfoDonHang();
+        }
+
+        /// <summary>
+        /// Tải thông tin đơn hàng
+        /// </summary>
+        /// <exception cref="NotImplementedException"></exception>
+        private void LoadInfoDonHang()
+        {
+            lbTenDangNhap.Text = AppGlobals.CurrentUser?.TenDangNhap;
+            lbQuay.Text = AppGlobals.MaQuay;
+            lbCa.Text = AppGlobals.MaCa;
+        }
 
         /// <summary>
         /// Hiển thị form chọn khách hàng, sau đó bind dữ liệu khách hàng lên form.
