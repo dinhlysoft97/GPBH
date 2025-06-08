@@ -27,13 +27,13 @@ namespace GPBH.UI.Helper
                 comboCol.DataSource = datasrc;
                 comboCol.ValueMember = valueMember;
                 comboCol.DisplayMember = displayMember;
-            }
 
-            if (enableAutoComplete)
-            {
-                comboCol.DropDownStyle = ComboBoxStyle.DropDown;
-                comboCol.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-                comboCol.AutoCompleteSource = AutoCompleteSource.ListItems;
+                if (enableAutoComplete)
+                {
+                    comboCol.DropDownStyle = ComboBoxStyle.DropDown;
+                    comboCol.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                    comboCol.AutoCompleteSource = AutoCompleteSource.ListItems;
+                }
             }
         }
 

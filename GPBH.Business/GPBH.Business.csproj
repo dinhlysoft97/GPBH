@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="AppGlobals.cs" />
     <Compile Include="DTO\SysDMDVDto.cs" />
+    <Compile Include="DTO\DMHHDto.cs" />
     <Compile Include="DTO\SysDMNSDDto.cs" />
     <Compile Include="DTO\SystemMenuDto.cs" />
     <Compile Include="Services\SysDMNSDService.cs" />

@@ -116,6 +116,9 @@
     <Compile Include="UserControls\MultiColumnComboBox.Designer.cs">
       <DependentUpon>MultiColumnComboBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ucHangHoa.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="UserControls\UserControlBanHangTheoKhachHang.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -144,6 +147,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\MultiColumnComboBox.resx">
       <DependentUpon>MultiColumnComboBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ucHangHoa.resx">
+      <DependentUpon>ucHangHoa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UserControlBanHangTheoKhachHang.resx">
       <DependentUpon>UserControlBanHangTheoKhachHang.cs</DependentUpon>
