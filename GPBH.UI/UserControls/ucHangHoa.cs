@@ -1,6 +1,5 @@
 ﻿using DevComponents.DotNetBar.Controls;
-using GPBH.Business.DTO;
-using GPBH.UI.Helper;
+using GPBH.Data.Configurations;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -19,17 +18,17 @@ namespace GPBH.UI.UserControls
         private Button Button1 = new Button();
 
         // Dữ liệu mẫu
-        private List<DMHHDto> dsHangHoa = new List<DMHHDto>();
+        private List<DMHH> dsHangHoa = new List<DMHH>();
 
         public TextBox Tb { get => tb; set => tb = value; }
         public ToolStripDropDown TsDropDown { get => tsDropDown; set => tsDropDown = value; }
 
         public ucHangHoa()
         {
-            dsHangHoa = new List<DMHHDto>() {
-                new DMHHDto { Ma_hh = "HH01", Ten_hh = "Hàng hóa 01", Dvt = "KG" },
-                new DMHHDto { Ma_hh = "HH02", Ten_hh = "Hàng hóa 02", Dvt = "KG" },
-                new DMHHDto { Ma_hh = "HH03", Ten_hh = "Hàng hóa 03", Dvt = "KG" },
+            dsHangHoa = new List<DMHH>() {
+                new DMHH { Ma_hh = "HH01", Ten_hh = "Hàng hóa 01", Dvt = "KG" },
+                new DMHH { Ma_hh = "HH02", Ten_hh = "Hàng hóa 02", Dvt = "KG" },
+                new DMHH { Ma_hh = "HH03", Ten_hh = "Hàng hóa 03", Dvt = "KG" },
             };
 
             InitializeComponent();

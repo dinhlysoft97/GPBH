@@ -1,9 +1,12 @@
-﻿using DevComponents.DotNetBar;
+﻿using DevComponents.AdvTree;
+using DevComponents.DotNetBar;
 using GPBH.Business;
-using GPBH.Business.DTO;
+using GPBH.Business.Services;
+using GPBH.Data.Entities;
 using GPBH.UI.UserControls;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using static GPBH.UI.UserControls.ucHangHoa;
@@ -16,6 +19,7 @@ namespace GPBH.UI.Forms
 
         // Popup chọn hàng hóa
         private ucHangHoa ucHangHoaPopup;
+        private DMQGService _dMQGService;
 
         #endregion
 
@@ -24,9 +28,11 @@ namespace GPBH.UI.Forms
         /// <summary>
         /// Khởi tạo form Đơn Hàng, load thông tin khách hàng và khởi tạo popup hàng hóa.
         /// </summary>
-        public DonHang()
+        public DonHang(DMQGService dMQGService)
         {
             InitializeComponent();
+            SetUpUI();
+            _dMQGService = dMQGService;
             LoadData();
             InitUcHangHoaPopup();
             RegisterEvents();
@@ -36,7 +42,16 @@ namespace GPBH.UI.Forms
         #endregion
 
         #region Private Methods
-
+        private void SetUpUI()
+        {
+            dataGridViewX1.Columns["STT"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            // hiển thị tiền ngoại tệ
+            dataGridViewX1.Columns["Gia_ban_nt"].HeaderText = $"Giá {AppGlobals.DMCuaHang.Ma_nt}";
+            dataGridViewX1.Columns["Gg_tien_nt"].HeaderText = $"Tiền giảm {AppGlobals.DMCuaHang.Ma_nt}";
+            dataGridViewX1.Columns["Tien_ban_nt"].HeaderText = $"Thành tiền {AppGlobals.DMCuaHang.Ma_nt}";
+            lb1NTQuyDoi.Text = $"1 {AppGlobals.DMCuaHang.Ma_nt} = ";
+            lbTT1.Text = lbTT2.Text = lbTT3.Text = lbTTH.Text = lbTTT.Text = lbGiamGia.Text = lbTongThu.Text = lbTraLai.Text = $"({AppGlobals.DMCuaHang.Ma_nt})";
+        }
         /// <summary>
         /// Tải dữ liệu cần thiết cho form, ví dụ như danh sách hàng hóa, khách hàng, v.v.
         /// </summary>
@@ -74,11 +89,12 @@ namespace GPBH.UI.Forms
         /// Bind dữ liệu khách hàng lên các control trên form.
         /// </summary>
         /// <param name="khachhang">Đối tượng khách hàng</param>
-        private void BindDataKhachHang(DMKHDto khachhang)
+        private void BindDataKhachHang(DMKH khachhang)
         {
+            var quocGia = _dMQGService.GetByMaQuocGia(khachhang.Quoc_gia);
             txtCCCD.Text = khachhang?.Passport?.Trim() ?? "";
             txtDiaChi.Text = khachhang?.Dia_chi ?? "";
-            txtQuocTinh.Text = khachhang?.Ten_Quoc_Gia ?? "";
+            txtQuocTinh.Text = quocGia?.Ten_Quoc_gia ?? "";
             txtTenKhachHang.Text = $"{khachhang?.Ho} {khachhang?.Ten_dem} {khachhang?.Ten}".Trim();
         }
 
@@ -102,6 +118,7 @@ namespace GPBH.UI.Forms
             ucHangHoaPopup.HangHoaSelected += UcHangHoaPopup_HangHoaSelected;
             ucHangHoa.HangHoaSelected += UcHangHoaPopup_HangHoaSelected;
             dataGridViewX1.RowsRemoved += dataGridViewX1_RowsRemoved;
+            dataGridViewX1.CellEndEdit += new DataGridViewCellEventHandler(this.dataGridViewX1_CellEndEdit);
             RegisterHideUcHangHoaEvents();
         }
 
@@ -262,6 +279,34 @@ namespace GPBH.UI.Forms
         {
             HideUcHangHoaPopup();
             base.OnMouseDown(e);
+        }
+
+
+        private void dataGridViewX1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            var col = dataGridViewX1.Columns[e.ColumnIndex];
+            var columsFormatNumber = new List<string> { "So_luong", "Gia_ban_nt", "Gia_ban", "Gg_ty_le", "Gg_tien", "Tien_ban", "Gg_tien_nt", "Tien_ban_nt" };
+            if (columsFormatNumber.Contains(col.Name)) // hoặc tên cột bạn muốn format số
+            {
+                var cell = dataGridViewX1.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                if (cell.Value != null)
+                {
+                    // Thử chuyển thành số (decimal hoặc double tuỳ ý)
+                    if (decimal.TryParse(cell.Value.ToString(), out decimal result))
+                        if (col.Name == "Gg_ty_le" && (result < 1 || result > 99))
+                        {
+                            cell.Value = 1;
+                        }
+                        else
+                        {
+                            cell.Value = result; // Khi đó format sẽ tự động áp dụng
+                        }
+                    else
+                    {
+                        cell.Value = 1;
+                    }
+                }
+            }
         }
 
         #endregion

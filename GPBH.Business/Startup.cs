@@ -15,6 +15,7 @@ namespace GPBH.Business
             services.AddScoped<SysMenuService>();
             services.AddScoped<DMKHService>();
             services.AddScoped<DMQGService>();
+            services.AddScoped<SysDMCuaHangService>();
         }
     }
 }

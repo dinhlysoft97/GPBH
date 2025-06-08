@@ -186,6 +186,10 @@
       <Project>{0D342A52-B701-4D80-B3B5-D29912ADA641}</Project>
       <Name>GPBH.Business</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GPBH.Data\GPBH.Data.csproj">
+      <Project>{e2531c10-8536-4b1e-ac0e-46b0822d5f80}</Project>
+      <Name>GPBH.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\banhang.png">

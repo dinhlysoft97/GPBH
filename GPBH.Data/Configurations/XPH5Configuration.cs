@@ -87,7 +87,7 @@ namespace GPBH.Data.Configurations
             Property(t => t.Tt1_ty_gia)
                 .HasPrecision(19, 4);
 
-            Property(t => t.Tl1_tien_usd)
+            Property(t => t.Tl1_tien_nt)
                 .HasPrecision(19, 4);
 
             Property(t => t.Tt2_loai)
@@ -102,7 +102,7 @@ namespace GPBH.Data.Configurations
             Property(t => t.Tt2_ty_gia)
                 .HasPrecision(19, 4);
 
-            Property(t => t.Tl2_tien_usd)
+            Property(t => t.Tl2_tien_nt)
                 .HasPrecision(19, 4);
 
             Property(t => t.Tt3_loai)
@@ -117,7 +117,7 @@ namespace GPBH.Data.Configurations
             Property(t => t.Tt3_ty_gia)
                 .HasPrecision(19, 4);
 
-            Property(t => t.Tl3_tien_usd)
+            Property(t => t.Tl3_tien_nt)
                 .HasPrecision(19, 4);
 
             Property(t => t.Tt_tong)

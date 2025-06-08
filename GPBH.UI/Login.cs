@@ -1,5 +1,6 @@
 ﻿using DevComponents.DotNetBar;
 using GPBH.Business;
+using GPBH.Business.Services;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Windows.Forms;
@@ -9,10 +10,12 @@ namespace GPBH.UI
     public partial class Login : Office2007Form
     {
         private readonly SysDMNSDService _productService;
-        public Login(SysDMNSDService productService)
+        private readonly SysDMCuaHangService _sysDMCuaHangService;
+        public Login(SysDMNSDService productService, SysDMCuaHangService sysDMCuaHangService)
         {
             InitializeComponent();
             _productService = productService;
+            _sysDMCuaHangService = sysDMCuaHangService;
         }
 
         private void btnDangNhap_Click(object sender, System.EventArgs e)
@@ -35,6 +38,7 @@ namespace GPBH.UI
 
                 // Lưu thông tin user vào biến global hoặc truyền vào form chính
                 AppGlobals.CurrentUser = user;
+                AppGlobals.DMCuaHang = _sysDMCuaHangService.GetByMaCuaHang(AppGlobals.MaCH);
                 AppGlobals.TgDangNhap = DateTime.Now;
 
                 // call form dot net bar

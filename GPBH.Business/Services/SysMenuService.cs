@@ -1,5 +1,4 @@
-﻿using GPBH.Business.DTO;
-using GPBH.Data.Entities;
+﻿using GPBH.Data.Entities;
 using GPBH.Data.UnitOfWorks;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -17,17 +16,17 @@ namespace GPBH.Business.Services
             _serviceProvider = serviceProvider;
         }
 
-        public List<SystemMenuDto> GetAllMenus()
+        public List<SysMenu> GetAllMenus()
         {
             using (var scope = _serviceProvider.CreateScope())
             {
                 var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
                 return unitOfWork.Repository<SysMenu>().GetAll()
-                .Select(z => new SystemMenuDto
+                .Select(z => new SysMenu
                 {
                     MenuId = z.MenuId,
                     MenuName = z.MenuName,
-                    Type = (int)z.Type,
+                    Type = z.Type,
                     Report = z.Report,
                     BasicRight = z.BasicRight,
                     Picture = z.Picture,

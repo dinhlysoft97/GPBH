@@ -30,6 +30,57 @@ namespace GPBH.Data.Migrations
 
             // DM Quốc gia
             AddDMQG(context);
+
+            // DM Cửa Hàng
+            AddDMCH(context);
+        }
+
+        private void AddDMCH(AppDbContext context)
+        {
+            if (!context.SysDMDV.Any())
+            {
+                context.SysDMDV.Add(new SysDMDV
+                {
+                    Ma_dv = "DV1",
+                    Ten_dv = "Đơn vị 01",
+                    Dia_chi = "123 Đường A, Quận 1, TP.HCM",
+                    Ma_so_thue = "123123123",
+                });
+                context.SaveChanges();
+            }
+
+            if (!context.SysDMCuaHang.Any())
+            {
+                context.SysDMCuaHang.Add(new SysDMCuaHang
+                {
+                    Ma_dv = "DV1",
+                    Ma_cua_hang = "CH01",
+                    Ten_cua_hang = "Cửa Hàng 01",
+                    Dia_chi = "123 Đường A, Quận 1, TP.HCM",
+                    Ma_nhom_kh = "NKH01",
+                    Ma_loai_hinh = "LH01",
+                    Ma_doi_tuong = "DT001",
+                    Ma_nt = "USD",
+                    Han_muc_tm = 15000000,
+                    Ma_cqt = "CQT01",
+                    Nhap_ttxnc = true
+                });
+                context.SysDMCuaHang.Add(new SysDMCuaHang
+                {
+                    Ma_dv = "DV1",
+                    Ma_cua_hang = "CH02",
+                    Ten_cua_hang = "Cửa Hàng 02",
+                    Dia_chi = "123 Đường A, Quận 1, TP.HCM",
+                    Ma_nhom_kh = "NKH01",
+                    Ma_loai_hinh = "LH01",
+                    Ma_doi_tuong = "DT001",
+                    Ma_nt = "MYR",
+                    Han_muc_tm = 15000000,
+                    Ma_cqt = "CQT01",
+                    Nhap_ttxnc = true
+                });
+                context.SaveChanges();
+            }
         }
 
         private void AddDMQG(AppDbContext context)

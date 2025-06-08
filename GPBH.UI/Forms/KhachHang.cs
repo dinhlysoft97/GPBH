@@ -1,6 +1,6 @@
 ﻿using DevComponents.DotNetBar;
-using GPBH.Business.DTO;
 using GPBH.Business.Services;
+using GPBH.Data.Entities;
 using GPBH.UI.Helper;
 using System;
 using System.Collections.Generic;
@@ -27,7 +27,7 @@ namespace GPBH.UI.Forms
 
         #region Public Properties
 
-        public DMKHDto DataKhachHang { get; set; }
+        public DMKH DataKhachHang { get; set; }
 
         #endregion
 
@@ -60,7 +60,7 @@ namespace GPBH.UI.Forms
         {
             ComboBoxHelper.BindData(cbbGioiTinh, GioiTinhs, "Value", "Key", true);
             var dataQD = _dMQGService.GetAll();
-            ComboBoxHelper.BindData(cbbQuocTich, dataQD, nameof(DMQGDto.Ten_Quoc_gia), nameof(DMQGDto.Quoc_gia), true);
+            ComboBoxHelper.BindData(cbbQuocTich, dataQD, nameof(DMQG.Ten_Quoc_gia), nameof(DMQG.Quoc_gia), true);
         }
 
         private void RegisterEvents()
@@ -70,7 +70,7 @@ namespace GPBH.UI.Forms
             txtEmail.Leave += txtEmail_Leave;
         }
 
-        private void FillCustomerData(DMKHDto khachHang)
+        private void FillCustomerData(DMKH khachHang)
         {
             txtCCCD.Text = khachHang.Passport?.Trim() ?? "";
             txtHo.Text = khachHang.Ho ?? "";
@@ -144,9 +144,9 @@ namespace GPBH.UI.Forms
             return Regex.IsMatch(email, pattern, RegexOptions.IgnoreCase);
         }
 
-        private DMKHDto GetCustomerFromForm()
+        private DMKH GetCustomerFromForm()
         {
-            return new DMKHDto
+            return new DMKH
             {
                 Passport = txtCCCD.Text.Trim(),
                 Ho = txtHo.Text.Trim(),

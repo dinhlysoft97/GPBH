@@ -1,6 +1,7 @@
 ﻿using DevComponents.DotNetBar;
 using GPBH.Business;
 using GPBH.Business.Services;
+using GPBH.Data.Entities;
 using GPBH.UI.UserControls;
 using System;
 using System.Drawing;
@@ -23,14 +24,13 @@ namespace GPBH.UI
 
         private void SetData()
         {
-           lbCopyright.Text = $"Copyright© {DateTime.Now.Year}";
-           lbTenDangNhap.Text = $"Tên đăng nhâp: {AppGlobals.CurrentUser.TenDangNhap}";
-           lbMayChu.Text = "Máy chủ: (local)";
-           lbCSDL.Text = "CSDL: GPBHDb";
-           lbMaCH.Text = $"Mã cửa hàng: {AppGlobals.MaCH}";
-           lbMaQuay.Text = $"Mã quầy: {AppGlobals.MaQuay}";
-           lbMaKho.Text = $"Mã kho: {AppGlobals.MaKho}";
-           lbTgDangNhap.Text = $"Thời gian đăng nhập: {AppGlobals.TgDangNhap.ToString("dd/MM/yyyy HH:mm")}";
+            lbCopyright.Text = $"Copyright© {DateTime.Now.Year}";
+            lbTenDangNhap.Text = $"Tên đăng nhâp: {AppGlobals.CurrentUser.TenDangNhap}";
+            lbMayChu.Text = "Máy chủ: (local)";
+            lbCSDL.Text = "CSDL: GPBHDb";
+            lbMaCH.Text = $"Mã cửa hàng: {AppGlobals.MaCH}";
+            lbMaQuay.Text = $"Mã quầy: {AppGlobals.MaQuay}";
+            lbTgDangNhap.Text = $"Thời gian đăng nhập: {AppGlobals.TgDangNhap.ToString("dd/MM/yyyy HH:mm")}";
         }
 
         private void BuildMenu()
@@ -55,9 +55,9 @@ namespace GPBH.UI
                     index = 0;
                 subMenu.ImageIndex = index;
 
-                if (menu.Type == 1) nodeBanHang.SubItems.Add(subMenu);
-                if (menu.Type == 2) nodeBaoCao.SubItems.Add(subMenu);
-                if (menu.Type == 3) nodeDanhMuc.SubItems.Add(subMenu);
+                if (menu.Type == SysMenuType.Document) nodeBanHang.SubItems.Add(subMenu);
+                if (menu.Type == SysMenuType.Report) nodeBaoCao.SubItems.Add(subMenu);
+                if (menu.Type == SysMenuType.Category) nodeDanhMuc.SubItems.Add(subMenu);
             }
 
             group.SubItems.Add(nodeBanHang);
@@ -171,7 +171,7 @@ namespace GPBH.UI
             panel.Dock = DockStyle.Fill;
             panel.TabItem = newTab;
 
-           
+
             uc.Dock = DockStyle.Fill;
             panel.Controls.Add(uc);
 

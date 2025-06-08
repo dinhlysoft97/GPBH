@@ -1,4 +1,6 @@
-﻿using GPBH.UI.Helper;
+﻿using GPBH.UI.Forms;
+using GPBH.UI.Helper;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -39,8 +41,8 @@ namespace GPBH.UI.UserControls
 
         private void btnTaoDonHang_Click(object sender, EventArgs e)
         {
-            var form1 = new Forms.DonHang();
-            form1.ShowDialog(); // Hiển thị Form1 như một dialog
+            var donHang = ActivatorUtilities.CreateInstance<DonHang>(Program.ServiceProvider);
+            donHang.ShowDialog(); // Hiển thị Form1 như một dialog
         }
     }
 }

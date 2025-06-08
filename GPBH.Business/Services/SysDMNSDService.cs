@@ -1,5 +1,4 @@
-﻿using GPBH.Business.DTO;
-using GPBH.Data;
+﻿using GPBH.Data;
 using GPBH.Data.Entities;
 using GPBH.Data.UnitOfWorks;
 using Microsoft.Extensions.DependencyInjection;
@@ -25,7 +24,7 @@ namespace GPBH.Business
         /// <param name="tenDangNhap">Tên đăng nhập</param>
         /// <param name="matKhau">Mật khẩu plain text</param>
         /// <returns>SysDMNSD nếu thành công, null nếu thất bại</returns>
-        public SysDMNSDDto DangNhap(string tenDangNhap, string matKhau)
+        public SysDMNSD DangNhap(string tenDangNhap, string matKhau)
         {
             if (string.IsNullOrWhiteSpace(tenDangNhap) || string.IsNullOrWhiteSpace(matKhau))
                 return null;
@@ -37,14 +36,7 @@ namespace GPBH.Business
                 var user = unitOfWork.Repository<SysDMNSD>()
                 .Find(u => u.TenDangNhap == tenDangNhap && u.MatKhau == matKhauHash && u.Ksd).FirstOrDefault();
                 AppDbContext.CurrentUserName = tenDangNhap;
-                return new SysDMNSDDto
-                {
-                    TenDangNhap = user?.TenDangNhap,
-                    TenDayDu = user?.TenDayDu,
-                    MatKhau = user?.MatKhau,
-                    IsAdmin = user?.IsAdmin ?? false,
-                    Ksd = user?.Ksd ?? false
-                };
+                return user;
             }
         }
 

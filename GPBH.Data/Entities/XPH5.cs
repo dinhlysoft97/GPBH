@@ -63,8 +63,8 @@
         // Thanh toán 1, tỷ giá
         public decimal? Tt1_ty_gia { get; set; }
 
-        // Thanh toán 1, tiền USD
-        public decimal? Tl1_tien_usd { get; set; }
+        // Thanh toán 1, tiền ngoại tệ
+        public decimal? Tl1_tien_nt { get; set; }
 
         // Thanh toán 2, loại thanh toán
         public string Tt2_loai { get; set; }
@@ -78,8 +78,8 @@
         // Thanh toán 2, tỷ giá
         public decimal? Tt2_ty_gia { get; set; }
 
-        // Thanh toán 2, tiền USD
-        public decimal? Tl2_tien_usd { get; set; }
+        // Thanh toán 2, tiền ngoại tệ
+        public decimal? Tl2_tien_nt { get; set; }
 
         // Thanh toán 3, loại thanh toán
         public string Tt3_loai { get; set; }
@@ -93,8 +93,8 @@
         // Thanh toán 3, tỷ giá
         public decimal? Tt3_ty_gia { get; set; }
 
-        // Thanh toán 3, tiền USD
-        public decimal? Tl3_tien_usd { get; set; }
+        // Thanh toán 3, tiền ngoại tệ
+        public decimal? Tl3_tien_nt { get; set; }
 
         // Tổng thanh toán
         public decimal? Tt_tong { get; set; }
