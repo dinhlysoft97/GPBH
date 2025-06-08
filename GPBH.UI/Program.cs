@@ -60,6 +60,7 @@ namespace GPBH.UI
 
         public static void ConfigureForms(this IServiceCollection services)
         {
+            services.AddScoped<Demo>();
             services.AddScoped<Login>();
             services.AddScoped<MainForm>();
             services.AddScoped<MainForm>();

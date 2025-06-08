@@ -37,8 +37,17 @@ namespace GPBH.Data
 
         public override int SaveChanges()
         {
-            AuditHelper.SetAuditFields(this, CurrentUserName);
-            return base.SaveChanges();
+            try
+            {
+                AuditHelper.SetAuditFields(this, CurrentUserName);
+                return base.SaveChanges();
+            }
+            catch (System.Exception ex)
+            {
+
+                throw;
+            }
+           
         }
     }
 }

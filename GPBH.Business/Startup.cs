@@ -13,6 +13,8 @@ namespace GPBH.Business
             // ... các DI khác
             services.AddScoped<SysDMNSDService>();
             services.AddScoped<SysMenuService>();
+            services.AddScoped<DMKHService>();
+            services.AddScoped<DMQGService>();
         }
     }
 }

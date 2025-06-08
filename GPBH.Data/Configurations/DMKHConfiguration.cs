@@ -45,9 +45,6 @@ namespace GPBH.Data.Configurations
             Property(t => t.Dien_thoai)
                 .HasMaxLength(20);
 
-            Property(t => t.Di_dong)
-                .HasMaxLength(20);
-
             Property(t => t.Email)
                 .HasMaxLength(100);
 
