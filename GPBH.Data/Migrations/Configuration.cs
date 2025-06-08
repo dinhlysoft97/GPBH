@@ -27,6 +27,23 @@ namespace GPBH.Data.Migrations
 
             // Add SysConfin
             AddSysConfig(context);
+
+            // DM Quốc gia
+            AddDMQG(context);
+        }
+
+        private void AddDMQG(AppDbContext context)
+        {
+            if (!context.DMQG.Any())
+            {
+                context.DMQG.Add(new DMQG
+                {
+                    Quoc_gia = "VN",
+                    Ten_Quoc_gia = "Việt Nam",
+                    Ksd = true,
+                });
+                context.SaveChanges();
+            }
         }
 
         private static void AddSysConfig(AppDbContext context)

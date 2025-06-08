@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using DevComponents.DotNetBar.Controls;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace GPBH.UI.Helper
@@ -15,7 +16,7 @@ namespace GPBH.UI.Helper
         /// <param name="valueMember">Tên thuộc tính giá trị</param>
         /// <param name="enableAutoComplete">Có bật AutoComplete không</param>
         public static void BindData<T>(
-            ComboBox comboBox,
+            ComboBoxEx comboBox,
             List<T> data,
             string displayMember,
             string valueMember,
@@ -23,8 +24,10 @@ namespace GPBH.UI.Helper
         {
             comboBox.DataSource = null; // Reset
             comboBox.DataSource = data;
-            comboBox.DisplayMember = displayMember;
-            comboBox.ValueMember = valueMember;
+            if (!string.IsNullOrEmpty(displayMember))
+                comboBox.DisplayMember = displayMember;
+            if (!string.IsNullOrEmpty(valueMember))
+                comboBox.ValueMember = valueMember;
 
             if (enableAutoComplete)
             {
