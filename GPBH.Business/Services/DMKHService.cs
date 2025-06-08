@@ -1,25 +1,33 @@
 ﻿using GPBH.Business.DTO;
 using GPBH.Data.Entities;
 using GPBH.Data.UnitOfWorks;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Linq;
 
 namespace GPBH.Business.Services
 {
     public class DMKHService
     {
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly IServiceProvider _serviceProvider;
 
-        public DMKHService(IUnitOfWork unitOfWork)
+        public DMKHService(IServiceProvider serviceProvider)
         {
-            _unitOfWork = unitOfWork;
+            _serviceProvider = serviceProvider;
         }
 
         public DMKHDto GetCustomerByPassport(string passport)
         {
             if (string.IsNullOrWhiteSpace(passport))
                 return null;
-            var result = _unitOfWork.Repository<DMKH>().Find(DMKHDto => DMKHDto.Passport == passport).FirstOrDefault();
-            return DMKHToDto(result);
+            // Tạo scope mới, lấy UnitOfWork mới mỗi lần gọi
+            using (var scope = _serviceProvider.CreateScope())
+            {
+                var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
+
+                var result = unitOfWork.Repository<DMKH>().Find(DMKHDto => DMKHDto.Passport == passport).FirstOrDefault();
+                return DMKHToDto(result);
+            }
         }
 
         public DMKHDto AddCustomer(DMKHDto customer)
@@ -44,9 +52,14 @@ namespace GPBH.Business.Services
                 Ten_tau_bay = customer.Ten_tau_bay,
                 Han_muc = customer.Han_muc
             };
-            _unitOfWork.Repository<DMKH>().Add(entity);
-            _unitOfWork.SaveChanges();
-            return DMKHToDto(entity); ;
+            // Tạo scope mới, lấy UnitOfWork mới mỗi lần gọi
+            using (var scope = _serviceProvider.CreateScope())
+            {
+                var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
+                unitOfWork.Repository<DMKH>().Add(entity);
+                unitOfWork.SaveChanges();
+                return DMKHToDto(entity); ;
+            }
         }
 
         private DMKHDto DMKHToDto(DMKH entity)
@@ -54,27 +67,32 @@ namespace GPBH.Business.Services
             var dto = new DMKHDto();
             if (entity != null)
             {
-                var quocGia = _unitOfWork.Repository<DMQG>().Find(z => z.Quoc_gia == entity.Quoc_gia).FirstOrDefault();
-                dto.Passport = entity.Passport;
-                dto.Ho = entity.Ho;
-                dto.Ten_dem = entity.Ten_dem;
-                dto.Ten = entity.Ten;
-                dto.Ngay_cap = entity.Ngay_cap;
-                dto.Ngay_hh = entity.Ngay_hh;
-                dto.Quoc_gia = entity.Quoc_gia;
-                dto.Ten_Quoc_Gia = quocGia.Ten_Quoc_gia;
-                dto.Gioi_tinh = entity.Gioi_tinh;
-                dto.Ngay_sinh = entity.Ngay_sinh;
-                dto.Dia_chi = entity.Dia_chi;
-                dto.Dien_thoai = entity.Dien_thoai;
-                dto.Email = entity.Email;
-                dto.Xnc_ngay_cap = entity.Xnc_ngay_cap;
-                dto.Xnc_ngay_hh = entity.Xnc_ngay_hh;
-                dto.So_hieu = entity.So_hieu;
-                dto.Ten_tau_bay = entity.Ten_tau_bay;
-                dto.Han_muc = entity.Han_muc;
+                // Tạo scope mới, lấy UnitOfWork mới mỗi lần gọi
+                using (var scope = _serviceProvider.CreateScope())
+                {
+                    var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
+                    var quocGia = unitOfWork.Repository<DMQG>().Find(z => z.Quoc_gia == entity.Quoc_gia).FirstOrDefault();
+                    dto.Passport = entity.Passport;
+                    dto.Ho = entity.Ho;
+                    dto.Ten_dem = entity.Ten_dem;
+                    dto.Ten = entity.Ten;
+                    dto.Ngay_cap = entity.Ngay_cap;
+                    dto.Ngay_hh = entity.Ngay_hh;
+                    dto.Quoc_gia = entity.Quoc_gia;
+                    dto.Ten_Quoc_Gia = quocGia.Ten_Quoc_gia;
+                    dto.Gioi_tinh = entity.Gioi_tinh;
+                    dto.Ngay_sinh = entity.Ngay_sinh;
+                    dto.Dia_chi = entity.Dia_chi;
+                    dto.Dien_thoai = entity.Dien_thoai;
+                    dto.Email = entity.Email;
+                    dto.Xnc_ngay_cap = entity.Xnc_ngay_cap;
+                    dto.Xnc_ngay_hh = entity.Xnc_ngay_hh;
+                    dto.So_hieu = entity.So_hieu;
+                    dto.Ten_tau_bay = entity.Ten_tau_bay;
+                    dto.Han_muc = entity.Han_muc;
 
-                return dto;
+                    return dto;
+                }
             }
             return null;
         }

@@ -1,6 +1,8 @@
 ﻿using GPBH.Business.DTO;
 using GPBH.Data.Entities;
 using GPBH.Data.UnitOfWorks;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -8,16 +10,19 @@ namespace GPBH.Business.Services
 {
     public class SysMenuService
     {
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly IServiceProvider _serviceProvider;
 
-        public SysMenuService(IUnitOfWork unitOfWork)
+        public SysMenuService(IServiceProvider serviceProvider)
         {
-            _unitOfWork = unitOfWork;
+            _serviceProvider = serviceProvider;
         }
 
         public List<SystemMenuDto> GetAllMenus()
         {
-            return _unitOfWork.Repository<SysMenu>().GetAll()
+            using (var scope = _serviceProvider.CreateScope())
+            {
+                var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
+                return unitOfWork.Repository<SysMenu>().GetAll()
                 .Select(z => new SystemMenuDto
                 {
                     MenuId = z.MenuId,
@@ -29,6 +34,7 @@ namespace GPBH.Business.Services
                     Active = z.Active,
                     Stt = z.Stt
                 }).ToList();
+            }
         }
     }
 }

@@ -4,11 +4,12 @@ using System.Data.Entity;
 
 namespace GPBH.Data.UnitOfWorks
 {
-    public class UnitOfWork : IUnitOfWork
+    public class UnitOfWork : IUnitOfWork, IDisposable
     {
         private readonly AppDbContext _context;
         private DbContextTransaction _transaction;
         private readonly Dictionary<Type, object> _repositories = new Dictionary<Type, object>();
+        private bool _disposed = false;
 
         public UnitOfWork(AppDbContext context)
         {
@@ -52,10 +53,23 @@ namespace GPBH.Data.UnitOfWorks
             }
         }
 
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    _transaction?.Dispose();
+                    _context.Dispose();
+                }
+                _disposed = true;
+            }
+        }
+
         public void Dispose()
         {
-            _transaction?.Dispose();
-            _context.Dispose();
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
     }
 }

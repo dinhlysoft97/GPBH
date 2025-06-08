@@ -2,6 +2,7 @@
 using GPBH.Data;
 using GPBH.Data.Entities;
 using GPBH.Data.UnitOfWorks;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Linq;
 using System.Security.Cryptography;
@@ -11,11 +12,11 @@ namespace GPBH.Business
 {
     public class SysDMNSDService
     {
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly IServiceProvider _serviceProvider;
 
-        public SysDMNSDService(IUnitOfWork unitOfWork)
+        public SysDMNSDService(IServiceProvider serviceProvider)
         {
-            _unitOfWork = unitOfWork;
+            _serviceProvider = serviceProvider;
         }
 
         /// <summary>
@@ -30,18 +31,21 @@ namespace GPBH.Business
                 return null;
 
             string matKhauHash = HashPassword(matKhau);
-
-            var user = _unitOfWork.Repository<SysDMNSD>()
-                .Find(u => u.TenDangNhap == tenDangNhap && u.MatKhau == matKhauHash && u.Ksd).FirstOrDefault();
-            AppDbContext.CurrentUserName = tenDangNhap;
-            return new SysDMNSDDto
+            using (var scope = _serviceProvider.CreateScope())
             {
-                TenDangNhap = user?.TenDangNhap,
-                TenDayDu = user?.TenDayDu,
-                MatKhau = user?.MatKhau,
-                IsAdmin = user?.IsAdmin ?? false,
-                Ksd = user?.Ksd ?? false
-            };
+                var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
+                var user = unitOfWork.Repository<SysDMNSD>()
+                .Find(u => u.TenDangNhap == tenDangNhap && u.MatKhau == matKhauHash && u.Ksd).FirstOrDefault();
+                AppDbContext.CurrentUserName = tenDangNhap;
+                return new SysDMNSDDto
+                {
+                    TenDangNhap = user?.TenDangNhap,
+                    TenDayDu = user?.TenDayDu,
+                    MatKhau = user?.MatKhau,
+                    IsAdmin = user?.IsAdmin ?? false,
+                    Ksd = user?.Ksd ?? false
+                };
+            }
         }
 
         /// <summary>
@@ -50,8 +54,12 @@ namespace GPBH.Business
         public void TaoMoi(SysDMNSD entity, string nguoiTao)
         {
             entity.MatKhau = HashPassword(entity.MatKhau);
-            _unitOfWork.Repository<SysDMNSD>().Add(entity);
-            _unitOfWork.SaveChanges();
+            using (var scope = _serviceProvider.CreateScope())
+            {
+                var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
+                unitOfWork.Repository<SysDMNSD>().Add(entity);
+                unitOfWork.SaveChanges();
+            }
         }
 
         /// <summary>
@@ -59,12 +67,16 @@ namespace GPBH.Business
         /// </summary>
         public void DoiMatKhau(string tenDangNhap, string matKhauMoi)
         {
-            var user = _unitOfWork.Repository<SysDMNSD>().Find(u => u.TenDangNhap == tenDangNhap).FirstOrDefault();
-            if (user != null)
+            using (var scope = _serviceProvider.CreateScope())
             {
-                user.MatKhau = HashPassword(matKhauMoi);
-                _unitOfWork.Repository<SysDMNSD>().Update(user);
-                _unitOfWork.SaveChanges();
+                var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
+                var user = unitOfWork.Repository<SysDMNSD>().Find(u => u.TenDangNhap == tenDangNhap).FirstOrDefault();
+                if (user != null)
+                {
+                    user.MatKhau = HashPassword(matKhauMoi);
+                    unitOfWork.Repository<SysDMNSD>().Update(user);
+                    unitOfWork.SaveChanges();
+                }
             }
         }
 
