@@ -1,12 +1,11 @@
-﻿namespace GPBH.Data.Entities
-{
-    using GPBH.Data.Audit;
-    using System;
-    using System.Collections.Generic;
+﻿using GPBH.Data.Entities;
+using System;
+using System.Collections.Generic;
 
-    public class XPH5 : BaseAuditableEntity
-    {
-        // Mã cửa hàng
+namespace GPBH.Business.Dtos
+{
+    public class XPH5Dto
+    { // Mã cửa hàng
         public string Ma_cua_hang { get; set; }
 
         // Mã phiếu (PK)
@@ -156,15 +155,6 @@
         // Mã đối tượng (sysdmdv)
         public TrangThaiDonHang Trang_thai { get; set; }
 
-        public SysDMCuaHang SysDMCuaHang { get; set; } // Thông tin cửa hàng liên kết
-        public DMNT DMNT { get; set; } // Thông tin ngoại tệ liên kết
-
-        public virtual List<XCT5> XCT5s { get; set; } // Danh sách chi tiết phiếu xuất hàng liên kết
-    }
-
-    public enum TrangThaiDonHang
-    {
-        Draft = 0, // Nháp
-        Confirmed = 1, // Đã xác nhận
+        public List<XCT5Dto> XCT5s { get; set; } = new List<XCT5Dto>();
     }
 }

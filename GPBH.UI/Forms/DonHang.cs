@@ -1,5 +1,4 @@
 ﻿using DevComponents.DotNetBar;
-using DevComponents.DotNetBar.Controls;
 using GPBH.Business;
 using GPBH.Business.Dtos;
 using GPBH.Business.Services;
@@ -9,9 +8,12 @@ using GPBH.UI.UserControls;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using static GPBH.UI.UserControls.ucHangHoa;
+using static System.Runtime.CompilerServices.RuntimeHelpers;
 
 namespace GPBH.UI.Forms
 {
@@ -26,6 +28,8 @@ namespace GPBH.UI.Forms
         private DMHHService _dMHHService;
         private SysDMCuaHangService _sysDMCuaHangService;
         private DMTGService _dMTGService;
+        private DonHangService _donHangService;
+        private DMKHService _dMKHService;
 
         sealed class ThanhToan
         {
@@ -44,6 +48,11 @@ namespace GPBH.UI.Forms
         private List<DMNT> _dMNTs = new List<DMNT>();
         private TyGiaNT TyGiaCuaHang;
         private bool _isChangeTien = false;
+        private bool _isEdit = false;
+        private XPH5Dto _data;
+
+        private BindingList<XCT5Dto> listChiTiet = new BindingList<XCT5Dto>();
+
         #endregion
 
         #region Constructor
@@ -51,36 +60,75 @@ namespace GPBH.UI.Forms
         /// <summary>
         /// Khởi tạo form Đơn Hàng, load thông tin khách hàng và khởi tạo popup hàng hóa.
         /// </summary>
-        public DonHang(DMQGService dMQGService, DMNTService dMMTService, DMHHService dMHHService, SysDMCuaHangService sysDMCuaHangService, DMTGService dMTGService)
+        public DonHang(
+            DMQGService dMQGService,
+            DMNTService dMMTService,
+            DMHHService dMHHService,
+            SysDMCuaHangService sysDMCuaHangService,
+            DMTGService dMTGService,
+            DonHangService donHangService,
+            DMKHService dMKHService,
+            XPH5Dto data = null)
         {
             InitializeComponent();
             // Đặt thuộc tính KeyPreview của Form là true trong Designer hoặc trong code
             this.KeyPreview = true;
 
+            _data = data;
+            _isEdit = data != null;
             _dMQGService = dMQGService;
             _dMMTService = dMMTService;
             _dMHHService = dMHHService;
             _sysDMCuaHangService = sysDMCuaHangService;
             _dMTGService = dMTGService;
+            _donHangService = donHangService;
+            _dMKHService = dMKHService;
             SetUpUI();
             LoadData();
             InitUcHangHoaPopup();
             RegisterEvents();
+            LoadDataForm();
         }
-
-
         #endregion
 
         #region Private Methods
+
+        private void LoadDataForm()
+        {
+            if (_isEdit && _data != null && _data.XCT5s != null)
+            {
+                this.Text = "Sửa đơn hàng";
+                listChiTiet = new BindingList<XCT5Dto>(_data.XCT5s);
+                dataGridViewX1.DataSource = listChiTiet;
+            }
+        }
+
         private void SetUpUI()
         {
-            dataGridViewX1.Columns["STT"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewX1.Columns["Stt"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             // hiển thị tiền ngoại tệ
             dataGridViewX1.Columns["Gia_ban_nt"].HeaderText = $"Giá {AppGlobals.DMCuaHang.Ma_nt}";
             dataGridViewX1.Columns["Gg_tien_nt"].HeaderText = $"Tiền giảm {AppGlobals.DMCuaHang.Ma_nt}";
             dataGridViewX1.Columns["Tien_ban_nt"].HeaderText = $"Thành tiền {AppGlobals.DMCuaHang.Ma_nt}";
             lb1NTQuyDoi.Text = $"1 {AppGlobals.DMCuaHang.Ma_nt} = ";
             lbTT1.Text = lbTT2.Text = lbTT3.Text = lbTTH.Text = lbTTT.Text = lbGiamGia.Text = lbTongThu.Text = lbTraLai.Text = $"({AppGlobals.DMCuaHang.Ma_nt})";
+
+
+            dataGridViewX1.Columns["Stt"].DisplayIndex = 0;
+            dataGridViewX1.Columns["Ma_hh"].DisplayIndex = 1;
+            dataGridViewX1.Columns["Dvt"].DisplayIndex = 2;
+            dataGridViewX1.Columns["Ten_hh"].DisplayIndex = 3;
+            dataGridViewX1.Columns["So_luong"].DisplayIndex = 4;
+            dataGridViewX1.Columns["Gia_ban_nt"].DisplayIndex = 5;
+            dataGridViewX1.Columns["Gia_ban"].DisplayIndex = 6;
+            dataGridViewX1.Columns["Gg_ty_le"].DisplayIndex = 7;
+            dataGridViewX1.Columns["Gg_tien_nt"].DisplayIndex = 8;
+            dataGridViewX1.Columns["Gg_tien"].DisplayIndex = 9;
+            dataGridViewX1.Columns["Tien_ban_nt"].DisplayIndex = 10;
+            dataGridViewX1.Columns["Tien_ban"].DisplayIndex = 11;
+            dataGridViewX1.Columns["Gg_ly_do"].DisplayIndex = 12;
+
+
             _dMNTs = _dMMTService.GetAll();
         }
         /// <summary>
@@ -89,13 +137,14 @@ namespace GPBH.UI.Forms
         /// <exception cref="NotImplementedException"></exception>
         private void LoadData()
         {
-            LoadFormKhachHang(string.Empty);
+            if (!_isEdit)
+                LoadFormKhachHang(string.Empty);
             LoadInfoDonHang();
             LoadDataCombobox();
             ucHangHoa.SetData(_dMHHService.GetAll());
             var tyGia = _sysDMCuaHangService.GetTyGiaByMaCuaHang(AppGlobals.MaCH);
             txtTQDVND.Text = tyGia.Ty_gia.ToString("#,##0");
-            lbTGNT.Text = $"{AppGlobals.DMCuaHang.Ma_nt}: {tyGia.Ty_gia.ToString("#,##0")}";
+            lbTGNT.Text = $"{tyGia.Ma_nt}: {tyGia.Ty_gia.ToString("#,##0")}";
             lbTGNT2.Text = tyGia.Ty_gia.ToString("#,##0");
             cbbTTNT1.SelectedValue = tyGia.Ma_nt;
             cbbTTNT2.SelectedValue = tyGia.Ma_nt;
@@ -103,6 +152,8 @@ namespace GPBH.UI.Forms
             cbTLNT.SelectedValue = tyGia.Ma_nt;
 
             TyGiaCuaHang = tyGia;
+
+            dataGridViewX1.DataSource = listChiTiet;
         }
 
         private void LoadDataCombobox()
@@ -175,7 +226,6 @@ namespace GPBH.UI.Forms
             ucHangHoa.HangHoaSelected += UcHangHoaPopup_HangHoaSelected;
             dataGridViewX1.RowsRemoved += dataGridViewX1_RowsRemoved;
             dataGridViewX1.CellEndEdit += new DataGridViewCellEventHandler(dataGridViewX1_CellEndEdit);
-            dataGridViewX1.KeyDown += dataGridViewX1_KeyDown;
             txtTTNT1.ValueChanged += TxtTTNT1_TextChanged;
             txtTTNT2.ValueChanged += TxtTTNT2_TextChanged;
             txtTTNT3.ValueChanged += TxtTTNT3_TextChanged;
@@ -196,30 +246,26 @@ namespace GPBH.UI.Forms
         // Xử lý sự kiện KeyDown
         private void Form_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.F8)
+            // Lưu và in
+            if (e.KeyCode == Keys.F2)
             {
-                var confirm = MessageBox.Show("Bạn có chắc muốn xóa hết dữ liệu chi tiết không?", "Có", MessageBoxButtons.YesNo);
-                if (confirm == DialogResult.Yes)
+                if (!_isEdit) // tạo mới
                 {
-                    dataGridViewX1.Rows.Clear(); 
-                }
-            }
-            else if (e.KeyCode == Keys.F9)
-            {
-                LoadFormKhachHang(txtCCCD.Text);
-            }
-            else if (e.KeyCode == Keys.F12)
-            {
-                var confirm = MessageBox.Show("Bạn có chắc muốn đóng form đơn hàng?", "Có", MessageBoxButtons.YesNo);
-                if (confirm == DialogResult.Yes)
-                {
-                    this.Close();
-                }
-            }
-        }
+                    if (listChiTiet.Count == 0)
+                        MessageBoxEx.Show("Vui lòng thêm ít nhất một mặt hàng trước khi lưu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    else
+                    {
 
-        private void dataGridViewX1_KeyDown(object sender, KeyEventArgs e)
-        {
+                        TaoDonHang(TrangThaiDonHang.Confirmed);
+                    }
+                }
+                else
+                {
+                    if (_data != null && string.IsNullOrEmpty(_data.So_chung_tu))
+                        UpdateSoChungTuTinhTonKho();
+                }
+            }
+            // xóa dữ liệu chi tiết
             if ((e.KeyCode == Keys.Delete || e.KeyCode == Keys.F7) && dataGridViewX1.SelectedRows.Count > 0)
             {
                 // Xác nhận xóa
@@ -230,12 +276,199 @@ namespace GPBH.UI.Forms
                     {
                         if (!row.IsNewRow)
                         {
-                            dataGridViewX1.Rows.Remove(row);
+                            var item = row.DataBoundItem as XCT5Dto;
+                            if (item != null) listChiTiet.Remove(item);
                             TinhTongCong();
                         }
                     }
                 }
             }
+            else if (e.KeyCode == Keys.F8)
+            {
+                var confirm = MessageBox.Show("Bạn có chắc muốn xóa hết dữ liệu chi tiết không?", "Có", MessageBoxButtons.YesNo);
+                if (confirm == DialogResult.Yes)
+                {
+                    dataGridViewX1.Rows.Clear();
+                }
+            }
+            else if (e.KeyCode == Keys.F9)
+            {
+                LoadFormKhachHang(txtCCCD.Text);
+            }
+            // Lưu tạo đơn hàng
+            else if (e.KeyCode == Keys.F12)
+            {
+                if (!_isEdit) // tạo mới
+                {
+                    if (listChiTiet.Count == 0)
+                        MessageBoxEx.Show("Vui lòng thêm ít nhất một mặt hàng trước khi lưu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    else
+                    {
+                        // Tạo nháp đơn hàng
+                        TaoDonHang(TrangThaiDonHang.Draft);
+                    }
+                }
+                else
+                {
+                    if (listChiTiet.Count == 0)
+                        MessageBoxEx.Show("Vui lòng thêm ít nhất một mặt hàng trước khi lưu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    else
+                    {
+
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Tính toán tổng tiền và hiển thị lên form.
+        /// </summary>
+        /// <returns></returns>
+        private XPH5Dto TaoDonHang(TrangThaiDonHang trangThaiDonHang)
+        {
+            XPH5Dto donHangDto = MapDataToSave(trangThaiDonHang);
+            if (string.IsNullOrEmpty(donHangDto.Ma_phieu))
+            {
+                var (data, result) = _donHangService.TaoDonHang(donHangDto);
+                if (result)
+                {
+                    // Hiển thị thông báo thành công
+                    MessageBoxEx.Show("Tạo đơn hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    lbSoChungTu.Text = $"{data.So_chung_tu}";
+                    lbMaPhieu.Text = $"{data.Ma_phieu}";
+                    // Sau khi gọi service lưu và nhận về newDonHang
+                    OpenEditForm(data); // Mở lại form cho phép sửa tiếp
+                    return data;
+                }
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Tạo đơn hàng và lưu vào cơ sở dữ liệu, sau đó cập nhật số chứng từ và tính toán tồn kho.
+        /// </summary>
+        /// <returns></returns>
+        private XPH5Dto UpdateSoChungTuTinhTonKho()
+        {
+            XPH5Dto donHangDto = MapDataToSave(TrangThaiDonHang.Confirmed);
+            var (data, result) = _donHangService.UpdateSoChungTuTinhTonKho(donHangDto);
+            if (result)
+            {
+                // Hiển thị thông báo thành công
+                MessageBoxEx.Show("Câp nhật số chừng từ thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                lbSoChungTu.Text = $"{data.So_chung_tu}";
+                lbMaPhieu.Text = $"{data.Ma_phieu}";
+                OpenEditForm(data); // Mở lại form cho phép sửa tiếp
+                return data;
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Chuyển đổi dữ liệu từ form sang DTO để lưu vào cơ sở dữ liệu.
+        /// </summary>
+        /// <param name="trangThaiDonHang"></param>
+        /// <returns></returns>
+        private XPH5Dto MapDataToSave(TrangThaiDonHang trangThaiDonHang)
+        {
+            decimal.TryParse(txtTTNT1.Text, out decimal tt1Tien);
+            decimal.TryParse(txtTGTT1.Text, out decimal tt1TyGia);
+            decimal.TryParse(txtTTNT1.Text, out decimal tl1TienNT);
+
+            decimal.TryParse(txtTTNT2.Text, out decimal tt2Tien);
+            decimal.TryParse(txtTGTT2.Text, out decimal tt2TyGia);
+            decimal.TryParse(txtTTNT2.Text, out decimal tl2TienNT);
+
+            decimal.TryParse(txtTTNT3.Text, out decimal tt3Tien);
+            decimal.TryParse(txtTGTT3.Text, out decimal tt3TyGia);
+            decimal.TryParse(txtTTNT3.Text, out decimal tl3TienNT);
+
+            decimal.TryParse(txtQDNTTTT.Text, out decimal tongTienThanhToan);
+            decimal.TryParse(txtTLNT.Text, out decimal traLaiNT);
+            decimal.TryParse(txtQDTLNT.Text, out decimal traLai);
+
+            decimal.TryParse(txtTTHNT.Text, out decimal tongTienHangNT);
+            decimal.TryParse(txtTGNT.Text, out decimal tongGiamGiaNT);
+            decimal.TryParse(txtTTHNT.Text, out decimal tongThuNT);
+            var donHangDto = new XPH5Dto
+            {
+                Ma_cua_hang = AppGlobals.MaCH,
+                Ma_phieu = lbMaPhieu.Text.Trim(),
+                Ma_chung_tu = "X05",
+                Ngay_chung_tu = DateTime.Now.Date,
+                Ma_nt = TyGiaCuaHang.Ma_nt,
+                Ty_gia = TyGiaCuaHang.Ty_gia,
+                Ma_quay = AppGlobals.MaQuay,
+                Ma_cqt = AppGlobals.DMCuaHang.Ma_cqt,
+                Xuat_hddt = false,
+                So_hddt = string.Empty,
+                Xuat_hq = false,
+                Ma_kho = AppGlobals.MaKho,
+                Passport = txtCCCD.Text.Trim(),
+                Ten_khach = txtTenKhachHang.Text.Trim(),
+
+                Tt1_loai = cbbTT1.SelectedValue?.ToString(),
+                Tt1_ma_nt = cbbTTNT1.SelectedValue?.ToString(),
+                Tt1_tien_tt = tt1Tien,
+                Tt1_ty_gia = tt1TyGia,
+                Tl1_tien_nt = tl1TienNT,
+
+                Tt2_loai = cbbTT2.SelectedValue?.ToString(),
+                Tt2_ma_nt = cbbTTNT2.SelectedValue?.ToString(),
+                Tt2_tien_tt = tt2Tien,
+                Tt2_ty_gia = tt2TyGia,
+                Tl2_tien_nt = tl2TienNT,
+
+                Tt3_loai = cbbTT3.SelectedValue?.ToString(),
+                Tt3_ma_nt = cbbTTNT3.SelectedValue?.ToString(),
+                Tt3_tien_tt = tt3Tien,
+                Tt3_ty_gia = tt3TyGia,
+                Tl3_tien_nt = tl3TienNT,
+
+                Tt_tong = tongTienThanhToan,
+                Tra_lai_nt = traLaiNT,
+                Tra_lai = traLai,
+                Tong_tien_hang_nt = tongTienHangNT,
+                Tong_tien_hang = tongTienHangNT * TyGiaCuaHang.Ty_gia,
+                Tong_giam_gia_nt = tongGiamGiaNT,
+                Tong_giam_gia = tongGiamGiaNT * TyGiaCuaHang.Ty_gia,
+                Tong_thu_nt = tongThuNT,
+                Tong_thu = tongThuNT * TyGiaCuaHang.Ty_gia,
+
+                // Trạng thái
+                Trang_thai = trangThaiDonHang
+            };
+
+            var listDonHang = dataGridViewX1.DataSource as BindingList<XCT5Dto>;
+            if (listDonHang != null)
+            {
+                donHangDto.XCT5s = listDonHang.ToList();
+            }
+            donHangDto.Tong_so_luong = donHangDto.XCT5s.Sum(x => x.So_luong);
+
+            // khách hàng
+            var khachHang = _dMKHService.GetByPassport(txtCCCD.Text.Trim());
+            donHangDto.Xnc_ngay_cap = khachHang.Xnc_ngay_cap;
+            donHangDto.Xnc_ngay_hh = khachHang.Xnc_ngay_hh;
+            donHangDto.So_hieu = khachHang.So_hieu;
+            donHangDto.Ten_tau_bay = khachHang.Ten_tau_bay;
+            donHangDto.Han_muc = khachHang.Han_muc;
+
+            // Cửa hàng
+            donHangDto.Ma_nhom_kh = AppGlobals.DMCuaHang.Ma_nhom_kh;
+            donHangDto.Ma_loai_hinh = AppGlobals.DMCuaHang.Ma_loai_hinh;
+            donHangDto.Ma_doi_tuong = AppGlobals.DMCuaHang.Ma_doi_tuong;
+            return donHangDto;
+        }
+
+        public void OpenEditForm(XPH5Dto newDonHang)
+        {
+            this.Hide();
+            // Nếu form là dạng modal (ShowDialog)
+            var donHang = ActivatorUtilities.CreateInstance<DonHang>(Program.ServiceProvider, newDonHang);
+            donHang.ShowDialog();
         }
 
         private void TxtTNNT_TextChanged(object sender, EventArgs e)
@@ -298,6 +531,7 @@ namespace GPBH.UI.Forms
                     var soTienNT = (soTienQuyDoi * TyGiaCuaHang.Ty_gia) / tyGiaNT.Ty_gia;
                     txtTTNT1.Text = soTienNT.ToString("N2");
                 }
+                txtTGTT1.Value = (double)tyGiaNT.Ty_gia;
             }
             finally
             {
@@ -337,6 +571,7 @@ namespace GPBH.UI.Forms
                     var soTienNT = (soTienQuyDoi * TyGiaCuaHang.Ty_gia) / tyGiaNT.Ty_gia;
                     txtTTNT2.Text = soTienNT.ToString("N2");
                 }
+                txtTGTT2.Value = (double)tyGiaNT.Ty_gia;
             }
             finally
             {
@@ -376,6 +611,7 @@ namespace GPBH.UI.Forms
                     var soTienNT = (soTienQuyDoi * TyGiaCuaHang.Ty_gia) / tyGiaNT.Ty_gia;
                     txtTTNT3.Text = soTienNT.ToString("N2");
                 }
+                txtTGTT3.Value = (double)tyGiaNT.Ty_gia;
             }
             finally
             {
@@ -416,6 +652,7 @@ namespace GPBH.UI.Forms
 
                     txtQDTTNT1.Text = soTienQuyDoi.ToString("N2");
                 }
+                txtTGTT1.Value = (double)tyGia.Ty_gia;
             }
             finally
             {
@@ -456,6 +693,7 @@ namespace GPBH.UI.Forms
 
                     txtQDTTNT2.Text = soTienQuyDoi.ToString("N2");
                 }
+                txtTGTT2.Value = (double)tyGia.Ty_gia;
             }
             finally
             {
@@ -496,6 +734,7 @@ namespace GPBH.UI.Forms
 
                     txtQDTTNT3.Text = soTienQuyDoi.ToString("N2");
                 }
+                txtTGTT3.Value = (double)tyGia.Ty_gia;
             }
             finally
             {
@@ -545,8 +784,9 @@ namespace GPBH.UI.Forms
             int stt = 1;
             foreach (DataGridViewRow row in dataGridViewX1.Rows)
             {
+                var item = row.DataBoundItem as XCT5Dto;
                 if (row.IsNewRow) continue; // Bỏ qua dòng trống cuối cùng để nhập mới
-                row.Cells["STT"].Value = stt++;
+                item.Stt = stt++;
             }
         }
 
@@ -556,33 +796,27 @@ namespace GPBH.UI.Forms
         /// <param name="e">Event args chứa thông tin hàng hóa</param>
         private void AddOrUpdateHangHoaToGrid(HangHoaSelectedEventArgs e)
         {
-            bool found = false;
-            foreach (DataGridViewRow row in dataGridViewX1.Rows)
+            // Tìm xem mã hàng đã có trong list chưa
+            var existed = listChiTiet.FirstOrDefault(x => x.Ma_hh == e.MaHH);
+            if (existed != null)
             {
-                if (row.IsNewRow) continue;
-                var cellValue = row.Cells["Ma_hh"].Value?.ToString();
-                if (cellValue == e.MaHH)
+                existed.So_luong += 1;
+                TinhToanRow(existed);
+            }
+            else
+            {
+                var newItem = new XCT5Dto
                 {
-                    int currentQty = 0;
-                    int.TryParse(row.Cells["So_luong"].Value?.ToString(), out currentQty);
-                    row.Cells["So_luong"].Value = currentQty + 1;
-                    found = true;
-                    TinhToanRow(row.Index);
-                    TinhTongCong();
-                    break;
-                }
+                    Ma_hh = e.MaHH,
+                    Ten_hh = e.TenHH,
+                    Dvt = e.Dvt,
+                    So_luong = 1,
+                    Gg_ty_le = 0 // gán mặc định nếu có
+                };
+                TinhToanRow(newItem);
+                listChiTiet.Add(newItem);
             }
-            if (!found)
-            {
-                int idx = dataGridViewX1.Rows.Add();
-                var newRow = dataGridViewX1.Rows[idx];
-                newRow.Cells["Ma_hh"].Value = e.MaHH;
-                newRow.Cells["Ten_hh"].Value = e.TenHH;
-                newRow.Cells["So_luong"].Value = 1;
-                TinhToanRow(newRow.Index);
-                TinhTongCong();
-            }
-
+            TinhTongCong();
             UpdateSTT();
         }
 
@@ -619,14 +853,13 @@ namespace GPBH.UI.Forms
             ucHangHoaPopup.ShowDropDown();
         }
 
-        private void TinhToanRow(int rowIndex)
+        private void TinhToanRow(XCT5Dto item)
         {
-            var maHang = dataGridViewX1.Rows[rowIndex].Cells["Ma_hh"].Value?.ToString();
             // get Giá bán
-            var giaBanHH = _dMHHService.GiaBanHangHoa(maHang, AppGlobals.DMCuaHang.Ma_nt);
+            var giaBanHH = _dMHHService.GiaBanHangHoa(item.Ma_hh, AppGlobals.DMCuaHang.Ma_nt);
             if (giaBanHH == null)
             {
-                MessageBox.Show($"Không tìm thấy giá bán cho hàng hóa {maHang} trong ngày {DateTime.Now.ToShortDateString()}");
+                MessageBox.Show($"Không tìm thấy giá bán cho hàng hóa {item.Ma_hh} trong ngày {DateTime.Now.ToShortDateString()}");
                 return;
             }
 
@@ -639,27 +872,23 @@ namespace GPBH.UI.Forms
             var giaNT = giaBanHH?.Gia_ban ?? 0;
             var giaVND = giaBanHH?.Gia_ban * giaBanHH.TyGiaNT.Ty_gia;
 
-            var row = dataGridViewX1.Rows[rowIndex];
-            row.Cells["Gia_ban_nt"].Value = giaNT;
-            row.Cells["Gia_ban"].Value = giaVND;
+            item.Gia_ban_nt = giaNT;
+            item.Gia_ban = giaVND;
 
-            if (
-                decimal.TryParse(row.Cells["So_luong"].Value?.ToString(), out decimal soLuong)
-                && decimal.TryParse(row.Cells["Gia_ban"].Value?.ToString(), out decimal giaBan)
-                && decimal.TryParse(row.Cells["Gia_ban_nt"].Value?.ToString(), out decimal giaBanNT)
-                && decimal.TryParse(row.Cells["Gg_ty_le"].Value?.ToString(), out decimal giamGiaTyle)
-                )
+            if (item.So_luong.HasValue && item.Gia_ban.HasValue && item.Gia_ban_nt.HasValue && item.Gg_ty_le.HasValue)
             {
-                var tienGiamNT = soLuong * giaNT * giamGiaTyle / 100;
-                var tienGiamVND = soLuong * giaVND * giamGiaTyle / 100;
+                var tienGiamNT = item.So_luong * giaNT * item.Gg_ty_le / 100;
+                var tienGiamVND = item.So_luong * giaVND * item.Gg_ty_le / 100;
 
-                row.Cells["Gg_tien_nt"].Value = tienGiamNT;
-                row.Cells["Gg_tien"].Value = tienGiamVND;
+                item.Gg_tien_nt = tienGiamNT;
+                item.Gg_tien = tienGiamVND;
 
-                var thanhTienNT = soLuong * giaBanNT - tienGiamNT;
-                row.Cells["Tien_ban_nt"].Value = thanhTienNT;
-                row.Cells["Tien_ban"].Value = thanhTienNT * giaBanHH.TyGiaNT.Ty_gia;
+                var thanhTienNT = item.So_luong * item.Gia_ban_nt - tienGiamNT;
+                item.Tien_ban_nt = thanhTienNT;
+                item.Tien_ban = thanhTienNT * giaBanHH.TyGiaNT.Ty_gia;
             }
+
+            dataGridViewX1.Refresh();
         }
 
         private void TinhTongCong()
@@ -669,18 +898,17 @@ namespace GPBH.UI.Forms
             decimal tongThu = 0;
             foreach (DataGridViewRow row in dataGridViewX1.Rows)
             {
-                if (!row.IsNewRow && decimal.TryParse(row.Cells["Gia_ban_nt"].Value?.ToString(), out decimal giaTienNT)
-                    && decimal.TryParse(row.Cells["So_luong"].Value?.ToString(), out decimal soluong)
-                    && decimal.TryParse(row.Cells["Gg_tien_nt"].Value?.ToString(), out decimal tienGiamNT))
+                var item = row.DataBoundItem as XCT5Dto;
+                if (!row.IsNewRow && item.Gia_ban_nt.HasValue && item.So_luong.HasValue && item.Gg_tien_nt.HasValue)
                 {
-                    tongTienHang += giaTienNT * soluong;
-                    tienGiam += tienGiamNT;
+                    tongTienHang += item.Gia_ban_nt.Value * item.So_luong.Value;
+                    tienGiam += item.Gg_tien_nt.Value;
                     tongThu += tongTienHang - tienGiam;
                 }
             }
 
-            txtTTH.Text = tongTienHang.ToString("N2");
-            txtTG.Text = tienGiam.ToString("N2");
+            txtTTHNT.Text = tongTienHang.ToString("N2");
+            txtTGNT.Text = tienGiam.ToString("N2");
             txtTT.Text = (tongTienHang - tienGiam).ToString("N2");
             txtTQDVND.Text = (tongThu * TyGiaCuaHang.Ty_gia).ToString("N2");
 
@@ -760,39 +988,27 @@ namespace GPBH.UI.Forms
         }
 
 
+        /// <summary>
+        /// Xử lý khi kết thúc edit một cell: cập nhật lại object, tính toán lại nếu cần.
+        /// </summary>
         private void dataGridViewX1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
+            var item = dataGridViewX1.Rows[e.RowIndex].DataBoundItem as XCT5Dto;
+            if (item == null) return;
+
             var col = dataGridViewX1.Columns[e.ColumnIndex];
-            var columsFormatNumber = new List<string> { "So_luong", "Gia_ban_nt", "Gia_ban", "Gg_ty_le", "Gg_tien", "Tien_ban", "Gg_tien_nt", "Tien_ban_nt" };
-            if (columsFormatNumber.Contains(col.Name)) // hoặc tên cột bạn muốn format số
+            var columnsFormatNumber = new List<string> { "So_luong", "Gia_ban_nt", "Gia_ban", "Gg_ty_le", "Gg_tien", "Tien_ban", "Gg_tien_nt", "Tien_ban_nt" };
+            if (columnsFormatNumber.Contains(col.Name))
             {
-                var cell = dataGridViewX1.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                if (cell.Value != null)
-                {
-                    // Thử chuyển thành số (decimal hoặc double tuỳ ý)
-                    if (decimal.TryParse(cell.Value.ToString(), out decimal result))
-                        if (col.Name == "Gg_ty_le" && (result < 1 || result > 99))
-                        {
-                            cell.Value = 1;
-                        }
-                        else
-                        {
-                            cell.Value = result; // Khi đó format sẽ tự động áp dụng
-                        }
-                    else
-                    {
-                        cell.Value = 1;
-                    }
-                }
+                // Nếu Gg_ty_le nhập ngoài khoảng 1-99 thì về 1
+                if (col.Name == "Gg_ty_le" && (item.Gg_ty_le < 1 || item.Gg_ty_le > 99))
+                    item.Gg_ty_le = 1;
 
-                // Tính toán lại dòng hiện tại (nếu cần)
-                TinhToanRow(e.RowIndex);
-
-                // Tính lại tổng cộng toàn lưới (nếu cần)
+                // Tính toán lại dòng và tổng
+                TinhToanRow(item);
                 TinhTongCong();
             }
         }
-
         #endregion
     }
 }

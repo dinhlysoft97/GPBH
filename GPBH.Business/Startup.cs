@@ -19,6 +19,8 @@ namespace GPBH.Business
             services.AddScoped<DMNTService>();
             services.AddScoped<DMHHService>();
             services.AddScoped<DMTGService>();
+            services.AddScoped<SoPhieuGeneratorService>();
+            services.AddScoped<DonHangService>();
         }
     }
 }

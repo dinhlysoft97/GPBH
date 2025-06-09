@@ -31,7 +31,7 @@ namespace GPBH.Data.Configurations
                 .HasMaxLength(3);
 
             Property(t => t.So_chung_tu)
-                .HasMaxLength(20);
+                .HasMaxLength(50);
 
             Property(t => t.Ngay_chung_tu);
 
@@ -111,7 +111,7 @@ namespace GPBH.Data.Configurations
             Property(t => t.Tt3_ma_nt)
                 .HasMaxLength(3);
 
-            Property(t => t.Tl3_tien_tt)
+            Property(t => t.Tt3_tien_tt)
                 .HasPrecision(19, 4);
 
             Property(t => t.Tt3_ty_gia)
@@ -174,7 +174,6 @@ namespace GPBH.Data.Configurations
 
             Property(t => t.Ma_doi_tuong)
                 .HasMaxLength(20);
-
 
             // Relationships
             HasRequired(x => x.SysDMCuaHang)

@@ -27,7 +27,7 @@
         public string Dau_so { get; set; }
 
         // Độ rộng số phiếu tự tăng
-        public int? So_phieu { get; set; }
+        public int So_phieu { get; set; }
 
         // Phần cuối số phiếu
         public string Cuoi_so { get; set; }

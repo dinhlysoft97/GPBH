@@ -37,12 +37,12 @@ namespace GPBH.Data.Configurations
                 .HasMaxLength(50);
 
             Property(t => t.Dau_so)
-                .HasMaxLength(20);
+                .HasMaxLength(50);
 
             Property(t => t.So_phieu);
 
             Property(t => t.Cuoi_so)
-                .HasMaxLength(20);
+                .HasMaxLength(50);
 
             Property(t => t.Cach_danh_so)
                 .HasMaxLength(1);

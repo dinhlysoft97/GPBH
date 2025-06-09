@@ -40,6 +40,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Mapster, Version=4.1.1.0, Culture=neutral, PublicKeyToken=2f39883af23c29a8, processorArchitecture=MSIL">
+      <HintPath>..\packages\Mapster.4.1.1\lib\net45\Mapster.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=9.0.0.5, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.9.0.5\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
@@ -66,11 +69,15 @@
     <Compile Include="AppGlobals.cs" />
     <Compile Include="Dtos\GiaBanHangHoa.cs" />
     <Compile Include="Dtos\TyGiaNT.cs" />
+    <Compile Include="Dtos\XCT5Dto.cs" />
+    <Compile Include="Dtos\XPH5Dto.cs" />
     <Compile Include="Services\DMHHService.cs" />
     <Compile Include="Services\DMKHService.cs" />
     <Compile Include="Services\DMNTService.cs" />
     <Compile Include="Services\DMQGService.cs" />
     <Compile Include="Services\DMTGService.cs" />
+    <Compile Include="Services\DonHangService.cs" />
+    <Compile Include="Services\SoPhieuGeneratorService.cs" />
     <Compile Include="Services\SysDMCuaHangService.cs" />
     <Compile Include="Services\SysDMNSDService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

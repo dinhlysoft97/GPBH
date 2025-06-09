@@ -31,7 +31,7 @@ namespace GPBH.UI.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -40,11 +40,10 @@ namespace GPBH.UI.Forms
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.lbTGNT = new DevComponents.DotNetBar.LabelX();
             this.lbNgayHoaDon = new DevComponents.DotNetBar.LabelX();
-            this.lbSDH = new DevComponents.DotNetBar.LabelX();
+            this.lbSCT = new DevComponents.DotNetBar.LabelX();
             this.lbCa = new DevComponents.DotNetBar.LabelX();
             this.labelX13 = new DevComponents.DotNetBar.LabelX();
             this.lbQuay = new DevComponents.DotNetBar.LabelX();
@@ -68,9 +67,10 @@ namespace GPBH.UI.Forms
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.groupPanel3 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Stt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ma_hh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ten_hh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Dvt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.So_luong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Gia_ban_nt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Gia_ban = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -79,7 +79,7 @@ namespace GPBH.UI.Forms
             this.Gg_tien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tien_ban_nt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tien_ban = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Gg_ly_do = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bar1 = new DevComponents.DotNetBar.Bar();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -110,9 +110,9 @@ namespace GPBH.UI.Forms
             this.labelX28 = new DevComponents.DotNetBar.LabelX();
             this.txtTT = new DevComponents.Editors.DoubleInput();
             this.labelX29 = new DevComponents.DotNetBar.LabelX();
-            this.txtTG = new DevComponents.Editors.DoubleInput();
+            this.txtTGNT = new DevComponents.Editors.DoubleInput();
             this.lbTongThu = new DevComponents.DotNetBar.LabelX();
-            this.txtTTH = new DevComponents.Editors.DoubleInput();
+            this.txtTTHNT = new DevComponents.Editors.DoubleInput();
             this.labelX27 = new DevComponents.DotNetBar.LabelX();
             this.lbGiamGia = new DevComponents.DotNetBar.LabelX();
             this.labelX25 = new DevComponents.DotNetBar.LabelX();
@@ -127,8 +127,6 @@ namespace GPBH.UI.Forms
             this.labelItem2 = new DevComponents.DotNetBar.LabelItem();
             this.labelItem3 = new DevComponents.DotNetBar.LabelItem();
             this.labelItem4 = new DevComponents.DotNetBar.LabelItem();
-            this.labelItem5 = new DevComponents.DotNetBar.LabelItem();
-            this.labelItem6 = new DevComponents.DotNetBar.LabelItem();
             this.labelItem7 = new DevComponents.DotNetBar.LabelItem();
             this.labelItem8 = new DevComponents.DotNetBar.LabelItem();
             this.labelItem9 = new DevComponents.DotNetBar.LabelItem();
@@ -136,6 +134,8 @@ namespace GPBH.UI.Forms
             this.labelItem11 = new DevComponents.DotNetBar.LabelItem();
             this.labelItem12 = new DevComponents.DotNetBar.LabelItem();
             this.labelItem13 = new DevComponents.DotNetBar.LabelItem();
+            this.labelItem14 = new DevComponents.DotNetBar.LabelItem();
+            this.labelItem15 = new DevComponents.DotNetBar.LabelItem();
             this.labelX34 = new DevComponents.DotNetBar.LabelX();
             this.lbTraLai = new DevComponents.DotNetBar.LabelX();
             this.labelX37 = new DevComponents.DotNetBar.LabelX();
@@ -145,6 +145,12 @@ namespace GPBH.UI.Forms
             this.txtTNNT = new DevComponents.Editors.DoubleInput();
             this.txtTLNT = new DevComponents.Editors.DoubleInput();
             this.txtQDTLNT = new DevComponents.Editors.DoubleInput();
+            this.txtTGTT1 = new DevComponents.Editors.DoubleInput();
+            this.txtTGTT2 = new DevComponents.Editors.DoubleInput();
+            this.txtTGTT3 = new DevComponents.Editors.DoubleInput();
+            this.lbSoChungTu = new DevComponents.DotNetBar.LabelX();
+            this.lbMaPhieu = new DevComponents.DotNetBar.LabelX();
+            this.labelX10 = new DevComponents.DotNetBar.LabelX();
             this.ucHangHoa = new GPBH.UI.UserControls.ucHangHoa();
             this.groupPanel2.SuspendLayout();
             this.groupPanel1.SuspendLayout();
@@ -166,13 +172,16 @@ namespace GPBH.UI.Forms
             this.groupPanel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtTQDVND)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTT)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTG)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTTH)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTGNT)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTTHNT)).BeginInit();
             this.groupPanel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bar2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTNNT)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTLNT)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtQDTLNT)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTGTT1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTGTT2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTGTT3)).BeginInit();
             this.SuspendLayout();
             // 
             // groupPanel2
@@ -182,9 +191,12 @@ namespace GPBH.UI.Forms
             this.groupPanel2.BackColor = System.Drawing.Color.LightGray;
             this.groupPanel2.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanel2.Controls.Add(this.lbMaPhieu);
+            this.groupPanel2.Controls.Add(this.labelX10);
+            this.groupPanel2.Controls.Add(this.lbSoChungTu);
             this.groupPanel2.Controls.Add(this.lbTGNT);
             this.groupPanel2.Controls.Add(this.lbNgayHoaDon);
-            this.groupPanel2.Controls.Add(this.lbSDH);
+            this.groupPanel2.Controls.Add(this.lbSCT);
             this.groupPanel2.Controls.Add(this.lbCa);
             this.groupPanel2.Controls.Add(this.labelX13);
             this.groupPanel2.Controls.Add(this.lbQuay);
@@ -239,7 +251,7 @@ namespace GPBH.UI.Forms
             // 
             this.lbTGNT.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.lbTGNT.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTGNT.Location = new System.Drawing.Point(497, 52);
+            this.lbTGNT.Location = new System.Drawing.Point(594, 30);
             this.lbTGNT.Margin = new System.Windows.Forms.Padding(2);
             this.lbTGNT.Name = "lbTGNT";
             this.lbTGNT.Size = new System.Drawing.Size(65, 15);
@@ -255,28 +267,28 @@ namespace GPBH.UI.Forms
             // 
             this.lbNgayHoaDon.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.lbNgayHoaDon.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbNgayHoaDon.Location = new System.Drawing.Point(344, 57);
+            this.lbNgayHoaDon.Location = new System.Drawing.Point(594, 57);
             this.lbNgayHoaDon.Margin = new System.Windows.Forms.Padding(2);
             this.lbNgayHoaDon.Name = "lbNgayHoaDon";
             this.lbNgayHoaDon.Size = new System.Drawing.Size(89, 15);
             this.lbNgayHoaDon.TabIndex = 27;
             this.lbNgayHoaDon.Text = "Ngày: 26/06/2025";
             // 
-            // lbSDH
+            // lbSCT
             // 
-            this.lbSDH.AutoSize = true;
-            this.lbSDH.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.lbSCT.AutoSize = true;
+            this.lbSCT.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             // 
             // 
             // 
-            this.lbSDH.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lbSDH.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbSDH.Location = new System.Drawing.Point(343, 30);
-            this.lbSDH.Margin = new System.Windows.Forms.Padding(2);
-            this.lbSDH.Name = "lbSDH";
-            this.lbSDH.Size = new System.Drawing.Size(107, 15);
-            this.lbSDH.TabIndex = 26;
-            this.lbSDH.Text = "Số đơn hàng: 123123";
+            this.lbSCT.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lbSCT.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSCT.Location = new System.Drawing.Point(343, 30);
+            this.lbSCT.Margin = new System.Windows.Forms.Padding(2);
+            this.lbSCT.Name = "lbSCT";
+            this.lbSCT.Size = new System.Drawing.Size(70, 15);
+            this.lbSCT.TabIndex = 26;
+            this.lbSCT.Text = "Số chứng từ: ";
             // 
             // lbCa
             // 
@@ -674,9 +686,10 @@ namespace GPBH.UI.Forms
             this.dataGridViewX1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.STT,
+            this.Stt,
             this.Ma_hh,
             this.Ten_hh,
+            this.Dvt,
             this.So_luong,
             this.Gia_ban_nt,
             this.Gia_ban,
@@ -685,15 +698,15 @@ namespace GPBH.UI.Forms
             this.Gg_tien,
             this.Tien_ban_nt,
             this.Tien_ban,
-            this.Column6});
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle10;
+            this.Gg_ly_do});
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridViewX1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataGridViewX1.Location = new System.Drawing.Point(0, 40);
@@ -702,17 +715,12 @@ namespace GPBH.UI.Forms
             this.dataGridViewX1.Size = new System.Drawing.Size(1414, 381);
             this.dataGridViewX1.TabIndex = 1;
             // 
-            // STT
+            // Stt
             // 
-            this.STT.DataPropertyName = "STT";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.Format = "#,##0";
-            this.STT.DefaultCellStyle = dataGridViewCellStyle1;
-            this.STT.FillWeight = 88.71677F;
-            this.STT.HeaderText = "STT";
-            this.STT.MinimumWidth = 6;
-            this.STT.Name = "STT";
-            this.STT.ReadOnly = true;
+            this.Stt.DataPropertyName = "Stt";
+            this.Stt.HeaderText = "Stt";
+            this.Stt.Name = "Stt";
+            this.Stt.ReadOnly = true;
             // 
             // Ma_hh
             // 
@@ -732,12 +740,19 @@ namespace GPBH.UI.Forms
             this.Ten_hh.Name = "Ten_hh";
             this.Ten_hh.ReadOnly = true;
             // 
+            // Dvt
+            // 
+            this.Dvt.DataPropertyName = "Dvt";
+            this.Dvt.HeaderText = "Đơn vị tính";
+            this.Dvt.Name = "Dvt";
+            this.Dvt.ReadOnly = true;
+            // 
             // So_luong
             // 
             this.So_luong.DataPropertyName = "So_luong";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Format = "#,##0";
-            this.So_luong.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle1.Format = "#,##0";
+            this.So_luong.DefaultCellStyle = dataGridViewCellStyle1;
             this.So_luong.FillWeight = 99.17547F;
             this.So_luong.HeaderText = "Số lượng";
             this.So_luong.Name = "So_luong";
@@ -745,9 +760,9 @@ namespace GPBH.UI.Forms
             // Gia_ban_nt
             // 
             this.Gia_ban_nt.DataPropertyName = "Gia_ban_nt";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "#,##0.00";
-            this.Gia_ban_nt.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "#,##0.00";
+            this.Gia_ban_nt.DefaultCellStyle = dataGridViewCellStyle2;
             this.Gia_ban_nt.FillWeight = 101.808F;
             this.Gia_ban_nt.HeaderText = "Giá NT";
             this.Gia_ban_nt.Name = "Gia_ban_nt";
@@ -755,9 +770,9 @@ namespace GPBH.UI.Forms
             // Gia_ban
             // 
             this.Gia_ban.DataPropertyName = "Gia_ban";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "#,##0";
-            this.Gia_ban.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "#,##0";
+            this.Gia_ban.DefaultCellStyle = dataGridViewCellStyle3;
             this.Gia_ban.FillWeight = 103.379F;
             this.Gia_ban.HeaderText = "Giá VNĐ";
             this.Gia_ban.Name = "Gia_ban";
@@ -765,26 +780,27 @@ namespace GPBH.UI.Forms
             // Gg_ty_le
             // 
             this.Gg_ty_le.DataPropertyName = "Gg_ty_le";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.Gg_ty_le.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Gg_ty_le.DefaultCellStyle = dataGridViewCellStyle4;
             this.Gg_ty_le.FillWeight = 106.3268F;
             this.Gg_ty_le.HeaderText = "% Giảm";
             this.Gg_ty_le.Name = "Gg_ty_le";
             // 
             // Gg_tien_nt
             // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle6.Format = "#,##0.00";
-            this.Gg_tien_nt.DefaultCellStyle = dataGridViewCellStyle6;
+            this.Gg_tien_nt.DataPropertyName = "Gg_tien_nt";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "#,##0.00";
+            this.Gg_tien_nt.DefaultCellStyle = dataGridViewCellStyle5;
             this.Gg_tien_nt.HeaderText = "Tiền giảm NT";
             this.Gg_tien_nt.Name = "Gg_tien_nt";
             // 
             // Gg_tien
             // 
             this.Gg_tien.DataPropertyName = "Gg_tien";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle7.Format = "#,##0";
-            this.Gg_tien.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.Format = "#,##0";
+            this.Gg_tien.DefaultCellStyle = dataGridViewCellStyle6;
             this.Gg_tien.FillWeight = 106.7926F;
             this.Gg_tien.HeaderText = "Tiền giảm";
             this.Gg_tien.Name = "Gg_tien";
@@ -792,9 +808,9 @@ namespace GPBH.UI.Forms
             // Tien_ban_nt
             // 
             this.Tien_ban_nt.DataPropertyName = "Tien_ban_nt";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle8.Format = "#,##0.00";
-            this.Tien_ban_nt.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle7.Format = "#,##0.00";
+            this.Tien_ban_nt.DefaultCellStyle = dataGridViewCellStyle7;
             this.Tien_ban_nt.FillWeight = 103.449F;
             this.Tien_ban_nt.HeaderText = "Thành tiền NT";
             this.Tien_ban_nt.Name = "Tien_ban_nt";
@@ -802,18 +818,19 @@ namespace GPBH.UI.Forms
             // Tien_ban
             // 
             this.Tien_ban.DataPropertyName = "Tien_ban";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle9.Format = "#,##0";
-            this.Tien_ban.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle8.Format = "#,##0";
+            this.Tien_ban.DefaultCellStyle = dataGridViewCellStyle8;
             this.Tien_ban.FillWeight = 101.9336F;
             this.Tien_ban.HeaderText = "Thành tiền VNĐ";
             this.Tien_ban.Name = "Tien_ban";
             // 
-            // Column6
+            // Gg_ly_do
             // 
-            this.Column6.FillWeight = 100.1636F;
-            this.Column6.HeaderText = "Lý do giảm";
-            this.Column6.Name = "Column6";
+            this.Gg_ly_do.DataPropertyName = "Gg_ly_do";
+            this.Gg_ly_do.FillWeight = 100.1636F;
+            this.Gg_ly_do.HeaderText = "Lý do giảm";
+            this.Gg_ly_do.Name = "Gg_ly_do";
             // 
             // bar1
             // 
@@ -854,7 +871,7 @@ namespace GPBH.UI.Forms
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 61.20778F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38.79222F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 372F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 406F));
             this.tableLayoutPanel2.Controls.Add(this.groupPanel4, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.groupPanel6, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.groupPanel5, 2, 0);
@@ -871,6 +888,9 @@ namespace GPBH.UI.Forms
             this.groupPanel4.BackColor = System.Drawing.Color.LightGray;
             this.groupPanel4.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel4.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanel4.Controls.Add(this.txtTGTT3);
+            this.groupPanel4.Controls.Add(this.txtTGTT2);
+            this.groupPanel4.Controls.Add(this.txtTGTT1);
             this.groupPanel4.Controls.Add(this.txtQDNTTTT);
             this.groupPanel4.Controls.Add(this.txtQDTTNT3);
             this.groupPanel4.Controls.Add(this.txtQDTTNT2);
@@ -895,7 +915,7 @@ namespace GPBH.UI.Forms
             this.groupPanel4.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel4.Location = new System.Drawing.Point(3, 3);
             this.groupPanel4.Name = "groupPanel4";
-            this.groupPanel4.Size = new System.Drawing.Size(639, 187);
+            this.groupPanel4.Size = new System.Drawing.Size(618, 187);
             // 
             // 
             // 
@@ -1244,18 +1264,18 @@ namespace GPBH.UI.Forms
             this.groupPanel6.Controls.Add(this.labelX28);
             this.groupPanel6.Controls.Add(this.txtTT);
             this.groupPanel6.Controls.Add(this.labelX29);
-            this.groupPanel6.Controls.Add(this.txtTG);
+            this.groupPanel6.Controls.Add(this.txtTGNT);
             this.groupPanel6.Controls.Add(this.lbTongThu);
-            this.groupPanel6.Controls.Add(this.txtTTH);
+            this.groupPanel6.Controls.Add(this.txtTTHNT);
             this.groupPanel6.Controls.Add(this.labelX27);
             this.groupPanel6.Controls.Add(this.lbGiamGia);
             this.groupPanel6.Controls.Add(this.labelX25);
             this.groupPanel6.Controls.Add(this.lbTTH);
             this.groupPanel6.Controls.Add(this.labelX22);
             this.groupPanel6.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel6.Location = new System.Drawing.Point(648, 3);
+            this.groupPanel6.Location = new System.Drawing.Point(627, 3);
             this.groupPanel6.Name = "groupPanel6";
-            this.groupPanel6.Size = new System.Drawing.Size(402, 187);
+            this.groupPanel6.Size = new System.Drawing.Size(389, 187);
             // 
             // 
             // 
@@ -1350,21 +1370,21 @@ namespace GPBH.UI.Forms
             this.labelX29.TabIndex = 45;
             this.labelX29.Text = "Tổng quy đổi";
             // 
-            // txtTG
+            // txtTGNT
             // 
             // 
             // 
             // 
-            this.txtTG.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtTG.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.txtTG.DisplayFormat = "#,##0.00";
-            this.txtTG.Enabled = false;
-            this.txtTG.Increment = 1D;
-            this.txtTG.Location = new System.Drawing.Point(236, 65);
-            this.txtTG.Name = "txtTG";
-            this.txtTG.ShowUpDown = true;
-            this.txtTG.Size = new System.Drawing.Size(99, 20);
-            this.txtTG.TabIndex = 46;
+            this.txtTGNT.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtTGNT.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.txtTGNT.DisplayFormat = "#,##0.00";
+            this.txtTGNT.Enabled = false;
+            this.txtTGNT.Increment = 1D;
+            this.txtTGNT.Location = new System.Drawing.Point(236, 65);
+            this.txtTGNT.Name = "txtTGNT";
+            this.txtTGNT.ShowUpDown = true;
+            this.txtTGNT.Size = new System.Drawing.Size(99, 20);
+            this.txtTGNT.TabIndex = 46;
             // 
             // lbTongThu
             // 
@@ -1382,22 +1402,22 @@ namespace GPBH.UI.Forms
             this.lbTongThu.Text = "(USD)";
             this.lbTongThu.TextAlignment = System.Drawing.StringAlignment.Center;
             // 
-            // txtTTH
+            // txtTTHNT
             // 
             // 
             // 
             // 
-            this.txtTTH.BackgroundStyle.Class = "DateTimeInputBackground";
-            this.txtTTH.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtTTH.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.txtTTH.DisplayFormat = "#,##0.00";
-            this.txtTTH.Enabled = false;
-            this.txtTTH.Increment = 1D;
-            this.txtTTH.Location = new System.Drawing.Point(236, 31);
-            this.txtTTH.Name = "txtTTH";
-            this.txtTTH.ShowUpDown = true;
-            this.txtTTH.Size = new System.Drawing.Size(99, 20);
-            this.txtTTH.TabIndex = 45;
+            this.txtTTHNT.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.txtTTHNT.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtTTHNT.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.txtTTHNT.DisplayFormat = "#,##0.00";
+            this.txtTTHNT.Enabled = false;
+            this.txtTTHNT.Increment = 1D;
+            this.txtTTHNT.Location = new System.Drawing.Point(236, 31);
+            this.txtTTHNT.Name = "txtTTHNT";
+            this.txtTTHNT.ShowUpDown = true;
+            this.txtTTHNT.Size = new System.Drawing.Size(99, 20);
+            this.txtTTHNT.TabIndex = 45;
             // 
             // labelX27
             // 
@@ -1485,7 +1505,7 @@ namespace GPBH.UI.Forms
             this.groupPanel5.Controls.Add(this.lbTGNT2);
             this.groupPanel5.Controls.Add(this.lb1NTQuyDoi);
             this.groupPanel5.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel5.Location = new System.Drawing.Point(1056, 3);
+            this.groupPanel5.Location = new System.Drawing.Point(1022, 3);
             this.groupPanel5.Name = "groupPanel5";
             this.groupPanel5.Size = new System.Drawing.Size(315, 187);
             // 
@@ -1576,15 +1596,15 @@ namespace GPBH.UI.Forms
             this.labelItem2,
             this.labelItem3,
             this.labelItem4,
-            this.labelItem5,
-            this.labelItem6,
             this.labelItem7,
             this.labelItem8,
             this.labelItem9,
             this.labelItem10,
             this.labelItem11,
             this.labelItem12,
-            this.labelItem13});
+            this.labelItem13,
+            this.labelItem14,
+            this.labelItem15});
             this.bar2.Location = new System.Drawing.Point(0, 820);
             this.bar2.Name = "bar2";
             this.bar2.Size = new System.Drawing.Size(1426, 19);
@@ -1598,7 +1618,7 @@ namespace GPBH.UI.Forms
             // 
             this.labelItem1.ForeColor = System.Drawing.Color.Black;
             this.labelItem1.Name = "labelItem1";
-            this.labelItem1.Text = "F7: Hướng dẫn ";
+            this.labelItem1.Text = "F1: Hướng dẫn ";
             // 
             // labelItem2
             // 
@@ -1617,18 +1637,6 @@ namespace GPBH.UI.Forms
             this.labelItem4.ForeColor = System.Drawing.Color.Black;
             this.labelItem4.Name = "labelItem4";
             this.labelItem4.Text = "| ";
-            // 
-            // labelItem5
-            // 
-            this.labelItem5.ForeColor = System.Drawing.Color.Black;
-            this.labelItem5.Name = "labelItem5";
-            this.labelItem5.Text = "F5: Khuyến mãi và giảm giá ";
-            // 
-            // labelItem6
-            // 
-            this.labelItem6.ForeColor = System.Drawing.Color.Black;
-            this.labelItem6.Name = "labelItem6";
-            this.labelItem6.Text = "| ";
             // 
             // labelItem7
             // 
@@ -1669,7 +1677,21 @@ namespace GPBH.UI.Forms
             // 
             this.labelItem13.ForeColor = System.Drawing.Color.Black;
             this.labelItem13.Name = "labelItem13";
-            this.labelItem13.Text = "F12: Đóng";
+            this.labelItem13.Text = "F10: Nhập mã vạch ";
+            // 
+            // labelItem14
+            // 
+            this.labelItem14.BackColor = System.Drawing.Color.Transparent;
+            this.labelItem14.ForeColor = System.Drawing.Color.Black;
+            this.labelItem14.Name = "labelItem14";
+            this.labelItem14.Text = "| ";
+            // 
+            // labelItem15
+            // 
+            this.labelItem15.BackColor = System.Drawing.Color.Transparent;
+            this.labelItem15.ForeColor = System.Drawing.Color.Black;
+            this.labelItem15.Name = "labelItem15";
+            this.labelItem15.Text = "F12: Lưu tạm";
             // 
             // labelX34
             // 
@@ -1808,6 +1830,97 @@ namespace GPBH.UI.Forms
             this.txtQDTLNT.Size = new System.Drawing.Size(99, 20);
             this.txtQDTLNT.TabIndex = 51;
             // 
+            // txtTGTT1
+            // 
+            // 
+            // 
+            // 
+            this.txtTGTT1.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.txtTGTT1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtTGTT1.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.txtTGTT1.Increment = 1D;
+            this.txtTGTT1.Location = new System.Drawing.Point(120, 3);
+            this.txtTGTT1.Name = "txtTGTT1";
+            this.txtTGTT1.ShowUpDown = true;
+            this.txtTGTT1.Size = new System.Drawing.Size(98, 20);
+            this.txtTGTT1.TabIndex = 45;
+            // 
+            // txtTGTT2
+            // 
+            // 
+            // 
+            // 
+            this.txtTGTT2.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.txtTGTT2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtTGTT2.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.txtTGTT2.Increment = 1D;
+            this.txtTGTT2.Location = new System.Drawing.Point(230, 3);
+            this.txtTGTT2.Name = "txtTGTT2";
+            this.txtTGTT2.ShowUpDown = true;
+            this.txtTGTT2.Size = new System.Drawing.Size(98, 20);
+            this.txtTGTT2.TabIndex = 46;
+            // 
+            // txtTGTT3
+            // 
+            // 
+            // 
+            // 
+            this.txtTGTT3.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.txtTGTT3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtTGTT3.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.txtTGTT3.Increment = 1D;
+            this.txtTGTT3.Location = new System.Drawing.Point(344, 3);
+            this.txtTGTT3.Name = "txtTGTT3";
+            this.txtTGTT3.ShowUpDown = true;
+            this.txtTGTT3.Size = new System.Drawing.Size(98, 20);
+            this.txtTGTT3.TabIndex = 47;
+            // 
+            // lbSoChungTu
+            // 
+            this.lbSoChungTu.AutoSize = true;
+            this.lbSoChungTu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            // 
+            // 
+            // 
+            this.lbSoChungTu.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lbSoChungTu.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSoChungTu.Location = new System.Drawing.Point(413, 30);
+            this.lbSoChungTu.Margin = new System.Windows.Forms.Padding(2);
+            this.lbSoChungTu.Name = "lbSoChungTu";
+            this.lbSoChungTu.Size = new System.Drawing.Size(25, 15);
+            this.lbSoChungTu.TabIndex = 29;
+            // 
+            // lbMaPhieu
+            // 
+            this.lbMaPhieu.AutoSize = true;
+            this.lbMaPhieu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            // 
+            // 
+            // 
+            this.lbMaPhieu.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lbMaPhieu.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbMaPhieu.Location = new System.Drawing.Point(413, 57);
+            this.lbMaPhieu.Margin = new System.Windows.Forms.Padding(2);
+            this.lbMaPhieu.Name = "lbMaPhieu";
+            this.lbMaPhieu.Size = new System.Drawing.Size(25, 15);
+            this.lbMaPhieu.TabIndex = 31;
+            // 
+            // labelX10
+            // 
+            this.labelX10.AutoSize = true;
+            this.labelX10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            // 
+            // 
+            // 
+            this.labelX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelX10.Location = new System.Drawing.Point(343, 57);
+            this.labelX10.Margin = new System.Windows.Forms.Padding(2);
+            this.labelX10.Name = "labelX10";
+            this.labelX10.Size = new System.Drawing.Size(51, 15);
+            this.labelX10.TabIndex = 30;
+            this.labelX10.Text = "Mã phiếu:";
+            // 
             // ucHangHoa
             // 
             this.ucHangHoa.Location = new System.Drawing.Point(156, 9);
@@ -1866,14 +1979,17 @@ namespace GPBH.UI.Forms
             this.groupPanel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtTQDVND)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTT)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTG)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTTH)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTGNT)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTTHNT)).EndInit();
             this.groupPanel5.ResumeLayout(false);
             this.groupPanel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bar2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTNNT)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTLNT)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtQDTLNT)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTGTT1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTGTT2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTGTT3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1897,8 +2013,6 @@ namespace GPBH.UI.Forms
         private DevComponents.DotNetBar.LabelItem labelItem2;
         private DevComponents.DotNetBar.LabelItem labelItem3;
         private DevComponents.DotNetBar.LabelItem labelItem4;
-        private DevComponents.DotNetBar.LabelItem labelItem5;
-        private DevComponents.DotNetBar.LabelItem labelItem6;
         private DevComponents.DotNetBar.LabelItem labelItem7;
         private DevComponents.DotNetBar.LabelItem labelItem8;
         private DevComponents.DotNetBar.LabelItem labelItem9;
@@ -1956,18 +2070,6 @@ namespace GPBH.UI.Forms
         private DevComponents.DotNetBar.LabelX lbTongNhan;
         private DevComponents.DotNetBar.LabelX labelX32;
         private UserControls.ucHangHoa ucHangHoa;
-        private System.Windows.Forms.DataGridViewTextBoxColumn STT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ma_hh;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ten_hh;
-        private System.Windows.Forms.DataGridViewTextBoxColumn So_luong;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Gia_ban_nt;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Gia_ban;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Gg_ty_le;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Gg_tien_nt;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Gg_tien;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Tien_ban_nt;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Tien_ban;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private DevComponents.Editors.DoubleInput txtTTNT3;
         private DevComponents.Editors.DoubleInput txtTTNT2;
         private DevComponents.Editors.DoubleInput txtTTNT1;
@@ -1979,11 +2081,32 @@ namespace GPBH.UI.Forms
         private DevComponents.Editors.DoubleInput txtTLNT;
         private DevComponents.Editors.DoubleInput txtTQDVND;
         private DevComponents.Editors.DoubleInput txtTT;
-        private DevComponents.Editors.DoubleInput txtTG;
+        private DevComponents.Editors.DoubleInput txtTGNT;
         private DevComponents.Editors.DoubleInput txtQDTLNT;
-        private DevComponents.Editors.DoubleInput txtTTH;
-        private DevComponents.DotNetBar.LabelX lbSDH;
+        private DevComponents.Editors.DoubleInput txtTTHNT;
+        private DevComponents.DotNetBar.LabelX lbSCT;
         private DevComponents.DotNetBar.LabelX lbTGNT;
         private DevComponents.DotNetBar.LabelX lbNgayHoaDon;
+        private DevComponents.DotNetBar.LabelItem labelItem14;
+        private DevComponents.DotNetBar.LabelItem labelItem15;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Stt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ma_hh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ten_hh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Dvt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn So_luong;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Gia_ban_nt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Gia_ban;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Gg_ty_le;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Gg_tien_nt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Gg_tien;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tien_ban_nt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tien_ban;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Gg_ly_do;
+        private DevComponents.Editors.DoubleInput txtTGTT3;
+        private DevComponents.Editors.DoubleInput txtTGTT2;
+        private DevComponents.Editors.DoubleInput txtTGTT1;
+        private DevComponents.DotNetBar.LabelX lbSoChungTu;
+        private DevComponents.DotNetBar.LabelX lbMaPhieu;
+        private DevComponents.DotNetBar.LabelX labelX10;
     }
 }

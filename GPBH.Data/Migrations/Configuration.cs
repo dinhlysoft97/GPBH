@@ -40,6 +40,53 @@ namespace GPBH.Data.Migrations
 
             // Add DM giá bán
             ADDDanhMucGiaBan(context);
+
+            // Add SysDMCT
+            AddSysDMCT(context);
+        }
+
+        private void AddSysDMCT(AppDbContext context)
+        {
+            if (!context.SysDMCT.Any())
+            {
+                var sysDMCTList = new List<SysDMCT>
+                {
+                    new SysDMCT
+                    {
+                        Ma_cua_hang = "CH01",
+                        Ma_chung_tu = "X05",
+                        Ma_nt = "USD",
+                        So_lien = 2,
+                        Sp_xu_ly = "sp_XuLyPhieuXuatKho",
+                        Ph = "XPH5",
+                        Ct = "XCT5",
+                        Dau_so = "X05/{mm}/{yyyy}-",
+                        So_phieu = 5,
+                        Cuoi_so = "-ABC",
+                        Cach_danh_so = "1", // Theo tháng
+                        PhFieldlist2IN = "Ma_phieu,Ngay_lap,Ten_kh,Dia_chi",
+                        CtFieldlist2IN = "Ma_vt,Ten_vt,So_luong,Don_gia"
+                    },
+                    new SysDMCT
+                    {
+                        Ma_cua_hang = "CH02",
+                        Ma_chung_tu = "X05",
+                        Ma_nt = "USD",
+                        So_lien = 1,
+                        Sp_xu_ly = "sp_XuLyPhieuNhapKho",
+                        Ph = "XPH5",
+                        Ct = "XCT5",
+                        Dau_so = "PNK/{yy}-",
+                        So_phieu = 4,
+                        Cuoi_so = "",
+                        Cach_danh_so = "0", // Theo năm
+                        PhFieldlist2IN = "Ma_phieu,Ngay_lap,Ten_ncc,Dia_chi",
+                        CtFieldlist2IN = "Ma_vt,Ten_vt,So_luong,Don_gia"
+                    }
+                 };
+                context.SysDMCT.AddRange(sysDMCTList);
+                context.SaveChanges();
+            }
         }
 
         private void ADDDanhMucGiaBan(AppDbContext context)
@@ -103,13 +150,13 @@ namespace GPBH.Data.Migrations
             {
                 var fakeTyGiaList = new List<DMTG>
                 {
-                    new DMTG { Ma_nt = "VND", Ty_gia = 1.0m, Ngay_ap_dung = DateTime.Now },
-                    new DMTG { Ma_nt = "USD", Ty_gia = 23000.0m, Ngay_ap_dung = new DateTime(2025,06,12)  },
+                    new DMTG { Ma_nt = "VND", Ty_gia = 1.0m, Ngay_ap_dung = new DateTime(2025,06,01) },
+                    new DMTG { Ma_nt = "USD", Ty_gia = 23000.0m, Ngay_ap_dung = new DateTime(2025,06,12) },
                     new DMTG { Ma_nt = "USD", Ty_gia = 24000.0m, Ngay_ap_dung = new DateTime(2025,06,01) },
-                    new DMTG { Ma_nt = "EUR", Ty_gia = 25000.0m, Ngay_ap_dung = DateTime.Now },
-                    new DMTG { Ma_nt = "JPY", Ty_gia = 200.0m, Ngay_ap_dung = DateTime.Now },
-                    new DMTG { Ma_nt = "THB", Ty_gia = 700.0m, Ngay_ap_dung = DateTime.Now },
-                    new DMTG { Ma_nt = "AUD", Ty_gia = 15000.0m, Ngay_ap_dung = DateTime.Now }
+                    new DMTG { Ma_nt = "EUR", Ty_gia = 25000.0m, Ngay_ap_dung = new DateTime(2025,06,01) },
+                    new DMTG { Ma_nt = "JPY", Ty_gia = 200.0m, Ngay_ap_dung = new DateTime(2025, 06, 01) },
+                    new DMTG { Ma_nt = "THB", Ty_gia = 700.0m, Ngay_ap_dung = new DateTime(2025, 06, 01) },
+                    new DMTG { Ma_nt = "AUD", Ty_gia = 15000.0m, Ngay_ap_dung = new DateTime(2025, 06, 01)}
                 };
 
                 context.DMTG.AddRange(fakeTyGiaList);

@@ -21,6 +21,10 @@ namespace GPBH.Data
 
         public IEnumerable<T> Find(Expression<Func<T, bool>> predicate)
             => Context.Set<T>().Where(predicate);
+        public bool Any(Expression<Func<T, bool>> predicate)
+        {
+            return Context.Set<T>().Any(predicate);
+        }
 
         public void Add(T entity) => Context.Set<T>().Add(entity);
 

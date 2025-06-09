@@ -100,12 +100,12 @@ namespace GPBH.UI.Forms
             txtTenDem.Text = "";
             txtDiaChi.Text = "";
             txtSDT.Text = "";
-            dtNgayCap.Value = DateTime.Now;
-            dtHetHan.Value = DateTime.Now;
-            dtNgaySinh.Value = DateTime.Now;
+            dtNgayCap.IsEmpty = true;
+            dtHetHan.IsEmpty = true;
+            dtNgaySinh.IsEmpty = true;
             txtEmail.Text = "";
-            dtTTXNCNgayCap.Value = DateTime.Now;
-            dtTTXNCHetHan.Value = DateTime.Now;
+            dtTTXNCNgayCap.IsEmpty = true;
+            dtTTXNCHetHan.IsEmpty = true;
             txPhuongTien.Text = "";
             txtTauBay.Text = "";
             txtTongTien.Text = "0";
@@ -154,16 +154,16 @@ namespace GPBH.UI.Forms
                 Ho = txtHo.Text.Trim(),
                 Ten = txtTen.Text.Trim(),
                 Ten_dem = txtTenDem.Text.Trim(),
-                Ngay_cap = dtNgayCap.Value,
-                Ngay_hh = dtHetHan.Value,
-                Ngay_sinh = dtNgaySinh.Value,
+                Ngay_cap = dtNgayCap.IsEmpty ? (DateTime?)null : dtNgayCap.Value,
+                Ngay_hh = dtHetHan.IsEmpty ? (DateTime?)null : dtHetHan.Value,
+                Ngay_sinh = dtNgaySinh.IsEmpty ? (DateTime?)null : dtNgaySinh.Value,
                 Quoc_gia = cbbQuocTich.SelectedValue?.ToString(),
                 Gioi_tinh = cbbGioiTinh.SelectedValue?.ToString(),
                 Dia_chi = txtDiaChi.Text.Trim(),
                 Dien_thoai = txtSDT.Text.Trim(),
                 Email = txtEmail.Text.Trim(),
-                Xnc_ngay_cap = dtTTXNCNgayCap.Value,
-                Xnc_ngay_hh = dtTTXNCHetHan.Value,
+                Xnc_ngay_cap = dtTTXNCNgayCap.IsEmpty ? (DateTime?)null : dtTTXNCNgayCap.Value,
+                Xnc_ngay_hh = dtTTXNCHetHan.IsEmpty ? (DateTime?)null : dtTTXNCHetHan.Value,
                 Han_muc = decimal.TryParse(txtTongTien.Text, out var hanMuc) ? hanMuc : (decimal?)null,
                 So_hieu = txPhuongTien.Text.Trim(),
                 Ten_tau_bay = txtTauBay.Text.Trim()
@@ -189,7 +189,7 @@ namespace GPBH.UI.Forms
 
         private void txtCCCD_TextChanged(object sender, EventArgs e)
         {
-            var khachHang = _dmkhService.GetCustomerByPassport(txtCCCD.Text.Trim());
+            var khachHang = _dmkhService.GetByPassport(txtCCCD.Text.Trim());
             if (khachHang != null)
             {
                 DataKhachHang = khachHang;

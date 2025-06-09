@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Linq.Expressions;
 
 namespace GPBH.Data.UnitOfWorks
 {
     public interface IUnitOfWork : IDisposable
     {
-        IRepository<T> Repository<T>() where T : class;
+        IRepository<T> Repository<T>() where T : class; 
         int SaveChanges();
         void BeginTransaction();
         void Commit();

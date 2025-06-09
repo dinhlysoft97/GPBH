@@ -15,7 +15,7 @@ namespace GPBH.Business.Services
             _serviceProvider = serviceProvider;
         }
 
-        public DMKH GetCustomerByPassport(string passport)
+        public DMKH GetByPassport(string passport)
         {
             if (string.IsNullOrWhiteSpace(passport))
                 return null;

@@ -32,7 +32,7 @@ namespace GPBH.Data.Configurations
 
             Property(t => t.So_phieu)
                 .IsRequired()
-                .HasMaxLength(20);
+                .HasMaxLength(50);
         }
     }
 }
