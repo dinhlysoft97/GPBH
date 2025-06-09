@@ -64,10 +64,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppGlobals.cs" />
+    <Compile Include="DTO\DMcaDto.cs" />
+    <Compile Include="DTO\DMKHDto.cs" />
+    <Compile Include="DTO\DMQGDto.cs" />
     <Compile Include="DTO\SysDMDVDto.cs" />
     <Compile Include="DTO\SysDMNSDDto.cs" />
     <Compile Include="DTO\SystemMenuDto.cs" />
-    <Compile Include="Services\DMCaService.cs" />
+    <Compile Include="Services\DMcaService.cs" />
+    <Compile Include="Services\DMKHService.cs" />
+    <Compile Include="Services\DMQGService.cs" />
     <Compile Include="Services\SysDMNSDService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\SysMenuService.cs" />
