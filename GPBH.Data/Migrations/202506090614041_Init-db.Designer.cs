@@ -7,13 +7,13 @@ namespace GPBH.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.5.1")]
-    public sealed partial class AlterDMKH : IMigrationMetadata
+    public sealed partial class Initdb : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AlterDMKH));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Initdb));
         
         string IMigrationMetadata.Id
         {
-            get { return "202506081106455_Alter-DMKH"; }
+            get { return "202506090614041_Init-db"; }
         }
         
         string IMigrationMetadata.Source

@@ -136,17 +136,17 @@
                         Tt1_ma_nt = c.String(maxLength: 3),
                         Tt1_tien_tt = c.Decimal(precision: 19, scale: 4),
                         Tt1_ty_gia = c.Decimal(precision: 19, scale: 4),
-                        Tl1_tien_usd = c.Decimal(precision: 19, scale: 4),
+                        Tl1_tien_nt = c.Decimal(precision: 19, scale: 4),
                         Tt2_loai = c.String(maxLength: 10),
                         Tt2_ma_nt = c.String(maxLength: 3),
                         Tt2_tien_tt = c.Decimal(precision: 19, scale: 4),
                         Tt2_ty_gia = c.Decimal(precision: 19, scale: 4),
-                        Tl2_tien_usd = c.Decimal(precision: 19, scale: 4),
+                        Tl2_tien_nt = c.Decimal(precision: 19, scale: 4),
                         Tt3_loai = c.String(maxLength: 10),
                         Tt3_ma_nt = c.String(maxLength: 3),
                         Tl3_tien_tt = c.Decimal(precision: 19, scale: 4),
                         Tt3_ty_gia = c.Decimal(precision: 19, scale: 4),
-                        Tl3_tien_usd = c.Decimal(precision: 19, scale: 4),
+                        Tl3_tien_nt = c.Decimal(precision: 19, scale: 4),
                         Tt_tong = c.Decimal(precision: 19, scale: 4),
                         Tong_nhan = c.Decimal(precision: 19, scale: 4),
                         Tra_lai = c.Decimal(precision: 19, scale: 4),
@@ -247,8 +247,12 @@
                         Ngay_sinh = c.DateTime(),
                         Dia_chi = c.String(maxLength: 200),
                         Dien_thoai = c.String(maxLength: 20),
-                        Di_dong = c.String(maxLength: 20),
                         Email = c.String(maxLength: 100),
+                        Xnc_ngay_cap = c.DateTime(),
+                        Xnc_ngay_hh = c.DateTime(),
+                        So_hieu = c.String(),
+                        Ten_tau_bay = c.String(),
+                        Han_muc = c.Decimal(precision: 18, scale: 2),
                         Nguoi_tao = c.String(maxLength: 20),
                         Ngay_tao = c.DateTime(),
                         Nguoi_sua = c.String(maxLength: 20),
@@ -263,20 +267,10 @@
                 c => new
                     {
                         Quoc_gia = c.String(nullable: false, maxLength: 20),
+                        Ten_Quoc_gia = c.String(),
                         Ksd = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Quoc_gia);
-            
-            CreateTable(
-                "dbo.SysConfig",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Han_muc_giao_dich_tien_mat = c.Decimal(nullable: false, precision: 18, scale: 8),
-                        Loai_tien_ap_dung_khi_ban_hang = c.String(maxLength: 10),
-                        Ma_co_quan_thue = c.String(maxLength: 50),
-                    })
-                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.SysDMCT",
@@ -402,7 +396,6 @@
             DropTable("dbo.SysPhanQuyen");
             DropTable("dbo.SysDMNSD");
             DropTable("dbo.SysDMCT");
-            DropTable("dbo.SysConfig");
             DropTable("dbo.DMQG");
             DropTable("dbo.DMKH");
             DropTable("dbo.XCT5");

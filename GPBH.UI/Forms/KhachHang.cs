@@ -43,13 +43,15 @@ namespace GPBH.UI.Forms
 
         #region Constructor
 
-        public KhachHang(DMKHService dmkhService, DMQGService dMQGService)
+        public KhachHang(DMKHService dmkhService, DMQGService dMQGService, string passport)
         {
             InitializeComponent();
             _dmkhService = dmkhService;
             _dMQGService = dMQGService;
             LoadData();
             RegisterEvents();
+            if (!string.IsNullOrEmpty(passport))
+                txtCCCD.Text = passport;
         }
 
         #endregion

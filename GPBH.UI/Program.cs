@@ -1,5 +1,6 @@
 ﻿using GPBH.Business;
 using GPBH.UI.Helper;
+using GPBH.UI.UserControls;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Configuration;

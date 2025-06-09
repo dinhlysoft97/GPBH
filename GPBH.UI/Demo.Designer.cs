@@ -1,4 +1,7 @@
-﻿namespace GPBH.UI
+﻿using GPBH.UI.UserControls;
+using Microsoft.Extensions.DependencyInjection;
+
+namespace GPBH.UI
 {
     partial class Demo
     {
@@ -34,7 +37,7 @@
             this.Soluong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ma_hh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ten_hh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ucHangHoa1 = new GPBH.UI.UserControls.ucHangHoa();
+            this.ucHangHoa1 = new ucHangHoa();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             this.SuspendLayout();
             // 

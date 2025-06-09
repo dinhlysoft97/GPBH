@@ -1,8 +1,9 @@
-﻿using GPBH.Data.Entities;
+﻿using GPBH.Data.Configurations;
+using GPBH.Data.Entities;
 using System;
+using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Linq;
-using System.Runtime.Remoting.Contexts;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -25,14 +26,182 @@ namespace GPBH.Data.Migrations
             // Add thêm các menu mẫu
             AddMenu(context);
 
-            // Add SysConfin
-            AddSysConfig(context);
-
             // DM Quốc gia
             AddDMQG(context);
 
+            // DM TG và NT
+            ADDTGvaNT(context);
+
             // DM Cửa Hàng
             AddDMCH(context);
+
+            // DM Hàng Hóa
+            AddHangHoa(context);
+
+            // Add DM giá bán
+            ADDDanhMucGiaBan(context);
+        }
+
+        private void ADDDanhMucGiaBan(AppDbContext context)
+        {
+            if (!context.DMGB.Any())
+            {
+                var fakeGiaBanList = new List<DMGB>
+                {
+                    new DMGB
+                    {
+                        Ma_cua_hang = "CH01",
+                        Ngay_ap_dung = new DateTime(2025, 6, 1),
+                        Ma_hh = "HH001",
+                        Gia_ban = 5
+                    },
+                    new DMGB
+                    {
+                        Ma_cua_hang = "CH01",
+                        Ngay_ap_dung = new DateTime(2025, 6, 10),
+                        Ma_hh = "HH002",
+                        Gia_ban = 6
+                    },
+                    new DMGB
+                    {
+                        Ma_cua_hang = "CH01",
+                        Ngay_ap_dung = new DateTime(2025, 6, 1),
+                        Ma_hh = "HH002",
+                        Gia_ban = 6
+                    },
+                    new DMGB
+                    {
+                        Ma_cua_hang = "CH01",
+                        Ngay_ap_dung = new DateTime(2025, 6, 1),
+                        Ma_hh = "HH003",
+                        Gia_ban = 7
+                    }
+                };
+                context.DMGB.AddRange(fakeGiaBanList);
+                context.SaveChanges();
+            }
+        }
+
+        private void ADDTGvaNT(AppDbContext context)
+        {
+            if (!context.DMNT.Any())
+            {
+                var fakeNgoaiTeList = new List<DMNT>
+                {
+                    new DMNT { Ma_nt = "VND", Ksd = true },
+                    new DMNT { Ma_nt = "USD", Ksd = true },
+                    new DMNT { Ma_nt = "EUR", Ksd = true },
+                    new DMNT { Ma_nt = "JPY", Ksd = true },
+                    new DMNT { Ma_nt = "THB", Ksd = true },
+                    new DMNT { Ma_nt = "AUD", Ksd = true }
+                };
+                context.DMNT.AddRange(fakeNgoaiTeList);
+                context.SaveChanges();
+            }
+
+            if (!context.DMTG.Any())
+            {
+                var fakeTyGiaList = new List<DMTG>
+                {
+                    new DMTG { Ma_nt = "VND", Ty_gia = 1.0m, Ngay_ap_dung = DateTime.Now },
+                    new DMTG { Ma_nt = "USD", Ty_gia = 23000.0m, Ngay_ap_dung = new DateTime(2025,06,12)  },
+                    new DMTG { Ma_nt = "USD", Ty_gia = 24000.0m, Ngay_ap_dung = new DateTime(2025,06,01) },
+                    new DMTG { Ma_nt = "EUR", Ty_gia = 25000.0m, Ngay_ap_dung = DateTime.Now },
+                    new DMTG { Ma_nt = "JPY", Ty_gia = 200.0m, Ngay_ap_dung = DateTime.Now },
+                    new DMTG { Ma_nt = "THB", Ty_gia = 700.0m, Ngay_ap_dung = DateTime.Now },
+                    new DMTG { Ma_nt = "AUD", Ty_gia = 15000.0m, Ngay_ap_dung = DateTime.Now }
+                };
+
+                context.DMTG.AddRange(fakeTyGiaList);
+                context.SaveChanges();
+            }
+        }
+
+        private void AddHangHoa(AppDbContext context)
+        {
+            if (!context.DMHH.Any())
+            {
+                var fakeHangHoaList = new List<DMHH>
+                {
+                    new DMHH
+                    {
+                        Ma_hh = "HH001",
+                        Ten_hh = "Bánh quy AFC",
+                        Dvt = "Hộp",
+                        Ma_nhom_hh = "NH01",
+                        Thuong_hieu = "Kinh Đô",
+                        Ma_nsx = "NSX01",
+                        Ten_nsx = "Công ty Kinh Đô",
+                        Nuoc_sx = "Việt Nam",
+                        Chieu_dai = 20.5m,
+                        Trong_luong = 0.25m,
+                        Chieu_cao = 5.2m,
+                        Ksd = true
+                    },
+                    new DMHH
+                    {
+                        Ma_hh = "HH002",
+                        Ten_hh = "Sữa tươi Vinamilk",
+                        Dvt = "Thùng",
+                        Ma_nhom_hh = "NH02",
+                        Thuong_hieu = "Vinamilk",
+                        Ma_nsx = "NSX02",
+                        Ten_nsx = "Công ty Vinamilk",
+                        Nuoc_sx = "Việt Nam",
+                        Chieu_dai = 35.0m,
+                        Trong_luong = 10.0m,
+                        Chieu_cao = 25.0m,
+                        Ksd = true
+                    },
+                    new DMHH
+                    {
+                        Ma_hh = "HH003",
+                        Ten_hh = "Bột giặt Omo",
+                        Dvt = "Túi",
+                        Ma_nhom_hh = "NH03",
+                        Thuong_hieu = "Unilever",
+                        Ma_nsx = "NSX03",
+                        Ten_nsx = "Unilever Việt Nam",
+                        Nuoc_sx = "Việt Nam",
+                        Chieu_dai = 15.2m,
+                        Trong_luong = 3.5m,
+                        Chieu_cao = 8.7m,
+                        Ksd = true
+                    },
+                    new DMHH
+                    {
+                        Ma_hh = "HH004",
+                        Ten_hh = "Mì Hảo Hảo",
+                        Dvt = "Thùng",
+                        Ma_nhom_hh = "NH01",
+                        Thuong_hieu = "Acecook",
+                        Ma_nsx = "NSX04",
+                        Ten_nsx = "Acecook Việt Nam",
+                        Nuoc_sx = "Việt Nam",
+                        Chieu_dai = 40.0m,
+                        Trong_luong = 12.0m,
+                        Chieu_cao = 30.0m,
+                        Ksd = true
+                    },
+                    new DMHH
+                    {
+                        Ma_hh = "HH005",
+                        Ten_hh = "Nước suối Lavie",
+                        Dvt = "Chai",
+                        Ma_nhom_hh = "NH04",
+                        Thuong_hieu = "Lavie",
+                        Ma_nsx = "NSX05",
+                        Ten_nsx = "Nestlé Waters",
+                        Nuoc_sx = "Pháp",
+                        Chieu_dai = 6.5m,
+                        Trong_luong = 0.5m,
+                        Chieu_cao = 20.0m,
+                        Ksd = true
+                    }
+                };
+                context.DMHH.AddRange(fakeHangHoaList);
+                context.SaveChanges();
+            }
         }
 
         private void AddDMCH(AppDbContext context)
@@ -92,21 +261,6 @@ namespace GPBH.Data.Migrations
                     Quoc_gia = "VN",
                     Ten_Quoc_gia = "Việt Nam",
                     Ksd = true,
-                });
-                context.SaveChanges();
-            }
-        }
-
-        private static void AddSysConfig(AppDbContext context)
-        {
-            if (!context.SysConfig.Any())
-            {
-                context.SysConfig.Add(new SysConfig
-                {
-                    Id = 1,
-                    Han_muc_giao_dich_tien_mat = 15000000,
-                    Loai_tien_ap_dung_khi_ban_hang = "VND",
-                    Ma_co_quan_thue = "1234567890",
                 });
                 context.SaveChanges();
             }

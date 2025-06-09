@@ -20,7 +20,7 @@ namespace GPBH.Data
         public DbSet<SysDMCuaHang> SysDMCuaHang { get; set; }
         public DbSet<DMca> DMca { get; set; }
         public DbSet<SysDMNSD> SysDMNSD { get; set; }
-        public DbSet<SysMenu> SysMenu{ get; set; }
+        public DbSet<SysMenu> SysMenu { get; set; }
         public DbSet<SysPhanQuyen> SysPhanQuyen { get; set; }
         public DbSet<DMQG> DMQG { get; set; }
         public DbSet<DMKH> DMKH { get; set; }
@@ -33,7 +33,6 @@ namespace GPBH.Data
         public DbSet<TokhaiHH> TokhaiHH { get; set; }
         public DbSet<SysDMCT> SysDMCT { get; set; }
         public DbSet<SysSoChungTu> SysSoChungTu { get; set; }
-        public DbSet<SysConfig> SysConfig { get; set; }
 
         public override int SaveChanges()
         {
@@ -44,10 +43,9 @@ namespace GPBH.Data
             }
             catch (System.Exception ex)
             {
-
-                throw;
+                throw ex;
             }
-           
+
         }
     }
 }

@@ -64,8 +64,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppGlobals.cs" />
+    <Compile Include="Dtos\GiaBanHangHoa.cs" />
+    <Compile Include="Dtos\TyGiaNT.cs" />
+    <Compile Include="Services\DMHHService.cs" />
     <Compile Include="Services\DMKHService.cs" />
+    <Compile Include="Services\DMNTService.cs" />
     <Compile Include="Services\DMQGService.cs" />
+    <Compile Include="Services\DMTGService.cs" />
     <Compile Include="Services\SysDMCuaHangService.cs" />
     <Compile Include="Services\SysDMNSDService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -81,9 +86,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DTO\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

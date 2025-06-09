@@ -17,7 +17,7 @@ namespace GPBH.Data.Configurations
             Property(t => t.Ma_dv)
                 .IsRequired()
                 .HasMaxLength(3);
-            
+
             Property(t => t.Ma_cua_hang)
                 .IsRequired()
                 .HasMaxLength(20);

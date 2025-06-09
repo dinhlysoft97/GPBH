@@ -1,4 +1,7 @@
-﻿namespace GPBH.UI.Forms
+﻿using GPBH.UI.UserControls;
+using Microsoft.Extensions.DependencyInjection;
+
+namespace GPBH.UI.Forms
 {
     partial class DonHang
     {
@@ -39,6 +42,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.lbTGNT = new DevComponents.DotNetBar.LabelX();
+            this.lbNgayHoaDon = new DevComponents.DotNetBar.LabelX();
+            this.lbSDH = new DevComponents.DotNetBar.LabelX();
             this.lbCa = new DevComponents.DotNetBar.LabelX();
             this.labelX13 = new DevComponents.DotNetBar.LabelX();
             this.lbQuay = new DevComponents.DotNetBar.LabelX();
@@ -62,47 +68,59 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.groupPanel3 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ma_hh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ten_hh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.So_luong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Gia_ban_nt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Gia_ban = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Gg_ty_le = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Gg_tien_nt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Gg_tien = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tien_ban_nt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tien_ban = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bar1 = new DevComponents.DotNetBar.Bar();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.groupPanel4 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.txtQDNTTTT = new DevComponents.Editors.DoubleInput();
+            this.txtQDTTNT3 = new DevComponents.Editors.DoubleInput();
+            this.txtQDTTNT2 = new DevComponents.Editors.DoubleInput();
+            this.txtQDTTNT1 = new DevComponents.Editors.DoubleInput();
+            this.txtTTNT3 = new DevComponents.Editors.DoubleInput();
+            this.txtTTNT2 = new DevComponents.Editors.DoubleInput();
+            this.txtTTNT1 = new DevComponents.Editors.DoubleInput();
             this.lbTTT = new DevComponents.DotNetBar.LabelX();
-            this.textBoxX12 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.lbTT3 = new DevComponents.DotNetBar.LabelX();
-            this.textBoxX10 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.textBoxX11 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.comboBoxEx5 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.comboBoxEx6 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.cbbTTNT3 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.cbbTT3 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.lbTT2 = new DevComponents.DotNetBar.LabelX();
-            this.textBoxX3 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.textBoxX4 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.comboBoxEx3 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.comboBoxEx4 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.cbbTTNT2 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.cbbTT2 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.lbTT1 = new DevComponents.DotNetBar.LabelX();
-            this.textBoxX2 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.comboBoxEx2 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.comboBoxEx1 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.cbbTTNT1 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.cbbTT1 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.labelX17 = new DevComponents.DotNetBar.LabelX();
             this.labelX16 = new DevComponents.DotNetBar.LabelX();
             this.labelX15 = new DevComponents.DotNetBar.LabelX();
             this.labelX14 = new DevComponents.DotNetBar.LabelX();
             this.groupPanel6 = new DevComponents.DotNetBar.Controls.GroupPanel();
-            this.textBoxX16 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.txtTQDVND = new DevComponents.Editors.DoubleInput();
             this.labelX28 = new DevComponents.DotNetBar.LabelX();
+            this.txtTT = new DevComponents.Editors.DoubleInput();
             this.labelX29 = new DevComponents.DotNetBar.LabelX();
-            this.textBoxX15 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.txtTG = new DevComponents.Editors.DoubleInput();
             this.lbTongThu = new DevComponents.DotNetBar.LabelX();
+            this.txtTTH = new DevComponents.Editors.DoubleInput();
             this.labelX27 = new DevComponents.DotNetBar.LabelX();
-            this.textBoxX14 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.lbGiamGia = new DevComponents.DotNetBar.LabelX();
             this.labelX25 = new DevComponents.DotNetBar.LabelX();
-            this.textBoxX13 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.lbTTH = new DevComponents.DotNetBar.LabelX();
             this.labelX22 = new DevComponents.DotNetBar.LabelX();
             this.groupPanel5 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.labelX36 = new DevComponents.DotNetBar.LabelX();
-            this.labelX30 = new DevComponents.DotNetBar.LabelX();
+            this.lbTGNT2 = new DevComponents.DotNetBar.LabelX();
             this.lb1NTQuyDoi = new DevComponents.DotNetBar.LabelX();
             this.bar2 = new DevComponents.DotNetBar.Bar();
             this.labelItem1 = new DevComponents.DotNetBar.LabelItem();
@@ -118,27 +136,15 @@
             this.labelItem11 = new DevComponents.DotNetBar.LabelItem();
             this.labelItem12 = new DevComponents.DotNetBar.LabelItem();
             this.labelItem13 = new DevComponents.DotNetBar.LabelItem();
-            this.textBoxX17 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX34 = new DevComponents.DotNetBar.LabelX();
             this.lbTraLai = new DevComponents.DotNetBar.LabelX();
-            this.textBoxX18 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.textBoxX19 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX37 = new DevComponents.DotNetBar.LabelX();
-            this.comboBoxEx7 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.cbTLNT = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.lbTongNhan = new DevComponents.DotNetBar.LabelX();
             this.labelX32 = new DevComponents.DotNetBar.LabelX();
-            this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ma_hh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ten_hh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.So_luong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Gia_ban_nt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Gia_ban = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Gg_ty_le = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Gg_tien_nt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Gg_tien = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tien_ban_nt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tien_ban = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtTNNT = new DevComponents.Editors.DoubleInput();
+            this.txtTLNT = new DevComponents.Editors.DoubleInput();
+            this.txtQDTLNT = new DevComponents.Editors.DoubleInput();
             this.ucHangHoa = new GPBH.UI.UserControls.ucHangHoa();
             this.groupPanel2.SuspendLayout();
             this.groupPanel1.SuspendLayout();
@@ -150,9 +156,23 @@
             this.bar1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.groupPanel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQDNTTTT)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQDTTNT3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQDTTNT2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQDTTNT1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTTNT3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTTNT2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTTNT1)).BeginInit();
             this.groupPanel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTQDVND)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTT)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTG)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTTH)).BeginInit();
             this.groupPanel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bar2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTNNT)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTLNT)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQDTLNT)).BeginInit();
             this.SuspendLayout();
             // 
             // groupPanel2
@@ -162,6 +182,9 @@
             this.groupPanel2.BackColor = System.Drawing.Color.LightGray;
             this.groupPanel2.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanel2.Controls.Add(this.lbTGNT);
+            this.groupPanel2.Controls.Add(this.lbNgayHoaDon);
+            this.groupPanel2.Controls.Add(this.lbSDH);
             this.groupPanel2.Controls.Add(this.lbCa);
             this.groupPanel2.Controls.Add(this.labelX13);
             this.groupPanel2.Controls.Add(this.lbQuay);
@@ -206,6 +229,54 @@
             this.groupPanel2.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel2.TabIndex = 1;
             this.groupPanel2.Text = "Thông tin đơn hàng";
+            // 
+            // lbTGNT
+            // 
+            this.lbTGNT.AutoSize = true;
+            this.lbTGNT.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            // 
+            // 
+            // 
+            this.lbTGNT.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lbTGNT.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTGNT.Location = new System.Drawing.Point(497, 52);
+            this.lbTGNT.Margin = new System.Windows.Forms.Padding(2);
+            this.lbTGNT.Name = "lbTGNT";
+            this.lbTGNT.Size = new System.Drawing.Size(65, 15);
+            this.lbTGNT.TabIndex = 28;
+            this.lbTGNT.Text = "USD: 25,000";
+            // 
+            // lbNgayHoaDon
+            // 
+            this.lbNgayHoaDon.AutoSize = true;
+            this.lbNgayHoaDon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            // 
+            // 
+            // 
+            this.lbNgayHoaDon.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lbNgayHoaDon.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbNgayHoaDon.Location = new System.Drawing.Point(344, 57);
+            this.lbNgayHoaDon.Margin = new System.Windows.Forms.Padding(2);
+            this.lbNgayHoaDon.Name = "lbNgayHoaDon";
+            this.lbNgayHoaDon.Size = new System.Drawing.Size(89, 15);
+            this.lbNgayHoaDon.TabIndex = 27;
+            this.lbNgayHoaDon.Text = "Ngày: 26/06/2025";
+            // 
+            // lbSDH
+            // 
+            this.lbSDH.AutoSize = true;
+            this.lbSDH.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            // 
+            // 
+            // 
+            this.lbSDH.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lbSDH.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSDH.Location = new System.Drawing.Point(343, 30);
+            this.lbSDH.Margin = new System.Windows.Forms.Padding(2);
+            this.lbSDH.Name = "lbSDH";
+            this.lbSDH.Size = new System.Drawing.Size(107, 15);
+            this.lbSDH.TabIndex = 26;
+            this.lbSDH.Text = "Số đơn hàng: 123123";
             // 
             // lbCa
             // 
@@ -599,6 +670,7 @@
             // 
             // dataGridViewX1
             // 
+            this.dataGridViewX1.AllowUserToDeleteRows = false;
             this.dataGridViewX1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -629,6 +701,119 @@
             this.dataGridViewX1.RowHeadersWidth = 51;
             this.dataGridViewX1.Size = new System.Drawing.Size(1414, 381);
             this.dataGridViewX1.TabIndex = 1;
+            // 
+            // STT
+            // 
+            this.STT.DataPropertyName = "STT";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.Format = "#,##0";
+            this.STT.DefaultCellStyle = dataGridViewCellStyle1;
+            this.STT.FillWeight = 88.71677F;
+            this.STT.HeaderText = "STT";
+            this.STT.MinimumWidth = 6;
+            this.STT.Name = "STT";
+            this.STT.ReadOnly = true;
+            // 
+            // Ma_hh
+            // 
+            this.Ma_hh.DataPropertyName = "Ma_hh";
+            this.Ma_hh.FillWeight = 92.17722F;
+            this.Ma_hh.HeaderText = "Mã hàng";
+            this.Ma_hh.MinimumWidth = 6;
+            this.Ma_hh.Name = "Ma_hh";
+            this.Ma_hh.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // Ten_hh
+            // 
+            this.Ten_hh.DataPropertyName = "Ten_hh";
+            this.Ten_hh.FillWeight = 96.0779F;
+            this.Ten_hh.HeaderText = "Tên hàng";
+            this.Ten_hh.MinimumWidth = 6;
+            this.Ten_hh.Name = "Ten_hh";
+            this.Ten_hh.ReadOnly = true;
+            // 
+            // So_luong
+            // 
+            this.So_luong.DataPropertyName = "So_luong";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "#,##0";
+            this.So_luong.DefaultCellStyle = dataGridViewCellStyle2;
+            this.So_luong.FillWeight = 99.17547F;
+            this.So_luong.HeaderText = "Số lượng";
+            this.So_luong.Name = "So_luong";
+            // 
+            // Gia_ban_nt
+            // 
+            this.Gia_ban_nt.DataPropertyName = "Gia_ban_nt";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "#,##0.00";
+            this.Gia_ban_nt.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Gia_ban_nt.FillWeight = 101.808F;
+            this.Gia_ban_nt.HeaderText = "Giá NT";
+            this.Gia_ban_nt.Name = "Gia_ban_nt";
+            // 
+            // Gia_ban
+            // 
+            this.Gia_ban.DataPropertyName = "Gia_ban";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "#,##0";
+            this.Gia_ban.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Gia_ban.FillWeight = 103.379F;
+            this.Gia_ban.HeaderText = "Giá VNĐ";
+            this.Gia_ban.Name = "Gia_ban";
+            // 
+            // Gg_ty_le
+            // 
+            this.Gg_ty_le.DataPropertyName = "Gg_ty_le";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Gg_ty_le.DefaultCellStyle = dataGridViewCellStyle5;
+            this.Gg_ty_le.FillWeight = 106.3268F;
+            this.Gg_ty_le.HeaderText = "% Giảm";
+            this.Gg_ty_le.Name = "Gg_ty_le";
+            // 
+            // Gg_tien_nt
+            // 
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.Format = "#,##0.00";
+            this.Gg_tien_nt.DefaultCellStyle = dataGridViewCellStyle6;
+            this.Gg_tien_nt.HeaderText = "Tiền giảm NT";
+            this.Gg_tien_nt.Name = "Gg_tien_nt";
+            // 
+            // Gg_tien
+            // 
+            this.Gg_tien.DataPropertyName = "Gg_tien";
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle7.Format = "#,##0";
+            this.Gg_tien.DefaultCellStyle = dataGridViewCellStyle7;
+            this.Gg_tien.FillWeight = 106.7926F;
+            this.Gg_tien.HeaderText = "Tiền giảm";
+            this.Gg_tien.Name = "Gg_tien";
+            // 
+            // Tien_ban_nt
+            // 
+            this.Tien_ban_nt.DataPropertyName = "Tien_ban_nt";
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle8.Format = "#,##0.00";
+            this.Tien_ban_nt.DefaultCellStyle = dataGridViewCellStyle8;
+            this.Tien_ban_nt.FillWeight = 103.449F;
+            this.Tien_ban_nt.HeaderText = "Thành tiền NT";
+            this.Tien_ban_nt.Name = "Tien_ban_nt";
+            // 
+            // Tien_ban
+            // 
+            this.Tien_ban.DataPropertyName = "Tien_ban";
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle9.Format = "#,##0";
+            this.Tien_ban.DefaultCellStyle = dataGridViewCellStyle9;
+            this.Tien_ban.FillWeight = 101.9336F;
+            this.Tien_ban.HeaderText = "Thành tiền VNĐ";
+            this.Tien_ban.Name = "Tien_ban";
+            // 
+            // Column6
+            // 
+            this.Column6.FillWeight = 100.1636F;
+            this.Column6.HeaderText = "Lý do giảm";
+            this.Column6.Name = "Column6";
             // 
             // bar1
             // 
@@ -669,7 +854,7 @@
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 61.20778F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38.79222F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 351F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 372F));
             this.tableLayoutPanel2.Controls.Add(this.groupPanel4, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.groupPanel6, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.groupPanel5, 2, 0);
@@ -686,23 +871,23 @@
             this.groupPanel4.BackColor = System.Drawing.Color.LightGray;
             this.groupPanel4.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel4.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanel4.Controls.Add(this.txtQDNTTTT);
+            this.groupPanel4.Controls.Add(this.txtQDTTNT3);
+            this.groupPanel4.Controls.Add(this.txtQDTTNT2);
+            this.groupPanel4.Controls.Add(this.txtQDTTNT1);
+            this.groupPanel4.Controls.Add(this.txtTTNT3);
+            this.groupPanel4.Controls.Add(this.txtTTNT2);
+            this.groupPanel4.Controls.Add(this.txtTTNT1);
             this.groupPanel4.Controls.Add(this.lbTTT);
-            this.groupPanel4.Controls.Add(this.textBoxX12);
             this.groupPanel4.Controls.Add(this.lbTT3);
-            this.groupPanel4.Controls.Add(this.textBoxX10);
-            this.groupPanel4.Controls.Add(this.textBoxX11);
-            this.groupPanel4.Controls.Add(this.comboBoxEx5);
-            this.groupPanel4.Controls.Add(this.comboBoxEx6);
+            this.groupPanel4.Controls.Add(this.cbbTTNT3);
+            this.groupPanel4.Controls.Add(this.cbbTT3);
             this.groupPanel4.Controls.Add(this.lbTT2);
-            this.groupPanel4.Controls.Add(this.textBoxX3);
-            this.groupPanel4.Controls.Add(this.textBoxX4);
-            this.groupPanel4.Controls.Add(this.comboBoxEx3);
-            this.groupPanel4.Controls.Add(this.comboBoxEx4);
+            this.groupPanel4.Controls.Add(this.cbbTTNT2);
+            this.groupPanel4.Controls.Add(this.cbbTT2);
             this.groupPanel4.Controls.Add(this.lbTT1);
-            this.groupPanel4.Controls.Add(this.textBoxX2);
-            this.groupPanel4.Controls.Add(this.textBoxX1);
-            this.groupPanel4.Controls.Add(this.comboBoxEx2);
-            this.groupPanel4.Controls.Add(this.comboBoxEx1);
+            this.groupPanel4.Controls.Add(this.cbbTTNT1);
+            this.groupPanel4.Controls.Add(this.cbbTT1);
             this.groupPanel4.Controls.Add(this.labelX17);
             this.groupPanel4.Controls.Add(this.labelX16);
             this.groupPanel4.Controls.Add(this.labelX15);
@@ -710,7 +895,7 @@
             this.groupPanel4.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel4.Location = new System.Drawing.Point(3, 3);
             this.groupPanel4.Name = "groupPanel4";
-            this.groupPanel4.Size = new System.Drawing.Size(651, 187);
+            this.groupPanel4.Size = new System.Drawing.Size(639, 187);
             // 
             // 
             // 
@@ -742,6 +927,112 @@
             this.groupPanel4.TabIndex = 0;
             this.groupPanel4.Text = "Thanh toán(Alt +P)";
             // 
+            // txtQDNTTTT
+            // 
+            // 
+            // 
+            // 
+            this.txtQDNTTTT.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtQDNTTTT.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.txtQDNTTTT.DisplayFormat = "#,##0.00";
+            this.txtQDNTTTT.Enabled = false;
+            this.txtQDNTTTT.Increment = 1D;
+            this.txtQDNTTTT.Location = new System.Drawing.Point(459, 118);
+            this.txtQDNTTTT.Name = "txtQDNTTTT";
+            this.txtQDNTTTT.ShowUpDown = true;
+            this.txtQDNTTTT.Size = new System.Drawing.Size(99, 20);
+            this.txtQDNTTTT.TabIndex = 44;
+            // 
+            // txtQDTTNT3
+            // 
+            // 
+            // 
+            // 
+            this.txtQDTTNT3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtQDTTNT3.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.txtQDTTNT3.DisplayFormat = "#,##0.00";
+            this.txtQDTTNT3.Increment = 1D;
+            this.txtQDTTNT3.Location = new System.Drawing.Point(459, 90);
+            this.txtQDTTNT3.Name = "txtQDTTNT3";
+            this.txtQDTTNT3.ShowUpDown = true;
+            this.txtQDTTNT3.Size = new System.Drawing.Size(99, 20);
+            this.txtQDTTNT3.TabIndex = 43;
+            // 
+            // txtQDTTNT2
+            // 
+            // 
+            // 
+            // 
+            this.txtQDTTNT2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtQDTTNT2.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.txtQDTTNT2.DisplayFormat = "#,##0.00";
+            this.txtQDTTNT2.Increment = 1D;
+            this.txtQDTTNT2.Location = new System.Drawing.Point(459, 60);
+            this.txtQDTTNT2.Name = "txtQDTTNT2";
+            this.txtQDTTNT2.ShowUpDown = true;
+            this.txtQDTTNT2.Size = new System.Drawing.Size(99, 20);
+            this.txtQDTTNT2.TabIndex = 42;
+            // 
+            // txtQDTTNT1
+            // 
+            // 
+            // 
+            // 
+            this.txtQDTTNT1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtQDTTNT1.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.txtQDTTNT1.DisplayFormat = "#,##0.00";
+            this.txtQDTTNT1.Increment = 1D;
+            this.txtQDTTNT1.Location = new System.Drawing.Point(459, 26);
+            this.txtQDTTNT1.Name = "txtQDTTNT1";
+            this.txtQDTTNT1.ShowUpDown = true;
+            this.txtQDTTNT1.Size = new System.Drawing.Size(99, 20);
+            this.txtQDTTNT1.TabIndex = 41;
+            // 
+            // txtTTNT3
+            // 
+            // 
+            // 
+            // 
+            this.txtTTNT3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtTTNT3.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.txtTTNT3.DisplayFormat = "#,##0.00";
+            this.txtTTNT3.Increment = 1D;
+            this.txtTTNT3.Location = new System.Drawing.Point(344, 90);
+            this.txtTTNT3.Name = "txtTTNT3";
+            this.txtTTNT3.ShowUpDown = true;
+            this.txtTTNT3.Size = new System.Drawing.Size(99, 20);
+            this.txtTTNT3.TabIndex = 40;
+            // 
+            // txtTTNT2
+            // 
+            // 
+            // 
+            // 
+            this.txtTTNT2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtTTNT2.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.txtTTNT2.DisplayFormat = "#,##0.00";
+            this.txtTTNT2.Increment = 1D;
+            this.txtTTNT2.Location = new System.Drawing.Point(344, 59);
+            this.txtTTNT2.Name = "txtTTNT2";
+            this.txtTTNT2.ShowUpDown = true;
+            this.txtTTNT2.Size = new System.Drawing.Size(99, 20);
+            this.txtTTNT2.TabIndex = 39;
+            // 
+            // txtTTNT1
+            // 
+            // 
+            // 
+            // 
+            this.txtTTNT1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtTTNT1.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.txtTTNT1.DisplayFormat = "#,##0.00";
+            this.txtTTNT1.Increment = 1D;
+            this.txtTTNT1.Location = new System.Drawing.Point(344, 26);
+            this.txtTTNT1.Name = "txtTTNT1";
+            this.txtTTNT1.ShowUpDown = true;
+            this.txtTTNT1.Size = new System.Drawing.Size(99, 20);
+            this.txtTTNT1.TabIndex = 38;
+            // 
             // lbTTT
             // 
             this.lbTTT.AutoSize = true;
@@ -750,27 +1041,13 @@
             // 
             // 
             this.lbTTT.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lbTTT.Location = new System.Drawing.Point(522, 121);
+            this.lbTTT.Location = new System.Drawing.Point(571, 121);
             this.lbTTT.Margin = new System.Windows.Forms.Padding(2);
             this.lbTTT.Name = "lbTTT";
             this.lbTTT.Size = new System.Drawing.Size(33, 15);
             this.lbTTT.TabIndex = 37;
             this.lbTTT.Text = "(USD)";
             this.lbTTT.TextAlignment = System.Drawing.StringAlignment.Center;
-            // 
-            // textBoxX12
-            // 
-            // 
-            // 
-            // 
-            this.textBoxX12.Border.Class = "TextBoxBorder";
-            this.textBoxX12.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX12.Location = new System.Drawing.Point(434, 119);
-            this.textBoxX12.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxX12.Name = "textBoxX12";
-            this.textBoxX12.PreventEnterBeep = true;
-            this.textBoxX12.Size = new System.Drawing.Size(75, 20);
-            this.textBoxX12.TabIndex = 36;
             // 
             // lbTT3
             // 
@@ -780,7 +1057,7 @@
             // 
             // 
             this.lbTT3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lbTT3.Location = new System.Drawing.Point(522, 91);
+            this.lbTT3.Location = new System.Drawing.Point(571, 91);
             this.lbTT3.Margin = new System.Windows.Forms.Padding(2);
             this.lbTT3.Name = "lbTT3";
             this.lbTT3.Size = new System.Drawing.Size(33, 15);
@@ -788,59 +1065,31 @@
             this.lbTT3.Text = "(USD)";
             this.lbTT3.TextAlignment = System.Drawing.StringAlignment.Center;
             // 
-            // textBoxX10
+            // cbbTTNT3
             // 
+            this.cbbTTNT3.DisplayMember = "Text";
+            this.cbbTTNT3.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbbTTNT3.FormattingEnabled = true;
+            this.cbbTTNT3.ItemHeight = 16;
+            this.cbbTTNT3.Location = new System.Drawing.Point(231, 89);
+            this.cbbTTNT3.Margin = new System.Windows.Forms.Padding(2);
+            this.cbbTTNT3.Name = "cbbTTNT3";
+            this.cbbTTNT3.Size = new System.Drawing.Size(99, 22);
+            this.cbbTTNT3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbbTTNT3.TabIndex = 32;
             // 
+            // cbbTT3
             // 
-            // 
-            this.textBoxX10.Border.Class = "TextBoxBorder";
-            this.textBoxX10.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX10.Location = new System.Drawing.Point(434, 89);
-            this.textBoxX10.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxX10.Name = "textBoxX10";
-            this.textBoxX10.PreventEnterBeep = true;
-            this.textBoxX10.Size = new System.Drawing.Size(75, 20);
-            this.textBoxX10.TabIndex = 34;
-            // 
-            // textBoxX11
-            // 
-            // 
-            // 
-            // 
-            this.textBoxX11.Border.Class = "TextBoxBorder";
-            this.textBoxX11.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX11.Location = new System.Drawing.Point(344, 89);
-            this.textBoxX11.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxX11.Name = "textBoxX11";
-            this.textBoxX11.PreventEnterBeep = true;
-            this.textBoxX11.Size = new System.Drawing.Size(75, 20);
-            this.textBoxX11.TabIndex = 33;
-            // 
-            // comboBoxEx5
-            // 
-            this.comboBoxEx5.DisplayMember = "Text";
-            this.comboBoxEx5.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx5.FormattingEnabled = true;
-            this.comboBoxEx5.ItemHeight = 16;
-            this.comboBoxEx5.Location = new System.Drawing.Point(231, 89);
-            this.comboBoxEx5.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBoxEx5.Name = "comboBoxEx5";
-            this.comboBoxEx5.Size = new System.Drawing.Size(99, 22);
-            this.comboBoxEx5.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxEx5.TabIndex = 32;
-            // 
-            // comboBoxEx6
-            // 
-            this.comboBoxEx6.DisplayMember = "Text";
-            this.comboBoxEx6.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx6.FormattingEnabled = true;
-            this.comboBoxEx6.ItemHeight = 16;
-            this.comboBoxEx6.Location = new System.Drawing.Point(120, 89);
-            this.comboBoxEx6.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBoxEx6.Name = "comboBoxEx6";
-            this.comboBoxEx6.Size = new System.Drawing.Size(99, 22);
-            this.comboBoxEx6.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxEx6.TabIndex = 31;
+            this.cbbTT3.DisplayMember = "Text";
+            this.cbbTT3.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbbTT3.FormattingEnabled = true;
+            this.cbbTT3.ItemHeight = 16;
+            this.cbbTT3.Location = new System.Drawing.Point(120, 89);
+            this.cbbTT3.Margin = new System.Windows.Forms.Padding(2);
+            this.cbbTT3.Name = "cbbTT3";
+            this.cbbTT3.Size = new System.Drawing.Size(99, 22);
+            this.cbbTT3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbbTT3.TabIndex = 31;
             // 
             // lbTT2
             // 
@@ -850,7 +1099,7 @@
             // 
             // 
             this.lbTT2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lbTT2.Location = new System.Drawing.Point(522, 60);
+            this.lbTT2.Location = new System.Drawing.Point(571, 60);
             this.lbTT2.Margin = new System.Windows.Forms.Padding(2);
             this.lbTT2.Name = "lbTT2";
             this.lbTT2.Size = new System.Drawing.Size(33, 15);
@@ -858,59 +1107,31 @@
             this.lbTT2.Text = "(USD)";
             this.lbTT2.TextAlignment = System.Drawing.StringAlignment.Center;
             // 
-            // textBoxX3
+            // cbbTTNT2
             // 
+            this.cbbTTNT2.DisplayMember = "Text";
+            this.cbbTTNT2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbbTTNT2.FormattingEnabled = true;
+            this.cbbTTNT2.ItemHeight = 16;
+            this.cbbTTNT2.Location = new System.Drawing.Point(231, 58);
+            this.cbbTTNT2.Margin = new System.Windows.Forms.Padding(2);
+            this.cbbTTNT2.Name = "cbbTTNT2";
+            this.cbbTTNT2.Size = new System.Drawing.Size(99, 22);
+            this.cbbTTNT2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbbTTNT2.TabIndex = 27;
             // 
+            // cbbTT2
             // 
-            // 
-            this.textBoxX3.Border.Class = "TextBoxBorder";
-            this.textBoxX3.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX3.Location = new System.Drawing.Point(434, 58);
-            this.textBoxX3.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxX3.Name = "textBoxX3";
-            this.textBoxX3.PreventEnterBeep = true;
-            this.textBoxX3.Size = new System.Drawing.Size(75, 20);
-            this.textBoxX3.TabIndex = 29;
-            // 
-            // textBoxX4
-            // 
-            // 
-            // 
-            // 
-            this.textBoxX4.Border.Class = "TextBoxBorder";
-            this.textBoxX4.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX4.Location = new System.Drawing.Point(344, 58);
-            this.textBoxX4.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxX4.Name = "textBoxX4";
-            this.textBoxX4.PreventEnterBeep = true;
-            this.textBoxX4.Size = new System.Drawing.Size(75, 20);
-            this.textBoxX4.TabIndex = 28;
-            // 
-            // comboBoxEx3
-            // 
-            this.comboBoxEx3.DisplayMember = "Text";
-            this.comboBoxEx3.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx3.FormattingEnabled = true;
-            this.comboBoxEx3.ItemHeight = 16;
-            this.comboBoxEx3.Location = new System.Drawing.Point(231, 58);
-            this.comboBoxEx3.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBoxEx3.Name = "comboBoxEx3";
-            this.comboBoxEx3.Size = new System.Drawing.Size(99, 22);
-            this.comboBoxEx3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxEx3.TabIndex = 27;
-            // 
-            // comboBoxEx4
-            // 
-            this.comboBoxEx4.DisplayMember = "Text";
-            this.comboBoxEx4.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx4.FormattingEnabled = true;
-            this.comboBoxEx4.ItemHeight = 16;
-            this.comboBoxEx4.Location = new System.Drawing.Point(120, 58);
-            this.comboBoxEx4.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBoxEx4.Name = "comboBoxEx4";
-            this.comboBoxEx4.Size = new System.Drawing.Size(99, 22);
-            this.comboBoxEx4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxEx4.TabIndex = 26;
+            this.cbbTT2.DisplayMember = "Text";
+            this.cbbTT2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbbTT2.FormattingEnabled = true;
+            this.cbbTT2.ItemHeight = 16;
+            this.cbbTT2.Location = new System.Drawing.Point(120, 58);
+            this.cbbTT2.Margin = new System.Windows.Forms.Padding(2);
+            this.cbbTT2.Name = "cbbTT2";
+            this.cbbTT2.Size = new System.Drawing.Size(99, 22);
+            this.cbbTT2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbbTT2.TabIndex = 26;
             // 
             // lbTT1
             // 
@@ -920,7 +1141,7 @@
             // 
             // 
             this.lbTT1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lbTT1.Location = new System.Drawing.Point(522, 28);
+            this.lbTT1.Location = new System.Drawing.Point(571, 28);
             this.lbTT1.Margin = new System.Windows.Forms.Padding(2);
             this.lbTT1.Name = "lbTT1";
             this.lbTT1.Size = new System.Drawing.Size(33, 15);
@@ -928,59 +1149,31 @@
             this.lbTT1.Text = "(USD)";
             this.lbTT1.TextAlignment = System.Drawing.StringAlignment.Center;
             // 
-            // textBoxX2
+            // cbbTTNT1
             // 
+            this.cbbTTNT1.DisplayMember = "Text";
+            this.cbbTTNT1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbbTTNT1.FormattingEnabled = true;
+            this.cbbTTNT1.ItemHeight = 16;
+            this.cbbTTNT1.Location = new System.Drawing.Point(231, 26);
+            this.cbbTTNT1.Margin = new System.Windows.Forms.Padding(2);
+            this.cbbTTNT1.Name = "cbbTTNT1";
+            this.cbbTTNT1.Size = new System.Drawing.Size(99, 22);
+            this.cbbTTNT1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbbTTNT1.TabIndex = 22;
             // 
+            // cbbTT1
             // 
-            // 
-            this.textBoxX2.Border.Class = "TextBoxBorder";
-            this.textBoxX2.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX2.Location = new System.Drawing.Point(434, 26);
-            this.textBoxX2.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxX2.Name = "textBoxX2";
-            this.textBoxX2.PreventEnterBeep = true;
-            this.textBoxX2.Size = new System.Drawing.Size(75, 20);
-            this.textBoxX2.TabIndex = 24;
-            // 
-            // textBoxX1
-            // 
-            // 
-            // 
-            // 
-            this.textBoxX1.Border.Class = "TextBoxBorder";
-            this.textBoxX1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX1.Location = new System.Drawing.Point(344, 26);
-            this.textBoxX1.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxX1.Name = "textBoxX1";
-            this.textBoxX1.PreventEnterBeep = true;
-            this.textBoxX1.Size = new System.Drawing.Size(75, 20);
-            this.textBoxX1.TabIndex = 23;
-            // 
-            // comboBoxEx2
-            // 
-            this.comboBoxEx2.DisplayMember = "Text";
-            this.comboBoxEx2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx2.FormattingEnabled = true;
-            this.comboBoxEx2.ItemHeight = 16;
-            this.comboBoxEx2.Location = new System.Drawing.Point(231, 26);
-            this.comboBoxEx2.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBoxEx2.Name = "comboBoxEx2";
-            this.comboBoxEx2.Size = new System.Drawing.Size(99, 22);
-            this.comboBoxEx2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxEx2.TabIndex = 22;
-            // 
-            // comboBoxEx1
-            // 
-            this.comboBoxEx1.DisplayMember = "Text";
-            this.comboBoxEx1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx1.FormattingEnabled = true;
-            this.comboBoxEx1.ItemHeight = 16;
-            this.comboBoxEx1.Location = new System.Drawing.Point(120, 26);
-            this.comboBoxEx1.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBoxEx1.Name = "comboBoxEx1";
-            this.comboBoxEx1.Size = new System.Drawing.Size(99, 22);
-            this.comboBoxEx1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxEx1.TabIndex = 21;
+            this.cbbTT1.DisplayMember = "Text";
+            this.cbbTT1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbbTT1.FormattingEnabled = true;
+            this.cbbTT1.ItemHeight = 16;
+            this.cbbTT1.Location = new System.Drawing.Point(120, 26);
+            this.cbbTT1.Margin = new System.Windows.Forms.Padding(2);
+            this.cbbTT1.Name = "cbbTT1";
+            this.cbbTT1.Size = new System.Drawing.Size(99, 22);
+            this.cbbTT1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbbTT1.TabIndex = 21;
             // 
             // labelX17
             // 
@@ -1047,22 +1240,22 @@
             this.groupPanel6.BackColor = System.Drawing.Color.LightGray;
             this.groupPanel6.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel6.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
-            this.groupPanel6.Controls.Add(this.textBoxX16);
+            this.groupPanel6.Controls.Add(this.txtTQDVND);
             this.groupPanel6.Controls.Add(this.labelX28);
+            this.groupPanel6.Controls.Add(this.txtTT);
             this.groupPanel6.Controls.Add(this.labelX29);
-            this.groupPanel6.Controls.Add(this.textBoxX15);
+            this.groupPanel6.Controls.Add(this.txtTG);
             this.groupPanel6.Controls.Add(this.lbTongThu);
+            this.groupPanel6.Controls.Add(this.txtTTH);
             this.groupPanel6.Controls.Add(this.labelX27);
-            this.groupPanel6.Controls.Add(this.textBoxX14);
             this.groupPanel6.Controls.Add(this.lbGiamGia);
             this.groupPanel6.Controls.Add(this.labelX25);
-            this.groupPanel6.Controls.Add(this.textBoxX13);
             this.groupPanel6.Controls.Add(this.lbTTH);
             this.groupPanel6.Controls.Add(this.labelX22);
             this.groupPanel6.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel6.Location = new System.Drawing.Point(660, 3);
+            this.groupPanel6.Location = new System.Drawing.Point(648, 3);
             this.groupPanel6.Name = "groupPanel6";
-            this.groupPanel6.Size = new System.Drawing.Size(411, 187);
+            this.groupPanel6.Size = new System.Drawing.Size(402, 187);
             // 
             // 
             // 
@@ -1094,19 +1287,21 @@
             this.groupPanel6.TabIndex = 3;
             this.groupPanel6.Text = "Tổng cộng";
             // 
-            // textBoxX16
+            // txtTQDVND
             // 
             // 
             // 
             // 
-            this.textBoxX16.Border.Class = "TextBoxBorder";
-            this.textBoxX16.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX16.Location = new System.Drawing.Point(236, 121);
-            this.textBoxX16.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxX16.Name = "textBoxX16";
-            this.textBoxX16.PreventEnterBeep = true;
-            this.textBoxX16.Size = new System.Drawing.Size(75, 20);
-            this.textBoxX16.TabIndex = 47;
+            this.txtTQDVND.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtTQDVND.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.txtTQDVND.DisplayFormat = "#,##0.00";
+            this.txtTQDVND.Enabled = false;
+            this.txtTQDVND.Increment = 1D;
+            this.txtTQDVND.Location = new System.Drawing.Point(236, 123);
+            this.txtTQDVND.Name = "txtTQDVND";
+            this.txtTQDVND.ShowUpDown = true;
+            this.txtTQDVND.Size = new System.Drawing.Size(99, 20);
+            this.txtTQDVND.TabIndex = 48;
             // 
             // labelX28
             // 
@@ -1124,6 +1319,22 @@
             this.labelX28.Text = "(VND)";
             this.labelX28.TextAlignment = System.Drawing.StringAlignment.Center;
             // 
+            // txtTT
+            // 
+            // 
+            // 
+            // 
+            this.txtTT.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtTT.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.txtTT.DisplayFormat = "#,##0.00";
+            this.txtTT.Enabled = false;
+            this.txtTT.Increment = 1D;
+            this.txtTT.Location = new System.Drawing.Point(236, 95);
+            this.txtTT.Name = "txtTT";
+            this.txtTT.ShowUpDown = true;
+            this.txtTT.Size = new System.Drawing.Size(99, 20);
+            this.txtTT.TabIndex = 47;
+            // 
             // labelX29
             // 
             this.labelX29.AutoSize = true;
@@ -1139,19 +1350,21 @@
             this.labelX29.TabIndex = 45;
             this.labelX29.Text = "Tổng quy đổi";
             // 
-            // textBoxX15
+            // txtTG
             // 
             // 
             // 
             // 
-            this.textBoxX15.Border.Class = "TextBoxBorder";
-            this.textBoxX15.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX15.Location = new System.Drawing.Point(236, 91);
-            this.textBoxX15.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxX15.Name = "textBoxX15";
-            this.textBoxX15.PreventEnterBeep = true;
-            this.textBoxX15.Size = new System.Drawing.Size(75, 20);
-            this.textBoxX15.TabIndex = 44;
+            this.txtTG.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtTG.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.txtTG.DisplayFormat = "#,##0.00";
+            this.txtTG.Enabled = false;
+            this.txtTG.Increment = 1D;
+            this.txtTG.Location = new System.Drawing.Point(236, 65);
+            this.txtTG.Name = "txtTG";
+            this.txtTG.ShowUpDown = true;
+            this.txtTG.Size = new System.Drawing.Size(99, 20);
+            this.txtTG.TabIndex = 46;
             // 
             // lbTongThu
             // 
@@ -1169,6 +1382,23 @@
             this.lbTongThu.Text = "(USD)";
             this.lbTongThu.TextAlignment = System.Drawing.StringAlignment.Center;
             // 
+            // txtTTH
+            // 
+            // 
+            // 
+            // 
+            this.txtTTH.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.txtTTH.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtTTH.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.txtTTH.DisplayFormat = "#,##0.00";
+            this.txtTTH.Enabled = false;
+            this.txtTTH.Increment = 1D;
+            this.txtTTH.Location = new System.Drawing.Point(236, 31);
+            this.txtTTH.Name = "txtTTH";
+            this.txtTTH.ShowUpDown = true;
+            this.txtTTH.Size = new System.Drawing.Size(99, 20);
+            this.txtTTH.TabIndex = 45;
+            // 
             // labelX27
             // 
             this.labelX27.AutoSize = true;
@@ -1183,20 +1413,6 @@
             this.labelX27.Size = new System.Drawing.Size(46, 15);
             this.labelX27.TabIndex = 42;
             this.labelX27.Text = "Tổng thu";
-            // 
-            // textBoxX14
-            // 
-            // 
-            // 
-            // 
-            this.textBoxX14.Border.Class = "TextBoxBorder";
-            this.textBoxX14.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX14.Location = new System.Drawing.Point(236, 60);
-            this.textBoxX14.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxX14.Name = "textBoxX14";
-            this.textBoxX14.PreventEnterBeep = true;
-            this.textBoxX14.Size = new System.Drawing.Size(75, 20);
-            this.textBoxX14.TabIndex = 41;
             // 
             // lbGiamGia
             // 
@@ -1228,20 +1444,6 @@
             this.labelX25.Size = new System.Drawing.Size(47, 15);
             this.labelX25.TabIndex = 39;
             this.labelX25.Text = "Giảm giá";
-            // 
-            // textBoxX13
-            // 
-            // 
-            // 
-            // 
-            this.textBoxX13.Border.Class = "TextBoxBorder";
-            this.textBoxX13.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX13.Location = new System.Drawing.Point(236, 28);
-            this.textBoxX13.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxX13.Name = "textBoxX13";
-            this.textBoxX13.PreventEnterBeep = true;
-            this.textBoxX13.Size = new System.Drawing.Size(75, 20);
-            this.textBoxX13.TabIndex = 38;
             // 
             // lbTTH
             // 
@@ -1280,10 +1482,10 @@
             this.groupPanel5.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel5.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.groupPanel5.Controls.Add(this.labelX36);
-            this.groupPanel5.Controls.Add(this.labelX30);
+            this.groupPanel5.Controls.Add(this.lbTGNT2);
             this.groupPanel5.Controls.Add(this.lb1NTQuyDoi);
             this.groupPanel5.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel5.Location = new System.Drawing.Point(1077, 3);
+            this.groupPanel5.Location = new System.Drawing.Point(1056, 3);
             this.groupPanel5.Name = "groupPanel5";
             this.groupPanel5.Size = new System.Drawing.Size(315, 187);
             // 
@@ -1333,20 +1535,20 @@
             this.labelX36.Text = "(VND)";
             this.labelX36.TextAlignment = System.Drawing.StringAlignment.Center;
             // 
-            // labelX30
+            // lbTGNT2
             // 
-            this.labelX30.AutoSize = true;
-            this.labelX30.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.lbTGNT2.AutoSize = true;
+            this.lbTGNT2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             // 
             // 
             // 
-            this.labelX30.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX30.Location = new System.Drawing.Point(100, 28);
-            this.labelX30.Margin = new System.Windows.Forms.Padding(2);
-            this.labelX30.Name = "labelX30";
-            this.labelX30.Size = new System.Drawing.Size(36, 15);
-            this.labelX30.TabIndex = 49;
-            this.labelX30.Text = "25.900";
+            this.lbTGNT2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lbTGNT2.Location = new System.Drawing.Point(100, 28);
+            this.lbTGNT2.Margin = new System.Windows.Forms.Padding(2);
+            this.lbTGNT2.Name = "lbTGNT2";
+            this.lbTGNT2.Size = new System.Drawing.Size(36, 15);
+            this.lbTGNT2.TabIndex = 49;
+            this.lbTGNT2.Text = "25.900";
             // 
             // lb1NTQuyDoi
             // 
@@ -1469,20 +1671,6 @@
             this.labelItem13.Name = "labelItem13";
             this.labelItem13.Text = "F12: Đóng";
             // 
-            // textBoxX17
-            // 
-            // 
-            // 
-            // 
-            this.textBoxX17.Border.Class = "TextBoxBorder";
-            this.textBoxX17.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX17.Location = new System.Drawing.Point(157, 777);
-            this.textBoxX17.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxX17.Name = "textBoxX17";
-            this.textBoxX17.PreventEnterBeep = true;
-            this.textBoxX17.Size = new System.Drawing.Size(75, 20);
-            this.textBoxX17.TabIndex = 38;
-            // 
             // labelX34
             // 
             this.labelX34.AutoSize = true;
@@ -1490,7 +1678,7 @@
             // 
             // 
             this.labelX34.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX34.Location = new System.Drawing.Point(236, 779);
+            this.labelX34.Location = new System.Drawing.Point(236, 780);
             this.labelX34.Margin = new System.Windows.Forms.Padding(2);
             this.labelX34.Name = "labelX34";
             this.labelX34.Size = new System.Drawing.Size(33, 15);
@@ -1505,41 +1693,13 @@
             // 
             // 
             this.lbTraLai.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lbTraLai.Location = new System.Drawing.Point(454, 779);
+            this.lbTraLai.Location = new System.Drawing.Point(456, 780);
             this.lbTraLai.Margin = new System.Windows.Forms.Padding(2);
             this.lbTraLai.Name = "lbTraLai";
             this.lbTraLai.Size = new System.Drawing.Size(33, 15);
             this.lbTraLai.TabIndex = 41;
             this.lbTraLai.Text = "(USD)";
             this.lbTraLai.TextAlignment = System.Drawing.StringAlignment.Center;
-            // 
-            // textBoxX18
-            // 
-            // 
-            // 
-            // 
-            this.textBoxX18.Border.Class = "TextBoxBorder";
-            this.textBoxX18.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX18.Location = new System.Drawing.Point(374, 777);
-            this.textBoxX18.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxX18.Name = "textBoxX18";
-            this.textBoxX18.PreventEnterBeep = true;
-            this.textBoxX18.Size = new System.Drawing.Size(75, 20);
-            this.textBoxX18.TabIndex = 40;
-            // 
-            // textBoxX19
-            // 
-            // 
-            // 
-            // 
-            this.textBoxX19.Border.Class = "TextBoxBorder";
-            this.textBoxX19.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX19.Location = new System.Drawing.Point(529, 777);
-            this.textBoxX19.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxX19.Name = "textBoxX19";
-            this.textBoxX19.PreventEnterBeep = true;
-            this.textBoxX19.Size = new System.Drawing.Size(75, 20);
-            this.textBoxX19.TabIndex = 42;
             // 
             // labelX37
             // 
@@ -1548,7 +1708,7 @@
             // 
             // 
             this.labelX37.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX37.Location = new System.Drawing.Point(499, 779);
+            this.labelX37.Location = new System.Drawing.Point(496, 780);
             this.labelX37.Margin = new System.Windows.Forms.Padding(2);
             this.labelX37.Name = "labelX37";
             this.labelX37.Size = new System.Drawing.Size(9, 15);
@@ -1556,18 +1716,18 @@
             this.labelX37.Text = "=";
             this.labelX37.TextAlignment = System.Drawing.StringAlignment.Center;
             // 
-            // comboBoxEx7
+            // cbTLNT
             // 
-            this.comboBoxEx7.DisplayMember = "Text";
-            this.comboBoxEx7.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx7.FormattingEnabled = true;
-            this.comboBoxEx7.ItemHeight = 16;
-            this.comboBoxEx7.Location = new System.Drawing.Point(613, 777);
-            this.comboBoxEx7.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBoxEx7.Name = "comboBoxEx7";
-            this.comboBoxEx7.Size = new System.Drawing.Size(67, 22);
-            this.comboBoxEx7.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxEx7.TabIndex = 38;
+            this.cbTLNT.DisplayMember = "Text";
+            this.cbTLNT.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbTLNT.FormattingEnabled = true;
+            this.cbTLNT.ItemHeight = 16;
+            this.cbTLNT.Location = new System.Drawing.Point(620, 776);
+            this.cbTLNT.Margin = new System.Windows.Forms.Padding(2);
+            this.cbTLNT.Name = "cbTLNT";
+            this.cbTLNT.Size = new System.Drawing.Size(102, 22);
+            this.cbTLNT.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbTLNT.TabIndex = 38;
             // 
             // lbTongNhan
             // 
@@ -1576,7 +1736,7 @@
             // 
             // 
             this.lbTongNhan.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lbTongNhan.Location = new System.Drawing.Point(90, 779);
+            this.lbTongNhan.Location = new System.Drawing.Point(65, 780);
             this.lbTongNhan.Margin = new System.Windows.Forms.Padding(2);
             this.lbTongNhan.Name = "lbTongNhan";
             this.lbTongNhan.Size = new System.Drawing.Size(55, 15);
@@ -1591,7 +1751,7 @@
             // 
             // 
             this.labelX32.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX32.Location = new System.Drawing.Point(328, 779);
+            this.labelX32.Location = new System.Drawing.Point(304, 780);
             this.labelX32.Margin = new System.Windows.Forms.Padding(2);
             this.labelX32.Name = "labelX32";
             this.labelX32.Size = new System.Drawing.Size(33, 15);
@@ -1599,118 +1759,54 @@
             this.labelX32.Text = "Trả lại";
             this.labelX32.TextAlignment = System.Drawing.StringAlignment.Center;
             // 
-            // STT
+            // txtTNNT
             // 
-            this.STT.DataPropertyName = "STT";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.Format = "#,##0";
-            this.STT.DefaultCellStyle = dataGridViewCellStyle1;
-            this.STT.FillWeight = 88.71677F;
-            this.STT.HeaderText = "STT";
-            this.STT.MinimumWidth = 6;
-            this.STT.Name = "STT";
-            this.STT.ReadOnly = true;
             // 
-            // Ma_hh
             // 
-            this.Ma_hh.DataPropertyName = "Ma_hh";
-            this.Ma_hh.FillWeight = 92.17722F;
-            this.Ma_hh.HeaderText = "Mã hàng";
-            this.Ma_hh.MinimumWidth = 6;
-            this.Ma_hh.Name = "Ma_hh";
-            this.Ma_hh.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
-            // Ten_hh
+            this.txtTNNT.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.txtTNNT.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtTNNT.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.txtTNNT.DisplayFormat = "#,##0.00";
+            this.txtTNNT.Increment = 1D;
+            this.txtTNNT.Location = new System.Drawing.Point(125, 777);
+            this.txtTNNT.Name = "txtTNNT";
+            this.txtTNNT.ShowUpDown = true;
+            this.txtTNNT.Size = new System.Drawing.Size(99, 20);
+            this.txtTNNT.TabIndex = 49;
             // 
-            this.Ten_hh.DataPropertyName = "Ten_hh";
-            this.Ten_hh.FillWeight = 96.0779F;
-            this.Ten_hh.HeaderText = "Tên hàng";
-            this.Ten_hh.MinimumWidth = 6;
-            this.Ten_hh.Name = "Ten_hh";
-            this.Ten_hh.ReadOnly = true;
+            // txtTLNT
             // 
-            // So_luong
             // 
-            this.So_luong.DataPropertyName = "So_luong";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Format = "#,##0";
-            this.So_luong.DefaultCellStyle = dataGridViewCellStyle2;
-            this.So_luong.FillWeight = 99.17547F;
-            this.So_luong.HeaderText = "Số lượng";
-            this.So_luong.Name = "So_luong";
             // 
-            // Gia_ban_nt
             // 
-            this.Gia_ban_nt.DataPropertyName = "Gia_ban_nt";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "#,##0.00";
-            this.Gia_ban_nt.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Gia_ban_nt.FillWeight = 101.808F;
-            this.Gia_ban_nt.HeaderText = "Giá NT";
-            this.Gia_ban_nt.Name = "Gia_ban_nt";
+            this.txtTLNT.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.txtTLNT.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtTLNT.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.txtTLNT.DisplayFormat = "#,##0.00";
+            this.txtTLNT.Enabled = false;
+            this.txtTLNT.Increment = 1D;
+            this.txtTLNT.Location = new System.Drawing.Point(342, 777);
+            this.txtTLNT.Name = "txtTLNT";
+            this.txtTLNT.ShowUpDown = true;
+            this.txtTLNT.Size = new System.Drawing.Size(99, 20);
+            this.txtTLNT.TabIndex = 50;
             // 
-            // Gia_ban
+            // txtQDTLNT
             // 
-            this.Gia_ban.DataPropertyName = "Gia_ban";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "#,##0";
-            this.Gia_ban.DefaultCellStyle = dataGridViewCellStyle4;
-            this.Gia_ban.FillWeight = 103.379F;
-            this.Gia_ban.HeaderText = "Giá VNĐ";
-            this.Gia_ban.Name = "Gia_ban";
             // 
-            // Gg_ty_le
             // 
-            this.Gg_ty_le.DataPropertyName = "Gg_ty_le";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.Gg_ty_le.DefaultCellStyle = dataGridViewCellStyle5;
-            this.Gg_ty_le.FillWeight = 106.3268F;
-            this.Gg_ty_le.HeaderText = "% Giảm";
-            this.Gg_ty_le.Name = "Gg_ty_le";
             // 
-            // Gg_tien_nt
-            // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle6.Format = "#,##0.00";
-            this.Gg_tien_nt.DefaultCellStyle = dataGridViewCellStyle6;
-            this.Gg_tien_nt.HeaderText = "Tiền giảm NT";
-            this.Gg_tien_nt.Name = "Gg_tien_nt";
-            // 
-            // Gg_tien
-            // 
-            this.Gg_tien.DataPropertyName = "Gg_tien";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle7.Format = "#,##0";
-            this.Gg_tien.DefaultCellStyle = dataGridViewCellStyle7;
-            this.Gg_tien.FillWeight = 106.7926F;
-            this.Gg_tien.HeaderText = "Tiền giảm";
-            this.Gg_tien.Name = "Gg_tien";
-            // 
-            // Tien_ban_nt
-            // 
-            this.Tien_ban_nt.DataPropertyName = "Tien_ban_nt";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle8.Format = "#,##0.00";
-            this.Tien_ban_nt.DefaultCellStyle = dataGridViewCellStyle8;
-            this.Tien_ban_nt.FillWeight = 103.449F;
-            this.Tien_ban_nt.HeaderText = "Thành tiền NT";
-            this.Tien_ban_nt.Name = "Tien_ban_nt";
-            // 
-            // Tien_ban
-            // 
-            this.Tien_ban.DataPropertyName = "Tien_ban";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle9.Format = "#,##0";
-            this.Tien_ban.DefaultCellStyle = dataGridViewCellStyle9;
-            this.Tien_ban.FillWeight = 101.9336F;
-            this.Tien_ban.HeaderText = "Thành tiền VNĐ";
-            this.Tien_ban.Name = "Tien_ban";
-            // 
-            // Column6
-            // 
-            this.Column6.FillWeight = 100.1636F;
-            this.Column6.HeaderText = "Lý do giảm";
-            this.Column6.Name = "Column6";
+            this.txtQDTLNT.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.txtQDTLNT.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtQDTLNT.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.txtQDTLNT.DisplayFormat = "#,##0.00";
+            this.txtQDTLNT.Increment = 1D;
+            this.txtQDTLNT.Location = new System.Drawing.Point(513, 777);
+            this.txtQDTLNT.Name = "txtQDTLNT";
+            this.txtQDTLNT.ShowUpDown = true;
+            this.txtQDTLNT.Size = new System.Drawing.Size(99, 20);
+            this.txtQDTLNT.TabIndex = 51;
             // 
             // ucHangHoa
             // 
@@ -1724,15 +1820,15 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1426, 839);
+            this.Controls.Add(this.txtQDTLNT);
+            this.Controls.Add(this.txtTLNT);
+            this.Controls.Add(this.txtTNNT);
             this.Controls.Add(this.labelX32);
             this.Controls.Add(this.lbTongNhan);
-            this.Controls.Add(this.comboBoxEx7);
+            this.Controls.Add(this.cbTLNT);
             this.Controls.Add(this.labelX37);
-            this.Controls.Add(this.textBoxX19);
             this.Controls.Add(this.lbTraLai);
-            this.Controls.Add(this.textBoxX18);
             this.Controls.Add(this.labelX34);
-            this.Controls.Add(this.textBoxX17);
             this.Controls.Add(this.bar2);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.flowLayoutPanel1);
@@ -1745,6 +1841,7 @@
             this.Name = "DonHang";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tạo đơn hàng";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form_KeyDown);
             this.groupPanel2.ResumeLayout(false);
             this.groupPanel2.PerformLayout();
             this.groupPanel1.ResumeLayout(false);
@@ -1758,11 +1855,25 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.groupPanel4.ResumeLayout(false);
             this.groupPanel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQDNTTTT)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQDTTNT3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQDTTNT2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQDTTNT1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTTNT3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTTNT2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTTNT1)).EndInit();
             this.groupPanel6.ResumeLayout(false);
             this.groupPanel6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTQDVND)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTT)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTG)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTTH)).EndInit();
             this.groupPanel5.ResumeLayout(false);
             this.groupPanel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bar2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTNNT)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTLNT)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQDTLNT)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1813,48 +1924,34 @@
         private DevComponents.DotNetBar.LabelX labelX8;
         private DevComponents.DotNetBar.LabelX labelX7;
         private DevComponents.DotNetBar.LabelX lbMST;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx1;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cbbTT1;
         private DevComponents.DotNetBar.LabelX labelX17;
         private DevComponents.DotNetBar.LabelX labelX16;
         private DevComponents.DotNetBar.LabelX labelX15;
         private DevComponents.DotNetBar.LabelX labelX14;
         private DevComponents.DotNetBar.LabelX lbTTT;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX12;
         private DevComponents.DotNetBar.LabelX lbTT3;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX10;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX11;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx5;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx6;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cbbTTNT3;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cbbTT3;
         private DevComponents.DotNetBar.LabelX lbTT2;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX3;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX4;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx3;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx4;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cbbTTNT2;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cbbTT2;
         private DevComponents.DotNetBar.LabelX lbTT1;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX2;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX1;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx2;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX13;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cbbTTNT1;
         private DevComponents.DotNetBar.LabelX lbTTH;
         private DevComponents.DotNetBar.LabelX labelX22;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX16;
         private DevComponents.DotNetBar.LabelX labelX28;
         private DevComponents.DotNetBar.LabelX labelX29;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX15;
         private DevComponents.DotNetBar.LabelX lbTongThu;
         private DevComponents.DotNetBar.LabelX labelX27;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX14;
         private DevComponents.DotNetBar.LabelX lbGiamGia;
         private DevComponents.DotNetBar.LabelX labelX25;
-        private DevComponents.DotNetBar.LabelX labelX30;
+        private DevComponents.DotNetBar.LabelX lbTGNT2;
         private DevComponents.DotNetBar.LabelX lb1NTQuyDoi;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX17;
         private DevComponents.DotNetBar.LabelX labelX34;
         private DevComponents.DotNetBar.LabelX lbTraLai;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX18;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX19;
         private DevComponents.DotNetBar.LabelX labelX37;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx7;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cbTLNT;
         private DevComponents.DotNetBar.LabelX labelX36;
         private DevComponents.DotNetBar.LabelX lbTongNhan;
         private DevComponents.DotNetBar.LabelX labelX32;
@@ -1871,5 +1968,22 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Tien_ban_nt;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tien_ban;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private DevComponents.Editors.DoubleInput txtTTNT3;
+        private DevComponents.Editors.DoubleInput txtTTNT2;
+        private DevComponents.Editors.DoubleInput txtTTNT1;
+        private DevComponents.Editors.DoubleInput txtQDNTTTT;
+        private DevComponents.Editors.DoubleInput txtQDTTNT3;
+        private DevComponents.Editors.DoubleInput txtQDTTNT2;
+        private DevComponents.Editors.DoubleInput txtQDTTNT1;
+        private DevComponents.Editors.DoubleInput txtTNNT;
+        private DevComponents.Editors.DoubleInput txtTLNT;
+        private DevComponents.Editors.DoubleInput txtTQDVND;
+        private DevComponents.Editors.DoubleInput txtTT;
+        private DevComponents.Editors.DoubleInput txtTG;
+        private DevComponents.Editors.DoubleInput txtQDTLNT;
+        private DevComponents.Editors.DoubleInput txtTTH;
+        private DevComponents.DotNetBar.LabelX lbSDH;
+        private DevComponents.DotNetBar.LabelX lbTGNT;
+        private DevComponents.DotNetBar.LabelX lbNgayHoaDon;
     }
 }

@@ -1,4 +1,5 @@
 ﻿using DevComponents.DotNetBar.Controls;
+using GPBH.Business.Services;
 using GPBH.Data.Configurations;
 using System;
 using System.Collections.Generic;
@@ -11,26 +12,20 @@ namespace GPBH.UI.UserControls
 {
     public class ucHangHoa : UserControl
     {
-        private Panel sPanel = new Panel();
-        private DataGridViewX dgv = new DataGridViewX();
         private ToolStripDropDown tsDropDown = new ToolStripDropDown();
         private TextBox tb = new TextBox();
-        private Button Button1 = new Button();
+        private readonly Panel sPanel = new Panel();
+        private readonly DataGridViewX dgv = new DataGridViewX();
+        private readonly Button Button1 = new Button();
 
         // Dữ liệu mẫu
-        private List<DMHH> dsHangHoa = new List<DMHH>();
+        private List<DMHH> dsHangHoa;
 
         public TextBox Tb { get => tb; set => tb = value; }
         public ToolStripDropDown TsDropDown { get => tsDropDown; set => tsDropDown = value; }
 
         public ucHangHoa()
         {
-            dsHangHoa = new List<DMHH>() {
-                new DMHH { Ma_hh = "HH01", Ten_hh = "Hàng hóa 01", Dvt = "KG" },
-                new DMHH { Ma_hh = "HH02", Ten_hh = "Hàng hóa 02", Dvt = "KG" },
-                new DMHH { Ma_hh = "HH03", Ten_hh = "Hàng hóa 03", Dvt = "KG" },
-            };
-
             InitializeComponent();
 
             this.Load += ucTextGrid2_Load;
@@ -74,6 +69,11 @@ namespace GPBH.UI.UserControls
             {
                 TsDropDown.Close();
             }
+        }
+
+        public void SetData(List<DMHH> dMHHs)
+        {
+            dsHangHoa = dMHHs;
         }
 
         private void Build_SearchControls()
