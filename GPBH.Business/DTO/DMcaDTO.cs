@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GPBH.Business.DTO
 {
-    public class DMcaDTO
+    public class DMcaDto
     {
         // Mã ca
         public string Ma_ca { get; set; }

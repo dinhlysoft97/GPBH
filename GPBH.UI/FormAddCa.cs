@@ -13,7 +13,7 @@ namespace GPBH.UI.UserControls
 {
     public partial class FormAddCa : Form
     {
-        public DMcaDTO NewCa { get; private set; }
+        public DMcaDto NewCa { get; private set; }
 
         public FormAddCa()
         {
@@ -22,7 +22,7 @@ namespace GPBH.UI.UserControls
 
         private void button1_Click(object sender, EventArgs e)
         {
-            NewCa = new DMcaDTO
+            NewCa = new DMcaDto
             {
                 Ma_ca = txtMaCa.Text.Trim(),
                 Ten_ca = txtTenCa.Text.Trim(),
@@ -34,7 +34,7 @@ namespace GPBH.UI.UserControls
         }
 
         // Constructor nhận DMCaDTO (sửa)
-        public FormAddCa(DMcaDTO dto) : this()
+        public FormAddCa(DMcaDto dto) : this()
         {
             if (dto != null)
             {

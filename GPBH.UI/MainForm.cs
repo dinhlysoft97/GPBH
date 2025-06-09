@@ -13,12 +13,16 @@ namespace GPBH.UI
     {
         private readonly SysMenuService _sysMenuService;
         private readonly DMcaService _dmCaService;
+        private readonly DMKHService _dmKHService;
+        private readonly DMQGService _dmQGService;
 
-        public MainForm(SysMenuService sysMenuService, DMcaService dmCaService)
+        public MainForm(SysMenuService sysMenuService, DMcaService dmCaService, DMKHService dmKHService, DMQGService dmQGService)
         {
             InitializeComponent();
             _sysMenuService = sysMenuService;
             _dmCaService = dmCaService;
+            _dmKHService = dmKHService;
+            _dmQGService = dmQGService;
             BuildMenu();
             SetData();
 
@@ -146,9 +150,12 @@ namespace GPBH.UI
                     uc = new UserControlCa(_dmCaService);
                     break;
                 case "KhachHang":
-                    uc = new UserControlKhachHang();
+                    uc = new UserControlKhachHang(_dmKHService,_dmQGService);
                     break;
-                default:
+                case "QuocGia":
+                    uc = new UserControlQuocGia(_dmQGService);
+                    break;
+                default:    
                     MessageBox.Show("Tính năng đang phát triển!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
             }

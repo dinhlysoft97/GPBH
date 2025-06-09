@@ -1,4 +1,6 @@
-﻿using System.Windows.Forms;
+﻿using GPBH.UI.Placeholder;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace GPBH.UI
 {
@@ -38,20 +40,21 @@ namespace GPBH.UI
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.textPassport = new System.Windows.Forms.TextBox();
+            this.textHo = new System.Windows.Forms.TextBox();
+            this.textSDT = new System.Windows.Forms.TextBox();
+            this.textEmail = new System.Windows.Forms.TextBox();
+            this.textTen = new System.Windows.Forms.TextBox();
+            this.textTenDem = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBoxDropDown1 = new DevComponents.DotNetBar.Controls.TextBoxDropDown();
-            this.textBoxDropDown2 = new DevComponents.DotNetBar.Controls.TextBoxDropDown();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
+            this.textBoxDropDownQuocTich = new DevComponents.DotNetBar.Controls.TextBoxDropDown();
+            this.textBoxDropDownGioiTinh = new DevComponents.DotNetBar.Controls.TextBoxDropDown();
+            this.dtpNgayCap = new System.Windows.Forms.DateTimePicker();
+            this.dtpNgaySinh = new System.Windows.Forms.DateTimePicker();
+            this.dtpHetHan = new System.Windows.Forms.DateTimePicker();
+            this.textMaKH = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -125,48 +128,49 @@ namespace GPBH.UI
             this.button1.TabIndex = 7;
             this.button1.Text = "Lưu";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox1
+            // textPassport
             // 
-            this.textBox1.Location = new System.Drawing.Point(112, 23);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(141, 20);
-            this.textBox1.TabIndex = 8;
+            this.textPassport.Location = new System.Drawing.Point(112, 23);
+            this.textPassport.Name = "textPassport";
+            this.textPassport.Size = new System.Drawing.Size(141, 20);
+            this.textPassport.TabIndex = 8;
             // 
-            // textBox2
+            // textHo
             // 
-            this.textBox2.Location = new System.Drawing.Point(112, 70);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(141, 20);
-            this.textBox2.TabIndex = 9;
+            this.textHo.Location = new System.Drawing.Point(112, 70);
+            this.textHo.Name = "textHo";
+            this.textHo.Size = new System.Drawing.Size(141, 20);
+            this.textHo.TabIndex = 9;
             // 
-            // textBox6
+            // textSDT
             // 
-            this.textBox6.Location = new System.Drawing.Point(112, 256);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(141, 20);
-            this.textBox6.TabIndex = 13;
+            this.textSDT.Location = new System.Drawing.Point(112, 256);
+            this.textSDT.Name = "textSDT";
+            this.textSDT.Size = new System.Drawing.Size(141, 20);
+            this.textSDT.TabIndex = 13;
             // 
-            // textBox7
+            // textEmail
             // 
-            this.textBox7.Location = new System.Drawing.Point(112, 304);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(201, 20);
-            this.textBox7.TabIndex = 14;
+            this.textEmail.Location = new System.Drawing.Point(112, 304);
+            this.textEmail.Name = "textEmail";
+            this.textEmail.Size = new System.Drawing.Size(201, 20);
+            this.textEmail.TabIndex = 14;
             // 
-            // textBox8
+            // textTen
             // 
-            this.textBox8.Location = new System.Drawing.Point(406, 70);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(141, 20);
-            this.textBox8.TabIndex = 15;
+            this.textTen.Location = new System.Drawing.Point(406, 70);
+            this.textTen.Name = "textTen";
+            this.textTen.Size = new System.Drawing.Size(141, 20);
+            this.textTen.TabIndex = 15;
             // 
-            // textBox9
+            // textTenDem
             // 
-            this.textBox9.Location = new System.Drawing.Point(259, 70);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(141, 20);
-            this.textBox9.TabIndex = 16;
+            this.textTenDem.Location = new System.Drawing.Point(259, 70);
+            this.textTenDem.Name = "textTenDem";
+            this.textTenDem.Size = new System.Drawing.Size(141, 20);
+            this.textTenDem.TabIndex = 16;
             // 
             // label8
             // 
@@ -195,82 +199,90 @@ namespace GPBH.UI
             this.label10.TabIndex = 19;
             this.label10.Text = "Hết hạn";
             // 
-            // textBoxDropDown1
+            // textBoxDropDownQuocTich
             // 
             // 
             // 
             // 
-            this.textBoxDropDown1.BackgroundStyle.Class = "TextBoxBorder";
-            this.textBoxDropDown1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxDropDown1.ButtonDropDown.Visible = true;
-            this.textBoxDropDown1.Location = new System.Drawing.Point(112, 117);
-            this.textBoxDropDown1.Name = "textBoxDropDown1";
-            this.textBoxDropDown1.Size = new System.Drawing.Size(141, 19);
-            this.textBoxDropDown1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.textBoxDropDown1.TabIndex = 20;
-            this.textBoxDropDown1.Text = "";
+            this.textBoxDropDownQuocTich.BackgroundStyle.Class = "TextBoxBorder";
+            this.textBoxDropDownQuocTich.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxDropDownQuocTich.ButtonDropDown.Visible = true;
+            this.textBoxDropDownQuocTich.Location = new System.Drawing.Point(112, 117);
+            this.textBoxDropDownQuocTich.Name = "textBoxDropDownQuocTich";
+            this.textBoxDropDownQuocTich.Size = new System.Drawing.Size(141, 19);
+            this.textBoxDropDownQuocTich.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.textBoxDropDownQuocTich.TabIndex = 20;
+            this.textBoxDropDownQuocTich.Text = "";
             // 
-            // textBoxDropDown2
-            // 
-            // 
+            // textBoxDropDownGioiTinh
             // 
             // 
-            this.textBoxDropDown2.BackgroundStyle.Class = "TextBoxBorder";
-            this.textBoxDropDown2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxDropDown2.ButtonDropDown.Visible = true;
-            this.textBoxDropDown2.Location = new System.Drawing.Point(406, 119);
-            this.textBoxDropDown2.Name = "textBoxDropDown2";
-            this.textBoxDropDown2.Size = new System.Drawing.Size(141, 19);
-            this.textBoxDropDown2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.textBoxDropDown2.TabIndex = 21;
-            this.textBoxDropDown2.Text = "";
             // 
-            // dateTimePicker1
             // 
-            this.dateTimePicker1.CustomFormat = "dd/MM/yyyy";
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(112, 158);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(141, 20);
-            this.dateTimePicker1.TabIndex = 22;
+            this.textBoxDropDownGioiTinh.BackgroundStyle.Class = "TextBoxBorder";
+            this.textBoxDropDownGioiTinh.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxDropDownGioiTinh.ButtonDropDown.Visible = true;
+            this.textBoxDropDownGioiTinh.Location = new System.Drawing.Point(406, 119);
+            this.textBoxDropDownGioiTinh.Name = "textBoxDropDownGioiTinh";
+            this.textBoxDropDownGioiTinh.Size = new System.Drawing.Size(141, 19);
+            this.textBoxDropDownGioiTinh.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.textBoxDropDownGioiTinh.TabIndex = 21;
+            this.textBoxDropDownGioiTinh.Text = "";
             // 
-            // dateTimePicker2
+            // dtpNgayCap
             // 
-            this.dateTimePicker2.CustomFormat = "dd/MM/yyyy";
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker2.Location = new System.Drawing.Point(112, 210);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(141, 20);
-            this.dateTimePicker2.TabIndex = 23;
+            this.dtpNgayCap.CustomFormat = "dd/MM/yyyy";
+            this.dtpNgayCap.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpNgayCap.Location = new System.Drawing.Point(112, 158);
+            this.dtpNgayCap.Name = "dtpNgayCap";
+            this.dtpNgayCap.Size = new System.Drawing.Size(141, 20);
+            this.dtpNgayCap.TabIndex = 22;
             // 
-            // dateTimePicker3
+            // dtpNgaySinh
             // 
-            this.dateTimePicker3.CustomFormat = "dd/MM/yyyy";
-            this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker3.Location = new System.Drawing.Point(406, 164);
-            this.dateTimePicker3.Name = "dateTimePicker3";
-            this.dateTimePicker3.Size = new System.Drawing.Size(141, 20);
-            this.dateTimePicker3.TabIndex = 24;
+            this.dtpNgaySinh.CustomFormat = "dd/MM/yyyy";
+            this.dtpNgaySinh.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpNgaySinh.Location = new System.Drawing.Point(112, 210);
+            this.dtpNgaySinh.Name = "dtpNgaySinh";
+            this.dtpNgaySinh.Size = new System.Drawing.Size(141, 20);
+            this.dtpNgaySinh.TabIndex = 23;
+            // 
+            // dtpHetHan
+            // 
+            this.dtpHetHan.CustomFormat = "dd/MM/yyyy";
+            this.dtpHetHan.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpHetHan.Location = new System.Drawing.Point(406, 164);
+            this.dtpHetHan.Name = "dtpHetHan";
+            this.dtpHetHan.Size = new System.Drawing.Size(141, 20);
+            this.dtpHetHan.TabIndex = 24;
+            // 
+            // textMaKH
+            // 
+            this.textMaKH.Location = new System.Drawing.Point(407, 20);
+            this.textMaKH.Name = "textMaKH";
+            this.textMaKH.Size = new System.Drawing.Size(140, 20);
+            this.textMaKH.TabIndex = 25;
             // 
             // FormAddDMKH
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(591, 392);
-            this.Controls.Add(this.dateTimePicker3);
-            this.Controls.Add(this.dateTimePicker2);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.textBoxDropDown2);
-            this.Controls.Add(this.textBoxDropDown1);
+            this.Controls.Add(this.textMaKH);
+            this.Controls.Add(this.dtpHetHan);
+            this.Controls.Add(this.dtpNgaySinh);
+            this.Controls.Add(this.dtpNgayCap);
+            this.Controls.Add(this.textBoxDropDownGioiTinh);
+            this.Controls.Add(this.textBoxDropDownQuocTich);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.textBox9);
-            this.Controls.Add(this.textBox8);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textTenDem);
+            this.Controls.Add(this.textTen);
+            this.Controls.Add(this.textEmail);
+            this.Controls.Add(this.textSDT);
+            this.Controls.Add(this.textHo);
+            this.Controls.Add(this.textPassport);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -283,7 +295,8 @@ namespace GPBH.UI
             this.Text = "FormAddDSKH";
             this.ResumeLayout(false);
             this.PerformLayout();
-
+            textBoxDropDownGioiTinh.DropDownItems.Clear();
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         #endregion
@@ -296,19 +309,20 @@ namespace GPBH.UI
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox textPassport;
+        private System.Windows.Forms.TextBox textHo;
+        private System.Windows.Forms.TextBox textSDT;
+        private System.Windows.Forms.TextBox textEmail;
+        private System.Windows.Forms.TextBox textTen;
+        private System.Windows.Forms.TextBox textTenDem;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private DevComponents.DotNetBar.Controls.TextBoxDropDown textBoxDropDown1;
-        private DevComponents.DotNetBar.Controls.TextBoxDropDown textBoxDropDown2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private DateTimePicker dateTimePicker2;
-        private DateTimePicker dateTimePicker3;
+        private DevComponents.DotNetBar.Controls.TextBoxDropDown textBoxDropDownQuocTich;
+        private DevComponents.DotNetBar.Controls.TextBoxDropDown textBoxDropDownGioiTinh;
+        private System.Windows.Forms.DateTimePicker dtpNgayCap;
+        private DateTimePicker dtpNgaySinh;
+        private DateTimePicker dtpHetHan;
+        private TextBox textMaKH;
     }
 }

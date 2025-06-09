@@ -19,10 +19,10 @@ namespace GPBH.Business.Services
             _unitOfWork = unitOfWork;
         }
 
-        public List<DMcaDTO> GetAllCa()
+        public List<DMcaDto> GetAllCa()
         {
             return _unitOfWork.Repository<DMca>().GetAll()
-                .Select(z => new DMcaDTO
+                .Select(z => new DMcaDto
                 {
                     Ma_ca = z.Ma_ca,
                     Ten_ca = z.Ten_ca,
@@ -30,7 +30,7 @@ namespace GPBH.Business.Services
                     Gio_kt = z.Gio_kt
                 }).ToList();
         }
-        public void AddCa(DMcaDTO dto)
+        public void AddCa(DMcaDto dto)
         {
             if(dto == null)
                 throw new ArgumentNullException(nameof(dto));
@@ -45,7 +45,7 @@ namespace GPBH.Business.Services
             _unitOfWork.SaveChanges();
         }
 
-        public void EditCa(DMcaDTO dto)
+        public void EditCa(DMcaDto dto)
         {
             if (dto == null) throw new ArgumentNullException(nameof(dto));
 
@@ -62,7 +62,7 @@ namespace GPBH.Business.Services
 
         }
 
-        public void DeleteCa(DMcaDTO dto)
+        public void DeleteCa(DMcaDto dto)
         {
             if (dto == null) throw new ArgumentNullException(nameof(dto));
 

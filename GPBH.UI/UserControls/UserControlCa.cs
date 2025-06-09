@@ -56,7 +56,7 @@ namespace GPBH.UI.UserControls
 
             // Lấy dữ liệu dòng được chọn
             var row = dataGridViewX1.Rows[e.RowIndex];
-            var dto = new DMcaDTO
+            var dto = new DMcaDto
             {
                 Ma_ca = row.Cells["Ma_ca"].Value?.ToString(),
                 Ten_ca = row.Cells["Ten_ca"].Value?.ToString(),
@@ -94,7 +94,7 @@ namespace GPBH.UI.UserControls
             var confirm = MessageBox.Show($"Bạn có chắc chắn muốn xóa ca '{tenCa}' (Mã: {maCa}) không?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (confirm != DialogResult.Yes) return;
 
-            var dto = new DMcaDTO { Ma_ca = maCa };
+            var dto = new DMcaDto { Ma_ca = maCa };
             _dmCaService.DeleteCa(dto);
 
             LoadData();
