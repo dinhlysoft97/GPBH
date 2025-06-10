@@ -1,9 +1,11 @@
 ﻿using GPBH.Business.Dtos;
+using GPBH.Business.Exceptions;
 using GPBH.Data.Entities;
 using GPBH.Data.UnitOfWorks;
 using Mapster;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace GPBH.Business.Services
@@ -25,7 +27,7 @@ namespace GPBH.Business.Services
         /// <exception cref="Exception"></exception>
         public (XPH5Dto, bool) TaoDonHang(XPH5Dto donhang)
         {
-            var entity = new XPH5();
+            XPH5 entity;
             using (var scope = _serviceProvider.CreateScope())
             {
                 var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
@@ -51,7 +53,7 @@ namespace GPBH.Business.Services
                                        && x.So_chung_tu == soChungTuMoi);
                             soLanLap++;
                             if (soLanLap > 10)
-                                throw new Exception("Không thể tạo số chứng từ không trùng sau nhiều lần thử!");
+                                throw new BadRequestException("Không thể tạo số chứng từ không trùng sau nhiều lần thử!");
                         }
                         while (daTonTai);
 
@@ -70,7 +72,7 @@ namespace GPBH.Business.Services
                 catch (Exception ex)
                 {
                     unitOfWork.Rollback();
-                    throw new Exception("Lỗi khi tạo đơn hàng: " + ex.Message);
+                    throw new BadRequestException("Lỗi khi tạo đơn hàng: " + ex.Message);
                 }
             }
         }
@@ -88,7 +90,10 @@ namespace GPBH.Business.Services
                         .Find(x => x.Ma_phieu == donhang.Ma_phieu)
                         .FirstOrDefault();
 
-                    if (donhang.Trang_thai == TrangThaiDonHang.Confirmed)
+                    // Update chi tiết
+                    UpdateChiTietDonHang(entity, donhang);
+
+                    if (entity.Trang_thai == TrangThaiDonHang.Draft && donhang.Trang_thai == TrangThaiDonHang.Confirmed)
                     {
                         var soPhieuGenerator = scope.ServiceProvider.GetRequiredService<SoPhieuGeneratorService>();
                         string soChungTuMoi;
@@ -104,7 +109,7 @@ namespace GPBH.Business.Services
                                        && x.So_chung_tu == soChungTuMoi);
                             soLanLap++;
                             if (soLanLap > 10)
-                                throw new Exception("Không thể tạo số chứng từ không trùng sau nhiều lần thử!");
+                                throw new BadRequestException("Không thể tạo số chứng từ không trùng sau nhiều lần thử!");
                         }
                         while (daTonTai);
 
@@ -122,7 +127,7 @@ namespace GPBH.Business.Services
                 catch (Exception ex)
                 {
                     unitOfWork.Rollback();
-                    throw new Exception("Lỗi khi tạo đơn hàng: " + ex.Message);
+                    throw new BadRequestException("Lỗi khi tạo đơn hàng: " + ex.Message);
                 }
             }
         }
@@ -136,7 +141,7 @@ namespace GPBH.Business.Services
         /// <param name="ma_chung_tu"></param>
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
-        private string GenerateMaPhieu(IUnitOfWork unitOfWork, string ma_dv, string ma_chung_tu)
+        private static string GenerateMaPhieu(IUnitOfWork unitOfWork, string ma_dv, string ma_chung_tu)
         {
             int soLanLap = 0;
             string maPhieuMoi;
@@ -175,13 +180,58 @@ namespace GPBH.Business.Services
                 soLanLap++;
 
                 if (soLanLap > 10)
-                    throw new Exception("Không thể tạo mã phiếu không trùng sau nhiều lần thử!");
+                    throw new BadRequestException("Không thể tạo mã phiếu không trùng sau nhiều lần thử!");
             }
             while (daTonTai);
 
             return maPhieuMoi;
         }
 
+        /// <summary>
+        /// Cập nhật chi tiết đơn hàng
+        /// </summary>
+        /// <param name="entity"></param>
+        public static void UpdateChiTietDonHang(XPH5 entity, XPH5Dto dto)
+        {
+            // 1. Thêm các dòng mới (trong dto nhưng chưa có trong entity)
+            var addDtos = dto.XCT5s
+                .Where(d => d.Stt > 0 && !entity.XCT5s.Any(e => e.Ma_hh == d.Ma_hh))
+                .ToList();
+            if (addDtos.Any())
+                entity.XCT5s.AddRange(addDtos.Adapt<List<XCT5>>());
+
+            // 2. Xoá các dòng (trong entity nhưng không còn trong dto)
+            var removeEntities = entity.XCT5s
+                .Where(e => !dto.XCT5s.Any(d => d.Ma_hh == e.Ma_hh))
+                .ToList();
+
+            foreach (var entityItem in removeEntities)
+            {
+                entity.XCT5s.Remove(entityItem);
+            }
+
+            // 3. Update các dòng có Ma_hh trùng (nếu cần cập nhật các trường khác)
+            foreach (var entityItem in entity.XCT5s)
+            {
+                var dtoItem = dto.XCT5s.FirstOrDefault(d => d.Ma_hh == entityItem.Ma_hh);
+                if (dtoItem != null)
+                {
+                    entityItem.Stt = dtoItem.Stt;
+                    entityItem.Ma_hh = dtoItem.Ma_hh;
+                    entityItem.Ten_hh = dtoItem.Ten_hh;
+                    entityItem.Dvt = dtoItem.Dvt;
+                    entityItem.So_luong = dtoItem.So_luong;
+                    entityItem.Gia_ban = dtoItem.Gia_ban;
+                    entityItem.Gia_ban_nt = dtoItem.Gia_ban_nt;
+                    entityItem.Gg_ty_le = dtoItem.Gg_ty_le;
+                    entityItem.Gg_tien = dtoItem.Gg_tien;
+                    entityItem.Gg_tien_nt = dtoItem.Gg_tien_nt;
+                    entityItem.Tien_ban = dtoItem.Tien_ban;
+                    entityItem.Tien_ban_nt = dtoItem.Tien_ban_nt;
+                    entityItem.Gg_ly_do = dtoItem.Gg_ly_do;
+                }
+            }
+        }
         /// <summary>
         /// Tính tồn kho sau khi tạo đơn hàng
         /// </summary>

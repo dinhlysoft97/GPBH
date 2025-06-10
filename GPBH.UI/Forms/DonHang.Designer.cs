@@ -88,26 +88,26 @@ namespace GPBH.UI.Forms
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.groupPanel4 = new DevComponents.DotNetBar.Controls.GroupPanel();
-            this.txtTGTT3 = new DevComponents.Editors.DoubleInput();
-            this.txtTGTT2 = new DevComponents.Editors.DoubleInput();
-            this.txtTGTT1 = new DevComponents.Editors.DoubleInput();
-            this.txtQDNTTTT = new DevComponents.Editors.DoubleInput();
-            this.txtQDTTNT3 = new DevComponents.Editors.DoubleInput();
-            this.txtQDTTNT2 = new DevComponents.Editors.DoubleInput();
-            this.txtQDTTNT1 = new DevComponents.Editors.DoubleInput();
-            this.txtTTNT3 = new DevComponents.Editors.DoubleInput();
-            this.txtTTNT2 = new DevComponents.Editors.DoubleInput();
-            this.txtTTNT1 = new DevComponents.Editors.DoubleInput();
+            this.txtTt3_ty_gia = new DevComponents.Editors.DoubleInput();
+            this.txtTt2_ty_gia = new DevComponents.Editors.DoubleInput();
+            this.txtTt1_ty_gia = new DevComponents.Editors.DoubleInput();
+            this.txtTt_tong = new DevComponents.Editors.DoubleInput();
+            this.txtTt3_tien_nt = new DevComponents.Editors.DoubleInput();
+            this.txtTt2_tien_nt = new DevComponents.Editors.DoubleInput();
+            this.txtTt1_tien_nt = new DevComponents.Editors.DoubleInput();
+            this.txtTt3_tien_tt = new DevComponents.Editors.DoubleInput();
+            this.txtTt2_tien_tt = new DevComponents.Editors.DoubleInput();
+            this.txtTt1_tien_tt = new DevComponents.Editors.DoubleInput();
             this.lbTTT = new DevComponents.DotNetBar.LabelX();
             this.lbTT3 = new DevComponents.DotNetBar.LabelX();
-            this.cbbTTNT3 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.cbbTT3 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.cbbTt3_ma_nt = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.cbbTt3_loai = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.lbTT2 = new DevComponents.DotNetBar.LabelX();
-            this.cbbTTNT2 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.cbbTT2 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.cbbTt2_ma_nt = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.cbbTt2_loai = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.lbTT1 = new DevComponents.DotNetBar.LabelX();
-            this.cbbTTNT1 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.cbbTT1 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.cbbTt1_ma_nt = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.cbbTt1_loai = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.labelX17 = new DevComponents.DotNetBar.LabelX();
             this.labelX16 = new DevComponents.DotNetBar.LabelX();
             this.labelX15 = new DevComponents.DotNetBar.LabelX();
@@ -115,11 +115,11 @@ namespace GPBH.UI.Forms
             this.groupPanel6 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.txtTQDVND = new DevComponents.Editors.DoubleInput();
             this.labelX28 = new DevComponents.DotNetBar.LabelX();
-            this.txtTT = new DevComponents.Editors.DoubleInput();
+            this.txtTong_thu_nt = new DevComponents.Editors.DoubleInput();
             this.labelX29 = new DevComponents.DotNetBar.LabelX();
-            this.txtTGNT = new DevComponents.Editors.DoubleInput();
+            this.txtTong_giam_gia_nt = new DevComponents.Editors.DoubleInput();
             this.lbTongThu = new DevComponents.DotNetBar.LabelX();
-            this.txtTTHNT = new DevComponents.Editors.DoubleInput();
+            this.txtTong_tien_hang_nt = new DevComponents.Editors.DoubleInput();
             this.labelX27 = new DevComponents.DotNetBar.LabelX();
             this.lbGiamGia = new DevComponents.DotNetBar.LabelX();
             this.labelX25 = new DevComponents.DotNetBar.LabelX();
@@ -146,12 +146,12 @@ namespace GPBH.UI.Forms
             this.labelX34 = new DevComponents.DotNetBar.LabelX();
             this.lbTraLai = new DevComponents.DotNetBar.LabelX();
             this.labelX37 = new DevComponents.DotNetBar.LabelX();
-            this.cbTLNT = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.cbTra_lai_ma_nt = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.lbTongNhan = new DevComponents.DotNetBar.LabelX();
             this.labelX32 = new DevComponents.DotNetBar.LabelX();
-            this.txtTNNT = new DevComponents.Editors.DoubleInput();
-            this.txtTLNT = new DevComponents.Editors.DoubleInput();
-            this.txtQDTLNT = new DevComponents.Editors.DoubleInput();
+            this.txtTong_nhan = new DevComponents.Editors.DoubleInput();
+            this.txtTra_lai_nt = new DevComponents.Editors.DoubleInput();
+            this.txtTra_lai = new DevComponents.Editors.DoubleInput();
             this.groupPanel2.SuspendLayout();
             this.groupPanel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -162,26 +162,26 @@ namespace GPBH.UI.Forms
             this.bar1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.groupPanel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTGTT3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTGTT2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTGTT1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtQDNTTTT)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtQDTTNT3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtQDTTNT2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtQDTTNT1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTTNT3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTTNT2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTTNT1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTt3_ty_gia)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTt2_ty_gia)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTt1_ty_gia)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTt_tong)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTt3_tien_nt)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTt2_tien_nt)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTt1_tien_nt)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTt3_tien_tt)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTt2_tien_tt)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTt1_tien_tt)).BeginInit();
             this.groupPanel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtTQDVND)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTT)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTGNT)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTTHNT)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTong_thu_nt)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTong_giam_gia_nt)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTong_tien_hang_nt)).BeginInit();
             this.groupPanel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bar2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTNNT)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTLNT)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtQDTLNT)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTong_nhan)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTra_lai_nt)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTra_lai)).BeginInit();
             this.SuspendLayout();
             // 
             // groupPanel2
@@ -924,7 +924,7 @@ namespace GPBH.UI.Forms
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 61.20778F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38.79222F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 407F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 410F));
             this.tableLayoutPanel2.Controls.Add(this.groupPanel4, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.groupPanel6, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.groupPanel5, 2, 0);
@@ -941,26 +941,26 @@ namespace GPBH.UI.Forms
             this.groupPanel4.BackColor = System.Drawing.Color.LightGray;
             this.groupPanel4.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel4.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
-            this.groupPanel4.Controls.Add(this.txtTGTT3);
-            this.groupPanel4.Controls.Add(this.txtTGTT2);
-            this.groupPanel4.Controls.Add(this.txtTGTT1);
-            this.groupPanel4.Controls.Add(this.txtQDNTTTT);
-            this.groupPanel4.Controls.Add(this.txtQDTTNT3);
-            this.groupPanel4.Controls.Add(this.txtQDTTNT2);
-            this.groupPanel4.Controls.Add(this.txtQDTTNT1);
-            this.groupPanel4.Controls.Add(this.txtTTNT3);
-            this.groupPanel4.Controls.Add(this.txtTTNT2);
-            this.groupPanel4.Controls.Add(this.txtTTNT1);
+            this.groupPanel4.Controls.Add(this.txtTt3_ty_gia);
+            this.groupPanel4.Controls.Add(this.txtTt2_ty_gia);
+            this.groupPanel4.Controls.Add(this.txtTt1_ty_gia);
+            this.groupPanel4.Controls.Add(this.txtTt_tong);
+            this.groupPanel4.Controls.Add(this.txtTt3_tien_nt);
+            this.groupPanel4.Controls.Add(this.txtTt2_tien_nt);
+            this.groupPanel4.Controls.Add(this.txtTt1_tien_nt);
+            this.groupPanel4.Controls.Add(this.txtTt3_tien_tt);
+            this.groupPanel4.Controls.Add(this.txtTt2_tien_tt);
+            this.groupPanel4.Controls.Add(this.txtTt1_tien_tt);
             this.groupPanel4.Controls.Add(this.lbTTT);
             this.groupPanel4.Controls.Add(this.lbTT3);
-            this.groupPanel4.Controls.Add(this.cbbTTNT3);
-            this.groupPanel4.Controls.Add(this.cbbTT3);
+            this.groupPanel4.Controls.Add(this.cbbTt3_ma_nt);
+            this.groupPanel4.Controls.Add(this.cbbTt3_loai);
             this.groupPanel4.Controls.Add(this.lbTT2);
-            this.groupPanel4.Controls.Add(this.cbbTTNT2);
-            this.groupPanel4.Controls.Add(this.cbbTT2);
+            this.groupPanel4.Controls.Add(this.cbbTt2_ma_nt);
+            this.groupPanel4.Controls.Add(this.cbbTt2_loai);
             this.groupPanel4.Controls.Add(this.lbTT1);
-            this.groupPanel4.Controls.Add(this.cbbTTNT1);
-            this.groupPanel4.Controls.Add(this.cbbTT1);
+            this.groupPanel4.Controls.Add(this.cbbTt1_ma_nt);
+            this.groupPanel4.Controls.Add(this.cbbTt1_loai);
             this.groupPanel4.Controls.Add(this.labelX17);
             this.groupPanel4.Controls.Add(this.labelX16);
             this.groupPanel4.Controls.Add(this.labelX15);
@@ -968,7 +968,7 @@ namespace GPBH.UI.Forms
             this.groupPanel4.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel4.Location = new System.Drawing.Point(3, 3);
             this.groupPanel4.Name = "groupPanel4";
-            this.groupPanel4.Size = new System.Drawing.Size(617, 187);
+            this.groupPanel4.Size = new System.Drawing.Size(615, 187);
             // 
             // 
             // 
@@ -1000,159 +1000,159 @@ namespace GPBH.UI.Forms
             this.groupPanel4.TabIndex = 0;
             this.groupPanel4.Text = "Thanh toán(Alt +P)";
             // 
-            // txtTGTT3
+            // txtTt3_ty_gia
             // 
             // 
             // 
             // 
-            this.txtTGTT3.BackgroundStyle.Class = "DateTimeInputBackground";
-            this.txtTGTT3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtTGTT3.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.txtTGTT3.Increment = 1D;
-            this.txtTGTT3.Location = new System.Drawing.Point(344, 3);
-            this.txtTGTT3.Name = "txtTGTT3";
-            this.txtTGTT3.ShowUpDown = true;
-            this.txtTGTT3.Size = new System.Drawing.Size(98, 20);
-            this.txtTGTT3.TabIndex = 47;
-            this.txtTGTT3.Visible = false;
+            this.txtTt3_ty_gia.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.txtTt3_ty_gia.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtTt3_ty_gia.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.txtTt3_ty_gia.Increment = 1D;
+            this.txtTt3_ty_gia.Location = new System.Drawing.Point(344, 3);
+            this.txtTt3_ty_gia.Name = "txtTt3_ty_gia";
+            this.txtTt3_ty_gia.ShowUpDown = true;
+            this.txtTt3_ty_gia.Size = new System.Drawing.Size(98, 20);
+            this.txtTt3_ty_gia.TabIndex = 47;
+            this.txtTt3_ty_gia.Visible = false;
             // 
-            // txtTGTT2
-            // 
-            // 
-            // 
-            // 
-            this.txtTGTT2.BackgroundStyle.Class = "DateTimeInputBackground";
-            this.txtTGTT2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtTGTT2.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.txtTGTT2.Increment = 1D;
-            this.txtTGTT2.Location = new System.Drawing.Point(230, 3);
-            this.txtTGTT2.Name = "txtTGTT2";
-            this.txtTGTT2.ShowUpDown = true;
-            this.txtTGTT2.Size = new System.Drawing.Size(98, 20);
-            this.txtTGTT2.TabIndex = 46;
-            this.txtTGTT2.Visible = false;
-            // 
-            // txtTGTT1
+            // txtTt2_ty_gia
             // 
             // 
             // 
             // 
-            this.txtTGTT1.BackgroundStyle.Class = "DateTimeInputBackground";
-            this.txtTGTT1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtTGTT1.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.txtTGTT1.Increment = 1D;
-            this.txtTGTT1.Location = new System.Drawing.Point(120, 3);
-            this.txtTGTT1.Name = "txtTGTT1";
-            this.txtTGTT1.ShowUpDown = true;
-            this.txtTGTT1.Size = new System.Drawing.Size(98, 20);
-            this.txtTGTT1.TabIndex = 45;
-            this.txtTGTT1.Visible = false;
+            this.txtTt2_ty_gia.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.txtTt2_ty_gia.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtTt2_ty_gia.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.txtTt2_ty_gia.Increment = 1D;
+            this.txtTt2_ty_gia.Location = new System.Drawing.Point(230, 3);
+            this.txtTt2_ty_gia.Name = "txtTt2_ty_gia";
+            this.txtTt2_ty_gia.ShowUpDown = true;
+            this.txtTt2_ty_gia.Size = new System.Drawing.Size(98, 20);
+            this.txtTt2_ty_gia.TabIndex = 46;
+            this.txtTt2_ty_gia.Visible = false;
             // 
-            // txtQDNTTTT
-            // 
-            // 
-            // 
-            // 
-            this.txtQDNTTTT.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtQDNTTTT.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.txtQDNTTTT.DisplayFormat = "#,##0.00";
-            this.txtQDNTTTT.Enabled = false;
-            this.txtQDNTTTT.Increment = 1D;
-            this.txtQDNTTTT.Location = new System.Drawing.Point(459, 118);
-            this.txtQDNTTTT.Name = "txtQDNTTTT";
-            this.txtQDNTTTT.ShowUpDown = true;
-            this.txtQDNTTTT.Size = new System.Drawing.Size(99, 20);
-            this.txtQDNTTTT.TabIndex = 44;
-            // 
-            // txtQDTTNT3
+            // txtTt1_ty_gia
             // 
             // 
             // 
             // 
-            this.txtQDTTNT3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtQDTTNT3.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.txtQDTTNT3.DisplayFormat = "#,##0.00";
-            this.txtQDTTNT3.Increment = 1D;
-            this.txtQDTTNT3.Location = new System.Drawing.Point(459, 90);
-            this.txtQDTTNT3.Name = "txtQDTTNT3";
-            this.txtQDTTNT3.ShowUpDown = true;
-            this.txtQDTTNT3.Size = new System.Drawing.Size(99, 20);
-            this.txtQDTTNT3.TabIndex = 43;
+            this.txtTt1_ty_gia.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.txtTt1_ty_gia.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtTt1_ty_gia.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.txtTt1_ty_gia.Increment = 1D;
+            this.txtTt1_ty_gia.Location = new System.Drawing.Point(120, 3);
+            this.txtTt1_ty_gia.Name = "txtTt1_ty_gia";
+            this.txtTt1_ty_gia.ShowUpDown = true;
+            this.txtTt1_ty_gia.Size = new System.Drawing.Size(98, 20);
+            this.txtTt1_ty_gia.TabIndex = 45;
+            this.txtTt1_ty_gia.Visible = false;
             // 
-            // txtQDTTNT2
-            // 
-            // 
-            // 
-            // 
-            this.txtQDTTNT2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtQDTTNT2.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.txtQDTTNT2.DisplayFormat = "#,##0.00";
-            this.txtQDTTNT2.Increment = 1D;
-            this.txtQDTTNT2.Location = new System.Drawing.Point(459, 60);
-            this.txtQDTTNT2.Name = "txtQDTTNT2";
-            this.txtQDTTNT2.ShowUpDown = true;
-            this.txtQDTTNT2.Size = new System.Drawing.Size(99, 20);
-            this.txtQDTTNT2.TabIndex = 42;
-            // 
-            // txtQDTTNT1
+            // txtTt_tong
             // 
             // 
             // 
             // 
-            this.txtQDTTNT1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtQDTTNT1.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.txtQDTTNT1.DisplayFormat = "#,##0.00";
-            this.txtQDTTNT1.Increment = 1D;
-            this.txtQDTTNT1.Location = new System.Drawing.Point(459, 26);
-            this.txtQDTTNT1.Name = "txtQDTTNT1";
-            this.txtQDTTNT1.ShowUpDown = true;
-            this.txtQDTTNT1.Size = new System.Drawing.Size(99, 20);
-            this.txtQDTTNT1.TabIndex = 41;
+            this.txtTt_tong.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtTt_tong.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.txtTt_tong.DisplayFormat = "#,##0.00";
+            this.txtTt_tong.Enabled = false;
+            this.txtTt_tong.Increment = 1D;
+            this.txtTt_tong.Location = new System.Drawing.Point(459, 118);
+            this.txtTt_tong.Name = "txtTt_tong";
+            this.txtTt_tong.ShowUpDown = true;
+            this.txtTt_tong.Size = new System.Drawing.Size(99, 20);
+            this.txtTt_tong.TabIndex = 44;
             // 
-            // txtTTNT3
-            // 
-            // 
-            // 
-            // 
-            this.txtTTNT3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtTTNT3.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.txtTTNT3.DisplayFormat = "#,##0.00";
-            this.txtTTNT3.Increment = 1D;
-            this.txtTTNT3.Location = new System.Drawing.Point(344, 90);
-            this.txtTTNT3.Name = "txtTTNT3";
-            this.txtTTNT3.ShowUpDown = true;
-            this.txtTTNT3.Size = new System.Drawing.Size(99, 20);
-            this.txtTTNT3.TabIndex = 40;
-            // 
-            // txtTTNT2
+            // txtTt3_tien_nt
             // 
             // 
             // 
             // 
-            this.txtTTNT2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtTTNT2.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.txtTTNT2.DisplayFormat = "#,##0.00";
-            this.txtTTNT2.Increment = 1D;
-            this.txtTTNT2.Location = new System.Drawing.Point(344, 59);
-            this.txtTTNT2.Name = "txtTTNT2";
-            this.txtTTNT2.ShowUpDown = true;
-            this.txtTTNT2.Size = new System.Drawing.Size(99, 20);
-            this.txtTTNT2.TabIndex = 39;
+            this.txtTt3_tien_nt.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtTt3_tien_nt.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.txtTt3_tien_nt.DisplayFormat = "#,##0.00";
+            this.txtTt3_tien_nt.Increment = 1D;
+            this.txtTt3_tien_nt.Location = new System.Drawing.Point(459, 90);
+            this.txtTt3_tien_nt.Name = "txtTt3_tien_nt";
+            this.txtTt3_tien_nt.ShowUpDown = true;
+            this.txtTt3_tien_nt.Size = new System.Drawing.Size(99, 20);
+            this.txtTt3_tien_nt.TabIndex = 43;
             // 
-            // txtTTNT1
-            // 
-            // 
+            // txtTt2_tien_nt
             // 
             // 
-            this.txtTTNT1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtTTNT1.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.txtTTNT1.DisplayFormat = "#,##0.00";
-            this.txtTTNT1.Increment = 1D;
-            this.txtTTNT1.Location = new System.Drawing.Point(344, 26);
-            this.txtTTNT1.Name = "txtTTNT1";
-            this.txtTTNT1.ShowUpDown = true;
-            this.txtTTNT1.Size = new System.Drawing.Size(99, 20);
-            this.txtTTNT1.TabIndex = 38;
+            // 
+            // 
+            this.txtTt2_tien_nt.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtTt2_tien_nt.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.txtTt2_tien_nt.DisplayFormat = "#,##0.00";
+            this.txtTt2_tien_nt.Increment = 1D;
+            this.txtTt2_tien_nt.Location = new System.Drawing.Point(459, 60);
+            this.txtTt2_tien_nt.Name = "txtTt2_tien_nt";
+            this.txtTt2_tien_nt.ShowUpDown = true;
+            this.txtTt2_tien_nt.Size = new System.Drawing.Size(99, 20);
+            this.txtTt2_tien_nt.TabIndex = 42;
+            // 
+            // txtTt1_tien_nt
+            // 
+            // 
+            // 
+            // 
+            this.txtTt1_tien_nt.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtTt1_tien_nt.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.txtTt1_tien_nt.DisplayFormat = "#,##0.00";
+            this.txtTt1_tien_nt.Increment = 1D;
+            this.txtTt1_tien_nt.Location = new System.Drawing.Point(459, 26);
+            this.txtTt1_tien_nt.Name = "txtTt1_tien_nt";
+            this.txtTt1_tien_nt.ShowUpDown = true;
+            this.txtTt1_tien_nt.Size = new System.Drawing.Size(99, 20);
+            this.txtTt1_tien_nt.TabIndex = 41;
+            // 
+            // txtTt3_tien_tt
+            // 
+            // 
+            // 
+            // 
+            this.txtTt3_tien_tt.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtTt3_tien_tt.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.txtTt3_tien_tt.DisplayFormat = "#,##0.00";
+            this.txtTt3_tien_tt.Increment = 1D;
+            this.txtTt3_tien_tt.Location = new System.Drawing.Point(344, 90);
+            this.txtTt3_tien_tt.Name = "txtTt3_tien_tt";
+            this.txtTt3_tien_tt.ShowUpDown = true;
+            this.txtTt3_tien_tt.Size = new System.Drawing.Size(99, 20);
+            this.txtTt3_tien_tt.TabIndex = 40;
+            // 
+            // txtTt2_tien_tt
+            // 
+            // 
+            // 
+            // 
+            this.txtTt2_tien_tt.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtTt2_tien_tt.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.txtTt2_tien_tt.DisplayFormat = "#,##0.00";
+            this.txtTt2_tien_tt.Increment = 1D;
+            this.txtTt2_tien_tt.Location = new System.Drawing.Point(344, 59);
+            this.txtTt2_tien_tt.Name = "txtTt2_tien_tt";
+            this.txtTt2_tien_tt.ShowUpDown = true;
+            this.txtTt2_tien_tt.Size = new System.Drawing.Size(99, 20);
+            this.txtTt2_tien_tt.TabIndex = 39;
+            // 
+            // txtTt1_tien_tt
+            // 
+            // 
+            // 
+            // 
+            this.txtTt1_tien_tt.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtTt1_tien_tt.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.txtTt1_tien_tt.DisplayFormat = "#,##0.00";
+            this.txtTt1_tien_tt.Increment = 1D;
+            this.txtTt1_tien_tt.Location = new System.Drawing.Point(344, 27);
+            this.txtTt1_tien_tt.Name = "txtTt1_tien_tt";
+            this.txtTt1_tien_tt.ShowUpDown = true;
+            this.txtTt1_tien_tt.Size = new System.Drawing.Size(99, 20);
+            this.txtTt1_tien_tt.TabIndex = 38;
             // 
             // lbTTT
             // 
@@ -1186,31 +1186,31 @@ namespace GPBH.UI.Forms
             this.lbTT3.Text = "(USD)";
             this.lbTT3.TextAlignment = System.Drawing.StringAlignment.Center;
             // 
-            // cbbTTNT3
+            // cbbTt3_ma_nt
             // 
-            this.cbbTTNT3.DisplayMember = "Text";
-            this.cbbTTNT3.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cbbTTNT3.FormattingEnabled = true;
-            this.cbbTTNT3.ItemHeight = 16;
-            this.cbbTTNT3.Location = new System.Drawing.Point(231, 89);
-            this.cbbTTNT3.Margin = new System.Windows.Forms.Padding(2);
-            this.cbbTTNT3.Name = "cbbTTNT3";
-            this.cbbTTNT3.Size = new System.Drawing.Size(99, 22);
-            this.cbbTTNT3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cbbTTNT3.TabIndex = 32;
+            this.cbbTt3_ma_nt.DisplayMember = "Text";
+            this.cbbTt3_ma_nt.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbbTt3_ma_nt.FormattingEnabled = true;
+            this.cbbTt3_ma_nt.ItemHeight = 16;
+            this.cbbTt3_ma_nt.Location = new System.Drawing.Point(231, 89);
+            this.cbbTt3_ma_nt.Margin = new System.Windows.Forms.Padding(2);
+            this.cbbTt3_ma_nt.Name = "cbbTt3_ma_nt";
+            this.cbbTt3_ma_nt.Size = new System.Drawing.Size(99, 22);
+            this.cbbTt3_ma_nt.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbbTt3_ma_nt.TabIndex = 32;
             // 
-            // cbbTT3
+            // cbbTt3_loai
             // 
-            this.cbbTT3.DisplayMember = "Text";
-            this.cbbTT3.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cbbTT3.FormattingEnabled = true;
-            this.cbbTT3.ItemHeight = 16;
-            this.cbbTT3.Location = new System.Drawing.Point(120, 89);
-            this.cbbTT3.Margin = new System.Windows.Forms.Padding(2);
-            this.cbbTT3.Name = "cbbTT3";
-            this.cbbTT3.Size = new System.Drawing.Size(99, 22);
-            this.cbbTT3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cbbTT3.TabIndex = 31;
+            this.cbbTt3_loai.DisplayMember = "Text";
+            this.cbbTt3_loai.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbbTt3_loai.FormattingEnabled = true;
+            this.cbbTt3_loai.ItemHeight = 16;
+            this.cbbTt3_loai.Location = new System.Drawing.Point(120, 89);
+            this.cbbTt3_loai.Margin = new System.Windows.Forms.Padding(2);
+            this.cbbTt3_loai.Name = "cbbTt3_loai";
+            this.cbbTt3_loai.Size = new System.Drawing.Size(99, 22);
+            this.cbbTt3_loai.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbbTt3_loai.TabIndex = 31;
             // 
             // lbTT2
             // 
@@ -1228,31 +1228,31 @@ namespace GPBH.UI.Forms
             this.lbTT2.Text = "(USD)";
             this.lbTT2.TextAlignment = System.Drawing.StringAlignment.Center;
             // 
-            // cbbTTNT2
+            // cbbTt2_ma_nt
             // 
-            this.cbbTTNT2.DisplayMember = "Text";
-            this.cbbTTNT2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cbbTTNT2.FormattingEnabled = true;
-            this.cbbTTNT2.ItemHeight = 16;
-            this.cbbTTNT2.Location = new System.Drawing.Point(231, 58);
-            this.cbbTTNT2.Margin = new System.Windows.Forms.Padding(2);
-            this.cbbTTNT2.Name = "cbbTTNT2";
-            this.cbbTTNT2.Size = new System.Drawing.Size(99, 22);
-            this.cbbTTNT2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cbbTTNT2.TabIndex = 27;
+            this.cbbTt2_ma_nt.DisplayMember = "Text";
+            this.cbbTt2_ma_nt.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbbTt2_ma_nt.FormattingEnabled = true;
+            this.cbbTt2_ma_nt.ItemHeight = 16;
+            this.cbbTt2_ma_nt.Location = new System.Drawing.Point(231, 58);
+            this.cbbTt2_ma_nt.Margin = new System.Windows.Forms.Padding(2);
+            this.cbbTt2_ma_nt.Name = "cbbTt2_ma_nt";
+            this.cbbTt2_ma_nt.Size = new System.Drawing.Size(99, 22);
+            this.cbbTt2_ma_nt.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbbTt2_ma_nt.TabIndex = 27;
             // 
-            // cbbTT2
+            // cbbTt2_loai
             // 
-            this.cbbTT2.DisplayMember = "Text";
-            this.cbbTT2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cbbTT2.FormattingEnabled = true;
-            this.cbbTT2.ItemHeight = 16;
-            this.cbbTT2.Location = new System.Drawing.Point(120, 58);
-            this.cbbTT2.Margin = new System.Windows.Forms.Padding(2);
-            this.cbbTT2.Name = "cbbTT2";
-            this.cbbTT2.Size = new System.Drawing.Size(99, 22);
-            this.cbbTT2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cbbTT2.TabIndex = 26;
+            this.cbbTt2_loai.DisplayMember = "Text";
+            this.cbbTt2_loai.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbbTt2_loai.FormattingEnabled = true;
+            this.cbbTt2_loai.ItemHeight = 16;
+            this.cbbTt2_loai.Location = new System.Drawing.Point(120, 58);
+            this.cbbTt2_loai.Margin = new System.Windows.Forms.Padding(2);
+            this.cbbTt2_loai.Name = "cbbTt2_loai";
+            this.cbbTt2_loai.Size = new System.Drawing.Size(99, 22);
+            this.cbbTt2_loai.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbbTt2_loai.TabIndex = 26;
             // 
             // lbTT1
             // 
@@ -1270,31 +1270,31 @@ namespace GPBH.UI.Forms
             this.lbTT1.Text = "(USD)";
             this.lbTT1.TextAlignment = System.Drawing.StringAlignment.Center;
             // 
-            // cbbTTNT1
+            // cbbTt1_ma_nt
             // 
-            this.cbbTTNT1.DisplayMember = "Text";
-            this.cbbTTNT1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cbbTTNT1.FormattingEnabled = true;
-            this.cbbTTNT1.ItemHeight = 16;
-            this.cbbTTNT1.Location = new System.Drawing.Point(231, 26);
-            this.cbbTTNT1.Margin = new System.Windows.Forms.Padding(2);
-            this.cbbTTNT1.Name = "cbbTTNT1";
-            this.cbbTTNT1.Size = new System.Drawing.Size(99, 22);
-            this.cbbTTNT1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cbbTTNT1.TabIndex = 22;
+            this.cbbTt1_ma_nt.DisplayMember = "Text";
+            this.cbbTt1_ma_nt.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbbTt1_ma_nt.FormattingEnabled = true;
+            this.cbbTt1_ma_nt.ItemHeight = 16;
+            this.cbbTt1_ma_nt.Location = new System.Drawing.Point(231, 26);
+            this.cbbTt1_ma_nt.Margin = new System.Windows.Forms.Padding(2);
+            this.cbbTt1_ma_nt.Name = "cbbTt1_ma_nt";
+            this.cbbTt1_ma_nt.Size = new System.Drawing.Size(99, 22);
+            this.cbbTt1_ma_nt.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbbTt1_ma_nt.TabIndex = 22;
             // 
-            // cbbTT1
+            // cbbTt1_loai
             // 
-            this.cbbTT1.DisplayMember = "Text";
-            this.cbbTT1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cbbTT1.FormattingEnabled = true;
-            this.cbbTT1.ItemHeight = 16;
-            this.cbbTT1.Location = new System.Drawing.Point(120, 26);
-            this.cbbTT1.Margin = new System.Windows.Forms.Padding(2);
-            this.cbbTT1.Name = "cbbTT1";
-            this.cbbTT1.Size = new System.Drawing.Size(99, 22);
-            this.cbbTT1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cbbTT1.TabIndex = 21;
+            this.cbbTt1_loai.DisplayMember = "Text";
+            this.cbbTt1_loai.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbbTt1_loai.FormattingEnabled = true;
+            this.cbbTt1_loai.ItemHeight = 16;
+            this.cbbTt1_loai.Location = new System.Drawing.Point(120, 26);
+            this.cbbTt1_loai.Margin = new System.Windows.Forms.Padding(2);
+            this.cbbTt1_loai.Name = "cbbTt1_loai";
+            this.cbbTt1_loai.Size = new System.Drawing.Size(99, 22);
+            this.cbbTt1_loai.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbbTt1_loai.TabIndex = 21;
             // 
             // labelX17
             // 
@@ -1363,20 +1363,20 @@ namespace GPBH.UI.Forms
             this.groupPanel6.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.groupPanel6.Controls.Add(this.txtTQDVND);
             this.groupPanel6.Controls.Add(this.labelX28);
-            this.groupPanel6.Controls.Add(this.txtTT);
+            this.groupPanel6.Controls.Add(this.txtTong_thu_nt);
             this.groupPanel6.Controls.Add(this.labelX29);
-            this.groupPanel6.Controls.Add(this.txtTGNT);
+            this.groupPanel6.Controls.Add(this.txtTong_giam_gia_nt);
             this.groupPanel6.Controls.Add(this.lbTongThu);
-            this.groupPanel6.Controls.Add(this.txtTTHNT);
+            this.groupPanel6.Controls.Add(this.txtTong_tien_hang_nt);
             this.groupPanel6.Controls.Add(this.labelX27);
             this.groupPanel6.Controls.Add(this.lbGiamGia);
             this.groupPanel6.Controls.Add(this.labelX25);
             this.groupPanel6.Controls.Add(this.lbTTH);
             this.groupPanel6.Controls.Add(this.labelX22);
             this.groupPanel6.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel6.Location = new System.Drawing.Point(626, 3);
+            this.groupPanel6.Location = new System.Drawing.Point(624, 3);
             this.groupPanel6.Name = "groupPanel6";
-            this.groupPanel6.Size = new System.Drawing.Size(389, 187);
+            this.groupPanel6.Size = new System.Drawing.Size(388, 187);
             // 
             // 
             // 
@@ -1440,21 +1440,21 @@ namespace GPBH.UI.Forms
             this.labelX28.Text = "(VND)";
             this.labelX28.TextAlignment = System.Drawing.StringAlignment.Center;
             // 
-            // txtTT
+            // txtTong_thu_nt
             // 
             // 
             // 
             // 
-            this.txtTT.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtTT.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.txtTT.DisplayFormat = "#,##0.00";
-            this.txtTT.Enabled = false;
-            this.txtTT.Increment = 1D;
-            this.txtTT.Location = new System.Drawing.Point(236, 95);
-            this.txtTT.Name = "txtTT";
-            this.txtTT.ShowUpDown = true;
-            this.txtTT.Size = new System.Drawing.Size(99, 20);
-            this.txtTT.TabIndex = 47;
+            this.txtTong_thu_nt.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtTong_thu_nt.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.txtTong_thu_nt.DisplayFormat = "#,##0.00";
+            this.txtTong_thu_nt.Enabled = false;
+            this.txtTong_thu_nt.Increment = 1D;
+            this.txtTong_thu_nt.Location = new System.Drawing.Point(236, 95);
+            this.txtTong_thu_nt.Name = "txtTong_thu_nt";
+            this.txtTong_thu_nt.ShowUpDown = true;
+            this.txtTong_thu_nt.Size = new System.Drawing.Size(99, 20);
+            this.txtTong_thu_nt.TabIndex = 47;
             // 
             // labelX29
             // 
@@ -1471,21 +1471,21 @@ namespace GPBH.UI.Forms
             this.labelX29.TabIndex = 45;
             this.labelX29.Text = "Tổng quy đổi";
             // 
-            // txtTGNT
+            // txtTong_giam_gia_nt
             // 
             // 
             // 
             // 
-            this.txtTGNT.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtTGNT.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.txtTGNT.DisplayFormat = "#,##0.00";
-            this.txtTGNT.Enabled = false;
-            this.txtTGNT.Increment = 1D;
-            this.txtTGNT.Location = new System.Drawing.Point(236, 65);
-            this.txtTGNT.Name = "txtTGNT";
-            this.txtTGNT.ShowUpDown = true;
-            this.txtTGNT.Size = new System.Drawing.Size(99, 20);
-            this.txtTGNT.TabIndex = 46;
+            this.txtTong_giam_gia_nt.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtTong_giam_gia_nt.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.txtTong_giam_gia_nt.DisplayFormat = "#,##0.00";
+            this.txtTong_giam_gia_nt.Enabled = false;
+            this.txtTong_giam_gia_nt.Increment = 1D;
+            this.txtTong_giam_gia_nt.Location = new System.Drawing.Point(236, 65);
+            this.txtTong_giam_gia_nt.Name = "txtTong_giam_gia_nt";
+            this.txtTong_giam_gia_nt.ShowUpDown = true;
+            this.txtTong_giam_gia_nt.Size = new System.Drawing.Size(99, 20);
+            this.txtTong_giam_gia_nt.TabIndex = 46;
             // 
             // lbTongThu
             // 
@@ -1503,22 +1503,22 @@ namespace GPBH.UI.Forms
             this.lbTongThu.Text = "(USD)";
             this.lbTongThu.TextAlignment = System.Drawing.StringAlignment.Center;
             // 
-            // txtTTHNT
+            // txtTong_tien_hang_nt
             // 
             // 
             // 
             // 
-            this.txtTTHNT.BackgroundStyle.Class = "DateTimeInputBackground";
-            this.txtTTHNT.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtTTHNT.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.txtTTHNT.DisplayFormat = "#,##0.00";
-            this.txtTTHNT.Enabled = false;
-            this.txtTTHNT.Increment = 1D;
-            this.txtTTHNT.Location = new System.Drawing.Point(236, 31);
-            this.txtTTHNT.Name = "txtTTHNT";
-            this.txtTTHNT.ShowUpDown = true;
-            this.txtTTHNT.Size = new System.Drawing.Size(99, 20);
-            this.txtTTHNT.TabIndex = 45;
+            this.txtTong_tien_hang_nt.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.txtTong_tien_hang_nt.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtTong_tien_hang_nt.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.txtTong_tien_hang_nt.DisplayFormat = "#,##0.00";
+            this.txtTong_tien_hang_nt.Enabled = false;
+            this.txtTong_tien_hang_nt.Increment = 1D;
+            this.txtTong_tien_hang_nt.Location = new System.Drawing.Point(236, 31);
+            this.txtTong_tien_hang_nt.Name = "txtTong_tien_hang_nt";
+            this.txtTong_tien_hang_nt.ShowUpDown = true;
+            this.txtTong_tien_hang_nt.Size = new System.Drawing.Size(99, 20);
+            this.txtTong_tien_hang_nt.TabIndex = 45;
             // 
             // labelX27
             // 
@@ -1606,7 +1606,7 @@ namespace GPBH.UI.Forms
             this.groupPanel5.Controls.Add(this.lbTGNT2);
             this.groupPanel5.Controls.Add(this.lb1NTQuyDoi);
             this.groupPanel5.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel5.Location = new System.Drawing.Point(1021, 3);
+            this.groupPanel5.Location = new System.Drawing.Point(1018, 3);
             this.groupPanel5.Name = "groupPanel5";
             this.groupPanel5.Size = new System.Drawing.Size(315, 187);
             // 
@@ -1839,18 +1839,18 @@ namespace GPBH.UI.Forms
             this.labelX37.Text = "=";
             this.labelX37.TextAlignment = System.Drawing.StringAlignment.Center;
             // 
-            // cbTLNT
+            // cbTra_lai_ma_nt
             // 
-            this.cbTLNT.DisplayMember = "Text";
-            this.cbTLNT.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cbTLNT.FormattingEnabled = true;
-            this.cbTLNT.ItemHeight = 16;
-            this.cbTLNT.Location = new System.Drawing.Point(620, 776);
-            this.cbTLNT.Margin = new System.Windows.Forms.Padding(2);
-            this.cbTLNT.Name = "cbTLNT";
-            this.cbTLNT.Size = new System.Drawing.Size(102, 22);
-            this.cbTLNT.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cbTLNT.TabIndex = 38;
+            this.cbTra_lai_ma_nt.DisplayMember = "Text";
+            this.cbTra_lai_ma_nt.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbTra_lai_ma_nt.FormattingEnabled = true;
+            this.cbTra_lai_ma_nt.ItemHeight = 16;
+            this.cbTra_lai_ma_nt.Location = new System.Drawing.Point(620, 776);
+            this.cbTra_lai_ma_nt.Margin = new System.Windows.Forms.Padding(2);
+            this.cbTra_lai_ma_nt.Name = "cbTra_lai_ma_nt";
+            this.cbTra_lai_ma_nt.Size = new System.Drawing.Size(102, 22);
+            this.cbTra_lai_ma_nt.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbTra_lai_ma_nt.TabIndex = 38;
             // 
             // lbTongNhan
             // 
@@ -1882,66 +1882,66 @@ namespace GPBH.UI.Forms
             this.labelX32.Text = "Trả lại";
             this.labelX32.TextAlignment = System.Drawing.StringAlignment.Center;
             // 
-            // txtTNNT
+            // txtTong_nhan
             // 
             // 
             // 
             // 
-            this.txtTNNT.BackgroundStyle.Class = "DateTimeInputBackground";
-            this.txtTNNT.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtTNNT.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.txtTNNT.DisplayFormat = "#,##0.00";
-            this.txtTNNT.Increment = 1D;
-            this.txtTNNT.Location = new System.Drawing.Point(125, 777);
-            this.txtTNNT.Name = "txtTNNT";
-            this.txtTNNT.ShowUpDown = true;
-            this.txtTNNT.Size = new System.Drawing.Size(99, 20);
-            this.txtTNNT.TabIndex = 49;
+            this.txtTong_nhan.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.txtTong_nhan.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtTong_nhan.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.txtTong_nhan.DisplayFormat = "#,##0.00";
+            this.txtTong_nhan.Increment = 1D;
+            this.txtTong_nhan.Location = new System.Drawing.Point(125, 777);
+            this.txtTong_nhan.Name = "txtTong_nhan";
+            this.txtTong_nhan.ShowUpDown = true;
+            this.txtTong_nhan.Size = new System.Drawing.Size(99, 20);
+            this.txtTong_nhan.TabIndex = 49;
             // 
-            // txtTLNT
-            // 
-            // 
-            // 
-            // 
-            this.txtTLNT.BackgroundStyle.Class = "DateTimeInputBackground";
-            this.txtTLNT.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtTLNT.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.txtTLNT.DisplayFormat = "#,##0.00";
-            this.txtTLNT.Enabled = false;
-            this.txtTLNT.Increment = 1D;
-            this.txtTLNT.Location = new System.Drawing.Point(342, 777);
-            this.txtTLNT.Name = "txtTLNT";
-            this.txtTLNT.ShowUpDown = true;
-            this.txtTLNT.Size = new System.Drawing.Size(99, 20);
-            this.txtTLNT.TabIndex = 50;
-            // 
-            // txtQDTLNT
+            // txtTra_lai_nt
             // 
             // 
             // 
             // 
-            this.txtQDTLNT.BackgroundStyle.Class = "DateTimeInputBackground";
-            this.txtQDTLNT.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtQDTLNT.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.txtQDTLNT.DisplayFormat = "#,##0.00";
-            this.txtQDTLNT.Increment = 1D;
-            this.txtQDTLNT.Location = new System.Drawing.Point(513, 777);
-            this.txtQDTLNT.Name = "txtQDTLNT";
-            this.txtQDTLNT.ShowUpDown = true;
-            this.txtQDTLNT.Size = new System.Drawing.Size(99, 20);
-            this.txtQDTLNT.TabIndex = 51;
+            this.txtTra_lai_nt.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.txtTra_lai_nt.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtTra_lai_nt.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.txtTra_lai_nt.DisplayFormat = "#,##0.00";
+            this.txtTra_lai_nt.Enabled = false;
+            this.txtTra_lai_nt.Increment = 1D;
+            this.txtTra_lai_nt.Location = new System.Drawing.Point(342, 777);
+            this.txtTra_lai_nt.Name = "txtTra_lai_nt";
+            this.txtTra_lai_nt.ShowUpDown = true;
+            this.txtTra_lai_nt.Size = new System.Drawing.Size(99, 20);
+            this.txtTra_lai_nt.TabIndex = 50;
+            // 
+            // txtTra_lai
+            // 
+            // 
+            // 
+            // 
+            this.txtTra_lai.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.txtTra_lai.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtTra_lai.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.txtTra_lai.DisplayFormat = "#,##0.00";
+            this.txtTra_lai.Increment = 1D;
+            this.txtTra_lai.Location = new System.Drawing.Point(513, 777);
+            this.txtTra_lai.Name = "txtTra_lai";
+            this.txtTra_lai.ShowUpDown = true;
+            this.txtTra_lai.Size = new System.Drawing.Size(99, 20);
+            this.txtTra_lai.TabIndex = 51;
             // 
             // DonHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1426, 839);
-            this.Controls.Add(this.txtQDTLNT);
-            this.Controls.Add(this.txtTLNT);
-            this.Controls.Add(this.txtTNNT);
+            this.Controls.Add(this.txtTra_lai);
+            this.Controls.Add(this.txtTra_lai_nt);
+            this.Controls.Add(this.txtTong_nhan);
             this.Controls.Add(this.labelX32);
             this.Controls.Add(this.lbTongNhan);
-            this.Controls.Add(this.cbTLNT);
+            this.Controls.Add(this.cbTra_lai_ma_nt);
             this.Controls.Add(this.labelX37);
             this.Controls.Add(this.lbTraLai);
             this.Controls.Add(this.labelX34);
@@ -1971,28 +1971,28 @@ namespace GPBH.UI.Forms
             this.tableLayoutPanel2.ResumeLayout(false);
             this.groupPanel4.ResumeLayout(false);
             this.groupPanel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTGTT3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTGTT2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTGTT1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtQDNTTTT)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtQDTTNT3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtQDTTNT2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtQDTTNT1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTTNT3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTTNT2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTTNT1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTt3_ty_gia)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTt2_ty_gia)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTt1_ty_gia)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTt_tong)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTt3_tien_nt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTt2_tien_nt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTt1_tien_nt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTt3_tien_tt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTt2_tien_tt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTt1_tien_tt)).EndInit();
             this.groupPanel6.ResumeLayout(false);
             this.groupPanel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtTQDVND)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTT)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTGNT)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTTHNT)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTong_thu_nt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTong_giam_gia_nt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTong_tien_hang_nt)).EndInit();
             this.groupPanel5.ResumeLayout(false);
             this.groupPanel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bar2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTNNT)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTLNT)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtQDTLNT)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTong_nhan)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTra_lai_nt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTra_lai)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2041,20 +2041,20 @@ namespace GPBH.UI.Forms
         private DevComponents.DotNetBar.LabelX labelX8;
         private DevComponents.DotNetBar.LabelX labelX7;
         private DevComponents.DotNetBar.LabelX lbMST;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx cbbTT1;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cbbTt1_loai;
         private DevComponents.DotNetBar.LabelX labelX17;
         private DevComponents.DotNetBar.LabelX labelX16;
         private DevComponents.DotNetBar.LabelX labelX15;
         private DevComponents.DotNetBar.LabelX labelX14;
         private DevComponents.DotNetBar.LabelX lbTTT;
         private DevComponents.DotNetBar.LabelX lbTT3;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx cbbTTNT3;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx cbbTT3;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cbbTt3_ma_nt;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cbbTt3_loai;
         private DevComponents.DotNetBar.LabelX lbTT2;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx cbbTTNT2;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx cbbTT2;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cbbTt2_ma_nt;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cbbTt2_loai;
         private DevComponents.DotNetBar.LabelX lbTT1;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx cbbTTNT1;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cbbTt1_ma_nt;
         private DevComponents.DotNetBar.LabelX lbTTH;
         private DevComponents.DotNetBar.LabelX labelX22;
         private DevComponents.DotNetBar.LabelX labelX28;
@@ -2068,25 +2068,23 @@ namespace GPBH.UI.Forms
         private DevComponents.DotNetBar.LabelX labelX34;
         private DevComponents.DotNetBar.LabelX lbTraLai;
         private DevComponents.DotNetBar.LabelX labelX37;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx cbTLNT;
         private DevComponents.DotNetBar.LabelX labelX36;
         private DevComponents.DotNetBar.LabelX lbTongNhan;
         private DevComponents.DotNetBar.LabelX labelX32;
         private UserControls.ucHangHoa ucHangHoa;
-        private DevComponents.Editors.DoubleInput txtTTNT3;
-        private DevComponents.Editors.DoubleInput txtTTNT2;
-        private DevComponents.Editors.DoubleInput txtTTNT1;
-        private DevComponents.Editors.DoubleInput txtQDNTTTT;
-        private DevComponents.Editors.DoubleInput txtQDTTNT3;
-        private DevComponents.Editors.DoubleInput txtQDTTNT2;
-        private DevComponents.Editors.DoubleInput txtQDTTNT1;
-        private DevComponents.Editors.DoubleInput txtTNNT;
-        private DevComponents.Editors.DoubleInput txtTLNT;
+        private DevComponents.Editors.DoubleInput txtTt3_tien_tt;
+        private DevComponents.Editors.DoubleInput txtTt2_tien_tt;
+        private DevComponents.Editors.DoubleInput txtTt_tong;
+        private DevComponents.Editors.DoubleInput txtTt3_tien_nt;
+        private DevComponents.Editors.DoubleInput txtTt2_tien_nt;
+        private DevComponents.Editors.DoubleInput txtTt1_tien_nt;
+        private DevComponents.Editors.DoubleInput txtTong_nhan;
+        private DevComponents.Editors.DoubleInput txtTra_lai_nt;
         private DevComponents.Editors.DoubleInput txtTQDVND;
-        private DevComponents.Editors.DoubleInput txtTT;
-        private DevComponents.Editors.DoubleInput txtTGNT;
-        private DevComponents.Editors.DoubleInput txtQDTLNT;
-        private DevComponents.Editors.DoubleInput txtTTHNT;
+        private DevComponents.Editors.DoubleInput txtTong_thu_nt;
+        private DevComponents.Editors.DoubleInput txtTong_giam_gia_nt;
+        private DevComponents.Editors.DoubleInput txtTra_lai;
+        private DevComponents.Editors.DoubleInput txtTong_tien_hang_nt;
         private DevComponents.DotNetBar.LabelX lbSCT;
         private DevComponents.DotNetBar.LabelX lbTGNT;
         private DevComponents.DotNetBar.LabelX lbNgayHoaDon;
@@ -2105,11 +2103,13 @@ namespace GPBH.UI.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn Tien_ban_nt;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tien_ban;
         private System.Windows.Forms.DataGridViewTextBoxColumn Gg_ly_do;
-        private DevComponents.Editors.DoubleInput txtTGTT3;
-        private DevComponents.Editors.DoubleInput txtTGTT2;
-        private DevComponents.Editors.DoubleInput txtTGTT1;
+        private DevComponents.Editors.DoubleInput txtTt3_ty_gia;
+        private DevComponents.Editors.DoubleInput txtTt2_ty_gia;
+        private DevComponents.Editors.DoubleInput txtTt1_ty_gia;
         private DevComponents.DotNetBar.LabelX lbSoChungTu;
         private DevComponents.DotNetBar.LabelX lbMaPhieu;
         private DevComponents.DotNetBar.LabelX labelX10;
+        private DevComponents.Editors.DoubleInput txtTt1_tien_tt;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cbTra_lai_ma_nt;
     }
 }

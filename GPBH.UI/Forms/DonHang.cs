@@ -9,12 +9,10 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using static GPBH.UI.UserControls.ucHangHoa;
-using static System.Runtime.CompilerServices.RuntimeHelpers;
 
 namespace GPBH.UI.Forms
 {
@@ -85,22 +83,76 @@ namespace GPBH.UI.Forms
             _donHangService = donHangService;
             _dMKHService = dMKHService;
             SetUpUI();
-            LoadData();
+            if (!_isEdit)
+                LoadData();
+            else
+                LoadDataEdit();
             InitUcHangHoaPopup();
             RegisterEvents();
-            LoadDataForm();
         }
         #endregion
 
         #region Private Methods
 
-        private void LoadDataForm()
+        private void LoadDataEdit()
         {
-            if (_isEdit && _data != null && _data.XCT5s != null)
+            if (_isEdit && _data != null)
             {
                 this.Text = "Sửa đơn hàng";
                 listChiTiet = new BindingList<XCT5Dto>(_data.XCT5s);
-                dataGridViewX1.DataSource = listChiTiet;
+                LoadDataCombobox();
+                BindDataKhachHang(_dMKHService.GetByPassport(_data.Passport));
+                ucHangHoa.SetData(_dMHHService.GetAll());
+
+                lbTenDangNhap.Text = _data.Nguoi_tao;
+                lbQuay.Text = _data.Ma_quay;
+                lbCa.Text = AppGlobals.MaCa;
+
+                txtTQDVND.Text = _data.Ty_gia?.ToString("#,##0");
+                lbTGNT.Text = $"{_data.Ma_nt}: {_data.Ty_gia?.ToString("#,##0")}";
+                lbTGNT2.Text = _data.Ty_gia?.ToString("#,##0");
+
+                lbSoChungTu.Text = _data.So_chung_tu;
+                lbMaPhieu.Text = _data.Ma_phieu;
+
+                cbbTt1_loai.SelectedValue = _data.Tt1_loai;
+                cbbTt1_ma_nt.SelectedValue = _data.Tt1_ma_nt;
+                txtTt1_tien_tt.Value = (double)_data.Tt1_tien_tt;
+                txtTt1_ty_gia.Value = (double)_data.Tt1_ty_gia;
+                txtTt1_tien_nt.Value = (double)_data.Tt1_tien_nt;
+
+                cbbTt2_loai.SelectedValue = _data.Tt2_loai;
+                cbbTt2_ma_nt.SelectedValue = _data.Tt2_ma_nt;
+                txtTt2_tien_tt.Value = (double)_data.Tt2_tien_tt;
+                txtTt2_ty_gia.Value = (double)_data.Tt2_ty_gia;
+                txtTt2_tien_nt.Value = (double)_data.Tt2_tien_nt;
+
+                cbbTt3_loai.SelectedValue = _data.Tt3_loai;
+                cbbTt3_ma_nt.SelectedValue = _data.Tt3_ma_nt;
+                txtTt3_tien_tt.Value = (double)_data.Tt3_tien_tt;
+                txtTt3_ty_gia.Value = (double)_data.Tt3_ty_gia;
+                txtTt3_tien_nt.Value = (double)_data.Tt3_tien_nt;
+
+                txtTt_tong.Value = (double)_data.Tt_tong;
+                txtTong_nhan.Value = (double)_data.Tong_nhan;
+                txtTra_lai_nt.Value = (double)_data.Tra_lai_nt;
+                txtTra_lai.Value = (double)_data.Tra_lai;
+                cbTra_lai_ma_nt.SelectedValue = _data.Tra_lai_ma_nt;
+
+                txtTong_tien_hang_nt.Value = (double)_data.Tong_tien_hang_nt;
+                txtTong_giam_gia_nt.Value = (double)_data.Tong_giam_gia_nt;
+                txtTong_thu_nt.Value = (double)_data.Tong_thu_nt;
+
+                TyGiaCuaHang = new TyGiaNT
+                {
+                    Ma_nt = _data.Ma_nt,
+                    Ty_gia = _data.Ty_gia.Value
+                };
+
+                if (_data.XCT5s != null)
+                {
+                    dataGridViewX1.DataSource = listChiTiet;
+                }
             }
         }
 
@@ -138,8 +190,7 @@ namespace GPBH.UI.Forms
         /// <exception cref="NotImplementedException"></exception>
         private void LoadData()
         {
-            if (!_isEdit)
-                LoadFormKhachHang(string.Empty);
+            LoadFormKhachHang(string.Empty);
             LoadInfoDonHang();
             LoadDataCombobox();
             ucHangHoa.SetData(_dMHHService.GetAll());
@@ -147,10 +198,10 @@ namespace GPBH.UI.Forms
             txtTQDVND.Text = tyGia.Ty_gia.ToString("#,##0");
             lbTGNT.Text = $"{tyGia.Ma_nt}: {tyGia.Ty_gia.ToString("#,##0")}";
             lbTGNT2.Text = tyGia.Ty_gia.ToString("#,##0");
-            cbbTTNT1.SelectedValue = tyGia.Ma_nt;
-            cbbTTNT2.SelectedValue = tyGia.Ma_nt;
-            cbbTTNT3.SelectedValue = tyGia.Ma_nt;
-            cbTLNT.SelectedValue = tyGia.Ma_nt;
+            cbbTt1_ma_nt.SelectedValue = tyGia.Ma_nt;
+            cbbTt2_ma_nt.SelectedValue = tyGia.Ma_nt;
+            cbbTt3_ma_nt.SelectedValue = tyGia.Ma_nt;
+            cbTra_lai_ma_nt.SelectedValue = tyGia.Ma_nt;
 
             TyGiaCuaHang = tyGia;
 
@@ -159,14 +210,14 @@ namespace GPBH.UI.Forms
 
         private void LoadDataCombobox()
         {
-            ComboBoxHelper.BindData(cbbTT1, _thanhToans, "Value", "Key", true);
-            ComboBoxHelper.BindData(cbbTT2, _thanhToans, "Value", "Key", true);
-            ComboBoxHelper.BindData(cbbTT3, _thanhToans, "Value", "Key", true);
+            ComboBoxHelper.BindData(cbbTt1_loai, _thanhToans, "Value", "Key", true);
+            ComboBoxHelper.BindData(cbbTt2_loai, _thanhToans, "Value", "Key", true);
+            ComboBoxHelper.BindData(cbbTt3_loai, _thanhToans, "Value", "Key", true);
 
-            ComboBoxHelper.BindData(cbbTTNT1, _dMNTs, nameof(DMNT.Ma_nt), nameof(DMNT.Ma_nt), true);
-            ComboBoxHelper.BindData(cbbTTNT2, new List<DMNT>(_dMNTs), nameof(DMNT.Ma_nt), nameof(DMNT.Ma_nt), true);
-            ComboBoxHelper.BindData(cbbTTNT3, new List<DMNT>(_dMNTs), nameof(DMNT.Ma_nt), nameof(DMNT.Ma_nt), true);
-            ComboBoxHelper.BindData(cbTLNT, new List<DMNT>(_dMNTs), nameof(DMNT.Ma_nt), nameof(DMNT.Ma_nt), true);
+            ComboBoxHelper.BindData(cbbTt1_ma_nt, _dMNTs, nameof(DMNT.Ma_nt), nameof(DMNT.Ma_nt), true);
+            ComboBoxHelper.BindData(cbbTt2_ma_nt, new List<DMNT>(_dMNTs), nameof(DMNT.Ma_nt), nameof(DMNT.Ma_nt), true);
+            ComboBoxHelper.BindData(cbbTt3_ma_nt, new List<DMNT>(_dMNTs), nameof(DMNT.Ma_nt), nameof(DMNT.Ma_nt), true);
+            ComboBoxHelper.BindData(cbTra_lai_ma_nt, new List<DMNT>(_dMNTs), nameof(DMNT.Ma_nt), nameof(DMNT.Ma_nt), true);
         }
 
         /// <summary>
@@ -227,19 +278,19 @@ namespace GPBH.UI.Forms
             ucHangHoa.HangHoaSelected += UcHangHoaPopup_HangHoaSelected;
             dataGridViewX1.RowsRemoved += dataGridViewX1_RowsRemoved;
             dataGridViewX1.CellEndEdit += new DataGridViewCellEventHandler(dataGridViewX1_CellEndEdit);
-            txtTTNT1.ValueChanged += TxtTTNT1_TextChanged;
-            txtTTNT2.ValueChanged += TxtTTNT2_TextChanged;
-            txtTTNT3.ValueChanged += TxtTTNT3_TextChanged;
-            cbbTTNT1.SelectedIndexChanged += TxtTTNT1_TextChanged;
-            cbbTTNT2.SelectedIndexChanged += TxtTTNT2_TextChanged;
-            cbbTTNT3.SelectedIndexChanged += TxtTTNT3_TextChanged;
+            txtTt1_tien_tt.ValueChanged += TxtTTNT1_TextChanged;
+            txtTt2_tien_tt.ValueChanged += TxtTTNT2_TextChanged;
+            txtTt3_tien_tt.ValueChanged += TxtTTNT3_TextChanged;
+            cbbTt1_ma_nt.SelectedIndexChanged += TxtTTNT1_TextChanged;
+            cbbTt2_ma_nt.SelectedIndexChanged += TxtTTNT2_TextChanged;
+            cbbTt3_ma_nt.SelectedIndexChanged += TxtTTNT3_TextChanged;
 
-            txtQDTTNT1.ValueChanged += TxtQDTTNT1_TextChanged;
-            txtQDTTNT2.ValueChanged += TxtQDTTNT2_TextChanged;
-            txtQDTTNT3.ValueChanged += TxtQDTTNT3_TextChanged;
-            txtTNNT.ValueChanged += TxtTNNT_TextChanged;
-            txtTLNT.ValueChanged += TxtTLNT_TextChanged;
-            cbTLNT.SelectedIndexChanged += TxtTLNT_TextChanged;
+            txtTt1_tien_nt.ValueChanged += TxtQDTTNT1_TextChanged;
+            txtTt2_tien_nt.ValueChanged += TxtQDTTNT2_TextChanged;
+            txtTt3_tien_nt.ValueChanged += TxtQDTTNT3_TextChanged;
+            txtTong_nhan.ValueChanged += TxtTNNT_TextChanged;
+            txtTra_lai_nt.ValueChanged += TxtTLNT_TextChanged;
+            cbTra_lai_ma_nt.SelectedIndexChanged += TxtTLNT_TextChanged;
 
             RegisterHideUcHangHoaEvents();
         }
@@ -305,17 +356,10 @@ namespace GPBH.UI.Forms
             {
                 var validator = ValidatorData();
                 if (validator)
-                    EditDonHang();
+                    UpdateSoChungTuTinhTonKho(TrangThaiDonHang.Draft);
             }
         }
 
-        /// <summary>
-        /// Xử lý sự kiện khi nhấn F7 để sửa đơn hàng hiện tại.
-        /// </summary>
-        private void EditDonHang()
-        {
-
-        }
 
         /// <summary>
         /// Xử lý sự kiện khi nhấn F2 để lưu hoặc cập nhật số chứng từ.
@@ -331,7 +375,7 @@ namespace GPBH.UI.Forms
             else
             {
                 if (_data != null && string.IsNullOrEmpty(_data.So_chung_tu))
-                    UpdateSoChungTuTinhTonKho();
+                    UpdateSoChungTuTinhTonKho(TrangThaiDonHang.Confirmed);
             }
         }
 
@@ -349,10 +393,10 @@ namespace GPBH.UI.Forms
                 return false;
             }
 
-            if (txtTLNT.Value < 0)
+            if (txtTra_lai_nt.Value < 0)
             {
                 MessageBoxEx.Show("Tổng trả đang bị âm!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtTLNT.Focus();
+                txtTra_lai_nt.Focus();
                 return false;
             }
 
@@ -385,9 +429,9 @@ namespace GPBH.UI.Forms
         /// Tạo đơn hàng và lưu vào cơ sở dữ liệu, sau đó cập nhật số chứng từ và tính toán tồn kho.
         /// </summary>
         /// <returns></returns>
-        private XPH5Dto UpdateSoChungTuTinhTonKho()
+        private void UpdateSoChungTuTinhTonKho(TrangThaiDonHang trangThaiDonHang)
         {
-            XPH5Dto donHangDto = MapDataToSave(TrangThaiDonHang.Confirmed);
+            XPH5Dto donHangDto = MapDataToSave(trangThaiDonHang);
             var (data, result) = _donHangService.UpdateSoChungTuTinhTonKho(donHangDto);
             if (result)
             {
@@ -396,10 +440,7 @@ namespace GPBH.UI.Forms
                 lbSoChungTu.Text = $"{data.So_chung_tu}";
                 lbMaPhieu.Text = $"{data.Ma_phieu}";
                 OpenEditForm(data); // Mở lại form cho phép sửa tiếp
-                return data;
             }
-
-            return null;
         }
 
         /// <summary>
@@ -409,26 +450,26 @@ namespace GPBH.UI.Forms
         /// <returns></returns>
         private XPH5Dto MapDataToSave(TrangThaiDonHang trangThaiDonHang)
         {
-            decimal.TryParse(txtTTNT1.Text, out decimal tt1Tien);
-            decimal.TryParse(txtTGTT1.Text, out decimal tt1TyGia);
-            decimal.TryParse(txtTTNT1.Text, out decimal tl1TienNT);
+            decimal.TryParse(txtTt1_tien_tt.Text, out decimal tt1_tien_tt);
+            decimal.TryParse(txtTt1_ty_gia.Text, out decimal tt1_ty_gia);
+            decimal.TryParse(txtTt1_tien_nt.Text, out decimal tt1_tien_nt);
 
-            decimal.TryParse(txtTTNT2.Text, out decimal tt2Tien);
-            decimal.TryParse(txtTGTT2.Text, out decimal tt2TyGia);
-            decimal.TryParse(txtTTNT2.Text, out decimal tl2TienNT);
+            decimal.TryParse(txtTt2_tien_tt.Text, out decimal tt2_tien_tt);
+            decimal.TryParse(txtTt2_ty_gia.Text, out decimal tt2_ty_gia);
+            decimal.TryParse(txtTt2_tien_nt.Text, out decimal tt2_tien_nt);
 
-            decimal.TryParse(txtTTNT3.Text, out decimal tt3Tien);
-            decimal.TryParse(txtTGTT3.Text, out decimal tt3TyGia);
-            decimal.TryParse(txtTTNT3.Text, out decimal tl3TienNT);
+            decimal.TryParse(txtTt3_tien_tt.Text, out decimal tt3_tien_tt);
+            decimal.TryParse(txtTt3_ty_gia.Text, out decimal tt3_ty_gia);
+            decimal.TryParse(txtTt3_tien_nt.Text, out decimal tt3_tien_nt);
 
-            decimal.TryParse(txtQDNTTTT.Text, out decimal tongTienThanhToan);
-            decimal.TryParse(txtTNNT.Text, out decimal tongNhan);
-            decimal.TryParse(txtTLNT.Text, out decimal traLaiNT);
-            decimal.TryParse(txtQDTLNT.Text, out decimal traLai);
+            decimal.TryParse(txtTt_tong.Text, out decimal tongTienThanhToan);
+            decimal.TryParse(txtTong_nhan.Text, out decimal tongNhan);
+            decimal.TryParse(txtTra_lai_nt.Text, out decimal traLaiNT);
+            decimal.TryParse(txtTra_lai.Text, out decimal traLai);
 
-            decimal.TryParse(txtTTHNT.Text, out decimal tongTienHangNT);
-            decimal.TryParse(txtTGNT.Text, out decimal tongGiamGiaNT);
-            decimal.TryParse(txtTTHNT.Text, out decimal tongThuNT);
+            decimal.TryParse(txtTong_tien_hang_nt.Text, out decimal tongTienHangNT);
+            decimal.TryParse(txtTong_giam_gia_nt.Text, out decimal tongGiamGiaNT);
+            decimal.TryParse(txtTong_thu_nt.Text, out decimal tongThuNT);
             var donHangDto = new XPH5Dto
             {
                 Ma_cua_hang = AppGlobals.MaCH,
@@ -446,28 +487,29 @@ namespace GPBH.UI.Forms
                 Passport = txtCCCD.Text.Trim(),
                 Ten_khach = txtTenKhachHang.Text.Trim(),
 
-                Tt1_loai = cbbTT1.SelectedValue?.ToString(),
-                Tt1_ma_nt = cbbTTNT1.SelectedValue?.ToString(),
-                Tt1_tien_tt = tt1Tien,
-                Tt1_ty_gia = tt1TyGia,
-                Tl1_tien_nt = tl1TienNT,
+                Tt1_loai = cbbTt1_loai.SelectedValue?.ToString(),
+                Tt1_ma_nt = cbbTt1_ma_nt.SelectedValue?.ToString(),
+                Tt1_tien_tt = tt1_tien_tt,
+                Tt1_ty_gia = tt1_ty_gia,
+                Tt1_tien_nt = tt1_tien_nt,
 
-                Tt2_loai = cbbTT2.SelectedValue?.ToString(),
-                Tt2_ma_nt = cbbTTNT2.SelectedValue?.ToString(),
-                Tt2_tien_tt = tt2Tien,
-                Tt2_ty_gia = tt2TyGia,
-                Tl2_tien_nt = tl2TienNT,
+                Tt2_loai = cbbTt2_loai.SelectedValue?.ToString(),
+                Tt2_ma_nt = cbbTt2_ma_nt.SelectedValue?.ToString(),
+                Tt2_tien_tt = tt2_tien_tt,
+                Tt2_ty_gia = tt2_ty_gia,
+                Tt2_tien_nt = tt2_tien_nt,
 
-                Tt3_loai = cbbTT3.SelectedValue?.ToString(),
-                Tt3_ma_nt = cbbTTNT3.SelectedValue?.ToString(),
-                Tt3_tien_tt = tt3Tien,
-                Tt3_ty_gia = tt3TyGia,
-                Tl3_tien_nt = tl3TienNT,
+                Tt3_loai = cbbTt3_loai.SelectedValue?.ToString(),
+                Tt3_ma_nt = cbbTt3_ma_nt.SelectedValue?.ToString(),
+                Tt3_tien_tt = tt3_tien_tt,
+                Tt3_ty_gia = tt3_ty_gia,
+                Tt3_tien_nt = tt3_tien_nt,
 
                 Tt_tong = tongTienThanhToan,
                 Tong_nhan = tongNhan,
                 Tra_lai_nt = traLaiNT,
                 Tra_lai = traLai,
+                Tra_lai_ma_nt = cbTra_lai_ma_nt.SelectedValue?.ToString(),
                 Tong_tien_hang_nt = tongTienHangNT,
                 Tong_tien_hang = tongTienHangNT * TyGiaCuaHang.Ty_gia,
                 Tong_giam_gia_nt = tongGiamGiaNT,
@@ -516,25 +558,25 @@ namespace GPBH.UI.Forms
 
         private void TxtTLNT_TextChanged(object sender, EventArgs e)
         {
-            if (cbTLNT.SelectedValue == null)
+            if (cbTra_lai_ma_nt.SelectedValue == null)
                 return;
 
-            var maNT = cbTLNT.SelectedValue.ToString();
+            var maNT = cbTra_lai_ma_nt.SelectedValue.ToString();
             var tyGiaNT = _dMTGService.GetTyGiaByMaNT(maNT);
 
             if (tyGiaNT == null)
                 return;
 
-            decimal.TryParse(txtTLNT.Text, out decimal soTienTraLaiNT);
+            decimal.TryParse(txtTra_lai_nt.Text, out decimal soTienTraLaiNT);
 
             if (tyGiaNT.Ma_nt == AppGlobals.DMCuaHang.Ma_nt)
             {
-                txtQDTLNT.Text = soTienTraLaiNT.ToString("N2");
+                txtTra_lai.Text = soTienTraLaiNT.ToString("N2");
             }
             else
             {
                 var soTienNT = (soTienTraLaiNT * TyGiaCuaHang.Ty_gia) / tyGiaNT.Ty_gia;
-                txtQDTLNT.Text = soTienNT.ToString("N2");
+                txtTra_lai.Text = soTienNT.ToString("N2");
             }
         }
 
@@ -545,31 +587,31 @@ namespace GPBH.UI.Forms
 
             try
             {
-                if (cbbTTNT1.SelectedValue == null)
+                if (cbbTt1_ma_nt.SelectedValue == null)
                     return;
 
-                var maNT = cbbTTNT1.SelectedValue.ToString();
+                var maNT = cbbTt1_ma_nt.SelectedValue.ToString();
                 var tyGiaNT = _dMTGService.GetTyGiaByMaNT(maNT);
 
                 if (tyGiaNT == null)
                     return;
 
-                if (!decimal.TryParse(txtQDTTNT1.Text, out decimal soTienQuyDoi))
+                if (!decimal.TryParse(txtTt1_tien_nt.Text, out decimal soTienQuyDoi))
                 {
-                    txtTTNT1.Text = "0";
+                    txtTt1_tien_nt.Text = "0";
                     return;
                 }
 
                 if (tyGiaNT.Ma_nt == AppGlobals.DMCuaHang.Ma_nt)
                 {
-                    txtTTNT1.Text = soTienQuyDoi.ToString("N2");
+                    txtTt1_tien_nt.Text = soTienQuyDoi.ToString("N2");
                 }
                 else
                 {
                     var soTienNT = (soTienQuyDoi * TyGiaCuaHang.Ty_gia) / tyGiaNT.Ty_gia;
-                    txtTTNT1.Text = soTienNT.ToString("N2");
+                    txtTt1_tien_nt.Text = soTienNT.ToString("N2");
                 }
-                txtTGTT1.Value = (double)tyGiaNT.Ty_gia;
+                txtTt1_ty_gia.Value = (double)tyGiaNT.Ty_gia;
             }
             finally
             {
@@ -585,31 +627,31 @@ namespace GPBH.UI.Forms
 
             try
             {
-                if (cbbTTNT2.SelectedValue == null)
+                if (cbbTt2_ma_nt.SelectedValue == null)
                     return;
 
-                var maNT = cbbTTNT2.SelectedValue.ToString();
+                var maNT = cbbTt2_ma_nt.SelectedValue.ToString();
                 var tyGiaNT = _dMTGService.GetTyGiaByMaNT(maNT);
 
                 if (tyGiaNT == null)
                     return;
 
-                if (!decimal.TryParse(txtQDTTNT2.Text, out decimal soTienQuyDoi))
+                if (!decimal.TryParse(txtTt2_tien_nt.Text, out decimal soTienQuyDoi))
                 {
-                    txtTTNT2.Text = "0";
+                    txtTt2_tien_tt.Text = "0";
                     return;
                 }
 
                 if (tyGiaNT.Ma_nt == AppGlobals.DMCuaHang.Ma_nt)
                 {
-                    txtTTNT2.Text = soTienQuyDoi.ToString("N2");
+                    txtTt2_tien_tt.Text = soTienQuyDoi.ToString("N2");
                 }
                 else
                 {
                     var soTienNT = (soTienQuyDoi * TyGiaCuaHang.Ty_gia) / tyGiaNT.Ty_gia;
-                    txtTTNT2.Text = soTienNT.ToString("N2");
+                    txtTt2_tien_tt.Text = soTienNT.ToString("N2");
                 }
-                txtTGTT2.Value = (double)tyGiaNT.Ty_gia;
+                txtTt2_ty_gia.Value = (double)tyGiaNT.Ty_gia;
             }
             finally
             {
@@ -625,31 +667,31 @@ namespace GPBH.UI.Forms
 
             try
             {
-                if (cbbTTNT3.SelectedValue == null)
+                if (cbbTt3_ma_nt.SelectedValue == null)
                     return;
 
-                var maNT = cbbTTNT3.SelectedValue.ToString();
+                var maNT = cbbTt3_ma_nt.SelectedValue.ToString();
                 var tyGiaNT = _dMTGService.GetTyGiaByMaNT(maNT);
 
                 if (tyGiaNT == null)
                     return;
 
-                if (!decimal.TryParse(txtQDTTNT3.Text, out decimal soTienQuyDoi))
+                if (!decimal.TryParse(txtTt3_tien_nt.Text, out decimal soTienQuyDoi))
                 {
-                    txtTTNT3.Text = "0";
+                    txtTt3_tien_tt.Text = "0";
                     return;
                 }
 
                 if (tyGiaNT.Ma_nt == AppGlobals.DMCuaHang.Ma_nt)
                 {
-                    txtTTNT3.Text = soTienQuyDoi.ToString("N2");
+                    txtTt3_tien_tt.Text = soTienQuyDoi.ToString("N2");
                 }
                 else
                 {
                     var soTienNT = (soTienQuyDoi * TyGiaCuaHang.Ty_gia) / tyGiaNT.Ty_gia;
-                    txtTTNT3.Text = soTienNT.ToString("N2");
+                    txtTt3_tien_tt.Text = soTienNT.ToString("N2");
                 }
-                txtTGTT3.Value = (double)tyGiaNT.Ty_gia;
+                txtTt3_ty_gia.Value = (double)tyGiaNT.Ty_gia;
             }
             finally
             {
@@ -664,33 +706,33 @@ namespace GPBH.UI.Forms
             _isChangeTien = true;
             try
             {
-                if (cbbTTNT1.SelectedValue == null)
+                if (cbbTt1_ma_nt.SelectedValue == null)
                     return;
 
-                var maNT = cbbTTNT1.SelectedValue.ToString();
+                var maNT = cbbTt1_ma_nt.SelectedValue.ToString();
                 var tyGia = _dMTGService.GetTyGiaByMaNT(maNT);
 
                 if (tyGia == null)
                     return;
 
-                if (!decimal.TryParse(txtTTNT1.Text, out decimal soTienNT))
+                if (!decimal.TryParse(txtTt1_tien_nt.Text, out decimal soTienNT))
                 {
-                    txtQDTTNT1.Text = "0";
+                    txtTt1_tien_nt.Text = "0";
                     return;
                 }
 
                 if (tyGia.Ma_nt == AppGlobals.DMCuaHang.Ma_nt)
                 {
-                    txtQDTTNT1.Text = soTienNT.ToString("N2");
+                    txtTt1_tien_nt.Text = soTienNT.ToString("N2");
                 }
                 else
                 {
                     var soTienVND = soTienNT * tyGia.Ty_gia;
                     var soTienQuyDoi = soTienVND / TyGiaCuaHang.Ty_gia;
 
-                    txtQDTTNT1.Text = soTienQuyDoi.ToString("N2");
+                    txtTt1_tien_nt.Text = soTienQuyDoi.ToString("N2");
                 }
-                txtTGTT1.Value = (double)tyGia.Ty_gia;
+                txtTt1_ty_gia.Value = (double)tyGia.Ty_gia;
             }
             finally
             {
@@ -705,33 +747,33 @@ namespace GPBH.UI.Forms
             _isChangeTien = true;
             try
             {
-                if (cbbTTNT2.SelectedValue == null)
+                if (cbbTt2_ma_nt.SelectedValue == null)
                     return;
 
-                var maNT = cbbTTNT2.SelectedValue.ToString();
+                var maNT = cbbTt2_ma_nt.SelectedValue.ToString();
                 var tyGia = _dMTGService.GetTyGiaByMaNT(maNT);
 
                 if (tyGia == null)
                     return;
 
-                if (!decimal.TryParse(txtTTNT2.Text, out decimal soTienNT))
+                if (!decimal.TryParse(txtTt2_tien_tt.Text, out decimal soTienNT))
                 {
-                    txtQDTTNT2.Text = "0";
+                    txtTt2_tien_nt.Text = "0";
                     return;
                 }
 
                 if (tyGia.Ma_nt == AppGlobals.DMCuaHang.Ma_nt)
                 {
-                    txtQDTTNT2.Text = soTienNT.ToString("N2");
+                    txtTt2_tien_nt.Text = soTienNT.ToString("N2");
                 }
                 else
                 {
                     var soTienVND = soTienNT * tyGia.Ty_gia;
                     var soTienQuyDoi = soTienVND / TyGiaCuaHang.Ty_gia;
 
-                    txtQDTTNT2.Text = soTienQuyDoi.ToString("N2");
+                    txtTt2_tien_nt.Text = soTienQuyDoi.ToString("N2");
                 }
-                txtTGTT2.Value = (double)tyGia.Ty_gia;
+                txtTt2_ty_gia.Value = (double)tyGia.Ty_gia;
             }
             finally
             {
@@ -746,33 +788,33 @@ namespace GPBH.UI.Forms
             _isChangeTien = true;
             try
             {
-                if (cbbTTNT3.SelectedValue == null)
+                if (cbbTt3_ma_nt.SelectedValue == null)
                     return;
 
-                var maNT = cbbTTNT3.SelectedValue.ToString();
+                var maNT = cbbTt3_ma_nt.SelectedValue.ToString();
                 var tyGia = _dMTGService.GetTyGiaByMaNT(maNT);
 
                 if (tyGia == null)
                     return;
 
-                if (!decimal.TryParse(txtTTNT3.Text, out decimal soTienNT))
+                if (!decimal.TryParse(txtTt3_tien_tt.Text, out decimal soTienNT))
                 {
-                    txtQDTTNT3.Text = "0";
+                    txtTt3_tien_nt.Text = "0";
                     return;
                 }
 
                 if (tyGia.Ma_nt == AppGlobals.DMCuaHang.Ma_nt)
                 {
-                    txtQDTTNT3.Text = soTienNT.ToString("N2");
+                    txtTt3_tien_nt.Text = soTienNT.ToString("N2");
                 }
                 else
                 {
                     var soTienVND = soTienNT * tyGia.Ty_gia;
                     var soTienQuyDoi = soTienVND / TyGiaCuaHang.Ty_gia;
 
-                    txtQDTTNT3.Text = soTienQuyDoi.ToString("N2");
+                    txtTt3_tien_nt.Text = soTienQuyDoi.ToString("N2");
                 }
-                txtTGTT3.Value = (double)tyGia.Ty_gia;
+                txtTt3_ty_gia.Value = (double)tyGia.Ty_gia;
             }
             finally
             {
@@ -783,17 +825,17 @@ namespace GPBH.UI.Forms
 
         private void TinhTongThanhToan()
         {
-            decimal.TryParse(txtQDTTNT1.Text, out decimal soTienNT1);
-            decimal.TryParse(txtQDTTNT2.Text, out decimal soTienNT2);
-            decimal.TryParse(txtQDTTNT3.Text, out decimal soTienNT3);
-            txtQDNTTTT.Text = (soTienNT1 + soTienNT2 + soTienNT3).ToString("N2");
+            decimal.TryParse(txtTt1_tien_nt.Text, out decimal soTienNT1);
+            decimal.TryParse(txtTt2_tien_nt.Text, out decimal soTienNT2);
+            decimal.TryParse(txtTt3_tien_nt.Text, out decimal soTienNT3);
+            txtTt_tong.Text = (soTienNT1 + soTienNT2 + soTienNT3).ToString("N2");
         }
 
         private void TinhTraLai()
         {
-            decimal.TryParse(txtTNNT.Text, out decimal tongNhan);
-            decimal.TryParse(txtTT.Text, out decimal tongThu);
-            txtTLNT.Text = (tongNhan - tongThu).ToString("N2");
+            decimal.TryParse(txtTong_nhan.Text, out decimal tongNhan);
+            decimal.TryParse(txtTong_thu_nt.Text, out decimal tongThu);
+            txtTra_lai_nt.Text = (tongNhan - tongThu).ToString("N2");
         }
         /// <summary>
         /// Đăng ký các sự kiện để ẩn popup chọn hàng hóa khi click/scroll/resize ngoài vùng popup.
@@ -945,9 +987,9 @@ namespace GPBH.UI.Forms
                 }
             }
 
-            txtTTHNT.Text = tongTienHang.ToString("N2");
-            txtTGNT.Text = tienGiam.ToString("N2");
-            txtTT.Text = (tongTienHang - tienGiam).ToString("N2");
+            txtTong_tien_hang_nt.Text = tongTienHang.ToString("N2");
+            txtTong_giam_gia_nt.Text = tienGiam.ToString("N2");
+            txtTong_thu_nt.Text = (tongTienHang - tienGiam).ToString("N2");
             txtTQDVND.Text = (tongThu * TyGiaCuaHang.Ty_gia).ToString("N2");
 
             TinhTraLai();

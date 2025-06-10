@@ -63,7 +63,7 @@ namespace GPBH.Business.Dtos
         public decimal? Tt1_ty_gia { get; set; }
 
         // Thanh toán 1, tiền ngoại tệ
-        public decimal? Tl1_tien_nt { get; set; }
+        public decimal? Tt1_tien_nt { get; set; }
 
         // Thanh toán 2, loại thanh toán
         public string Tt2_loai { get; set; }
@@ -78,7 +78,7 @@ namespace GPBH.Business.Dtos
         public decimal? Tt2_ty_gia { get; set; }
 
         // Thanh toán 2, tiền ngoại tệ
-        public decimal? Tl2_tien_nt { get; set; }
+        public decimal? Tt2_tien_nt { get; set; }
 
         // Thanh toán 3, loại thanh toán
         public string Tt3_loai { get; set; }
@@ -93,7 +93,7 @@ namespace GPBH.Business.Dtos
         public decimal? Tt3_ty_gia { get; set; }
 
         // Thanh toán 3, tiền ngoại tệ
-        public decimal? Tl3_tien_nt { get; set; }
+        public decimal? Tt3_tien_nt { get; set; }
 
         // Tổng thanh toán
         public decimal? Tt_tong { get; set; }
@@ -106,6 +106,9 @@ namespace GPBH.Business.Dtos
 
         // Trả lại * tỷ giá
         public decimal? Tra_lai_nt { get; set; }
+
+        // Trả lại mã ngoại tệ
+        public string Tra_lai_ma_nt { get; set; }
 
         // Tổng tiền hàng
         public decimal? Tong_tien_hang { get; set; }
@@ -154,6 +157,11 @@ namespace GPBH.Business.Dtos
 
         // Mã đối tượng (sysdmdv)
         public TrangThaiDonHang Trang_thai { get; set; }
+
+        public string Nguoi_tao { get; set; }        // Người tạo
+        public DateTime? Ngay_tao { get; set; }      // Ngày tạo
+        public string Nguoi_sua { get; set; }        // Người sửa
+        public DateTime? Ngay_sua { get; set; }      // Ngày sửa
 
         public List<XCT5Dto> XCT5s { get; set; } = new List<XCT5Dto>();
     }
