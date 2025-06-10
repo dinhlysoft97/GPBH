@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GPBH.Business.Exceptions;
+using System;
 using System.IO;
 using System.Windows.Forms;
 
@@ -16,18 +17,35 @@ namespace GPBH.UI.Helper
         {
             try
             {
-                string logPath = logFilePath ?? Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "error.log");
-                string errorMsg = $"[{DateTime.Now:yyyy-MM-dd HH:mm:ss}] {ex}\r\n";
-                File.AppendAllText(logPath, errorMsg);
-
-                if (showMessageBox)
+                if (ex is BadRequestException)
                 {
-                    MessageBox.Show(
-                        "Có lỗi xảy ra:\n" + ex.Message,
-                        "Lỗi",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error
-                    );
+                    // Nếu là BadRequestException, không cần log, chỉ hiển thị thông báo
+                    if (showMessageBox)
+                    {
+                        MessageBox.Show(
+                            ex.Message,
+                            "Cảnh báo",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error
+                        );
+                    }
+                    return;
+                }
+                else
+                {
+                    string logPath = logFilePath ?? Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "error.log");
+                    string errorMsg = $"[{DateTime.Now:yyyy-MM-dd HH:mm:ss}] {ex}\r\n";
+                    File.AppendAllText(logPath, errorMsg);
+
+                    if (showMessageBox)
+                    {
+                        MessageBox.Show(
+                            "Có lỗi xảy ra:\n" + ex.Message,
+                            "Lỗi",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error
+                        );
+                    }
                 }
             }
             catch (Exception)
