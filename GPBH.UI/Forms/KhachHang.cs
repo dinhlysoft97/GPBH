@@ -45,7 +45,9 @@ namespace GPBH.UI.Forms
 
         public KhachHang(DMKHService dmkhService, DMQGService dMQGService, string passport)
         {
-            InitializeComponent();
+            InitializeComponent();  
+            // Đặt thuộc tính KeyPreview của Form là true trong Designer hoặc trong code
+            this.KeyPreview = true;
             _dmkhService = dmkhService;
             _dMQGService = dMQGService;
             LoadData();
@@ -70,6 +72,7 @@ namespace GPBH.UI.Forms
             txtTongTien.KeyPress += txtSoTien_KeyPress;
             txtTongTien.Leave += txtSoTien_Leave;
             txtEmail.Leave += txtEmail_Leave;
+            this.KeyDown += Form_KeyDown;
         }
 
         private void FillCustomerData(DMKH khachHang)
@@ -186,7 +189,14 @@ namespace GPBH.UI.Forms
         #endregion
 
         #region Event Handlers
-
+        private void Form_KeyDown(object sender, KeyEventArgs e)
+        {
+            // Lưu và in
+            if (e.KeyCode == Keys.Enter)
+            {
+                HandleClick();
+            }
+        }
         private void txtCCCD_TextChanged(object sender, EventArgs e)
         {
             var khachHang = _dmkhService.GetByPassport(txtCCCD.Text.Trim());
@@ -205,6 +215,14 @@ namespace GPBH.UI.Forms
         }
 
         private void btnChon_Click(object sender, EventArgs e)
+        {
+            HandleClick();
+        }
+
+        /// <summary>
+        /// Xử lý sự kiện click nút "Chọn" hoặc "Lưu" trong form Khách Hàng.
+        /// </summary>
+        private void HandleClick()
         {
             if (isKhachHangSelected)
             {

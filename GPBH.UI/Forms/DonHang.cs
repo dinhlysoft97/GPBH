@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -249,21 +250,7 @@ namespace GPBH.UI.Forms
             // Lưu và in
             if (e.KeyCode == Keys.F2)
             {
-                if (!_isEdit) // tạo mới
-                {
-                    if (listChiTiet.Count == 0)
-                        MessageBoxEx.Show("Vui lòng thêm ít nhất một mặt hàng trước khi lưu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    else
-                    {
-
-                        TaoDonHang(TrangThaiDonHang.Confirmed);
-                    }
-                }
-                else
-                {
-                    if (_data != null && string.IsNullOrEmpty(_data.So_chung_tu))
-                        UpdateSoChungTuTinhTonKho();
-                }
+                HandlerKeyF2();
             }
             // xóa dữ liệu chi tiết
             if ((e.KeyCode == Keys.Delete || e.KeyCode == Keys.F7) && dataGridViewX1.SelectedRows.Count > 0)
@@ -298,33 +285,85 @@ namespace GPBH.UI.Forms
             // Lưu tạo đơn hàng
             else if (e.KeyCode == Keys.F12)
             {
-                if (!_isEdit) // tạo mới
-                {
-                    if (listChiTiet.Count == 0)
-                        MessageBoxEx.Show("Vui lòng thêm ít nhất một mặt hàng trước khi lưu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    else
-                    {
-                        // Tạo nháp đơn hàng
-                        TaoDonHang(TrangThaiDonHang.Draft);
-                    }
-                }
-                else
-                {
-                    if (listChiTiet.Count == 0)
-                        MessageBoxEx.Show("Vui lòng thêm ít nhất một mặt hàng trước khi lưu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    else
-                    {
-
-                    }
-                }
+                HandlerKeyF12();
             }
+        }
+
+        /// <summary>
+        /// Xử lý sự kiện khi nhấn F12 để tạo đơn hàng.
+        /// </summary>
+        private void HandlerKeyF12()
+        {
+            if (!_isEdit) // tạo mới
+            {
+                var validator = ValidatorData();
+                // Tạo nháp đơn hàng
+                if (validator)
+                    TaoDonHang(TrangThaiDonHang.Draft);
+            }
+            else
+            {
+                var validator = ValidatorData();
+                if (validator)
+                    EditDonHang();
+            }
+        }
+
+        /// <summary>
+        /// Xử lý sự kiện khi nhấn F7 để sửa đơn hàng hiện tại.
+        /// </summary>
+        private void EditDonHang()
+        {
+
+        }
+
+        /// <summary>
+        /// Xử lý sự kiện khi nhấn F2 để lưu hoặc cập nhật số chứng từ.
+        /// </summary>
+        private void HandlerKeyF2()
+        {
+            if (!_isEdit) // tạo mới
+            {
+                var validator = ValidatorData();
+                if (validator)
+                    TaoDonHang(TrangThaiDonHang.Confirmed);
+            }
+            else
+            {
+                if (_data != null && string.IsNullOrEmpty(_data.So_chung_tu))
+                    UpdateSoChungTuTinhTonKho();
+            }
+        }
+
+        /// <summary>
+        /// Validator trước khi lưu
+        /// </summary>
+        /// <returns></returns>
+        private bool ValidatorData()
+        {
+            if (listChiTiet.Count == 0)
+            {
+                MessageBoxEx.Show("Vui lòng thêm ít nhất một mặt hàng trước khi lưu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if (!string.IsNullOrEmpty(ucHangHoa.Tb.Text))
+                    ucHangHoa.ShowDropDown();
+                return false;
+            }
+
+            if (txtTLNT.Value < 0)
+            {
+                MessageBoxEx.Show("Tổng trả đang bị âm!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtTLNT.Focus();
+                return false;
+            }
+
+            return true;
         }
 
         /// <summary>
         /// Tính toán tổng tiền và hiển thị lên form.
         /// </summary>
         /// <returns></returns>
-        private XPH5Dto TaoDonHang(TrangThaiDonHang trangThaiDonHang)
+        private void TaoDonHang(TrangThaiDonHang trangThaiDonHang)
         {
             XPH5Dto donHangDto = MapDataToSave(trangThaiDonHang);
             if (string.IsNullOrEmpty(donHangDto.Ma_phieu))
@@ -338,11 +377,8 @@ namespace GPBH.UI.Forms
                     lbMaPhieu.Text = $"{data.Ma_phieu}";
                     // Sau khi gọi service lưu và nhận về newDonHang
                     OpenEditForm(data); // Mở lại form cho phép sửa tiếp
-                    return data;
                 }
             }
-
-            return null;
         }
 
         /// <summary>
@@ -1002,7 +1038,7 @@ namespace GPBH.UI.Forms
             {
                 // Nếu Gg_ty_le nhập ngoài khoảng 1-99 thì về 1
                 if (col.Name == "Gg_ty_le" && (item.Gg_ty_le < 1 || item.Gg_ty_le > 99))
-                    item.Gg_ty_le = 1;
+                    item.Gg_ty_le = 0;
 
                 // Tính toán lại dòng và tổng
                 TinhToanRow(item);
