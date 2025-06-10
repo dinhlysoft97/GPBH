@@ -41,6 +41,9 @@ namespace GPBH.UI.Forms
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.lbMaPhieu = new DevComponents.DotNetBar.LabelX();
+            this.labelX10 = new DevComponents.DotNetBar.LabelX();
+            this.lbSoChungTu = new DevComponents.DotNetBar.LabelX();
             this.lbTGNT = new DevComponents.DotNetBar.LabelX();
             this.lbNgayHoaDon = new DevComponents.DotNetBar.LabelX();
             this.lbSCT = new DevComponents.DotNetBar.LabelX();
@@ -81,9 +84,13 @@ namespace GPBH.UI.Forms
             this.Tien_ban = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Gg_ly_do = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bar1 = new DevComponents.DotNetBar.Bar();
+            this.ucHangHoa = new GPBH.UI.UserControls.ucHangHoa();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.groupPanel4 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.txtTGTT3 = new DevComponents.Editors.DoubleInput();
+            this.txtTGTT2 = new DevComponents.Editors.DoubleInput();
+            this.txtTGTT1 = new DevComponents.Editors.DoubleInput();
             this.txtQDNTTTT = new DevComponents.Editors.DoubleInput();
             this.txtQDTTNT3 = new DevComponents.Editors.DoubleInput();
             this.txtQDTTNT2 = new DevComponents.Editors.DoubleInput();
@@ -145,13 +152,6 @@ namespace GPBH.UI.Forms
             this.txtTNNT = new DevComponents.Editors.DoubleInput();
             this.txtTLNT = new DevComponents.Editors.DoubleInput();
             this.txtQDTLNT = new DevComponents.Editors.DoubleInput();
-            this.txtTGTT1 = new DevComponents.Editors.DoubleInput();
-            this.txtTGTT2 = new DevComponents.Editors.DoubleInput();
-            this.txtTGTT3 = new DevComponents.Editors.DoubleInput();
-            this.lbSoChungTu = new DevComponents.DotNetBar.LabelX();
-            this.lbMaPhieu = new DevComponents.DotNetBar.LabelX();
-            this.labelX10 = new DevComponents.DotNetBar.LabelX();
-            this.ucHangHoa = new GPBH.UI.UserControls.ucHangHoa();
             this.groupPanel2.SuspendLayout();
             this.groupPanel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -162,6 +162,9 @@ namespace GPBH.UI.Forms
             this.bar1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.groupPanel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTGTT3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTGTT2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTGTT1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtQDNTTTT)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtQDTTNT3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtQDTTNT2)).BeginInit();
@@ -179,9 +182,6 @@ namespace GPBH.UI.Forms
             ((System.ComponentModel.ISupportInitialize)(this.txtTNNT)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTLNT)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtQDTLNT)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTGTT1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTGTT2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTGTT3)).BeginInit();
             this.SuspendLayout();
             // 
             // groupPanel2
@@ -241,6 +241,52 @@ namespace GPBH.UI.Forms
             this.groupPanel2.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel2.TabIndex = 1;
             this.groupPanel2.Text = "Thông tin đơn hàng";
+            // 
+            // lbMaPhieu
+            // 
+            this.lbMaPhieu.AutoSize = true;
+            this.lbMaPhieu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            // 
+            // 
+            // 
+            this.lbMaPhieu.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lbMaPhieu.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbMaPhieu.Location = new System.Drawing.Point(413, 57);
+            this.lbMaPhieu.Margin = new System.Windows.Forms.Padding(2);
+            this.lbMaPhieu.Name = "lbMaPhieu";
+            this.lbMaPhieu.Size = new System.Drawing.Size(0, 0);
+            this.lbMaPhieu.TabIndex = 31;
+            // 
+            // labelX10
+            // 
+            this.labelX10.AutoSize = true;
+            this.labelX10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            // 
+            // 
+            // 
+            this.labelX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelX10.Location = new System.Drawing.Point(343, 57);
+            this.labelX10.Margin = new System.Windows.Forms.Padding(2);
+            this.labelX10.Name = "labelX10";
+            this.labelX10.Size = new System.Drawing.Size(51, 15);
+            this.labelX10.TabIndex = 30;
+            this.labelX10.Text = "Mã phiếu:";
+            // 
+            // lbSoChungTu
+            // 
+            this.lbSoChungTu.AutoSize = true;
+            this.lbSoChungTu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            // 
+            // 
+            // 
+            this.lbSoChungTu.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lbSoChungTu.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSoChungTu.Location = new System.Drawing.Point(413, 30);
+            this.lbSoChungTu.Margin = new System.Windows.Forms.Padding(2);
+            this.lbSoChungTu.Name = "lbSoChungTu";
+            this.lbSoChungTu.Size = new System.Drawing.Size(0, 0);
+            this.lbSoChungTu.TabIndex = 29;
             // 
             // lbTGNT
             // 
@@ -851,6 +897,13 @@ namespace GPBH.UI.Forms
             this.bar1.TabStop = false;
             this.bar1.Text = "bar1";
             // 
+            // ucHangHoa
+            // 
+            this.ucHangHoa.Location = new System.Drawing.Point(156, 9);
+            this.ucHangHoa.Name = "ucHangHoa";
+            this.ucHangHoa.Size = new System.Drawing.Size(151, 24);
+            this.ucHangHoa.TabIndex = 1;
+            // 
             // labelX4
             // 
             this.labelX4.BackColor = System.Drawing.Color.White;
@@ -871,7 +924,7 @@ namespace GPBH.UI.Forms
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 61.20778F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38.79222F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 406F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 407F));
             this.tableLayoutPanel2.Controls.Add(this.groupPanel4, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.groupPanel6, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.groupPanel5, 2, 0);
@@ -915,7 +968,7 @@ namespace GPBH.UI.Forms
             this.groupPanel4.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel4.Location = new System.Drawing.Point(3, 3);
             this.groupPanel4.Name = "groupPanel4";
-            this.groupPanel4.Size = new System.Drawing.Size(618, 187);
+            this.groupPanel4.Size = new System.Drawing.Size(617, 187);
             // 
             // 
             // 
@@ -946,6 +999,54 @@ namespace GPBH.UI.Forms
             this.groupPanel4.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel4.TabIndex = 0;
             this.groupPanel4.Text = "Thanh toán(Alt +P)";
+            // 
+            // txtTGTT3
+            // 
+            // 
+            // 
+            // 
+            this.txtTGTT3.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.txtTGTT3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtTGTT3.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.txtTGTT3.Increment = 1D;
+            this.txtTGTT3.Location = new System.Drawing.Point(344, 3);
+            this.txtTGTT3.Name = "txtTGTT3";
+            this.txtTGTT3.ShowUpDown = true;
+            this.txtTGTT3.Size = new System.Drawing.Size(98, 20);
+            this.txtTGTT3.TabIndex = 47;
+            this.txtTGTT3.Visible = false;
+            // 
+            // txtTGTT2
+            // 
+            // 
+            // 
+            // 
+            this.txtTGTT2.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.txtTGTT2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtTGTT2.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.txtTGTT2.Increment = 1D;
+            this.txtTGTT2.Location = new System.Drawing.Point(230, 3);
+            this.txtTGTT2.Name = "txtTGTT2";
+            this.txtTGTT2.ShowUpDown = true;
+            this.txtTGTT2.Size = new System.Drawing.Size(98, 20);
+            this.txtTGTT2.TabIndex = 46;
+            this.txtTGTT2.Visible = false;
+            // 
+            // txtTGTT1
+            // 
+            // 
+            // 
+            // 
+            this.txtTGTT1.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.txtTGTT1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtTGTT1.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.txtTGTT1.Increment = 1D;
+            this.txtTGTT1.Location = new System.Drawing.Point(120, 3);
+            this.txtTGTT1.Name = "txtTGTT1";
+            this.txtTGTT1.ShowUpDown = true;
+            this.txtTGTT1.Size = new System.Drawing.Size(98, 20);
+            this.txtTGTT1.TabIndex = 45;
+            this.txtTGTT1.Visible = false;
             // 
             // txtQDNTTTT
             // 
@@ -1273,7 +1374,7 @@ namespace GPBH.UI.Forms
             this.groupPanel6.Controls.Add(this.lbTTH);
             this.groupPanel6.Controls.Add(this.labelX22);
             this.groupPanel6.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel6.Location = new System.Drawing.Point(627, 3);
+            this.groupPanel6.Location = new System.Drawing.Point(626, 3);
             this.groupPanel6.Name = "groupPanel6";
             this.groupPanel6.Size = new System.Drawing.Size(389, 187);
             // 
@@ -1505,7 +1606,7 @@ namespace GPBH.UI.Forms
             this.groupPanel5.Controls.Add(this.lbTGNT2);
             this.groupPanel5.Controls.Add(this.lb1NTQuyDoi);
             this.groupPanel5.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel5.Location = new System.Drawing.Point(1022, 3);
+            this.groupPanel5.Location = new System.Drawing.Point(1021, 3);
             this.groupPanel5.Name = "groupPanel5";
             this.groupPanel5.Size = new System.Drawing.Size(315, 187);
             // 
@@ -1830,104 +1931,6 @@ namespace GPBH.UI.Forms
             this.txtQDTLNT.Size = new System.Drawing.Size(99, 20);
             this.txtQDTLNT.TabIndex = 51;
             // 
-            // txtTGTT1
-            // 
-            // 
-            // 
-            // 
-            this.txtTGTT1.BackgroundStyle.Class = "DateTimeInputBackground";
-            this.txtTGTT1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtTGTT1.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.txtTGTT1.Increment = 1D;
-            this.txtTGTT1.Location = new System.Drawing.Point(120, 3);
-            this.txtTGTT1.Name = "txtTGTT1";
-            this.txtTGTT1.ShowUpDown = true;
-            this.txtTGTT1.Size = new System.Drawing.Size(98, 20);
-            this.txtTGTT1.TabIndex = 45;
-            // 
-            // txtTGTT2
-            // 
-            // 
-            // 
-            // 
-            this.txtTGTT2.BackgroundStyle.Class = "DateTimeInputBackground";
-            this.txtTGTT2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtTGTT2.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.txtTGTT2.Increment = 1D;
-            this.txtTGTT2.Location = new System.Drawing.Point(230, 3);
-            this.txtTGTT2.Name = "txtTGTT2";
-            this.txtTGTT2.ShowUpDown = true;
-            this.txtTGTT2.Size = new System.Drawing.Size(98, 20);
-            this.txtTGTT2.TabIndex = 46;
-            // 
-            // txtTGTT3
-            // 
-            // 
-            // 
-            // 
-            this.txtTGTT3.BackgroundStyle.Class = "DateTimeInputBackground";
-            this.txtTGTT3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtTGTT3.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.txtTGTT3.Increment = 1D;
-            this.txtTGTT3.Location = new System.Drawing.Point(344, 3);
-            this.txtTGTT3.Name = "txtTGTT3";
-            this.txtTGTT3.ShowUpDown = true;
-            this.txtTGTT3.Size = new System.Drawing.Size(98, 20);
-            this.txtTGTT3.TabIndex = 47;
-            // 
-            // lbSoChungTu
-            // 
-            this.lbSoChungTu.AutoSize = true;
-            this.lbSoChungTu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            // 
-            // 
-            // 
-            this.lbSoChungTu.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lbSoChungTu.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbSoChungTu.Location = new System.Drawing.Point(413, 30);
-            this.lbSoChungTu.Margin = new System.Windows.Forms.Padding(2);
-            this.lbSoChungTu.Name = "lbSoChungTu";
-            this.lbSoChungTu.Size = new System.Drawing.Size(25, 15);
-            this.lbSoChungTu.TabIndex = 29;
-            // 
-            // lbMaPhieu
-            // 
-            this.lbMaPhieu.AutoSize = true;
-            this.lbMaPhieu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            // 
-            // 
-            // 
-            this.lbMaPhieu.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lbMaPhieu.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbMaPhieu.Location = new System.Drawing.Point(413, 57);
-            this.lbMaPhieu.Margin = new System.Windows.Forms.Padding(2);
-            this.lbMaPhieu.Name = "lbMaPhieu";
-            this.lbMaPhieu.Size = new System.Drawing.Size(25, 15);
-            this.lbMaPhieu.TabIndex = 31;
-            // 
-            // labelX10
-            // 
-            this.labelX10.AutoSize = true;
-            this.labelX10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            // 
-            // 
-            // 
-            this.labelX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelX10.Location = new System.Drawing.Point(343, 57);
-            this.labelX10.Margin = new System.Windows.Forms.Padding(2);
-            this.labelX10.Name = "labelX10";
-            this.labelX10.Size = new System.Drawing.Size(51, 15);
-            this.labelX10.TabIndex = 30;
-            this.labelX10.Text = "Mã phiếu:";
-            // 
-            // ucHangHoa
-            // 
-            this.ucHangHoa.Location = new System.Drawing.Point(156, 9);
-            this.ucHangHoa.Name = "ucHangHoa";
-            this.ucHangHoa.Size = new System.Drawing.Size(151, 24);
-            this.ucHangHoa.TabIndex = 1;
-            // 
             // DonHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1968,6 +1971,9 @@ namespace GPBH.UI.Forms
             this.tableLayoutPanel2.ResumeLayout(false);
             this.groupPanel4.ResumeLayout(false);
             this.groupPanel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTGTT3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTGTT2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTGTT1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtQDNTTTT)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtQDTTNT3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtQDTTNT2)).EndInit();
@@ -1987,9 +1993,6 @@ namespace GPBH.UI.Forms
             ((System.ComponentModel.ISupportInitialize)(this.txtTNNT)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTLNT)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtQDTLNT)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTGTT1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTGTT2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTGTT3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

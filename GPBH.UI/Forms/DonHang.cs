@@ -422,6 +422,7 @@ namespace GPBH.UI.Forms
             decimal.TryParse(txtTTNT3.Text, out decimal tl3TienNT);
 
             decimal.TryParse(txtQDNTTTT.Text, out decimal tongTienThanhToan);
+            decimal.TryParse(txtTNNT.Text, out decimal tongNhan);
             decimal.TryParse(txtTLNT.Text, out decimal traLaiNT);
             decimal.TryParse(txtQDTLNT.Text, out decimal traLai);
 
@@ -464,6 +465,7 @@ namespace GPBH.UI.Forms
                 Tl3_tien_nt = tl3TienNT,
 
                 Tt_tong = tongTienThanhToan,
+                Tong_nhan = tongNhan,
                 Tra_lai_nt = traLaiNT,
                 Tra_lai = traLai,
                 Tong_tien_hang_nt = tongTienHangNT,
