@@ -318,19 +318,25 @@ namespace GPBH.Data.Migrations
             if (!context.SysMenu.Any())
             {
                 context.SysMenu.AddOrUpdate(
-                    new SysMenu { MenuName = "Đơn hàng", Type = SysMenuType.Document, MenuId = "DonHang", Report = false, BasicRight = true, Picture = "banhang", Active = true, Stt = 1 },
-                    new SysMenu { MenuName = "Bán hàng theo khách hàng", Type = SysMenuType.Report, MenuId = "BanHangTheoKhachHang", Report = false, BasicRight = true, Picture = "baocaobanhang", Active = true, Stt = 1 },
-                    new SysMenu { MenuName = "Đơn vị", MenuId = "DonVi", Type = SysMenuType.Category, Report = false, BasicRight = true, Picture = "", Active = true, Stt = 1 },
-                    new SysMenu { MenuName = "Cửa hàng", MenuId = "CuaHang", Type = SysMenuType.Category, Report = false, BasicRight = true, Picture = "", Active = true, Stt = 2 },
-                    new SysMenu { MenuName = "Ca", MenuId = "Ca", Type = SysMenuType.Category, Report = false, BasicRight = true, Picture = "", Active = true, Stt = 3 },
-                    new SysMenu { MenuName = "Người dùng", MenuId = "NguoiDung", Type = SysMenuType.Category, Report = false, BasicRight = true, Picture = "", Active = true, Stt = 4 },
-                    new SysMenu { MenuName = "Phân quyền", MenuId = "PhanQuyen", Type = SysMenuType.Category, Report = false, BasicRight = true, Picture = "", Active = true, Stt = 5 },
-                    new SysMenu { MenuName = "Quốc gia", MenuId = "QuocGia", Type = SysMenuType.Category, Report = false, BasicRight = true, Picture = "", Active = true, Stt = 6 },
-                    new SysMenu { MenuName = "Khách hàng", MenuId = "KhachHang", Type = SysMenuType.Category, Report = false, BasicRight = true, Picture = "", Active = true, Stt = 7 },
-                    new SysMenu { MenuName = "Ngoại tê", MenuId = "NgoaiTe", Type = SysMenuType.Category, Report = false, BasicRight = true, Picture = "", Active = true, Stt = 8 },
-                    new SysMenu { MenuName = "Tỷ giá", MenuId = "TyGia", Type = SysMenuType.Category, Report = false, BasicRight = true, Picture = "", Active = true, Stt = 9 },
-                    new SysMenu { MenuName = "Hành hóa", MenuId = "HangHoa", Type = SysMenuType.Category, Report = false, BasicRight = true, Picture = "", Active = true, Stt = 10 },
-                    new SysMenu { MenuName = "Giá bán", MenuId = "GiaBan", Type = SysMenuType.Category, Report = false, BasicRight = true, Picture = "", Active = true, Stt = 11 }
+                    // đơn hàng
+                    new SysMenu { MenuName = "Đơn hàng", Type = SysMenuType.Document, MenuId = "DonHang", Report = false, BasicRight = true, Picture = "", Active = true, Stt = 1 },
+
+                    // báo cáo
+                    new SysMenu { MenuName = "Bán hàng theo khách hàng", Type = SysMenuType.Report, MenuId = "BanHangTheoKhachHang", Report = false, BasicRight = true, Picture = "", Active = true, Stt = 1 },
+
+                    // danh mục
+                    new SysMenu { MenuName = "Ca", MenuId = "Ca", Type = SysMenuType.Category, Report = false, BasicRight = true, Picture = "", Active = true, Stt = 1 },
+                    new SysMenu { MenuName = "Quốc gia", MenuId = "QuocGia", Type = SysMenuType.Category, Report = false, BasicRight = true, Picture = "", Active = true, Stt = 2 },
+                    new SysMenu { MenuName = "Khách hàng", MenuId = "KhachHang", Type = SysMenuType.Category, Report = false, BasicRight = true, Picture = "", Active = true, Stt = 3 },
+                    new SysMenu { MenuName = "Ngoại tê", MenuId = "NgoaiTe", Type = SysMenuType.Category, Report = false, BasicRight = true, Picture = "", Active = true, Stt = 4 },
+                    new SysMenu { MenuName = "Tỷ giá", MenuId = "TyGia", Type = SysMenuType.Category, Report = false, BasicRight = true, Picture = "", Active = true, Stt = 5 },
+                    new SysMenu { MenuName = "Hành hóa", MenuId = "HangHoa", Type = SysMenuType.Category, Report = false, BasicRight = true, Picture = "", Active = true, Stt = 6 },
+                    new SysMenu { MenuName = "Giá bán", MenuId = "GiaBan", Type = SysMenuType.Category, Report = false, BasicRight = true, Picture = "", Active = true, Stt = 7 },
+
+                    // cài đặt
+                    new SysMenu { MenuName = "Tham số", MenuId = "ThamSo", Type = SysMenuType.Setting, Report = false, BasicRight = true, Picture = "", Active = true, Stt = 1 },
+                    new SysMenu { MenuName = "Đổi mật khâu", MenuId = "DoiMatKhau", Type = SysMenuType.Setting, Report = false, BasicRight = true, Picture = "", Active = true, Stt = 2},
+                    new SysMenu { MenuName = "Người dùng", MenuId = "NguoiDung", Type = SysMenuType.Setting, Report = false, BasicRight = true, Picture = "", Active = true, Stt = 3 }
                 );
                 context.SaveChanges();
             }

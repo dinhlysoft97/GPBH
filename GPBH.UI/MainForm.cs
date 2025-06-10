@@ -6,6 +6,7 @@ using GPBH.UI.UserControls;
 using System;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace GPBH.UI
@@ -46,7 +47,7 @@ namespace GPBH.UI
             ImageList imgList = new ImageList();
             SetImages(imgList);
 
-            foreach (var menu in menus)
+            foreach (var menu in menus.OrderBy(z=>z.Type).OrderBy(z=>z.Stt))
             {
                 var subMenu = new ButtonItem(menu.MenuId, menu.MenuName);
 
@@ -58,6 +59,7 @@ namespace GPBH.UI
                 if (menu.Type == SysMenuType.Document) nodeBanHang.SubItems.Add(subMenu);
                 if (menu.Type == SysMenuType.Report) nodeBaoCao.SubItems.Add(subMenu);
                 if (menu.Type == SysMenuType.Category) nodeDanhMuc.SubItems.Add(subMenu);
+                if (menu.Type == SysMenuType.Setting) nodeCaiDat.SubItems.Add(subMenu);
             }
 
             group.SubItems.Add(nodeBanHang);

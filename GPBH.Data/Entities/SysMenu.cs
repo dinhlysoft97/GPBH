@@ -35,5 +35,6 @@ namespace GPBH.Data.Entities
         Document = 1, // Chứng từ
         Report = 2,   // Báo cáo
         Category = 3, // Danh mục
+        Setting = 4, // Cài đặt
     }
 }
