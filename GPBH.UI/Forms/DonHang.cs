@@ -715,7 +715,7 @@ namespace GPBH.UI.Forms
                 if (tyGia == null)
                     return;
 
-                if (!decimal.TryParse(txtTt1_tien_nt.Text, out decimal soTienNT))
+                if (!decimal.TryParse(txtTt1_tien_tt.Text, out decimal soTienNT))
                 {
                     txtTt1_tien_nt.Text = "0";
                     return;
