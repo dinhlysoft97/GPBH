@@ -105,11 +105,11 @@
         // Trả lại = Tổng thu - Tổng nhận
         public decimal? Tra_lai { get; set; }
 
+        // mã cb Trả lại
+        public string Ma_tra_lai { get; set; }
+
         // Trả lại * tỷ giá
         public decimal? Tra_lai_nt { get; set; }
-
-        // Trả lại mã ngoại tệ
-        public string Tra_lai_ma_nt { get; set; }
 
         // Tổng tiền hàng
         public decimal? Tong_tien_hang { get; set; }

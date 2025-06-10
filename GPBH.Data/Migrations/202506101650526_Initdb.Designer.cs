@@ -13,7 +13,7 @@ namespace GPBH.Data.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202506100814184_Initdb"; }
+            get { return "202506101650526_Initdb"; }
         }
         
         string IMigrationMetadata.Source

@@ -84,6 +84,7 @@ namespace GPBH.UI.Forms
             this.Tien_ban = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Gg_ly_do = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bar1 = new DevComponents.DotNetBar.Bar();
+            this.ucHangHoa = new GPBH.UI.UserControls.ucHangHoa();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.groupPanel4 = new DevComponents.DotNetBar.Controls.GroupPanel();
@@ -145,13 +146,12 @@ namespace GPBH.UI.Forms
             this.labelX34 = new DevComponents.DotNetBar.LabelX();
             this.lbTraLai = new DevComponents.DotNetBar.LabelX();
             this.labelX37 = new DevComponents.DotNetBar.LabelX();
-            this.cbTra_lai_ma_nt = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.cbTra_lai = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.lbTongNhan = new DevComponents.DotNetBar.LabelX();
             this.labelX32 = new DevComponents.DotNetBar.LabelX();
             this.txtTong_nhan = new DevComponents.Editors.DoubleInput();
             this.txtTra_lai_nt = new DevComponents.Editors.DoubleInput();
             this.txtTra_lai = new DevComponents.Editors.DoubleInput();
-            this.ucHangHoa = new GPBH.UI.UserControls.ucHangHoa();
             this.groupPanel2.SuspendLayout();
             this.groupPanel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -897,6 +897,13 @@ namespace GPBH.UI.Forms
             this.bar1.TabStop = false;
             this.bar1.Text = "bar1";
             // 
+            // ucHangHoa
+            // 
+            this.ucHangHoa.Location = new System.Drawing.Point(156, 9);
+            this.ucHangHoa.Name = "ucHangHoa";
+            this.ucHangHoa.Size = new System.Drawing.Size(151, 24);
+            this.ucHangHoa.TabIndex = 1;
+            // 
             // labelX4
             // 
             this.labelX4.BackColor = System.Drawing.Color.White;
@@ -917,7 +924,7 @@ namespace GPBH.UI.Forms
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 61.20778F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38.79222F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 413F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 414F));
             this.tableLayoutPanel2.Controls.Add(this.groupPanel4, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.groupPanel6, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.groupPanel5, 2, 0);
@@ -961,7 +968,7 @@ namespace GPBH.UI.Forms
             this.groupPanel4.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel4.Location = new System.Drawing.Point(3, 3);
             this.groupPanel4.Name = "groupPanel4";
-            this.groupPanel4.Size = new System.Drawing.Size(614, 187);
+            this.groupPanel4.Size = new System.Drawing.Size(613, 187);
             // 
             // 
             // 
@@ -1367,7 +1374,7 @@ namespace GPBH.UI.Forms
             this.groupPanel6.Controls.Add(this.lbTTH);
             this.groupPanel6.Controls.Add(this.labelX22);
             this.groupPanel6.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel6.Location = new System.Drawing.Point(623, 3);
+            this.groupPanel6.Location = new System.Drawing.Point(622, 3);
             this.groupPanel6.Name = "groupPanel6";
             this.groupPanel6.Size = new System.Drawing.Size(386, 187);
             // 
@@ -1599,7 +1606,7 @@ namespace GPBH.UI.Forms
             this.groupPanel5.Controls.Add(this.lbTGNT2);
             this.groupPanel5.Controls.Add(this.lb1NTQuyDoi);
             this.groupPanel5.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel5.Location = new System.Drawing.Point(1015, 3);
+            this.groupPanel5.Location = new System.Drawing.Point(1014, 3);
             this.groupPanel5.Name = "groupPanel5";
             this.groupPanel5.Size = new System.Drawing.Size(315, 187);
             // 
@@ -1832,18 +1839,18 @@ namespace GPBH.UI.Forms
             this.labelX37.Text = "=";
             this.labelX37.TextAlignment = System.Drawing.StringAlignment.Center;
             // 
-            // cbTra_lai_ma_nt
+            // cbTra_lai
             // 
-            this.cbTra_lai_ma_nt.DisplayMember = "Text";
-            this.cbTra_lai_ma_nt.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cbTra_lai_ma_nt.FormattingEnabled = true;
-            this.cbTra_lai_ma_nt.ItemHeight = 16;
-            this.cbTra_lai_ma_nt.Location = new System.Drawing.Point(620, 776);
-            this.cbTra_lai_ma_nt.Margin = new System.Windows.Forms.Padding(2);
-            this.cbTra_lai_ma_nt.Name = "cbTra_lai_ma_nt";
-            this.cbTra_lai_ma_nt.Size = new System.Drawing.Size(102, 22);
-            this.cbTra_lai_ma_nt.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cbTra_lai_ma_nt.TabIndex = 38;
+            this.cbTra_lai.DisplayMember = "Text";
+            this.cbTra_lai.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbTra_lai.FormattingEnabled = true;
+            this.cbTra_lai.ItemHeight = 16;
+            this.cbTra_lai.Location = new System.Drawing.Point(620, 776);
+            this.cbTra_lai.Margin = new System.Windows.Forms.Padding(2);
+            this.cbTra_lai.Name = "cbTra_lai";
+            this.cbTra_lai.Size = new System.Drawing.Size(102, 22);
+            this.cbTra_lai.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbTra_lai.TabIndex = 38;
             // 
             // lbTongNhan
             // 
@@ -1924,13 +1931,6 @@ namespace GPBH.UI.Forms
             this.txtTra_lai.Size = new System.Drawing.Size(99, 20);
             this.txtTra_lai.TabIndex = 51;
             // 
-            // ucHangHoa
-            // 
-            this.ucHangHoa.Location = new System.Drawing.Point(156, 9);
-            this.ucHangHoa.Name = "ucHangHoa";
-            this.ucHangHoa.Size = new System.Drawing.Size(151, 24);
-            this.ucHangHoa.TabIndex = 1;
-            // 
             // DonHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1941,7 +1941,7 @@ namespace GPBH.UI.Forms
             this.Controls.Add(this.txtTong_nhan);
             this.Controls.Add(this.labelX32);
             this.Controls.Add(this.lbTongNhan);
-            this.Controls.Add(this.cbTra_lai_ma_nt);
+            this.Controls.Add(this.cbTra_lai);
             this.Controls.Add(this.labelX37);
             this.Controls.Add(this.lbTraLai);
             this.Controls.Add(this.labelX34);
@@ -2110,6 +2110,6 @@ namespace GPBH.UI.Forms
         private DevComponents.DotNetBar.LabelX lbMaPhieu;
         private DevComponents.DotNetBar.LabelX labelX10;
         private DevComponents.Editors.DoubleInput txtTt1_tien_tt;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx cbTra_lai_ma_nt;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cbTra_lai;
     }
 }

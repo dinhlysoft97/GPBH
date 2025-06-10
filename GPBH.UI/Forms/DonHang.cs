@@ -137,7 +137,7 @@ namespace GPBH.UI.Forms
                 txtTong_nhan.Value = (double)_data.Tong_nhan;
                 txtTra_lai_nt.Value = (double)_data.Tra_lai_nt;
                 txtTra_lai.Value = (double)_data.Tra_lai;
-                cbTra_lai_ma_nt.SelectedValue = _data.Tra_lai_ma_nt;
+                cbTra_lai.SelectedValue = _data.Ma_tra_lai;
 
                 txtTong_tien_hang_nt.Value = (double)_data.Tong_tien_hang_nt;
                 txtTong_giam_gia_nt.Value = (double)_data.Tong_giam_gia_nt;
@@ -201,7 +201,7 @@ namespace GPBH.UI.Forms
             cbbTt1_ma_nt.SelectedValue = tyGia.Ma_nt;
             cbbTt2_ma_nt.SelectedValue = tyGia.Ma_nt;
             cbbTt3_ma_nt.SelectedValue = tyGia.Ma_nt;
-            cbTra_lai_ma_nt.SelectedValue = tyGia.Ma_nt;
+            cbTra_lai.SelectedValue = tyGia.Ma_nt;
 
             TyGiaCuaHang = tyGia;
 
@@ -217,7 +217,7 @@ namespace GPBH.UI.Forms
             ComboBoxHelper.BindData(cbbTt1_ma_nt, _dMNTs, nameof(DMNT.Ma_nt), nameof(DMNT.Ma_nt), true);
             ComboBoxHelper.BindData(cbbTt2_ma_nt, new List<DMNT>(_dMNTs), nameof(DMNT.Ma_nt), nameof(DMNT.Ma_nt), true);
             ComboBoxHelper.BindData(cbbTt3_ma_nt, new List<DMNT>(_dMNTs), nameof(DMNT.Ma_nt), nameof(DMNT.Ma_nt), true);
-            ComboBoxHelper.BindData(cbTra_lai_ma_nt, new List<DMNT>(_dMNTs), nameof(DMNT.Ma_nt), nameof(DMNT.Ma_nt), true);
+            ComboBoxHelper.BindData(cbTra_lai, new List<DMNT>(_dMNTs), nameof(DMNT.Ma_nt), nameof(DMNT.Ma_nt), true);
         }
 
         /// <summary>
@@ -290,7 +290,7 @@ namespace GPBH.UI.Forms
             txtTt3_tien_nt.ValueChanged += TxtQDTTNT3_TextChanged;
             txtTong_nhan.ValueChanged += TxtTNNT_TextChanged;
             txtTra_lai_nt.ValueChanged += TxtTLNT_TextChanged;
-            cbTra_lai_ma_nt.SelectedIndexChanged += TxtTLNT_TextChanged;
+            cbTra_lai.SelectedIndexChanged += TxtTLNT_TextChanged;
 
             RegisterHideUcHangHoaEvents();
         }
@@ -509,7 +509,7 @@ namespace GPBH.UI.Forms
                 Tong_nhan = tongNhan,
                 Tra_lai_nt = traLaiNT,
                 Tra_lai = traLai,
-                Tra_lai_ma_nt = cbTra_lai_ma_nt.SelectedValue?.ToString(),
+                Ma_tra_lai = cbTra_lai.SelectedValue?.ToString(),
                 Tong_tien_hang_nt = tongTienHangNT,
                 Tong_tien_hang = tongTienHangNT * TyGiaCuaHang.Ty_gia,
                 Tong_giam_gia_nt = tongGiamGiaNT,
@@ -558,10 +558,10 @@ namespace GPBH.UI.Forms
 
         private void TxtTLNT_TextChanged(object sender, EventArgs e)
         {
-            if (cbTra_lai_ma_nt.SelectedValue == null)
+            if (cbTra_lai.SelectedValue == null)
                 return;
 
-            var maNT = cbTra_lai_ma_nt.SelectedValue.ToString();
+            var maNT = cbTra_lai.SelectedValue.ToString();
             var tyGiaNT = _dMTGService.GetTyGiaByMaNT(maNT);
 
             if (tyGiaNT == null)
