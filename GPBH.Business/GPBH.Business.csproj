@@ -77,6 +77,7 @@
     <Compile Include="Dtos\XPH5Dto.cs" />
     <Compile Include="Exceptions\BadRequestException.cs" />
     <Compile Include="MappingConfig.cs" />
+    <Compile Include="Services\DMcaService.cs" />
     <Compile Include="Services\DMHHService.cs" />
     <Compile Include="Services\DMKHService.cs" />
     <Compile Include="Services\DMNTService.cs" />

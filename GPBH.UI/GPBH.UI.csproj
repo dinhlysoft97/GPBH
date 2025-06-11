@@ -87,6 +87,12 @@
       <DependentUpon>Demo.cs</DependentUpon>
     </Compile>
     <Compile Include="Extentions\DataGirdViewExtention.cs" />
+    <Compile Include="Forms\FormCa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormCa.Designer.cs">
+      <DependentUpon>FormCa.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\DonHang.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,6 +134,7 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="obj\Debug\.NETFramework,Version=v4.8.AssemblyAttributes.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserControls\MultiColumnComboBox.cs">
@@ -145,6 +152,12 @@
     <Compile Include="UserControls\UserControlBanHangTheoKhachHang.Designer.cs">
       <DependentUpon>UserControlBanHangTheoKhachHang.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UserControlCa.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UserControlCa.Designer.cs">
+      <DependentUpon>UserControlCa.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UserControlDonHang.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -160,6 +173,9 @@
     <EmbeddedResource Include="Demo.resx">
       <DependentUpon>Demo.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormCa.resx">
+      <DependentUpon>FormCa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DonHang.resx">
       <DependentUpon>DonHang.cs</DependentUpon>
@@ -189,6 +205,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UserControlBanHangTheoKhachHang.resx">
       <DependentUpon>UserControlBanHangTheoKhachHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UserControlCa.resx">
+      <DependentUpon>UserControlCa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UserControlDonHang.resx">
       <DependentUpon>UserControlDonHang.cs</DependentUpon>

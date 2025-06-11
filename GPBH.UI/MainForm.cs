@@ -15,13 +15,17 @@ namespace GPBH.UI
     public partial class MainForm : Office2007Form
     {
         private readonly SysMenuService _sysMenuService;
+        private readonly DMcaService _dMcaService;
+        private readonly IServiceProvider _serviceProvider;
 
-        public MainForm(SysMenuService sysMenuService)
+        public MainForm(SysMenuService sysMenuService, DMcaService dMcaService, IServiceProvider serviceProvider)
         {
             InitializeComponent();
             _sysMenuService = sysMenuService;
+            _dMcaService = dMcaService;
             BuildMenu();
             SetData();
+            _serviceProvider = serviceProvider;
         }
 
         private void SetData()
@@ -144,6 +148,9 @@ namespace GPBH.UI
                     break;
                 case "NguoiDung":
                     uc = ActivatorUtilities.CreateInstance<UserControlNguoiSuDung>(Program.ServiceProvider);
+                    break;
+                case "Ca":
+                    uc = new UserControlCa(_dMcaService, _serviceProvider);
                     break;
                 default:
                     MessageBoxEx.Show("Tính năng đang phát triển!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
