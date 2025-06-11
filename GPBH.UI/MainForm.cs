@@ -13,13 +13,18 @@ namespace GPBH.UI
     public partial class MainForm : Office2007Form
     {
         private readonly SysMenuService _sysMenuService;
+        private readonly DMcaService _dmCaService;
+        private readonly DMKHService _dmKhachHangService;
 
-        public MainForm(SysMenuService sysMenuService)
+        public MainForm(SysMenuService sysMenuService, DMcaService dmCaService, DMKHService dmKhachHangService)
         {
             InitializeComponent();
             _sysMenuService = sysMenuService;
+            _dmCaService = dmCaService;
+            _dmKhachHangService = dmKhachHangService;
             BuildMenu();
             SetData();
+
         }
 
         private void SetData()
@@ -138,6 +143,15 @@ namespace GPBH.UI
                     break;
                 case "BanHangTheoKhachHang":
                     uc = new UserControlBanHangTheoKhachHang();
+                    break;
+                case "Ca":
+                    uc = new UserControlCa(_dmCaService);
+                    break;
+                case "KhachHang":
+                    uc = new UserControlKhachHang();
+                    break;
+                case "QuocGia":
+                    uc = new UserControlQuocGia();
                     break;
                 default:
                     MessageBox.Show("Tính năng đang phát triển!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
