@@ -6,6 +6,7 @@ using GPBH.UI.Extentions;
 using GPBH.UI.Forms;
 using GPBH.UI.Helper;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.IO;
@@ -44,13 +45,16 @@ namespace GPBH.UI.UserControls
 
         private void TimKiem()
         {
+            
             var users = _sysDMNSDService.TiemKiem(txtSearch.Text);
             Image img = Image.FromFile(Path.Combine(Application.StartupPath, "Images", "banhang.png"));
             foreach (var user in users)
             {
                 user.PhanQuyen = img;
             }
-            DataGridViewFilterHelper.ApplyFilter(dataGridViewX1, users);
+
+            users.Insert(0, new GirdNguoiSuDungDto());
+            dataGridViewX1.DataSource = new BindingList<GirdNguoiSuDungDto>(users);
         }
 
         private void TxtSearch_TextChanged(object sender, EventArgs e)
@@ -86,15 +90,19 @@ namespace GPBH.UI.UserControls
 
         private void dataGridViewX1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            //// e.RowIndex: chỉ số dòng vừa click
-            //// e.ColumnIndex: chỉ số cột vừa click
-            //if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
-            //{
-            //    // Ví dụ lấy giá trị ô vừa click
-            //    var value = dataGridViewX1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
-            //    MessageBox.Show($"Bạn đã click đúp vào ô: {value}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //    // Xử lý logic tại đây
-            //}
+            // e.RowIndex: chỉ số dòng vừa click
+            // e.ColumnIndex: chỉ số cột vừa click
+            if (e.RowIndex >= 1 && e.ColumnIndex >= 1)
+            {
+                // click vào phân quyền
+                if (dataGridViewX1.Columns[e.ColumnIndex].Name == "PhanQuyen")
+                {
+                    var tenDangNhap = dataGridViewX1.Rows[e.RowIndex].Cells["TenDangNhap"].Value;
+                    var row = dataGridViewX1.Rows[e.RowIndex];
+                    var data = _sysDMNSDService.GetByTenDangNhap(tenDangNhap.ToString());
+                    this.ShowForm<NguoiSuDung>(data);
+                }
+            }
         }
         private void LoadData()
         {

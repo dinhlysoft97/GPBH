@@ -104,6 +104,12 @@
     <Compile Include="Forms\NguoiSuDung.Designer.cs">
       <DependentUpon>NguoiSuDung.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\PhanQuyen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PhanQuyen.Designer.cs">
+      <DependentUpon>PhanQuyen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helper\ComboBoxExUseGirdViewHelper.cs" />
     <Compile Include="Helper\ComboBoxHelper.cs" />
     <Compile Include="Extentions\FormExtention.cs" />

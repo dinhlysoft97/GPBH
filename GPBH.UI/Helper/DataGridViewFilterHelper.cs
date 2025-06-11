@@ -43,7 +43,7 @@ namespace GPBH.UI.Helper
                     displayList.Add(item);
 
                 grid.CellValueChanged += Grid_CellValueChanged;
-                grid.CurrentCellDirtyStateChanged += Grid_CurrentCellDirtyStateChanged;
+                //grid.CurrentCellDirtyStateChanged += Grid_CurrentCellDirtyStateChanged;
                 grid.ColumnHeaderMouseClick += Grid_ColumnHeaderMouseClick;
                 RestoreColumnStates();
 
