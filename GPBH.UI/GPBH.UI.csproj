@@ -157,6 +157,12 @@
     <Compile Include="UserControls\UserControlNguoiSuDung.Designer.cs">
       <DependentUpon>UserControlNguoiSuDung.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UserControlThamSo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UserControlThamSo.Designer.cs">
+      <DependentUpon>UserControlThamSo.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Demo.resx">
       <DependentUpon>Demo.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -195,6 +201,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UserControlNguoiSuDung.resx">
       <DependentUpon>UserControlNguoiSuDung.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UserControlThamSo.resx">
+      <DependentUpon>UserControlThamSo.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

@@ -133,8 +133,8 @@ namespace GPBH.UI.UserControls
             dataGridViewX1.Columns["Stt"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewX1.Columns["Ksd"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewX1.Columns["CapLaiQuyen"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            //dataGridViewX1.Columns["Ngay_sua"].DefaultCellStyle.Format = "dd/MM/yyyy";
-            //dataGridViewX1.Columns["Ngay_tao"].DefaultCellStyle.Format = "dd/MM/yyyy";
+            dataGridViewX1.Columns["Ngay_sua"].DefaultCellStyle.Format = "dd/MM/yyyy";
+            dataGridViewX1.Columns["Ngay_tao"].DefaultCellStyle.Format = "dd/MM/yyyy";
         }
     }
 }

@@ -2,6 +2,7 @@
 using GPBH.Business;
 using GPBH.Business.Services;
 using GPBH.Data.Entities;
+using GPBH.UI.Forms;
 using GPBH.UI.UserControls;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -134,6 +135,7 @@ namespace GPBH.UI
 
             // Dùng UserControl tương ứng
             UserControl uc = null;
+            Form form = null;
             switch (key)
             {
                 case "DonHang":
@@ -145,12 +147,26 @@ namespace GPBH.UI
                 case "NguoiDung":
                     uc = ActivatorUtilities.CreateInstance<UserControlNguoiSuDung>(Program.ServiceProvider);
                     break;
+                case "ThamSo":
+                    uc = ActivatorUtilities.CreateInstance<UserControlThamSo>(Program.ServiceProvider);
+                    break;
                 default:
                     MessageBoxEx.Show("Tính năng đang phát triển!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
             }
-            uc.Dock = DockStyle.Fill;
-            panel.Controls.Add(uc);
+           
+            if (form != null)
+            {
+                form.TopLevel = false; // Đặt form là con của panel
+                form.Dock = DockStyle.Fill; // Đặt form chiếm toàn bộ panel
+                form.Show();
+                panel.Controls.Add(form);
+            }    
+            else
+            {
+                uc.Dock = DockStyle.Fill;
+                panel.Controls.Add(uc);
+            }    
 
             tabControl1.Controls.Add(panel);
             tabControl1.Tabs.Add(newTab);

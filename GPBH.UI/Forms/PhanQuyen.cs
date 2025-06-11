@@ -71,7 +71,7 @@ namespace GPBH.UI.Forms
             dataGridViewX1.Columns["Xoa"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewX1.Columns["In"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewX1.Columns["Excel"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewX1.Columns["Excel"].Visible = true;
+            dataGridViewX1.Columns["MenuId"].Visible = false;
 
             // Số thứ tự các cột
             dataGridViewX1.Columns["Stt"].DisplayIndex = 1;

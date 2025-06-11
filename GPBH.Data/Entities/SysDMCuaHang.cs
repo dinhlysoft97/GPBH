@@ -12,6 +12,7 @@ namespace GPBH.Data.Entities
         public string Ma_loai_hinh { get; set; }      // Mã loại hình
         public string Ma_doi_tuong { get; set; }      // Mã đối tượng
         public string Ma_nt { get; set; }             // Mã ngoại tệ
+        public string Ma_qd { get; set; }             // Mã qui đổi
         public decimal Han_muc_tm { get; set; }       // Hạn mức tiền mặt
         public string Ma_cqt { get; set; }            // Mã CQT
         public bool Nhap_ttxnc { get; set; }          // Bắt buộc nhập thông tin xuất nhập cảnh
@@ -20,5 +21,6 @@ namespace GPBH.Data.Entities
         public virtual List<DMGB> DMGBs { get; set; } // Danh sách nhóm giá bán liên kết
         public virtual List<XPH5> XPH5s { get; set; } // Danh sách phiếu xuất hàng liên kết
         public virtual List<TokhaiHH> TokhaiHHs { get; set; } // Danh sách tờ khai hải quan liên kết
+        public virtual List<SystemSetting> SystemSettings { get; set; } // Danh sách cài đặt hệ thống liên kết
     }
 }

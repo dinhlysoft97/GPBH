@@ -87,6 +87,7 @@
                         Ma_loai_hinh = c.String(maxLength: 20),
                         Ma_doi_tuong = c.String(maxLength: 20),
                         Ma_nt = c.String(maxLength: 3),
+                        Ma_qd = c.String(),
                         Han_muc_tm = c.Decimal(nullable: false, precision: 28, scale: 8),
                         Ma_cqt = c.String(maxLength: 50),
                         Nhap_ttxnc = c.Boolean(nullable: false),
@@ -112,6 +113,20 @@
                         Nlh_Sdt = c.String(maxLength: 20),
                     })
                 .PrimaryKey(t => t.Ma_dv);
+            
+            CreateTable(
+                "dbo.SystemSetting",
+                c => new
+                    {
+                        Ma_cua_hang = c.String(nullable: false, maxLength: 20),
+                        Key = c.String(nullable: false, maxLength: 128),
+                        Ten = c.String(),
+                        GiaTri = c.String(),
+                        Mota = c.String(),
+                    })
+                .PrimaryKey(t => new { t.Ma_cua_hang, t.Key })
+                .ForeignKey("dbo.SysDMCuaHang", t => t.Ma_cua_hang, cascadeDelete: true)
+                .Index(t => t.Ma_cua_hang);
             
             CreateTable(
                 "dbo.XPH5",
@@ -378,6 +393,7 @@
             DropForeignKey("dbo.XPH5", "Ma_cua_hang", "dbo.SysDMCuaHang");
             DropForeignKey("dbo.XPH5", "Ma_nt", "dbo.DMNT");
             DropForeignKey("dbo.DMTG", "Ma_nt", "dbo.DMNT");
+            DropForeignKey("dbo.SystemSetting", "Ma_cua_hang", "dbo.SysDMCuaHang");
             DropForeignKey("dbo.SysDMCuaHang", "Ma_dv", "dbo.SysDMDV");
             DropForeignKey("dbo.TokhaiHH", "Ma_hh", "dbo.DMHH");
             DropIndex("dbo.SysPhanQuyen", new[] { "Ten_dang_nhap" });
@@ -389,6 +405,7 @@
             DropIndex("dbo.DMTG", new[] { "Ma_nt" });
             DropIndex("dbo.XPH5", new[] { "Ma_nt" });
             DropIndex("dbo.XPH5", new[] { "Ma_cua_hang" });
+            DropIndex("dbo.SystemSetting", new[] { "Ma_cua_hang" });
             DropIndex("dbo.SysDMCuaHang", new[] { "Ma_dv" });
             DropIndex("dbo.TokhaiHH", new[] { "Ma_hh" });
             DropIndex("dbo.TokhaiHH", new[] { "Ma_cua_hang" });
@@ -405,6 +422,7 @@
             DropTable("dbo.DMTG");
             DropTable("dbo.DMNT");
             DropTable("dbo.XPH5");
+            DropTable("dbo.SystemSetting");
             DropTable("dbo.SysDMDV");
             DropTable("dbo.SysDMCuaHang");
             DropTable("dbo.TokhaiHH");

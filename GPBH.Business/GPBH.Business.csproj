@@ -72,6 +72,7 @@
     <Compile Include="Dtos\GiaBanHangHoa.cs" />
     <Compile Include="Dtos\GirdNguoiSuDungDto.cs" />
     <Compile Include="Dtos\GirdPhanQuyenDto.cs" />
+    <Compile Include="Dtos\GirdSystemSettingDto.cs" />
     <Compile Include="Dtos\TyGiaNT.cs" />
     <Compile Include="Dtos\XCT5Dto.cs" />
     <Compile Include="Dtos\XPH5Dto.cs" />

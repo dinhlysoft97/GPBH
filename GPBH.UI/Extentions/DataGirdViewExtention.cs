@@ -40,7 +40,7 @@ namespace GPBH.UI.Extentions
         /// <typeparam name="T"></typeparam>
         /// <param name="grid"></param>
         /// <returns></returns>
-        public static IList<T> GetData<T>(this DataGridViewX grid) where T : class, new()
+        public static List<T> GetData<T>(this DataGridViewX grid) where T : class, new()
         {
             var data = grid.DataSource as BindingList<T>;
             return data.ToList();
