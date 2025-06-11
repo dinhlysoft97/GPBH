@@ -39,7 +39,7 @@ namespace GPBH.Data.Configurations
                 .HasMaxLength(3);
 
             Property(t => t.Ty_gia)
-                .HasPrecision(19, 4);
+                .HasPrecision(28, 8);
 
             Property(t => t.Ma_quay)
                 .HasMaxLength(20);
@@ -82,13 +82,13 @@ namespace GPBH.Data.Configurations
                 .HasMaxLength(3);
 
             Property(t => t.Tt1_tien_tt)
-                .HasPrecision(19, 4);
+                .HasPrecision(28, 8);
 
             Property(t => t.Tt1_ty_gia)
-                .HasPrecision(19, 4);
+                .HasPrecision(28, 8);
 
             Property(t => t.Tt1_tien_nt)
-                .HasPrecision(19, 4);
+                .HasPrecision(28, 8);
 
             Property(t => t.Tt2_loai)
                 .HasMaxLength(10);
@@ -97,13 +97,13 @@ namespace GPBH.Data.Configurations
                 .HasMaxLength(3);
 
             Property(t => t.Tt2_tien_tt)
-                .HasPrecision(19, 4);
+                .HasPrecision(28, 8);
 
             Property(t => t.Tt2_ty_gia)
-                .HasPrecision(19, 4);
+                .HasPrecision(28, 8);
 
             Property(t => t.Tt2_tien_nt)
-                .HasPrecision(19, 4);
+                .HasPrecision(28, 8);
 
             Property(t => t.Tt3_loai)
                 .HasMaxLength(10);
@@ -112,46 +112,46 @@ namespace GPBH.Data.Configurations
                 .HasMaxLength(3);
 
             Property(t => t.Tt3_tien_tt)
-                .HasPrecision(19, 4);
+                .HasPrecision(28, 8);
 
             Property(t => t.Tt3_ty_gia)
-                .HasPrecision(19, 4);
+                .HasPrecision(28, 8);
 
             Property(t => t.Tt3_tien_nt)
-                .HasPrecision(19, 4);
+                .HasPrecision(28, 8);
 
             Property(t => t.Tt_tong)
-                .HasPrecision(19, 4);
+                .HasPrecision(28, 8);
 
             Property(t => t.Tong_nhan)
-                .HasPrecision(19, 4);
+                .HasPrecision(28, 8);
 
             Property(t => t.Tra_lai)
-                .HasPrecision(19, 4);
+                .HasPrecision(28, 8);
 
             Property(t => t.Tra_lai_nt)
-                .HasPrecision(19, 4);
+                .HasPrecision(28, 8);
 
             Property(t => t.Tong_tien_hang)
-                .HasPrecision(19, 4);
+                .HasPrecision(28, 8);
 
             Property(t => t.Tong_tien_hang_nt)
-                .HasPrecision(19, 4);
+                .HasPrecision(28, 8);
 
             Property(t => t.Tong_giam_gia)
-                .HasPrecision(19, 4);
+                .HasPrecision(28, 8);
 
             Property(t => t.Tong_giam_gia_nt)
-                .HasPrecision(19, 4);
+                .HasPrecision(28, 8);
 
             Property(t => t.Tong_thu)
-                .HasPrecision(19, 4);
+                .HasPrecision(28, 8);
 
             Property(t => t.Tong_thu_nt)
-                .HasPrecision(19, 4);
+                .HasPrecision(28, 8);
 
             Property(t => t.Tong_so_luong)
-                .HasPrecision(19, 4);
+                .HasPrecision(28, 8);
 
             Property(t => t.Xnc_ngay_cap);
 
@@ -164,7 +164,7 @@ namespace GPBH.Data.Configurations
                 .HasMaxLength(20);
 
             Property(t => t.Han_muc)
-                .HasPrecision(19, 4);
+                .HasPrecision(28, 8);
 
             Property(t => t.Ma_nhom_kh)
                 .HasMaxLength(20);

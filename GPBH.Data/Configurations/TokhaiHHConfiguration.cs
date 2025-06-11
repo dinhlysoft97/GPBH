@@ -33,13 +33,13 @@ namespace GPBH.Data.Configurations
                 .HasMaxLength(20);
 
             Property(t => t.So_luong)
-                .HasPrecision(19, 4);
+                .HasPrecision(28, 8);
 
             Property(t => t.Da_xuat)
-                .HasPrecision(19, 4);
+                .HasPrecision(28, 8);
 
             Property(t => t.Con_lai)
-                .HasPrecision(19, 4);
+                .HasPrecision(28, 8);
 
             // Relationships
             HasRequired(x => x.DMHH)

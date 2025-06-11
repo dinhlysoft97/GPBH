@@ -1,5 +1,6 @@
 ﻿using GPBH.Business.Services;
 using GPBH.Data;
+using Mapster;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace GPBH.Business
@@ -8,6 +9,8 @@ namespace GPBH.Business
     {
         public static void ConfigureServices(this IServiceCollection services)
         {
+            TypeAdapterConfig.GlobalSettings.Scan(typeof(Startup).Assembly);
+
             services.ConfigureContexts();
 
             // ... các DI khác

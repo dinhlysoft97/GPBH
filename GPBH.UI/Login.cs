@@ -42,7 +42,7 @@ namespace GPBH.UI
 
             if (string.IsNullOrEmpty(tenDangNhap) || string.IsNullOrEmpty(matKhau))
             {
-                MessageBox.Show("Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBoxEx.Show("Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -51,7 +51,7 @@ namespace GPBH.UI
             if (user != null && !string.IsNullOrEmpty(user.TenDangNhap))
             {
                 // Đăng nhập thành công
-                //MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBoxEx..Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // Lưu thông tin user vào biến global hoặc truyền vào form chính
                 AppGlobals.CurrentUser = user;
@@ -66,7 +66,7 @@ namespace GPBH.UI
             else
             {
                 // Đăng nhập thất bại
-                MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng, hoặc tài khoản bị khóa!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBoxEx.Show("Tên đăng nhập hoặc mật khẩu không đúng, hoặc tài khoản bị khóa!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

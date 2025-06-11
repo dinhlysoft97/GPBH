@@ -39,13 +39,13 @@ namespace GPBH.Data.Configurations
                 .HasMaxLength(20);
 
             Property(t => t.Chieu_dai)
-                .HasPrecision(19, 4);
+                .HasPrecision(28, 8);
 
             Property(t => t.Trong_luong)
-                .HasPrecision(19, 4);
+                .HasPrecision(28, 8);
 
             Property(t => t.Chieu_cao)
-                .HasPrecision(19, 4);
+                .HasPrecision(28, 8);
 
             Property(t => t.Ksd)
                 .IsRequired();

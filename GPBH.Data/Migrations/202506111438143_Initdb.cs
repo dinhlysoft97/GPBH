@@ -25,7 +25,7 @@
                         Ma_cua_hang = c.String(nullable: false, maxLength: 20),
                         Ngay_ap_dung = c.DateTime(nullable: false),
                         Ma_hh = c.String(nullable: false, maxLength: 20),
-                        Gia_ban = c.Decimal(nullable: false, precision: 19, scale: 4),
+                        Gia_ban = c.Decimal(nullable: false, precision: 28, scale: 8),
                     })
                 .PrimaryKey(t => new { t.Ma_cua_hang, t.Ngay_ap_dung, t.Ma_hh })
                 .ForeignKey("dbo.DMHH", t => t.Ma_hh, cascadeDelete: true)
@@ -45,9 +45,9 @@
                         Ma_nsx = c.String(maxLength: 20),
                         Ten_nsx = c.String(maxLength: 100),
                         Nuoc_sx = c.String(maxLength: 20),
-                        Chieu_dai = c.Decimal(precision: 19, scale: 4),
-                        Trong_luong = c.Decimal(precision: 19, scale: 4),
-                        Chieu_cao = c.Decimal(precision: 19, scale: 4),
+                        Chieu_dai = c.Decimal(precision: 28, scale: 8),
+                        Trong_luong = c.Decimal(precision: 28, scale: 8),
+                        Chieu_cao = c.Decimal(precision: 28, scale: 8),
                         Ksd = c.Boolean(nullable: false),
                         Nguoi_tao = c.String(maxLength: 20),
                         Ngay_tao = c.DateTime(),
@@ -65,9 +65,9 @@
                         So_to_khai = c.String(nullable: false, maxLength: 20),
                         Ma_hh = c.String(nullable: false, maxLength: 20),
                         Ngay_nhap = c.DateTime(),
-                        So_luong = c.Decimal(precision: 19, scale: 4),
-                        Da_xuat = c.Decimal(precision: 19, scale: 4),
-                        Con_lai = c.Decimal(precision: 19, scale: 4),
+                        So_luong = c.Decimal(precision: 28, scale: 8),
+                        Da_xuat = c.Decimal(precision: 28, scale: 8),
+                        Con_lai = c.Decimal(precision: 28, scale: 8),
                     })
                 .PrimaryKey(t => new { t.Ma_cua_hang, t.Ma_kho, t.So_to_khai, t.Ma_hh })
                 .ForeignKey("dbo.DMHH", t => t.Ma_hh, cascadeDelete: true)
@@ -87,7 +87,7 @@
                         Ma_loai_hinh = c.String(maxLength: 20),
                         Ma_doi_tuong = c.String(maxLength: 20),
                         Ma_nt = c.String(maxLength: 3),
-                        Han_muc_tm = c.Decimal(nullable: false, precision: 19, scale: 4),
+                        Han_muc_tm = c.Decimal(nullable: false, precision: 28, scale: 8),
                         Ma_cqt = c.String(maxLength: 50),
                         Nhap_ttxnc = c.Boolean(nullable: false),
                     })
@@ -123,7 +123,7 @@
                         So_chung_tu = c.String(maxLength: 50),
                         Ngay_chung_tu = c.DateTime(nullable: false),
                         Ma_nt = c.String(nullable: false, maxLength: 3),
-                        Ty_gia = c.Decimal(precision: 19, scale: 4),
+                        Ty_gia = c.Decimal(precision: 28, scale: 8),
                         Ma_quay = c.String(maxLength: 20),
                         Ma_cqt = c.String(maxLength: 50),
                         Xuat_hddt = c.Boolean(nullable: false),
@@ -134,36 +134,36 @@
                         Ten_khach = c.String(maxLength: 100),
                         Tt1_loai = c.String(maxLength: 10),
                         Tt1_ma_nt = c.String(maxLength: 3),
-                        Tt1_tien_tt = c.Decimal(precision: 19, scale: 4),
-                        Tt1_ty_gia = c.Decimal(precision: 19, scale: 4),
-                        Tt1_tien_nt = c.Decimal(precision: 19, scale: 4),
+                        Tt1_tien_tt = c.Decimal(precision: 28, scale: 8),
+                        Tt1_ty_gia = c.Decimal(precision: 28, scale: 8),
+                        Tt1_tien_nt = c.Decimal(precision: 28, scale: 8),
                         Tt2_loai = c.String(maxLength: 10),
                         Tt2_ma_nt = c.String(maxLength: 3),
-                        Tt2_tien_tt = c.Decimal(precision: 19, scale: 4),
-                        Tt2_ty_gia = c.Decimal(precision: 19, scale: 4),
-                        Tt2_tien_nt = c.Decimal(precision: 19, scale: 4),
+                        Tt2_tien_tt = c.Decimal(precision: 28, scale: 8),
+                        Tt2_ty_gia = c.Decimal(precision: 28, scale: 8),
+                        Tt2_tien_nt = c.Decimal(precision: 28, scale: 8),
                         Tt3_loai = c.String(maxLength: 10),
                         Tt3_ma_nt = c.String(maxLength: 3),
-                        Tt3_tien_tt = c.Decimal(precision: 19, scale: 4),
-                        Tt3_ty_gia = c.Decimal(precision: 19, scale: 4),
-                        Tt3_tien_nt = c.Decimal(precision: 19, scale: 4),
-                        Tt_tong = c.Decimal(precision: 19, scale: 4),
-                        Tong_nhan = c.Decimal(precision: 19, scale: 4),
-                        Tra_lai = c.Decimal(precision: 19, scale: 4),
+                        Tt3_tien_tt = c.Decimal(precision: 28, scale: 8),
+                        Tt3_ty_gia = c.Decimal(precision: 28, scale: 8),
+                        Tt3_tien_nt = c.Decimal(precision: 28, scale: 8),
+                        Tt_tong = c.Decimal(precision: 28, scale: 8),
+                        Tong_nhan = c.Decimal(precision: 28, scale: 8),
+                        Tra_lai = c.Decimal(precision: 28, scale: 8),
                         Ma_tra_lai = c.String(),
-                        Tra_lai_nt = c.Decimal(precision: 19, scale: 4),
-                        Tong_tien_hang = c.Decimal(precision: 19, scale: 4),
-                        Tong_tien_hang_nt = c.Decimal(precision: 19, scale: 4),
-                        Tong_giam_gia = c.Decimal(precision: 19, scale: 4),
-                        Tong_giam_gia_nt = c.Decimal(precision: 19, scale: 4),
-                        Tong_thu = c.Decimal(precision: 19, scale: 4),
-                        Tong_thu_nt = c.Decimal(precision: 19, scale: 4),
-                        Tong_so_luong = c.Decimal(precision: 19, scale: 4),
+                        Tra_lai_nt = c.Decimal(precision: 28, scale: 8),
+                        Tong_tien_hang = c.Decimal(precision: 28, scale: 8),
+                        Tong_tien_hang_nt = c.Decimal(precision: 28, scale: 8),
+                        Tong_giam_gia = c.Decimal(precision: 28, scale: 8),
+                        Tong_giam_gia_nt = c.Decimal(precision: 28, scale: 8),
+                        Tong_thu = c.Decimal(precision: 28, scale: 8),
+                        Tong_thu_nt = c.Decimal(precision: 28, scale: 8),
+                        Tong_so_luong = c.Decimal(precision: 28, scale: 8),
                         Xnc_ngay_cap = c.DateTime(),
                         Xnc_ngay_hh = c.DateTime(),
                         So_hieu = c.String(maxLength: 20),
                         Ten_tau_bay = c.String(maxLength: 20),
-                        Han_muc = c.Decimal(precision: 19, scale: 4),
+                        Han_muc = c.Decimal(precision: 28, scale: 8),
                         Ma_nhom_kh = c.String(maxLength: 20),
                         Ma_loai_hinh = c.String(maxLength: 20),
                         Ma_doi_tuong = c.String(maxLength: 20),
@@ -198,7 +198,7 @@
                     {
                         Ma_nt = c.String(nullable: false, maxLength: 3),
                         Ngay_ap_dung = c.DateTime(nullable: false),
-                        Ty_gia = c.Decimal(nullable: false, precision: 19, scale: 4),
+                        Ty_gia = c.Decimal(nullable: false, precision: 28, scale: 8),
                         Nguoi_tao = c.String(maxLength: 20),
                         Ngay_tao = c.DateTime(),
                         Nguoi_sua = c.String(maxLength: 20),
@@ -217,14 +217,14 @@
                         Ma_hh = c.String(nullable: false, maxLength: 20),
                         Ten_hh = c.String(maxLength: 50),
                         Dvt = c.String(maxLength: 20),
-                        So_luong = c.Decimal(precision: 19, scale: 4),
-                        Gia_ban = c.Decimal(precision: 19, scale: 4),
-                        Gia_ban_nt = c.Decimal(precision: 19, scale: 4),
-                        Gg_ty_le = c.Decimal(precision: 19, scale: 4),
-                        Gg_tien = c.Decimal(precision: 19, scale: 4),
-                        Gg_tien_nt = c.Decimal(precision: 19, scale: 4),
-                        Tien_ban = c.Decimal(precision: 19, scale: 4),
-                        Tien_ban_nt = c.Decimal(precision: 19, scale: 4),
+                        So_luong = c.Decimal(precision: 28, scale: 8),
+                        Gia_ban = c.Decimal(precision: 28, scale: 8),
+                        Gia_ban_nt = c.Decimal(precision: 28, scale: 8),
+                        Gg_ty_le = c.Decimal(precision: 28, scale: 8),
+                        Gg_tien = c.Decimal(precision: 28, scale: 8),
+                        Gg_tien_nt = c.Decimal(precision: 28, scale: 8),
+                        Tien_ban = c.Decimal(precision: 28, scale: 8),
+                        Tien_ban_nt = c.Decimal(precision: 28, scale: 8),
                         Gg_ly_do = c.String(maxLength: 50),
                         So_to_khai = c.String(maxLength: 20),
                     })
@@ -316,7 +316,7 @@
                 "dbo.SysPhanQuyen",
                 c => new
                     {
-                        Menuid = c.String(nullable: false, maxLength: 100),
+                        MenuId = c.String(nullable: false, maxLength: 100),
                         Ten_dang_nhap = c.String(nullable: false, maxLength: 20),
                         Xem = c.Boolean(),
                         Them = c.Boolean(),
@@ -329,10 +329,10 @@
                         Nguoi_sua = c.String(maxLength: 20),
                         Ngay_sua = c.DateTime(),
                     })
-                .PrimaryKey(t => new { t.Menuid, t.Ten_dang_nhap })
+                .PrimaryKey(t => new { t.MenuId, t.Ten_dang_nhap })
                 .ForeignKey("dbo.SysDMNSD", t => t.Ten_dang_nhap, cascadeDelete: true)
-                .ForeignKey("dbo.SysMenu", t => t.Menuid, cascadeDelete: true)
-                .Index(t => t.Menuid)
+                .ForeignKey("dbo.SysMenu", t => t.MenuId, cascadeDelete: true)
+                .Index(t => t.MenuId)
                 .Index(t => t.Ten_dang_nhap);
             
             CreateTable(
@@ -367,7 +367,7 @@
         
         public override void Down()
         {
-            DropForeignKey("dbo.SysPhanQuyen", "Menuid", "dbo.SysMenu");
+            DropForeignKey("dbo.SysPhanQuyen", "MenuId", "dbo.SysMenu");
             DropForeignKey("dbo.SysPhanQuyen", "Ten_dang_nhap", "dbo.SysDMNSD");
             DropForeignKey("dbo.DMKH", "Quoc_gia", "dbo.DMQG");
             DropForeignKey("dbo.DMGB", "Ma_cua_hang", "dbo.SysDMCuaHang");
@@ -381,7 +381,7 @@
             DropForeignKey("dbo.SysDMCuaHang", "Ma_dv", "dbo.SysDMDV");
             DropForeignKey("dbo.TokhaiHH", "Ma_hh", "dbo.DMHH");
             DropIndex("dbo.SysPhanQuyen", new[] { "Ten_dang_nhap" });
-            DropIndex("dbo.SysPhanQuyen", new[] { "Menuid" });
+            DropIndex("dbo.SysPhanQuyen", new[] { "MenuId" });
             DropIndex("dbo.SysDMNSD", new[] { "TenDangNhap" });
             DropIndex("dbo.DMKH", new[] { "Quoc_gia" });
             DropIndex("dbo.XCT5", new[] { "Ma_hh" });

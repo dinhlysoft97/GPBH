@@ -12,12 +12,22 @@ namespace GPBH.UI.Helper
 {
     public static class DataGridViewFilterHelper
     {
+        /// <summary>
+        /// Applies a filter row to the DataGridViewX and allows filtering of data based on the properties of type T.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="grid"></param>
+        /// <param name="data"></param>
         public static void ApplyFilter<T>(DataGridViewX grid, IList<T> data) where T : new()
         {
             var helper = new InternalHelper<T>(grid, data);
             helper.Initialize();
         }
 
+        /// <summary>
+        /// Internal helper class to manage filtering and sorting for DataGridViewX.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
         sealed class InternalHelper<T> where T : new()
         {
             private readonly DataGridView grid;

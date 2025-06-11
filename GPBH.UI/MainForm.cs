@@ -146,7 +146,7 @@ namespace GPBH.UI
                     uc = ActivatorUtilities.CreateInstance<UserControlNguoiSuDung>(Program.ServiceProvider);
                     break;
                 default:
-                    MessageBox.Show("Tính năng đang phát triển!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBoxEx.Show("Tính năng đang phát triển!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
             }
             uc.Dock = DockStyle.Fill;

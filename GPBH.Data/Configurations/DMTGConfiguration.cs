@@ -22,7 +22,7 @@ namespace GPBH.Data.Configurations
                 .IsRequired();
 
             Property(t => t.Ty_gia)
-                .HasPrecision(19, 4)
+                .HasPrecision(28, 8)
                 .IsRequired();
 
             Property(t => t.Nguoi_tao)

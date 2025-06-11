@@ -1,13 +1,8 @@
-﻿using DevComponents.DotNetBar;
-using DevComponents.DotNetBar.Controls;
-using GPBH.Business;
-using GPBH.Business.Dtos;
+﻿using GPBH.Business;
 using GPBH.UI.Extentions;
 using GPBH.UI.Forms;
 using GPBH.UI.Helper;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -53,8 +48,7 @@ namespace GPBH.UI.UserControls
                 user.PhanQuyen = img;
             }
 
-            users.Insert(0, new GirdNguoiSuDungDto());
-            dataGridViewX1.DataSource = new BindingList<GirdNguoiSuDungDto>(users);
+            dataGridViewX1.BindData(users, true);
         }
 
         private void TxtSearch_TextChanged(object sender, EventArgs e)
@@ -98,9 +92,7 @@ namespace GPBH.UI.UserControls
                 if (dataGridViewX1.Columns[e.ColumnIndex].Name == "PhanQuyen")
                 {
                     var tenDangNhap = dataGridViewX1.Rows[e.RowIndex].Cells["TenDangNhap"].Value;
-                    var row = dataGridViewX1.Rows[e.RowIndex];
-                    var data = _sysDMNSDService.GetByTenDangNhap(tenDangNhap.ToString());
-                    this.ShowForm<NguoiSuDung>(data);
+                    this.ShowForm<PhanQuyen>(tenDangNhap);
                 }
             }
         }
@@ -112,6 +104,8 @@ namespace GPBH.UI.UserControls
             {
                 user.PhanQuyen = img;
             }
+
+            // Add filter vào lưới
             DataGridViewFilterHelper.ApplyFilter(dataGridViewX1, users);
         }
 
@@ -125,6 +119,7 @@ namespace GPBH.UI.UserControls
 
             // Số thứ tự các cột
             dataGridViewX1.Columns["Stt"].DisplayIndex = 0;
+            dataGridViewX1.Columns["PhanQuyen"].DisplayIndex = 1;
             dataGridViewX1.Columns["TenDangNhap"].DisplayIndex = 2;
             dataGridViewX1.Columns["TenDayDu"].DisplayIndex = 3;
             dataGridViewX1.Columns["Ksd"].DisplayIndex = 4;
@@ -138,8 +133,8 @@ namespace GPBH.UI.UserControls
             dataGridViewX1.Columns["Stt"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewX1.Columns["Ksd"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewX1.Columns["CapLaiQuyen"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewX1.Columns["Ngay_sua"].DefaultCellStyle.Format = "dd/MM/yyyy";
-            dataGridViewX1.Columns["Ngay_tao"].DefaultCellStyle.Format = "dd/MM/yyyy";
+            //dataGridViewX1.Columns["Ngay_sua"].DefaultCellStyle.Format = "dd/MM/yyyy";
+            //dataGridViewX1.Columns["Ngay_tao"].DefaultCellStyle.Format = "dd/MM/yyyy";
         }
     }
 }

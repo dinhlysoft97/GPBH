@@ -28,6 +28,7 @@ namespace GPBH.UI.UserControls
             dtTu.Value = DateTime.Now;
             dtDen.Value = DateTime.Now;
         }
+
         private void btnSearch_Click(object sender, EventArgs e)
         {
             DataGridViewFilterHelper.ApplyFilter(dataGridViewX1, originalList);

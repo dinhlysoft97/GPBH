@@ -11,10 +11,10 @@ namespace GPBH.Data.Configurations
             ToTable("SysPhanQuyen");
 
             // Composite Primary Key
-            HasKey(t => new { t.Menuid, t.Ten_dang_nhap });
+            HasKey(t => new { t.MenuId, t.Ten_dang_nhap });
 
             // Properties
-            Property(t => t.Menuid)
+            Property(t => t.MenuId)
                 .IsRequired()
                 .HasMaxLength(8);
 
@@ -47,7 +47,7 @@ namespace GPBH.Data.Configurations
             // Relationships
             HasRequired(x => x.SysMenu)
            .WithMany(c => c.SysPhanQuyens)
-           .HasForeignKey(x => x.Menuid);
+           .HasForeignKey(x => x.MenuId);
 
             // Relationships
             HasRequired(x => x.SysDMNSD)

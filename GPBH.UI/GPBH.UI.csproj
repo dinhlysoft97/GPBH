@@ -86,6 +86,7 @@
     <Compile Include="Demo.Designer.cs">
       <DependentUpon>Demo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Extentions\DataGirdViewExtention.cs" />
     <Compile Include="Forms\DonHang.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -169,6 +170,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\NguoiSuDung.resx">
       <DependentUpon>NguoiSuDung.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PhanQuyen.resx">
+      <DependentUpon>PhanQuyen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

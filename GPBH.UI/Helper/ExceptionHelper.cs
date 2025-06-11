@@ -1,4 +1,5 @@
-﻿using GPBH.Business.Exceptions;
+﻿using DevComponents.DotNetBar;
+using GPBH.Business.Exceptions;
 using System;
 using System.IO;
 using System.Windows.Forms;
@@ -22,7 +23,7 @@ namespace GPBH.UI.Helper
                     // Nếu là BadRequestException, không cần log, chỉ hiển thị thông báo
                     if (showMessageBox)
                     {
-                        MessageBox.Show(
+                        MessageBoxEx.Show(
                             ex.Message,
                             "Cảnh báo",
                             MessageBoxButtons.OK,
@@ -39,7 +40,7 @@ namespace GPBH.UI.Helper
 
                     if (showMessageBox)
                     {
-                        MessageBox.Show(
+                        MessageBoxEx.Show(
                             "Có lỗi xảy ra:\n" + ex.Message,
                             "Lỗi",
                             MessageBoxButtons.OK,

@@ -1,4 +1,5 @@
 ﻿using GPBH.Business.Dtos;
+using GPBH.Business.Exceptions;
 using GPBH.Data;
 using GPBH.Data.Entities;
 using GPBH.Data.UnitOfWorks;
@@ -162,8 +163,6 @@ namespace GPBH.Business
                     .ToList();
 
                 var dtos = users.Adapt<List<GirdNguoiSuDungDto>>();
-                int stt = 1;
-                dtos.ForEach(dto => { dto.Stt = stt++; });
                 return dtos;
             }
         }
@@ -204,6 +203,76 @@ namespace GPBH.Business
                     .Find(u => u.TenDangNhap == tenDangNhap)
                     .FirstOrDefault();
                 return user;
+            }
+        }
+
+        public List<GirdPhanQuyenDto> GetDataPhanQuyen(string tenDangNhap)
+        {
+            using (var scope = _serviceProvider.CreateScope())
+            {
+                var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
+                var phanQuyens = unitOfWork.Repository<SysPhanQuyen>().Find(z => z.Ten_dang_nhap == tenDangNhap).ToList();
+                if (phanQuyens.Count > 0)
+                {
+                    var data = phanQuyens.Adapt<List<GirdPhanQuyenDto>>();
+                    data.ForEach(dto => dto.MenuName = phanQuyens.Find(z => z.MenuId == dto.MenuId).SysMenu.MenuName);
+                    return data;
+                }
+                else
+                {
+                    var menus = unitOfWork.Repository<SysMenu>().GetAll().ToList();
+                    var data = menus.Adapt<List<GirdPhanQuyenDto>>();
+                    return data;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Phân quyền cho người dùng
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="tenDangNhap"></param>
+        /// <exception cref="BadRequestException"></exception>
+        public void PhanQuyen(IList<GirdPhanQuyenDto> data, string tenDangNhap)
+        {
+            var entitys = data.Adapt<List<SysPhanQuyen>>();
+            using (var scope = _serviceProvider.CreateScope())
+            {
+                var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
+                try
+                {
+                    unitOfWork.BeginTransaction();
+
+                    foreach (var item in entitys)
+                    {
+                        item.Ten_dang_nhap = tenDangNhap;
+                        var repo = unitOfWork.Repository<SysPhanQuyen>();
+                        var existing = repo.Find(x => x.MenuId == item.MenuId && x.Ten_dang_nhap == tenDangNhap).FirstOrDefault();
+                        if (existing != null)
+                        {
+                            existing.Xem = item.Xem;
+                            existing.Them = item.Them;
+                            existing.Sua = item.Sua;
+                            existing.Xoa = item.Xoa;
+                            existing.In = item.In;
+                            existing.Excel = item.Excel;
+                            repo.Update(existing);
+                        }
+                        else
+                        {
+                            repo.Add(item);
+                        }
+                    }
+
+                    unitOfWork.SaveChanges();
+                    unitOfWork.Commit();
+                }
+                catch (Exception ex)
+                {
+                    unitOfWork.Rollback();
+                    throw new BadRequestException(ex.Message);
+                }
+
             }
         }
     }

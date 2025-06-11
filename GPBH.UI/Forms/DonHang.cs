@@ -308,7 +308,7 @@ namespace GPBH.UI.Forms
             if ((e.KeyCode == Keys.Delete || e.KeyCode == Keys.F7) && dataGridViewX1.SelectedRows.Count > 0)
             {
                 // Xác nhận xóa
-                var confirm = MessageBox.Show("Bạn có chắc muốn xóa dòng đã chọn?", "Xóa", MessageBoxButtons.YesNo);
+                var confirm = MessageBoxEx.Show("Bạn có chắc muốn xóa dòng đã chọn?", "Xóa", MessageBoxButtons.YesNo);
                 if (confirm == DialogResult.Yes)
                 {
                     foreach (DataGridViewRow row in dataGridViewX1.SelectedRows)
@@ -324,7 +324,7 @@ namespace GPBH.UI.Forms
             }
             else if (e.KeyCode == Keys.F8)
             {
-                var confirm = MessageBox.Show("Bạn có chắc muốn xóa hết dữ liệu chi tiết không?", "Có", MessageBoxButtons.YesNo);
+                var confirm = MessageBoxEx.Show("Bạn có chắc muốn xóa hết dữ liệu chi tiết không?", "Có", MessageBoxButtons.YesNo);
                 if (confirm == DialogResult.Yes)
                 {
                     dataGridViewX1.Rows.Clear();
@@ -940,13 +940,13 @@ namespace GPBH.UI.Forms
             var giaBanHH = _dMHHService.GiaBanHangHoa(item.Ma_hh, AppGlobals.DMCuaHang.Ma_nt);
             if (giaBanHH == null)
             {
-                MessageBox.Show($"Không tìm thấy giá bán cho hàng hóa {item.Ma_hh} trong ngày {DateTime.Now.ToShortDateString()}");
+                MessageBoxEx.Show($"Không tìm thấy giá bán cho hàng hóa {item.Ma_hh} trong ngày {DateTime.Now.ToShortDateString()}");
                 return;
             }
 
             if (giaBanHH?.TyGiaNT == null)
             {
-                MessageBox.Show($"Không tìm thấy tỷ giá trong ngày {DateTime.Now.ToShortDateString()}");
+                MessageBoxEx.Show($"Không tìm thấy tỷ giá trong ngày {DateTime.Now.ToShortDateString()}");
                 return;
             }
 

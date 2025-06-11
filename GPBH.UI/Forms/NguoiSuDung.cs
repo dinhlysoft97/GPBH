@@ -67,7 +67,6 @@ namespace GPBH.UI.Forms
                 {
                     _sysDMNSDService.Sua(user);
                     MessageBoxEx.Show("Cập nhật người dùng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                  
                 }
                 else
                 {

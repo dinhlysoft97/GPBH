@@ -1,15 +1,11 @@
-﻿using GPBH.Data.Audit;
-using System;
-
-namespace GPBH.Data.Entities
+﻿namespace GPBH.Business.Dtos
 {
-    public class SysPhanQuyen : BaseAuditableEntity
+    public class GirdPhanQuyenDto
     {
         // ID menu (PK)
         public string MenuId { get; set; }
 
-        // Tên đăng nhập (PK)
-        public string Ten_dang_nhap { get; set; }
+        public string MenuName { get; set; }
 
         // Được xem
         public bool? Xem { get; set; }
@@ -28,8 +24,5 @@ namespace GPBH.Data.Entities
 
         // Được xuất excel
         public bool? Excel { get; set; }
-
-        public SysMenu SysMenu { get; set; } // Thông tin menu liên kết
-        public SysDMNSD SysDMNSD { get; set; } // Thông tin người dùng liên kết
     }
 }

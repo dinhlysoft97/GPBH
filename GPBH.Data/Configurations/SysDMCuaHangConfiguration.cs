@@ -41,7 +41,7 @@ namespace GPBH.Data.Configurations
                 .HasMaxLength(3);
 
             Property(t => t.Han_muc_tm)
-                .HasPrecision(19, 4);
+                .HasPrecision(28, 8);
 
             Property(t => t.Ma_cqt)
                 .HasMaxLength(50);

@@ -31,28 +31,28 @@ namespace GPBH.Data.Configurations
                 .HasMaxLength(20);
 
             Property(t => t.So_luong)
-                .HasPrecision(19, 4);
+                .HasPrecision(28, 8);
 
             Property(t => t.Gia_ban)
-                .HasPrecision(19, 4);
+                .HasPrecision(28, 8);
 
             Property(t => t.Gia_ban_nt)
-                .HasPrecision(19, 4);
+                .HasPrecision(28, 8);
 
             Property(t => t.Gg_ty_le)
-                .HasPrecision(19, 4);
+                .HasPrecision(28, 8);
 
             Property(t => t.Gg_tien)
-                .HasPrecision(19, 4);
+                .HasPrecision(28, 8);
 
             Property(t => t.Gg_tien_nt)
-                .HasPrecision(19, 4);
+                .HasPrecision(28, 8);
 
             Property(t => t.Tien_ban)
-                .HasPrecision(19, 4);
+                .HasPrecision(28, 8);
 
             Property(t => t.Tien_ban_nt)
-                .HasPrecision(19, 4);
+                .HasPrecision(28, 8);
 
             Property(t => t.Gg_ly_do)
                 .HasMaxLength(50);

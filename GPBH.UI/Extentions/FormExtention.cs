@@ -1,8 +1,6 @@
 ﻿using DevComponents.DotNetBar;
 using GPBH.Business.Exceptions;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.ComponentModel;
 using System.Windows.Forms;
 
 namespace GPBH.UI.Extentions

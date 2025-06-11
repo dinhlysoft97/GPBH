@@ -26,7 +26,7 @@ namespace GPBH.Data.Configurations
                 .HasMaxLength(20);
 
             Property(t => t.Gia_ban)
-                .HasPrecision(19, 4)
+                .HasPrecision(28, 8)
                 .IsRequired();
 
 
