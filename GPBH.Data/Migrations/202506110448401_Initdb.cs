@@ -303,6 +303,7 @@
                         MatKhau = c.String(maxLength: 500),
                         IsAdmin = c.Boolean(nullable: false),
                         Ksd = c.Boolean(nullable: false),
+                        CapLaiQuyen = c.Boolean(nullable: false),
                         Nguoi_tao = c.String(maxLength: 20),
                         Ngay_tao = c.DateTime(),
                         Nguoi_sua = c.String(maxLength: 20),

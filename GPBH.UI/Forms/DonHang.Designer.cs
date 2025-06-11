@@ -924,7 +924,7 @@ namespace GPBH.UI.Forms
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 61.20778F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38.79222F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 414F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 415F));
             this.tableLayoutPanel2.Controls.Add(this.groupPanel4, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.groupPanel6, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.groupPanel5, 2, 0);
@@ -968,7 +968,7 @@ namespace GPBH.UI.Forms
             this.groupPanel4.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel4.Location = new System.Drawing.Point(3, 3);
             this.groupPanel4.Name = "groupPanel4";
-            this.groupPanel4.Size = new System.Drawing.Size(613, 187);
+            this.groupPanel4.Size = new System.Drawing.Size(612, 187);
             // 
             // 
             // 
@@ -1374,7 +1374,7 @@ namespace GPBH.UI.Forms
             this.groupPanel6.Controls.Add(this.lbTTH);
             this.groupPanel6.Controls.Add(this.labelX22);
             this.groupPanel6.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel6.Location = new System.Drawing.Point(622, 3);
+            this.groupPanel6.Location = new System.Drawing.Point(621, 3);
             this.groupPanel6.Name = "groupPanel6";
             this.groupPanel6.Size = new System.Drawing.Size(386, 187);
             // 
@@ -1606,7 +1606,7 @@ namespace GPBH.UI.Forms
             this.groupPanel5.Controls.Add(this.lbTGNT2);
             this.groupPanel5.Controls.Add(this.lb1NTQuyDoi);
             this.groupPanel5.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel5.Location = new System.Drawing.Point(1014, 3);
+            this.groupPanel5.Location = new System.Drawing.Point(1013, 3);
             this.groupPanel5.Name = "groupPanel5";
             this.groupPanel5.Size = new System.Drawing.Size(315, 187);
             // 

@@ -101,9 +101,9 @@
     <Compile Include="Entities\XCT5.cs" />
     <Compile Include="Entities\XPH5.cs" />
     <Compile Include="Helper\MigrationHelper.cs" />
-    <Compile Include="Migrations\202506101650526_Initdb.cs" />
-    <Compile Include="Migrations\202506101650526_Initdb.Designer.cs">
-      <DependentUpon>202506101650526_Initdb.cs</DependentUpon>
+    <Compile Include="Migrations\202506110448401_Initdb.cs" />
+    <Compile Include="Migrations\202506110448401_Initdb.Designer.cs">
+      <DependentUpon>202506110448401_Initdb.cs</DependentUpon>
     </Compile>
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Startup.cs" />
@@ -117,8 +117,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202506101650526_Initdb.resx">
-      <DependentUpon>202506101650526_Initdb.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202506110448401_Initdb.resx">
+      <DependentUpon>202506110448401_Initdb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -3,6 +3,7 @@ using GPBH.Business;
 using GPBH.Business.Dtos;
 using GPBH.Business.Services;
 using GPBH.Data.Entities;
+using GPBH.UI.Extentions;
 using GPBH.UI.Helper;
 using GPBH.UI.UserControls;
 using Microsoft.Extensions.DependencyInjection;
@@ -159,6 +160,7 @@ namespace GPBH.UI.Forms
         private void SetUpUI()
         {
             dataGridViewX1.Columns["Stt"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
             // hiển thị tiền ngoại tệ
             dataGridViewX1.Columns["Gia_ban_nt"].HeaderText = $"Giá {AppGlobals.DMCuaHang.Ma_nt}";
             dataGridViewX1.Columns["Gg_tien_nt"].HeaderText = $"Tiền giảm {AppGlobals.DMCuaHang.Ma_nt}";
@@ -237,8 +239,7 @@ namespace GPBH.UI.Forms
         private void LoadFormKhachHang(string passport)
         {
             // Sử dụng DI để tạo form khách hàng và demo
-            var formKhachHang = ActivatorUtilities.CreateInstance<KhachHang>(Program.ServiceProvider, passport);
-            formKhachHang.ShowDialog();
+            var formKhachHang = this.ShowForm<KhachHang>(passport);
             if (formKhachHang.DataKhachHang != null)
                 BindDataKhachHang(formKhachHang.DataKhachHang);
         }

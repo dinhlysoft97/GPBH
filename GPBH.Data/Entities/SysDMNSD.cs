@@ -20,6 +20,8 @@ namespace GPBH.Data.Entities
         // =1 mới cho đăng nhập
         public bool Ksd { get; set; }
 
+        public bool CapLaiQuyen { get; set; }
+
         public virtual List<SysPhanQuyen> SysPhanQuyens { get; set; } // Danh sách phân quyền liên kết
     }
 }

@@ -65,7 +65,6 @@ namespace GPBH.UI
             services.AddScoped<Demo>();
             services.AddScoped<Login>();
             services.AddScoped<MainForm>();
-            services.AddScoped<MainForm>();
         }
 
         // Bắt lỗi trên thread UI (WinForms)

@@ -30,7 +30,7 @@ namespace GPBH.UI.UserControls
         }
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            DataGridViewFilterHelper.ApplyFillter(dataGridViewX1, originalList);
+            DataGridViewFilterHelper.ApplyFilter(dataGridViewX1, originalList);
         }
 
         public class Person

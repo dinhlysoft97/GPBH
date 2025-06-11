@@ -1,8 +1,11 @@
-﻿using GPBH.Data;
+﻿using GPBH.Business.Dtos;
+using GPBH.Data;
 using GPBH.Data.Entities;
 using GPBH.Data.UnitOfWorks;
+using Mapster;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -16,6 +19,28 @@ namespace GPBH.Business
         public SysDMNSDService(IServiceProvider serviceProvider)
         {
             _serviceProvider = serviceProvider;
+        }
+
+        /// <summary>
+        /// Lấy tất cả người dùng trong hệ thống
+        /// </summary>
+        /// <returns></returns>
+        public List<GirdNguoiSuDungDto> GellAll()
+        {
+            using (var scope = _serviceProvider.CreateScope())
+            {
+                var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
+                var users = unitOfWork.Repository<SysDMNSD>().GetAll();
+                var dtos = users.Adapt<List<GirdNguoiSuDungDto>>();
+
+                int stt = 1;
+                dtos.ForEach(dto =>
+                {
+                    dto.Stt = stt++;
+                });
+
+                return dtos;
+            }
         }
 
         /// <summary>
@@ -34,16 +59,18 @@ namespace GPBH.Business
             {
                 var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
                 var user = unitOfWork.Repository<SysDMNSD>()
-                .Find(u => u.TenDangNhap == tenDangNhap && u.MatKhau == matKhauHash && u.Ksd).FirstOrDefault();
+                .Find(u => u.TenDangNhap == tenDangNhap && u.MatKhau == matKhauHash && !u.Ksd).FirstOrDefault();
                 AppDbContext.CurrentUserName = tenDangNhap;
                 return user;
             }
         }
 
+
+
         /// <summary>
         /// Tạo mới tài khoản, tự động mã hóa mật khẩu trước khi lưu
         /// </summary>
-        public void TaoMoi(SysDMNSD entity, string nguoiTao)
+        public SysDMNSD TaoMoi(SysDMNSD entity)
         {
             entity.MatKhau = HashPassword(entity.MatKhau);
             using (var scope = _serviceProvider.CreateScope())
@@ -51,6 +78,26 @@ namespace GPBH.Business
                 var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
                 unitOfWork.Repository<SysDMNSD>().Add(entity);
                 unitOfWork.SaveChanges();
+
+                return entity;
+            }
+        }
+
+        public void Sua(SysDMNSD entity)
+        {
+            using (var scope = _serviceProvider.CreateScope())
+            {
+                var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
+                var existingUser = unitOfWork.Repository<SysDMNSD>().Find(u => u.TenDangNhap == entity.TenDangNhap).FirstOrDefault();
+                if (existingUser != null)
+                {
+                    existingUser.TenDayDu = entity.TenDayDu;
+                    existingUser.IsAdmin = entity.IsAdmin;
+                    existingUser.Ksd = entity.Ksd;
+                    existingUser.CapLaiQuyen = entity.CapLaiQuyen;
+                    unitOfWork.Repository<SysDMNSD>().Update(existingUser);
+                    unitOfWork.SaveChanges();
+                }
             }
         }
 
@@ -82,6 +129,81 @@ namespace GPBH.Business
                 var bytes = Encoding.UTF8.GetBytes(password);
                 var hash = sha.ComputeHash(bytes);
                 return BitConverter.ToString(hash).Replace("-", "").ToLower();
+            }
+        }
+
+        /// <summary>
+        /// Tìm kiếm người dùng theo từ khóa, lọc tất cả các trường trong entity
+        /// </summary>
+        /// <param name="value">Từ khóa tìm kiếm</param>
+        /// <returns>Danh sách GirdNguoiSuDungDto phù hợp</returns>
+        public List<GirdNguoiSuDungDto> TiemKiem(string value)
+        {
+            if (string.IsNullOrWhiteSpace(value))
+                return GellAll();
+
+            value = value.ToLowerInvariant();
+
+            using (var scope = _serviceProvider.CreateScope())
+            {
+                var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
+                var users = unitOfWork.Repository<SysDMNSD>().GetAll()
+                    .Where(u =>
+                        (u.TenDangNhap != null && u.TenDangNhap.ToLower().Contains(value)) ||
+                        (u.TenDayDu != null && u.TenDayDu.ToLower().Contains(value)) ||
+                        u.IsAdmin.ToString().ToLower().Contains(value) ||
+                        u.Ksd.ToString().ToLower().Contains(value) ||
+                        u.CapLaiQuyen.ToString().ToLower().Contains(value) ||
+                        (u.Nguoi_tao != null && u.Nguoi_tao.ToLower().Contains(value)) ||
+                        (u.Nguoi_sua != null && u.Nguoi_sua.ToLower().Contains(value)) ||
+                        (u.Ngay_tao.HasValue && u.Ngay_tao.Value.ToString("yyyy-MM-dd HH:mm:ss").Contains(value)) ||
+                        (u.Ngay_sua.HasValue && u.Ngay_sua.Value.ToString("yyyy-MM-dd HH:mm:ss").Contains(value))
+                    )
+                    .ToList();
+
+                var dtos = users.Adapt<List<GirdNguoiSuDungDto>>();
+                int stt = 1;
+                dtos.ForEach(dto => { dto.Stt = stt++; });
+                return dtos;
+            }
+        }
+
+        /// <summary>
+        /// Kiểm tra tên đăng nhập đã tồn tại trong hệ thống hay chưa
+        /// </summary>
+        /// <param name="tenDangNhap">Tên đăng nhập cần kiểm tra</param>
+        /// <returns>True nếu đã tồn tại, False nếu chưa</returns>
+        public bool CheckTrungTenDangNhap(string tenDangNhap)
+        {
+            if (string.IsNullOrWhiteSpace(tenDangNhap))
+                return false;
+
+            using (var scope = _serviceProvider.CreateScope())
+            {
+                var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
+                var exists = unitOfWork.Repository<SysDMNSD>()
+                    .Find(u => u.TenDangNhap == tenDangNhap)
+                    .Any();
+                return exists;
+            }
+        }
+        /// <summary>
+        /// Lấy thông tin người dùng theo tên đăng nhập
+        /// </summary>
+        /// <param name="tenDangNhap">Tên đăng nhập</param>
+        /// <returns>SysDMNSD nếu tìm thấy, null nếu không</returns>
+        public SysDMNSD GetByTenDangNhap(string tenDangNhap)
+        {
+            if (string.IsNullOrWhiteSpace(tenDangNhap))
+                return null;
+
+            using (var scope = _serviceProvider.CreateScope())
+            {
+                var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
+                var user = unitOfWork.Repository<SysDMNSD>()
+                    .Find(u => u.TenDangNhap == tenDangNhap)
+                    .FirstOrDefault();
+                return user;
             }
         }
     }

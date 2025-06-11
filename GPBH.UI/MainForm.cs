@@ -3,6 +3,7 @@ using GPBH.Business;
 using GPBH.Business.Services;
 using GPBH.Data.Entities;
 using GPBH.UI.UserControls;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Drawing;
 using System.IO;
@@ -47,7 +48,7 @@ namespace GPBH.UI
             ImageList imgList = new ImageList();
             SetImages(imgList);
 
-            foreach (var menu in menus.OrderBy(z=>z.Type).OrderBy(z=>z.Stt))
+            foreach (var menu in menus.OrderBy(z => z.Type).OrderBy(z => z.Stt))
             {
                 var subMenu = new ButtonItem(menu.MenuId, menu.MenuName);
 
@@ -140,6 +141,9 @@ namespace GPBH.UI
                     break;
                 case "BanHangTheoKhachHang":
                     uc = new UserControlBanHangTheoKhachHang();
+                    break;
+                case "NguoiDung":
+                    uc = ActivatorUtilities.CreateInstance<UserControlNguoiSuDung>(Program.ServiceProvider);
                     break;
                 default:
                     MessageBox.Show("Tính năng đang phát triển!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

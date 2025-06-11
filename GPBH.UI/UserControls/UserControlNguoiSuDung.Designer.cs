@@ -1,0 +1,297 @@
+﻿namespace GPBH.UI.UserControls
+{
+    partial class UserControlNguoiSuDung
+    {
+        /// <summary> 
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary> 
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Component Designer generated code
+
+        /// <summary> 
+        /// Required method for Designer support - do not modify 
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.btnThem = new DevComponents.DotNetBar.ButtonX();
+            this.bubbleBar1 = new DevComponents.DotNetBar.BubbleBar();
+            this.btnSua = new DevComponents.DotNetBar.ButtonX();
+            this.btnXoa = new DevComponents.DotNetBar.ButtonX();
+            this.txtSearch = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.btnTim = new DevComponents.DotNetBar.ButtonX();
+            this.Stt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PhanQuyen = new System.Windows.Forms.DataGridViewImageColumn();
+            this.TenDangNhap = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenDayDu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ksd = new DevComponents.DotNetBar.Controls.DataGridViewCheckBoxXColumn();
+            this.CapLaiQuyen = new DevComponents.DotNetBar.Controls.DataGridViewCheckBoxXColumn();
+            this.Ngay_sua = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nguoi_sua = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ngay_tao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nguoi_tao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bubbleBar1)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // dataGridViewX1
+            // 
+            this.dataGridViewX1.AllowUserToAddRows = false;
+            this.dataGridViewX1.AllowUserToDeleteRows = false;
+            this.dataGridViewX1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridViewX1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Stt,
+            this.PhanQuyen,
+            this.TenDangNhap,
+            this.TenDayDu,
+            this.Ksd,
+            this.CapLaiQuyen,
+            this.Ngay_sua,
+            this.Nguoi_sua,
+            this.Ngay_tao,
+            this.Nguoi_tao});
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.dataGridViewX1.Location = new System.Drawing.Point(0, 38);
+            this.dataGridViewX1.Margin = new System.Windows.Forms.Padding(2);
+            this.dataGridViewX1.Name = "dataGridViewX1";
+            this.dataGridViewX1.RowHeadersWidth = 51;
+            this.dataGridViewX1.RowTemplate.Height = 24;
+            this.dataGridViewX1.Size = new System.Drawing.Size(1339, 736);
+            this.dataGridViewX1.TabIndex = 3;
+            // 
+            // btnThem
+            // 
+            this.btnThem.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnThem.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnThem.Location = new System.Drawing.Point(4, 10);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.Size = new System.Drawing.Size(75, 23);
+            this.btnThem.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnThem.TabIndex = 4;
+            this.btnThem.Text = "Thêm mới";
+            // 
+            // bubbleBar1
+            // 
+            this.bubbleBar1.Alignment = DevComponents.DotNetBar.eBubbleButtonAlignment.Bottom;
+            this.bubbleBar1.AntiAlias = true;
+            // 
+            // 
+            // 
+            this.bubbleBar1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.bubbleBar1.ButtonBackAreaStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(105)))), ((int)(((byte)(105)))), ((int)(((byte)(105)))));
+            this.bubbleBar1.ButtonBackAreaStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.bubbleBar1.ButtonBackAreaStyle.BorderBottomWidth = 1;
+            this.bubbleBar1.ButtonBackAreaStyle.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
+            this.bubbleBar1.ButtonBackAreaStyle.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.bubbleBar1.ButtonBackAreaStyle.BorderLeftWidth = 1;
+            this.bubbleBar1.ButtonBackAreaStyle.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.bubbleBar1.ButtonBackAreaStyle.BorderRightWidth = 1;
+            this.bubbleBar1.ButtonBackAreaStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.bubbleBar1.ButtonBackAreaStyle.BorderTopWidth = 1;
+            this.bubbleBar1.ButtonBackAreaStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.bubbleBar1.ButtonBackAreaStyle.PaddingBottom = 3;
+            this.bubbleBar1.ButtonBackAreaStyle.PaddingLeft = 3;
+            this.bubbleBar1.ButtonBackAreaStyle.PaddingRight = 3;
+            this.bubbleBar1.ButtonBackAreaStyle.PaddingTop = 3;
+            this.bubbleBar1.ImageSizeNormal = new System.Drawing.Size(24, 24);
+            this.bubbleBar1.Location = new System.Drawing.Point(163, 24);
+            this.bubbleBar1.MouseOverTabColors.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.bubbleBar1.Name = "bubbleBar1";
+            this.bubbleBar1.SelectedTabColors.BorderColor = System.Drawing.Color.Black;
+            this.bubbleBar1.Size = new System.Drawing.Size(8, 8);
+            this.bubbleBar1.TabIndex = 5;
+            this.bubbleBar1.Text = "bubbleBar1";
+            // 
+            // btnSua
+            // 
+            this.btnSua.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnSua.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnSua.Location = new System.Drawing.Point(86, 10);
+            this.btnSua.Name = "btnSua";
+            this.btnSua.Size = new System.Drawing.Size(75, 23);
+            this.btnSua.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnSua.TabIndex = 6;
+            this.btnSua.Text = "Sửa";
+            // 
+            // btnXoa
+            // 
+            this.btnXoa.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnXoa.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnXoa.Location = new System.Drawing.Point(168, 10);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(75, 23);
+            this.btnXoa.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnXoa.TabIndex = 7;
+            this.btnXoa.Text = "Xóa";
+            // 
+            // txtSearch
+            // 
+            // 
+            // 
+            // 
+            this.txtSearch.Border.Class = "TextBoxBorder";
+            this.txtSearch.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtSearch.Location = new System.Drawing.Point(267, 11);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.PreventEnterBeep = true;
+            this.txtSearch.Size = new System.Drawing.Size(291, 20);
+            this.txtSearch.TabIndex = 8;
+            this.txtSearch.WatermarkText = "tìm kiếm";
+            // 
+            // btnTim
+            // 
+            this.btnTim.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnTim.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnTim.Location = new System.Drawing.Point(565, 10);
+            this.btnTim.Name = "btnTim";
+            this.btnTim.Size = new System.Drawing.Size(75, 23);
+            this.btnTim.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnTim.TabIndex = 9;
+            this.btnTim.Text = "Tìm kiếm";
+            // 
+            // Stt
+            // 
+            this.Stt.DataPropertyName = "Stt";
+            this.Stt.HeaderText = "Stt";
+            this.Stt.MinimumWidth = 6;
+            this.Stt.Name = "Stt";
+            // 
+            // PhanQuyen
+            // 
+            this.PhanQuyen.DataPropertyName = "PhanQuyen";
+            this.PhanQuyen.HeaderText = "Phân quyền";
+            this.PhanQuyen.MinimumWidth = 6;
+            this.PhanQuyen.Name = "PhanQuyen";
+            this.PhanQuyen.ReadOnly = true;
+            this.PhanQuyen.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.PhanQuyen.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // TenDangNhap
+            // 
+            this.TenDangNhap.DataPropertyName = "TenDangNhap";
+            this.TenDangNhap.HeaderText = "Tên đăng nhập";
+            this.TenDangNhap.Name = "TenDangNhap";
+            // 
+            // TenDayDu
+            // 
+            this.TenDayDu.DataPropertyName = "TenDayDu";
+            this.TenDayDu.HeaderText = "Tên đầy đủ";
+            this.TenDayDu.Name = "TenDayDu";
+            // 
+            // Ksd
+            // 
+            this.Ksd.Checked = true;
+            this.Ksd.CheckState = System.Windows.Forms.CheckState.Indeterminate;
+            this.Ksd.CheckValue = "N";
+            this.Ksd.DataPropertyName = "Ksd";
+            this.Ksd.HeaderText = "KSD";
+            this.Ksd.Name = "Ksd";
+            this.Ksd.ReadOnly = true;
+            this.Ksd.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Ksd.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // CapLaiQuyen
+            // 
+            this.CapLaiQuyen.Checked = true;
+            this.CapLaiQuyen.CheckState = System.Windows.Forms.CheckState.Indeterminate;
+            this.CapLaiQuyen.CheckValue = "N";
+            this.CapLaiQuyen.DataPropertyName = "CapLaiQuyen";
+            this.CapLaiQuyen.HeaderText = "Cấp lại quyền";
+            this.CapLaiQuyen.Name = "CapLaiQuyen";
+            this.CapLaiQuyen.ReadOnly = true;
+            this.CapLaiQuyen.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // Ngay_sua
+            // 
+            this.Ngay_sua.DataPropertyName = "Ngay_sua";
+            this.Ngay_sua.HeaderText = "Ngày sửa";
+            this.Ngay_sua.Name = "Ngay_sua";
+            // 
+            // Nguoi_sua
+            // 
+            this.Nguoi_sua.DataPropertyName = "Nguoi_sua";
+            this.Nguoi_sua.HeaderText = "Người sửa";
+            this.Nguoi_sua.Name = "Nguoi_sua";
+            // 
+            // Ngay_tao
+            // 
+            this.Ngay_tao.DataPropertyName = "Ngay_tao";
+            this.Ngay_tao.HeaderText = "Ngày tạo";
+            this.Ngay_tao.Name = "Ngay_tao";
+            // 
+            // Nguoi_tao
+            // 
+            this.Nguoi_tao.DataPropertyName = "Nguoi_tao";
+            this.Nguoi_tao.HeaderText = "Người tạo";
+            this.Nguoi_tao.Name = "Nguoi_tao";
+            // 
+            // UserControlNguoiSuDung
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnTim);
+            this.Controls.Add(this.txtSearch);
+            this.Controls.Add(this.btnXoa);
+            this.Controls.Add(this.btnSua);
+            this.Controls.Add(this.bubbleBar1);
+            this.Controls.Add(this.btnThem);
+            this.Controls.Add(this.dataGridViewX1);
+            this.Name = "UserControlNguoiSuDung";
+            this.Size = new System.Drawing.Size(1339, 775);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bubbleBar1)).EndInit();
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+        private DevComponents.DotNetBar.Controls.DataGridViewX dataGridViewX1;
+        private DevComponents.DotNetBar.ButtonX btnThem;
+        private DevComponents.DotNetBar.BubbleBar bubbleBar1;
+        private DevComponents.DotNetBar.ButtonX btnSua;
+        private DevComponents.DotNetBar.ButtonX btnXoa;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtSearch;
+        private DevComponents.DotNetBar.ButtonX btnTim;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Stt;
+        private System.Windows.Forms.DataGridViewImageColumn PhanQuyen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TenDangNhap;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TenDayDu;
+        private DevComponents.DotNetBar.Controls.DataGridViewCheckBoxXColumn Ksd;
+        private DevComponents.DotNetBar.Controls.DataGridViewCheckBoxXColumn CapLaiQuyen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ngay_sua;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nguoi_sua;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ngay_tao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nguoi_tao;
+    }
+}

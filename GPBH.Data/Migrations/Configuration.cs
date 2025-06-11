@@ -353,7 +353,8 @@ namespace GPBH.Data.Migrations
                 TenDayDu = "Quản trị hệ thống",
                 MatKhau = HashPassword("admin"), // Mật khẩu cần được mã hóa trước khi lưu
                 IsAdmin = true,
-                Ksd = true,
+                Ksd = false,
+                CapLaiQuyen = false,
                 Nguoi_tao = "system",
                 Ngay_tao = DateTime.Now
             };

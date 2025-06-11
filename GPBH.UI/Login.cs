@@ -14,11 +14,28 @@ namespace GPBH.UI
         public Login(SysDMNSDService productService, SysDMCuaHangService sysDMCuaHangService)
         {
             InitializeComponent();
+            // Đặt thuộc tính KeyPreview của Form là true trong Designer hoặc trong code
+            this.KeyPreview = true;
+
+            this.KeyDown += Form_KeyDown;
             _productService = productService;
             _sysDMCuaHangService = sysDMCuaHangService;
         }
 
+        private void Form_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                HandleClick();
+            }
+        }
+
         private void btnDangNhap_Click(object sender, System.EventArgs e)
+        {
+            HandleClick();
+        }
+
+        private void HandleClick()
         {
             string tenDangNhap = txtTenDangNhap.Text.Trim();
             string matKhau = txtMatKhau.Text;
@@ -34,7 +51,7 @@ namespace GPBH.UI
             if (user != null && !string.IsNullOrEmpty(user.TenDangNhap))
             {
                 // Đăng nhập thành công
-                MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // Lưu thông tin user vào biến global hoặc truyền vào form chính
                 AppGlobals.CurrentUser = user;
