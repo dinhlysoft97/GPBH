@@ -146,11 +146,15 @@ namespace GPBH.UI
                 case "BanHangTheoKhachHang":
                     uc = new UserControlBanHangTheoKhachHang();
                     break;
+                case "DinhDangForm":
+                    form = ActivatorUtilities.CreateInstance<DinhDangForm>(Program.ServiceProvider);
+                    break;
+
                 case "NguoiDung":
                     uc = ActivatorUtilities.CreateInstance<UserControlNguoiSuDung>(Program.ServiceProvider);
                     break;
                 case "ThamSo":
-                    uc = ActivatorUtilities.CreateInstance<UserControlThamSo>(Program.ServiceProvider);
+                    form = ActivatorUtilities.CreateInstance<ThamSo>(Program.ServiceProvider);
                     break;
                 case "DoiMatKhau":
                     form = ActivatorUtilities.CreateInstance<DoiMatKhau>(Program.ServiceProvider);
@@ -231,6 +235,7 @@ namespace GPBH.UI
                 }
             }
         }
+
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             // Xử lý giải phóng tài nguyên, ghi log, v.v.

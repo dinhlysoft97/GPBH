@@ -21,6 +21,17 @@ namespace GPBH.Business.Services
             _serviceProvider = serviceProvider;
         }
 
+        public List<SysDMCuaHang> GetAll()
+        {
+            using (var scope = _serviceProvider.CreateScope())
+            {
+                var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
+                return unitOfWork.Repository<SysDMCuaHang>()
+                .GetAll().ToList();
+            }
+        }
+
+
         public SysDMCuaHang GetByMaCuaHang(string maCH)
         {
             using (var scope = _serviceProvider.CreateScope())
@@ -87,7 +98,6 @@ namespace GPBH.Business.Services
                     {
                         new GirdSystemSettingDto
                         {
-                            Ma_cua_hang = maCH,
                             Key = nameof(SysDMCuaHang.Han_muc_tm),
                             Ten = "Hạn mức giao dịch tiền mặt",
                             GiaTri = "15000000",
@@ -95,7 +105,6 @@ namespace GPBH.Business.Services
                         },
                         new GirdSystemSettingDto
                         {
-                            Ma_cua_hang = maCH,
                             Key = nameof(SysDMCuaHang.Ma_cqt),
                             Ten = "Mã cơ quan thuế",
                             GiaTri = "",
@@ -103,7 +112,6 @@ namespace GPBH.Business.Services
                         },
                         new GirdSystemSettingDto
                         {
-                            Ma_cua_hang = maCH,
                             Key = nameof(SysDMCuaHang.Ma_nt),
                             Ten = "Loại tiền áp dụng khi bán hàng",
                             GiaTri = "USD",
@@ -126,10 +134,10 @@ namespace GPBH.Business.Services
             {
                 var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
                 var repo = unitOfWork.Repository<SystemSetting>();
-                unitOfWork.BeginTransaction();
-
                 try
                 {
+                    unitOfWork.BeginTransaction();
+
                     foreach (var entity in entities)
                     {
                         entity.Ma_cua_hang = maCH; // Đảm bảo mã cửa hàng được gán

@@ -78,9 +78,6 @@
             Property(t => t.Tt1_tien_tt)
                 .HasPrecision(28, 8);
 
-            Property(t => t.Tt1_ty_gia)
-                .HasPrecision(28, 8);
-
             Property(t => t.Tt1_tien_nt)
                 .HasPrecision(28, 8);
 
@@ -93,9 +90,6 @@
             Property(t => t.Tt2_tien_tt)
                 .HasPrecision(28, 8);
 
-            Property(t => t.Tt2_ty_gia)
-                .HasPrecision(28, 8);
-
             Property(t => t.Tt2_tien_nt)
                 .HasPrecision(28, 8);
 
@@ -106,9 +100,6 @@
                 .HasMaxLength(3);
 
             Property(t => t.Tt3_tien_tt)
-                .HasPrecision(28, 8);
-
-            Property(t => t.Tt3_ty_gia)
                 .HasPrecision(28, 8);
 
             Property(t => t.Tt3_tien_nt)
@@ -168,6 +159,9 @@
 
             Property(t => t.Ma_doi_tuong)
                 .HasMaxLength(20);
+            
+            Property(t => t.Ma_tra_lai)
+                .HasMaxLength(3);
 
             // Relationships
             HasRequired(x => x.SysDMCuaHang)

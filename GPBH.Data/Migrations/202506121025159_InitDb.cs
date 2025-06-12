@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Initdb : DbMigration
+    public partial class InitDb : DbMigration
     {
         public override void Up()
         {
@@ -150,22 +150,19 @@
                         Tt1_loai = c.String(maxLength: 10),
                         Tt1_ma_nt = c.String(maxLength: 3),
                         Tt1_tien_tt = c.Decimal(precision: 28, scale: 8),
-                        Tt1_ty_gia = c.Decimal(precision: 28, scale: 8),
                         Tt1_tien_nt = c.Decimal(precision: 28, scale: 8),
                         Tt2_loai = c.String(maxLength: 10),
                         Tt2_ma_nt = c.String(maxLength: 3),
                         Tt2_tien_tt = c.Decimal(precision: 28, scale: 8),
-                        Tt2_ty_gia = c.Decimal(precision: 28, scale: 8),
                         Tt2_tien_nt = c.Decimal(precision: 28, scale: 8),
                         Tt3_loai = c.String(maxLength: 10),
                         Tt3_ma_nt = c.String(maxLength: 3),
                         Tt3_tien_tt = c.Decimal(precision: 28, scale: 8),
-                        Tt3_ty_gia = c.Decimal(precision: 28, scale: 8),
                         Tt3_tien_nt = c.Decimal(precision: 28, scale: 8),
                         Tt_tong = c.Decimal(precision: 28, scale: 8),
                         Tong_nhan = c.Decimal(precision: 28, scale: 8),
                         Tra_lai = c.Decimal(precision: 28, scale: 8),
-                        Ma_tra_lai = c.String(),
+                        Ma_tra_lai = c.String(maxLength: 3),
                         Tra_lai_nt = c.Decimal(precision: 28, scale: 8),
                         Tong_tien_hang = c.Decimal(precision: 28, scale: 8),
                         Tong_tien_hang_nt = c.Decimal(precision: 28, scale: 8),
@@ -288,6 +285,26 @@
                         Ksd = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Quoc_gia);
+            
+            CreateTable(
+                "dbo.SysDinh_dang_form",
+                c => new
+                    {
+                        Ma_cua_hang = c.String(nullable: false, maxLength: 20),
+                        Code_name = c.String(nullable: false, maxLength: 20),
+                        MenuId = c.String(nullable: false, maxLength: 20),
+                        Field_name = c.String(nullable: false, maxLength: 50),
+                        Field_type = c.String(maxLength: 50),
+                        Field_title = c.String(maxLength: 255),
+                        Field_order = c.Int(nullable: false),
+                        Field_hide = c.Boolean(nullable: false),
+                        Field_width = c.Int(nullable: false),
+                        Field_format = c.String(maxLength: 20),
+                        Default_sort = c.Int(nullable: false),
+                        Ten_ban = c.String(),
+                        Stt = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => new { t.Ma_cua_hang, t.Code_name, t.MenuId, t.Field_name });
             
             CreateTable(
                 "dbo.SysDMCT",
@@ -416,6 +433,7 @@
             DropTable("dbo.SysPhanQuyen");
             DropTable("dbo.SysDMNSD");
             DropTable("dbo.SysDMCT");
+            DropTable("dbo.SysDinh_dang_form");
             DropTable("dbo.DMQG");
             DropTable("dbo.DMKH");
             DropTable("dbo.XCT5");

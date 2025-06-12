@@ -59,9 +59,6 @@ namespace GPBH.Business.Dtos
         // Thanh toán 1, tiền thanh toán
         public decimal? Tt1_tien_tt { get; set; }
 
-        // Thanh toán 1, tỷ giá
-        public decimal? Tt1_ty_gia { get; set; }
-
         // Thanh toán 1, tiền ngoại tệ
         public decimal? Tt1_tien_nt { get; set; }
 
@@ -74,9 +71,6 @@ namespace GPBH.Business.Dtos
         // Thanh toán 2, tiền thanh toán
         public decimal? Tt2_tien_tt { get; set; }
 
-        // Thanh toán 2, tỷ giá
-        public decimal? Tt2_ty_gia { get; set; }
-
         // Thanh toán 2, tiền ngoại tệ
         public decimal? Tt2_tien_nt { get; set; }
 
@@ -88,9 +82,6 @@ namespace GPBH.Business.Dtos
 
         // Thanh toán 3, tiền thanh toán
         public decimal? Tt3_tien_tt { get; set; }
-
-        // Thanh toán 3, tỷ giá
-        public decimal? Tt3_ty_gia { get; set; }
 
         // Thanh toán 3, tiền ngoại tệ
         public decimal? Tt3_tien_nt { get; set; }

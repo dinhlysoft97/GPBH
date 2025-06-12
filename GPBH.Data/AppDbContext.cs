@@ -33,6 +33,7 @@ namespace GPBH.Data
         public DbSet<TokhaiHH> TokhaiHH { get; set; }
         public DbSet<SysDMCT> SysDMCT { get; set; }
         public DbSet<SysSoChungTu> SysSoChungTu { get; set; }
+        public DbSet<SysDinh_dang_form> sysDinh_Dang_Forms { get; set; }
 
         public override int SaveChanges()
         {
@@ -45,7 +46,6 @@ namespace GPBH.Data
             {
                 throw ex;
             }
-
         }
     }
 }

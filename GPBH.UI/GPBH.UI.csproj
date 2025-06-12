@@ -99,6 +99,12 @@
     <Compile Include="Forms\DonHang.Designer.cs">
       <DependentUpon>DonHang.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\DinhDangForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DinhDangForm.Designer.cs">
+      <DependentUpon>DinhDangForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\KhachHang.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,6 +122,12 @@
     </Compile>
     <Compile Include="Forms\PhanQuyen.Designer.cs">
       <DependentUpon>PhanQuyen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ThamSo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ThamSo.Designer.cs">
+      <DependentUpon>ThamSo.cs</DependentUpon>
     </Compile>
     <Compile Include="Helper\ComboBoxExUseGirdViewHelper.cs" />
     <Compile Include="Helper\ComboBoxHelper.cs" />
@@ -180,6 +192,9 @@
       <DependentUpon>DonHang.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DinhDangForm.resx">
+      <DependentUpon>DinhDangForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\KhachHang.resx">
       <DependentUpon>KhachHang.cs</DependentUpon>
     </EmbeddedResource>
@@ -188,6 +203,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PhanQuyen.resx">
       <DependentUpon>PhanQuyen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ThamSo.resx">
+      <DependentUpon>ThamSo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
