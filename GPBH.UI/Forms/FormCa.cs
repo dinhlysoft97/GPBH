@@ -30,6 +30,7 @@ namespace GPBH.UI.Forms
             if (_isEdit)
                 LoadDataEdit();
             _data = data;
+
         }
 
         private void LoadDataEdit()
@@ -58,6 +59,13 @@ namespace GPBH.UI.Forms
                     Gio_kt = txtGioKT.Text.Trim(),
 
                 };
+                // Kiểm tra định dạng giờ trước khi validate dữ liệu khác
+                if (!IsValidTime(txtGioBD.Text) || !IsValidTime(txtGioKT.Text))
+                {
+                    MessageBox.Show("Giờ bắt đầu phải đúng định dạng HH:mm!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtGioBD.Focus();
+                    return;
+                }
 
                 if (_isEdit)
                 {
@@ -119,6 +127,12 @@ namespace GPBH.UI.Forms
             }
 
             return result;
+        }
+
+        private bool IsValidTime(string input)
+        {
+            return TimeSpan.TryParseExact(input, "hh\\:mm", null, out _)
+                || TimeSpan.TryParseExact(input, "HH\\:mm", null, out _);
         }
 
         private void btnDong_Click(object sender, EventArgs e)
