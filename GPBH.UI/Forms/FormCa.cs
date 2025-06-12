@@ -59,10 +59,10 @@ namespace GPBH.UI.Forms
                     Gio_kt = txtGioKT.Text.Trim(),
 
                 };
-                // Kiểm tra định dạng giờ trước khi validate dữ liệu khác
+                // Kiểm tra định dạng giờ sau khi validate dữ liệu khác
                 if (!IsValidTime(txtGioBD.Text) || !IsValidTime(txtGioKT.Text))
                 {
-                    MessageBox.Show("Giờ bắt đầu phải đúng định dạng HH:mm!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Giờ bắt đầu và kết thúc phải đúng định dạng HH:mm!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtGioBD.Focus();
                     return;
                 }
