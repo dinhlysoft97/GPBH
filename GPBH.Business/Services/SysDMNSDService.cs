@@ -273,5 +273,29 @@ namespace GPBH.Business
                 }
             }
         }
+
+        public (bool, string) XoaNguoiDung(string tenDangNhap)
+        {
+            // check xem người dùng đã phát sinh đơn hàng chưa\
+            using (var scope = _serviceProvider.CreateScope())
+            {
+                var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
+                var orders = unitOfWork.Repository<XPH5>().Find(x => x.Nguoi_tao == tenDangNhap).ToList();
+                if (orders.Count > 0)
+                {
+                    return (false, "Không thể xóa người dùng đã phát sinh đơn hàng");
+                }
+                // Xóa người dùng
+                var userRepo = unitOfWork.Repository<SysDMNSD>();
+                var user = userRepo.Find(x => x.TenDangNhap == tenDangNhap).FirstOrDefault();
+                if (user != null)
+                {
+                    userRepo.Remove(user);
+                    unitOfWork.SaveChanges();
+                }
+            }
+
+            return (true, string.Empty);
+        }
     }
 }

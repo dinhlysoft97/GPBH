@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace GPBH.UI.Extentions
 {
@@ -44,6 +45,54 @@ namespace GPBH.UI.Extentions
         {
             var data = grid.DataSource as BindingList<T>;
             return data.ToList();
+        }
+
+        /// <summary>
+        /// Căn chỉnh tiêu đề cột của DataGridViewX.
+        /// </summary>
+        /// <param name="grid"></param>
+        /// <param name="columnName"></param>
+        /// <param name="alignment"></param>
+        public static void SetHeaderAlignment(this DataGridViewX grid, string columnName, DataGridViewContentAlignment alignment)
+        {
+            if (grid.Columns.Contains(columnName))
+                grid.Columns[columnName].HeaderCell.Style.Alignment = alignment;
+        }
+
+        /// <summary>
+        /// Đặt vị trí hiển thị của cột trong DataGridViewX.
+        /// </summary>
+        /// <param name="grid"></param>
+        /// <param name="columnName"></param>
+        /// <param name="index"></param>
+        public static void SetDisplayIndex(this DataGridViewX grid, string columnName, int index)
+        {
+            if (grid.Columns.Contains(columnName))
+                grid.Columns[columnName].DisplayIndex = index;
+        }
+
+        /// <summary>
+        /// Căn chỉnh nội dung ô của DataGridViewX.
+        /// </summary>
+        /// <param name="grid"></param>
+        /// <param name="columnName"></param>
+        /// <param name="alignment"></param>
+        public static void SetCellAlignment(this DataGridViewX grid, string columnName, DataGridViewContentAlignment alignment)
+        {
+            if (grid.Columns.Contains(columnName))
+                grid.Columns[columnName].DefaultCellStyle.Alignment = alignment;
+        }
+
+        /// <summary>
+        ///  Đặt định dạng cho cột trong DataGridViewX.
+        /// </summary>
+        /// <param name="grid"></param>
+        /// <param name="columnName"></param>
+        /// <param name="format"></param>
+        public static void SetFormat(this DataGridViewX grid, string columnName, string format)
+        {
+            if (grid.Columns.Contains(columnName))
+                grid.Columns[columnName].DefaultCellStyle.Format = format;
         }
     }
 }

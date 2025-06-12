@@ -23,6 +23,8 @@ namespace GPBH.UI
             _sysMenuService = sysMenuService;
             BuildMenu();
             SetData();
+            this.FormClosed += MainForm_FormClosed;
+            this.FormClosing += MainForm_FormClosing;
         }
 
         private void SetData()
@@ -150,29 +152,28 @@ namespace GPBH.UI
                 case "ThamSo":
                     uc = ActivatorUtilities.CreateInstance<UserControlThamSo>(Program.ServiceProvider);
                     break;
+                case "DoiMatKhau":
+                    form = ActivatorUtilities.CreateInstance<DoiMatKhau>(Program.ServiceProvider);
+                    break;
                 default:
                     MessageBoxEx.Show("Tính năng đang phát triển!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
             }
-           
+
             if (form != null)
             {
-                form.TopLevel = false; // Đặt form là con của panel
-                form.Dock = DockStyle.Fill; // Đặt form chiếm toàn bộ panel
                 form.Show();
-                panel.Controls.Add(form);
-            }    
+            }
             else
             {
                 uc.Dock = DockStyle.Fill;
                 panel.Controls.Add(uc);
-            }    
+                tabControl1.Controls.Add(panel);
+                tabControl1.Tabs.Add(newTab);
+                newTab.AttachedControl = panel;
 
-            tabControl1.Controls.Add(panel);
-            tabControl1.Tabs.Add(newTab);
-            newTab.AttachedControl = panel;
-
-            tabControl1.SelectedTab = newTab;
+                tabControl1.SelectedTab = newTab;
+            }
         }
 
         public void OpenTab(string key, string title, UserControl uc)
@@ -211,6 +212,28 @@ namespace GPBH.UI
             tabControl1.Tabs.Remove(e.TabItem);
             if (e.TabItem.AttachedControl != null)
                 tabControl1.Controls.Remove(e.TabItem.AttachedControl);
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // Ví dụ: hỏi người dùng xác nhận trước khi đóng
+            var result = MessageBox.Show("Bạn có chắc muốn thoát?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.No)
+            {
+                e.Cancel = true; // Ngăn không cho đóng form
+            }
+            else
+            {
+                foreach (Form frm in Application.OpenForms.OfType<Form>().ToList())
+                {
+                    if (!(frm is MainForm))
+                        frm.Close();
+                }
+            }
+        }
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            // Xử lý giải phóng tài nguyên, ghi log, v.v.
         }
     }
 }

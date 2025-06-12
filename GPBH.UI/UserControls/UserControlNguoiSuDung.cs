@@ -1,4 +1,6 @@
-﻿using GPBH.Business;
+﻿using DevComponents.DotNetBar;
+using GPBH.Business;
+using GPBH.Business.Dtos;
 using GPBH.UI.Extentions;
 using GPBH.UI.Forms;
 using GPBH.UI.Helper;
@@ -11,130 +13,255 @@ namespace GPBH.UI.UserControls
 {
     public partial class UserControlNguoiSuDung : UserControl
     {
+        #region Fields & Constructor
+
         private readonly SysDMNSDService _sysDMNSDService;
 
         public UserControlNguoiSuDung(SysDMNSDService sysDMNSDService)
         {
             _sysDMNSDService = sysDMNSDService;
             InitializeComponent();
-            SetUpUI();
-            LoadData();
-            RegisterEvents();
+            InitializeUI();
         }
 
+        #endregion
+
+        #region Initialization
+
+        /// <summary>
+        /// Khởi tạo UI, load dữ liệu và đăng ký sự kiện.
+        /// </summary>
+        private void InitializeUI()
+        {
+            SetUpUI();
+            RegisterEvents();
+            LoadData();
+        }
+
+        /// <summary>
+        /// Đăng ký các sự kiện cho control.
+        /// </summary>
         private void RegisterEvents()
         {
-            dataGridViewX1.CellDoubleClick += dataGridViewX1_CellDoubleClick;
-            dataGridViewX1.CellClick += dataGridViewX1_CellClick;
+            dataGridViewX1.CellDoubleClick += DataGridViewX1_CellDoubleClick;
+            dataGridViewX1.CellClick += DataGridViewX1_CellClick;
+            dataGridViewX1.KeyDown += DataGridViewX1_KeyDown;
             btnThem.Click += BtnThem_Click;
             btnSua.Click += BtnSua_Click;
             btnXoa.Click += BtnXoa_Click;
-            btnTim.Click += BtnTim_Click; ;
+            btnTim.Click += BtnTim_Click;
             txtSearch.TextChanged += TxtSearch_TextChanged;
         }
 
-        private void BtnTim_Click(object sender, EventArgs e)
+        #endregion
+
+        #region Data Loading & Binding
+
+        /// <summary>
+        /// Load toàn bộ người dùng lên lưới và apply filter.
+        /// </summary>
+        private void LoadData()
         {
-            TimKiem();
+            var users = _sysDMNSDService.GellAll();
+            SetImageForUsers(users);
+            DataGridViewFilterHelper.ApplyFilter(dataGridViewX1, users);
         }
 
-        private void TimKiem()
+        /// <summary>
+        /// Gán ảnh quyền cho user.
+        /// </summary>
+        private static void SetImageForUsers(System.Collections.Generic.IEnumerable<GirdNguoiSuDungDto> users)
         {
-            
-            var users = _sysDMNSDService.TiemKiem(txtSearch.Text);
             Image img = Image.FromFile(Path.Combine(Application.StartupPath, "Images", "banhang.png"));
             foreach (var user in users)
             {
                 user.PhanQuyen = img;
             }
+        }
 
+        /// <summary>
+        /// Tìm kiếm theo từ khóa và bind lại dữ liệu.
+        /// </summary>
+        private void TimKiem()
+        {
+            var users = _sysDMNSDService.TiemKiem(txtSearch.Text);
+            SetImageForUsers(users);
+            SetUpUI();
             dataGridViewX1.BindData(users, true);
         }
 
-        private void TxtSearch_TextChanged(object sender, EventArgs e)
+        #endregion
+
+        #region UI Setup
+
+        /// <summary>
+        /// Setup hiển thị cho DataGridView: căn giữa, format, sắp xếp cột.
+        /// </summary>
+        private void SetUpUI()
         {
-            TimKiem();
+            if (dataGridViewX1.Columns.Count == 0) return;
+
+            // Canh giữa header
+            dataGridViewX1.SetHeaderAlignment("Stt", DataGridViewContentAlignment.MiddleCenter);
+            dataGridViewX1.SetHeaderAlignment("PhanQuyen", DataGridViewContentAlignment.MiddleCenter);
+            dataGridViewX1.SetHeaderAlignment("Ksd", DataGridViewContentAlignment.MiddleCenter);
+            dataGridViewX1.SetHeaderAlignment("CapLaiQuyen", DataGridViewContentAlignment.MiddleCenter);
+
+            // Sắp xếp vị trí các cột
+            SetColumnDisplayIndex();
+
+            // Căn chỉnh và format dữ liệu
+            SetColumnFormatting();
         }
 
-        private void BtnXoa_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Đặt lại vị trí các cột theo yêu cầu.
+        /// </summary>
+        private void SetColumnDisplayIndex()
         {
-            throw new NotImplementedException();
+            dataGridViewX1.SetDisplayIndex("Stt", 0);
+            dataGridViewX1.SetDisplayIndex("PhanQuyen", 1);
+            dataGridViewX1.SetDisplayIndex("TenDangNhap", 2);
+            dataGridViewX1.SetDisplayIndex("TenDayDu", 3);
+            dataGridViewX1.SetDisplayIndex("Ksd", 4);
+            dataGridViewX1.SetDisplayIndex("CapLaiQuyen", 5);
+            dataGridViewX1.SetDisplayIndex("Ngay_sua", 6);
+            dataGridViewX1.SetDisplayIndex("Nguoi_sua", 7);
+            dataGridViewX1.SetDisplayIndex("Ngay_tao", 8);
+            dataGridViewX1.SetDisplayIndex("Nguoi_tao", 9);
         }
 
-        private void BtnSua_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Căn chỉnh và format cho các cột dữ liệu.
+        /// </summary>
+        private void SetColumnFormatting()
         {
-            throw new NotImplementedException();
+            dataGridViewX1.SetCellAlignment("Stt", DataGridViewContentAlignment.MiddleCenter);
+            dataGridViewX1.SetCellAlignment("Ksd", DataGridViewContentAlignment.MiddleCenter);
+            dataGridViewX1.SetCellAlignment("CapLaiQuyen", DataGridViewContentAlignment.MiddleCenter);
+            dataGridViewX1.SetFormat("Ngay_sua", "dd/MM/yyyy");
+            dataGridViewX1.SetFormat("Ngay_tao", "dd/MM/yyyy");
         }
+
+
+        #endregion
+
+        #region Event Handlers
+
+        /// <summary>
+        /// Xử lý phím tắt trên DataGridView.
+        /// </summary>
+        private void DataGridViewX1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Delete)
+            {
+                HandleXoa();
+            }
+        }
+
+        private void TxtSearch_TextChanged(object sender, EventArgs e) => TimKiem();
+
+        private void BtnTim_Click(object sender, EventArgs e) => TimKiem();
 
         private void BtnThem_Click(object sender, EventArgs e)
         {
             this.ShowForm<NguoiSuDung>();
+            TimKiem(); // Sau khi thêm, load lại dữ liệu
         }
 
-        private void dataGridViewX1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void BtnSua_Click(object sender, EventArgs e)
         {
-            if (e.RowIndex > 1 && e.ColumnIndex >= 0)
+            var item = GetSelectedUser();
+            if (item != null)
             {
-                var row = dataGridViewX1.Rows[e.RowIndex];
-                var tenDangNhap = row.Cells["TenDangNhap"].Value;
-                var data = _sysDMNSDService.GetByTenDangNhap(tenDangNhap.ToString());
+                var data = _sysDMNSDService.GetByTenDangNhap(item.TenDangNhap);
                 this.ShowForm<NguoiSuDung>(data);
             }
         }
 
-        private void dataGridViewX1_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void BtnXoa_Click(object sender, EventArgs e) => HandleXoa();
+
+        /// <summary>
+        /// Xử lý xóa người dùng.
+        /// </summary>
+        private void HandleXoa()
         {
-            // e.RowIndex: chỉ số dòng vừa click
-            // e.ColumnIndex: chỉ số cột vừa click
-            if (e.RowIndex >= 1 && e.ColumnIndex >= 1)
+            var item = GetSelectedUser();
+            if (item == null) return;
+
+            var tenDangNhap = item.TenDangNhap;
+            var resultDialog = MessageBoxEx.Show($"Bạn có chắc muốn xóa người dùng: {tenDangNhap}?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (resultDialog == DialogResult.Yes)
             {
-                // click vào phân quyền
-                if (dataGridViewX1.Columns[e.ColumnIndex].Name == "PhanQuyen")
+                var (result, message) = _sysDMNSDService.XoaNguoiDung(tenDangNhap);
+                if (result)
                 {
-                    var tenDangNhap = dataGridViewX1.Rows[e.RowIndex].Cells["TenDangNhap"].Value;
+                    MessageBoxEx.Show("Xóa người dùng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    TimKiem();
+                }
+                else
+                {
+                    MessageBoxEx.Show(message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Double click vào row để sửa thông tin người dùng.
+        /// </summary>
+        private void DataGridViewX1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > 0 && e.ColumnIndex >= 0)
+            {
+                var row = dataGridViewX1.Rows[e.RowIndex];
+                var tenDangNhap = row.Cells["TenDangNhap"].Value?.ToString();
+                if (!string.IsNullOrEmpty(tenDangNhap))
+                {
+                    var data = _sysDMNSDService.GetByTenDangNhap(tenDangNhap);
+                    this.ShowForm<NguoiSuDung>(data);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Click vào cell (ví dụ cột phân quyền) để mở form phân quyền.
+        /// </summary>
+        private void DataGridViewX1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > 0 && e.ColumnIndex >= 0)
+            {
+                if (dataGridViewX1.Columns[e.ColumnIndex].Name != "PhanQuyen")
+                {
+                    return;
+                }
+
+                var tenDangNhap = dataGridViewX1.Rows[e.RowIndex].Cells["TenDangNhap"].Value?.ToString();
+                if (!string.IsNullOrEmpty(tenDangNhap))
+                {
                     this.ShowForm<PhanQuyen>(tenDangNhap);
                 }
             }
         }
-        private void LoadData()
+        #endregion
+
+        #region Helpers
+
+        /// <summary>
+        /// Lấy user đang chọn trên lưới (bỏ qua dòng filter đầu).
+        /// </summary>
+        /// <returns>GirdNguoiSuDungDto hoặc null</returns>
+        private GirdNguoiSuDungDto GetSelectedUser()
         {
-            var users = _sysDMNSDService.GellAll();
-            Image img = Image.FromFile(Path.Combine(Application.StartupPath, "Images", "banhang.png"));
-            foreach (var user in users)
+            if (dataGridViewX1.CurrentRow != null &&
+                dataGridViewX1.CurrentRow.Index > 0 &&
+                dataGridViewX1.CurrentRow.DataBoundItem is GirdNguoiSuDungDto item)
             {
-                user.PhanQuyen = img;
+                return item;
             }
-
-            // Add filter vào lưới
-            DataGridViewFilterHelper.ApplyFilter(dataGridViewX1, users);
+            MessageBoxEx.Show("Vui lòng chọn dòng dữ liệu hợp lệ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return null;
         }
 
-        private void SetUpUI()
-        {
-            // Canh giữa header
-            dataGridViewX1.Columns["Stt"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewX1.Columns["PhanQuyen"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewX1.Columns["Ksd"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewX1.Columns["CapLaiQuyen"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
-            // Số thứ tự các cột
-            dataGridViewX1.Columns["Stt"].DisplayIndex = 0;
-            dataGridViewX1.Columns["PhanQuyen"].DisplayIndex = 1;
-            dataGridViewX1.Columns["TenDangNhap"].DisplayIndex = 2;
-            dataGridViewX1.Columns["TenDayDu"].DisplayIndex = 3;
-            dataGridViewX1.Columns["Ksd"].DisplayIndex = 4;
-            dataGridViewX1.Columns["CapLaiQuyen"].DisplayIndex = 5;
-            dataGridViewX1.Columns["Ngay_sua"].DisplayIndex = 6;
-            dataGridViewX1.Columns["Nguoi_sua"].DisplayIndex = 7;
-            dataGridViewX1.Columns["Ngay_tao"].DisplayIndex = 8;
-            dataGridViewX1.Columns["Nguoi_tao"].DisplayIndex = 9;
-
-            // Foramt columns
-            dataGridViewX1.Columns["Stt"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewX1.Columns["Ksd"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewX1.Columns["CapLaiQuyen"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewX1.Columns["Ngay_sua"].DefaultCellStyle.Format = "dd/MM/yyyy";
-            dataGridViewX1.Columns["Ngay_tao"].DefaultCellStyle.Format = "dd/MM/yyyy";
-        }
+        #endregion
     }
 }
