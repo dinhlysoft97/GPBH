@@ -211,7 +211,7 @@ namespace GPBH.Business
             using (var scope = _serviceProvider.CreateScope())
             {
                 var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
-                var phanQuyens = unitOfWork.Repository<SysPhanQuyen>().Find(z => z.Ten_dang_nhap == tenDangNhap).ToList();
+                var phanQuyens = unitOfWork.Repository<SysPhanQuyen>().Include(z => z.SysMenu).Where(z => z.Ten_dang_nhap == tenDangNhap).ToList();
                 if (phanQuyens.Count > 0)
                 {
                     var data = phanQuyens.Adapt<List<GirdPhanQuyenDto>>();
@@ -233,7 +233,7 @@ namespace GPBH.Business
         /// <param name="data"></param>
         /// <param name="tenDangNhap"></param>
         /// <exception cref="BadRequestException"></exception>
-        public void PhanQuyen(IList<GirdPhanQuyenDto> data, string tenDangNhap)
+        public void PhanQuyen(List<GirdPhanQuyenDto> data, string tenDangNhap)
         {
             var entitys = data.Adapt<List<SysPhanQuyen>>();
             using (var scope = _serviceProvider.CreateScope())
@@ -242,7 +242,6 @@ namespace GPBH.Business
                 try
                 {
                     unitOfWork.BeginTransaction();
-
                     foreach (var item in entitys)
                     {
                         item.Ten_dang_nhap = tenDangNhap;
@@ -272,8 +271,31 @@ namespace GPBH.Business
                     unitOfWork.Rollback();
                     throw new BadRequestException(ex.Message);
                 }
-
             }
+        }
+
+        public (bool, string) XoaNguoiDung(string tenDangNhap)
+        {
+            // check xem người dùng đã phát sinh đơn hàng chưa\
+            using (var scope = _serviceProvider.CreateScope())
+            {
+                var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
+                var orders = unitOfWork.Repository<XPH5>().Find(x => x.Nguoi_tao == tenDangNhap).ToList();
+                if (orders.Count > 0)
+                {
+                    return (false, "Không thể xóa người dùng đã phát sinh đơn hàng");
+                }
+                // Xóa người dùng
+                var userRepo = unitOfWork.Repository<SysDMNSD>();
+                var user = userRepo.Find(x => x.TenDangNhap == tenDangNhap).FirstOrDefault();
+                if (user != null)
+                {
+                    userRepo.Remove(user);
+                    unitOfWork.SaveChanges();
+                }
+            }
+
+            return (true, string.Empty);
         }
     }
 }

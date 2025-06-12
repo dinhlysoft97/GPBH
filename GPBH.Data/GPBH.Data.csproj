@@ -68,11 +68,13 @@
     <Compile Include="Audit\BaseAuditableEntity.cs" />
     <Compile Include="Configurations\DMcaConfiguration.cs" />
     <Compile Include="Configurations\DMGBConfiguration.cs" />
+    <Compile Include="Configurations\SysDinh_dang_formConfiguration.cs" />
     <Compile Include="Configurations\SysDMCTConfiguration.cs" />
     <Compile Include="Configurations\SysPhanQuyenConfiguration.cs" />
     <Compile Include="Configurations\SysSoChungTuConfiguration.cs" />
     <Compile Include="Configurations\TokhaiHHConfiguration.cs" />
     <Compile Include="Configurations\XCT5Configuration.cs" />
+    <Compile Include="Configurations\SystemSettingConfiguration.cs" />
     <Compile Include="Configurations\XPH5Configuration.cs" />
     <Compile Include="Entities\DMca.cs" />
     <Compile Include="Entities\DMHH.cs" />
@@ -90,6 +92,7 @@
     <Compile Include="Entities\DMNT.cs" />
     <Compile Include="Entities\DMQG.cs" />
     <Compile Include="Entities\DMTG.cs" />
+    <Compile Include="Entities\SysDinh_dang_form.cs" />
     <Compile Include="Entities\SysDMCT.cs" />
     <Compile Include="Entities\SysDMCuaHang.cs" />
     <Compile Include="Entities\SysDMDV.cs" />
@@ -97,13 +100,14 @@
     <Compile Include="Entities\SysMenu.cs" />
     <Compile Include="Entities\SysPhanQuyen.cs" />
     <Compile Include="Entities\SysSoChungTu.cs" />
+    <Compile Include="Entities\SystemSetting.cs" />
     <Compile Include="Entities\TokhaiHH.cs" />
     <Compile Include="Entities\XCT5.cs" />
     <Compile Include="Entities\XPH5.cs" />
     <Compile Include="Helper\MigrationHelper.cs" />
-    <Compile Include="Migrations\202506111438143_Initdb.cs" />
-    <Compile Include="Migrations\202506111438143_Initdb.Designer.cs">
-      <DependentUpon>202506111438143_Initdb.cs</DependentUpon>
+    <Compile Include="Migrations\202506121025159_InitDb.cs" />
+    <Compile Include="Migrations\202506121025159_InitDb.Designer.cs">
+      <DependentUpon>202506121025159_InitDb.cs</DependentUpon>
     </Compile>
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Startup.cs" />
@@ -117,8 +121,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202506111438143_Initdb.resx">
-      <DependentUpon>202506111438143_Initdb.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202506121025159_InitDb.resx">
+      <DependentUpon>202506121025159_InitDb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

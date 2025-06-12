@@ -2,6 +2,7 @@
 using GPBH.Business;
 using GPBH.Business.Services;
 using GPBH.Data.Entities;
+using GPBH.UI.Forms;
 using GPBH.UI.UserControls;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -25,6 +26,8 @@ namespace GPBH.UI
             _dMcaService = dMcaService;
             BuildMenu();
             SetData();
+            this.FormClosed += MainForm_FormClosed;
+            this.FormClosing += MainForm_FormClosing;
             _serviceProvider = serviceProvider;
         }
 
@@ -138,6 +141,7 @@ namespace GPBH.UI
 
             // Dùng UserControl tương ứng
             UserControl uc = null;
+            Form form = null;
             switch (key)
             {
                 case "DonHang":
@@ -146,8 +150,18 @@ namespace GPBH.UI
                 case "BanHangTheoKhachHang":
                     uc = new UserControlBanHangTheoKhachHang();
                     break;
+                case "DinhDangForm":
+                    form = ActivatorUtilities.CreateInstance<DinhDangForm>(Program.ServiceProvider);
+                    break;
+
                 case "NguoiDung":
                     uc = ActivatorUtilities.CreateInstance<UserControlNguoiSuDung>(Program.ServiceProvider);
+                    break;
+                case "ThamSo":
+                    form = ActivatorUtilities.CreateInstance<ThamSo>(Program.ServiceProvider);
+                    break;
+                case "DoiMatKhau":
+                    form = ActivatorUtilities.CreateInstance<DoiMatKhau>(Program.ServiceProvider);
                     break;
                 case "Ca":
                     uc = new UserControlCa(_dMcaService, _serviceProvider);
@@ -156,14 +170,21 @@ namespace GPBH.UI
                     MessageBoxEx.Show("Tính năng đang phát triển!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
             }
-            uc.Dock = DockStyle.Fill;
-            panel.Controls.Add(uc);
 
-            tabControl1.Controls.Add(panel);
-            tabControl1.Tabs.Add(newTab);
-            newTab.AttachedControl = panel;
+            if (form != null)
+            {
+                form.Show();
+            }
+            else
+            {
+                uc.Dock = DockStyle.Fill;
+                panel.Controls.Add(uc);
+                tabControl1.Controls.Add(panel);
+                tabControl1.Tabs.Add(newTab);
+                newTab.AttachedControl = panel;
 
-            tabControl1.SelectedTab = newTab;
+                tabControl1.SelectedTab = newTab;
+            }
         }
 
         public void OpenTab(string key, string title, UserControl uc)
@@ -202,6 +223,29 @@ namespace GPBH.UI
             tabControl1.Tabs.Remove(e.TabItem);
             if (e.TabItem.AttachedControl != null)
                 tabControl1.Controls.Remove(e.TabItem.AttachedControl);
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // Ví dụ: hỏi người dùng xác nhận trước khi đóng
+            var result = MessageBox.Show("Bạn có chắc muốn thoát?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.No)
+            {
+                e.Cancel = true; // Ngăn không cho đóng form
+            }
+            else
+            {
+                foreach (Form frm in Application.OpenForms.OfType<Form>().ToList())
+                {
+                    if (!(frm is MainForm))
+                        frm.Close();
+                }
+            }
+        }
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            // Xử lý giải phóng tài nguyên, ghi log, v.v.
         }
     }
 }

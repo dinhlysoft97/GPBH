@@ -9,33 +9,52 @@ namespace GPBH.UI
 {
     public partial class Login : Office2007Form
     {
-        private readonly SysDMNSDService _productService;
-        private readonly SysDMCuaHangService _sysDMCuaHangService;
-        public Login(SysDMNSDService productService, SysDMCuaHangService sysDMCuaHangService)
+        #region Fields & Constructor
+
+        private readonly SysDMNSDService _userService;
+        private readonly SysDMCuaHangService _storeService;
+
+        public Login(SysDMNSDService userService, SysDMCuaHangService storeService)
         {
             InitializeComponent();
-            // Đặt thuộc tính KeyPreview của Form là true trong Designer hoặc trong code
-            this.KeyPreview = true;
-
+            this.KeyPreview = true; // Cho phép bắt phím trên toàn form
             this.KeyDown += Form_KeyDown;
-            _productService = productService;
-            _sysDMCuaHangService = sysDMCuaHangService;
+
+            _userService = userService;
+            _storeService = storeService;
         }
 
+        #endregion
+
+        #region Event Handlers
+
+        /// <summary>
+        /// Bắt phím Enter trên toàn form để đăng nhập nhanh.
+        /// </summary>
         private void Form_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                HandleClick();
+                HandleLogin();
             }
         }
 
-        private void btnDangNhap_Click(object sender, System.EventArgs e)
+        /// <summary>
+        /// Xử lý khi click nút Đăng nhập.
+        /// </summary>
+        private void btnDangNhap_Click(object sender, EventArgs e)
         {
-            HandleClick();
+            HandleLogin();
         }
 
-        private void HandleClick()
+        #endregion
+
+        #region Business Logic
+
+        /// <summary>
+        /// Xử lý đăng nhập; kiểm tra hợp lệ, gọi service, cập nhật thông tin toàn cục và mở MainForm nếu thành công.
+        /// </summary>
+        private void HandleLogin()
         {
             string tenDangNhap = txtTenDangNhap.Text.Trim();
             string matKhau = txtMatKhau.Text;
@@ -46,19 +65,16 @@ namespace GPBH.UI
                 return;
             }
 
-            var user = _productService.DangNhap(tenDangNhap, matKhau);
+            var user = _userService.DangNhap(tenDangNhap, matKhau);
 
             if (user != null && !string.IsNullOrEmpty(user.TenDangNhap))
             {
                 // Đăng nhập thành công
-                //MessageBoxEx..Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // Lưu thông tin user vào biến global hoặc truyền vào form chính
                 AppGlobals.CurrentUser = user;
-                AppGlobals.DMCuaHang = _sysDMCuaHangService.GetByMaCuaHang(AppGlobals.MaCH);
+                AppGlobals.DMCuaHang = _storeService.GetByMaCuaHang(AppGlobals.MaCH);
                 AppGlobals.TgDangNhap = DateTime.Now;
 
-                // call form dot net bar
+                // Khởi tạo và show MainForm bằng DI
                 var main = ActivatorUtilities.CreateInstance<MainForm>(Program.ServiceProvider);
                 main.Show();
                 this.Hide();
@@ -69,5 +85,7 @@ namespace GPBH.UI
                 MessageBoxEx.Show("Tên đăng nhập hoặc mật khẩu không đúng, hoặc tài khoản bị khóa!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        #endregion
     }
 }

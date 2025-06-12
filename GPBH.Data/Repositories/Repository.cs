@@ -38,5 +38,29 @@ namespace GPBH.Data
         {
             Context.Entry(entity).State = EntityState.Modified;
         }
+
+
+        // Trả về IQueryable<T> để dùng Include linh hoạt ngoài repo (ví dụ repo.GetQueryable().Include(...))
+        public IQueryable<T> GetQueryable()
+        {
+            return Context.Set<T>();
+        }
+
+        // Hàm Include cho 1 navigation property
+        public IQueryable<T> Include(Expression<Func<T, object>> includeExpression)
+        {
+            return Context.Set<T>().Include(includeExpression);
+        }
+
+        // Hàm Include cho nhiều navigation properties
+        public IQueryable<T> Include(params Expression<Func<T, object>>[] includeExpressions)
+        {
+            IQueryable<T> query = Context.Set<T>();
+            foreach (var includeExpression in includeExpressions)
+            {
+                query = query.Include(includeExpression);
+            }
+            return query;
+        }
     }
 }

@@ -27,12 +27,18 @@ namespace GPBH.UI.Forms
 
         #region Public Properties
 
+        /// <summary>
+        /// Dữ liệu khách hàng được chọn hoặc vừa thêm.
+        /// </summary>
         public DMKH DataKhachHang { get; set; }
 
         #endregion
 
         #region Nested Classes
 
+        /// <summary>
+        /// Lớp phụ trợ cho giới tính.
+        /// </summary>
         public class GioiTinh
         {
             public string Key { get; set; }
@@ -45,13 +51,13 @@ namespace GPBH.UI.Forms
 
         public KhachHang(DMKHService dmkhService, DMQGService dMQGService, string passport)
         {
-            InitializeComponent();  
-            // Đặt thuộc tính KeyPreview của Form là true trong Designer hoặc trong code
-            this.KeyPreview = true;
+            InitializeComponent();
+            this.KeyPreview = true; // Cho phép bắt phím Enter trên toàn form
             _dmkhService = dmkhService;
             _dMQGService = dMQGService;
             LoadData();
             RegisterEvents();
+
             if (!string.IsNullOrEmpty(passport))
                 txtCCCD.Text = passport;
         }
@@ -60,6 +66,9 @@ namespace GPBH.UI.Forms
 
         #region Private Methods
 
+        /// <summary>
+        /// Load dữ liệu cho các combobox giới tính, quốc tịch.
+        /// </summary>
         private void LoadData()
         {
             ComboBoxHelper.BindData(cbbGioiTinh, GioiTinhs, "Value", "Key", true);
@@ -67,14 +76,22 @@ namespace GPBH.UI.Forms
             ComboBoxHelper.BindData(cbbQuocTich, dataQD, nameof(DMQG.Ten_Quoc_gia), nameof(DMQG.Quoc_gia), true);
         }
 
+        /// <summary>
+        /// Đăng ký các sự kiện cho các control.
+        /// </summary>
         private void RegisterEvents()
         {
             txtTongTien.KeyPress += txtSoTien_KeyPress;
             txtTongTien.Leave += txtSoTien_Leave;
             txtEmail.Leave += txtEmail_Leave;
             this.KeyDown += Form_KeyDown;
+            txtCCCD.TextChanged += txtCCCD_TextChanged;
+            btnChon.Click += btnChon_Click;
         }
 
+        /// <summary>
+        /// Điền dữ liệu khách hàng đã có lên form.
+        /// </summary>
         private void FillCustomerData(DMKH khachHang)
         {
             txtCCCD.Text = khachHang.Passport?.Trim() ?? "";
@@ -96,6 +113,9 @@ namespace GPBH.UI.Forms
             cbbQuocTich.SelectedValue = khachHang.Quoc_gia;
         }
 
+        /// <summary>
+        /// Xóa toàn bộ dữ liệu trên form khách hàng.
+        /// </summary>
         private void ClearCustomerFields()
         {
             txtHo.Text = "";
@@ -114,6 +134,9 @@ namespace GPBH.UI.Forms
             txtTongTien.Text = "0";
         }
 
+        /// <summary>
+        /// Kiểm tra các trường bắt buộc đã nhập đủ hay chưa.
+        /// </summary>
         private bool ValidateRequiredFields()
         {
             if (string.IsNullOrWhiteSpace(txtCCCD.Text))
@@ -140,15 +163,20 @@ namespace GPBH.UI.Forms
             return true;
         }
 
-        private bool IsValidEmail(string email)
+        /// <summary>
+        /// Kiểm tra định dạng email cơ bản.
+        /// </summary>
+        private static bool IsValidEmail(string email)
         {
             if (string.IsNullOrWhiteSpace(email))
                 return false;
-            // Regex email cơ bản
             string pattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
             return Regex.IsMatch(email, pattern, RegexOptions.IgnoreCase);
         }
 
+        /// <summary>
+        /// Lấy dữ liệu khách hàng từ form.
+        /// </summary>
         private DMKH GetCustomerFromForm()
         {
             return new DMKH
@@ -167,12 +195,15 @@ namespace GPBH.UI.Forms
                 Email = txtEmail.Text.Trim(),
                 Xnc_ngay_cap = dtTTXNCNgayCap.IsEmpty ? (DateTime?)null : dtTTXNCNgayCap.Value,
                 Xnc_ngay_hh = dtTTXNCHetHan.IsEmpty ? (DateTime?)null : dtTTXNCHetHan.Value,
-                Han_muc = decimal.TryParse(txtTongTien.Text, out var hanMuc) ? hanMuc : (decimal?)null,
+                Han_muc = decimal.TryParse(txtTongTien.Text.Replace(",", "").Replace(".", ""), out var hanMuc) ? hanMuc : (decimal?)null,
                 So_hieu = txPhuongTien.Text.Trim(),
                 Ten_tau_bay = txtTauBay.Text.Trim()
             };
         }
 
+        /// <summary>
+        /// Hiện thông báo lỗi ra label và focus vào control nếu có.
+        /// </summary>
         private void ShowMessage(string msg, Control focusControl = null)
         {
             lbMessage.Text = msg;
@@ -180,6 +211,9 @@ namespace GPBH.UI.Forms
             if (focusControl != null) focusControl.Focus();
         }
 
+        /// <summary>
+        /// Xóa thông báo lỗi trên form.
+        /// </summary>
         private void ClearMessage()
         {
             lbMessage.Text = "";
@@ -189,14 +223,21 @@ namespace GPBH.UI.Forms
         #endregion
 
         #region Event Handlers
+
+        /// <summary>
+        /// Bắt phím Enter trên form để lưu và in nhanh.
+        /// </summary>
         private void Form_KeyDown(object sender, KeyEventArgs e)
         {
-            // Lưu và in
             if (e.KeyCode == Keys.Enter)
             {
                 HandleClick();
             }
         }
+
+        /// <summary>
+        /// Khi thay đổi số CCCD, tự động tìm và fill dữ liệu khách hàng nếu có.
+        /// </summary>
         private void txtCCCD_TextChanged(object sender, EventArgs e)
         {
             var khachHang = _dmkhService.GetByPassport(txtCCCD.Text.Trim());
@@ -214,13 +255,16 @@ namespace GPBH.UI.Forms
             }
         }
 
+        /// <summary>
+        /// Sự kiện click nút "Chọn" hoặc phím Enter: chọn khách đã có hoặc thêm mới khách hàng.
+        /// </summary>
         private void btnChon_Click(object sender, EventArgs e)
         {
             HandleClick();
         }
 
         /// <summary>
-        /// Xử lý sự kiện click nút "Chọn" hoặc "Lưu" trong form Khách Hàng.
+        /// Xử lý chọn/thêm khách hàng khi click nút hoặc nhấn enter.
         /// </summary>
         private void HandleClick()
         {
@@ -245,6 +289,9 @@ namespace GPBH.UI.Forms
             }
         }
 
+        /// <summary>
+        /// Chỉ cho nhập số tiền, dấu phân cách.
+        /// </summary>
         private void txtSoTien_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)
@@ -259,6 +306,9 @@ namespace GPBH.UI.Forms
             }
         }
 
+        /// <summary>
+        /// Định dạng lại số tiền khi rời khỏi textbox.
+        /// </summary>
         private void txtSoTien_Leave(object sender, EventArgs e)
         {
             decimal value;
@@ -268,6 +318,9 @@ namespace GPBH.UI.Forms
             }
         }
 
+        /// <summary>
+        /// Kiểm tra email hợp lệ khi rời khỏi textbox.
+        /// </summary>
         private void txtEmail_Leave(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(txtEmail.Text) && !IsValidEmail(txtEmail.Text))

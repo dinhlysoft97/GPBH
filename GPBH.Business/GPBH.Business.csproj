@@ -72,6 +72,8 @@
     <Compile Include="Dtos\GiaBanHangHoa.cs" />
     <Compile Include="Dtos\GirdNguoiSuDungDto.cs" />
     <Compile Include="Dtos\GirdPhanQuyenDto.cs" />
+    <Compile Include="Dtos\GirdSysDinhDangFormDto.cs" />
+    <Compile Include="Dtos\GirdSystemSettingDto.cs" />
     <Compile Include="Dtos\TyGiaNT.cs" />
     <Compile Include="Dtos\XCT5Dto.cs" />
     <Compile Include="Dtos\XPH5Dto.cs" />
@@ -85,6 +87,7 @@
     <Compile Include="Services\DMTGService.cs" />
     <Compile Include="Services\DonHangService.cs" />
     <Compile Include="Services\SoPhieuGeneratorService.cs" />
+    <Compile Include="Services\SysDinh_dang_formService.cs" />
     <Compile Include="Services\SysDMCuaHangService.cs" />
     <Compile Include="Services\SysDMNSDService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

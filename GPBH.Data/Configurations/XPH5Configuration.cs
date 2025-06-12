@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GPBH.Data.Configurations
+﻿namespace GPBH.Data.Configurations
 {
     using GPBH.Data.Entities;
     using System.Data.Entity.ModelConfiguration;
@@ -84,9 +78,6 @@ namespace GPBH.Data.Configurations
             Property(t => t.Tt1_tien_tt)
                 .HasPrecision(28, 8);
 
-            Property(t => t.Tt1_ty_gia)
-                .HasPrecision(28, 8);
-
             Property(t => t.Tt1_tien_nt)
                 .HasPrecision(28, 8);
 
@@ -99,9 +90,6 @@ namespace GPBH.Data.Configurations
             Property(t => t.Tt2_tien_tt)
                 .HasPrecision(28, 8);
 
-            Property(t => t.Tt2_ty_gia)
-                .HasPrecision(28, 8);
-
             Property(t => t.Tt2_tien_nt)
                 .HasPrecision(28, 8);
 
@@ -112,9 +100,6 @@ namespace GPBH.Data.Configurations
                 .HasMaxLength(3);
 
             Property(t => t.Tt3_tien_tt)
-                .HasPrecision(28, 8);
-
-            Property(t => t.Tt3_ty_gia)
                 .HasPrecision(28, 8);
 
             Property(t => t.Tt3_tien_nt)
@@ -174,6 +159,9 @@ namespace GPBH.Data.Configurations
 
             Property(t => t.Ma_doi_tuong)
                 .HasMaxLength(20);
+            
+            Property(t => t.Ma_tra_lai)
+                .HasMaxLength(3);
 
             // Relationships
             HasRequired(x => x.SysDMCuaHang)

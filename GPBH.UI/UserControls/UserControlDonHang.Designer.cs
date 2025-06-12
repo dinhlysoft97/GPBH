@@ -39,6 +39,14 @@
             this.dtTu = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NameName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewX2 = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,14 +57,6 @@
             this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NameName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -86,7 +86,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.dataGridViewX2);
             this.splitContainer1.Size = new System.Drawing.Size(1339, 775);
-            this.splitContainer1.SplitterDistance = 338;
+            this.splitContainer1.SplitterDistance = 345;
             this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 2;
             // 
@@ -296,8 +296,52 @@
             this.dataGridViewX1.Name = "dataGridViewX1";
             this.dataGridViewX1.RowHeadersWidth = 51;
             this.dataGridViewX1.RowTemplate.Height = 24;
-            this.dataGridViewX1.Size = new System.Drawing.Size(1339, 297);
+            this.dataGridViewX1.Size = new System.Drawing.Size(1339, 314);
             this.dataGridViewX1.TabIndex = 0;
+            // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "Số đơn hàng";
+            this.ID.MinimumWidth = 6;
+            this.ID.Name = "ID";
+            // 
+            // NameName
+            // 
+            this.NameName.DataPropertyName = "NameName";
+            this.NameName.HeaderText = "Ngày";
+            this.NameName.MinimumWidth = 6;
+            this.NameName.Name = "NameName";
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Mã khách hàng";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Tên khách hàng";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Tổng tiền hàng";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Khách trả";
+            this.Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Trả lại";
+            this.Column5.Name = "Column5";
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Tủy giá";
+            this.Column6.Name = "Column6";
             // 
             // dataGridViewX2
             // 
@@ -332,7 +376,7 @@
             this.dataGridViewX2.Name = "dataGridViewX2";
             this.dataGridViewX2.RowHeadersWidth = 51;
             this.dataGridViewX2.RowTemplate.Height = 24;
-            this.dataGridViewX2.Size = new System.Drawing.Size(1339, 443);
+            this.dataGridViewX2.Size = new System.Drawing.Size(1339, 449);
             this.dataGridViewX2.TabIndex = 0;
             // 
             // Column10
@@ -386,50 +430,6 @@
             // 
             this.Column8.HeaderText = "Tổng tiền VND";
             this.Column8.Name = "Column8";
-            // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "ID";
-            this.ID.HeaderText = "Số đơn hàng";
-            this.ID.MinimumWidth = 6;
-            this.ID.Name = "ID";
-            // 
-            // NameName
-            // 
-            this.NameName.DataPropertyName = "NameName";
-            this.NameName.HeaderText = "Ngày";
-            this.NameName.MinimumWidth = 6;
-            this.NameName.Name = "NameName";
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Mã khách hàng";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Tên khách hàng";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Tổng tiền hàng";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Khách trả";
-            this.Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Trả lại";
-            this.Column5.Name = "Column5";
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Tủy giá";
-            this.Column6.Name = "Column6";
             // 
             // UserControlDonHang
             // 
