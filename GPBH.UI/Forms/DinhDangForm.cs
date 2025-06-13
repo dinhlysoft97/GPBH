@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace GPBH.UI.Forms
 {
-    public partial class DinhDangForm : Form
+    public partial class DinhDangForm : Office2007Form
     {
         private readonly SysDinh_dang_formService _sysDinh_dang_formService;
         private readonly SysDMCuaHangService _sysDMCuaHangService;

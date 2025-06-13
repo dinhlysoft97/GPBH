@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace GPBH.UI.Forms
 {
-    public partial class ThamSo : Form
+    public partial class ThamSo : Office2007Form
     {
         #region Fields & Constructor
 
