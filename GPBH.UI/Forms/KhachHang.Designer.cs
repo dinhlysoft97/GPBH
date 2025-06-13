@@ -663,7 +663,6 @@
             this.btnChon.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnChon.TabIndex = 20;
             this.btnChon.Text = "Chọn(Enter)";
-            this.btnChon.Click += new System.EventHandler(this.btnChon_Click);
             // 
             // lbMessage
             // 

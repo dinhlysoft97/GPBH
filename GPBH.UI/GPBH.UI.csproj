@@ -80,6 +80,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constant\GPBHConstant.cs" />
     <Compile Include="Demo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +88,7 @@
       <DependentUpon>Demo.cs</DependentUpon>
     </Compile>
     <Compile Include="Extentions\DataGirdViewExtention.cs" />
+    <Compile Include="Extentions\DoubleInputExtention.cs" />
     <Compile Include="Forms\DoiMatKhau.cs">
       <SubType>Form</SubType>
     </Compile>

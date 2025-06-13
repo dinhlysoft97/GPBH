@@ -91,7 +91,7 @@ namespace GPBH.UI.Extentions
         /// <param name="format"></param>
         public static void SetFormat(this DataGridViewX grid, string columnName, string format)
         {
-            if (grid.Columns.Contains(columnName))
+            if (grid.Columns.Contains(columnName) && !string.IsNullOrEmpty(format))
                 grid.Columns[columnName].DefaultCellStyle.Format = format;
         }
     }

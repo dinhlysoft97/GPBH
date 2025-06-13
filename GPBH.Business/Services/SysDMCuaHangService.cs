@@ -31,7 +31,6 @@ namespace GPBH.Business.Services
             }
         }
 
-
         public SysDMCuaHang GetByMaCuaHang(string maCH)
         {
             using (var scope = _serviceProvider.CreateScope())

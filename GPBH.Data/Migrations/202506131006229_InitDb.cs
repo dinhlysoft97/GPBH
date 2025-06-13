@@ -87,10 +87,20 @@
                         Ma_loai_hinh = c.String(maxLength: 20),
                         Ma_doi_tuong = c.String(maxLength: 20),
                         Ma_nt = c.String(maxLength: 3),
-                        Ma_qd = c.String(),
+                        Ma_nt_qd = c.String(maxLength: 3),
                         Han_muc_tm = c.Decimal(nullable: false, precision: 28, scale: 8),
                         Ma_cqt = c.String(maxLength: 50),
                         Nhap_ttxnc = c.Boolean(nullable: false),
+                        Round_so_luong = c.Int(nullable: false),
+                        Round_gia_nt = c.Int(nullable: false),
+                        Round_gia = c.Int(nullable: false),
+                        Round_tien_nt = c.Int(nullable: false),
+                        Round_tien = c.Int(nullable: false),
+                        Format_so_luong = c.String(),
+                        Format_gia_nt = c.String(),
+                        Format_gia = c.String(),
+                        Format_tien_nt = c.String(),
+                        Format_tien = c.String(),
                     })
                 .PrimaryKey(t => t.Ma_cua_hang)
                 .ForeignKey("dbo.SysDMDV", t => t.Ma_dv, cascadeDelete: true)
