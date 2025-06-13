@@ -635,7 +635,7 @@ namespace GPBH.UI.Forms
         private void NgoaiTe1_TextChanged(object sender, EventArgs e)
         {
             HandelChangeNgoaiTe(cbbTt1_ma_nt, txtTt1_tien_nt, txtTt1_tien_tt);
-            SetFormatThanhToan(cbbTt2_ma_nt, txtTt2_tien_tt);
+            SetFormatThanhToan(cbbTt1_ma_nt, txtTt1_tien_tt);
         }
 
         private void NgoaiTe2_TextChanged(object sender, EventArgs e)
