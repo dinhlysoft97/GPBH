@@ -4,6 +4,7 @@ using GPBH.Data.Entities;
 using GPBH.UI.Helper;
 using System;
 using System.Collections.Generic;
+using System.Net.Sockets;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -16,6 +17,8 @@ namespace GPBH.UI.Forms
         private readonly DMKHService _dmkhService;
         private readonly DMQGService _dMQGService;
         private bool isKhachHangSelected = false;
+        private readonly bool _isSelectMode;
+        private readonly bool _isEditMode;
         private readonly List<GioiTinh> GioiTinhs = new List<GioiTinh>
         {
             new GioiTinh() { Key ="M" ,Value = "Nam" },
@@ -49,17 +52,43 @@ namespace GPBH.UI.Forms
 
         #region Constructor
 
-        public KhachHang(DMKHService dmkhService, DMQGService dMQGService, string passport)
+        public KhachHang(DMKHService dmkhService, DMQGService dMQGService, string passport, bool isSelectMode = false)
         {
             InitializeComponent();
             this.KeyPreview = true; // Cho phép bắt phím Enter trên toàn form
             _dmkhService = dmkhService;
             _dMQGService = dMQGService;
+            _isSelectMode = isSelectMode;
+            if (!string.IsNullOrEmpty(passport))
+            {
+                var khachHang = _dmkhService.GetByPassport(passport);
+                if (khachHang != null)
+                {
+                    _isEditMode = true;
+                    DataKhachHang = khachHang;
+                    FillCustomerData(khachHang);
+                }
+                else
+                {
+                    _isEditMode = false;
+                }
+                txtCCCD.Text = passport;
+            }
+            else
+            {
+                _isEditMode = false;
+            }
+
             LoadData();
             RegisterEvents();
 
             if (!string.IsNullOrEmpty(passport))
                 txtCCCD.Text = passport;
+
+            if (_isSelectMode)
+                btnChon.Text = "Lưu(Enter)";
+            else
+                btnChon.Text = "Chọn(Enter)";
         }
 
         #endregion
@@ -92,7 +121,7 @@ namespace GPBH.UI.Forms
         /// <summary>
         /// Điền dữ liệu khách hàng đã có lên form.
         /// </summary>
-        private void FillCustomerData(DMKH khachHang)
+        public void FillCustomerData(DMKH khachHang)
         {
             txtCCCD.Text = khachHang.Passport?.Trim() ?? "";
             txtHo.Text = khachHang.Ho ?? "";
@@ -177,7 +206,7 @@ namespace GPBH.UI.Forms
         /// <summary>
         /// Lấy dữ liệu khách hàng từ form.
         /// </summary>
-        private DMKH GetCustomerFromForm()
+        public DMKH GetCustomerFromForm()
         {
             return new DMKH
             {
@@ -260,7 +289,32 @@ namespace GPBH.UI.Forms
         /// </summary>
         private void btnChon_Click(object sender, EventArgs e)
         {
-            HandleClick();
+            if (_isSelectMode)
+            {
+                // Thực hiện lưu (thêm mới hoặc cập nhật)
+                if (!ValidateRequiredFields())
+                    return;
+
+                if (!string.IsNullOrWhiteSpace(txtEmail.Text) && !IsValidEmail(txtEmail.Text))
+                {
+                    ShowMessage("Email không đúng định dạng!", txtEmail);
+                    return;
+                }
+
+                var khDto = GetCustomerFromForm();
+                if (_isEditMode) 
+                    _dmkhService.EditCustomer(khDto);
+                else
+                    _dmkhService.AddCustomer(khDto);
+
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            else
+            {
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
         }
 
         /// <summary>

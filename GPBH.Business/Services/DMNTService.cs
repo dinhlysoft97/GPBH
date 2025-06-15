@@ -22,7 +22,7 @@ namespace GPBH.Business.Services
             using (var scope = _serviceProvider.CreateScope())
             {
                 var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
-                return unitOfWork.Repository<DMNT>().Find(z => z.Ksd).ToList();
+                return unitOfWork.Repository<DMNT>().Find(z => z.Ksd).OrderBy(z => z.Ma_nt).ToList();
             }
         }
 
