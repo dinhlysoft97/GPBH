@@ -1,8 +1,4 @@
-﻿using DevComponents.DotNetBar;
-using GPBH.Business;
-using GPBH.Business.Services;
-using GPBH.Data.Entities;
-using GPBH.UI.Extentions;
+﻿using GPBH.Business.Services;
 using GPBH.UI.Helper;
 using System;
 using System.Collections.Generic;
@@ -13,26 +9,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Linq;
 
 namespace GPBH.UI.Forms
 {
-    public partial class FormCa : Form
+    public partial class HangHoa : Form
     {
-        private bool _isEdit = false;
-        private DMca _data;
-        private readonly DMcaService _dMcaService;
-        public FormCa(DMcaService dMcaService, DMca data = null)
+        private readonly DMHHService _dmHHService;
+        public HangHoa(DMHHService dmHHService)
         {
             InitializeComponent();
-            _dMcaService = dMcaService;
+            _dmHHService = dmHHService;
             LoadData();
         }
+
         private void LoadData()
         {
-            var caList = _dMcaService.GetAll();
+            var caList = _dmHHService.GetAll();
             DataGridViewFilterHelper.ApplyFilter(dataGridViewX1, caList);
         }
-
     }
 }

@@ -164,7 +164,25 @@ namespace GPBH.UI
                     form = ActivatorUtilities.CreateInstance<DoiMatKhau>(Program.ServiceProvider);
                     break;
                 case "Ca":
-                    uc = new UserControlCa(_dMcaService, _serviceProvider);
+                    form = ActivatorUtilities.CreateInstance<FormCa>(Program.ServiceProvider);
+                    break;
+                case "QuocGia":
+                    form = ActivatorUtilities.CreateInstance<QuocGia>(Program.ServiceProvider);
+                    break;
+                case "KhachHang":
+                    uc = ActivatorUtilities.CreateInstance<UserControlKhachHang>(Program.ServiceProvider);
+                    break;
+                case "HangHoa":
+                    form = ActivatorUtilities.CreateInstance<HangHoa>(Program.ServiceProvider);
+                    break;
+                case "NgoaiTe":
+                    form = ActivatorUtilities.CreateInstance<NgoaiTe>(Program.ServiceProvider);
+                    break;
+                case "TyGia":
+                    form = ActivatorUtilities.CreateInstance<TyGia>(Program.ServiceProvider);
+                    break;
+                case "GiaBan":
+                    form = ActivatorUtilities.CreateInstance<GiaBan>(Program.ServiceProvider);
                     break;
                 default:
                     MessageBoxEx.Show("Tính năng đang phát triển!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

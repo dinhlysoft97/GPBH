@@ -1,6 +1,6 @@
 ﻿namespace GPBH.UI.Forms
 {
-    partial class FormCa
+    partial class TyGia
     {
         /// <summary>
         /// Required designer variable.
@@ -30,10 +30,9 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.Ma_ca = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ten_ca = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Gio_bd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Gio_kt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ma_nt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ngay_ap_dung = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ty_gia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -43,10 +42,9 @@
             this.dataGridViewX1.AllowUserToDeleteRows = false;
             this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Ma_ca,
-            this.Ten_ca,
-            this.Gio_bd,
-            this.Gio_kt});
+            this.Ma_nt,
+            this.Ngay_ap_dung,
+            this.Ty_gia});
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -59,52 +57,44 @@
             this.dataGridViewX1.Location = new System.Drawing.Point(2, 12);
             this.dataGridViewX1.Name = "dataGridViewX1";
             this.dataGridViewX1.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.dataGridViewX1.Size = new System.Drawing.Size(1055, 534);
+            this.dataGridViewX1.Size = new System.Drawing.Size(802, 534);
             this.dataGridViewX1.TabIndex = 18;
             // 
-            // Ma_ca
+            // Ma_nt
             // 
-            this.Ma_ca.DataPropertyName = "Ma_ca";
-            this.Ma_ca.HeaderText = "Mã ca";
-            this.Ma_ca.Name = "Ma_ca";
-            this.Ma_ca.ReadOnly = true;
-            this.Ma_ca.Width = 253;
+            this.Ma_nt.DataPropertyName = "Ma_nt";
+            this.Ma_nt.HeaderText = "Mã ngoại tệ";
+            this.Ma_nt.Name = "Ma_nt";
+            this.Ma_nt.ReadOnly = true;
+            this.Ma_nt.Width = 253;
             // 
-            // Ten_ca
+            // Ngay_ap_dung
             // 
-            this.Ten_ca.DataPropertyName = "Ten_ca";
-            this.Ten_ca.HeaderText = "Tên ca";
-            this.Ten_ca.Name = "Ten_ca";
-            this.Ten_ca.ReadOnly = true;
-            this.Ten_ca.Width = 253;
+            this.Ngay_ap_dung.DataPropertyName = "Ngay_ap_dung";
+            this.Ngay_ap_dung.HeaderText = "Ngày áp dụng";
+            this.Ngay_ap_dung.Name = "Ngay_ap_dung";
+            this.Ngay_ap_dung.ReadOnly = true;
+            this.Ngay_ap_dung.Width = 253;
             // 
-            // Gio_bd
+            // Ty_gia
             // 
-            this.Gio_bd.DataPropertyName = "Gio_bd";
-            this.Gio_bd.HeaderText = "Giờ bắt đầu";
-            this.Gio_bd.Name = "Gio_bd";
-            this.Gio_bd.ReadOnly = true;
-            this.Gio_bd.Width = 253;
+            this.Ty_gia.DataPropertyName = "Ty_gia";
+            this.Ty_gia.HeaderText = "Tỷ giá";
+            this.Ty_gia.Name = "Ty_gia";
+            this.Ty_gia.ReadOnly = true;
+            this.Ty_gia.Width = 253;
             // 
-            // Gio_kt
-            // 
-            this.Gio_kt.DataPropertyName = "Gio_kt";
-            this.Gio_kt.HeaderText = "Giờ kết thúc";
-            this.Gio_kt.Name = "Gio_kt";
-            this.Gio_kt.ReadOnly = true;
-            this.Gio_kt.Width = 253;
-            // 
-            // FormCa
+            // TyGia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1056, 583);
+            this.ClientSize = new System.Drawing.Size(803, 583);
             this.Controls.Add(this.dataGridViewX1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
-            this.Name = "FormCa";
+            this.Name = "TyGia";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Quốc Gia";
+            this.Text = "Tỷ giá";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
             this.ResumeLayout(false);
 
@@ -114,9 +104,8 @@
 
 
         private DevComponents.DotNetBar.Controls.DataGridViewX dataGridViewX1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ma_ca;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ten_ca;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Gio_bd;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Gio_kt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ma_nt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ngay_ap_dung;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ty_gia;
     }
 }

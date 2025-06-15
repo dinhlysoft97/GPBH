@@ -69,6 +69,31 @@ namespace GPBH.Business.Services
         }
 
         /// <summary>
+        /// Lấy danh sách Giá ban theo mã cửa hàng.
+        /// </summary>
+        /// <param name="maCH"></param>
+        /// <returns></returns>
+        public List<GiaBanHangHoa> GetGiaBanByCuaHang(string maCuaHang)
+        {
+            using (var scope = _serviceProvider.CreateScope())
+            {
+                var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
+                return unitOfWork.Repository<DMGB>()
+                    .Find(x => x.Ma_cua_hang == maCuaHang)
+                    .OrderByDescending(x => x.Ngay_ap_dung)
+                    .ThenBy(x => x.Ma_hh)
+                    .Select(x => new GiaBanHangHoa
+                    {
+                        Ma_cua_hang = x.Ma_cua_hang,
+                        Ngay_ap_dung = x.Ngay_ap_dung,
+                        Ma_hh = x.Ma_hh,
+                        Gia_ban = x.Gia_ban
+                    })
+                    .ToList();
+            }
+        }
+
+        /// <summary>
         /// Lấy danh sách tham số hệ thống theo mã cửa hàng.
         /// </summary>
         /// <param name="maCH"></param>

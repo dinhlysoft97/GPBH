@@ -24,7 +24,7 @@ namespace GPBH.Business.Services
             using (var scope = _serviceProvider.CreateScope())
             {
                 var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
-                return unitOfWork.Repository<DMHH>().Find(z => z.Ksd).ToList();
+                return unitOfWork.Repository<DMHH>().Find(z => z.Ksd).OrderBy(z => z.Ma_hh).ToList();
             }
         }
 
