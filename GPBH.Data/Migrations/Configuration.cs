@@ -336,6 +336,7 @@ namespace GPBH.Data.Migrations
                     Ma_loai_hinh = "LH01",
                     Ma_doi_tuong = "DT001",
                     Ma_nt = "USD",
+                    Ma_nt_qd = "VND",
                     Han_muc_tm = 15000000,
                     Ma_cqt = "CQT01",
                     Nhap_ttxnc = true
@@ -350,6 +351,7 @@ namespace GPBH.Data.Migrations
                     Ma_loai_hinh = "LH01",
                     Ma_doi_tuong = "DT001",
                     Ma_nt = "MYR",
+                    Ma_nt_qd = "VND",
                     Han_muc_tm = 15000000,
                     Ma_cqt = "CQT01",
                     Nhap_ttxnc = true
