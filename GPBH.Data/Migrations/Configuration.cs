@@ -43,6 +43,65 @@ namespace GPBH.Data.Migrations
 
             // Add SysDMCT
             AddSysDMCT(context);
+
+            // Add To khai HH
+            AddToKhaiHH(context);
+        }
+
+        private void AddToKhaiHH(AppDbContext context)
+        {
+            if (!context.TokhaiHH.Any())
+            {
+                var toKhaiList = new List<TokhaiHH>
+                {
+                    new TokhaiHH
+                    {
+                        Ma_cua_hang = "CH01",
+                        Ma_kho = "KHO01",
+                        So_to_khai = "123",
+                        Ngay_nhap = new DateTime(2025, 6, 1),
+                        Ma_hh = "HH001",
+                        So_luong = 10,
+                        Da_xuat = 0,
+                        Con_lai = 10
+                    },
+                    new TokhaiHH
+                    {
+                        Ma_cua_hang = "CH01",
+                        Ma_kho = "KHO01",
+                        So_to_khai = "456",
+                        Ngay_nhap = new DateTime(2025, 6, 2),
+                        Ma_hh = "HH001",
+                        So_luong = 10,
+                        Da_xuat = 0,
+                        Con_lai = 10
+                    },
+                    new TokhaiHH
+                    {
+                        Ma_cua_hang = "CH01",
+                        Ma_kho = "KHO01",
+                        So_to_khai = "123",
+                        Ngay_nhap = new DateTime(2025, 6, 1),
+                        Ma_hh = "HH002",
+                        So_luong = 5,
+                        Da_xuat = 0,
+                        Con_lai = 5
+                    },
+                    new TokhaiHH
+                    {
+                        Ma_cua_hang = "CH01",
+                        Ma_kho = "KHO01",
+                        So_to_khai = "456",
+                        Ngay_nhap = new DateTime(2025, 6, 2),
+                        Ma_hh = "HH002",
+                        So_luong = 10,
+                        Da_xuat = 0,
+                        Con_lai = 10
+                    },
+                };
+                context.TokhaiHH.AddRange(toKhaiList);
+                context.SaveChanges();
+            }
         }
 
         private void AddSysDMCT(AppDbContext context)
@@ -336,7 +395,7 @@ namespace GPBH.Data.Migrations
 
                     // cài đặt
                     new SysMenu { MenuName = "Tham số", MenuId = "ThamSo", Type = SysMenuType.Setting, Report = false, BasicRight = true, Picture = "", Active = true, Stt = 1 },
-                    new SysMenu { MenuName = "Đổi mật khâu", MenuId = "DoiMatKhau", Type = SysMenuType.Setting, Report = false, BasicRight = true, Picture = "", Active = true, Stt = 2},
+                    new SysMenu { MenuName = "Đổi mật khâu", MenuId = "DoiMatKhau", Type = SysMenuType.Setting, Report = false, BasicRight = true, Picture = "", Active = true, Stt = 2 },
                     new SysMenu { MenuName = "Người dùng", MenuId = "NguoiDung", Type = SysMenuType.Setting, Report = false, BasicRight = true, Picture = "", Active = true, Stt = 3 }
                 );
                 context.SaveChanges();

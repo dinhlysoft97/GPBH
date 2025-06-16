@@ -32,31 +32,38 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.bar1 = new DevComponents.DotNetBar.Bar();
-            this.btnTaoDonHang = new DevComponents.DotNetBar.ButtonX();
-            this.btnSearch = new DevComponents.DotNetBar.ButtonX();
+            this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
+            this.btnXoa = new DevComponents.DotNetBar.ButtonX();
+            this.btnSua = new DevComponents.DotNetBar.ButtonX();
+            this.btnThem = new DevComponents.DotNetBar.ButtonX();
+            this.btnTim = new DevComponents.DotNetBar.ButtonX();
             this.dtDen = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.dtTu = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NameName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewX2 = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Stt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.So_chung_tu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ngay_chung_tu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Passport = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ten_khach = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tong_tien_hang_nt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tong_nhan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tra_lai_nt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ty_gia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ma_cua_hang = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ma_phieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ma_hh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ten_hh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.So_luong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Gia_ban_nt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Gia_ban = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Gg_ty_le = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Gg_tien_nt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Gg_tien = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tien_ban_nt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tien_ban = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -86,7 +93,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.dataGridViewX2);
             this.splitContainer1.Size = new System.Drawing.Size(1339, 775);
-            this.splitContainer1.SplitterDistance = 345;
+            this.splitContainer1.SplitterDistance = 344;
             this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 2;
             // 
@@ -94,8 +101,11 @@
             // 
             this.bar1.AntiAlias = true;
             this.bar1.BackColor = System.Drawing.Color.White;
-            this.bar1.Controls.Add(this.btnTaoDonHang);
-            this.bar1.Controls.Add(this.btnSearch);
+            this.bar1.Controls.Add(this.buttonX1);
+            this.bar1.Controls.Add(this.btnXoa);
+            this.bar1.Controls.Add(this.btnSua);
+            this.bar1.Controls.Add(this.btnThem);
+            this.bar1.Controls.Add(this.btnTim);
             this.bar1.Controls.Add(this.dtDen);
             this.bar1.Controls.Add(this.labelX2);
             this.bar1.Controls.Add(this.dtTu);
@@ -114,31 +124,63 @@
             this.bar1.TabStop = false;
             this.bar1.Text = "bar1";
             // 
-            // btnTaoDonHang
+            // buttonX1
             // 
-            this.btnTaoDonHang.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnTaoDonHang.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnTaoDonHang.Location = new System.Drawing.Point(11, 10);
-            this.btnTaoDonHang.Name = "btnTaoDonHang";
-            this.btnTaoDonHang.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnTaoDonHang.Size = new System.Drawing.Size(84, 23);
-            this.btnTaoDonHang.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnTaoDonHang.TabIndex = 6;
-            this.btnTaoDonHang.Text = "Tạo đơn hàng";
-            this.btnTaoDonHang.Click += new System.EventHandler(this.btnTaoDonHang_Click);
+            this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX1.Location = new System.Drawing.Point(776, 10);
+            this.buttonX1.Name = "buttonX1";
+            this.buttonX1.Size = new System.Drawing.Size(75, 23);
+            this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX1.TabIndex = 10;
+            this.buttonX1.Text = "Xuất Excel";
+            this.buttonX1.Click += new System.EventHandler(this.buttonX1_Click);
             // 
-            // btnSearch
+            // btnXoa
             // 
-            this.btnSearch.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnSearch.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnSearch.Location = new System.Drawing.Point(536, 11);
-            this.btnSearch.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(56, 22);
-            this.btnSearch.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnSearch.TabIndex = 5;
-            this.btnSearch.Text = "Xem";
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            this.btnXoa.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnXoa.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnXoa.Location = new System.Drawing.Point(184, 9);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(75, 23);
+            this.btnXoa.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnXoa.TabIndex = 9;
+            this.btnXoa.Text = "Xóa";
+            // 
+            // btnSua
+            // 
+            this.btnSua.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnSua.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnSua.Location = new System.Drawing.Point(102, 9);
+            this.btnSua.Name = "btnSua";
+            this.btnSua.Size = new System.Drawing.Size(75, 23);
+            this.btnSua.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnSua.TabIndex = 8;
+            this.btnSua.Text = "Sửa";
+            // 
+            // btnThem
+            // 
+            this.btnThem.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnThem.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnThem.Location = new System.Drawing.Point(11, 10);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnThem.Size = new System.Drawing.Size(84, 23);
+            this.btnThem.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnThem.TabIndex = 6;
+            this.btnThem.Text = "Thêm mới";
+            // 
+            // btnTim
+            // 
+            this.btnTim.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnTim.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnTim.Location = new System.Drawing.Point(704, 11);
+            this.btnTim.Margin = new System.Windows.Forms.Padding(2);
+            this.btnTim.Name = "btnTim";
+            this.btnTim.Size = new System.Drawing.Size(56, 22);
+            this.btnTim.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnTim.TabIndex = 5;
+            this.btnTim.Text = "Tìm kiếm";
             // 
             // dtDen
             // 
@@ -150,7 +192,7 @@
             this.dtDen.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
             this.dtDen.ButtonDropDown.Visible = true;
             this.dtDen.IsPopupCalendarOpen = false;
-            this.dtDen.Location = new System.Drawing.Point(372, 11);
+            this.dtDen.Location = new System.Drawing.Point(540, 11);
             this.dtDen.Margin = new System.Windows.Forms.Padding(2);
             // 
             // 
@@ -193,7 +235,7 @@
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX2.ForeColor = System.Drawing.Color.Black;
-            this.labelX2.Location = new System.Drawing.Point(310, 11);
+            this.labelX2.Location = new System.Drawing.Point(478, 11);
             this.labelX2.Margin = new System.Windows.Forms.Padding(2);
             this.labelX2.Name = "labelX2";
             this.labelX2.SingleLineColor = System.Drawing.Color.Empty;
@@ -212,7 +254,7 @@
             this.dtTu.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
             this.dtTu.ButtonDropDown.Visible = true;
             this.dtTu.IsPopupCalendarOpen = false;
-            this.dtTu.Location = new System.Drawing.Point(156, 11);
+            this.dtTu.Location = new System.Drawing.Point(324, 11);
             this.dtTu.Margin = new System.Windows.Forms.Padding(2);
             // 
             // 
@@ -255,7 +297,7 @@
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX1.ForeColor = System.Drawing.Color.Black;
-            this.labelX1.Location = new System.Drawing.Point(100, 11);
+            this.labelX1.Location = new System.Drawing.Point(268, 11);
             this.labelX1.Margin = new System.Windows.Forms.Padding(2);
             this.labelX1.Name = "labelX1";
             this.labelX1.SingleLineColor = System.Drawing.Color.Empty;
@@ -268,20 +310,24 @@
             // 
             this.dataGridViewX1.AllowUserToAddRows = false;
             this.dataGridViewX1.AllowUserToDeleteRows = false;
+            this.dataGridViewX1.AllowUserToResizeColumns = false;
+            this.dataGridViewX1.AllowUserToResizeRows = false;
             this.dataGridViewX1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewX1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ID,
-            this.NameName,
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column6});
+            this.Stt,
+            this.So_chung_tu,
+            this.Ngay_chung_tu,
+            this.Passport,
+            this.Ten_khach,
+            this.Tong_tien_hang_nt,
+            this.Tong_nhan,
+            this.Tra_lai_nt,
+            this.Ty_gia,
+            this.Ma_cua_hang,
+            this.Ma_phieu});
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -296,52 +342,8 @@
             this.dataGridViewX1.Name = "dataGridViewX1";
             this.dataGridViewX1.RowHeadersWidth = 51;
             this.dataGridViewX1.RowTemplate.Height = 24;
-            this.dataGridViewX1.Size = new System.Drawing.Size(1339, 314);
+            this.dataGridViewX1.Size = new System.Drawing.Size(1339, 313);
             this.dataGridViewX1.TabIndex = 0;
-            // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "ID";
-            this.ID.HeaderText = "Số đơn hàng";
-            this.ID.MinimumWidth = 6;
-            this.ID.Name = "ID";
-            // 
-            // NameName
-            // 
-            this.NameName.DataPropertyName = "NameName";
-            this.NameName.HeaderText = "Ngày";
-            this.NameName.MinimumWidth = 6;
-            this.NameName.Name = "NameName";
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Mã khách hàng";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Tên khách hàng";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Tổng tiền hàng";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Khách trả";
-            this.Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Trả lại";
-            this.Column5.Name = "Column5";
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Tủy giá";
-            this.Column6.Name = "Column6";
             // 
             // dataGridViewX2
             // 
@@ -351,17 +353,17 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewX2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewX2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewX2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column10,
-            this.Column11,
-            this.Column12,
-            this.Column13,
-            this.Column14,
-            this.Column15,
-            this.Column16,
-            this.Column7,
-            this.Column8});
+            this.Ma_hh,
+            this.Ten_hh,
+            this.So_luong,
+            this.Gia_ban_nt,
+            this.Gia_ban,
+            this.Gg_ty_le,
+            this.Gg_tien_nt,
+            this.Gg_tien,
+            this.Tien_ban_nt,
+            this.Tien_ban});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -376,60 +378,156 @@
             this.dataGridViewX2.Name = "dataGridViewX2";
             this.dataGridViewX2.RowHeadersWidth = 51;
             this.dataGridViewX2.RowTemplate.Height = 24;
-            this.dataGridViewX2.Size = new System.Drawing.Size(1339, 449);
+            this.dataGridViewX2.Size = new System.Drawing.Size(1339, 452);
             this.dataGridViewX2.TabIndex = 0;
             // 
-            // Column10
+            // Stt
             // 
-            this.Column10.HeaderText = "Mã hàng";
-            this.Column10.MinimumWidth = 6;
-            this.Column10.Name = "Column10";
+            this.Stt.DataPropertyName = "Stt";
+            this.Stt.HeaderText = "Stt";
+            this.Stt.Name = "Stt";
+            this.Stt.ReadOnly = true;
             // 
-            // Column11
+            // So_chung_tu
             // 
-            this.Column11.HeaderText = "Tên hàng";
-            this.Column11.MinimumWidth = 6;
-            this.Column11.Name = "Column11";
+            this.So_chung_tu.DataPropertyName = "So_chung_tu";
+            this.So_chung_tu.HeaderText = "Số đơn hàng";
+            this.So_chung_tu.MinimumWidth = 6;
+            this.So_chung_tu.Name = "So_chung_tu";
             // 
-            // Column12
+            // Ngay_chung_tu
             // 
-            this.Column12.HeaderText = "Số lượng";
-            this.Column12.MinimumWidth = 6;
-            this.Column12.Name = "Column12";
+            this.Ngay_chung_tu.DataPropertyName = "Ngay_chung_tu";
+            this.Ngay_chung_tu.HeaderText = "Ngày";
+            this.Ngay_chung_tu.MinimumWidth = 6;
+            this.Ngay_chung_tu.Name = "Ngay_chung_tu";
             // 
-            // Column13
+            // Passport
             // 
-            this.Column13.HeaderText = "Giá NT";
-            this.Column13.MinimumWidth = 6;
-            this.Column13.Name = "Column13";
+            this.Passport.DataPropertyName = "Passport";
+            this.Passport.HeaderText = "Mã khách hàng";
+            this.Passport.Name = "Passport";
             // 
-            // Column14
+            // Ten_khach
             // 
-            this.Column14.HeaderText = "Giá VND";
-            this.Column14.MinimumWidth = 6;
-            this.Column14.Name = "Column14";
+            this.Ten_khach.DataPropertyName = "Ten_khach";
+            this.Ten_khach.HeaderText = "Tên khách hàng";
+            this.Ten_khach.Name = "Ten_khach";
             // 
-            // Column15
+            // Tong_tien_hang_nt
             // 
-            this.Column15.HeaderText = "% Giá";
-            this.Column15.MinimumWidth = 6;
-            this.Column15.Name = "Column15";
+            this.Tong_tien_hang_nt.DataPropertyName = "Tong_tien_hang_nt";
+            this.Tong_tien_hang_nt.HeaderText = "Tổng tiền hàng";
+            this.Tong_tien_hang_nt.Name = "Tong_tien_hang_nt";
             // 
-            // Column16
+            // Tong_nhan
             // 
-            this.Column16.HeaderText = "Tiền giảm";
-            this.Column16.MinimumWidth = 6;
-            this.Column16.Name = "Column16";
+            this.Tong_nhan.DataPropertyName = "Tong_nhan";
+            this.Tong_nhan.HeaderText = "Khách trả";
+            this.Tong_nhan.Name = "Tong_nhan";
             // 
-            // Column7
+            // Tra_lai_nt
             // 
-            this.Column7.HeaderText = "Tổng tiền NT";
-            this.Column7.Name = "Column7";
+            this.Tra_lai_nt.DataPropertyName = "Tra_lai_nt";
+            this.Tra_lai_nt.HeaderText = "Trả lại";
+            this.Tra_lai_nt.Name = "Tra_lai_nt";
             // 
-            // Column8
+            // Ty_gia
             // 
-            this.Column8.HeaderText = "Tổng tiền VND";
-            this.Column8.Name = "Column8";
+            this.Ty_gia.DataPropertyName = "Ty_gia";
+            this.Ty_gia.HeaderText = "Tủy giá";
+            this.Ty_gia.Name = "Ty_gia";
+            // 
+            // Ma_cua_hang
+            // 
+            this.Ma_cua_hang.DataPropertyName = "Ma_cua_hang";
+            this.Ma_cua_hang.HeaderText = "Ma_cua_hang";
+            this.Ma_cua_hang.Name = "Ma_cua_hang";
+            this.Ma_cua_hang.ReadOnly = true;
+            // 
+            // Ma_phieu
+            // 
+            this.Ma_phieu.DataPropertyName = "Ma_phieu";
+            this.Ma_phieu.HeaderText = "Ma_phieu";
+            this.Ma_phieu.Name = "Ma_phieu";
+            this.Ma_phieu.ReadOnly = true;
+            // 
+            // Ma_hh
+            // 
+            this.Ma_hh.DataPropertyName = "Ma_hh";
+            this.Ma_hh.HeaderText = "Mã hàng";
+            this.Ma_hh.MinimumWidth = 6;
+            this.Ma_hh.Name = "Ma_hh";
+            this.Ma_hh.ReadOnly = true;
+            // 
+            // Ten_hh
+            // 
+            this.Ten_hh.DataPropertyName = "Ten_hh";
+            this.Ten_hh.HeaderText = "Tên hàng";
+            this.Ten_hh.MinimumWidth = 6;
+            this.Ten_hh.Name = "Ten_hh";
+            this.Ten_hh.ReadOnly = true;
+            // 
+            // So_luong
+            // 
+            this.So_luong.DataPropertyName = "So_luong";
+            this.So_luong.HeaderText = "Số lượng";
+            this.So_luong.MinimumWidth = 6;
+            this.So_luong.Name = "So_luong";
+            this.So_luong.ReadOnly = true;
+            // 
+            // Gia_ban_nt
+            // 
+            this.Gia_ban_nt.DataPropertyName = "Gia_ban_nt";
+            this.Gia_ban_nt.HeaderText = "Giá NT";
+            this.Gia_ban_nt.MinimumWidth = 6;
+            this.Gia_ban_nt.Name = "Gia_ban_nt";
+            this.Gia_ban_nt.ReadOnly = true;
+            // 
+            // Gia_ban
+            // 
+            this.Gia_ban.DataPropertyName = "Gia_ban";
+            this.Gia_ban.HeaderText = "Giá VND";
+            this.Gia_ban.MinimumWidth = 6;
+            this.Gia_ban.Name = "Gia_ban";
+            this.Gia_ban.ReadOnly = true;
+            // 
+            // Gg_ty_le
+            // 
+            this.Gg_ty_le.DataPropertyName = "Gg_ty_le";
+            this.Gg_ty_le.HeaderText = "% Giá";
+            this.Gg_ty_le.MinimumWidth = 6;
+            this.Gg_ty_le.Name = "Gg_ty_le";
+            this.Gg_ty_le.ReadOnly = true;
+            // 
+            // Gg_tien_nt
+            // 
+            this.Gg_tien_nt.DataPropertyName = "Gg_tien_nt";
+            this.Gg_tien_nt.HeaderText = "Tiền giảm NT";
+            this.Gg_tien_nt.MinimumWidth = 6;
+            this.Gg_tien_nt.Name = "Gg_tien_nt";
+            this.Gg_tien_nt.ReadOnly = true;
+            // 
+            // Gg_tien
+            // 
+            this.Gg_tien.DataPropertyName = "Gg_tien";
+            this.Gg_tien.HeaderText = "Tiền giảm VND";
+            this.Gg_tien.Name = "Gg_tien";
+            this.Gg_tien.ReadOnly = true;
+            // 
+            // Tien_ban_nt
+            // 
+            this.Tien_ban_nt.DataPropertyName = "Tien_ban_nt";
+            this.Tien_ban_nt.HeaderText = "Tổng tiền NT";
+            this.Tien_ban_nt.Name = "Tien_ban_nt";
+            this.Tien_ban_nt.ReadOnly = true;
+            // 
+            // Tien_ban
+            // 
+            this.Tien_ban.DataPropertyName = "Tien_ban";
+            this.Tien_ban.HeaderText = "Tổng tiền VND";
+            this.Tien_ban.Name = "Tien_ban";
+            this.Tien_ban.ReadOnly = true;
             // 
             // UserControlDonHang
             // 
@@ -462,25 +560,32 @@
         private DevComponents.DotNetBar.LabelX labelX1;
         private DevComponents.Editors.DateTimeAdv.DateTimeInput dtTu;
         private DevComponents.DotNetBar.LabelX labelX2;
-        private DevComponents.DotNetBar.ButtonX btnSearch;
+        private DevComponents.DotNetBar.ButtonX btnTim;
         private DevComponents.Editors.DateTimeAdv.DateTimeInput dtDen;
-        private DevComponents.DotNetBar.ButtonX btnTaoDonHang;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NameName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private DevComponents.DotNetBar.ButtonX btnThem;
+        private DevComponents.DotNetBar.ButtonX btnXoa;
+        private DevComponents.DotNetBar.ButtonX btnSua;
+        private DevComponents.DotNetBar.ButtonX buttonX1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Stt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn So_chung_tu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ngay_chung_tu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Passport;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ten_khach;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tong_tien_hang_nt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tong_nhan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tra_lai_nt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ty_gia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ma_cua_hang;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ma_phieu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ma_hh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ten_hh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn So_luong;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Gia_ban_nt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Gia_ban;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Gg_ty_le;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Gg_tien_nt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Gg_tien;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tien_ban_nt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tien_ban;
     }
 }

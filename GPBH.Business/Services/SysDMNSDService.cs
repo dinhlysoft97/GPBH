@@ -33,13 +33,6 @@ namespace GPBH.Business
                 var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
                 var users = unitOfWork.Repository<SysDMNSD>().GetAll();
                 var dtos = users.Adapt<List<GirdNguoiSuDungDto>>();
-
-                int stt = 1;
-                dtos.ForEach(dto =>
-                {
-                    dto.Stt = stt++;
-                });
-
                 return dtos;
             }
         }

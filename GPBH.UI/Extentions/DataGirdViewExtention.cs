@@ -94,5 +94,16 @@ namespace GPBH.UI.Extentions
             if (grid.Columns.Contains(columnName) && !string.IsNullOrEmpty(format))
                 grid.Columns[columnName].DefaultCellStyle.Format = format;
         }
+
+        public static void SetRowFormat(this DataGridViewRow row, List<string> columnNames, string format = "N0")
+        {
+            if (!row.IsNewRow)
+            {
+                foreach (var col in columnNames)
+                {
+                    row.Cells[col].Style.Format = format;
+                }
+            }
+        }
     }
 }

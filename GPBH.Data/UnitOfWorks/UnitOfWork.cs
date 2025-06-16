@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 
 namespace GPBH.Data.UnitOfWorks
@@ -27,10 +28,10 @@ namespace GPBH.Data.UnitOfWorks
 
         public int SaveChanges() => _context.SaveChanges();
 
-        public void BeginTransaction()
+        public void BeginTransaction(IsolationLevel solationLevel = IsolationLevel.ReadCommitted)
         {
             if (_transaction == null)
-                _transaction = _context.Database.BeginTransaction();
+                _transaction = _context.Database.BeginTransaction(solationLevel);
         }
 
         public void Commit()

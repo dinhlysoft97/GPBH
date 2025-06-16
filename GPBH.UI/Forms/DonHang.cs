@@ -115,6 +115,13 @@ namespace GPBH.UI.Forms
         {
             if (_isEdit && _data != null)
             {
+
+                TyGiaGanNhat = new TyGiaNT
+                {
+                    Ma_nt = _data.Ma_nt,
+                    Ty_gia = _data.Ty_gia.Value
+                };
+
                 this.Text = "Sửa đơn hàng";
                 listChiTiet = new BindingList<XCT5Dto>(_data.XCT5s);
                 LoadDataCombobox();
@@ -156,11 +163,6 @@ namespace GPBH.UI.Forms
                 txtTong_giam_gia_nt.Value = (double)_data.Tong_giam_gia_nt;
                 txtTong_thu_nt.Value = (double)_data.Tong_thu_nt;
 
-                TyGiaGanNhat = new TyGiaNT
-                {
-                    Ma_nt = _data.Ma_nt,
-                    Ty_gia = _data.Ty_gia.Value
-                };
 
                 if (_data.XCT5s != null)
                 {
@@ -495,7 +497,6 @@ namespace GPBH.UI.Forms
                 MessageBoxEx.Show("Câp nhật số chừng từ thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 lbSoChungTu.Text = $"{data.So_chung_tu}";
                 lbMaPhieu.Text = $"{data.Ma_phieu}";
-                OpenEditForm(data); // Mở lại form cho phép sửa tiếp
             }
         }
 

@@ -41,6 +41,17 @@ namespace GPBH.UI.Helper
             public InternalHelper(DataGridView grid, IList<T> data)
             {
                 this.grid = grid;
+
+                var sttProperty = typeof(T).GetProperty("Stt");
+                if (sttProperty != null && sttProperty.CanWrite)
+                {
+                    int stt = 1;
+                    foreach (var item in data)
+                    {
+                        sttProperty.SetValue(item, stt++);
+                    }
+                }
+
                 this.sourceData = data;
                 this.propertyNames = typeof(T).GetProperties().Select(p => p.Name).ToList();
             }
@@ -411,7 +422,7 @@ namespace GPBH.UI.Helper
                         col.Visible = state.Visible;
                         col.ReadOnly = state.ReadOnly;
                         col.DisplayIndex = state.DisplayIndex;
-                        col.SortMode = col.SortMode != DataGridViewColumnSortMode.NotSortable ? state.SortMode  : DataGridViewColumnSortMode.NotSortable;
+                        col.SortMode = col.SortMode != DataGridViewColumnSortMode.NotSortable ? state.SortMode : DataGridViewColumnSortMode.NotSortable;
                         col.DefaultCellStyle.Format = state.Format;
                         col.HeaderText = state.HeaderText;
                     }

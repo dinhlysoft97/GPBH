@@ -141,7 +141,7 @@ namespace GPBH.UI
             switch (key)
             {
                 case "DonHang":
-                    uc = new UserControlDonHang();
+                    uc = ActivatorUtilities.CreateInstance<UserControlDonHang>(Program.ServiceProvider);
                     break;
                 case "BanHangTheoKhachHang":
                     uc = new UserControlBanHangTheoKhachHang();
