@@ -20,14 +20,15 @@ namespace GPBH.UI.UserControls
         private readonly DonHangService _donHangService;
         private readonly SysDMCuaHangService _sysDMCuaHangService;
         private SysDMCuaHang CuaHang;
+        private int _lastRowIndex = -1;
 
         public UserControlDonHang(DonHangService donHangService, SysDMCuaHangService sysDMCuaHangService)
         {
             _donHangService = donHangService;
             _sysDMCuaHangService = sysDMCuaHangService;
+            CuaHang = _sysDMCuaHangService.GetByMaCuaHang(AppGlobals.MaCH);
             InitializeComponent();
             InitializeUI();
-            CuaHang = _sysDMCuaHangService.GetByMaCuaHang(AppGlobals.MaCH);
         }
 
         #endregion
@@ -50,7 +51,7 @@ namespace GPBH.UI.UserControls
         private void RegisterEvents()
         {
             dataGridViewX1.CellDoubleClick += DataGridViewX1_CellDoubleClick;
-            dataGridViewX1.CellClick += DataGridViewX1_CellClick;
+            dataGridViewX1.SelectionChanged += DataGridViewX1_SelectionChanged;
             dataGridViewX1.KeyDown += DataGridViewX1_KeyDown;
             btnThem.Click += BtnThem_Click;
             btnSua.Click += BtnSua_Click;
@@ -293,20 +294,30 @@ namespace GPBH.UI.UserControls
         }
 
         /// <summary>
-        /// Click vào cell (ví dụ cột phân quyền) để mở form phân quyền.
+        /// Xử lý sự kiện khi chọn một dòng trong DataGridView.
         /// </summary>
-        private void DataGridViewX1_CellClick(object sender, DataGridViewCellEventArgs e)
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DataGridViewX1_SelectionChanged(object sender, EventArgs e)
         {
-            if (e.RowIndex > 0 && e.ColumnIndex >= 0)
+            var curRow = dataGridViewX1.CurrentRow;
+            // Bỏ qua dòng filter (dòng đầu), và những trường hợp không hợp lệ
+            if (curRow == null || curRow.IsNewRow || curRow.Index == 0)
+                return;
+            if (_lastRowIndex == curRow.Index)
+                return; // Không chuyển row, bỏ qua
+
+            _lastRowIndex = curRow.Index; // Cập nhật index
+
+            var row = curRow.DataBoundItem as GirdDonHangDto;
+            if (row == null) return;
+
+            var maCH = row.Ma_cua_hang;
+            if (!string.IsNullOrEmpty(maCH))
             {
-                var row = dataGridViewX1.Rows[e.RowIndex].DataBoundItem as GirdDonHangDto;
-                var maCH = row.Ma_cua_hang;
-                if (!string.IsNullOrEmpty(maCH))
-                {
-                    var maPhieu = row.Ma_phieu;
-                    dataGridViewX2.BindData(_donHangService.GetDonHangChiTiet(maPhieu));
-                    SetFormRowChiTietTheoCuaHang(maCH);
-                }
+                var maPhieu = row.Ma_phieu;
+                dataGridViewX2.BindData(_donHangService.GetDonHangChiTiet(maPhieu));
+                SetFormRowChiTietTheoCuaHang(maCH);
             }
         }
         #endregion

@@ -32,6 +32,8 @@ namespace GPBH.Business.Services
                 var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
                 return unitOfWork.Repository<XPH5>()
                     .Find(x => x.Ngay_chung_tu >= tuNgay && x.Ngay_chung_tu <= denNgay)
+                    .OrderByDescending(z=>z.Ngay_chung_tu)
+                    .OrderByDescending(z=>z.So_chung_tu)
                     .Select(x => x.Adapt<GirdDonHangDto>())
                     .ToList();
             }

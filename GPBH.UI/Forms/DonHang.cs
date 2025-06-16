@@ -15,6 +15,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Windows.Forms;
 using static GPBH.UI.UserControls.ucHangHoa;
 
@@ -80,7 +81,6 @@ namespace GPBH.UI.Forms
             InitializeComponent();
             // Đặt thuộc tính KeyPreview của Form là true trong Designer hoặc trong code
             this.KeyPreview = true;
-
             _data = data;
             _isEdit = data != null;
             _dMQGService = dMQGService;
@@ -91,6 +91,7 @@ namespace GPBH.UI.Forms
             _donHangService = donHangService;
             _dMKHService = dMKHService;
             _sysDinh_Dang_FormService = sysDinh_Dang_FormService;
+            CuaHang = _sysDMCuaHangService.GetByMaCuaHang(AppGlobals.MaCH);
             SysDinhDangs = _sysDinh_Dang_FormService.GetDinhDang(AppGlobals.MaCH);
             SetUpUI();
             if (!_isEdit)
@@ -99,7 +100,6 @@ namespace GPBH.UI.Forms
                 LoadDataEdit();
             InitUcHangHoaPopup();
             RegisterEvents();
-            CuaHang = _sysDMCuaHangService.GetByMaCuaHang(AppGlobals.MaCH);
             isCurrencyVND = CuaHang.Ma_nt == GPBHConstant.CurrencyVND;
         }
         #endregion
@@ -134,6 +134,8 @@ namespace GPBH.UI.Forms
                 lbTenDangNhap.Text = _data.Nguoi_tao;
                 lbQuay.Text = _data.Ma_quay;
                 lbCa.Text = AppGlobals.MaCa;
+                lbMST.Text = _data.Ma_cqt;
+                lnSHD.Text = _data.So_hddt;
 
                 txtTQDVND.Value = (double)_data.Tong_thu_nt * (double)_data.Ty_gia;
                 lbTGNT.Text = $"{_data.Ma_nt}: {TyGiaGanNhat.Ty_gia.ToString(GetFormat("Format_tien"))}";
@@ -289,6 +291,8 @@ namespace GPBH.UI.Forms
             lbTenDangNhap.Text = AppGlobals.CurrentUser?.TenDangNhap;
             lbQuay.Text = AppGlobals.MaQuay;
             lbCa.Text = AppGlobals.MaCa;
+            lbMST.Text = CuaHang?.Ma_cqt ?? string.Empty;
+            lnSHD.Text = string.Empty;
         }
 
         /// <summary>
