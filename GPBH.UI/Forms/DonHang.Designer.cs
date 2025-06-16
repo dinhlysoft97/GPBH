@@ -878,7 +878,7 @@ namespace GPBH.UI.Forms
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 58.89792F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.10208F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 332F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 375F));
             this.tableLayoutPanel2.Controls.Add(this.groupPanel4, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.groupPanel6, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.groupPanel5, 2, 0);
@@ -919,7 +919,7 @@ namespace GPBH.UI.Forms
             this.groupPanel4.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel4.Location = new System.Drawing.Point(3, 3);
             this.groupPanel4.Name = "groupPanel4";
-            this.groupPanel4.Size = new System.Drawing.Size(638, 187);
+            this.groupPanel4.Size = new System.Drawing.Size(613, 187);
             // 
             // 
             // 
@@ -1277,9 +1277,9 @@ namespace GPBH.UI.Forms
             this.groupPanel6.Controls.Add(this.lbTTH);
             this.groupPanel6.Controls.Add(this.labelX22);
             this.groupPanel6.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel6.Location = new System.Drawing.Point(647, 3);
+            this.groupPanel6.Location = new System.Drawing.Point(622, 3);
             this.groupPanel6.Name = "groupPanel6";
-            this.groupPanel6.Size = new System.Drawing.Size(443, 187);
+            this.groupPanel6.Size = new System.Drawing.Size(425, 187);
             // 
             // 
             // 
@@ -1507,7 +1507,7 @@ namespace GPBH.UI.Forms
             this.groupPanel5.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.groupPanel5.Controls.Add(this.lbQuyDoiTienTe);
             this.groupPanel5.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel5.Location = new System.Drawing.Point(1096, 3);
+            this.groupPanel5.Location = new System.Drawing.Point(1053, 3);
             this.groupPanel5.Name = "groupPanel5";
             this.groupPanel5.Size = new System.Drawing.Size(312, 187);
             // 

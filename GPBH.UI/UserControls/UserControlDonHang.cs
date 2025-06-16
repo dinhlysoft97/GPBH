@@ -2,6 +2,7 @@
 using GPBH.Business;
 using GPBH.Business.Dtos;
 using GPBH.Business.Services;
+using GPBH.Data.Entities;
 using GPBH.UI.Extentions;
 using GPBH.UI.Forms;
 using GPBH.UI.Helper;
@@ -18,6 +19,7 @@ namespace GPBH.UI.UserControls
 
         private readonly DonHangService _donHangService;
         private readonly SysDMCuaHangService _sysDMCuaHangService;
+        private SysDMCuaHang CuaHang;
 
         public UserControlDonHang(DonHangService donHangService, SysDMCuaHangService sysDMCuaHangService)
         {
@@ -25,6 +27,7 @@ namespace GPBH.UI.UserControls
             _sysDMCuaHangService = sysDMCuaHangService;
             InitializeComponent();
             InitializeUI();
+            CuaHang = _sysDMCuaHangService.GetByMaCuaHang(AppGlobals.MaCH);
         }
 
         #endregion
@@ -136,6 +139,10 @@ namespace GPBH.UI.UserControls
             // Kiểm tra nếu không có cột nào thì không cần làm gì 
             if (dataGridViewX1.Columns.Count == 0) return;
 
+            dataGridViewX2.Columns["Gia_ban_nt"].HeaderText = $"Giá {CuaHang.Ma_nt}";
+            dataGridViewX2.Columns["Gg_tien_nt"].HeaderText = $"Tiền giảm {CuaHang.Ma_nt}";
+            dataGridViewX2.Columns["Tien_ban_nt"].HeaderText = $"Thành tiền {CuaHang.Ma_nt}";
+
             // Canh giữa header
             dataGridViewX1.SetHeaderAlignment("Stt", DataGridViewContentAlignment.MiddleCenter);
             dataGridViewX1.Columns["Ma_cua_hang"].Visible = false;
@@ -149,10 +156,6 @@ namespace GPBH.UI.UserControls
 
             // lưới detail
             if (dataGridViewX2.Columns.Count == 0) return;
-
-            dataGridViewX2.Columns["Gia_ban_nt"].HeaderText = $"Giá {AppGlobals.DMCuaHang.Ma_nt}";
-            dataGridViewX2.Columns["Gg_tien_nt"].HeaderText = $"Tiền giảm {AppGlobals.DMCuaHang.Ma_nt}";
-            dataGridViewX2.Columns["Tien_ban_nt"].HeaderText = $"Thành tiền {AppGlobals.DMCuaHang.Ma_nt}";
 
             dataGridViewX2.SetDisplayIndex("Ma_hh", 0);
             dataGridViewX2.SetDisplayIndex("Ten_hh", 1);

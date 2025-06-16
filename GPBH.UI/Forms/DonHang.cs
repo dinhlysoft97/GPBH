@@ -51,13 +51,14 @@ namespace GPBH.UI.Forms
 
         private List<DMNT> _dMNTs = new List<DMNT>();
         private TyGiaNT TyGiaGanNhat;
+        private SysDMCuaHang CuaHang;
         private bool _isChangeTien = false;
         private bool _isEdit = false;
         private XPH5Dto _data;
 
         private BindingList<XCT5Dto> listChiTiet = new BindingList<XCT5Dto>();
         private List<GirdSysDinhDangFormDto> SysDinhDangs;
-        private static bool isCurrencyVND => AppGlobals.DMCuaHang.Ma_nt == GPBHConstant.CurrencyVND;
+        private readonly bool isCurrencyVND;
         #endregion
 
         #region Constructor
@@ -98,6 +99,8 @@ namespace GPBH.UI.Forms
                 LoadDataEdit();
             InitUcHangHoaPopup();
             RegisterEvents();
+            CuaHang = _sysDMCuaHangService.GetByMaCuaHang(AppGlobals.MaCH);
+            isCurrencyVND = CuaHang.Ma_nt == GPBHConstant.CurrencyVND;
         }
         #endregion
 
@@ -132,7 +135,7 @@ namespace GPBH.UI.Forms
                 lbQuay.Text = _data.Ma_quay;
                 lbCa.Text = AppGlobals.MaCa;
 
-                txtTQDVND.Value = (double)_data.Ty_gia;
+                txtTQDVND.Value = (double)_data.Tong_thu_nt * (double)_data.Ty_gia;
                 lbTGNT.Text = $"{_data.Ma_nt}: {TyGiaGanNhat.Ty_gia.ToString(GetFormat("Format_tien"))}";
 
                 lbSoChungTu.Text = _data.So_chung_tu;
@@ -163,7 +166,6 @@ namespace GPBH.UI.Forms
                 txtTong_giam_gia_nt.Value = (double)_data.Tong_giam_gia_nt;
                 txtTong_thu_nt.Value = (double)_data.Tong_thu_nt;
 
-
                 if (_data.XCT5s != null)
                 {
                     dataGridViewX1.DataSource = listChiTiet;
@@ -176,11 +178,11 @@ namespace GPBH.UI.Forms
             dataGridViewX1.SetHeaderAlignment("Stt", DataGridViewContentAlignment.MiddleCenter);
 
             // hiển thị tiền ngoại tệ
-            dataGridViewX1.Columns["Gia_ban_nt"].HeaderText = $"Giá {AppGlobals.DMCuaHang.Ma_nt}";
-            dataGridViewX1.Columns["Gg_tien_nt"].HeaderText = $"Tiền giảm {AppGlobals.DMCuaHang.Ma_nt}";
-            dataGridViewX1.Columns["Tien_ban_nt"].HeaderText = $"Thành tiền {AppGlobals.DMCuaHang.Ma_nt}";
+            dataGridViewX1.Columns["Gia_ban_nt"].HeaderText = $"Giá {CuaHang.Ma_nt}";
+            dataGridViewX1.Columns["Gg_tien_nt"].HeaderText = $"Tiền giảm {CuaHang.Ma_nt}";
+            dataGridViewX1.Columns["Tien_ban_nt"].HeaderText = $"Thành tiền {CuaHang.Ma_nt}";
             lbQuyDoiTienTe.Text = $"";
-            lbTT1.Text = lbTT2.Text = lbTT3.Text = lbTTH.Text = lbTTT.Text = lbGiamGia.Text = lbTongThu.Text = lbTraLai.Text = $"({AppGlobals.DMCuaHang.Ma_nt})";
+            lbTT1.Text = lbTT2.Text = lbTT3.Text = lbTTH.Text = lbTTT.Text = lbGiamGia.Text = lbTongThu.Text = lbTraLai.Text = $"({CuaHang.Ma_nt})";
 
             // Thiết lập các cột hiển thị trong DataGridViewX
             dataGridViewX1.SetDisplayIndex("Stt", 0);
@@ -333,6 +335,7 @@ namespace GPBH.UI.Forms
             dataGridViewX1.EditingControlShowing += dataGridView1_EditingControlShowing;
             ucHangHoaPopup.HangHoaSelected += UcHangHoaPopup_HangHoaSelected;
             ucHangHoa.HangHoaSelected += UcHangHoaPopup_HangHoaSelected;
+            ucHangHoa.TbChange += TbHH_Change;
             dataGridViewX1.RowsRemoved += dataGridViewX1_RowsRemoved;
             dataGridViewX1.CellEndEdit += new DataGridViewCellEventHandler(dataGridViewX1_CellEndEdit);
 
@@ -443,6 +446,13 @@ namespace GPBH.UI.Forms
         /// <returns></returns>
         private bool ValidatorData()
         {
+            if (string.IsNullOrEmpty(txtCCCD.Text.Trim()) || string.IsNullOrEmpty(txtQuocTinh.Text.Trim()) || string.IsNullOrEmpty(txtTenKhachHang.Text.Trim()))
+            {
+                MessageBoxEx.Show("Vui lòng nhập thông tin khách hàng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                LoadFormKhachHang(string.Empty);
+                return false;
+            }
+
             if (listChiTiet.Count == 0)
             {
                 MessageBoxEx.Show("Vui lòng thêm ít nhất một mặt hàng trước khi lưu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -450,11 +460,37 @@ namespace GPBH.UI.Forms
                     ucHangHoa.ShowDropDown();
                 return false;
             }
+            else
+            {
+                foreach (DataGridViewRow item in dataGridViewX1.Rows)
+                {
+                    // Đảm bảo không phải dòng mới (add new row)
+                    if (item.IsNewRow) continue;
+                    var row = item.DataBoundItem as XCT5Dto;
+                    var maHang = row.Ma_hh?.ToString().Trim() ?? string.Empty;
+                    if (string.IsNullOrEmpty(maHang))
+                    {
+                        MessageBox.Show("Mã hàng không được để trống!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        dataGridViewX1.CurrentCell = item.Cells["Ma_hh"];
+                        dataGridView1_EditingControlShowing(null, null);
+                        return false;
+                    }
+                }
+            }
 
             if (txtTra_lai_nt.Value < 0)
             {
                 MessageBoxEx.Show("Tổng trả đang bị âm!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtTra_lai_nt.Focus();
+                return false;
+            }
+
+            // check hạn mức
+            var tongTienThanhToan = (decimal)txtTt_tong.Value * (_data != null ? _data.Ty_gia : TyGiaGanNhat.Ty_gia);
+            if (tongTienThanhToan > CuaHang.Han_muc_tm)
+            {
+                MessageBoxEx.Show($"Hạn mức thanh toán tối đa là {CuaHang.Han_muc_tm.ToString(GetFormat("Format_tien"))} {CuaHang.Ma_nt_qd}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtTong_nhan.Focus();
                 return false;
             }
 
@@ -533,7 +569,7 @@ namespace GPBH.UI.Forms
                 Ma_nt = TyGiaGanNhat.Ma_nt,
                 Ty_gia = TyGiaGanNhat.Ty_gia,
                 Ma_quay = AppGlobals.MaQuay,
-                Ma_cqt = AppGlobals.DMCuaHang.Ma_cqt,
+                Ma_cqt = CuaHang.Ma_cqt,
                 Xuat_hddt = false,
                 So_hddt = string.Empty,
                 Xuat_hq = false,
@@ -588,9 +624,9 @@ namespace GPBH.UI.Forms
             donHangDto.Han_muc = khachHang.Han_muc;
 
             // Cửa hàng
-            donHangDto.Ma_nhom_kh = AppGlobals.DMCuaHang.Ma_nhom_kh;
-            donHangDto.Ma_loai_hinh = AppGlobals.DMCuaHang.Ma_loai_hinh;
-            donHangDto.Ma_doi_tuong = AppGlobals.DMCuaHang.Ma_doi_tuong;
+            donHangDto.Ma_nhom_kh = CuaHang.Ma_nhom_kh;
+            donHangDto.Ma_loai_hinh = CuaHang.Ma_loai_hinh;
+            donHangDto.Ma_doi_tuong = CuaHang.Ma_doi_tuong;
             return donHangDto;
         }
 
@@ -620,7 +656,7 @@ namespace GPBH.UI.Forms
 
             decimal.TryParse(txtTra_lai_nt.Text, out decimal soTienTraLaiNT);
 
-            if (tyGia.Ma_nt == AppGlobals.DMCuaHang.Ma_nt)
+            if (tyGia.Ma_nt == CuaHang.Ma_nt)
             {
                 txtTra_lai.Value = (double)soTienTraLaiNT;
             }
@@ -630,7 +666,7 @@ namespace GPBH.UI.Forms
                 txtTra_lai.Value = (double)soTienNT;
             }
 
-            lbQuyDoiTienTe.Text = $"{txtTra_lai_nt.Text} {AppGlobals.DMCuaHang.Ma_nt} =  {txtTra_lai.Value.ToString(GetFormat("Format_tien"))} {maNT}";
+            lbQuyDoiTienTe.Text = $"{txtTra_lai_nt.Text} {CuaHang.Ma_nt} =  {txtTra_lai.Value.ToString(GetFormat("Format_tien"))} {maNT}";
         }
 
         private void NgoaiTe1_TextChanged(object sender, EventArgs e)
@@ -692,7 +728,7 @@ namespace GPBH.UI.Forms
                 if (tyGia == null)
                     return;
 
-                if (tyGia.Ma_nt == AppGlobals.DMCuaHang.Ma_nt)
+                if (tyGia.Ma_nt == CuaHang.Ma_nt)
                 {
                     txtTt_tien_2.Value = txtTt_tien_1.Value;
                 }
@@ -726,7 +762,7 @@ namespace GPBH.UI.Forms
                 if (tyGia == null)
                     return;
 
-                if (tyGia.Ma_nt == AppGlobals.DMCuaHang.Ma_nt)
+                if (tyGia.Ma_nt == CuaHang.Ma_nt)
                 {
                     txtTt_tien_2.Value = txtTt_tien_1.Value;
                 }
@@ -805,6 +841,12 @@ namespace GPBH.UI.Forms
                 existed.So_luong += 1;
                 TinhToanRow(existed);
             }
+            else if (listChiTiet.Any(z => z.Ma_hh == null))
+            {
+                var rowNull = listChiTiet.FirstOrDefault(x => x.Ma_hh == null);
+                rowNull.Ma_hh = e.MaHH;
+                TinhToanRow(rowNull);
+            }
             else
             {
                 var newItem = new XCT5Dto
@@ -858,21 +900,21 @@ namespace GPBH.UI.Forms
         private void TinhToanRow(XCT5Dto item)
         {
             // get Giá bán
-            var giaBanHH = _dMHHService.GiaBanHangHoa(item.Ma_hh, AppGlobals.DMCuaHang.Ma_nt);
-            if (giaBanHH == null)
-            {
-                MessageBoxEx.Show($"Không tìm thấy giá bán cho hàng hóa {item.Ma_hh} trong ngày {DateTime.Now.ToShortDateString()}");
-                return;
-            }
+            var giaBanHH = _dMHHService.GiaBanHangHoa(item.Ma_hh, CuaHang.Ma_nt);
+            //if (giaBanHH == null)
+            //{
+            //    MessageBoxEx.Show($"Không tìm thấy giá bán cho hàng hóa {item.Ma_hh} trong ngày {DateTime.Now.ToShortDateString()}");
+            //    return;
+            //}
 
-            if (giaBanHH?.TyGiaNT == null)
-            {
-                MessageBoxEx.Show($"Không tìm thấy tỷ giá trong ngày {DateTime.Now.ToShortDateString()}");
-                return;
-            }
+            //if (giaBanHH?.TyGiaNT == null)
+            //{
+            //    MessageBoxEx.Show($"Không tìm thấy tỷ giá trong ngày {DateTime.Now.ToShortDateString()}");
+            //    return;
+            //}
 
             var giaNT = giaBanHH?.Gia_ban ?? 0;
-            var giaVND = giaBanHH?.Gia_ban * giaBanHH.TyGiaNT.Ty_gia;
+            var giaVND = giaBanHH?.Gia_ban ?? 0 * giaBanHH?.TyGiaNT?.Ty_gia ?? 0;
 
             item.Gia_ban_nt = giaNT;
             item.Gia_ban = giaVND;
@@ -887,7 +929,7 @@ namespace GPBH.UI.Forms
 
                 var thanhTienNT = item.So_luong * item.Gia_ban_nt - tienGiamNT;
                 item.Tien_ban_nt = thanhTienNT;
-                item.Tien_ban = thanhTienNT * giaBanHH.TyGiaNT.Ty_gia;
+                item.Tien_ban = thanhTienNT * giaBanHH?.TyGiaNT?.Ty_gia ?? 0;
             }
 
             dataGridViewX1.Refresh();
@@ -922,6 +964,22 @@ namespace GPBH.UI.Forms
         #region Event Handlers
 
         /// <summary>
+        /// Xử lý sự kiện khi thay đổi giá trị trong TextBox hàng hóa (ucHangHoa).
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TbHH_Change(object sender, TextBoxEventArgs e)
+        {
+            ucHangHoaPopup.Tb.Text = e.Text;
+            if (ucHangHoaPopup.Visible)
+            {
+                ucHangHoaPopup.Visible = false;
+                ucHangHoaPopup.TsDropDown.Close();
+            }
+            ucHangHoaPopup.TsDropDown.Close();
+        }
+
+        /// <summary>
         /// Xử lý sự kiện khi chọn hàng hóa trên popup.
         /// </summary>
         private void UcHangHoaPopup_HangHoaSelected(object sender, HangHoaSelectedEventArgs e)
@@ -952,8 +1010,8 @@ namespace GPBH.UI.Forms
         /// </summary>
         private void UcHangHoaOnClick(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(ucHangHoa.Tb.Text))
-                ucHangHoa.ShowDropDown();
+            //if (!string.IsNullOrEmpty(ucHangHoa.Tb.Text))
+            ucHangHoa.ShowDropDown();
         }
 
         /// <summary>

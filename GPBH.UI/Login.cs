@@ -72,7 +72,6 @@ namespace GPBH.UI
             {
                 // Đăng nhập thành công
                 AppGlobals.CurrentUser = user;
-                AppGlobals.DMCuaHang = _storeService.GetByMaCuaHang(AppGlobals.MaCH);
                 AppGlobals.TgDangNhap = DateTime.Now;
 
                 // Khởi tạo và show MainForm bằng DI
