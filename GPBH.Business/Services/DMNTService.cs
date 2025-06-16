@@ -1,4 +1,5 @@
-﻿using GPBH.Data.Entities;
+﻿using GPBH.Business.Dtos;
+using GPBH.Data.Entities;
 using GPBH.Data.UnitOfWorks;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -26,6 +27,20 @@ namespace GPBH.Business.Services
             }
         }
 
+        public List<GridNgoaiTe> GetAllGrid()
+        {
+            // Tạo scope mới, lấy UnitOfWork mới mỗi lần gọi
+            using (var scope = _serviceProvider.CreateScope())
+            {
+                var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
+                return unitOfWork.Repository<DMNT>().GetAll().Where(z => z.Ksd).OrderBy(z => z.Ma_nt)
+                                   .Select(z => new GridNgoaiTe
+                                   {
+                                       Ma_nt = z.Ma_nt,
+                                   })
+                                   .ToList();
+            }
+        }
         public DMNT GetByMaNgoaiTe(string maNT)
         {
             // Tạo scope mới, lấy UnitOfWork mới mỗi lần gọi

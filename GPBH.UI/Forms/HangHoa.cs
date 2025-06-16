@@ -24,8 +24,8 @@ namespace GPBH.UI.Forms
 
         private void LoadData()
         {
-            var caList = _dmHHService.GetAll();
-            DataGridViewFilterHelper.ApplyFilter(dataGridViewX1, caList);
+            var hhList = _dmHHService.GetAllGrid();
+            DataGridViewFilterHelper.ApplyFilter(dataGridViewX1, hhList);
         }
     }
 }

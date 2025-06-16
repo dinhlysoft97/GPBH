@@ -27,9 +27,6 @@ namespace GPBH.Business.Services
                     .Select(z => new GridKhachHang
                     {
                         Passport = z.Passport,
-                        Ho = z.Ho,
-                        Ten_dem = z.Ten_dem,
-                        Ten = z.Ten,
                         Ngay_cap = z.Ngay_cap,
                         Ngay_hh = z.Ngay_hh,
                         Quoc_gia = z.Quoc_gia,
@@ -42,7 +39,9 @@ namespace GPBH.Business.Services
                         Xnc_ngay_hh = z.Xnc_ngay_hh,
                         So_hieu = z.So_hieu,
                         Ten_tau_bay = z.Ten_tau_bay,
-                        Han_muc = z.Han_muc
+                        Han_muc = z.Han_muc,
+                        Ho_Ten = $"{z.Ho} {z.Ten_dem} {z.Ten}".Trim()
+
                     })
                     .OrderBy(z => z.Passport)
                     .ToList();

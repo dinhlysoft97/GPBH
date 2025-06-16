@@ -98,7 +98,6 @@ namespace GPBH.UI.UserControls
             this.dataGridViewX1.RowTemplate.Height = 24;
             this.dataGridViewX1.Size = new System.Drawing.Size(1447, 736);
             this.dataGridViewX1.TabIndex = 3;
-            dataGridViewX1.AutoGenerateColumns = false;
             dataGridViewX1.ScrollBars = ScrollBars.Both;
             // 
             // Ma_ca

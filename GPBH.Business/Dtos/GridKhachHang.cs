@@ -9,9 +9,6 @@ namespace GPBH.Business.Dtos
     public class GridKhachHang
     {
         public string Passport { get; set; }         // Passport/CCCD (PK)
-        public string Ho { get; set; }               // Họ
-        public string Ten_dem { get; set; }          // Tên đệm
-        public string Ten { get; set; }              // Tên
         public DateTime? Ngay_cap { get; set; }      // Ngày cấp
         public DateTime? Ngay_hh { get; set; }       // Ngày hết hạn
         public string Quoc_gia { get; set; }         // Quốc gia
@@ -36,12 +33,7 @@ namespace GPBH.Business.Dtos
         // Hạn mức
         public decimal? Han_muc { get; set; }
 
-        public string Ho_Ten
-        {
-            get
-            {
-                return $"{Ho} {Ten_dem} {Ten}".Trim();
-            }
-        }
+        public string Ho_Ten { get; set; }
+
     }
 }

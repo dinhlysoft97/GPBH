@@ -24,7 +24,7 @@ namespace GPBH.UI.Forms
 
         private void LoadData()
         {
-            var ngoaiteList = _dmNTService.GetAll();
+            var ngoaiteList = _dmNTService.GetAllGrid();
             DataGridViewFilterHelper.ApplyFilter(dataGridViewX1, ngoaiteList);
         }
     }

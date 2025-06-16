@@ -138,9 +138,7 @@ namespace GPBH.UI.UserControls
 
             var filtered = allList.Where(x =>
                 (!string.IsNullOrEmpty(x.Passport) && x.Passport.ToLower().Contains(keyword)) ||
-                (!string.IsNullOrEmpty(x.Ho) && x.Ho.ToLower().Contains(keyword)) ||
-                (!string.IsNullOrEmpty(x.Ten_dem) && x.Ten_dem.ToLower().Contains(keyword)) ||
-                (!string.IsNullOrEmpty(x.Ten) && x.Ten.ToLower().Contains(keyword)) ||
+                (!string.IsNullOrEmpty(x.Ho_Ten) && x.Ho_Ten.ToLower().Contains(keyword)) ||             
                 (!string.IsNullOrEmpty(x.Dien_thoai) && x.Dien_thoai.ToLower().Contains(keyword)) ||
                 (!string.IsNullOrEmpty(x.Email) && x.Email.ToLower().Contains(keyword)) ||
                 (!string.IsNullOrEmpty(x.Dia_chi) && x.Dia_chi.ToLower().Contains(keyword))
