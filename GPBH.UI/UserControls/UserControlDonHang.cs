@@ -89,6 +89,8 @@ namespace GPBH.UI.UserControls
 
         public void SetFormRowTheoCuaHang()
         {
+            dataGridViewX1.Columns["Ma_cua_hang"].Visible = false;
+            dataGridViewX1.Columns["Ma_Phieu"].Visible = false;
             int index = 0;
             foreach (DataGridViewRow row in dataGridViewX1.Rows)
             {
@@ -146,8 +148,7 @@ namespace GPBH.UI.UserControls
 
             // Canh giữa header
             dataGridViewX1.SetHeaderAlignment("Stt", DataGridViewContentAlignment.MiddleCenter);
-            dataGridViewX1.Columns["Ma_cua_hang"].Visible = false;
-            dataGridViewX1.Columns["Ma_Phieu"].Visible = false;
+     
 
             // Sắp xếp vị trí các cột
             SetColumnDisplayIndex();
@@ -194,7 +195,7 @@ namespace GPBH.UI.UserControls
             dataGridViewX1.SetDisplayIndex("Tra_lai_nt", 7);
             dataGridViewX1.SetDisplayIndex("Ty_gia", 8);
             dataGridViewX1.SetDisplayIndex("Ma_cua_hang", 9);
-            dataGridViewX1.SetDisplayIndex("Ma_Phieu", 9);
+            dataGridViewX1.SetDisplayIndex("Ma_Phieu", 10);
         }
 
         /// <summary>

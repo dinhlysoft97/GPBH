@@ -91,6 +91,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppGlobals.cs" />
+    <Compile Include="Dtos\CuaHangDto.cs" />
     <Compile Include="Dtos\GiaBanHangHoa.cs" />
     <Compile Include="Dtos\GirdDonHangChiTietDto.cs" />
     <Compile Include="Dtos\GirdDonHangDto.cs" />
@@ -115,6 +116,7 @@
     <Compile Include="Services\SysDMNSDService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\SysMenuService.cs" />
+    <Compile Include="Setting.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>

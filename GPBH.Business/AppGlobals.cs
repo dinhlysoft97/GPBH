@@ -11,5 +11,8 @@ namespace GPBH.Business
         public static string MaQuay {  get; set; }
         public static string MaCa {  get; set; }
         public static string MaKho {  get; set; }
+        public static string Host { get; set; }
+        public static string Port { get; set; } 
+        public static string Database { get; set; }
     }
 }

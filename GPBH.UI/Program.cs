@@ -1,9 +1,10 @@
 ﻿using GPBH.Business;
 using GPBH.UI.Helper;
-using GPBH.UI.UserControls;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
 using System;
 using System.Configuration;
+using System.IO;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -18,6 +19,29 @@ namespace GPBH.UI
         [STAThread]
         static void Main()
         {
+            string exeFolder = AppDomain.CurrentDomain.BaseDirectory;
+            string settingPath = Path.Combine(exeFolder, "setting.json");
+
+            // Kiểm tra file setting, nếu không có thì yêu cầu nhập lại (hoặc mở form nhập lại)
+            if (!File.Exists(settingPath))
+            {
+                MessageBox.Show("Chưa cấu hình phần mềm. Vui lòng chạy lại cài đặt hoặc nhập cấu hình!");
+                // Có thể mở form nhập lại cấu hình
+                Application.Exit();
+            }
+            else
+            {
+                var setting = JsonConvert.DeserializeObject<Setting>(File.ReadAllText("setting.json"));
+                // check isEmty
+                if (setting == null || string.IsNullOrEmpty(setting.MaCH) || string.IsNullOrEmpty(setting.MaQuay) || string.IsNullOrEmpty(setting.MaKho))
+                {
+                    MessageBox.Show("Chưa cấu hình phần mềm. Vui lòng chạy lại cài đặt hoặc nhập cấu hình!");
+                    // Có thể mở form nhập lại cấu hình
+                    Application.Exit();
+                    return;
+                }
+            }
+
             // Khởi tạo DI container
             var services = new ServiceCollection();
 
@@ -50,13 +74,15 @@ namespace GPBH.UI
 
         private static void GetVauleConfig()
         {
-            string maCH = ConfigurationManager.AppSettings["MaCH"];
-            string maQuay = ConfigurationManager.AppSettings["MaQuay"];
-            string maKho = ConfigurationManager.AppSettings["MaKho"];
-
-            AppGlobals.MaCH = maCH;
-            AppGlobals.MaQuay = maQuay;
-            AppGlobals.MaKho = maKho;
+            string connStr = ConfigurationManager.ConnectionStrings["AppDbContext"].ConnectionString;
+            var  connectionInfo = AppConfigHelper.ParseSqlConnectionString(connStr);
+            var setting = JsonConvert.DeserializeObject<Setting>(File.ReadAllText("setting.json"));
+            AppGlobals.MaCH = setting.MaCH;
+            AppGlobals.MaQuay = setting.MaQuay;
+            AppGlobals.MaKho = setting.MaKho;
+            AppGlobals.Host = connectionInfo.Host;
+            AppGlobals.Port = connectionInfo.Port;
+            AppGlobals.Database = connectionInfo.Database;
             AppGlobals.MaCa = "1";
         }
 

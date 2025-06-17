@@ -31,10 +31,11 @@ namespace GPBH.UI
         {
             lbCopyright.Text = $"Copyright© {DateTime.Now.Year}";
             lbTenDangNhap.Text = $"Tên đăng nhâp: {AppGlobals.CurrentUser.TenDangNhap}";
-            lbMayChu.Text = "Máy chủ: (local)";
-            lbCSDL.Text = "CSDL: GPBHDb";
+            lbMayChu.Text = $"Máy chủ: {AppGlobals.Host} {(!string.IsNullOrEmpty(AppGlobals.Port) ? $", {AppGlobals.Port}" : string.Empty)}";
+            lbCSDL.Text = $"CSDL: {AppGlobals.Database}";
             lbMaCH.Text = $"Mã cửa hàng: {AppGlobals.MaCH}";
             lbMaQuay.Text = $"Mã quầy: {AppGlobals.MaQuay}";
+            lbMaKho.Text = $"Mã kho: {AppGlobals.MaKho}";
             lbTgDangNhap.Text = $"Thời gian đăng nhập: {AppGlobals.TgDangNhap.ToString("dd/MM/yyyy HH:mm")}";
         }
 
