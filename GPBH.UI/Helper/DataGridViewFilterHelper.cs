@@ -41,7 +41,6 @@ namespace GPBH.UI.Helper
             public InternalHelper(DataGridView grid, IList<T> data)
             {
                 this.grid = grid;
-
                 var sttProperty = typeof(T).GetProperty("Stt");
                 if (sttProperty != null && sttProperty.CanWrite)
                 {
@@ -58,21 +57,25 @@ namespace GPBH.UI.Helper
 
             public void Initialize()
             {
+                grid.CellValueChanged -= Grid_CellValueChanged;
+                //grid.CurrentCellDirtyStateChanged -= Grid_CurrentCellDirtyStateChanged;
+                grid.ColumnHeaderMouseClick -= Grid_ColumnHeaderMouseClick;
+
                 SaveColumnStates();
                 var displayList = new List<T> { new T() }; // filter row
                 foreach (var item in sourceData)
                     displayList.Add(item);
 
-                grid.CellValueChanged += Grid_CellValueChanged;
-                //grid.CurrentCellDirtyStateChanged += Grid_CurrentCellDirtyStateChanged;
-                grid.ColumnHeaderMouseClick += Grid_ColumnHeaderMouseClick;
                 RestoreColumnStates();
-
                 SaveColumnStates();
                 grid.DataSource = new BindingList<T>(displayList);
                 RestoreColumnStates();
                 SetGirdReadOnly();
                 SetSortGlyph();
+
+                grid.CellValueChanged += Grid_CellValueChanged;
+                //grid.CurrentCellDirtyStateChanged += Grid_CurrentCellDirtyStateChanged;
+                grid.ColumnHeaderMouseClick += Grid_ColumnHeaderMouseClick;
             }
 
             private void SetGirdReadOnly()
@@ -143,17 +146,17 @@ namespace GPBH.UI.Helper
                 var displayList = new List<T> { filterRow };
                 displayList.AddRange(filtered);
 
-                grid.CellValueChanged -= Grid_CellValueChanged;
-                grid.CurrentCellDirtyStateChanged -= Grid_CurrentCellDirtyStateChanged;
-                grid.ColumnHeaderMouseClick -= Grid_ColumnHeaderMouseClick;
+                //grid.CellValueChanged -= Grid_CellValueChanged;
+                //grid.CurrentCellDirtyStateChanged -= Grid_CurrentCellDirtyStateChanged;
+                //grid.ColumnHeaderMouseClick -= Grid_ColumnHeaderMouseClick;
 
                 SaveColumnStates();
                 grid.DataSource = null;
                 grid.DataSource = new BindingList<T>(displayList);
                 RestoreColumnStates();
-                grid.CellValueChanged += Grid_CellValueChanged;
-                grid.CurrentCellDirtyStateChanged += Grid_CurrentCellDirtyStateChanged;
-                grid.ColumnHeaderMouseClick += Grid_ColumnHeaderMouseClick;
+                //grid.CellValueChanged += Grid_CellValueChanged;
+                //grid.CurrentCellDirtyStateChanged += Grid_CurrentCellDirtyStateChanged;
+                //grid.ColumnHeaderMouseClick += Grid_ColumnHeaderMouseClick;
 
                 SetSortGlyph();
                 SetGirdReadOnly();

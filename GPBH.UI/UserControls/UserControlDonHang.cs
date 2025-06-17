@@ -40,6 +40,8 @@ namespace GPBH.UI.UserControls
         /// </summary>
         private void InitializeUI()
         {
+            dtTu.Value = DateTime.Now.Date;
+            dtDen.Value = DateTime.Now.Date;
             SetUpUI();
             RegisterEvents();
             LoadData();
@@ -81,9 +83,9 @@ namespace GPBH.UI.UserControls
         /// </summary>
         private void TimKiem()
         {
-            var donHangs = _donHangService.TiemKiem(dtTu.Value.Date, dtTu.Value.Date);
+            var donHangs = _donHangService.TiemKiem(dtTu.Value.Date, dtDen.Value.Date);
             SetUpUI();
-            dataGridViewX1.BindData(donHangs, true);
+            DataGridViewFilterHelper.ApplyFilter(dataGridViewX1, donHangs);
             SetFormRowTheoCuaHang();
         }
 
@@ -135,9 +137,6 @@ namespace GPBH.UI.UserControls
         /// </summary>
         private void SetUpUI()
         {
-            dtTu.Value = DateTime.Now.Date;
-            dtDen.Value = DateTime.Now.Date;
-
             // Lưới master 
             // Kiểm tra nếu không có cột nào thì không cần làm gì 
             if (dataGridViewX1.Columns.Count == 0) return;
