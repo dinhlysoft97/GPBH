@@ -7,7 +7,6 @@ using GPBH.UI.UserControls;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -96,10 +95,10 @@ namespace GPBH.UI
         {
             Bitmap emptyBitmap = new Bitmap(16, 16);
             imgList.Images.Add("empty", emptyBitmap);
-            imgList.Images
-                .Add("banhang", Image.FromFile(Path.Combine(Application.StartupPath, "Images", "banhang.png")));         // index 0
-            imgList.Images
-                .Add("baocaobanhang", Image.FromFile(Path.Combine(Application.StartupPath, "Images", "baocaobanhang.png")));   // index 1
+            //imgList.Images
+            //    .Add("banhang", Image.FromFile(Path.Combine(Application.StartupPath, "Images", "banhang.png")));         // index 0
+            //imgList.Images
+            //    .Add("baocaobanhang", Image.FromFile(Path.Combine(Application.StartupPath, "Images", "baocaobanhang.png")));   // index 1
             sideBar1.Images = imgList;
         }
 

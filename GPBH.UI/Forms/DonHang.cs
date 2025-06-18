@@ -81,8 +81,7 @@ namespace GPBH.UI.Forms
             InitializeComponent();
             // Đặt thuộc tính KeyPreview của Form là true trong Designer hoặc trong code
             this.KeyPreview = true;
-            _data = data;
-            _isEdit = data != null;
+        
             _dMQGService = dMQGService;
             _dMMTService = dMMTService;
             _dMHHService = dMHHService;
@@ -93,6 +92,10 @@ namespace GPBH.UI.Forms
             _sysDinh_Dang_FormService = sysDinh_Dang_FormService;
             CuaHang = _sysDMCuaHangService.GetByMaCuaHang(AppGlobals.MaCH);
             SysDinhDangs = _sysDinh_Dang_FormService.GetDinhDang(AppGlobals.MaCH);
+            _dMNTs = _dMMTService.GetAll();
+            isCurrencyVND = CuaHang.Ma_nt == GPBHConstant.CurrencyVND; 
+            _data = data;
+            _isEdit = data != null;
             SetUpUI();
             if (!_isEdit)
                 LoadData();
@@ -100,7 +103,6 @@ namespace GPBH.UI.Forms
                 LoadDataEdit();
             InitUcHangHoaPopup();
             RegisterEvents();
-            isCurrencyVND = CuaHang.Ma_nt == GPBHConstant.CurrencyVND;
         }
         #endregion
 
@@ -118,7 +120,6 @@ namespace GPBH.UI.Forms
         {
             if (_isEdit && _data != null)
             {
-
                 TyGiaGanNhat = new TyGiaNT
                 {
                     Ma_nt = _data.Ma_nt,
@@ -253,7 +254,6 @@ namespace GPBH.UI.Forms
         /// <exception cref="NotImplementedException"></exception>
         private void LoadData()
         {
-            _dMNTs = _dMMTService.GetAll();
             LoadFormKhachHang(string.Empty);
             LoadInfoDonHang();
             LoadDataCombobox();
@@ -918,15 +918,15 @@ namespace GPBH.UI.Forms
             //}
 
             var giaNT = giaBanHH?.Gia_ban ?? 0;
-            var giaVND = giaBanHH?.Gia_ban ?? 0 * giaBanHH?.TyGiaNT?.Ty_gia ?? 0;
+            var giaVND = giaBanHH?.Gia_ban * giaBanHH?.TyGiaNT?.Ty_gia ?? 1;
 
             item.Gia_ban_nt = giaNT;
             item.Gia_ban = giaVND;
 
             if (item.So_luong.HasValue && item.Gia_ban.HasValue && item.Gia_ban_nt.HasValue && item.Gg_ty_le.HasValue)
             {
-                var tienGiamNT = item.So_luong * giaNT * item.Gg_ty_le / 100;
-                var tienGiamVND = item.So_luong * giaVND * item.Gg_ty_le / 100;
+                var tienGiamNT = (decimal)Math.Round((double)(item.So_luong * giaNT * item.Gg_ty_le / 100), 2);
+                var tienGiamVND = (decimal)Math.Round((double)(item.So_luong * giaVND * item.Gg_ty_le / 100), 0);
 
                 item.Gg_tien_nt = tienGiamNT;
                 item.Gg_tien = tienGiamVND;

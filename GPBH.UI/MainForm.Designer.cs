@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.sideBar1 = new DevComponents.DotNetBar.SideBar();
             this.tabControl1 = new DevComponents.DotNetBar.TabControl();
             this.collapsibleSplitContainer1 = new DevComponents.DotNetBar.Controls.CollapsibleSplitContainer();
@@ -207,9 +208,10 @@
             this.Controls.Add(this.bar1);
             this.Controls.Add(this.collapsibleSplitContainer1);
             this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainForm";
-            this.Text = "FormMain";
+            this.Text = "Giải Pháp Bán Hàng";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.tabControl1)).EndInit();
             this.collapsibleSplitContainer1.Panel1.ResumeLayout(false);

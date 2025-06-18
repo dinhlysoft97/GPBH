@@ -42,7 +42,6 @@
             this.dtTu = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.dataGridViewX2 = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.Stt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.So_chung_tu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ngay_chung_tu = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,6 +53,7 @@
             this.Ty_gia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ma_cua_hang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ma_phieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewX2 = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.Ma_hh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ten_hh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.So_luong = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -134,6 +134,7 @@
             this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonX1.TabIndex = 10;
             this.buttonX1.Text = "Xuất Excel";
+            this.buttonX1.Visible = false;
             this.buttonX1.Click += new System.EventHandler(this.buttonX1_Click);
             // 
             // btnXoa
@@ -345,42 +346,6 @@
             this.dataGridViewX1.Size = new System.Drawing.Size(1339, 313);
             this.dataGridViewX1.TabIndex = 0;
             // 
-            // dataGridViewX2
-            // 
-            this.dataGridViewX2.AllowUserToAddRows = false;
-            this.dataGridViewX2.AllowUserToDeleteRows = false;
-            this.dataGridViewX2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridViewX2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewX2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Ma_hh,
-            this.Ten_hh,
-            this.So_luong,
-            this.Gia_ban_nt,
-            this.Gia_ban,
-            this.Gg_ty_le,
-            this.Gg_tien_nt,
-            this.Gg_tien,
-            this.Tien_ban_nt,
-            this.Tien_ban});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX2.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridViewX2.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.dataGridViewX2.Location = new System.Drawing.Point(0, 0);
-            this.dataGridViewX2.Margin = new System.Windows.Forms.Padding(2);
-            this.dataGridViewX2.Name = "dataGridViewX2";
-            this.dataGridViewX2.RowHeadersWidth = 51;
-            this.dataGridViewX2.RowTemplate.Height = 24;
-            this.dataGridViewX2.Size = new System.Drawing.Size(1339, 452);
-            this.dataGridViewX2.TabIndex = 0;
-            // 
             // Stt
             // 
             this.Stt.DataPropertyName = "Stt";
@@ -451,6 +416,42 @@
             this.Ma_phieu.HeaderText = "Ma_phieu";
             this.Ma_phieu.Name = "Ma_phieu";
             this.Ma_phieu.ReadOnly = true;
+            // 
+            // dataGridViewX2
+            // 
+            this.dataGridViewX2.AllowUserToAddRows = false;
+            this.dataGridViewX2.AllowUserToDeleteRows = false;
+            this.dataGridViewX2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridViewX2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewX2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Ma_hh,
+            this.Ten_hh,
+            this.So_luong,
+            this.Gia_ban_nt,
+            this.Gia_ban,
+            this.Gg_ty_le,
+            this.Gg_tien_nt,
+            this.Gg_tien,
+            this.Tien_ban_nt,
+            this.Tien_ban});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX2.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewX2.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.dataGridViewX2.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewX2.Margin = new System.Windows.Forms.Padding(2);
+            this.dataGridViewX2.Name = "dataGridViewX2";
+            this.dataGridViewX2.RowHeadersWidth = 51;
+            this.dataGridViewX2.RowTemplate.Height = 24;
+            this.dataGridViewX2.Size = new System.Drawing.Size(1339, 453);
+            this.dataGridViewX2.TabIndex = 0;
             // 
             // Ma_hh
             // 

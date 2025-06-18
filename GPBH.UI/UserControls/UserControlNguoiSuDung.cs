@@ -72,7 +72,7 @@ namespace GPBH.UI.UserControls
         /// </summary>
         private static void SetImageForUsers(System.Collections.Generic.IEnumerable<GirdNguoiSuDungDto> users)
         {
-            Image img = Image.FromFile(Path.Combine(Application.StartupPath, "Images", "banhang.png"));
+            Image img = Image.FromFile(Path.Combine(Application.StartupPath, "Images", "Shield.png"));
             foreach (var user in users)
             {
                 user.PhanQuyen = img;
