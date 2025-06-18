@@ -18,6 +18,7 @@ namespace GPBH.UI.Helper
         {
             try
             {
+                string logPath = logFilePath ?? Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "error.log");
                 if (ex is BadRequestException)
                 {
                     // Nếu là BadRequestException, không cần log, chỉ hiển thị thông báo
@@ -30,14 +31,9 @@ namespace GPBH.UI.Helper
                             MessageBoxIcon.Error
                         );
                     }
-                    return;
                 }
                 else
                 {
-                    string logPath = logFilePath ?? Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "error.log");
-                    string errorMsg = $"[{DateTime.Now:yyyy-MM-dd HH:mm:ss}] {ex}\r\n";
-                    File.AppendAllText(logPath, errorMsg);
-
                     if (showMessageBox)
                     {
                         MessageBoxEx.Show(
@@ -48,6 +44,16 @@ namespace GPBH.UI.Helper
                         );
                     }
                 }
+
+               
+                string dir = Path.GetDirectoryName(logPath);
+                if (!Directory.Exists(dir))
+                {
+                    Directory.CreateDirectory(dir);
+                }
+
+                string errorMsg = $"[{DateTime.Now:yyyy-MM-dd HH:mm:ss}] {ex}\r\n";
+                File.AppendAllText(logPath, errorMsg);
             }
             catch (Exception)
             {

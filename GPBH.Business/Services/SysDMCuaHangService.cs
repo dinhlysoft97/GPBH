@@ -1,14 +1,12 @@
-﻿using GPBH.Data.Entities;
+﻿using GPBH.Business.Dtos;
+using GPBH.Business.Exceptions;
+using GPBH.Data.Entities;
 using GPBH.Data.UnitOfWorks;
-using GPBH.Data;
+using Mapster;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Linq;
-using GPBH.Business.Dtos;
-using GPBH.Data.Configurations;
 using System.Collections.Generic;
-using Mapster;
-using GPBH.Business.Exceptions;
+using System.Linq;
 
 namespace GPBH.Business.Services
 {
@@ -21,16 +19,18 @@ namespace GPBH.Business.Services
             _serviceProvider = serviceProvider;
         }
 
-        public List<SysDMCuaHang> GetAll()
+        public List<CuaHangDto> GetAll()
         {
             using (var scope = _serviceProvider.CreateScope())
             {
                 var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
-                return unitOfWork.Repository<SysDMCuaHang>()
-                .GetAll().ToList();
+                return unitOfWork.Repository<SysDMCuaHang>().GetQueryable().Select(z => new CuaHangDto
+                {
+                    Ma_cua_hang = z.Ma_cua_hang,
+                    Ten_cua_hang = z.Ten_cua_hang
+                }).ToList();
             }
         }
-
 
         public SysDMCuaHang GetByMaCuaHang(string maCH)
         {
@@ -38,7 +38,7 @@ namespace GPBH.Business.Services
             {
                 var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
                 return unitOfWork.Repository<SysDMCuaHang>()
-                .Find(u => u.Ma_cua_hang == maCH).FirstOrDefault();
+                .Find(u => u.Ma_cua_hang == maCH).FirstOrDefault() ?? throw new BadRequestException($"Không tìm thấy mã cửa hàng {maCH}");
             }
         }
 

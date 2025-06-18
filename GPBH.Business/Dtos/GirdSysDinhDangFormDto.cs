@@ -58,10 +58,5 @@ namespace GPBH.Business.Dtos
         /// Sắp xếp mặc định: 0 - không sắp xếp, 1 - tăng, 2 - giảm.
         /// </summary>
         public Sort Default_sort { get; set; }
-
-        /// <summary>
-        /// Tên bản định dạng.
-        /// </summary>
-        public string Ten_ban { get; set; }
     }
 }

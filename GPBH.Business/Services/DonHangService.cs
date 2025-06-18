@@ -20,6 +20,63 @@ namespace GPBH.Business.Services
         }
 
         /// <summary>
+        /// Tìm kiếm đơn hàng theo khoảng thời gian
+        /// </summary>
+        /// <param name="tuNgay"></param>
+        /// <param name="denNgay"></param>
+        /// <returns></returns>
+        public List<GirdDonHangDto> TiemKiem(DateTime tuNgay, DateTime denNgay)
+        {
+            using (var scope = _serviceProvider.CreateScope())
+            {
+                var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
+                return unitOfWork.Repository<XPH5>()
+                    .Find(x => x.Ngay_chung_tu >= tuNgay && x.Ngay_chung_tu <= denNgay)
+                    .OrderByDescending(z=>z.Ngay_chung_tu)
+                    .OrderByDescending(z=>z.So_chung_tu)
+                    .Select(x => x.Adapt<GirdDonHangDto>())
+                    .ToList();
+            }
+        }
+
+        /// <summary>
+        /// Lấy chi tiết đơn hàng theo mã phiếu
+        /// </summary>
+        /// <param name="ma_phieu"></param>
+        /// <returns></returns>
+        public List<GirdDonHangChiTietDto> GetDonHangChiTiet(string ma_phieu)
+        {
+            using (var scope = _serviceProvider.CreateScope())
+            {
+                var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
+                return unitOfWork.Repository<XCT5>()
+                    .Find(x => x.Ma_phieu == ma_phieu)
+                    .Select(x => x.Adapt<GirdDonHangChiTietDto>())
+                    .ToList();
+            }
+        }
+
+        /// <summary>
+        /// Lấy đơn hàng theo mã phiếu
+        /// </summary>
+        /// <param name="maPhieu"></param>
+        /// <returns></returns>
+        /// <exception cref="BadRequestException"></exception>
+        public XPH5Dto GetDonHang(string maPhieu)
+        {
+            using (var scope = _serviceProvider.CreateScope())
+            {
+                var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
+                var entity = unitOfWork.Repository<XPH5>()
+                    .Find(x => x.Ma_phieu == maPhieu)
+                    .FirstOrDefault();
+                if (entity == null)
+                    throw new BadRequestException($"Không tìm thấy đơn hàng với mã phiếu: {maPhieu}");
+                return entity.Adapt<XPH5Dto>();
+            }
+        }
+
+        /// <summary>
         /// Tạo đơn hàng mới từ DTO, sinh số chứng từ và mã phiếu tự động
         /// </summary>
         /// <param name="donhang"></param>
@@ -33,7 +90,7 @@ namespace GPBH.Business.Services
                 var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
                 try
                 {
-                    unitOfWork.BeginTransaction();
+                    unitOfWork.BeginTransaction(System.Data.IsolationLevel.Serializable);
                     donhang.Ma_phieu = GenerateMaPhieu(unitOfWork, donhang.Ma_cua_hang, donhang.Ma_chung_tu);
                     entity = donhang.Adapt<XPH5>();
 
@@ -59,7 +116,7 @@ namespace GPBH.Business.Services
 
                         entity.So_chung_tu = soChungTuMoi;
 
-                        TinhTonKho(entity);
+                        TinhTonKho(unitOfWork, entity);
                     }
 
                     // Lưu đơn hàng
@@ -114,7 +171,7 @@ namespace GPBH.Business.Services
                         while (daTonTai);
 
                         entity.So_chung_tu = soChungTuMoi;
-                        TinhTonKho(entity);
+                        TinhTonKho(unitOfWork, entity);
                     }
 
                     // Update đơn hàng
@@ -232,13 +289,100 @@ namespace GPBH.Business.Services
                 }
             }
         }
+
         /// <summary>
-        /// Tính tồn kho sau khi tạo đơn hàng
+        /// Tính tồn kho sau khi tạo đơn hàng (xuất FIFO nhiều lô nếu cần)
         /// </summary>
+        /// <param name="unitOfWork"></param>
         /// <param name="donhang"></param>
-        private void TinhTonKho(XPH5 donhang)
+        private static void TinhTonKho(IUnitOfWork unitOfWork, XPH5 donhang)
         {
-            // code tính tồn kho
+            foreach (var item in donhang.XCT5s)
+            {
+                if (item != null)
+                {
+                    var soLuongCanXuat = item.So_luong ?? 0;
+                    if (soLuongCanXuat <= 0) continue;
+
+                    // Lấy danh sách các lô hàng theo ngày nhập tăng dần (FIFO)
+                    var khoList = unitOfWork.Repository<TokhaiHH>()
+                        .Find(x => x.Ma_cua_hang == donhang.Ma_cua_hang
+                                && x.Ma_kho == donhang.Ma_kho
+                                && x.Ma_hh == item.Ma_hh
+                                && x.Con_lai > 0)
+                        .OrderBy(x => x.Ngay_nhap)
+                        .ToList();
+
+                    var tongTonKho = khoList.Sum(x => x.Con_lai);
+                    if (tongTonKho < soLuongCanXuat)
+                    {
+                        throw new BadRequestException($"Không đủ hàng trong kho {donhang.Ma_kho} cho mặt hàng {item.Ma_hh}. Số lượng tồn kho hiện tại: {tongTonKho}");
+                    }
+
+                    // Xuất hàng theo từng lô nhập (FIFO)
+                    foreach (var kho in khoList)
+                    {
+                        if (soLuongCanXuat <= 0) break;
+
+                        var soLuongXuat = Math.Min(kho.Con_lai ?? 0, soLuongCanXuat);
+
+                        kho.Da_xuat += soLuongXuat;
+                        kho.Con_lai -= soLuongXuat;
+                        unitOfWork.Repository<TokhaiHH>().Update(kho);
+
+                        // Gán số tờ khai cho item, chỉ lấy tờ khai đầu tiên (nếu cần tất cả thì lưu dạng danh sách)
+                        if (item.So_to_khai == null)
+                            item.So_to_khai = kho.So_to_khai;
+
+                        soLuongCanXuat -= soLuongXuat;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Xoá đơn hàng theo mã phiếu
+        /// </summary>
+        /// <param name="maPhieu"></param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public (bool result, string message) XoaDonHang(string maPhieu)
+        {
+            using (var scope = _serviceProvider.CreateScope())
+            {
+                var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
+                try
+                {
+                    unitOfWork.BeginTransaction();
+                    // Kiểm tra tồn tại đơn hàng
+                    var donHang = unitOfWork.Repository<XPH5>()
+                        .Find(x => x.Ma_phieu == maPhieu)
+                        .FirstOrDefault();
+                    if (donHang == null)
+                        throw new BadRequestException($"Không tìm thấy đơn hàng với mã phiếu: {maPhieu}");
+
+                    if (donHang.Trang_thai == TrangThaiDonHang.Confirmed)
+                        throw new BadRequestException("Đơn hàng đã phát sinh số đơn hàng không thể xóa được.");
+                    // Xoá chi tiết đơn hàng
+                    var chiTietList = unitOfWork.Repository<XCT5>()
+                        .Find(x => x.Ma_phieu == maPhieu)
+                        .ToList();
+                    foreach (var chiTiet in chiTietList)
+                    {
+                        unitOfWork.Repository<XCT5>().Remove(chiTiet);
+                    }
+                    // Xoá đơn hàng
+                    unitOfWork.Repository<XPH5>().Remove(donHang);
+                    unitOfWork.SaveChanges();
+                    unitOfWork.Commit();
+                    return (true, "Xoá đơn hàng thành công");
+                }
+                catch (Exception ex)
+                {
+                    unitOfWork.Rollback();
+                    return (false, "Lỗi khi xoá đơn hàng: " + ex.Message);
+                }
+            }
         }
     }
 }

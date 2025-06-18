@@ -1,6 +1,7 @@
 ﻿using DevComponents.DotNetBar.Controls;
 using GPBH.Business.Services;
 using GPBH.Data.Configurations;
+using OfficeOpenXml.FormulaParsing.Excel.Functions.Math;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -74,6 +75,7 @@ namespace GPBH.UI.UserControls
         public void SetData(List<DMHH> dMHHs)
         {
             dsHangHoa = dMHHs;
+            dgv.DataSource = dsHangHoa;
         }
 
         private void Build_SearchControls()
@@ -129,6 +131,12 @@ namespace GPBH.UI.UserControls
 
                 string filter = Tb.Text.Trim().ToLower();
 
+                // Gọi event để notify ra ngoài
+                TbChange?.Invoke(this, new TextBoxEventArgs
+                {
+                    Text = filter,
+                });
+
                 // Nếu không nhập gì thì hiển thị toàn bộ
                 if (string.IsNullOrEmpty(filter))
                 {
@@ -144,6 +152,7 @@ namespace GPBH.UI.UserControls
                 ).ToList();
 
                 dgv.DataSource = filtered;
+
             }
             catch (Exception ex)
             {
@@ -213,7 +222,6 @@ namespace GPBH.UI.UserControls
 
             // Bind data
             dgv.DataSource = dsHangHoa;
-
             //DataGridViewFilterHelper.ApplyFillter(dgv, dsHangHoa);
         }
 
@@ -235,6 +243,13 @@ namespace GPBH.UI.UserControls
             public string Dvt { get; set; }
         }
 
+        public class TextBoxEventArgs : EventArgs
+        {
+            public string Text { get; set; }
+        }
+
+
         public event EventHandler<HangHoaSelectedEventArgs> HangHoaSelected;
+        public event EventHandler<TextBoxEventArgs> TbChange;
     }
 }

@@ -7,7 +7,6 @@ using GPBH.UI.UserControls;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -35,10 +34,11 @@ namespace GPBH.UI
         {
             lbCopyright.Text = $"Copyright© {DateTime.Now.Year}";
             lbTenDangNhap.Text = $"Tên đăng nhâp: {AppGlobals.CurrentUser.TenDangNhap}";
-            lbMayChu.Text = "Máy chủ: (local)";
-            lbCSDL.Text = "CSDL: GPBHDb";
+            lbMayChu.Text = $"Máy chủ: {AppGlobals.Host} {(!string.IsNullOrEmpty(AppGlobals.Port) ? $", {AppGlobals.Port}" : string.Empty)}";
+            lbCSDL.Text = $"CSDL: {AppGlobals.Database}";
             lbMaCH.Text = $"Mã cửa hàng: {AppGlobals.MaCH}";
             lbMaQuay.Text = $"Mã quầy: {AppGlobals.MaQuay}";
+            lbMaKho.Text = $"Mã kho: {AppGlobals.MaKho}";
             lbTgDangNhap.Text = $"Thời gian đăng nhập: {AppGlobals.TgDangNhap.ToString("dd/MM/yyyy HH:mm")}";
         }
 
@@ -99,10 +99,10 @@ namespace GPBH.UI
         {
             Bitmap emptyBitmap = new Bitmap(16, 16);
             imgList.Images.Add("empty", emptyBitmap);
-            imgList.Images
-                .Add("banhang", Image.FromFile(Path.Combine(Application.StartupPath, "Images", "banhang.png")));         // index 0
-            imgList.Images
-                .Add("baocaobanhang", Image.FromFile(Path.Combine(Application.StartupPath, "Images", "baocaobanhang.png")));   // index 1
+            //imgList.Images
+            //    .Add("banhang", Image.FromFile(Path.Combine(Application.StartupPath, "Images", "banhang.png")));         // index 0
+            //imgList.Images
+            //    .Add("baocaobanhang", Image.FromFile(Path.Combine(Application.StartupPath, "Images", "baocaobanhang.png")));   // index 1
             sideBar1.Images = imgList;
         }
 
@@ -145,7 +145,7 @@ namespace GPBH.UI
             switch (key)
             {
                 case "DonHang":
-                    uc = new UserControlDonHang();
+                    uc = ActivatorUtilities.CreateInstance<UserControlDonHang>(Program.ServiceProvider);
                     break;
                 case "BanHangTheoKhachHang":
                     uc = new UserControlBanHangTheoKhachHang();

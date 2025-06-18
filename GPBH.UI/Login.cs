@@ -1,4 +1,5 @@
 ﻿using DevComponents.DotNetBar;
+using DevComponents.Editors;
 using GPBH.Business;
 using GPBH.Business.Services;
 using GPBH.Data.Entities;
@@ -76,7 +77,6 @@ namespace GPBH.UI
             {
                 // Đăng nhập thành công
                 AppGlobals.CurrentUser = user;
-                AppGlobals.DMCuaHang = _storeService.GetByMaCuaHang(AppGlobals.MaCH);
                 AppGlobals.TgDangNhap = DateTime.Now;
 
                 // Khởi tạo và show MainForm bằng DI

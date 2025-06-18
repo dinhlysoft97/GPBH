@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Linq.Expressions;
 
 namespace GPBH.Data.UnitOfWorks
@@ -7,7 +8,7 @@ namespace GPBH.Data.UnitOfWorks
     {
         IRepository<T> Repository<T>() where T : class; 
         int SaveChanges();
-        void BeginTransaction();
+        void BeginTransaction(IsolationLevel solationLevel = IsolationLevel.ReadCommitted);
         void Commit();
         void Rollback();
     }

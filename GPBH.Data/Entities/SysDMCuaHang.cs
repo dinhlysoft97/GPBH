@@ -12,10 +12,22 @@ namespace GPBH.Data.Entities
         public string Ma_loai_hinh { get; set; }      // Mã loại hình
         public string Ma_doi_tuong { get; set; }      // Mã đối tượng
         public string Ma_nt { get; set; }             // Mã ngoại tệ
-        public string Ma_qd { get; set; }             // Mã qui đổi
+        public string Ma_nt_qd { get; set; }             // Mã qui đổi
         public decimal Han_muc_tm { get; set; }       // Hạn mức tiền mặt
         public string Ma_cqt { get; set; }            // Mã CQT
         public bool Nhap_ttxnc { get; set; }          // Bắt buộc nhập thông tin xuất nhập cảnh
+
+        public int Round_so_luong { get; set; }
+        public int Round_gia_nt { get; set; }
+        public int Round_gia { get; set; }
+        public int Round_tien_nt { get; set; }
+        public int Round_tien { get; set; }
+
+        public string Format_so_luong { get; set; }
+        public string Format_gia_nt { get; set; }
+        public string Format_gia { get; set; }
+        public string Format_tien_nt { get; set; }
+        public string Format_tien { get; set; }
 
         public SysDMDV SysDMDV { get; set; }          // Thông tin đơn vị liên kết
         public virtual List<DMGB> DMGBs { get; set; } // Danh sách nhóm giá bán liên kết
