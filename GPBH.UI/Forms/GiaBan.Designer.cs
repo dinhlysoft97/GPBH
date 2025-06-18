@@ -61,7 +61,7 @@
             this.dataGridViewX1.Location = new System.Drawing.Point(2, 34);
             this.dataGridViewX1.Name = "dataGridViewX1";
             this.dataGridViewX1.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.dataGridViewX1.Size = new System.Drawing.Size(1303, 512);
+            this.dataGridViewX1.Size = new System.Drawing.Size(1055, 512);
             this.dataGridViewX1.TabIndex = 18;
             // 
             // Ma_cua_hang

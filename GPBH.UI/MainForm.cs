@@ -15,19 +15,15 @@ namespace GPBH.UI
     public partial class MainForm : Office2007Form
     {
         private readonly SysMenuService _sysMenuService;
-        private readonly DMcaService _dMcaService;
-        private readonly IServiceProvider _serviceProvider;
 
         public MainForm(SysMenuService sysMenuService, DMcaService dMcaService, IServiceProvider serviceProvider)
         {
             InitializeComponent();
             _sysMenuService = sysMenuService;
-            _dMcaService = dMcaService;
             BuildMenu();
             SetData();
             this.FormClosed += MainForm_FormClosed;
             this.FormClosing += MainForm_FormClosing;
-            _serviceProvider = serviceProvider;
         }
 
         private void SetData()
@@ -39,7 +35,7 @@ namespace GPBH.UI
             lbMaCH.Text = $"Mã cửa hàng: {AppGlobals.MaCH}";
             lbMaQuay.Text = $"Mã quầy: {AppGlobals.MaQuay}";
             lbMaKho.Text = $"Mã kho: {AppGlobals.MaKho}";
-            lbTgDangNhap.Text = $"Thời gian đăng nhập: {AppGlobals.TgDangNhap.ToString("dd/MM/yyyy HH:mm")}";
+            lbTgDangNhap.Text = $"Thời gian đăng nhập: {AppGlobals.TgDangNhap:dd/MM/yyyy HH:mm}";
         }
 
         private void BuildMenu()
@@ -153,7 +149,6 @@ namespace GPBH.UI
                 case "DinhDangForm":
                     form = ActivatorUtilities.CreateInstance<DinhDangForm>(Program.ServiceProvider);
                     break;
-
                 case "NguoiDung":
                     uc = ActivatorUtilities.CreateInstance<UserControlNguoiSuDung>(Program.ServiceProvider);
                     break;
