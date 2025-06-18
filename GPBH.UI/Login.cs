@@ -127,8 +127,6 @@ namespace GPBH.UI
             cbbCa.ValueMember = "Ma_ca";
             if (caHienTai != null)
                 cbbCa.SelectedValue = caHienTai.Ma_ca;
-            else
-                cbbCa.SelectedIndex = 0;
         }
     }
 }
