@@ -99,11 +99,17 @@
     <Compile Include="Dtos\GirdPhanQuyenDto.cs" />
     <Compile Include="Dtos\GirdSysDinhDangFormDto.cs" />
     <Compile Include="Dtos\GirdSystemSettingDto.cs" />
+    <Compile Include="Dtos\GridHangHoa.cs" />
+    <Compile Include="Dtos\GridKhachHang.cs" />
+    <Compile Include="Dtos\GridNgoaiTe.cs" />
+    <Compile Include="Dtos\GridQuocGia.cs" />
+    <Compile Include="Dtos\GridTyGia.cs" />
     <Compile Include="Dtos\TyGiaNT.cs" />
     <Compile Include="Dtos\XCT5Dto.cs" />
     <Compile Include="Dtos\XPH5Dto.cs" />
     <Compile Include="Exceptions\BadRequestException.cs" />
     <Compile Include="MappingConfig.cs" />
+    <Compile Include="Services\DMcaService.cs" />
     <Compile Include="Services\DMHHService.cs" />
     <Compile Include="Services\DMKHService.cs" />
     <Compile Include="Services\DMNTService.cs" />

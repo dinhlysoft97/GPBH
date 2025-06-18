@@ -2,6 +2,7 @@
 using DevComponents.Editors;
 using GPBH.Business;
 using GPBH.Business.Services;
+using GPBH.Data.Entities;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Windows.Forms;
@@ -14,8 +15,9 @@ namespace GPBH.UI
 
         private readonly SysDMNSDService _userService;
         private readonly SysDMCuaHangService _storeService;
+        private readonly DMcaService _dmcaService;
 
-        public Login(SysDMNSDService userService, SysDMCuaHangService storeService)
+        public Login(SysDMNSDService userService, SysDMCuaHangService storeService, DMcaService dmcaService)
         {
             InitializeComponent();
             this.KeyPreview = true; // Cho phép bắt phím trên toàn form
@@ -23,6 +25,9 @@ namespace GPBH.UI
 
             _userService = userService;
             _storeService = storeService;
+            _dmcaService = dmcaService;
+
+            LoadCa();
         }
 
         #endregion
@@ -87,5 +92,43 @@ namespace GPBH.UI
         }
 
         #endregion
+
+        private void LoadCa()
+        {
+            var danhSachCa = _dmcaService.GetAll();
+            var now = DateTime.Now.TimeOfDay;
+            DMca caHienTai = null;
+
+            foreach (var ca in danhSachCa)
+            {
+                if (TimeSpan.TryParse(ca.Gio_bd, out var gioBD) && TimeSpan.TryParse(ca.Gio_kt, out var gioKT))
+                {
+                    if (gioKT < gioBD)
+                    {
+                        if (now >= gioBD || now < gioKT)
+                        {
+                            caHienTai = ca;
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        if (now >= gioBD && now < gioKT)
+                        {
+                            caHienTai = ca;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            cbbCa.DataSource = danhSachCa;
+            cbbCa.DisplayMember = "Ma_ca";
+            cbbCa.ValueMember = "Ma_ca";
+            if (caHienTai != null)
+                cbbCa.SelectedValue = caHienTai.Ma_ca;
+            else
+                cbbCa.SelectedIndex = 0;
+        }
     }
 }

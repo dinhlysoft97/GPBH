@@ -15,15 +15,19 @@ namespace GPBH.UI
     public partial class MainForm : Office2007Form
     {
         private readonly SysMenuService _sysMenuService;
+        private readonly DMcaService _dMcaService;
+        private readonly IServiceProvider _serviceProvider;
 
-        public MainForm(SysMenuService sysMenuService)
+        public MainForm(SysMenuService sysMenuService, DMcaService dMcaService, IServiceProvider serviceProvider)
         {
             InitializeComponent();
             _sysMenuService = sysMenuService;
+            _dMcaService = dMcaService;
             BuildMenu();
             SetData();
             this.FormClosed += MainForm_FormClosed;
             this.FormClosing += MainForm_FormClosing;
+            _serviceProvider = serviceProvider;
         }
 
         private void SetData()
@@ -158,6 +162,27 @@ namespace GPBH.UI
                     break;
                 case "DoiMatKhau":
                     form = ActivatorUtilities.CreateInstance<DoiMatKhau>(Program.ServiceProvider);
+                    break;
+                case "Ca":
+                    form = ActivatorUtilities.CreateInstance<FormCa>(Program.ServiceProvider);
+                    break;
+                case "QuocGia":
+                    form = ActivatorUtilities.CreateInstance<QuocGia>(Program.ServiceProvider);
+                    break;
+                case "KhachHang":
+                    uc = ActivatorUtilities.CreateInstance<UserControlKhachHang>(Program.ServiceProvider);
+                    break;
+                case "HangHoa":
+                    form = ActivatorUtilities.CreateInstance<HangHoa>(Program.ServiceProvider);
+                    break;
+                case "NgoaiTe":
+                    form = ActivatorUtilities.CreateInstance<NgoaiTe>(Program.ServiceProvider);
+                    break;
+                case "TyGia":
+                    form = ActivatorUtilities.CreateInstance<TyGia>(Program.ServiceProvider);
+                    break;
+                case "GiaBan":
+                    form = ActivatorUtilities.CreateInstance<GiaBan>(Program.ServiceProvider);
                     break;
                 default:
                     MessageBoxEx.Show("Tính năng đang phát triển!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

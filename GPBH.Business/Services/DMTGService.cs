@@ -3,6 +3,7 @@ using GPBH.Data.Entities;
 using GPBH.Data.UnitOfWorks;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace GPBH.Business.Services
@@ -44,6 +45,24 @@ namespace GPBH.Business.Services
                     }
                 }
                 return null;
+            }
+        }
+
+        public List<GridTyGia> GetAll()
+        {
+            using (var scope = _serviceProvider.CreateScope())
+            {
+                var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
+                return unitOfWork.Repository<DMTG>().GetAll()
+                                                    .Select(x => new GridTyGia
+                                                    {
+                                                        Ma_nt = x.Ma_nt,
+                                                        Ngay_ap_dung = x.Ngay_ap_dung,
+                                                        Ty_gia = x.Ty_gia
+                                                    })
+                                                    .OrderByDescending(x => x.Ngay_ap_dung)
+                                                    .ThenBy(x => x.Ma_nt)
+                                                    .ToList();
             }
         }
     }

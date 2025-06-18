@@ -37,6 +37,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevComponents.DotNetBar.Layout, Version=14.1.0.37, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
+    <Reference Include="DevComponents.DotNetBar.Schedule, Version=14.1.0.37, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
     <Reference Include="DevComponents.DotNetBar.SuperGrid, Version=14.1.0.37, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
     <Reference Include="DevComponents.DotNetBar2, Version=14.1.0.37, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -125,6 +126,12 @@
     <Compile Include="Forms\DoiMatKhau.Designer.cs">
       <DependentUpon>DoiMatKhau.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormCa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormCa.Designer.cs">
+      <DependentUpon>FormCa.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\DonHang.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,11 +144,29 @@
     <Compile Include="Forms\DinhDangForm.Designer.cs">
       <DependentUpon>DinhDangForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\GiaBan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GiaBan.Designer.cs">
+      <DependentUpon>GiaBan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\HangHoa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HangHoa.Designer.cs">
+      <DependentUpon>HangHoa.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\KhachHang.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\KhachHang.Designer.cs">
       <DependentUpon>KhachHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\NgoaiTe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NgoaiTe.Designer.cs">
+      <DependentUpon>NgoaiTe.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\NguoiSuDung.cs">
       <SubType>Form</SubType>
@@ -155,6 +180,12 @@
     <Compile Include="Forms\PhanQuyen.Designer.cs">
       <DependentUpon>PhanQuyen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\QuocGia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\QuocGia.Designer.cs">
+      <DependentUpon>QuocGia.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ThamSo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,6 +193,12 @@
       <DependentUpon>ThamSo.cs</DependentUpon>
     </Compile>
     <Compile Include="Helper\AppConfigHelper.cs" />
+    <Compile Include="Forms\TyGia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TyGia.Designer.cs">
+      <DependentUpon>TyGia.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helper\ComboBoxExUseGirdViewHelper.cs" />
     <Compile Include="Helper\ComboBoxHelper.cs" />
     <Compile Include="Extentions\FormExtention.cs" />
@@ -180,6 +217,7 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="obj\Debug\.NETFramework,Version=v4.8.AssemblyAttributes.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserControls\MultiColumnComboBox.cs">
@@ -203,6 +241,12 @@
     <Compile Include="UserControls\UserControlDonHang.Designer.cs">
       <DependentUpon>UserControlDonHang.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UserControlKhachHang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UserControlKhachHang.Designer.cs">
+      <DependentUpon>UserControlKhachHang.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UserControlNguoiSuDung.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -222,6 +266,9 @@
     <EmbeddedResource Include="Forms\DoiMatKhau.resx">
       <DependentUpon>DoiMatKhau.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormCa.resx">
+      <DependentUpon>FormCa.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\DonHang.resx">
       <DependentUpon>DonHang.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -229,8 +276,17 @@
     <EmbeddedResource Include="Forms\DinhDangForm.resx">
       <DependentUpon>DinhDangForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\GiaBan.resx">
+      <DependentUpon>GiaBan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\HangHoa.resx">
+      <DependentUpon>HangHoa.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\KhachHang.resx">
       <DependentUpon>KhachHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\NgoaiTe.resx">
+      <DependentUpon>NgoaiTe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\NguoiSuDung.resx">
       <DependentUpon>NguoiSuDung.cs</DependentUpon>
@@ -238,8 +294,14 @@
     <EmbeddedResource Include="Forms\PhanQuyen.resx">
       <DependentUpon>PhanQuyen.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\QuocGia.resx">
+      <DependentUpon>QuocGia.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\ThamSo.resx">
       <DependentUpon>ThamSo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TyGia.resx">
+      <DependentUpon>TyGia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -262,6 +324,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UserControlDonHang.resx">
       <DependentUpon>UserControlDonHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UserControlKhachHang.resx">
+      <DependentUpon>UserControlKhachHang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UserControlNguoiSuDung.resx">
       <DependentUpon>UserControlNguoiSuDung.cs</DependentUpon>

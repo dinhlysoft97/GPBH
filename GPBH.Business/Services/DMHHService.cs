@@ -24,7 +24,32 @@ namespace GPBH.Business.Services
             using (var scope = _serviceProvider.CreateScope())
             {
                 var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
-                return unitOfWork.Repository<DMHH>().Find(z => z.Ksd).ToList();
+                return unitOfWork.Repository<DMHH>().Find(z => z.Ksd).OrderBy(z => z.Ma_hh).ToList();
+            }
+        }
+
+        public List<GridHangHoa> GetAllGrid()
+        {
+            using (var scope = _serviceProvider.CreateScope())
+            {
+                var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
+
+                return unitOfWork.Repository<DMHH>().GetAll().Where(z => z.Ksd).OrderBy(z => z.Ma_hh)
+                    .Select(z => new GridHangHoa
+                    {
+                        Ma_hh = z.Ma_hh,
+                        Ten_hh = z.Ten_hh,
+                        Dvt = z.Dvt,
+                        Ma_nhom_hh = z.Ma_nhom_hh,
+                        Thuong_hieu = z.Thuong_hieu,
+                        Ma_nsx = z.Ma_nsx,
+                        Ten_nsx = z.Ten_nsx,
+                        Nuoc_sx = z.Nuoc_sx,
+                        Chieu_dai = z.Chieu_dai,
+                        Trong_luong = z.Trong_luong,
+                        Chieu_cao = z.Chieu_cao
+                    })
+                    .ToList();
             }
         }
 
