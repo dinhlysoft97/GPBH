@@ -86,7 +86,7 @@
             this.txtTenDangNhap.PreventEnterBeep = true;
             this.txtTenDangNhap.Size = new System.Drawing.Size(132, 20);
             this.txtTenDangNhap.TabIndex = 3;
-            this.txtTenDangNhap.Text = "admin";
+            this.txtTenDangNhap.Text = "SuperAdmin";
             // 
             // txtMatKhau
             // 
@@ -97,10 +97,11 @@
             this.txtMatKhau.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtMatKhau.Location = new System.Drawing.Point(105, 63);
             this.txtMatKhau.Name = "txtMatKhau";
+            this.txtMatKhau.PasswordChar = '*';
             this.txtMatKhau.PreventEnterBeep = true;
             this.txtMatKhau.Size = new System.Drawing.Size(132, 20);
             this.txtMatKhau.TabIndex = 4;
-            this.txtMatKhau.Text = "admin";
+            this.txtMatKhau.Text = "SuperAdmin";
             // 
             // cbbCa
             // 

@@ -2,7 +2,9 @@
 using GPBH.Business;
 using GPBH.Business.Dtos;
 using GPBH.Business.Services;
+using GPBH.UI.Constant;
 using GPBH.UI.Extentions;
+using GPBH.UI.Helper;
 using System;
 using System.Windows.Forms;
 
@@ -89,6 +91,13 @@ namespace GPBH.UI.UserControls
         /// </summary>
         private void BtnLuu_Click(object sender, EventArgs e)
         {
+            var hasPermission = CheckPermissionHelper.HasPerrmission("ThamSo", GPBHConstant.Action.Sua);
+            if (!hasPermission)
+            {
+                CheckPermissionHelper.ShowMessage();
+                return;
+            }
+
             var data = dataGridViewX1.GetData<GirdSystemSettingDto>();
             _sysDMCuaHangService.LuuThamSo(data, AppGlobals.MaCH);
             MessageBoxEx.Show("Cập nhật thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

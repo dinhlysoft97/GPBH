@@ -1,8 +1,8 @@
 ﻿using DevComponents.DotNetBar;
-using DevComponents.Editors;
 using GPBH.Business;
 using GPBH.Business.Services;
 using GPBH.Data.Entities;
+using GPBH.UI.Helper;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Windows.Forms;
@@ -91,8 +91,9 @@ namespace GPBH.UI
             }
         }
 
-        #endregion
-
+        /// <summary>
+        /// Tải danh sách ca làm việc và chọn ca hiện tại dựa trên thời gian hiện tại.
+        /// </summary>
         private void LoadCa()
         {
             var danhSachCa = _dmcaService.GetAll();
@@ -122,11 +123,10 @@ namespace GPBH.UI
                 }
             }
 
-            cbbCa.DataSource = danhSachCa;
-            cbbCa.DisplayMember = "Ma_ca";
-            cbbCa.ValueMember = "Ma_ca";
+            ComboBoxHelper.BindData(cbbCa, danhSachCa, nameof(DMca.Ma_ca), nameof(DMca.Ma_ca), true);
             if (caHienTai != null)
                 cbbCa.SelectedValue = caHienTai.Ma_ca;
         }
+        #endregion
     }
 }

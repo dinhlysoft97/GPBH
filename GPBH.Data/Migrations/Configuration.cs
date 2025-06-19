@@ -406,14 +406,14 @@ namespace GPBH.Data.Migrations
 
         private static void AddUserAdmin(AppDbContext context)
         {
-            var userAdmin = context.SysDMNSD.Where(z => z.TenDangNhap == "admin").FirstOrDefault();
+            var userAdmin = context.SysDMNSD.Where(z => z.TenDangNhap == "SuperAdmin").FirstOrDefault();
             if (userAdmin != null) return;
 
             var entityUser = new SysDMNSD
             {
-                TenDangNhap = "admin",
+                TenDangNhap = "SuperAdmin",
                 TenDayDu = "Quản trị hệ thống",
-                MatKhau = HashPassword("admin"), // Mật khẩu cần được mã hóa trước khi lưu
+                MatKhau = HashPassword("SuperAdmin"), // Mật khẩu cần được mã hóa trước khi lưu
                 IsAdmin = true,
                 Ksd = false,
                 CapLaiQuyen = false,

@@ -1,9 +1,11 @@
 ﻿using DevComponents.DotNetBar;
 using GPBH.Business;
 using GPBH.Business.Dtos;
+using GPBH.UI.Constant;
 using GPBH.UI.Extentions;
 using GPBH.UI.Forms;
 using GPBH.UI.Helper;
+using OfficeOpenXml.FormulaParsing.Excel.Functions.DateTime;
 using System;
 using System.Drawing;
 using System.IO;
@@ -153,7 +155,7 @@ namespace GPBH.UI.UserControls
         /// </summary>
         private void DataGridViewX1_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Delete)
+            if (e.KeyCode == Keys.Delete)
             {
                 HandleXoa();
             }
@@ -175,6 +177,11 @@ namespace GPBH.UI.UserControls
             if (item != null)
             {
                 var data = _sysDMNSDService.GetByTenDangNhap(item.TenDangNhap);
+                if (data != null && data.TenDangNhap == GPBHConstant.SuperAdmin)
+                {
+                    MessageBoxEx.Show($"Không thể sửa thông tin người dùng {GPBHConstant.SuperAdmin}!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 this.ShowForm<NguoiSuDung>(data);
             }
         }
@@ -190,6 +197,13 @@ namespace GPBH.UI.UserControls
             if (item == null) return;
 
             var tenDangNhap = item.TenDangNhap;
+
+            if (tenDangNhap == GPBHConstant.SuperAdmin)
+            {
+                MessageBoxEx.Show($"Không thể sửa thông tin người dùng {GPBHConstant.SuperAdmin}!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             var resultDialog = MessageBoxEx.Show($"Bạn có chắc muốn xóa người dùng: {tenDangNhap}?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (resultDialog == DialogResult.Yes)
             {
@@ -218,6 +232,11 @@ namespace GPBH.UI.UserControls
                 if (!string.IsNullOrEmpty(tenDangNhap))
                 {
                     var data = _sysDMNSDService.GetByTenDangNhap(tenDangNhap);
+                    if (data != null && data.TenDangNhap == GPBHConstant.SuperAdmin)
+                    {
+                        MessageBoxEx.Show($"Không thể sửa thông tin người dùng {GPBHConstant.SuperAdmin}!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
                     this.ShowForm<NguoiSuDung>(data);
                 }
             }

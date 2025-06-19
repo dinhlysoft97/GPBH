@@ -2,7 +2,9 @@
 using GPBH.Business;
 using GPBH.Business.Services;
 using GPBH.Data.Entities;
+using GPBH.UI.Constant;
 using GPBH.UI.Forms;
+using GPBH.UI.Helper;
 using GPBH.UI.UserControls;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -59,11 +61,11 @@ namespace GPBH.UI
                 if (index == -1)
                     index = 0;
                 subMenu.ImageIndex = index;
-
-                if (menu.Type == SysMenuType.Document) nodeBanHang.SubItems.Add(subMenu);
-                if (menu.Type == SysMenuType.Report) nodeBaoCao.SubItems.Add(subMenu);
-                if (menu.Type == SysMenuType.Category) nodeDanhMuc.SubItems.Add(subMenu);
-                if (menu.Type == SysMenuType.Setting) nodeCaiDat.SubItems.Add(subMenu);
+                var hasPermission = CheckPermissionHelper.HasPerrmission(menu.MenuId, GPBHConstant.Action.Xem);
+                if (hasPermission && menu.Type == SysMenuType.Document) nodeBanHang.SubItems.Add(subMenu);
+                if (hasPermission && menu.Type == SysMenuType.Report) nodeBaoCao.SubItems.Add(subMenu);
+                if (hasPermission && menu.Type == SysMenuType.Category) nodeDanhMuc.SubItems.Add(subMenu);
+                if (hasPermission && menu.Type == SysMenuType.Setting) nodeCaiDat.SubItems.Add(subMenu);
             }
 
             group.SubItems.Add(nodeBanHang);
@@ -180,7 +182,7 @@ namespace GPBH.UI
                     form = ActivatorUtilities.CreateInstance<GiaBan>(Program.ServiceProvider);
                     break;
                 default:
-                    MessageBoxEx.Show("Tính năng đang phát triển!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBoxEx.Show("Bạn không có quyền truy cập!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
             }
 

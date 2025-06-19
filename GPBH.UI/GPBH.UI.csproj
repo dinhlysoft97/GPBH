@@ -199,6 +199,7 @@
     <Compile Include="Forms\TyGia.Designer.cs">
       <DependentUpon>TyGia.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helper\CheckPermissionHelper.cs" />
     <Compile Include="Helper\ComboBoxExUseGirdViewHelper.cs" />
     <Compile Include="Helper\ComboBoxHelper.cs" />
     <Compile Include="Extentions\FormExtention.cs" />

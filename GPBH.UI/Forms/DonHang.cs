@@ -18,6 +18,7 @@ using System.Linq;
 using System.Reflection.Emit;
 using System.Windows.Forms;
 using static GPBH.UI.UserControls.ucHangHoa;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace GPBH.UI.Forms
 {
@@ -79,6 +80,7 @@ namespace GPBH.UI.Forms
             XPH5Dto data = null)
         {
             InitializeComponent();
+
             // Đặt thuộc tính KeyPreview của Form là true trong Designer hoặc trong code
             this.KeyPreview = true;
         

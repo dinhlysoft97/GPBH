@@ -53,7 +53,7 @@ namespace GPBH.Business
             {
                 var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
                 var user = unitOfWork.Repository<SysDMNSD>()
-                .Find(u => u.TenDangNhap == tenDangNhap && u.MatKhau == matKhauHash && !u.Ksd).FirstOrDefault();
+                .Include(z => z.SysPhanQuyens).Where(u => u.TenDangNhap == tenDangNhap && u.MatKhau == matKhauHash && !u.Ksd).FirstOrDefault();
                 AppDbContext.CurrentUserName = tenDangNhap;
                 return user;
             }
