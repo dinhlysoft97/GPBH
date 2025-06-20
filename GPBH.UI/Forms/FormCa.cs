@@ -7,10 +7,8 @@ namespace GPBH.UI.Forms
 {
     public partial class FormCa : Office2007Form
     {
-        private bool _isEdit = false;
-        private DMca _data;
         private readonly DMcaService _dMcaService;
-        public FormCa(DMcaService dMcaService, DMca data = null)
+        public FormCa(DMcaService dMcaService)
         {
             InitializeComponent();
             _dMcaService = dMcaService;

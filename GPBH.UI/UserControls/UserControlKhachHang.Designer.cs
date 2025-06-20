@@ -330,6 +330,5 @@ namespace GPBH.UI.UserControls
         private System.Windows.Forms.DataGridViewTextBoxColumn So_hieu;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ten_tau_bay;
         private System.Windows.Forms.DataGridViewTextBoxColumn Han_muc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ma_ca;
     }
 }

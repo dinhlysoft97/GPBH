@@ -31,7 +31,7 @@ namespace GPBH.UI.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.lbMaPhieu = new DevComponents.DotNetBar.LabelX();
             this.labelX10 = new DevComponents.DotNetBar.LabelX();
@@ -729,14 +729,14 @@ namespace GPBH.UI.Forms
             this.Tien_ban_nt,
             this.Tien_ban,
             this.Gg_ly_do});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewX1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataGridViewX1.Location = new System.Drawing.Point(0, 40);
@@ -878,7 +878,7 @@ namespace GPBH.UI.Forms
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 58.89792F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.10208F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 383F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 314F));
             this.tableLayoutPanel2.Controls.Add(this.groupPanel4, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.groupPanel6, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.groupPanel5, 2, 0);
@@ -919,7 +919,7 @@ namespace GPBH.UI.Forms
             this.groupPanel4.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel4.Location = new System.Drawing.Point(3, 3);
             this.groupPanel4.Name = "groupPanel4";
-            this.groupPanel4.Size = new System.Drawing.Size(608, 187);
+            this.groupPanel4.Size = new System.Drawing.Size(646, 187);
             // 
             // 
             // 
@@ -1277,9 +1277,9 @@ namespace GPBH.UI.Forms
             this.groupPanel6.Controls.Add(this.lbTTH);
             this.groupPanel6.Controls.Add(this.labelX22);
             this.groupPanel6.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel6.Location = new System.Drawing.Point(617, 3);
+            this.groupPanel6.Location = new System.Drawing.Point(657, 3);
             this.groupPanel6.Name = "groupPanel6";
-            this.groupPanel6.Size = new System.Drawing.Size(422, 187);
+            this.groupPanel6.Size = new System.Drawing.Size(451, 187);
             // 
             // 
             // 
@@ -1321,7 +1321,7 @@ namespace GPBH.UI.Forms
             this.txtTQDVND.DisplayFormat = "#,##0.00";
             this.txtTQDVND.Enabled = false;
             this.txtTQDVND.Increment = 1D;
-            this.txtTQDVND.Location = new System.Drawing.Point(236, 123);
+            this.txtTQDVND.Location = new System.Drawing.Point(243, 123);
             this.txtTQDVND.Name = "txtTQDVND";
             this.txtTQDVND.ShowUpDown = true;
             this.txtTQDVND.Size = new System.Drawing.Size(99, 20);
@@ -1335,7 +1335,7 @@ namespace GPBH.UI.Forms
             // 
             // 
             this.labelX28.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX28.Location = new System.Drawing.Point(182, 124);
+            this.labelX28.Location = new System.Drawing.Point(189, 124);
             this.labelX28.Margin = new System.Windows.Forms.Padding(2);
             this.labelX28.Name = "labelX28";
             this.labelX28.Size = new System.Drawing.Size(33, 15);
@@ -1353,7 +1353,7 @@ namespace GPBH.UI.Forms
             this.txtTong_thu_nt.DisplayFormat = "#,##0.00";
             this.txtTong_thu_nt.Enabled = false;
             this.txtTong_thu_nt.Increment = 1D;
-            this.txtTong_thu_nt.Location = new System.Drawing.Point(236, 95);
+            this.txtTong_thu_nt.Location = new System.Drawing.Point(243, 95);
             this.txtTong_thu_nt.Name = "txtTong_thu_nt";
             this.txtTong_thu_nt.ShowUpDown = true;
             this.txtTong_thu_nt.Size = new System.Drawing.Size(99, 20);
@@ -1367,7 +1367,7 @@ namespace GPBH.UI.Forms
             // 
             // 
             this.labelX29.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX29.Location = new System.Drawing.Point(89, 124);
+            this.labelX29.Location = new System.Drawing.Point(96, 124);
             this.labelX29.Margin = new System.Windows.Forms.Padding(2);
             this.labelX29.Name = "labelX29";
             this.labelX29.Size = new System.Drawing.Size(66, 15);
@@ -1384,7 +1384,7 @@ namespace GPBH.UI.Forms
             this.txtTong_giam_gia_nt.DisplayFormat = "#,##0.00";
             this.txtTong_giam_gia_nt.Enabled = false;
             this.txtTong_giam_gia_nt.Increment = 1D;
-            this.txtTong_giam_gia_nt.Location = new System.Drawing.Point(236, 65);
+            this.txtTong_giam_gia_nt.Location = new System.Drawing.Point(243, 65);
             this.txtTong_giam_gia_nt.Name = "txtTong_giam_gia_nt";
             this.txtTong_giam_gia_nt.ShowUpDown = true;
             this.txtTong_giam_gia_nt.Size = new System.Drawing.Size(99, 20);
@@ -1398,7 +1398,7 @@ namespace GPBH.UI.Forms
             // 
             // 
             this.lbTongThu.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lbTongThu.Location = new System.Drawing.Point(182, 93);
+            this.lbTongThu.Location = new System.Drawing.Point(189, 93);
             this.lbTongThu.Margin = new System.Windows.Forms.Padding(2);
             this.lbTongThu.Name = "lbTongThu";
             this.lbTongThu.Size = new System.Drawing.Size(33, 15);
@@ -1417,7 +1417,7 @@ namespace GPBH.UI.Forms
             this.txtTong_tien_hang_nt.DisplayFormat = "#,##0.00";
             this.txtTong_tien_hang_nt.Enabled = false;
             this.txtTong_tien_hang_nt.Increment = 1D;
-            this.txtTong_tien_hang_nt.Location = new System.Drawing.Point(236, 31);
+            this.txtTong_tien_hang_nt.Location = new System.Drawing.Point(243, 31);
             this.txtTong_tien_hang_nt.Name = "txtTong_tien_hang_nt";
             this.txtTong_tien_hang_nt.ShowUpDown = true;
             this.txtTong_tien_hang_nt.Size = new System.Drawing.Size(99, 20);
@@ -1431,7 +1431,7 @@ namespace GPBH.UI.Forms
             // 
             // 
             this.labelX27.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX27.Location = new System.Drawing.Point(89, 93);
+            this.labelX27.Location = new System.Drawing.Point(96, 93);
             this.labelX27.Margin = new System.Windows.Forms.Padding(2);
             this.labelX27.Name = "labelX27";
             this.labelX27.Size = new System.Drawing.Size(46, 15);
@@ -1446,7 +1446,7 @@ namespace GPBH.UI.Forms
             // 
             // 
             this.lbGiamGia.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lbGiamGia.Location = new System.Drawing.Point(182, 63);
+            this.lbGiamGia.Location = new System.Drawing.Point(189, 63);
             this.lbGiamGia.Margin = new System.Windows.Forms.Padding(2);
             this.lbGiamGia.Name = "lbGiamGia";
             this.lbGiamGia.Size = new System.Drawing.Size(33, 15);
@@ -1462,7 +1462,7 @@ namespace GPBH.UI.Forms
             // 
             // 
             this.labelX25.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX25.Location = new System.Drawing.Point(89, 63);
+            this.labelX25.Location = new System.Drawing.Point(96, 63);
             this.labelX25.Margin = new System.Windows.Forms.Padding(2);
             this.labelX25.Name = "labelX25";
             this.labelX25.Size = new System.Drawing.Size(47, 15);
@@ -1477,7 +1477,7 @@ namespace GPBH.UI.Forms
             // 
             // 
             this.lbTTH.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lbTTH.Location = new System.Drawing.Point(182, 31);
+            this.lbTTH.Location = new System.Drawing.Point(189, 31);
             this.lbTTH.Margin = new System.Windows.Forms.Padding(2);
             this.lbTTH.Name = "lbTTH";
             this.lbTTH.Size = new System.Drawing.Size(33, 15);
@@ -1493,7 +1493,7 @@ namespace GPBH.UI.Forms
             // 
             // 
             this.labelX22.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX22.Location = new System.Drawing.Point(89, 31);
+            this.labelX22.Location = new System.Drawing.Point(96, 31);
             this.labelX22.Margin = new System.Windows.Forms.Padding(2);
             this.labelX22.Name = "labelX22";
             this.labelX22.Size = new System.Drawing.Size(76, 15);
@@ -1507,9 +1507,9 @@ namespace GPBH.UI.Forms
             this.groupPanel5.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.groupPanel5.Controls.Add(this.lbQuyDoiTienTe);
             this.groupPanel5.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel5.Location = new System.Drawing.Point(1045, 3);
+            this.groupPanel5.Location = new System.Drawing.Point(1114, 3);
             this.groupPanel5.Name = "groupPanel5";
-            this.groupPanel5.Size = new System.Drawing.Size(312, 187);
+            this.groupPanel5.Size = new System.Drawing.Size(309, 187);
             // 
             // 
             // 
