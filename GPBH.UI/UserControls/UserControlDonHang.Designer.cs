@@ -450,7 +450,7 @@
             this.dataGridViewX2.Name = "dataGridViewX2";
             this.dataGridViewX2.RowHeadersWidth = 51;
             this.dataGridViewX2.RowTemplate.Height = 24;
-            this.dataGridViewX2.Size = new System.Drawing.Size(1339, 453);
+            this.dataGridViewX2.Size = new System.Drawing.Size(1339, 426);
             this.dataGridViewX2.TabIndex = 0;
             // 
             // Ma_hh

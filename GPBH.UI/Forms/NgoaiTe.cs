@@ -1,18 +1,10 @@
-﻿using GPBH.Business.Services;
+﻿using DevComponents.DotNetBar;
+using GPBH.Business.Services;
 using GPBH.UI.Helper;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace GPBH.UI.Forms
 {
-    public partial class NgoaiTe : Form
+    public partial class NgoaiTe : Office2007Form
     {
         private readonly DMNTService _dmNTService;
         public NgoaiTe(DMNTService dMNTService)

@@ -53,7 +53,7 @@
             this.dataGridViewX1.Location = new System.Drawing.Point(2, 12);
             this.dataGridViewX1.Name = "dataGridViewX1";
             this.dataGridViewX1.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.dataGridViewX1.Size = new System.Drawing.Size(584, 534);
+            this.dataGridViewX1.Size = new System.Drawing.Size(293, 534);
             this.dataGridViewX1.TabIndex = 18;
             // 
             // Ma_nt
@@ -68,7 +68,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(298, 583);
+            this.ClientSize = new System.Drawing.Size(298, 548);
             this.Controls.Add(this.dataGridViewX1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
