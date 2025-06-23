@@ -302,10 +302,10 @@ namespace GPBH.UI.Forms
                 }
 
                 var khDto = GetCustomerFromForm();
-                if (_isEditMode) 
+                if (_isEditMode)
                     _dmkhService.EditCustomer(khDto);
                 else
-                    _dmkhService.AddCustomer(khDto);
+                    HandleClick();
 
                 this.DialogResult = DialogResult.OK;
                 this.Close();
@@ -313,6 +313,7 @@ namespace GPBH.UI.Forms
             else
             {
                 this.DialogResult = DialogResult.OK;
+                HandleClick();
                 this.Close();
             }
         }
