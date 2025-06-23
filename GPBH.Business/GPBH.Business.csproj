@@ -116,6 +116,7 @@
     <Compile Include="Services\DMQGService.cs" />
     <Compile Include="Services\DMTGService.cs" />
     <Compile Include="Services\DonHangService.cs" />
+    <Compile Include="Services\ReportBanHangService.cs" />
     <Compile Include="Services\SoPhieuGeneratorService.cs" />
     <Compile Include="Services\SysDinh_dang_formService.cs" />
     <Compile Include="Services\SysDMCuaHangService.cs" />

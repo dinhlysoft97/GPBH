@@ -36,7 +36,10 @@ namespace GPBH.UI.Forms
 
         private void CbbCuaHang_SelectedIndexChanged(object sender, EventArgs e)
         {
-            dataGridViewX1.BindData(_sysDMCuaHangService.GetGiaBanByCuaHang(cbbCuaHang.SelectedValue.ToString()));
+            var selected = cbbCuaHang.SelectedItem as CuaHangDto;
+            if (selected == null) return;
+            dataGridViewX1.BindData(_sysDMCuaHangService.GetGiaBanByCuaHang(selected.Ma_cua_hang));
+
         }
     }
 }

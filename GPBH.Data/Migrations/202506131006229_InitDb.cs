@@ -404,11 +404,29 @@
                         Ngay_lap = c.DateTime(),
                     })
                 .PrimaryKey(t => new { t.Ma_cua_hang, t.Ma_chung_tu, t.Thang, t.Nam, t.So_phieu });
-            
+
+            Sql(@"
+                CREATE VIEW vw_BaoCaoBanTheoKhachHang AS
+                SELECT 
+                    ph.Ma_cua_hang AS Noi_ban,
+                    LTRIM(RTRIM(kh.Ho + ' ' + kh.Ten_dem + ' ' + kh.Ten)) AS Ten_khachhang,
+                    kh.Passport,
+                    ph.Ngay_chung_tu AS Ngay_ban,
+                    ct.Ten_hh AS Ten_hang,
+                    ct.Ma_hh AS Ma_hang,
+                    ct.So_luong AS So_luong,
+                    ph.Ma_nt AS Ma_ngoaite,
+                    ct.Tien_ban_nt AS Thanh_tien
+                FROM XPH5 ph
+                INNER JOIN XCT5 ct ON ph.Ma_phieu = ct.Ma_phieu
+                INNER JOIN DMKH kh ON ph.Passport = kh.Passport
+                INNER JOIN DMHH hh ON ct.Ma_hh = hh.Ma_hh
+            ");
         }
         
         public override void Down()
         {
+            Sql("DROP VIEW IF EXISTS vw_BaoCaoBanTheoKhachHang");
             DropForeignKey("dbo.SysPhanQuyen", "MenuId", "dbo.SysMenu");
             DropForeignKey("dbo.SysPhanQuyen", "Ten_dang_nhap", "dbo.SysDMNSD");
             DropForeignKey("dbo.DMKH", "Quoc_gia", "dbo.DMQG");
