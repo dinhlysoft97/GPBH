@@ -71,7 +71,7 @@ namespace GPBH.UI.UserControls
         /// </summary>
         private void LoadData()
         {
-            var donHangs = _donHangService.TiemKiem(dtTu.Value.Date, dtTu.Value.Date);
+            var donHangs = _donHangService.TiemKiem(dtTu.Value.Date, dtTu.Value.Date, AppGlobals.MaCH);
             DataGridViewFilterHelper.ApplyFilter(dataGridViewX1, donHangs);
             dataGridViewX1.DataBindingComplete += (s, e) =>
             {
@@ -84,7 +84,7 @@ namespace GPBH.UI.UserControls
         /// </summary>
         private void TimKiem()
         {
-            var donHangs = _donHangService.TiemKiem(dtTu.Value.Date, dtDen.Value.Date);
+            var donHangs = _donHangService.TiemKiem(dtTu.Value.Date, dtDen.Value.Date, AppGlobals.MaCH);
             SetUpUI();
             DataGridViewFilterHelper.ApplyFilter(dataGridViewX1, donHangs);
             SetFormRowTheoCuaHang();

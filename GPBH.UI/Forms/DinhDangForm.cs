@@ -56,6 +56,7 @@ namespace GPBH.UI.Forms
         private void LoadData()
         {
             ComboBoxHelper.BindData(cbbCuaHang, _sysDMCuaHangService.GetAll(), "Ten_cua_hang", "Ma_cua_hang");
+            cbbCuaHang.SelectedValue = AppGlobals.MaCH;
             dataGridViewX1.BindData(_sysDinh_dang_formService.GetDinhDang(cbbCuaHang.SelectedValue.ToString()));
 
             // Tìm cột ComboBox trong DataGridViewX (tên do bạn đặt trong Designer)

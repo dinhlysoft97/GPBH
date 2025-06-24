@@ -25,15 +25,15 @@ namespace GPBH.Business.Services
         /// <param name="tuNgay"></param>
         /// <param name="denNgay"></param>
         /// <returns></returns>
-        public List<GirdDonHangDto> TiemKiem(DateTime tuNgay, DateTime denNgay)
+        public List<GirdDonHangDto> TiemKiem(DateTime tuNgay, DateTime denNgay, string maCH)
         {
             using (var scope = _serviceProvider.CreateScope())
             {
                 var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
                 return unitOfWork.Repository<XPH5>()
-                    .Find(x => x.Ngay_chung_tu >= tuNgay && x.Ngay_chung_tu <= denNgay)
-                    .OrderByDescending(z=>z.Ngay_chung_tu)
-                    .OrderByDescending(z=>z.So_chung_tu)
+                    .Find(x => x.Ngay_chung_tu >= tuNgay && x.Ngay_chung_tu <= denNgay && x.Ma_cua_hang == maCH)
+                    .OrderByDescending(z => z.Ngay_chung_tu)
+                    .OrderByDescending(z => z.So_chung_tu)
                     .Select(x => x.Adapt<GirdDonHangDto>())
                     .ToList();
             }
