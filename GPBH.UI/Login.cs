@@ -78,6 +78,7 @@ namespace GPBH.UI
                 // Đăng nhập thành công
                 AppGlobals.CurrentUser = user;
                 AppGlobals.TgDangNhap = DateTime.Now;
+                AppGlobals.MaCa = cbbCa.SelectedValue?.ToString() ?? string.Empty;
 
                 // Khởi tạo và show MainForm bằng DI
                 var main = ActivatorUtilities.CreateInstance<MainForm>(Program.ServiceProvider);
