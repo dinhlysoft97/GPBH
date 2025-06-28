@@ -42,10 +42,6 @@ namespace GPBH.Business.Services
                     {
                         da.Fill(dt);
                     }
-                    foreach (DataColumn col in dt.Columns)
-                    {
-                        System.Diagnostics.Debug.WriteLine(col.ColumnName);
-                    }
                 }
             }
             return dt;

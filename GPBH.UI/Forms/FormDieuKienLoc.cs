@@ -17,15 +17,13 @@ namespace GPBH.UI.Forms
         private readonly DMKHService _dmkhService;
         private readonly DMHHService _dmhhService;
         private readonly DMNTService _dmntService;
-        private readonly SysDMCuaHangService _sysDMCuaHangService;
-        public FormDieuKienLoc(DMKHService dmkhService, DMHHService dmhhService, DMNTService dmntService, SysDMCuaHangService sysDMCuaHangService)
+        public FormDieuKienLoc(DMKHService dmkhService, DMHHService dmhhService, DMNTService dmntService)
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
             _dmkhService = dmkhService;
             _dmhhService = dmhhService;
             _dmntService = dmntService;
-            _sysDMCuaHangService = sysDMCuaHangService;
             this.Load += FormDieuKienLoc_Load;
         }
 
