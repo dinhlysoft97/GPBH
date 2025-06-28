@@ -31,6 +31,12 @@
             this.dtpTuNgay = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.dtpDenNgay = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.buttonDong = new DevComponents.DotNetBar.ButtonX();
+            this.buttonLamMoi = new DevComponents.DotNetBar.ButtonX();
+            this.ccbMaNgoaiTe = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.ccbMaHang = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.ccbPassport = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.ccbKhachHang = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
             this.labelX6 = new DevComponents.DotNetBar.LabelX();
             this.labelX5 = new DevComponents.DotNetBar.LabelX();
@@ -38,10 +44,6 @@
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
-            this.ccbKhachHang = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.ccbPassport = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.ccbMaHang = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.ccbMaNgoaiTe = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             ((System.ComponentModel.ISupportInitialize)(this.dtpTuNgay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpDenNgay)).BeginInit();
             this.groupPanel1.SuspendLayout();
@@ -141,6 +143,8 @@
             // 
             this.groupPanel1.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanel1.Controls.Add(this.buttonDong);
+            this.groupPanel1.Controls.Add(this.buttonLamMoi);
             this.groupPanel1.Controls.Add(this.ccbMaNgoaiTe);
             this.groupPanel1.Controls.Add(this.ccbMaHang);
             this.groupPanel1.Controls.Add(this.ccbPassport);
@@ -157,7 +161,7 @@
             this.groupPanel1.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel1.Location = new System.Drawing.Point(5, 5);
             this.groupPanel1.Name = "groupPanel1";
-            this.groupPanel1.Size = new System.Drawing.Size(611, 323);
+            this.groupPanel1.Size = new System.Drawing.Size(611, 304);
             // 
             // 
             // 
@@ -189,11 +193,83 @@
             this.groupPanel1.TabIndex = 9;
             this.groupPanel1.Text = "Điều kiện lọc";
             // 
+            // buttonDong
+            // 
+            this.buttonDong.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonDong.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonDong.Location = new System.Drawing.Point(401, 249);
+            this.buttonDong.Name = "buttonDong";
+            this.buttonDong.Size = new System.Drawing.Size(75, 23);
+            this.buttonDong.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonDong.TabIndex = 32;
+            this.buttonDong.Text = "Đóng";
+            this.buttonDong.Click += new System.EventHandler(this.buttonDong_Click);
+            // 
+            // buttonLamMoi
+            // 
+            this.buttonLamMoi.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonLamMoi.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonLamMoi.Location = new System.Drawing.Point(279, 249);
+            this.buttonLamMoi.Name = "buttonLamMoi";
+            this.buttonLamMoi.Size = new System.Drawing.Size(96, 23);
+            this.buttonLamMoi.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonLamMoi.TabIndex = 31;
+            this.buttonLamMoi.Text = "Làm mới";
+            this.buttonLamMoi.Click += new System.EventHandler(this.buttonLamMoi_Click);
+            // 
+            // ccbMaNgoaiTe
+            // 
+            this.ccbMaNgoaiTe.DisplayMember = "Text";
+            this.ccbMaNgoaiTe.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.ccbMaNgoaiTe.FormattingEnabled = true;
+            this.ccbMaNgoaiTe.ItemHeight = 14;
+            this.ccbMaNgoaiTe.Location = new System.Drawing.Point(138, 198);
+            this.ccbMaNgoaiTe.Name = "ccbMaNgoaiTe";
+            this.ccbMaNgoaiTe.Size = new System.Drawing.Size(150, 20);
+            this.ccbMaNgoaiTe.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.ccbMaNgoaiTe.TabIndex = 30;
+            // 
+            // ccbMaHang
+            // 
+            this.ccbMaHang.DisplayMember = "Text";
+            this.ccbMaHang.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.ccbMaHang.FormattingEnabled = true;
+            this.ccbMaHang.ItemHeight = 14;
+            this.ccbMaHang.Location = new System.Drawing.Point(138, 154);
+            this.ccbMaHang.Name = "ccbMaHang";
+            this.ccbMaHang.Size = new System.Drawing.Size(150, 20);
+            this.ccbMaHang.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.ccbMaHang.TabIndex = 29;
+            // 
+            // ccbPassport
+            // 
+            this.ccbPassport.DisplayMember = "Text";
+            this.ccbPassport.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.ccbPassport.FormattingEnabled = true;
+            this.ccbPassport.ItemHeight = 14;
+            this.ccbPassport.Location = new System.Drawing.Point(138, 109);
+            this.ccbPassport.Name = "ccbPassport";
+            this.ccbPassport.Size = new System.Drawing.Size(150, 20);
+            this.ccbPassport.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.ccbPassport.TabIndex = 28;
+            // 
+            // ccbKhachHang
+            // 
+            this.ccbKhachHang.DisplayMember = "Text";
+            this.ccbKhachHang.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.ccbKhachHang.FormattingEnabled = true;
+            this.ccbKhachHang.ItemHeight = 14;
+            this.ccbKhachHang.Location = new System.Drawing.Point(138, 65);
+            this.ccbKhachHang.Name = "ccbKhachHang";
+            this.ccbKhachHang.Size = new System.Drawing.Size(150, 20);
+            this.ccbKhachHang.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.ccbKhachHang.TabIndex = 27;
+            // 
             // buttonX1
             // 
             this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX1.Location = new System.Drawing.Point(224, 261);
+            this.buttonX1.Location = new System.Drawing.Point(116, 249);
             this.buttonX1.Name = "buttonX1";
             this.buttonX1.Size = new System.Drawing.Size(140, 23);
             this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -291,60 +367,12 @@
             this.labelX1.TabIndex = 17;
             this.labelX1.Text = "Từ ngày";
             // 
-            // ccbKhachHang
-            // 
-            this.ccbKhachHang.DisplayMember = "Text";
-            this.ccbKhachHang.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.ccbKhachHang.FormattingEnabled = true;
-            this.ccbKhachHang.ItemHeight = 14;
-            this.ccbKhachHang.Location = new System.Drawing.Point(138, 65);
-            this.ccbKhachHang.Name = "ccbKhachHang";
-            this.ccbKhachHang.Size = new System.Drawing.Size(150, 20);
-            this.ccbKhachHang.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.ccbKhachHang.TabIndex = 27;
-            // 
-            // ccbPassport
-            // 
-            this.ccbPassport.DisplayMember = "Text";
-            this.ccbPassport.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.ccbPassport.FormattingEnabled = true;
-            this.ccbPassport.ItemHeight = 14;
-            this.ccbPassport.Location = new System.Drawing.Point(138, 109);
-            this.ccbPassport.Name = "ccbPassport";
-            this.ccbPassport.Size = new System.Drawing.Size(150, 20);
-            this.ccbPassport.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.ccbPassport.TabIndex = 28;
-            // 
-            // ccbMaHang
-            // 
-            this.ccbMaHang.DisplayMember = "Text";
-            this.ccbMaHang.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.ccbMaHang.FormattingEnabled = true;
-            this.ccbMaHang.ItemHeight = 14;
-            this.ccbMaHang.Location = new System.Drawing.Point(138, 154);
-            this.ccbMaHang.Name = "ccbMaHang";
-            this.ccbMaHang.Size = new System.Drawing.Size(150, 20);
-            this.ccbMaHang.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.ccbMaHang.TabIndex = 29;
-            // 
-            // ccbMaNgoaiTe
-            // 
-            this.ccbMaNgoaiTe.DisplayMember = "Text";
-            this.ccbMaNgoaiTe.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.ccbMaNgoaiTe.FormattingEnabled = true;
-            this.ccbMaNgoaiTe.ItemHeight = 14;
-            this.ccbMaNgoaiTe.Location = new System.Drawing.Point(138, 198);
-            this.ccbMaNgoaiTe.Name = "ccbMaNgoaiTe";
-            this.ccbMaNgoaiTe.Size = new System.Drawing.Size(150, 20);
-            this.ccbMaNgoaiTe.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.ccbMaNgoaiTe.TabIndex = 30;
-            // 
             // FormDieuKienLoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.ClientSize = new System.Drawing.Size(620, 333);
+            this.ClientSize = new System.Drawing.Size(620, 315);
             this.Controls.Add(this.groupPanel1);
             this.Name = "FormDieuKienLoc";
             this.Text = "Báo cáo bán hàng theo khách hàng";
@@ -372,5 +400,7 @@
         private DevComponents.DotNetBar.Controls.ComboBoxEx ccbMaHang;
         private DevComponents.DotNetBar.Controls.ComboBoxEx ccbPassport;
         private DevComponents.DotNetBar.Controls.ComboBoxEx ccbKhachHang;
+        private DevComponents.DotNetBar.ButtonX buttonDong;
+        private DevComponents.DotNetBar.ButtonX buttonLamMoi;
     }
 }

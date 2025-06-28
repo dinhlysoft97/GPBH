@@ -4,5 +4,8 @@
 
     partial class GPBHDtDataSet
     {
+        partial class vw_BaoCaoBanTheoKhachHangDataTable
+        {
+        }
     }
 }

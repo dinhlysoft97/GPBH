@@ -370,5 +370,10 @@ namespace GPBH.UI.UserControls
             public decimal Gia { get; set; }
             public DateTime NgayTao { get; set; }
         }
+
+        private void dataGridViewX2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

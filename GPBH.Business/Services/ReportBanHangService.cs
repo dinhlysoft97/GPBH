@@ -24,7 +24,7 @@ namespace GPBH.Business.Services
                     (@Passport IS NULL OR Passport = @Passport)
                     AND (@Ma_hang IS NULL OR Ma_hang = @Ma_hang)
                     AND (@Ten_khachhang IS NULL OR Ten_khachhang LIKE '%' + @Ten_khachhang + '%')
-                    AND (@Ma_ngoaite IS NULL OR Ma_ngoaite = @Ma_ngoaite)
+                    AND (@Ma_ngoaite IS NULL OR Ma_tra_lai = @Ma_ngoaite)
                     AND (@TuNgay IS NULL OR Ngay_ban >= @TuNgay)
                     AND (@DenNgay IS NULL OR Ngay_ban <= @DenNgay)
                 ORDER BY Ma_hang ASC";
@@ -41,6 +41,10 @@ namespace GPBH.Business.Services
                     using (var da = new SqlDataAdapter(cmd))
                     {
                         da.Fill(dt);
+                    }
+                    foreach (DataColumn col in dt.Columns)
+                    {
+                        System.Diagnostics.Debug.WriteLine(col.ColumnName);
                     }
                 }
             }

@@ -1,4 +1,5 @@
 ﻿using GPBH.Business.Services;
+using GPBH.UI.Extentions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,13 +17,15 @@ namespace GPBH.UI.Forms
         private readonly DMKHService _dmkhService;
         private readonly DMHHService _dmhhService;
         private readonly DMNTService _dmntService;
-        public FormDieuKienLoc(DMKHService dmkhService, DMHHService dmhhService, DMNTService dmntService)
+        private readonly SysDMCuaHangService _sysDMCuaHangService;
+        public FormDieuKienLoc(DMKHService dmkhService, DMHHService dmhhService, DMNTService dmntService, SysDMCuaHangService sysDMCuaHangService)
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
             _dmkhService = dmkhService;
             _dmhhService = dmhhService;
             _dmntService = dmntService;
+            _sysDMCuaHangService = sysDMCuaHangService;
             this.Load += FormDieuKienLoc_Load;
         }
 
@@ -70,10 +73,26 @@ namespace GPBH.UI.Forms
             ccbMaNgoaiTe.DataSource = _dmntService.GetAll();
             ccbMaNgoaiTe.DisplayMember = "Mã hàng";
             ccbMaNgoaiTe.ValueMember = "Ma_nt";
+            ccbMaNgoaiTe.SelectedIndex = -1;
 
-            var usdItem = ngoaiTeList.FirstOrDefault(x => x.Ma_nt == "USD");
-            if (usdItem != null)
-                ccbMaNgoaiTe.SelectedValue = "USD";
+        }
+
+        private void buttonLamMoi_Click(object sender, EventArgs e)
+        {
+            ccbKhachHang.SelectedIndex = -1;
+            ccbPassport.SelectedIndex = -1;
+            ccbMaHang.SelectedIndex = -1;
+            ccbMaNgoaiTe.SelectedIndex = -1;
+
+            dtpTuNgay.Value = DateTime.Today;
+            dtpDenNgay.Value = DateTime.Today;
+
+            dtpTuNgay.Focus();
+        }
+
+        private void buttonDong_Click(object sender, EventArgs e)
+        {
+            this.ColseForm();
         }
     }
 }
