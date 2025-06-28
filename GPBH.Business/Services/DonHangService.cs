@@ -148,6 +148,9 @@ namespace GPBH.Business.Services
                         .FirstOrDefault();
 
                     // Update chi tiết
+                    UpdatDonHang(entity, donhang);
+
+                    // Update chi tiết
                     UpdateChiTietDonHang(entity, donhang);
 
                     if (entity.Trang_thai == TrangThaiDonHang.Draft && donhang.Trang_thai == TrangThaiDonHang.Confirmed)
@@ -187,6 +190,62 @@ namespace GPBH.Business.Services
                     throw new BadRequestException("Lỗi khi tạo đơn hàng: " + ex.Message);
                 }
             }
+        }
+
+        /// <summary>
+        /// Cập nhật thông tin đơn hàng từ DTO vào entity
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <param name="donhang"></param>
+        private void UpdatDonHang(XPH5 entity, XPH5Dto donhang)
+        {
+            entity.Ma_cua_hang = donhang.Ma_cua_hang;
+            entity.Ma_phieu = donhang.Ma_phieu;
+            entity.Ma_chung_tu = donhang.Ma_chung_tu;
+            //entity.So_chung_tu = donhang.So_chung_tu;
+            entity.Ngay_chung_tu = donhang.Ngay_chung_tu;
+            entity.Ma_nt = donhang.Ma_nt;
+            entity.Ty_gia = donhang.Ty_gia;
+            entity.Ma_quay = donhang.Ma_quay;
+            entity.Ma_cqt = donhang.Ma_cqt;
+            entity.Xuat_hddt = donhang.Xuat_hddt;
+            entity.So_hddt = donhang.So_hddt;
+            entity.Xuat_hq = donhang.Xuat_hq;
+            entity.Ma_kho = donhang.Ma_kho;
+            entity.Passport = donhang.Passport;
+            entity.Ten_khach = donhang.Ten_khach;
+            entity.Tt1_loai = donhang.Tt1_loai;
+            entity.Tt1_ma_nt = donhang.Tt1_ma_nt;
+            entity.Tt1_tien_tt = donhang.Tt1_tien_tt;
+            entity.Tt1_tien_nt = donhang.Tt1_tien_nt;
+            entity.Tt2_loai = donhang.Tt2_loai;
+            entity.Tt2_ma_nt = donhang.Tt2_ma_nt;
+            entity.Tt2_tien_tt = donhang.Tt2_tien_tt;
+            entity.Tt2_tien_nt = donhang.Tt2_tien_nt;
+            entity.Tt3_loai = donhang.Tt3_loai;
+            entity.Tt3_ma_nt = donhang.Tt3_ma_nt;
+            entity.Tt3_tien_tt = donhang.Tt3_tien_tt;
+            entity.Tt3_tien_nt = donhang.Tt3_tien_nt;
+            entity.Tt_tong = donhang.Tt_tong;
+            entity.Tong_nhan = donhang.Tong_nhan;
+            entity.Tra_lai = donhang.Tra_lai;
+            entity.Ma_tra_lai = donhang.Ma_tra_lai;
+            entity.Tra_lai_nt = donhang.Tra_lai_nt;
+            entity.Tong_tien_hang = donhang.Tong_tien_hang;
+            entity.Tong_tien_hang_nt = donhang.Tong_tien_hang_nt;
+            entity.Tong_giam_gia = donhang.Tong_giam_gia;
+            entity.Tong_giam_gia_nt = donhang.Tong_giam_gia_nt;
+            entity.Tong_thu = donhang.Tong_thu;
+            entity.Tong_thu_nt = donhang.Tong_thu_nt;
+            entity.Tong_so_luong = donhang.Tong_so_luong;
+            entity.Xnc_ngay_cap = donhang.Xnc_ngay_cap;
+            entity.Xnc_ngay_hh = donhang.Xnc_ngay_hh;
+            entity.So_hieu = donhang.So_hieu;
+            entity.Ten_tau_bay = donhang.Ten_tau_bay;
+            entity.Han_muc = donhang.Han_muc;
+            entity.Ma_nhom_kh = donhang.Ma_nhom_kh;
+            entity.Ma_loai_hinh = donhang.Ma_loai_hinh;
+            entity.Ma_doi_tuong = donhang.Ma_doi_tuong;
         }
 
 

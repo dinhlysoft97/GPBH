@@ -83,7 +83,7 @@ namespace GPBH.UI.Forms
 
             // Đặt thuộc tính KeyPreview của Form là true trong Designer hoặc trong code
             this.KeyPreview = true;
-        
+
             _dMQGService = dMQGService;
             _dMMTService = dMMTService;
             _dMHHService = dMHHService;
@@ -95,7 +95,7 @@ namespace GPBH.UI.Forms
             CuaHang = _sysDMCuaHangService.GetByMaCuaHang(AppGlobals.MaCH);
             SysDinhDangs = _sysDinh_Dang_FormService.GetDinhDang(AppGlobals.MaCH);
             _dMNTs = _dMMTService.GetAll();
-            isCurrencyVND = CuaHang.Ma_nt == GPBHConstant.CurrencyVND; 
+            isCurrencyVND = CuaHang.Ma_nt == GPBHConstant.CurrencyVND;
             _data = data;
             _isEdit = data != null;
             SetUpUI();
@@ -122,6 +122,15 @@ namespace GPBH.UI.Forms
         {
             if (_isEdit && _data != null)
             {
+                if (_data.Ma_tra_lai == GPBHConstant.CurrencyVND)
+                {
+                    txtTra_lai.DisplayFormat(GetFormat("Format_tien"));
+                }
+                else
+                {
+                    txtTra_lai.DisplayFormat(GetFormat("Format_tien_nt"));
+                }
+
                 TyGiaGanNhat = new TyGiaNT
                 {
                     Ma_nt = _data.Ma_nt,
@@ -247,7 +256,6 @@ namespace GPBH.UI.Forms
             txtTt_tong.DisplayFormat(GetFormat("Format_tien_nt"));
             txtTong_nhan.DisplayFormat(GetFormat("Format_tien_nt"));
             txtTra_lai_nt.DisplayFormat(GetFormat("Format_tien_nt"));
-            txtTra_lai.DisplayFormat(GetFormat("Format_tien"));
         }
 
         /// <summary>
@@ -421,6 +429,11 @@ namespace GPBH.UI.Forms
             }
             else
             {
+                if(_data.Trang_thai == TrangThaiDonHang.Confirmed)
+                {
+                    MessageBoxEx.Show("Đơn hàng đã xuất kho không được cập nhật!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }   
                 var validator = ValidatorData();
                 if (validator)
                     UpdateSoChungTuTinhTonKho(TrangThaiDonHang.Draft);
@@ -661,18 +674,22 @@ namespace GPBH.UI.Forms
                 return;
 
             decimal.TryParse(txtTra_lai_nt.Text, out decimal soTienTraLaiNT);
-
+            bool maNTCHEqualMaNT = false;
             if (tyGia.Ma_nt == CuaHang.Ma_nt)
             {
+                txtTra_lai.DisplayFormat(GetFormat("Format_tien_nt"));
                 txtTra_lai.Value = (double)soTienTraLaiNT;
+                maNTCHEqualMaNT = true;
             }
             else
             {
+                txtTra_lai.DisplayFormat(GetFormat("Format_tien"));
                 var soTienNT = (soTienTraLaiNT * TyGiaGanNhat.Ty_gia) / tyGia.Ty_gia;
                 txtTra_lai.Value = (double)soTienNT;
+                maNTCHEqualMaNT = false;
             }
 
-            lbQuyDoiTienTe.Text = $"{txtTra_lai_nt.Text} {CuaHang.Ma_nt} =  {txtTra_lai.Value.ToString(GetFormat("Format_tien"))} {maNT}";
+            lbQuyDoiTienTe.Text = $"{txtTra_lai_nt.Text} {CuaHang.Ma_nt} = {txtTra_lai.Value.ToString(GetFormat(maNTCHEqualMaNT ? "Format_tien_nt" : "Format_tien"))} {maNT}";
         }
 
         private void NgoaiTe1_TextChanged(object sender, EventArgs e)
