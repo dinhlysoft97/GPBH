@@ -109,6 +109,7 @@
             // 
             this.cbbCuaHang.DisplayMember = "Text";
             this.cbbCuaHang.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbbCuaHang.Enabled = false;
             this.cbbCuaHang.FormattingEnabled = true;
             this.cbbCuaHang.ItemHeight = 14;
             this.cbbCuaHang.Location = new System.Drawing.Point(68, 9);
@@ -150,6 +151,7 @@
             this.Controls.Add(this.cbbCuaHang);
             this.Controls.Add(this.labelX1);
             this.Controls.Add(this.dataGridViewX1);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "ThamSo";

@@ -1,19 +1,10 @@
-﻿using GPBH.Business.Services;
-using GPBH.UI.Extentions;
+﻿using DevComponents.DotNetBar;
+using GPBH.Business.Services;
 using GPBH.UI.Helper;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace GPBH.UI.Forms
 {
-    public partial class QuocGia : Form
+    public partial class QuocGia : Office2007Form
     {
         private readonly DMQGService _dmQGService;
         public QuocGia(DMQGService dmQGService)

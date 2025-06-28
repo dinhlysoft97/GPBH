@@ -1,17 +1,9 @@
-﻿using DevComponents.DotNetBar.Controls;
-using GPBH.Business.Services;
-using GPBH.UI.Forms;
+﻿using GPBH.Business.Services;
+using GPBH.UI.Constant;
 using GPBH.UI.Helper;
-using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Services.Description;
 using System.Windows.Forms;
 
 namespace GPBH.UI.UserControls
@@ -63,6 +55,13 @@ namespace GPBH.UI.UserControls
 
         private void btnThem_Click(object sender, EventArgs e)
         {
+            var hasPermission = CheckPermissionHelper.HasPerrmission("KhachHang", GPBHConstant.Action.Them);
+            if (!hasPermission)
+            {
+                CheckPermissionHelper.ShowMessage();
+                return;
+            }
+
             // Lấy service quốc gia từ DI nếu cần, hoặc truyền null nếu không dùng
             var form = new GPBH.UI.Forms.KhachHang(_dmKHService, Program.ServiceProvider.GetService(typeof(DMQGService)) as DMQGService, null, isSelectMode: true);
             if (form.ShowDialog() == DialogResult.OK)
@@ -73,6 +72,13 @@ namespace GPBH.UI.UserControls
 
         private void btnSua_Click(object sender, EventArgs e)
         {
+            var hasPermission = CheckPermissionHelper.HasPerrmission("KhachHang", GPBHConstant.Action.Sua);
+            if (!hasPermission)
+            {
+                CheckPermissionHelper.ShowMessage();
+                return;
+            }
+
             var passport = dataGridViewX1.CurrentRow?.Cells["Passport"].Value?.ToString();
             if (string.IsNullOrEmpty(passport)) return;
 
@@ -96,6 +102,13 @@ namespace GPBH.UI.UserControls
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
+            var hasPermission = CheckPermissionHelper.HasPerrmission("KhachHang", GPBHConstant.Action.Xoa);
+            if (!hasPermission)
+            {
+                CheckPermissionHelper.ShowMessage();
+                return;
+            }
+
             var row = dataGridViewX1.CurrentRow;
             if (row == null || row.Index < 0)
             {

@@ -83,7 +83,6 @@ namespace GPBH.UI
             AppGlobals.Host = connectionInfo.Host;
             AppGlobals.Port = connectionInfo.Port;
             AppGlobals.Database = connectionInfo.Database;
-            AppGlobals.MaCa = "1";
         }
 
         public static void ConfigureForms(this IServiceCollection services)

@@ -4,6 +4,7 @@ using GPBH.Business;
 using GPBH.Business.Dtos;
 using GPBH.Business.Services;
 using GPBH.Data.Entities;
+using GPBH.UI.Constant;
 using GPBH.UI.Extentions;
 using GPBH.UI.Helper;
 using System;
@@ -40,6 +41,13 @@ namespace GPBH.UI.Forms
 
         private void BtnLuu_Click(object sender, EventArgs e)
         {
+            var hasPermission = CheckPermissionHelper.HasPerrmission("DinhDangForm", GPBHConstant.Action.Sua);
+            if (!hasPermission)
+            {
+                CheckPermissionHelper.ShowMessage();
+                return;
+            }
+
             var data = dataGridViewX1.GetData<GirdSysDinhDangFormDto>();
             _sysDinh_dang_formService.LuuDinhDang(data, AppGlobals.MaCH);
             MessageBoxEx.Show("Cập nhật thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -48,6 +56,7 @@ namespace GPBH.UI.Forms
         private void LoadData()
         {
             ComboBoxHelper.BindData(cbbCuaHang, _sysDMCuaHangService.GetAll(), "Ten_cua_hang", "Ma_cua_hang");
+            cbbCuaHang.SelectedValue = AppGlobals.MaCH;
             dataGridViewX1.BindData(_sysDinh_dang_formService.GetDinhDang(cbbCuaHang.SelectedValue.ToString()));
 
             // Tìm cột ComboBox trong DataGridViewX (tên do bạn đặt trong Designer)

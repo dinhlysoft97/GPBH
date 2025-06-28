@@ -30,9 +30,6 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.labelX1 = new DevComponents.DotNetBar.LabelX();
-            this.cbbCuaHang = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.btnLuu = new DevComponents.DotNetBar.ButtonX();
             this.Stt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Code_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MenuId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,6 +43,9 @@
             this.Field_format = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Default_sort = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
             this.Ten_ban = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.labelX1 = new DevComponents.DotNetBar.LabelX();
+            this.cbbCuaHang = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.btnLuu = new DevComponents.DotNetBar.ButtonX();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -83,42 +83,6 @@
             this.dataGridViewX1.Name = "dataGridViewX1";
             this.dataGridViewX1.Size = new System.Drawing.Size(1516, 749);
             this.dataGridViewX1.TabIndex = 1;
-            // 
-            // labelX1
-            // 
-            this.labelX1.AutoSize = true;
-            // 
-            // 
-            // 
-            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(13, 9);
-            this.labelX1.Name = "labelX1";
-            this.labelX1.Size = new System.Drawing.Size(50, 15);
-            this.labelX1.TabIndex = 3;
-            this.labelX1.Text = "Cửa hàng";
-            // 
-            // cbbCuaHang
-            // 
-            this.cbbCuaHang.DisplayMember = "Text";
-            this.cbbCuaHang.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cbbCuaHang.FormattingEnabled = true;
-            this.cbbCuaHang.ItemHeight = 14;
-            this.cbbCuaHang.Location = new System.Drawing.Point(69, 6);
-            this.cbbCuaHang.Name = "cbbCuaHang";
-            this.cbbCuaHang.Size = new System.Drawing.Size(172, 20);
-            this.cbbCuaHang.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cbbCuaHang.TabIndex = 4;
-            // 
-            // btnLuu
-            // 
-            this.btnLuu.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnLuu.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnLuu.Location = new System.Drawing.Point(5, 790);
-            this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(75, 23);
-            this.btnLuu.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnLuu.TabIndex = 5;
-            this.btnLuu.Text = "Cập nhật";
             // 
             // Stt
             // 
@@ -224,6 +188,43 @@
             this.Ten_ban.HeaderText = "Tên bảng";
             this.Ten_ban.Name = "Ten_ban";
             // 
+            // labelX1
+            // 
+            this.labelX1.AutoSize = true;
+            // 
+            // 
+            // 
+            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX1.Location = new System.Drawing.Point(13, 9);
+            this.labelX1.Name = "labelX1";
+            this.labelX1.Size = new System.Drawing.Size(50, 15);
+            this.labelX1.TabIndex = 3;
+            this.labelX1.Text = "Cửa hàng";
+            // 
+            // cbbCuaHang
+            // 
+            this.cbbCuaHang.DisplayMember = "Text";
+            this.cbbCuaHang.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbbCuaHang.Enabled = false;
+            this.cbbCuaHang.FormattingEnabled = true;
+            this.cbbCuaHang.ItemHeight = 14;
+            this.cbbCuaHang.Location = new System.Drawing.Point(69, 6);
+            this.cbbCuaHang.Name = "cbbCuaHang";
+            this.cbbCuaHang.Size = new System.Drawing.Size(172, 20);
+            this.cbbCuaHang.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbbCuaHang.TabIndex = 4;
+            // 
+            // btnLuu
+            // 
+            this.btnLuu.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnLuu.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnLuu.Location = new System.Drawing.Point(5, 790);
+            this.btnLuu.Name = "btnLuu";
+            this.btnLuu.Size = new System.Drawing.Size(75, 23);
+            this.btnLuu.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnLuu.TabIndex = 5;
+            this.btnLuu.Text = "Cập nhật";
+            // 
             // DinhDangForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -233,6 +234,7 @@
             this.Controls.Add(this.cbbCuaHang);
             this.Controls.Add(this.labelX1);
             this.Controls.Add(this.dataGridViewX1);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "DinhDangForm";

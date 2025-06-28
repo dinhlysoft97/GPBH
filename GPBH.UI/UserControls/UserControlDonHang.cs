@@ -3,6 +3,7 @@ using GPBH.Business;
 using GPBH.Business.Dtos;
 using GPBH.Business.Services;
 using GPBH.Data.Entities;
+using GPBH.UI.Constant;
 using GPBH.UI.Extentions;
 using GPBH.UI.Forms;
 using GPBH.UI.Helper;
@@ -70,7 +71,7 @@ namespace GPBH.UI.UserControls
         /// </summary>
         private void LoadData()
         {
-            var donHangs = _donHangService.TiemKiem(dtTu.Value.Date, dtTu.Value.Date);
+            var donHangs = _donHangService.TiemKiem(dtTu.Value.Date, dtTu.Value.Date, AppGlobals.MaCH);
             DataGridViewFilterHelper.ApplyFilter(dataGridViewX1, donHangs);
             dataGridViewX1.DataBindingComplete += (s, e) =>
             {
@@ -83,7 +84,7 @@ namespace GPBH.UI.UserControls
         /// </summary>
         private void TimKiem()
         {
-            var donHangs = _donHangService.TiemKiem(dtTu.Value.Date, dtDen.Value.Date);
+            var donHangs = _donHangService.TiemKiem(dtTu.Value.Date, dtDen.Value.Date, AppGlobals.MaCH);
             SetUpUI();
             DataGridViewFilterHelper.ApplyFilter(dataGridViewX1, donHangs);
             SetFormRowTheoCuaHang();
@@ -233,6 +234,13 @@ namespace GPBH.UI.UserControls
 
         private void BtnThem_Click(object sender, EventArgs e)
         {
+            var hasPermission = CheckPermissionHelper.HasPerrmission("DonHang", GPBHConstant.Action.Them);
+            if (!hasPermission)
+            {
+                CheckPermissionHelper.ShowMessage();
+                return;
+            }
+
             var formNew = ActivatorUtilities.CreateInstance<DonHang>(Program.ServiceProvider);
             formNew.ShowDialog();
             TimKiem(); // Sau khi thêm, load lại dữ liệu
@@ -240,6 +248,13 @@ namespace GPBH.UI.UserControls
 
         private void BtnSua_Click(object sender, EventArgs e)
         {
+            var hasPermission = CheckPermissionHelper.HasPerrmission("DonHang", GPBHConstant.Action.Sua);
+            if (!hasPermission)
+            {
+                CheckPermissionHelper.ShowMessage();
+                return;
+            }
+
             var item = GetSelectedDonHang();
             if (item != null)
             {
@@ -255,6 +270,13 @@ namespace GPBH.UI.UserControls
         /// </summary>
         private void HandleXoa()
         {
+            var hasPermission = CheckPermissionHelper.HasPerrmission("DonHang", GPBHConstant.Action.Xoa);
+            if (!hasPermission)
+            {
+                CheckPermissionHelper.ShowMessage();
+                return;
+            }
+
             var item = GetSelectedDonHang();
             if (item == null) return;
 
