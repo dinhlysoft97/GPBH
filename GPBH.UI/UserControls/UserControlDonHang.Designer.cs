@@ -452,7 +452,6 @@
             this.dataGridViewX2.RowTemplate.Height = 24;
             this.dataGridViewX2.Size = new System.Drawing.Size(1339, 454);
             this.dataGridViewX2.TabIndex = 0;
-            this.dataGridViewX2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewX2_CellContentClick);
             // 
             // Ma_hh
             // 
