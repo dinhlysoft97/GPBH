@@ -1,5 +1,6 @@
 ﻿using GPBH.Business.Services;
 using GPBH.UI.Extentions;
+using GPBH.UI.UserControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,7 +28,7 @@ namespace GPBH.UI.Forms
             this.Load += FormDieuKienLoc_Load;
         }
 
-        private void buttonX1_Click(object sender, EventArgs e)
+        private void buttonLoc_Click(object sender, EventArgs e)
         {
             // Lấy điều kiện lọc từ các control
             string maKhachHang = ccbKhachHang.Text;
@@ -37,12 +38,18 @@ namespace GPBH.UI.Forms
             DateTime tuNgay = dtpTuNgay.Value;
             DateTime denNgay = dtpDenNgay.Value;
 
-            // Truy vấn dữ liệu
-            DataTable data = ReportBanHangService.GetBaoCaoBanTheoKhachHang(passport, maHangHoa, maNgoaiTe, maKhachHang, tuNgay, denNgay);
+            var dt = ReportBanHangService.GetBaoCaoBanTheoKhachHang(passport, maKhachHang, maHangHoa, maNgoaiTe, tuNgay, denNgay);
 
-            // Mở form báo cáo
-            var frmReport = new ReportBanHang(data, tuNgay, denNgay, maNgoaiTe);
-            frmReport.ShowDialog();
+            var uc = new UserControlKetQuaLoc(dt, tuNgay, denNgay, maNgoaiTe);
+            var frm = new Form
+            {
+                Text = "Kết quả lọc",
+                Width = 5000,
+                Height = 1500
+            };
+            uc.Dock = DockStyle.Fill;
+            frm.Controls.Add(uc);
+            frm.ShowDialog();
         }
 
         private void FormDieuKienLoc_Load(object sender, EventArgs e)

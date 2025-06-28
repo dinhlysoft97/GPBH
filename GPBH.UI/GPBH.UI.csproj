@@ -352,6 +352,12 @@
     <Compile Include="UserControls\UserControlDonHang.Designer.cs">
       <DependentUpon>UserControlDonHang.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UserControlKetQuaLoc.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UserControlKetQuaLoc.Designer.cs">
+      <DependentUpon>UserControlKetQuaLoc.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UserControlKhachHang.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -446,6 +452,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UserControlDonHang.resx">
       <DependentUpon>UserControlDonHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UserControlKetQuaLoc.resx">
+      <DependentUpon>UserControlKetQuaLoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UserControlKhachHang.resx">
       <DependentUpon>UserControlKhachHang.cs</DependentUpon>

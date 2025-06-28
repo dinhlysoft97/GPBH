@@ -37,7 +37,7 @@
             this.ccbMaHang = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.ccbPassport = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.ccbKhachHang = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
+            this.buttonLoc = new DevComponents.DotNetBar.ButtonX();
             this.labelX6 = new DevComponents.DotNetBar.LabelX();
             this.labelX5 = new DevComponents.DotNetBar.LabelX();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
@@ -149,7 +149,7 @@
             this.groupPanel1.Controls.Add(this.ccbMaHang);
             this.groupPanel1.Controls.Add(this.ccbPassport);
             this.groupPanel1.Controls.Add(this.ccbKhachHang);
-            this.groupPanel1.Controls.Add(this.buttonX1);
+            this.groupPanel1.Controls.Add(this.buttonLoc);
             this.groupPanel1.Controls.Add(this.labelX6);
             this.groupPanel1.Controls.Add(this.labelX5);
             this.groupPanel1.Controls.Add(this.labelX4);
@@ -265,17 +265,17 @@
             this.ccbKhachHang.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.ccbKhachHang.TabIndex = 27;
             // 
-            // buttonX1
+            // buttonLoc
             // 
-            this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX1.Location = new System.Drawing.Point(116, 249);
-            this.buttonX1.Name = "buttonX1";
-            this.buttonX1.Size = new System.Drawing.Size(140, 23);
-            this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX1.TabIndex = 26;
-            this.buttonX1.Text = "Xem báo cáo";
-            this.buttonX1.Click += new System.EventHandler(this.buttonX1_Click);
+            this.buttonLoc.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonLoc.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonLoc.Location = new System.Drawing.Point(175, 249);
+            this.buttonLoc.Name = "buttonLoc";
+            this.buttonLoc.Size = new System.Drawing.Size(81, 23);
+            this.buttonLoc.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonLoc.TabIndex = 26;
+            this.buttonLoc.Text = "Lọc";
+            this.buttonLoc.Click += new System.EventHandler(this.buttonLoc_Click);
             // 
             // labelX6
             // 
@@ -395,7 +395,7 @@
         private DevComponents.DotNetBar.LabelX labelX5;
         private DevComponents.DotNetBar.LabelX labelX4;
         private DevComponents.DotNetBar.LabelX labelX3;
-        private DevComponents.DotNetBar.ButtonX buttonX1;
+        private DevComponents.DotNetBar.ButtonX buttonLoc;
         private DevComponents.DotNetBar.Controls.ComboBoxEx ccbMaNgoaiTe;
         private DevComponents.DotNetBar.Controls.ComboBoxEx ccbMaHang;
         private DevComponents.DotNetBar.Controls.ComboBoxEx ccbPassport;

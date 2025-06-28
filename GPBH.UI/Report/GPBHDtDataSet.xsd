@@ -30,6 +30,7 @@
               <xs:element name="So_don_hang" msprop:Generator_ColumnPropNameInTable="So_don_hangColumn" msprop:Generator_ColumnPropNameInRow="So_don_hang" msprop:Generator_UserColumnName="So_don_hang" msprop:Generator_ColumnVarNameInTable="columnSo_don_hang" type="xs:string" minOccurs="0" />
               <xs:element name="Thanh_tien_vn" msprop:Generator_ColumnPropNameInTable="Thanh_tien_vnColumn" msprop:Generator_ColumnPropNameInRow="Thanh_tien_vn" msprop:Generator_UserColumnName="Thanh_tien_vn" msprop:Generator_ColumnVarNameInTable="columnThanh_tien_vn" type="xs:decimal" minOccurs="0" />
               <xs:element name="Ma_tra_lai" msprop:Generator_ColumnPropNameInTable="Ma_tra_laiColumn" msprop:Generator_ColumnPropNameInRow="Ma_tra_lai" msprop:Generator_UserColumnName="Ma_tra_lai" msprop:Generator_ColumnVarNameInTable="columnMa_tra_lai" type="xs:string" minOccurs="0" />
+              <xs:element name="Ty_gia" msprop:Generator_ColumnPropNameInRow="Ty_gia" msprop:Generator_ColumnPropNameInTable="Ty_giaColumn" msprop:Generator_ColumnVarNameInTable="columnTy_gia" msprop:Generator_UserColumnName="Ty_gia" type="xs:decimal" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

@@ -422,7 +422,8 @@
                     ph.Tong_tien_hang_nt As Tong_tien_hang_nt,
                     ph.Tong_nhan AS Tong_nhan,
                     ph.Tra_lai_nt As Tra_lai_nt,
-	                ph.Ma_tra_lai As Ma_tra_lai
+	                ph.Ma_tra_lai As Ma_tra_lai,
+                    ph.Ty_gia As Ty_gia
                 FROM XPH5 ph
                 INNER JOIN XCT5 ct ON ph.Ma_phieu = ct.Ma_phieu
                 INNER JOIN DMKH kh ON ph.Passport = kh.Passport
