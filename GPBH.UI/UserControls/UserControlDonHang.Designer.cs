@@ -313,8 +313,8 @@
             this.dataGridViewX1.AllowUserToDeleteRows = false;
             this.dataGridViewX1.AllowUserToResizeColumns = false;
             this.dataGridViewX1.AllowUserToResizeRows = false;
-            this.dataGridViewX1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.dataGridViewX1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewX1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -421,8 +421,8 @@
             // 
             this.dataGridViewX2.AllowUserToAddRows = false;
             this.dataGridViewX2.AllowUserToDeleteRows = false;
-            this.dataGridViewX2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.dataGridViewX2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewX2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewX2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -450,7 +450,7 @@
             this.dataGridViewX2.Name = "dataGridViewX2";
             this.dataGridViewX2.RowHeadersWidth = 51;
             this.dataGridViewX2.RowTemplate.Height = 24;
-            this.dataGridViewX2.Size = new System.Drawing.Size(1339, 454);
+            this.dataGridViewX2.Size = new System.Drawing.Size(1339, 426);
             this.dataGridViewX2.TabIndex = 0;
             // 
             // Ma_hh
