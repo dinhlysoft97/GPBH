@@ -38,7 +38,7 @@ namespace GPBH.UI.Forms
             DateTime tuNgay = dtpTuNgay.Value;
             DateTime denNgay = dtpDenNgay.Value;
 
-            var dt = ReportBanHangService.GetBaoCaoBanTheoKhachHang(passport, maKhachHang, maHangHoa, maNgoaiTe, tuNgay, denNgay);
+            var dt = ReportBanHangService.GetBaoCaoBanTheoKhachHang(passport, maHangHoa, maNgoaiTe, maKhachHang, tuNgay, denNgay);
 
             var uc = new UserControlKetQuaLoc(dt, tuNgay, denNgay, maNgoaiTe);
             var frm = new Form
