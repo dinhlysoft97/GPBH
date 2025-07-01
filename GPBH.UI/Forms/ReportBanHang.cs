@@ -14,7 +14,7 @@ namespace GPBH.UI.Forms
             this.StartPosition = FormStartPosition.CenterScreen;
 
             // Tạo instance của report
-            var report = new BanHangTheoKhachHangReport(); // Tên class report bạn đã tạo
+            var report = new BanHangTheoKhachHangReport(); 
 
             // Gán dữ liệu cho report
             report.SetDataSource(data);
