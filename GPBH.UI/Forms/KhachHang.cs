@@ -100,6 +100,12 @@ namespace GPBH.UI.Forms
         /// </summary>
         private void LoadData()
         {
+            dtNgaySinh.Value = DateTime.Now;
+            dtNgayCap.Value = DateTime.Now;
+            dtHetHan.Value = DateTime.Now;
+            dtTTXNCHetHan.Value = DateTime.Now;
+            dtTTXNCNgayCap.Value = DateTime.Now;
+            dtHetHan.Value = DateTime.Now;
             ComboBoxHelper.BindData(cbbGioiTinh, GioiTinhs, "Value", "Key", true);
             var dataQD = _dMQGService.GetAll();
             ComboBoxHelper.BindData(cbbQuocTich, dataQD, nameof(DMQG.Ten_Quoc_gia), nameof(DMQG.Quoc_gia), true);

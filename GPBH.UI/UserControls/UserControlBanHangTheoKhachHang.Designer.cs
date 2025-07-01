@@ -28,19 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.Stt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.So_chung_tu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ngay_chung_tu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Passport = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ten_khach = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tong_tien_hang_nt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tong_nhan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tra_lai_nt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ty_gia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ma_cua_hang = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ma_phieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnIn = new DevComponents.DotNetBar.ButtonX();
             this.buttonLamMoi = new DevComponents.DotNetBar.ButtonX();
             this.ccbMaNgoaiTe = new DevComponents.DotNetBar.Controls.ComboBoxEx();
@@ -56,6 +45,17 @@
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.dtpDenNgay = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.dtpTuNgay = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
+            this.Stt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.So_chung_tu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ngay_chung_tu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Passport = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ten_khach = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tong_tien_hang_nt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tong_nhan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tra_lai_nt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ty_gia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Thanh_tien = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Thanh_tien_vn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpDenNgay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpTuNgay)).BeginInit();
@@ -81,95 +81,24 @@
             this.Tong_nhan,
             this.Tra_lai_nt,
             this.Ty_gia,
-            this.Ma_cua_hang,
-            this.Ma_phieu});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Thanh_tien,
+            this.Thanh_tien_vn});
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.dataGridViewX1.Location = new System.Drawing.Point(13, 104);
+            this.dataGridViewX1.Location = new System.Drawing.Point(2, 104);
             this.dataGridViewX1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewX1.Name = "dataGridViewX1";
             this.dataGridViewX1.RowHeadersWidth = 51;
             this.dataGridViewX1.RowTemplate.Height = 24;
-            this.dataGridViewX1.Size = new System.Drawing.Size(1197, 565);
+            this.dataGridViewX1.Size = new System.Drawing.Size(1195, 565);
             this.dataGridViewX1.TabIndex = 1;
-            // 
-            // Stt
-            // 
-            this.Stt.DataPropertyName = "Stt";
-            this.Stt.HeaderText = "Stt";
-            this.Stt.Name = "Stt";
-            this.Stt.ReadOnly = true;
-            // 
-            // So_chung_tu
-            // 
-            this.So_chung_tu.DataPropertyName = "So_don_hang";
-            this.So_chung_tu.HeaderText = "Số đơn hàng";
-            this.So_chung_tu.MinimumWidth = 6;
-            this.So_chung_tu.Name = "So_chung_tu";
-            // 
-            // Ngay_chung_tu
-            // 
-            this.Ngay_chung_tu.DataPropertyName = "Ngay_ban";
-            this.Ngay_chung_tu.HeaderText = "Ngày";
-            this.Ngay_chung_tu.MinimumWidth = 6;
-            this.Ngay_chung_tu.Name = "Ngay_chung_tu";
-            // 
-            // Passport
-            // 
-            this.Passport.DataPropertyName = "Passport";
-            this.Passport.HeaderText = "Mã khách hàng";
-            this.Passport.Name = "Passport";
-            // 
-            // Ten_khach
-            // 
-            this.Ten_khach.DataPropertyName = "Ten_khachhang";
-            this.Ten_khach.HeaderText = "Tên khách hàng";
-            this.Ten_khach.Name = "Ten_khach";
-            // 
-            // Tong_tien_hang_nt
-            // 
-            this.Tong_tien_hang_nt.DataPropertyName = "Tong_tien_hang_nt";
-            this.Tong_tien_hang_nt.HeaderText = "Tổng tiền hàng";
-            this.Tong_tien_hang_nt.Name = "Tong_tien_hang_nt";
-            // 
-            // Tong_nhan
-            // 
-            this.Tong_nhan.DataPropertyName = "Tong_nhan";
-            this.Tong_nhan.HeaderText = "Khách trả";
-            this.Tong_nhan.Name = "Tong_nhan";
-            // 
-            // Tra_lai_nt
-            // 
-            this.Tra_lai_nt.DataPropertyName = "Tra_lai_nt";
-            this.Tra_lai_nt.HeaderText = "Trả lại";
-            this.Tra_lai_nt.Name = "Tra_lai_nt";
-            // 
-            // Ty_gia
-            // 
-            this.Ty_gia.DataPropertyName = "Ty_gia";
-            this.Ty_gia.HeaderText = "Tủy giá";
-            this.Ty_gia.Name = "Ty_gia";
-            // 
-            // Ma_cua_hang
-            // 
-            this.Ma_cua_hang.DataPropertyName = "Thanh_tien";
-            this.Ma_cua_hang.HeaderText = "Thanh tiền";
-            this.Ma_cua_hang.Name = "Ma_cua_hang";
-            this.Ma_cua_hang.ReadOnly = true;
-            // 
-            // Ma_phieu
-            // 
-            this.Ma_phieu.DataPropertyName = "Thanh_tien_vn";
-            this.Ma_phieu.HeaderText = "Thành tiền VND";
-            this.Ma_phieu.Name = "Ma_phieu";
-            this.Ma_phieu.ReadOnly = true;
             // 
             // btnIn
             // 
@@ -436,7 +365,78 @@
             this.dtpTuNgay.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.dtpTuNgay.TabIndex = 33;
             // 
-            // UserControl1
+            // Stt
+            // 
+            this.Stt.DataPropertyName = "Stt";
+            this.Stt.HeaderText = "Stt";
+            this.Stt.Name = "Stt";
+            this.Stt.ReadOnly = true;
+            // 
+            // So_chung_tu
+            // 
+            this.So_chung_tu.DataPropertyName = "So_don_hang";
+            this.So_chung_tu.HeaderText = "Số đơn hàng";
+            this.So_chung_tu.MinimumWidth = 6;
+            this.So_chung_tu.Name = "So_chung_tu";
+            // 
+            // Ngay_chung_tu
+            // 
+            this.Ngay_chung_tu.DataPropertyName = "Ngay_ban";
+            this.Ngay_chung_tu.HeaderText = "Ngày";
+            this.Ngay_chung_tu.MinimumWidth = 6;
+            this.Ngay_chung_tu.Name = "Ngay_chung_tu";
+            // 
+            // Passport
+            // 
+            this.Passport.DataPropertyName = "Passport";
+            this.Passport.HeaderText = "Mã khách hàng";
+            this.Passport.Name = "Passport";
+            // 
+            // Ten_khach
+            // 
+            this.Ten_khach.DataPropertyName = "Ten_khachhang";
+            this.Ten_khach.HeaderText = "Tên khách hàng";
+            this.Ten_khach.Name = "Ten_khach";
+            // 
+            // Tong_tien_hang_nt
+            // 
+            this.Tong_tien_hang_nt.DataPropertyName = "Tong_tien_hang_nt";
+            this.Tong_tien_hang_nt.HeaderText = "Tổng tiền hàng";
+            this.Tong_tien_hang_nt.Name = "Tong_tien_hang_nt";
+            // 
+            // Tong_nhan
+            // 
+            this.Tong_nhan.DataPropertyName = "Tong_nhan";
+            this.Tong_nhan.HeaderText = "Khách trả";
+            this.Tong_nhan.Name = "Tong_nhan";
+            // 
+            // Tra_lai_nt
+            // 
+            this.Tra_lai_nt.DataPropertyName = "Tra_lai_nt";
+            this.Tra_lai_nt.HeaderText = "Trả lại";
+            this.Tra_lai_nt.Name = "Tra_lai_nt";
+            // 
+            // Ty_gia
+            // 
+            this.Ty_gia.DataPropertyName = "Ty_gia";
+            this.Ty_gia.HeaderText = "Tỷ giá";
+            this.Ty_gia.Name = "Ty_gia";
+            // 
+            // Thanh_tien
+            // 
+            this.Thanh_tien.DataPropertyName = "Thanh_tien";
+            this.Thanh_tien.HeaderText = "Thành tiền";
+            this.Thanh_tien.Name = "Thanh_tien";
+            this.Thanh_tien.ReadOnly = true;
+            // 
+            // Thanh_tien_vn
+            // 
+            this.Thanh_tien_vn.DataPropertyName = "Thanh_tien_vn";
+            this.Thanh_tien_vn.HeaderText = "Thành tiền VND";
+            this.Thanh_tien_vn.Name = "Thanh_tien_vn";
+            this.Thanh_tien_vn.ReadOnly = true;
+            // 
+            // UserControlBanHangTheoKhachHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -456,7 +456,7 @@
             this.Controls.Add(this.dtpTuNgay);
             this.Controls.Add(this.btnIn);
             this.Controls.Add(this.dataGridViewX1);
-            this.Name = "UserControl1";
+            this.Name = "UserControlBanHangTheoKhachHang";
             this.Size = new System.Drawing.Size(1199, 680);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpDenNgay)).EndInit();
@@ -469,17 +469,6 @@
         #endregion
 
         private DevComponents.DotNetBar.Controls.DataGridViewX dataGridViewX1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Stt;
-        private System.Windows.Forms.DataGridViewTextBoxColumn So_chung_tu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ngay_chung_tu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Passport;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ten_khach;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Tong_tien_hang_nt;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Tong_nhan;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Tra_lai_nt;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ty_gia;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ma_cua_hang;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ma_phieu;
         private DevComponents.DotNetBar.ButtonX btnIn;
         private DevComponents.DotNetBar.ButtonX buttonLamMoi;
         private DevComponents.DotNetBar.Controls.ComboBoxEx ccbMaNgoaiTe;
@@ -495,5 +484,16 @@
         private DevComponents.DotNetBar.LabelX labelX1;
         private DevComponents.Editors.DateTimeAdv.DateTimeInput dtpDenNgay;
         private DevComponents.Editors.DateTimeAdv.DateTimeInput dtpTuNgay;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Stt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn So_chung_tu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ngay_chung_tu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Passport;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ten_khach;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tong_tien_hang_nt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tong_nhan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tra_lai_nt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ty_gia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Thanh_tien;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Thanh_tien_vn;
     }
 }

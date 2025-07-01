@@ -32,6 +32,12 @@ namespace GPBH.UI.UserControls
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.btnThem = new DevComponents.DotNetBar.ButtonX();
+            this.bubbleBar1 = new DevComponents.DotNetBar.BubbleBar();
+            this.btnSua = new DevComponents.DotNetBar.ButtonX();
+            this.btnXoa = new DevComponents.DotNetBar.ButtonX();
+            this.txtSearch = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.btnTim = new DevComponents.DotNetBar.ButtonX();
             this.Passport = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ho_ten = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ngay_cap = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,12 +53,6 @@ namespace GPBH.UI.UserControls
             this.So_hieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ten_tau_bay = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Han_muc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnThem = new DevComponents.DotNetBar.ButtonX();
-            this.bubbleBar1 = new DevComponents.DotNetBar.BubbleBar();
-            this.btnSua = new DevComponents.DotNetBar.ButtonX();
-            this.btnXoa = new DevComponents.DotNetBar.ButtonX();
-            this.txtSearch = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.btnTim = new DevComponents.DotNetBar.ButtonX();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bubbleBar1)).BeginInit();
             this.SuspendLayout();
@@ -98,98 +98,6 @@ namespace GPBH.UI.UserControls
             this.dataGridViewX1.RowTemplate.Height = 24;
             this.dataGridViewX1.Size = new System.Drawing.Size(1445, 736);
             this.dataGridViewX1.TabIndex = 3;
-            // 
-            // Passport
-            // 
-            this.Passport.DataPropertyName = "Passport";
-            this.Passport.HeaderText = "Passport No";
-            this.Passport.MinimumWidth = 6;
-            this.Passport.Name = "Passport";
-            // 
-            // Ho_ten
-            // 
-            this.Ho_ten.DataPropertyName = "Ho_ten";
-            this.Ho_ten.HeaderText = "Tên khách hàng";
-            this.Ho_ten.MinimumWidth = 6;
-            this.Ho_ten.Name = "Ho_ten";
-            // 
-            // Ngay_cap
-            // 
-            this.Ngay_cap.DataPropertyName = "Ngay_cap";
-            this.Ngay_cap.HeaderText = "Ngày cấp Hộ chiếu";
-            this.Ngay_cap.Name = "Ngay_cap";
-            // 
-            // Ngay_hh
-            // 
-            this.Ngay_hh.DataPropertyName = "Ngay_hh";
-            this.Ngay_hh.HeaderText = "Giờ kết hết hạn Hộ chiếu";
-            this.Ngay_hh.Name = "Ngay_hh";
-            // 
-            // Quoc_gia
-            // 
-            this.Quoc_gia.DataPropertyName = "Quoc_gia";
-            this.Quoc_gia.HeaderText = "Quốc gia";
-            this.Quoc_gia.Name = "Quoc_gia";
-            // 
-            // Gioi_tinh
-            // 
-            this.Gioi_tinh.DataPropertyName = "Gioi_tinh";
-            this.Gioi_tinh.HeaderText = "Giới tính";
-            this.Gioi_tinh.Name = "Gioi_tinh";
-            // 
-            // Ngay_sinh
-            // 
-            this.Ngay_sinh.DataPropertyName = "Ngay_sinh";
-            this.Ngay_sinh.HeaderText = "Ngày sinh";
-            this.Ngay_sinh.Name = "Ngay_sinh";
-            // 
-            // Dia_chi
-            // 
-            this.Dia_chi.DataPropertyName = "Dia_chi";
-            this.Dia_chi.HeaderText = "Địa chỉ";
-            this.Dia_chi.Name = "Dia_chi";
-            // 
-            // Dien_thoai
-            // 
-            this.Dien_thoai.DataPropertyName = "Dien_thoai";
-            this.Dien_thoai.HeaderText = "Điện thoại";
-            this.Dien_thoai.Name = "Dien_thoai";
-            // 
-            // Email
-            // 
-            this.Email.DataPropertyName = "Email";
-            this.Email.HeaderText = "Email";
-            this.Email.Name = "Email";
-            // 
-            // Xnc_ngay_cap
-            // 
-            this.Xnc_ngay_cap.DataPropertyName = "Xnc_ngay_cap";
-            this.Xnc_ngay_cap.HeaderText = "Ngày cấp xuất nhập cảnh";
-            this.Xnc_ngay_cap.Name = "Xnc_ngay_cap";
-            // 
-            // Xnc_ngay_hh
-            // 
-            this.Xnc_ngay_hh.DataPropertyName = "Xnc_ngay_hh";
-            this.Xnc_ngay_hh.HeaderText = "Ngày hết hạn xuất nhập cảnh";
-            this.Xnc_ngay_hh.Name = "Xnc_ngay_hh";
-            // 
-            // So_hieu
-            // 
-            this.So_hieu.DataPropertyName = "So_hieu";
-            this.So_hieu.HeaderText = "Số hiệu";
-            this.So_hieu.Name = "So_hieu";
-            // 
-            // Ten_tau_bay
-            // 
-            this.Ten_tau_bay.DataPropertyName = "Ten_tau_bay";
-            this.Ten_tau_bay.HeaderText = "Tên tàu bay";
-            this.Ten_tau_bay.Name = "Ten_tau_bay";
-            // 
-            // Han_muc
-            // 
-            this.Han_muc.DataPropertyName = "Han_muc";
-            this.Han_muc.HeaderText = "Hạn mục";
-            this.Han_muc.Name = "Han_muc";
             // 
             // btnThem
             // 
@@ -288,6 +196,98 @@ namespace GPBH.UI.UserControls
             this.btnTim.Text = "Tìm kiếm";
             this.btnTim.Click += new System.EventHandler(this.btnTim_Click);
             // 
+            // Passport
+            // 
+            this.Passport.DataPropertyName = "Passport";
+            this.Passport.HeaderText = "Passport No";
+            this.Passport.MinimumWidth = 6;
+            this.Passport.Name = "Passport";
+            // 
+            // Ho_ten
+            // 
+            this.Ho_ten.DataPropertyName = "Ho_ten";
+            this.Ho_ten.HeaderText = "Tên khách hàng";
+            this.Ho_ten.MinimumWidth = 6;
+            this.Ho_ten.Name = "Ho_ten";
+            // 
+            // Ngay_cap
+            // 
+            this.Ngay_cap.DataPropertyName = "Ngay_cap";
+            this.Ngay_cap.HeaderText = "Ngày cấp Hộ chiếu";
+            this.Ngay_cap.Name = "Ngay_cap";
+            // 
+            // Ngay_hh
+            // 
+            this.Ngay_hh.DataPropertyName = "Ngay_hh";
+            this.Ngay_hh.HeaderText = "Giờ kết hết hạn Hộ chiếu";
+            this.Ngay_hh.Name = "Ngay_hh";
+            // 
+            // Quoc_gia
+            // 
+            this.Quoc_gia.DataPropertyName = "Quoc_gia";
+            this.Quoc_gia.HeaderText = "Quốc gia";
+            this.Quoc_gia.Name = "Quoc_gia";
+            // 
+            // Gioi_tinh
+            // 
+            this.Gioi_tinh.DataPropertyName = "Gioi_tinh";
+            this.Gioi_tinh.HeaderText = "Giới tính";
+            this.Gioi_tinh.Name = "Gioi_tinh";
+            // 
+            // Ngay_sinh
+            // 
+            this.Ngay_sinh.DataPropertyName = "Ngay_sinh";
+            this.Ngay_sinh.HeaderText = "Ngày sinh";
+            this.Ngay_sinh.Name = "Ngay_sinh";
+            // 
+            // Dia_chi
+            // 
+            this.Dia_chi.DataPropertyName = "Dia_chi";
+            this.Dia_chi.HeaderText = "Địa chỉ";
+            this.Dia_chi.Name = "Dia_chi";
+            // 
+            // Dien_thoai
+            // 
+            this.Dien_thoai.DataPropertyName = "Dien_thoai";
+            this.Dien_thoai.HeaderText = "Điện thoại";
+            this.Dien_thoai.Name = "Dien_thoai";
+            // 
+            // Email
+            // 
+            this.Email.DataPropertyName = "Email";
+            this.Email.HeaderText = "Email";
+            this.Email.Name = "Email";
+            // 
+            // Xnc_ngay_cap
+            // 
+            this.Xnc_ngay_cap.DataPropertyName = "Xnc_ngay_cap";
+            this.Xnc_ngay_cap.HeaderText = "Ngày cấp xuất nhập cảnh";
+            this.Xnc_ngay_cap.Name = "Xnc_ngay_cap";
+            // 
+            // Xnc_ngay_hh
+            // 
+            this.Xnc_ngay_hh.DataPropertyName = "Xnc_ngay_hh";
+            this.Xnc_ngay_hh.HeaderText = "Ngày hết hạn xuất nhập cảnh";
+            this.Xnc_ngay_hh.Name = "Xnc_ngay_hh";
+            // 
+            // So_hieu
+            // 
+            this.So_hieu.DataPropertyName = "So_hieu";
+            this.So_hieu.HeaderText = "Số hiệu";
+            this.So_hieu.Name = "So_hieu";
+            // 
+            // Ten_tau_bay
+            // 
+            this.Ten_tau_bay.DataPropertyName = "Ten_tau_bay";
+            this.Ten_tau_bay.HeaderText = "Tên tàu bay";
+            this.Ten_tau_bay.Name = "Ten_tau_bay";
+            // 
+            // Han_muc
+            // 
+            this.Han_muc.DataPropertyName = "Han_muc";
+            this.Han_muc.HeaderText = "Hạn mức";
+            this.Han_muc.Name = "Han_muc";
+            // 
             // UserControlKhachHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -315,20 +315,20 @@ namespace GPBH.UI.UserControls
         private DevComponents.DotNetBar.ButtonX btnXoa;
         private DevComponents.DotNetBar.Controls.TextBoxX txtSearch;
         private DevComponents.DotNetBar.ButtonX btnTim;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Passport;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ho_ten;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ngay_cap;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ngay_hh;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Quoc_gia;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Gioi_tinh;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ngay_sinh;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Dia_chi;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Dien_thoai;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Email;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Xnc_ngay_cap;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Xnc_ngay_hh;
-        private System.Windows.Forms.DataGridViewTextBoxColumn So_hieu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ten_tau_bay;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Han_muc;
+        private DataGridViewTextBoxColumn Passport;
+        private DataGridViewTextBoxColumn Ho_ten;
+        private DataGridViewTextBoxColumn Ngay_cap;
+        private DataGridViewTextBoxColumn Ngay_hh;
+        private DataGridViewTextBoxColumn Quoc_gia;
+        private DataGridViewTextBoxColumn Gioi_tinh;
+        private DataGridViewTextBoxColumn Ngay_sinh;
+        private DataGridViewTextBoxColumn Dia_chi;
+        private DataGridViewTextBoxColumn Dien_thoai;
+        private DataGridViewTextBoxColumn Email;
+        private DataGridViewTextBoxColumn Xnc_ngay_cap;
+        private DataGridViewTextBoxColumn Xnc_ngay_hh;
+        private DataGridViewTextBoxColumn So_hieu;
+        private DataGridViewTextBoxColumn Ten_tau_bay;
+        private DataGridViewTextBoxColumn Han_muc;
     }
 }

@@ -968,10 +968,10 @@ namespace GPBH.UI.Forms
                 {
                     tongTienHang += item.Gia_ban_nt.Value * item.So_luong.Value;
                     tienGiam += item.Gg_tien_nt.Value;
-                    tongThu += tongTienHang - tienGiam;
                 }
             }
 
+            tongThu += tongTienHang - tienGiam;
             txtTong_tien_hang_nt.Value = (double)tongTienHang;
             txtTong_giam_gia_nt.Value = (double)tienGiam;
             txtTong_thu_nt.Value = (double)(tongTienHang - tienGiam);
