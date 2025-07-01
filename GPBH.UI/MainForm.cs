@@ -146,7 +146,7 @@ namespace GPBH.UI
                     uc = ActivatorUtilities.CreateInstance<UserControlDonHang>(Program.ServiceProvider);
                     break;
                 case "BanHangTheoKhachHang":
-                    form = ActivatorUtilities.CreateInstance<FormDieuKienLoc>(Program.ServiceProvider);
+                    uc = ActivatorUtilities.CreateInstance<UserControlBanHangTheoKhachHang>(Program.ServiceProvider);
                     break;
                 case "DinhDangForm":
                     form = ActivatorUtilities.CreateInstance<DinhDangForm>(Program.ServiceProvider);
