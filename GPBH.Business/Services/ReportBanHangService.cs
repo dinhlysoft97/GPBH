@@ -19,15 +19,21 @@ namespace GPBH.Business.Services
             using (var conn = new SqlConnection(connectionString))
             {
                 string query = @"
-                SELECT *  FROM vw_BaoCaoBanTheoKhachHang
-                WHERE 
-                    (@Passport IS NULL OR Passport = @Passport)
-                    AND (@Ma_hang IS NULL OR Ma_hang = @Ma_hang)
-                    AND (@Ten_khachhang IS NULL OR Ten_khachhang LIKE '%' + @Ten_khachhang + '%')
-                    AND (@Ma_ngoaite IS NULL OR Ma_tra_lai = @Ma_ngoaite)
-                    AND (@TuNgay IS NULL OR Ngay_ban >= @TuNgay)
-                    AND (@DenNgay IS NULL OR Ngay_ban <= @DenNgay)
-                ORDER BY Ma_hang ASC";
+                ;WITH cte AS (
+                SELECT  v.*,
+                        ROW_NUMBER() OVER(PARTITION BY So_don_hang ORDER BY Ngay_ban) AS rn 
+                        FROM    vw_BaoCaoBanTheoKhachHang v
+                        WHERE   (@Passport      IS NULL OR Passport      = @Passport)
+                          AND   (@Ma_hang       IS NULL OR Ma_hang       = @Ma_hang)
+                          AND   (@Ten_khachhang IS NULL OR Ten_khachhang LIKE '%'+@Ten_khachhang+'%')
+                          AND   (@Ma_ngoaite    IS NULL OR Ma_tra_lai    = @Ma_ngoaite)
+                          AND   (@TuNgay        IS NULL OR Ngay_ban      >= @TuNgay)
+                          AND   (@DenNgay       IS NULL OR Ngay_ban      <= @DenNgay)
+                )
+                SELECT *
+                FROM   cte
+                WHERE  rn = 1  
+                ORDER  BY So_don_hang";
 
                 using (var cmd = new SqlCommand(query, conn))
                 {

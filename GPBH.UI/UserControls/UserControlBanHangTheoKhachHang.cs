@@ -125,10 +125,10 @@ namespace GPBH.UI.UserControls
             // Format các cột tiền
             dataGridViewX1.SetFormat("Ty_gia", GetFormat("Format_gia"));
             dataGridViewX1.SetFormat("Tra_lai_nt", GetFormat("Format_tien_nt"));
-            dataGridViewX1.SetFormat("Tong_nha", GetFormat("Format_gia"));
-            dataGridViewX1.SetFormat("Thanh_tien", GetFormat("Format_tien_nt"));
             dataGridViewX1.SetFormat("Tong_nhan", GetFormat("Format_tien_nt"));
-            dataGridViewX1.SetFormat("Thanh_tien_vn", GetFormat("Format_gia"));
+            dataGridViewX1.SetFormat("Thanh_tien", GetFormat("Format_tien_nt"));
+            dataGridViewX1.SetFormat("Tong_tien_hang_nt", GetFormat("Format_tien_nt"));
+            dataGridViewX1.SetFormat("Thanh_tien_vn", GetFormat("Format_tien"));
 
         }
 
