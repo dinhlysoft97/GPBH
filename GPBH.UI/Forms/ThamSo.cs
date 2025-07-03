@@ -56,7 +56,16 @@ namespace GPBH.UI.Forms
         {
             ComboBoxHelper.BindData(cbbCuaHang, _sysDMCuaHangService.GetAll(), "Ten_cua_hang", "Ma_cua_hang");
             cbbCuaHang.SelectedValue = AppGlobals.MaCH;
-            dataGridViewX1.BindData(_sysDMCuaHangService.GetThamSo(cbbCuaHang.SelectedValue.ToString()));
+            var result = _sysDMCuaHangService.GetThamSo(cbbCuaHang.SelectedValue.ToString());
+            dataGridViewX1.BindData(result.data);
+            if (result.hasSave)
+            {
+                lbWarning.Visible = false;
+            }
+            else
+            {
+                lbWarning.Visible = true;
+            }
         }
 
         #endregion
@@ -95,11 +104,13 @@ namespace GPBH.UI.Forms
         {
             var data = dataGridViewX1.GetData<GirdSystemSettingDto>();
             _sysDMCuaHangService.LuuThamSo(data, AppGlobals.MaCH);
+            lbWarning.Visible = false;
             MessageBoxEx.Show("Cập nhật thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private void CbbCuaHang_SelectedIndexChanged(object sender, EventArgs e)
         {
-            dataGridViewX1.BindData(_sysDMCuaHangService.GetThamSo(cbbCuaHang.SelectedValue.ToString()));
+            var result = _sysDMCuaHangService.GetThamSo(cbbCuaHang.SelectedValue.ToString());
+            dataGridViewX1.BindData(result.data);
         }
 
         #endregion

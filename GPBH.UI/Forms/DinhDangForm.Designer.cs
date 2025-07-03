@@ -46,6 +46,7 @@
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.cbbCuaHang = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.btnLuu = new DevComponents.DotNetBar.ButtonX();
+            this.lbWarning = new DevComponents.DotNetBar.LabelX();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -225,11 +226,26 @@
             this.btnLuu.TabIndex = 5;
             this.btnLuu.Text = "Cập nhật";
             // 
+            // lbWarning
+            // 
+            this.lbWarning.AutoSize = true;
+            this.lbWarning.BackColor = System.Drawing.Color.Gold;
+            // 
+            // 
+            // 
+            this.lbWarning.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lbWarning.Location = new System.Drawing.Point(86, 794);
+            this.lbWarning.Name = "lbWarning";
+            this.lbWarning.Size = new System.Drawing.Size(313, 15);
+            this.lbWarning.TabIndex = 23;
+            this.lbWarning.Text = " Đây là data mẫu setup, vui lòng bấm cập nhật để lưu lại dữ liệu!";
+            // 
             // DinhDangForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1524, 821);
+            this.Controls.Add(this.lbWarning);
             this.Controls.Add(this.btnLuu);
             this.Controls.Add(this.cbbCuaHang);
             this.Controls.Add(this.labelX1);
@@ -265,5 +281,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Field_format;
         private DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn Default_sort;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ten_ban;
+        private DevComponents.DotNetBar.LabelX lbWarning;
     }
 }

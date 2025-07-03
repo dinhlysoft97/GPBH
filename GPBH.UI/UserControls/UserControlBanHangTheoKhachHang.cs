@@ -25,7 +25,7 @@ namespace GPBH.UI.UserControls
             _dmkhService = dmkhService;
             _dmhhService = dmhhService;
             _dmntService = dmntService;
-            SysDinhDangs = sysDinh_Dang_FormService.GetDinhDang(AppGlobals.MaCH);
+            SysDinhDangs = sysDinh_Dang_FormService.GetDinhDang(AppGlobals.MaCH).data;
             dataGridViewX1.AutoGenerateColumns = false;
             LoadDataCbb();
             SetUpUI();

@@ -36,7 +36,8 @@ namespace GPBH.UI.Forms
 
         private void CbbCuaHang_SelectedIndexChanged(object sender, EventArgs e)
         {
-            dataGridViewX1.BindData(_sysDinh_dang_formService.GetDinhDang(cbbCuaHang.SelectedValue.ToString()));
+            var resuft = _sysDinh_dang_formService.GetDinhDang(cbbCuaHang.SelectedValue.ToString());
+            dataGridViewX1.BindData(resuft.data);
         }
 
         private void BtnLuu_Click(object sender, EventArgs e)
@@ -50,6 +51,7 @@ namespace GPBH.UI.Forms
 
             var data = dataGridViewX1.GetData<GirdSysDinhDangFormDto>();
             _sysDinh_dang_formService.LuuDinhDang(data, AppGlobals.MaCH);
+            lbWarning.Visible = false;
             MessageBoxEx.Show("Cập nhật thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -57,7 +59,16 @@ namespace GPBH.UI.Forms
         {
             ComboBoxHelper.BindData(cbbCuaHang, _sysDMCuaHangService.GetAll(), "Ten_cua_hang", "Ma_cua_hang");
             cbbCuaHang.SelectedValue = AppGlobals.MaCH;
-            dataGridViewX1.BindData(_sysDinh_dang_formService.GetDinhDang(cbbCuaHang.SelectedValue.ToString()));
+            var result = _sysDinh_dang_formService.GetDinhDang(cbbCuaHang.SelectedValue.ToString());
+            dataGridViewX1.BindData(result.data);
+            if (result.hasSave)
+            {
+                lbWarning.Visible = false;
+            }
+            else
+            {
+                lbWarning.Visible = true;
+            }
 
             // Tìm cột ComboBox trong DataGridViewX (tên do bạn đặt trong Designer)
             var col = dataGridViewX1.Columns["Default_sort"] as DataGridViewComboBoxExColumn;
