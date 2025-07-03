@@ -98,7 +98,7 @@ namespace GPBH.Business.Services
         /// </summary>
         /// <param name="maCH"></param>
         /// <returns></returns>
-        public List<GirdSystemSettingDto> GetThamSo(string maCH)
+        public (List<GirdSystemSettingDto> data, bool hasSave) GetThamSo(string maCH)
         {
             var listKey = new string[]
             {
@@ -115,34 +115,36 @@ namespace GPBH.Business.Services
                     .ToList();
                 if (systemSettings.Any())
                 {
-                    return systemSettings.Adapt<List<GirdSystemSettingDto>>();
+                    return (systemSettings.Adapt<List<GirdSystemSettingDto>>(), true);
                 }
                 else
                 {
-                    return new List<GirdSystemSettingDto>()
-                    {
-                        new GirdSystemSettingDto
+                    return 
+                        (
+                        new List<GirdSystemSettingDto>()
                         {
-                            Key = nameof(SysDMCuaHang.Han_muc_tm),
-                            Ten = "Hạn mức giao dịch tiền mặt",
-                            GiaTri = "15000000",
-                            Mota = "Là hạn mức áp dụng khi khách hàng thanh toán tiền mặt, quy đổi ra VND",
-                        },
-                        new GirdSystemSettingDto
-                        {
-                            Key = nameof(SysDMCuaHang.Ma_cqt),
-                            Ten = "Mã cơ quan thuế",
-                            GiaTri = "",
-                            Mota = "Mã cơ quan thuế",
-                        },
-                        new GirdSystemSettingDto
-                        {
-                            Key = nameof(SysDMCuaHang.Ma_nt),
-                            Ten = "Loại tiền áp dụng khi bán hàng",
-                            GiaTri = "USD",
-                            Mota = "Là mã tiền tệ được áp dụng quy đổi chuẩn khi bán hàng, các loại tiền thanh toán sẽ được quy đổi theo tỷ giá về loại tiền này",
-                        }
-                    };
+                            new GirdSystemSettingDto
+                            {
+                                Key = nameof(SysDMCuaHang.Han_muc_tm),
+                                Ten = "Hạn mức giao dịch tiền mặt",
+                                GiaTri = "15000000",
+                                Mota = "Là hạn mức áp dụng khi khách hàng thanh toán tiền mặt, quy đổi ra VND",
+                            },
+                            new GirdSystemSettingDto
+                            {
+                                Key = nameof(SysDMCuaHang.Ma_cqt),
+                                Ten = "Mã cơ quan thuế",
+                                GiaTri = "",
+                                Mota = "Mã cơ quan thuế",
+                            },
+                            new GirdSystemSettingDto
+                            {
+                                Key = nameof(SysDMCuaHang.Ma_nt),
+                                Ten = "Loại tiền áp dụng khi bán hàng",
+                                GiaTri = "USD",
+                                Mota = "Là mã tiền tệ được áp dụng quy đổi chuẩn khi bán hàng, các loại tiền thanh toán sẽ được quy đổi theo tỷ giá về loại tiền này",
+                            }
+                        }, false);
                 }
             }
         }

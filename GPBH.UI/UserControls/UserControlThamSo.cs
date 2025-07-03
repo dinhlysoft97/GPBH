@@ -54,7 +54,7 @@ namespace GPBH.UI.UserControls
         /// </summary>
         private void LoadData()
         {
-            dataGridViewX1.BindData(_sysDMCuaHangService.GetThamSo(AppGlobals.MaCH));
+            dataGridViewX1.BindData(_sysDMCuaHangService.GetThamSo(AppGlobals.MaCH).data);
         }
 
         #endregion

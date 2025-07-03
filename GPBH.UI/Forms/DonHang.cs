@@ -91,7 +91,7 @@ namespace GPBH.UI.Forms
             _dMKHService = dMKHService;
             _sysDinh_Dang_FormService = sysDinh_Dang_FormService;
             CuaHang = _sysDMCuaHangService.GetByMaCuaHang(AppGlobals.MaCH);
-            SysDinhDangs = _sysDinh_Dang_FormService.GetDinhDang(AppGlobals.MaCH);
+            SysDinhDangs = _sysDinh_Dang_FormService.GetDinhDang(AppGlobals.MaCH).data;
             _dMNTs = _dMMTService.GetAll();
             isCurrencyVND = CuaHang.Ma_nt == GPBHConstant.CurrencyVND;
             _data = data;

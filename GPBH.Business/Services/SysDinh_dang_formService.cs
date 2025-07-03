@@ -18,7 +18,8 @@ namespace GPBH.Business.Services
         {
             _serviceProvider = serviceProvider;
         }
-        public List<GirdSysDinhDangFormDto> GetDinhDang(string maCH)
+
+        public (List<GirdSysDinhDangFormDto> data, bool hasSave) GetDinhDang(string maCH)
         {
             using (var scope = _serviceProvider.CreateScope())
             {
@@ -29,24 +30,24 @@ namespace GPBH.Business.Services
                 if (sysDinhDangs != null && sysDinhDangs.Any())
                 {
                     // Convert to DTO
-                    return sysDinhDangs.Select(s =>
-                    {
-                        var menu = unitOfWork.Repository<SysMenu>().Find(z => z.MenuId == s.MenuId).FirstOrDefault();
-                        return new GirdSysDinhDangFormDto
-                        {
-                            Code_name = s.Code_name,
-                            MenuId = s.MenuId,
-                            MenuName = menu.MenuName,
-                            Field_name = s.Field_name,
-                            Field_type = s.Field_type,
-                            Field_title = s.Field_title,
-                            Field_order = s.Field_order,
-                            Field_hide = s.Field_hide,
-                            Field_width = s.Field_width,
-                            Field_format = s.Field_format,
-                            Default_sort = s.Default_sort,
-                        };
-                    }).ToList();
+                    return (sysDinhDangs.Select(s =>
+                            {
+                                var menu = unitOfWork.Repository<SysMenu>().Find(z => z.MenuId == s.MenuId).FirstOrDefault();
+                                return new GirdSysDinhDangFormDto
+                                {
+                                    Code_name = s.Code_name,
+                                    MenuId = s.MenuId,
+                                    MenuName = menu.MenuName,
+                                    Field_name = s.Field_name,
+                                    Field_type = s.Field_type,
+                                    Field_title = s.Field_title,
+                                    Field_order = s.Field_order,
+                                    Field_hide = s.Field_hide,
+                                    Field_width = s.Field_width,
+                                    Field_format = s.Field_format,
+                                    Default_sort = s.Default_sort,
+                                };
+                            }).ToList(), true);
                 }
                 else
                 {
@@ -128,7 +129,7 @@ namespace GPBH.Business.Services
                         Default_sort = Sort.None,
                     });
 
-                    return result;
+                    return (result, false);
                 }
             }
         }
