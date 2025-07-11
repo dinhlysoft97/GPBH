@@ -49,7 +49,7 @@ namespace GPBH.UI.Forms
             new ThanhToan() { Key = "NT", Value = "Ngoại tệ" }
         };
 
-        private List<DMNT> _dMNTs = new List<DMNT>();
+        private readonly List<DMNT> _dMNTs;
         private TyGiaNT TyGiaGanNhat;
         private SysDMCuaHang CuaHang;
         private bool _isChangeTien = false;
@@ -361,9 +361,9 @@ namespace GPBH.UI.Forms
             txtTt1_tien_nt.ValueChanged += NgoaiTe1_TextChanged;
             txtTt2_tien_nt.ValueChanged += NgoaiTe2_TextChanged;
             txtTt3_tien_nt.ValueChanged += NgoaiTe3_TextChanged;
-            txtTong_nhan.ValueChanged += TxtTNNT_TextChanged;
-            txtTra_lai_nt.ValueChanged += TxtTLNT_TextChanged;
-            cbTra_lai.SelectedIndexChanged += TxtTLNT_TextChanged;
+            txtTong_nhan.ValueChanged += txtTong_nhan_TextChanged;
+            txtTra_lai_nt.ValueChanged += txtTra_lai_nt_TextChanged;
+            cbTra_lai.SelectedIndexChanged += txtTra_lai_nt_TextChanged;
 
             RegisterHideUcHangHoaEvents();
         }
@@ -427,17 +427,16 @@ namespace GPBH.UI.Forms
             }
             else
             {
-                if(_data.Trang_thai == TrangThaiDonHang.Confirmed)
+                if (_data.Trang_thai == TrangThaiDonHang.Confirmed)
                 {
                     MessageBoxEx.Show("Đơn hàng đã xuất kho không được cập nhật!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
-                }   
+                }
                 var validator = ValidatorData();
                 if (validator)
                     UpdateSoChungTuTinhTonKho(TrangThaiDonHang.Draft);
             }
         }
-
 
         /// <summary>
         /// Xử lý sự kiện khi nhấn F2 để lưu hoặc cập nhật số chứng từ.
@@ -655,75 +654,12 @@ namespace GPBH.UI.Forms
             donHang.ShowDialog();
         }
 
-        private void TxtTNNT_TextChanged(object sender, EventArgs e)
+        private void SetTongNhan()
         {
-            TinhTraLai();
-        }
-
-        private void TxtTLNT_TextChanged(object sender, EventArgs e)
-        {
-            if (cbTra_lai.SelectedValue == null)
-                return;
-
-            var maNT = cbTra_lai.SelectedValue.ToString();
-            var tyGia = _dMTGService.GetTyGiaByMaNT(maNT);
-
-            if (tyGia == null)
-                return;
-
-            decimal.TryParse(txtTra_lai_nt.Text, out decimal soTienTraLaiNT);
-            bool maNTCHEqualMaNT = false;
-            if (tyGia.Ma_nt == CuaHang.Ma_nt)
-            {
-                txtTra_lai.DisplayFormat(GetFormat("Format_tien_nt"));
-                txtTra_lai.Value = (double)soTienTraLaiNT;
-                maNTCHEqualMaNT = true;
-            }
-            else
-            {
-                txtTra_lai.DisplayFormat(GetFormat("Format_tien"));
-                var soTienNT = (soTienTraLaiNT * TyGiaGanNhat.Ty_gia) / tyGia.Ty_gia;
-                txtTra_lai.Value = (double)soTienNT;
-                maNTCHEqualMaNT = false;
-            }
-
-            lbQuyDoiTienTe.Text = $"{txtTra_lai_nt.Text} {CuaHang.Ma_nt} = {txtTra_lai.Value.ToString(GetFormat(maNTCHEqualMaNT ? "Format_tien_nt" : "Format_tien"))} {maNT}";
-        }
-
-        private void NgoaiTe1_TextChanged(object sender, EventArgs e)
-        {
-            HandelChangeNgoaiTe(cbbTt1_ma_nt, txtTt1_tien_nt, txtTt1_tien_tt);
-            SetFormatThanhToan(cbbTt1_ma_nt, txtTt1_tien_tt);
-        }
-
-        private void NgoaiTe2_TextChanged(object sender, EventArgs e)
-        {
-            HandelChangeNgoaiTe(cbbTt2_ma_nt, txtTt2_tien_nt, txtTt2_tien_tt);
-            SetFormatThanhToan(cbbTt2_ma_nt, txtTt2_tien_tt);
-        }
-
-        private void NgoaiTe3_TextChanged(object sender, EventArgs e)
-        {
-            HandelChangeNgoaiTe(cbbTt3_ma_nt, txtTt3_tien_nt, txtTt3_tien_tt);
-            SetFormatThanhToan(cbbTt3_ma_nt, txtTt3_tien_tt);
-        }
-
-        private void ThanhToan1_TextChanged(object sender, EventArgs e)
-        {
-            HandelChangeThanhToan(cbbTt1_ma_nt, txtTt1_tien_tt, txtTt1_tien_nt);
-            SetFormatThanhToan(cbbTt1_ma_nt, txtTt1_tien_tt);
-        }
-
-        private void ThanhToan2_TextChanged(object sender, EventArgs e)
-        {
-            HandelChangeThanhToan(cbbTt2_ma_nt, txtTt2_tien_tt, txtTt2_tien_nt);
-            SetFormatThanhToan(cbbTt2_ma_nt, txtTt2_tien_tt);
-        }
-
-        private void ThanhToan3_TextChanged(object sender, EventArgs e)
-        {
-            HandelChangeThanhToan(cbbTt3_ma_nt, txtTt3_tien_tt, txtTt3_tien_nt);
-            SetFormatThanhToan(cbbTt3_ma_nt, txtTt3_tien_tt);
+            decimal.TryParse(txtTt1_tien_nt.Text, out decimal soTienNT1);
+            decimal.TryParse(txtTt2_tien_nt.Text, out decimal soTienNT2);
+            decimal.TryParse(txtTt3_tien_nt.Text, out decimal soTienNT3);
+            txtTong_nhan.Value = (double)(soTienNT1 + soTienNT2 + soTienNT3);
         }
 
         private void SetFormatThanhToan(ComboBoxEx cbbTt_ma_nt, DoubleInput txtTt_tien_tt)
@@ -816,6 +752,7 @@ namespace GPBH.UI.Forms
             decimal.TryParse(txtTong_thu_nt.Text, out decimal tongThu);
             txtTra_lai_nt.Value = (double)(tongNhan - tongThu);
         }
+
         /// <summary>
         /// Đăng ký các sự kiện để ẩn popup chọn hàng hóa khi click/scroll/resize ngoài vùng popup.
         /// </summary>
@@ -918,6 +855,10 @@ namespace GPBH.UI.Forms
             ucHangHoaPopup.ShowDropDown();
         }
 
+        /// <summary>
+        /// Cập nhật thông tin row đang thao tác, tính toán lại giá bán, giảm giá, thành tiền, v.v.
+        /// </summary>
+        /// <param name="item"></param>
         private void TinhToanRow(XCT5Dto item)
         {
             // get Giá bán
@@ -956,6 +897,9 @@ namespace GPBH.UI.Forms
             dataGridViewX1.Refresh();
         }
 
+        /// <summary>
+        /// Tính toán tổng tiền hàng, giảm giá và thu tiền.
+        /// </summary>
         private void TinhTongCong()
         {
             decimal tongTienHang = 0;
@@ -1068,7 +1012,6 @@ namespace GPBH.UI.Forms
             base.OnMouseDown(e);
         }
 
-
         /// <summary>
         /// Xử lý khi kết thúc edit một cell: cập nhật lại object, tính toán lại nếu cần.
         /// </summary>
@@ -1089,6 +1032,120 @@ namespace GPBH.UI.Forms
                 TinhToanRow(item);
                 TinhTongCong();
             }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtTong_nhan_TextChanged(object sender, EventArgs e)
+        {
+            TinhTraLai();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtTra_lai_nt_TextChanged(object sender, EventArgs e)
+        {
+            if (cbTra_lai.SelectedValue == null)
+                return;
+
+            var maNT = cbTra_lai.SelectedValue.ToString();
+            var tyGia = _dMTGService.GetTyGiaByMaNT(maNT);
+
+            if (tyGia == null)
+                return;
+
+            decimal.TryParse(txtTra_lai_nt.Text, out decimal soTienTraLaiNT);
+            bool maNTCHEqualMaNT = false;
+            if (tyGia.Ma_nt == CuaHang.Ma_nt)
+            {
+                txtTra_lai.DisplayFormat(GetFormat("Format_tien_nt"));
+                txtTra_lai.Value = (double)soTienTraLaiNT;
+                maNTCHEqualMaNT = true;
+            }
+            else
+            {
+                txtTra_lai.DisplayFormat(GetFormat("Format_tien"));
+                var soTienNT = (soTienTraLaiNT * TyGiaGanNhat.Ty_gia) / tyGia.Ty_gia;
+                txtTra_lai.Value = (double)soTienNT;
+                maNTCHEqualMaNT = false;
+            }
+
+            lbQuyDoiTienTe.Text = $"{txtTra_lai_nt.Text} {CuaHang.Ma_nt} = {txtTra_lai.Value.ToString(GetFormat(maNTCHEqualMaNT ? "Format_tien_nt" : "Format_tien"))} {maNT}";
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void NgoaiTe1_TextChanged(object sender, EventArgs e)
+        {
+            HandelChangeNgoaiTe(cbbTt1_ma_nt, txtTt1_tien_nt, txtTt1_tien_tt);
+            SetFormatThanhToan(cbbTt1_ma_nt, txtTt1_tien_tt);
+            SetTongNhan();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void NgoaiTe2_TextChanged(object sender, EventArgs e)
+        {
+            HandelChangeNgoaiTe(cbbTt2_ma_nt, txtTt2_tien_nt, txtTt2_tien_tt);
+            SetFormatThanhToan(cbbTt2_ma_nt, txtTt2_tien_tt);
+            SetTongNhan();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void NgoaiTe3_TextChanged(object sender, EventArgs e)
+        {
+            HandelChangeNgoaiTe(cbbTt3_ma_nt, txtTt3_tien_nt, txtTt3_tien_tt);
+            SetFormatThanhToan(cbbTt3_ma_nt, txtTt3_tien_tt);
+            SetTongNhan();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ThanhToan1_TextChanged(object sender, EventArgs e)
+        {
+            HandelChangeThanhToan(cbbTt1_ma_nt, txtTt1_tien_tt, txtTt1_tien_nt);
+            SetFormatThanhToan(cbbTt1_ma_nt, txtTt1_tien_tt);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ThanhToan2_TextChanged(object sender, EventArgs e)
+        {
+            HandelChangeThanhToan(cbbTt2_ma_nt, txtTt2_tien_tt, txtTt2_tien_nt);
+            SetFormatThanhToan(cbbTt2_ma_nt, txtTt2_tien_tt);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ThanhToan3_TextChanged(object sender, EventArgs e)
+        {
+            HandelChangeThanhToan(cbbTt3_ma_nt, txtTt3_tien_tt, txtTt3_tien_nt);
+            SetFormatThanhToan(cbbTt3_ma_nt, txtTt3_tien_tt);
         }
         #endregion
     }
