@@ -45,7 +45,7 @@
             // 
             this.btnDong.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnDong.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnDong.Location = new System.Drawing.Point(137, 177);
+            this.btnDong.Location = new System.Drawing.Point(230, 177);
             this.btnDong.Name = "btnDong";
             this.btnDong.Size = new System.Drawing.Size(75, 23);
             this.btnDong.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -56,7 +56,7 @@
             // 
             this.btnLuu.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnLuu.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnLuu.Location = new System.Drawing.Point(43, 177);
+            this.btnLuu.Location = new System.Drawing.Point(136, 177);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(75, 23);
             this.btnLuu.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -200,6 +200,7 @@
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "DoiMatKhau";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Đổi mật khẩu";

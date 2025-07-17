@@ -41,5 +41,10 @@ namespace GPBH.UI.Forms
             dataGridViewX1.BindData(_sysDMCuaHangService.GetGiaBanByCuaHang(selected.Ma_cua_hang));
 
         }
+
+        private void dataGridViewX1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            dataGridViewX1.SetRowPositionPaint(e);
+        }
     }
 }

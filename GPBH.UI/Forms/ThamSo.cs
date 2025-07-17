@@ -80,7 +80,7 @@ namespace GPBH.UI.Forms
             if (dataGridViewX1.Columns.Count == 0) return;
 
             // Canh giữa header cho cột STT
-            dataGridViewX1.SetHeaderAlignment("Stt", DataGridViewContentAlignment.MiddleCenter);
+            dataGridViewX1.SetHeaderAlignment("Stt", DataGridViewContentAlignment.MiddleRight);
 
             // Sắp xếp vị trí các cột
             dataGridViewX1.SetDisplayIndex("Stt", 0);
@@ -90,7 +90,7 @@ namespace GPBH.UI.Forms
             dataGridViewX1.SetDisplayIndex("Mota", 4);
 
             // Căn chỉnh dữ liệu trong cột STT
-            dataGridViewX1.SetCellAlignment("Stt", DataGridViewContentAlignment.MiddleCenter);
+            dataGridViewX1.SetCellAlignment("Stt", DataGridViewContentAlignment.MiddleRight);
         }
 
         #endregion
@@ -114,5 +114,10 @@ namespace GPBH.UI.Forms
         }
 
         #endregion
+
+        private void dataGridViewX1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            dataGridViewX1.SetRowPositionPaint(e);
+        }
     }
 }

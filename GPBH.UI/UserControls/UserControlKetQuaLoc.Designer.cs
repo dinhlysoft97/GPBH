@@ -32,18 +32,18 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.bar1 = new DevComponents.DotNetBar.Bar();
             this.btnIn = new DevComponents.DotNetBar.ButtonX();
-            this.Ma_phieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ma_cua_hang = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ty_gia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tra_lai_nt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tong_nhan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tong_tien_hang_nt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ten_khach = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Passport = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ngay_chung_tu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.So_chung_tu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Stt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.Stt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.So_chung_tu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ngay_chung_tu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Passport = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ten_khach = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tong_tien_hang_nt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tong_nhan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tra_lai_nt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ty_gia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ma_cua_hang = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ma_phieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -101,77 +101,6 @@
             this.btnIn.Text = "In báo cáo";
             this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
             // 
-            // Ma_phieu
-            // 
-            this.Ma_phieu.DataPropertyName = "Thanh_tien_vn";
-            this.Ma_phieu.HeaderText = "Thành tiền VND";
-            this.Ma_phieu.Name = "Ma_phieu";
-            this.Ma_phieu.ReadOnly = true;
-            // 
-            // Ma_cua_hang
-            // 
-            this.Ma_cua_hang.DataPropertyName = "Thanh_tien";
-            this.Ma_cua_hang.HeaderText = "Thanh tiền";
-            this.Ma_cua_hang.Name = "Ma_cua_hang";
-            this.Ma_cua_hang.ReadOnly = true;
-            // 
-            // Ty_gia
-            // 
-            this.Ty_gia.DataPropertyName = "Ty_gia";
-            this.Ty_gia.HeaderText = "Tủy giá";
-            this.Ty_gia.Name = "Ty_gia";
-            // 
-            // Tra_lai_nt
-            // 
-            this.Tra_lai_nt.DataPropertyName = "Tra_lai_nt";
-            this.Tra_lai_nt.HeaderText = "Trả lại";
-            this.Tra_lai_nt.Name = "Tra_lai_nt";
-            // 
-            // Tong_nhan
-            // 
-            this.Tong_nhan.DataPropertyName = "Tong_nhan";
-            this.Tong_nhan.HeaderText = "Khách trả";
-            this.Tong_nhan.Name = "Tong_nhan";
-            // 
-            // Tong_tien_hang_nt
-            // 
-            this.Tong_tien_hang_nt.DataPropertyName = "Tong_tien_hang_nt";
-            this.Tong_tien_hang_nt.HeaderText = "Tổng tiền hàng";
-            this.Tong_tien_hang_nt.Name = "Tong_tien_hang_nt";
-            // 
-            // Ten_khach
-            // 
-            this.Ten_khach.DataPropertyName = "Ten_khachhang";
-            this.Ten_khach.HeaderText = "Tên khách hàng";
-            this.Ten_khach.Name = "Ten_khach";
-            // 
-            // Passport
-            // 
-            this.Passport.DataPropertyName = "Passport";
-            this.Passport.HeaderText = "Mã khách hàng";
-            this.Passport.Name = "Passport";
-            // 
-            // Ngay_chung_tu
-            // 
-            this.Ngay_chung_tu.DataPropertyName = "Ngay_ban";
-            this.Ngay_chung_tu.HeaderText = "Ngày";
-            this.Ngay_chung_tu.MinimumWidth = 6;
-            this.Ngay_chung_tu.Name = "Ngay_chung_tu";
-            // 
-            // So_chung_tu
-            // 
-            this.So_chung_tu.DataPropertyName = "So_don_hang";
-            this.So_chung_tu.HeaderText = "Số đơn hàng";
-            this.So_chung_tu.MinimumWidth = 6;
-            this.So_chung_tu.Name = "So_chung_tu";
-            // 
-            // Stt
-            // 
-            this.Stt.DataPropertyName = "Stt";
-            this.Stt.HeaderText = "Stt";
-            this.Stt.Name = "Stt";
-            this.Stt.ReadOnly = true;
-            // 
             // dataGridViewX1
             // 
             this.dataGridViewX1.AllowUserToAddRows = false;
@@ -210,6 +139,78 @@
             this.dataGridViewX1.RowTemplate.Height = 24;
             this.dataGridViewX1.Size = new System.Drawing.Size(1339, 736);
             this.dataGridViewX1.TabIndex = 0;
+            this.dataGridViewX1.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridViewX1_RowPostPaint);
+            // 
+            // Stt
+            // 
+            this.Stt.DataPropertyName = "Stt";
+            this.Stt.HeaderText = "Stt";
+            this.Stt.Name = "Stt";
+            this.Stt.ReadOnly = true;
+            // 
+            // So_chung_tu
+            // 
+            this.So_chung_tu.DataPropertyName = "So_don_hang";
+            this.So_chung_tu.HeaderText = "Số đơn hàng";
+            this.So_chung_tu.MinimumWidth = 6;
+            this.So_chung_tu.Name = "So_chung_tu";
+            // 
+            // Ngay_chung_tu
+            // 
+            this.Ngay_chung_tu.DataPropertyName = "Ngay_ban";
+            this.Ngay_chung_tu.HeaderText = "Ngày";
+            this.Ngay_chung_tu.MinimumWidth = 6;
+            this.Ngay_chung_tu.Name = "Ngay_chung_tu";
+            // 
+            // Passport
+            // 
+            this.Passport.DataPropertyName = "Passport";
+            this.Passport.HeaderText = "Mã khách hàng";
+            this.Passport.Name = "Passport";
+            // 
+            // Ten_khach
+            // 
+            this.Ten_khach.DataPropertyName = "Ten_khachhang";
+            this.Ten_khach.HeaderText = "Tên khách hàng";
+            this.Ten_khach.Name = "Ten_khach";
+            // 
+            // Tong_tien_hang_nt
+            // 
+            this.Tong_tien_hang_nt.DataPropertyName = "Tong_tien_hang_nt";
+            this.Tong_tien_hang_nt.HeaderText = "Tổng tiền hàng";
+            this.Tong_tien_hang_nt.Name = "Tong_tien_hang_nt";
+            // 
+            // Tong_nhan
+            // 
+            this.Tong_nhan.DataPropertyName = "Tong_nhan";
+            this.Tong_nhan.HeaderText = "Khách trả";
+            this.Tong_nhan.Name = "Tong_nhan";
+            // 
+            // Tra_lai_nt
+            // 
+            this.Tra_lai_nt.DataPropertyName = "Tra_lai_nt";
+            this.Tra_lai_nt.HeaderText = "Trả lại";
+            this.Tra_lai_nt.Name = "Tra_lai_nt";
+            // 
+            // Ty_gia
+            // 
+            this.Ty_gia.DataPropertyName = "Ty_gia";
+            this.Ty_gia.HeaderText = "Tủy giá";
+            this.Ty_gia.Name = "Ty_gia";
+            // 
+            // Ma_cua_hang
+            // 
+            this.Ma_cua_hang.DataPropertyName = "Thanh_tien";
+            this.Ma_cua_hang.HeaderText = "Thanh tiền";
+            this.Ma_cua_hang.Name = "Ma_cua_hang";
+            this.Ma_cua_hang.ReadOnly = true;
+            // 
+            // Ma_phieu
+            // 
+            this.Ma_phieu.DataPropertyName = "Thanh_tien_vn";
+            this.Ma_phieu.HeaderText = "Thành tiền VND";
+            this.Ma_phieu.Name = "Ma_phieu";
+            this.Ma_phieu.ReadOnly = true;
             // 
             // UserControlKetQuaLoc
             // 

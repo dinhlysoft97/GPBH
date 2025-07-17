@@ -28,7 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.Ma_hh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ten_hh = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,20 +64,22 @@
             this.Chieu_dai,
             this.Trong_luong,
             this.Chieu_cao});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridViewX1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.dataGridViewX1.Location = new System.Drawing.Point(2, 12);
+            this.dataGridViewX1.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewX1.Name = "dataGridViewX1";
             this.dataGridViewX1.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.dataGridViewX1.Size = new System.Drawing.Size(1139, 534);
+            this.dataGridViewX1.Size = new System.Drawing.Size(1145, 583);
             this.dataGridViewX1.TabIndex = 18;
+            this.dataGridViewX1.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridViewX1_RowPostPaint);
             // 
             // Ma_hh
             // 
@@ -135,6 +140,8 @@
             // Chieu_dai
             // 
             this.Chieu_dai.DataPropertyName = "Chieu_dai";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Chieu_dai.DefaultCellStyle = dataGridViewCellStyle1;
             this.Chieu_dai.HeaderText = "Chiều dài";
             this.Chieu_dai.Name = "Chieu_dai";
             this.Chieu_dai.ReadOnly = true;
@@ -142,6 +149,8 @@
             // Trong_luong
             // 
             this.Trong_luong.DataPropertyName = "Trong_luong";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Trong_luong.DefaultCellStyle = dataGridViewCellStyle2;
             this.Trong_luong.HeaderText = "Trọng lượng";
             this.Trong_luong.Name = "Trong_luong";
             this.Trong_luong.ReadOnly = true;
@@ -149,6 +158,8 @@
             // Chieu_cao
             // 
             this.Chieu_cao.DataPropertyName = "Chieu_cao";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Chieu_cao.DefaultCellStyle = dataGridViewCellStyle3;
             this.Chieu_cao.HeaderText = "Chiều cao";
             this.Chieu_cao.Name = "Chieu_cao";
             this.Chieu_cao.ReadOnly = true;
@@ -159,8 +170,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1145, 583);
             this.Controls.Add(this.dataGridViewX1);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "HangHoa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Hàng hóa";

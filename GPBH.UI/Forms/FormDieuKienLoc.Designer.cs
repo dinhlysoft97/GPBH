@@ -92,7 +92,7 @@
             this.dtpTuNgay.Name = "dtpTuNgay";
             this.dtpTuNgay.Size = new System.Drawing.Size(150, 20);
             this.dtpTuNgay.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.dtpTuNgay.TabIndex = 3;
+            this.dtpTuNgay.TabIndex = 1;
             // 
             // dtpDenNgay
             // 
@@ -137,7 +137,7 @@
             this.dtpDenNgay.Name = "dtpDenNgay";
             this.dtpDenNgay.Size = new System.Drawing.Size(150, 20);
             this.dtpDenNgay.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.dtpDenNgay.TabIndex = 4;
+            this.dtpDenNgay.TabIndex = 2;
             // 
             // groupPanel1
             // 
@@ -197,11 +197,11 @@
             // 
             this.buttonDong.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.buttonDong.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonDong.Location = new System.Drawing.Point(401, 249);
+            this.buttonDong.Location = new System.Drawing.Point(447, 248);
             this.buttonDong.Name = "buttonDong";
             this.buttonDong.Size = new System.Drawing.Size(75, 23);
             this.buttonDong.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonDong.TabIndex = 32;
+            this.buttonDong.TabIndex = 9;
             this.buttonDong.Text = "Đóng";
             this.buttonDong.Click += new System.EventHandler(this.buttonDong_Click);
             // 
@@ -209,11 +209,11 @@
             // 
             this.buttonLamMoi.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.buttonLamMoi.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonLamMoi.Location = new System.Drawing.Point(279, 249);
+            this.buttonLamMoi.Location = new System.Drawing.Point(325, 248);
             this.buttonLamMoi.Name = "buttonLamMoi";
             this.buttonLamMoi.Size = new System.Drawing.Size(96, 23);
             this.buttonLamMoi.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonLamMoi.TabIndex = 31;
+            this.buttonLamMoi.TabIndex = 8;
             this.buttonLamMoi.Text = "Làm mới";
             this.buttonLamMoi.Click += new System.EventHandler(this.buttonLamMoi_Click);
             // 
@@ -227,7 +227,7 @@
             this.ccbMaNgoaiTe.Name = "ccbMaNgoaiTe";
             this.ccbMaNgoaiTe.Size = new System.Drawing.Size(150, 20);
             this.ccbMaNgoaiTe.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.ccbMaNgoaiTe.TabIndex = 30;
+            this.ccbMaNgoaiTe.TabIndex = 6;
             // 
             // ccbMaHang
             // 
@@ -239,7 +239,7 @@
             this.ccbMaHang.Name = "ccbMaHang";
             this.ccbMaHang.Size = new System.Drawing.Size(150, 20);
             this.ccbMaHang.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.ccbMaHang.TabIndex = 29;
+            this.ccbMaHang.TabIndex = 5;
             // 
             // ccbPassport
             // 
@@ -251,7 +251,7 @@
             this.ccbPassport.Name = "ccbPassport";
             this.ccbPassport.Size = new System.Drawing.Size(150, 20);
             this.ccbPassport.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.ccbPassport.TabIndex = 28;
+            this.ccbPassport.TabIndex = 4;
             // 
             // ccbKhachHang
             // 
@@ -263,24 +263,24 @@
             this.ccbKhachHang.Name = "ccbKhachHang";
             this.ccbKhachHang.Size = new System.Drawing.Size(150, 20);
             this.ccbKhachHang.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.ccbKhachHang.TabIndex = 27;
+            this.ccbKhachHang.TabIndex = 3;
             // 
             // buttonLoc
             // 
             this.buttonLoc.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.buttonLoc.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonLoc.Location = new System.Drawing.Point(175, 249);
+            this.buttonLoc.Location = new System.Drawing.Point(221, 248);
             this.buttonLoc.Name = "buttonLoc";
             this.buttonLoc.Size = new System.Drawing.Size(81, 23);
             this.buttonLoc.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonLoc.TabIndex = 26;
+            this.buttonLoc.TabIndex = 7;
             this.buttonLoc.Text = "Lọc";
             this.buttonLoc.Click += new System.EventHandler(this.buttonLoc_Click);
             // 
             // labelX6
             // 
             this.labelX6.AutoSize = true;
-            this.labelX6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.labelX6.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -295,7 +295,7 @@
             // labelX5
             // 
             this.labelX5.AutoSize = true;
-            this.labelX5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.labelX5.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -310,7 +310,7 @@
             // labelX4
             // 
             this.labelX4.AutoSize = true;
-            this.labelX4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.labelX4.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -325,7 +325,7 @@
             // labelX3
             // 
             this.labelX3.AutoSize = true;
-            this.labelX3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.labelX3.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -340,7 +340,7 @@
             // labelX2
             // 
             this.labelX2.AutoSize = true;
-            this.labelX2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.labelX2.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -355,7 +355,7 @@
             // labelX1
             // 
             this.labelX1.AutoSize = true;
-            this.labelX1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.labelX1.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -374,7 +374,12 @@
             this.BackColor = System.Drawing.SystemColors.HighlightText;
             this.ClientSize = new System.Drawing.Size(620, 315);
             this.Controls.Add(this.groupPanel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormDieuKienLoc";
+            this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Báo cáo bán hàng theo khách hàng";
             ((System.ComponentModel.ISupportInitialize)(this.dtpTuNgay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpDenNgay)).EndInit();

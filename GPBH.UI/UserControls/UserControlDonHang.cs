@@ -77,6 +77,7 @@ namespace GPBH.UI.UserControls
             {
                 SetFormRowTheoCuaHang();
             };
+            dataGridViewX1.Columns["Stt"].Visible = false; // ẩn cột Stt trong lưới detail
         }
 
         /// <summary>
@@ -148,7 +149,6 @@ namespace GPBH.UI.UserControls
 
             // Canh giữa header
             dataGridViewX1.SetHeaderAlignment("Stt", DataGridViewContentAlignment.MiddleCenter);
-     
 
             // Sắp xếp vị trí các cột
             SetColumnDisplayIndex();
@@ -391,6 +391,16 @@ namespace GPBH.UI.UserControls
             public int SoLuong { get; set; }
             public decimal Gia { get; set; }
             public DateTime NgayTao { get; set; }
+        }
+
+        private void dataGridViewX1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            dataGridViewX1.SetRowPositionPaint(e);
+        }
+
+        private void dataGridViewX2_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            dataGridViewX2.SetRowPositionPaint(e);
         }
     }
 }

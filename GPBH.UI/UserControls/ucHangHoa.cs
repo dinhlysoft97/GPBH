@@ -96,7 +96,7 @@ namespace GPBH.UI.UserControls
                 dgv.Size = new Size(550, 260); // Tăng kích thước DataGridView
                 dgv.AutoGenerateColumns = false;
                 dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
+                dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 ((System.ComponentModel.ISupportInitialize)dgv).EndInit();
                 sPanel.ResumeLayout(false);
 

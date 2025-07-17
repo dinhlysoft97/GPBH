@@ -30,6 +30,12 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.btnThem = new DevComponents.DotNetBar.ButtonX();
+            this.bubbleBar1 = new DevComponents.DotNetBar.BubbleBar();
+            this.btnSua = new DevComponents.DotNetBar.ButtonX();
+            this.btnXoa = new DevComponents.DotNetBar.ButtonX();
+            this.txtSearch = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.btnTim = new DevComponents.DotNetBar.ButtonX();
             this.Stt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PhanQuyen = new System.Windows.Forms.DataGridViewImageColumn();
             this.TenDangNhap = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,12 +46,6 @@
             this.Nguoi_sua = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ngay_tao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nguoi_tao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnThem = new DevComponents.DotNetBar.ButtonX();
-            this.bubbleBar1 = new DevComponents.DotNetBar.BubbleBar();
-            this.btnSua = new DevComponents.DotNetBar.ButtonX();
-            this.btnXoa = new DevComponents.DotNetBar.ButtonX();
-            this.txtSearch = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.btnTim = new DevComponents.DotNetBar.ButtonX();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bubbleBar1)).BeginInit();
             this.SuspendLayout();
@@ -86,82 +86,7 @@
             this.dataGridViewX1.RowTemplate.Height = 24;
             this.dataGridViewX1.Size = new System.Drawing.Size(1339, 736);
             this.dataGridViewX1.TabIndex = 3;
-            // 
-            // Stt
-            // 
-            this.Stt.DataPropertyName = "Stt";
-            this.Stt.HeaderText = "Stt";
-            this.Stt.MinimumWidth = 6;
-            this.Stt.Name = "Stt";
-            // 
-            // PhanQuyen
-            // 
-            this.PhanQuyen.DataPropertyName = "PhanQuyen";
-            this.PhanQuyen.HeaderText = "Phân quyền";
-            this.PhanQuyen.MinimumWidth = 6;
-            this.PhanQuyen.Name = "PhanQuyen";
-            this.PhanQuyen.ReadOnly = true;
-            this.PhanQuyen.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.PhanQuyen.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // TenDangNhap
-            // 
-            this.TenDangNhap.DataPropertyName = "TenDangNhap";
-            this.TenDangNhap.HeaderText = "Tên đăng nhập";
-            this.TenDangNhap.Name = "TenDangNhap";
-            // 
-            // TenDayDu
-            // 
-            this.TenDayDu.DataPropertyName = "TenDayDu";
-            this.TenDayDu.HeaderText = "Tên đầy đủ";
-            this.TenDayDu.Name = "TenDayDu";
-            // 
-            // Ksd
-            // 
-            this.Ksd.Checked = true;
-            this.Ksd.CheckState = System.Windows.Forms.CheckState.Indeterminate;
-            this.Ksd.CheckValue = "N";
-            this.Ksd.DataPropertyName = "Ksd";
-            this.Ksd.HeaderText = "KSD";
-            this.Ksd.Name = "Ksd";
-            this.Ksd.ReadOnly = true;
-            this.Ksd.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Ksd.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // CapLaiQuyen
-            // 
-            this.CapLaiQuyen.Checked = true;
-            this.CapLaiQuyen.CheckState = System.Windows.Forms.CheckState.Indeterminate;
-            this.CapLaiQuyen.CheckValue = "N";
-            this.CapLaiQuyen.DataPropertyName = "CapLaiQuyen";
-            this.CapLaiQuyen.HeaderText = "Cấp lại quyền";
-            this.CapLaiQuyen.Name = "CapLaiQuyen";
-            this.CapLaiQuyen.ReadOnly = true;
-            this.CapLaiQuyen.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // Ngay_sua
-            // 
-            this.Ngay_sua.DataPropertyName = "Ngay_sua";
-            this.Ngay_sua.HeaderText = "Ngày sửa";
-            this.Ngay_sua.Name = "Ngay_sua";
-            // 
-            // Nguoi_sua
-            // 
-            this.Nguoi_sua.DataPropertyName = "Nguoi_sua";
-            this.Nguoi_sua.HeaderText = "Người sửa";
-            this.Nguoi_sua.Name = "Nguoi_sua";
-            // 
-            // Ngay_tao
-            // 
-            this.Ngay_tao.DataPropertyName = "Ngay_tao";
-            this.Ngay_tao.HeaderText = "Ngày tạo";
-            this.Ngay_tao.Name = "Ngay_tao";
-            // 
-            // Nguoi_tao
-            // 
-            this.Nguoi_tao.DataPropertyName = "Nguoi_tao";
-            this.Nguoi_tao.HeaderText = "Người tạo";
-            this.Nguoi_tao.Name = "Nguoi_tao";
+            this.dataGridViewX1.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridViewX1_RowPostPaint);
             // 
             // btnThem
             // 
@@ -243,7 +168,7 @@
             this.txtSearch.PreventEnterBeep = true;
             this.txtSearch.Size = new System.Drawing.Size(291, 20);
             this.txtSearch.TabIndex = 8;
-            this.txtSearch.WatermarkText = "tìm kiếm";
+            this.txtSearch.WatermarkText = "Tìm kiếm";
             // 
             // btnTim
             // 
@@ -255,6 +180,89 @@
             this.btnTim.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnTim.TabIndex = 9;
             this.btnTim.Text = "Tìm kiếm";
+            // 
+            // Stt
+            // 
+            this.Stt.DataPropertyName = "Stt";
+            this.Stt.HeaderText = "Stt";
+            this.Stt.MinimumWidth = 6;
+            this.Stt.Name = "Stt";
+            this.Stt.ReadOnly = true;
+            // 
+            // PhanQuyen
+            // 
+            this.PhanQuyen.DataPropertyName = "PhanQuyen";
+            this.PhanQuyen.HeaderText = "Phân quyền";
+            this.PhanQuyen.MinimumWidth = 6;
+            this.PhanQuyen.Name = "PhanQuyen";
+            this.PhanQuyen.ReadOnly = true;
+            this.PhanQuyen.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.PhanQuyen.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // TenDangNhap
+            // 
+            this.TenDangNhap.DataPropertyName = "TenDangNhap";
+            this.TenDangNhap.HeaderText = "Tên đăng nhập";
+            this.TenDangNhap.Name = "TenDangNhap";
+            this.TenDangNhap.ReadOnly = true;
+            // 
+            // TenDayDu
+            // 
+            this.TenDayDu.DataPropertyName = "TenDayDu";
+            this.TenDayDu.HeaderText = "Tên đầy đủ";
+            this.TenDayDu.Name = "TenDayDu";
+            this.TenDayDu.ReadOnly = true;
+            // 
+            // Ksd
+            // 
+            this.Ksd.Checked = true;
+            this.Ksd.CheckState = System.Windows.Forms.CheckState.Indeterminate;
+            this.Ksd.CheckValue = "N";
+            this.Ksd.DataPropertyName = "Ksd";
+            this.Ksd.HeaderText = "KSD";
+            this.Ksd.Name = "Ksd";
+            this.Ksd.ReadOnly = true;
+            this.Ksd.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Ksd.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // CapLaiQuyen
+            // 
+            this.CapLaiQuyen.Checked = true;
+            this.CapLaiQuyen.CheckState = System.Windows.Forms.CheckState.Indeterminate;
+            this.CapLaiQuyen.CheckValue = "N";
+            this.CapLaiQuyen.DataPropertyName = "CapLaiQuyen";
+            this.CapLaiQuyen.HeaderText = "Cấp lại quyền";
+            this.CapLaiQuyen.Name = "CapLaiQuyen";
+            this.CapLaiQuyen.ReadOnly = true;
+            this.CapLaiQuyen.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // Ngay_sua
+            // 
+            this.Ngay_sua.DataPropertyName = "Ngay_sua";
+            this.Ngay_sua.HeaderText = "Ngày sửa";
+            this.Ngay_sua.Name = "Ngay_sua";
+            this.Ngay_sua.ReadOnly = true;
+            // 
+            // Nguoi_sua
+            // 
+            this.Nguoi_sua.DataPropertyName = "Nguoi_sua";
+            this.Nguoi_sua.HeaderText = "Người sửa";
+            this.Nguoi_sua.Name = "Nguoi_sua";
+            this.Nguoi_sua.ReadOnly = true;
+            // 
+            // Ngay_tao
+            // 
+            this.Ngay_tao.DataPropertyName = "Ngay_tao";
+            this.Ngay_tao.HeaderText = "Ngày tạo";
+            this.Ngay_tao.Name = "Ngay_tao";
+            this.Ngay_tao.ReadOnly = true;
+            // 
+            // Nguoi_tao
+            // 
+            this.Nguoi_tao.DataPropertyName = "Nguoi_tao";
+            this.Nguoi_tao.HeaderText = "Người tạo";
+            this.Nguoi_tao.Name = "Nguoi_tao";
+            this.Nguoi_tao.ReadOnly = true;
             // 
             // UserControlNguoiSuDung
             // 

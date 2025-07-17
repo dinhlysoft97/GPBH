@@ -80,10 +80,11 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.dataGridViewX1.Location = new System.Drawing.Point(5, 30);
+            this.dataGridViewX1.Location = new System.Drawing.Point(1, 32);
             this.dataGridViewX1.Name = "dataGridViewX1";
-            this.dataGridViewX1.Size = new System.Drawing.Size(1516, 749);
+            this.dataGridViewX1.Size = new System.Drawing.Size(1032, 592);
             this.dataGridViewX1.TabIndex = 1;
+            this.dataGridViewX1.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridViewX1_RowPostPaint);
             // 
             // Stt
             // 
@@ -196,7 +197,7 @@
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(13, 9);
+            this.labelX1.Location = new System.Drawing.Point(8, 8);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(50, 15);
             this.labelX1.TabIndex = 3;
@@ -211,7 +212,7 @@
             this.cbbCuaHang.ItemHeight = 14;
             this.cbbCuaHang.Location = new System.Drawing.Point(69, 6);
             this.cbbCuaHang.Name = "cbbCuaHang";
-            this.cbbCuaHang.Size = new System.Drawing.Size(172, 20);
+            this.cbbCuaHang.Size = new System.Drawing.Size(221, 20);
             this.cbbCuaHang.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cbbCuaHang.TabIndex = 4;
             // 
@@ -219,7 +220,7 @@
             // 
             this.btnLuu.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnLuu.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnLuu.Location = new System.Drawing.Point(5, 790);
+            this.btnLuu.Location = new System.Drawing.Point(1, 630);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(75, 23);
             this.btnLuu.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -234,7 +235,7 @@
             // 
             // 
             this.lbWarning.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lbWarning.Location = new System.Drawing.Point(86, 794);
+            this.lbWarning.Location = new System.Drawing.Point(82, 634);
             this.lbWarning.Name = "lbWarning";
             this.lbWarning.Size = new System.Drawing.Size(313, 15);
             this.lbWarning.TabIndex = 23;
@@ -244,7 +245,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1524, 821);
+            this.ClientSize = new System.Drawing.Size(1032, 656);
             this.Controls.Add(this.lbWarning);
             this.Controls.Add(this.btnLuu);
             this.Controls.Add(this.cbbCuaHang);
@@ -253,6 +254,7 @@
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "DinhDangForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Định dạng form";

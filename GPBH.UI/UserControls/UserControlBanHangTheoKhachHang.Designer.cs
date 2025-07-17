@@ -98,7 +98,8 @@
             this.dataGridViewX1.RowHeadersWidth = 51;
             this.dataGridViewX1.RowTemplate.Height = 24;
             this.dataGridViewX1.Size = new System.Drawing.Size(1195, 565);
-            this.dataGridViewX1.TabIndex = 1;
+            this.dataGridViewX1.TabIndex = 10;
+            this.dataGridViewX1.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridViewX1_RowPostPaint);
             // 
             // btnIn
             // 
@@ -109,7 +110,7 @@
             this.btnIn.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btnIn.Size = new System.Drawing.Size(81, 23);
             this.btnIn.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnIn.TabIndex = 7;
+            this.btnIn.TabIndex = 9;
             this.btnIn.Text = "In báo cáo";
             this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
             // 
@@ -121,7 +122,7 @@
             this.buttonLamMoi.Name = "buttonLamMoi";
             this.buttonLamMoi.Size = new System.Drawing.Size(81, 23);
             this.buttonLamMoi.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonLamMoi.TabIndex = 46;
+            this.buttonLamMoi.TabIndex = 8;
             this.buttonLamMoi.Text = "Làm mới";
             this.buttonLamMoi.Click += new System.EventHandler(this.buttonLamMoi_Click);
             // 
@@ -135,7 +136,7 @@
             this.ccbMaNgoaiTe.Name = "ccbMaNgoaiTe";
             this.ccbMaNgoaiTe.Size = new System.Drawing.Size(150, 20);
             this.ccbMaNgoaiTe.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.ccbMaNgoaiTe.TabIndex = 45;
+            this.ccbMaNgoaiTe.TabIndex = 6;
             // 
             // ccbMaHang
             // 
@@ -147,7 +148,7 @@
             this.ccbMaHang.Name = "ccbMaHang";
             this.ccbMaHang.Size = new System.Drawing.Size(150, 20);
             this.ccbMaHang.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.ccbMaHang.TabIndex = 44;
+            this.ccbMaHang.TabIndex = 5;
             // 
             // ccbPassport
             // 
@@ -159,7 +160,7 @@
             this.ccbPassport.Name = "ccbPassport";
             this.ccbPassport.Size = new System.Drawing.Size(150, 20);
             this.ccbPassport.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.ccbPassport.TabIndex = 43;
+            this.ccbPassport.TabIndex = 4;
             // 
             // ccbKhachHang
             // 
@@ -171,7 +172,7 @@
             this.ccbKhachHang.Name = "ccbKhachHang";
             this.ccbKhachHang.Size = new System.Drawing.Size(150, 20);
             this.ccbKhachHang.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.ccbKhachHang.TabIndex = 42;
+            this.ccbKhachHang.TabIndex = 3;
             // 
             // buttonLoc
             // 
@@ -181,14 +182,14 @@
             this.buttonLoc.Name = "buttonLoc";
             this.buttonLoc.Size = new System.Drawing.Size(81, 23);
             this.buttonLoc.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonLoc.TabIndex = 41;
+            this.buttonLoc.TabIndex = 7;
             this.buttonLoc.Text = "Lọc";
             this.buttonLoc.Click += new System.EventHandler(this.buttonLoc_Click);
             // 
             // labelX6
             // 
             this.labelX6.AutoSize = true;
-            this.labelX6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.labelX6.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -203,7 +204,7 @@
             // labelX5
             // 
             this.labelX5.AutoSize = true;
-            this.labelX5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.labelX5.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -218,7 +219,7 @@
             // labelX4
             // 
             this.labelX4.AutoSize = true;
-            this.labelX4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.labelX4.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -233,7 +234,7 @@
             // labelX3
             // 
             this.labelX3.AutoSize = true;
-            this.labelX3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.labelX3.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -248,7 +249,7 @@
             // labelX2
             // 
             this.labelX2.AutoSize = true;
-            this.labelX2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.labelX2.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -263,7 +264,7 @@
             // labelX1
             // 
             this.labelX1.AutoSize = true;
-            this.labelX1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.labelX1.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -318,7 +319,7 @@
             this.dtpDenNgay.Name = "dtpDenNgay";
             this.dtpDenNgay.Size = new System.Drawing.Size(150, 20);
             this.dtpDenNgay.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.dtpDenNgay.TabIndex = 34;
+            this.dtpDenNgay.TabIndex = 2;
             // 
             // dtpTuNgay
             // 
@@ -363,7 +364,7 @@
             this.dtpTuNgay.Name = "dtpTuNgay";
             this.dtpTuNgay.Size = new System.Drawing.Size(150, 20);
             this.dtpTuNgay.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.dtpTuNgay.TabIndex = 33;
+            this.dtpTuNgay.TabIndex = 1;
             // 
             // Stt
             // 
@@ -378,6 +379,7 @@
             this.So_chung_tu.HeaderText = "Số đơn hàng";
             this.So_chung_tu.MinimumWidth = 6;
             this.So_chung_tu.Name = "So_chung_tu";
+            this.So_chung_tu.ReadOnly = true;
             // 
             // Ngay_chung_tu
             // 
@@ -385,42 +387,49 @@
             this.Ngay_chung_tu.HeaderText = "Ngày";
             this.Ngay_chung_tu.MinimumWidth = 6;
             this.Ngay_chung_tu.Name = "Ngay_chung_tu";
+            this.Ngay_chung_tu.ReadOnly = true;
             // 
             // Passport
             // 
             this.Passport.DataPropertyName = "Passport";
             this.Passport.HeaderText = "Mã khách hàng";
             this.Passport.Name = "Passport";
+            this.Passport.ReadOnly = true;
             // 
             // Ten_khach
             // 
             this.Ten_khach.DataPropertyName = "Ten_khachhang";
             this.Ten_khach.HeaderText = "Tên khách hàng";
             this.Ten_khach.Name = "Ten_khach";
+            this.Ten_khach.ReadOnly = true;
             // 
             // Tong_tien_hang_nt
             // 
             this.Tong_tien_hang_nt.DataPropertyName = "Tong_tien_hang_nt";
             this.Tong_tien_hang_nt.HeaderText = "Tổng tiền hàng";
             this.Tong_tien_hang_nt.Name = "Tong_tien_hang_nt";
+            this.Tong_tien_hang_nt.ReadOnly = true;
             // 
             // Tong_nhan
             // 
             this.Tong_nhan.DataPropertyName = "Tong_nhan";
             this.Tong_nhan.HeaderText = "Khách trả";
             this.Tong_nhan.Name = "Tong_nhan";
+            this.Tong_nhan.ReadOnly = true;
             // 
             // Tra_lai_nt
             // 
             this.Tra_lai_nt.DataPropertyName = "Tra_lai_nt";
             this.Tra_lai_nt.HeaderText = "Trả lại";
             this.Tra_lai_nt.Name = "Tra_lai_nt";
+            this.Tra_lai_nt.ReadOnly = true;
             // 
             // Ty_gia
             // 
             this.Ty_gia.DataPropertyName = "Ty_gia";
             this.Ty_gia.HeaderText = "Tỷ giá";
             this.Ty_gia.Name = "Ty_gia";
+            this.Ty_gia.ReadOnly = true;
             // 
             // Thanh_tien
             // 
@@ -440,6 +449,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.buttonLamMoi);
             this.Controls.Add(this.ccbMaNgoaiTe);
             this.Controls.Add(this.ccbMaHang);

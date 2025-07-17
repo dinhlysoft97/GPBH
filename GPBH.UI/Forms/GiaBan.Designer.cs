@@ -28,14 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.cbbCuaHang = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.Ma_cua_hang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ngay_ap_dung = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ma_hh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Gia_ban = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cbbCuaHang = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.labelX1 = new DevComponents.DotNetBar.LabelX();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,20 +51,48 @@
             this.Ngay_ap_dung,
             this.Ma_hh,
             this.Gia_ban});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridViewX1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.dataGridViewX1.Location = new System.Drawing.Point(2, 34);
+            this.dataGridViewX1.Location = new System.Drawing.Point(0, 34);
             this.dataGridViewX1.Name = "dataGridViewX1";
             this.dataGridViewX1.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.dataGridViewX1.Size = new System.Drawing.Size(1055, 512);
-            this.dataGridViewX1.TabIndex = 18;
+            this.dataGridViewX1.Size = new System.Drawing.Size(1058, 549);
+            this.dataGridViewX1.TabIndex = 2;
+            this.dataGridViewX1.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridViewX1_RowPostPaint);
+            // 
+            // cbbCuaHang
+            // 
+            this.cbbCuaHang.DisplayMember = "Text";
+            this.cbbCuaHang.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbbCuaHang.FormattingEnabled = true;
+            this.cbbCuaHang.ItemHeight = 14;
+            this.cbbCuaHang.Location = new System.Drawing.Point(59, 6);
+            this.cbbCuaHang.Name = "cbbCuaHang";
+            this.cbbCuaHang.Size = new System.Drawing.Size(172, 20);
+            this.cbbCuaHang.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbbCuaHang.TabIndex = 1;
+            this.cbbCuaHang.Click += new System.EventHandler(this.CbbCuaHang_SelectedIndexChanged);
+            // 
+            // labelX1
+            // 
+            this.labelX1.AutoSize = true;
+            // 
+            // 
+            // 
+            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX1.Location = new System.Drawing.Point(3, 9);
+            this.labelX1.Name = "labelX1";
+            this.labelX1.Size = new System.Drawing.Size(50, 15);
+            this.labelX1.TabIndex = 19;
+            this.labelX1.Text = "Cửa hàng";
             // 
             // Ma_cua_hang
             // 
@@ -75,6 +105,8 @@
             // Ngay_ap_dung
             // 
             this.Ngay_ap_dung.DataPropertyName = "Ngay_ap_dung";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Ngay_ap_dung.DefaultCellStyle = dataGridViewCellStyle1;
             this.Ngay_ap_dung.HeaderText = "Ngày áp dụng";
             this.Ngay_ap_dung.Name = "Ngay_ap_dung";
             this.Ngay_ap_dung.ReadOnly = true;
@@ -91,35 +123,11 @@
             // Gia_ban
             // 
             this.Gia_ban.DataPropertyName = "Gia_ban";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Gia_ban.DefaultCellStyle = dataGridViewCellStyle2;
             this.Gia_ban.HeaderText = "Giá bán";
             this.Gia_ban.Name = "Gia_ban";
-            this.Gia_ban.Width = 253;
-            // 
-            // cbbCuaHang
-            // 
-            this.cbbCuaHang.DisplayMember = "Text";
-            this.cbbCuaHang.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cbbCuaHang.FormattingEnabled = true;
-            this.cbbCuaHang.ItemHeight = 14;
-            this.cbbCuaHang.Location = new System.Drawing.Point(68, 9);
-            this.cbbCuaHang.Name = "cbbCuaHang";
-            this.cbbCuaHang.Size = new System.Drawing.Size(172, 20);
-            this.cbbCuaHang.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cbbCuaHang.TabIndex = 20;
-            this.cbbCuaHang.Click += new System.EventHandler(this.CbbCuaHang_SelectedIndexChanged);
-            // 
-            // labelX1
-            // 
-            this.labelX1.AutoSize = true;
-            // 
-            // 
-            // 
-            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(12, 12);
-            this.labelX1.Name = "labelX1";
-            this.labelX1.Size = new System.Drawing.Size(50, 15);
-            this.labelX1.TabIndex = 19;
-            this.labelX1.Text = "Cửa hàng";
+            this.Gia_ban.Width = 230;
             // 
             // GiaBan
             // 
@@ -129,8 +137,10 @@
             this.Controls.Add(this.cbbCuaHang);
             this.Controls.Add(this.labelX1);
             this.Controls.Add(this.dataGridViewX1);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "GiaBan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Giá bán";
@@ -143,11 +153,11 @@
         #endregion
 
         private DevComponents.DotNetBar.Controls.DataGridViewX dataGridViewX1;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cbbCuaHang;
+        private DevComponents.DotNetBar.LabelX labelX1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ma_cua_hang;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ngay_ap_dung;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ma_hh;
         private System.Windows.Forms.DataGridViewTextBoxColumn Gia_ban;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx cbbCuaHang;
-        private DevComponents.DotNetBar.LabelX labelX1;
     }
 }

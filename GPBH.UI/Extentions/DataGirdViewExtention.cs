@@ -1,6 +1,7 @@
 ﻿using DevComponents.DotNetBar.Controls;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -33,6 +34,15 @@ namespace GPBH.UI.Extentions
                 data.Insert(0, new T());
             }
             grid.DataSource = new BindingList<T>(data);
+            //grid.Columns[0].Visible = false; // Luôn ân cột đầu tiên (Stt) nếu có
+            foreach (DataGridViewColumn col in grid.Columns)
+            {
+                if (col.HeaderText == "Stt")
+                {
+                    grid.Columns["Stt"].Visible = false;
+                    break;
+                }
+            }
         }
 
         /// <summary>
@@ -93,6 +103,24 @@ namespace GPBH.UI.Extentions
         {
             if (grid.Columns.Contains(columnName) && !string.IsNullOrEmpty(format))
                 grid.Columns[columnName].DefaultCellStyle.Format = format;
+        }
+
+        /*======================================================================
+        ' Display Number of record on data grid
+        '======================================================================*/
+        public static void SetRowPositionPaint(this DataGridViewX grid, DataGridViewRowPostPaintEventArgs e)
+        {
+            StringFormat drawFormat = new StringFormat();
+            // Point drawPoint = new Point(e.RowBounds.Location.X + 25, e.RowBounds.Location.Y + 4);
+            Point drawPoint = new Point(e.RowBounds.Location.X + grid.RowHeadersWidth - 2, e.RowBounds.Location.Y + 4);
+            int RowNo = e.RowIndex + 1;
+
+            drawFormat.FormatFlags = StringFormatFlags.DirectionRightToLeft;
+
+            using (SolidBrush b = new SolidBrush(grid.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString(RowNo.ToString().PadLeft(3, ' '), grid.DefaultCellStyle.Font, b, drawPoint, drawFormat);
+            }
         }
 
         public static void SetRowFormat(this DataGridViewRow row, List<string> columnNames, string format = "N0")

@@ -1,5 +1,6 @@
 ﻿using DevComponents.DotNetBar;
 using GPBH.Business.Services;
+using GPBH.UI.Extentions;
 using GPBH.UI.Helper;
 
 namespace GPBH.UI.Forms
@@ -18,6 +19,11 @@ namespace GPBH.UI.Forms
         {
             var tygiaList = _dmTGService.GetAll();
             DataGridViewFilterHelper.ApplyFilter(dataGridViewX1, tygiaList);
+        }
+
+        private void dataGridViewX1_RowPostPaint(object sender, System.Windows.Forms.DataGridViewRowPostPaintEventArgs e)
+        {
+            dataGridViewX1.SetRowPositionPaint(e);
         }
     }
 }

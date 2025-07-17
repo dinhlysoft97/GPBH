@@ -1,18 +1,11 @@
-﻿using GPBH.Business.Services;
+﻿using DevComponents.DotNetBar;
+using GPBH.Business.Services;
+using GPBH.UI.Extentions;
 using GPBH.UI.Helper;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace GPBH.UI.Forms
 {
-    public partial class HangHoa : Form
+    public partial class HangHoa : Office2007Form
     {
         private readonly DMHHService _dmHHService;
         public HangHoa(DMHHService dmHHService)
@@ -26,6 +19,11 @@ namespace GPBH.UI.Forms
         {
             var hhList = _dmHHService.GetAllGrid();
             DataGridViewFilterHelper.ApplyFilter(dataGridViewX1, hhList);
+        }
+
+        private void dataGridViewX1_RowPostPaint(object sender, System.Windows.Forms.DataGridViewRowPostPaintEventArgs e)
+        {
+            dataGridViewX1.SetRowPositionPaint(e);
         }
     }
 }

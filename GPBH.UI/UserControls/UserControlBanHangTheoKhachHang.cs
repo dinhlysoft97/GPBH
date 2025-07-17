@@ -111,6 +111,7 @@ namespace GPBH.UI.UserControls
             var colStt = dataGridViewX1.Columns["Stt"];
             colStt.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             colStt.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            colStt.Visible = false;
 
             dataGridViewX1.SetDisplayIndex("Stt", 0);
             dataGridViewX1.SetDisplayIndex("So_don_hang", 1);
@@ -148,6 +149,11 @@ namespace GPBH.UI.UserControls
             DateTime tuNgay = dtpTuNgay.Value;
             DateTime denNgay = dtpDenNgay.Value;
             return ReportBanHangService.GetBaoCaoBanTheoKhachHang(passport, maHangHoa, maNgoaiTe, maKhachHang, tuNgay, denNgay);
+        }
+
+        private void dataGridViewX1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            dataGridViewX1.SetRowPositionPaint(e);
         }
     }
 }

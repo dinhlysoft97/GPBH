@@ -36,6 +36,8 @@
             this.txtMatKhau = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.cbbCa = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.btnDangNhap = new DevComponents.DotNetBar.ButtonX();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // labelX1
@@ -44,9 +46,9 @@
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(45, 34);
+            this.labelX1.Location = new System.Drawing.Point(34, 104);
             this.labelX1.Name = "labelX1";
-            this.labelX1.Size = new System.Drawing.Size(54, 23);
+            this.labelX1.Size = new System.Drawing.Size(54, 20);
             this.labelX1.TabIndex = 0;
             this.labelX1.Text = "Tên";
             // 
@@ -56,9 +58,9 @@
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(45, 63);
+            this.labelX2.Location = new System.Drawing.Point(34, 133);
             this.labelX2.Name = "labelX2";
-            this.labelX2.Size = new System.Drawing.Size(54, 23);
+            this.labelX2.Size = new System.Drawing.Size(54, 19);
             this.labelX2.TabIndex = 1;
             this.labelX2.Text = "Mật khẩu";
             // 
@@ -68,9 +70,9 @@
             // 
             // 
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(45, 92);
+            this.labelX3.Location = new System.Drawing.Point(34, 162);
             this.labelX3.Name = "labelX3";
-            this.labelX3.Size = new System.Drawing.Size(54, 23);
+            this.labelX3.Size = new System.Drawing.Size(54, 18);
             this.labelX3.TabIndex = 2;
             this.labelX3.Text = "Ca";
             // 
@@ -81,12 +83,12 @@
             // 
             this.txtTenDangNhap.Border.Class = "TextBoxBorder";
             this.txtTenDangNhap.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtTenDangNhap.Location = new System.Drawing.Point(105, 35);
+            this.txtTenDangNhap.Location = new System.Drawing.Point(96, 104);
             this.txtTenDangNhap.Name = "txtTenDangNhap";
             this.txtTenDangNhap.PreventEnterBeep = true;
-            this.txtTenDangNhap.Size = new System.Drawing.Size(132, 20);
+            this.txtTenDangNhap.Size = new System.Drawing.Size(173, 20);
             this.txtTenDangNhap.TabIndex = 3;
-            this.txtTenDangNhap.Text = "SuperAdmin";
+            this.txtTenDangNhap.WatermarkText = "Tên đăng nhập";
             // 
             // txtMatKhau
             // 
@@ -95,13 +97,13 @@
             // 
             this.txtMatKhau.Border.Class = "TextBoxBorder";
             this.txtMatKhau.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtMatKhau.Location = new System.Drawing.Point(105, 63);
+            this.txtMatKhau.Location = new System.Drawing.Point(96, 132);
             this.txtMatKhau.Name = "txtMatKhau";
             this.txtMatKhau.PasswordChar = '*';
             this.txtMatKhau.PreventEnterBeep = true;
-            this.txtMatKhau.Size = new System.Drawing.Size(132, 20);
+            this.txtMatKhau.Size = new System.Drawing.Size(173, 20);
             this.txtMatKhau.TabIndex = 4;
-            this.txtMatKhau.Text = "SuperAdmin";
+            this.txtMatKhau.WatermarkText = "Mật khẩu";
             // 
             // cbbCa
             // 
@@ -109,9 +111,9 @@
             this.cbbCa.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cbbCa.FormattingEnabled = true;
             this.cbbCa.ItemHeight = 14;
-            this.cbbCa.Location = new System.Drawing.Point(105, 91);
+            this.cbbCa.Location = new System.Drawing.Point(96, 160);
             this.cbbCa.Name = "cbbCa";
-            this.cbbCa.Size = new System.Drawing.Size(132, 20);
+            this.cbbCa.Size = new System.Drawing.Size(173, 20);
             this.cbbCa.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cbbCa.TabIndex = 5;
             // 
@@ -119,19 +121,34 @@
             // 
             this.btnDangNhap.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnDangNhap.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnDangNhap.Location = new System.Drawing.Point(105, 127);
+            this.btnDangNhap.Location = new System.Drawing.Point(135, 194);
             this.btnDangNhap.Name = "btnDangNhap";
             this.btnDangNhap.Size = new System.Drawing.Size(132, 23);
             this.btnDangNhap.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnDangNhap.Symbol = "";
+            this.btnDangNhap.SymbolSize = 12F;
             this.btnDangNhap.TabIndex = 6;
             this.btnDangNhap.Text = "Đăng nhập";
             this.btnDangNhap.Click += new System.EventHandler(this.btnDangNhap_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(305, 92);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 7;
+            this.pictureBox1.TabStop = false;
             // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(305, 184);
+            this.ClientSize = new System.Drawing.Size(305, 228);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnDangNhap);
             this.Controls.Add(this.cbbCa);
             this.Controls.Add(this.txtMatKhau);
@@ -142,9 +159,12 @@
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Đăng nhập";
+            this.Load += new System.EventHandler(this.Login_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -158,5 +178,6 @@
         private DevComponents.DotNetBar.Controls.TextBoxX txtMatKhau;
         private DevComponents.DotNetBar.Controls.ComboBoxEx cbbCa;
         private DevComponents.DotNetBar.ButtonX btnDangNhap;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

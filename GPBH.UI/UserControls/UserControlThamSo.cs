@@ -1,4 +1,5 @@
 ﻿using DevComponents.DotNetBar;
+using DevComponents.DotNetBar.Controls;
 using GPBH.Business;
 using GPBH.Business.Dtos;
 using GPBH.Business.Services;
@@ -70,7 +71,7 @@ namespace GPBH.UI.UserControls
 
             // Canh giữa header cho cột STT
             dataGridViewX1.SetHeaderAlignment("Stt", DataGridViewContentAlignment.MiddleCenter);
-
+            dataGridViewX1.Columns["Stt"].Visible = false; // Ẩn cột STT
             // Sắp xếp vị trí các cột
             dataGridViewX1.SetDisplayIndex("Stt", 0);
             dataGridViewX1.SetDisplayIndex("Key", 1);
@@ -104,5 +105,10 @@ namespace GPBH.UI.UserControls
         }
 
         #endregion
+
+        private void dataGridViewX1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            dataGridViewX1.SetRowPositionPaint(e);
+        }
     }
 }

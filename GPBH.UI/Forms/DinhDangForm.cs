@@ -129,5 +129,10 @@ namespace GPBH.UI.Forms
                 }
             }
         }
+
+        private void dataGridViewX1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            dataGridViewX1.SetRowPositionPaint(e);
+        }
     }
 }

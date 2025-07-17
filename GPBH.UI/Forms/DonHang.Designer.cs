@@ -244,7 +244,7 @@ namespace GPBH.UI.Forms
             // labelX10
             // 
             this.labelX10.AutoSize = true;
-            this.labelX10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.labelX10.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -275,7 +275,7 @@ namespace GPBH.UI.Forms
             // lbTGNT
             // 
             this.lbTGNT.AutoSize = true;
-            this.lbTGNT.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.lbTGNT.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -291,7 +291,7 @@ namespace GPBH.UI.Forms
             // lbNgayHoaDon
             // 
             this.lbNgayHoaDon.AutoSize = true;
-            this.lbNgayHoaDon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.lbNgayHoaDon.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -307,7 +307,7 @@ namespace GPBH.UI.Forms
             // lbSCT
             // 
             this.lbSCT.AutoSize = true;
-            this.lbSCT.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.lbSCT.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -323,7 +323,7 @@ namespace GPBH.UI.Forms
             // lbCa
             // 
             this.lbCa.AutoSize = true;
-            this.lbCa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.lbCa.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -338,7 +338,7 @@ namespace GPBH.UI.Forms
             // labelX13
             // 
             this.labelX13.AutoSize = true;
-            this.labelX13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.labelX13.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -353,7 +353,7 @@ namespace GPBH.UI.Forms
             // lbQuay
             // 
             this.lbQuay.AutoSize = true;
-            this.lbQuay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.lbQuay.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -368,7 +368,7 @@ namespace GPBH.UI.Forms
             // labelX11
             // 
             this.labelX11.AutoSize = true;
-            this.labelX11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.labelX11.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -383,7 +383,7 @@ namespace GPBH.UI.Forms
             // lbTenDangNhap
             // 
             this.lbTenDangNhap.AutoSize = true;
-            this.lbTenDangNhap.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.lbTenDangNhap.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -398,7 +398,7 @@ namespace GPBH.UI.Forms
             // labelX9
             // 
             this.labelX9.AutoSize = true;
-            this.labelX9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.labelX9.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -413,7 +413,7 @@ namespace GPBH.UI.Forms
             // lnSHD
             // 
             this.lnSHD.AutoSize = true;
-            this.lnSHD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.lnSHD.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -429,7 +429,7 @@ namespace GPBH.UI.Forms
             // labelX7
             // 
             this.labelX7.AutoSize = true;
-            this.labelX7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.labelX7.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -445,7 +445,7 @@ namespace GPBH.UI.Forms
             // lbMST
             // 
             this.lbMST.AutoSize = true;
-            this.lbMST.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.lbMST.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -461,7 +461,7 @@ namespace GPBH.UI.Forms
             // labelX6
             // 
             this.labelX6.AutoSize = true;
-            this.labelX6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.labelX6.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -530,7 +530,7 @@ namespace GPBH.UI.Forms
             // 
             // 
             this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX5.Location = new System.Drawing.Point(376, 29);
+            this.labelX5.Location = new System.Drawing.Point(376, 32);
             this.labelX5.Margin = new System.Windows.Forms.Padding(2);
             this.labelX5.Name = "labelX5";
             this.labelX5.Size = new System.Drawing.Size(49, 15);
@@ -540,12 +540,12 @@ namespace GPBH.UI.Forms
             // lbTen
             // 
             this.lbTen.AutoSize = true;
-            this.lbTen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.lbTen.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
             this.lbTen.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lbTen.Location = new System.Drawing.Point(86, 52);
+            this.lbTen.Location = new System.Drawing.Point(64, 57);
             this.lbTen.Margin = new System.Windows.Forms.Padding(2);
             this.lbTen.Name = "lbTen";
             this.lbTen.Size = new System.Drawing.Size(81, 15);
@@ -555,12 +555,12 @@ namespace GPBH.UI.Forms
             // labelX2
             // 
             this.labelX2.AutoSize = true;
-            this.labelX2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.labelX2.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(86, 29);
+            this.labelX2.Location = new System.Drawing.Point(64, 34);
             this.labelX2.Margin = new System.Windows.Forms.Padding(2);
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(97, 15);
@@ -570,12 +570,12 @@ namespace GPBH.UI.Forms
             // labelX1
             // 
             this.labelX1.AutoSize = true;
-            this.labelX1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.labelX1.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(86, 6);
+            this.labelX1.Location = new System.Drawing.Point(64, 11);
             this.labelX1.Margin = new System.Windows.Forms.Padding(2);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(36, 15);
@@ -713,7 +713,6 @@ namespace GPBH.UI.Forms
             // dataGridViewX1
             // 
             this.dataGridViewX1.AllowUserToDeleteRows = false;
-            this.dataGridViewX1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Stt,
@@ -742,102 +741,113 @@ namespace GPBH.UI.Forms
             this.dataGridViewX1.Location = new System.Drawing.Point(0, 40);
             this.dataGridViewX1.Name = "dataGridViewX1";
             this.dataGridViewX1.RowHeadersWidth = 51;
+            this.dataGridViewX1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewX1.Size = new System.Drawing.Size(1414, 381);
             this.dataGridViewX1.TabIndex = 1;
+            this.dataGridViewX1.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridViewX1_RowPostPaint);
             // 
             // Stt
             // 
             this.Stt.DataPropertyName = "Stt";
+            this.Stt.FillWeight = 0.02895978F;
             this.Stt.HeaderText = "Stt";
             this.Stt.Name = "Stt";
             this.Stt.ReadOnly = true;
+            this.Stt.Width = 50;
             // 
             // Ma_hh
             // 
             this.Ma_hh.DataPropertyName = "Ma_hh";
-            this.Ma_hh.FillWeight = 92.17722F;
+            this.Ma_hh.FillWeight = 0.1175265F;
             this.Ma_hh.HeaderText = "Mã hàng";
             this.Ma_hh.MinimumWidth = 6;
             this.Ma_hh.Name = "Ma_hh";
-            this.Ma_hh.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // Ten_hh
             // 
             this.Ten_hh.DataPropertyName = "Ten_hh";
-            this.Ten_hh.FillWeight = 96.0779F;
+            this.Ten_hh.FillWeight = 0.5159575F;
             this.Ten_hh.HeaderText = "Tên hàng";
             this.Ten_hh.MinimumWidth = 6;
             this.Ten_hh.Name = "Ten_hh";
             this.Ten_hh.ReadOnly = true;
+            this.Ten_hh.Width = 250;
             // 
             // Dvt
             // 
             this.Dvt.DataPropertyName = "Dvt";
-            this.Dvt.HeaderText = "Đơn vị tính";
+            this.Dvt.FillWeight = 0.5109541F;
+            this.Dvt.HeaderText = "ĐVT";
             this.Dvt.Name = "Dvt";
             this.Dvt.ReadOnly = true;
+            this.Dvt.Width = 80;
             // 
             // So_luong
             // 
             this.So_luong.DataPropertyName = "So_luong";
-            this.So_luong.FillWeight = 99.17547F;
+            this.So_luong.FillWeight = 0.8602504F;
             this.So_luong.HeaderText = "Số lượng";
             this.So_luong.Name = "So_luong";
             // 
             // Gia_ban_nt
             // 
             this.Gia_ban_nt.DataPropertyName = "Gia_ban_nt";
-            this.Gia_ban_nt.FillWeight = 101.808F;
+            this.Gia_ban_nt.FillWeight = 1.44838F;
             this.Gia_ban_nt.HeaderText = "Giá NT";
             this.Gia_ban_nt.Name = "Gia_ban_nt";
             // 
             // Gia_ban
             // 
             this.Gia_ban.DataPropertyName = "Gia_ban";
-            this.Gia_ban.FillWeight = 103.379F;
+            this.Gia_ban.FillWeight = 3.676826F;
             this.Gia_ban.HeaderText = "Giá VNĐ";
             this.Gia_ban.Name = "Gia_ban";
             // 
             // Gg_ty_le
             // 
             this.Gg_ty_le.DataPropertyName = "Gg_ty_le";
-            this.Gg_ty_le.FillWeight = 106.3268F;
+            this.Gg_ty_le.FillWeight = 4.952638F;
             this.Gg_ty_le.HeaderText = "% Giảm";
             this.Gg_ty_le.Name = "Gg_ty_le";
             // 
             // Gg_tien_nt
             // 
             this.Gg_tien_nt.DataPropertyName = "Gg_tien_nt";
+            this.Gg_tien_nt.FillWeight = 18.92529F;
             this.Gg_tien_nt.HeaderText = "Tiền giảm NT";
             this.Gg_tien_nt.Name = "Gg_tien_nt";
+            this.Gg_tien_nt.Width = 120;
             // 
             // Gg_tien
             // 
             this.Gg_tien.DataPropertyName = "Gg_tien";
-            this.Gg_tien.FillWeight = 106.7926F;
+            this.Gg_tien.FillWeight = 32.00885F;
             this.Gg_tien.HeaderText = "Tiền giảm";
             this.Gg_tien.Name = "Gg_tien";
             // 
             // Tien_ban_nt
             // 
             this.Tien_ban_nt.DataPropertyName = "Tien_ban_nt";
-            this.Tien_ban_nt.FillWeight = 103.449F;
+            this.Tien_ban_nt.FillWeight = 98.25874F;
             this.Tien_ban_nt.HeaderText = "Thành tiền NT";
             this.Tien_ban_nt.Name = "Tien_ban_nt";
+            this.Tien_ban_nt.Width = 120;
             // 
             // Tien_ban
             // 
             this.Tien_ban.DataPropertyName = "Tien_ban";
-            this.Tien_ban.FillWeight = 101.9336F;
+            this.Tien_ban.FillWeight = 251.3836F;
             this.Tien_ban.HeaderText = "Thành tiền VNĐ";
             this.Tien_ban.Name = "Tien_ban";
+            this.Tien_ban.Width = 120;
             // 
             // Gg_ly_do
             // 
             this.Gg_ly_do.DataPropertyName = "Gg_ly_do";
-            this.Gg_ly_do.FillWeight = 100.1636F;
+            this.Gg_ly_do.FillWeight = 898.5948F;
             this.Gg_ly_do.HeaderText = "Lý do giảm";
             this.Gg_ly_do.Name = "Gg_ly_do";
+            this.Gg_ly_do.Width = 150;
             // 
             // bar1
             // 
@@ -860,14 +870,14 @@ namespace GPBH.UI.Forms
             // 
             // labelX4
             // 
-            this.labelX4.BackColor = System.Drawing.Color.White;
+            this.labelX4.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
             this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX4.Location = new System.Drawing.Point(85, 6);
+            this.labelX4.Location = new System.Drawing.Point(61, 10);
             this.labelX4.Name = "labelX4";
-            this.labelX4.Size = new System.Drawing.Size(58, 24);
+            this.labelX4.Size = new System.Drawing.Size(58, 21);
             this.labelX4.TabIndex = 0;
             this.labelX4.Text = "Mã vạch";
             this.labelX4.TextAlignment = System.Drawing.StringAlignment.Center;
@@ -878,7 +888,7 @@ namespace GPBH.UI.Forms
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 58.89792F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.10208F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 314F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 317F));
             this.tableLayoutPanel2.Controls.Add(this.groupPanel4, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.groupPanel6, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.groupPanel5, 2, 0);
@@ -963,7 +973,6 @@ namespace GPBH.UI.Forms
             this.txtTt_tong.Increment = 1D;
             this.txtTt_tong.Location = new System.Drawing.Point(459, 118);
             this.txtTt_tong.Name = "txtTt_tong";
-            this.txtTt_tong.ShowUpDown = true;
             this.txtTt_tong.Size = new System.Drawing.Size(99, 20);
             this.txtTt_tong.TabIndex = 44;
             // 
@@ -978,7 +987,6 @@ namespace GPBH.UI.Forms
             this.txtTt3_tien_nt.Increment = 1D;
             this.txtTt3_tien_nt.Location = new System.Drawing.Point(459, 90);
             this.txtTt3_tien_nt.Name = "txtTt3_tien_nt";
-            this.txtTt3_tien_nt.ShowUpDown = true;
             this.txtTt3_tien_nt.Size = new System.Drawing.Size(99, 20);
             this.txtTt3_tien_nt.TabIndex = 43;
             // 
@@ -993,7 +1001,6 @@ namespace GPBH.UI.Forms
             this.txtTt2_tien_nt.Increment = 1D;
             this.txtTt2_tien_nt.Location = new System.Drawing.Point(459, 60);
             this.txtTt2_tien_nt.Name = "txtTt2_tien_nt";
-            this.txtTt2_tien_nt.ShowUpDown = true;
             this.txtTt2_tien_nt.Size = new System.Drawing.Size(99, 20);
             this.txtTt2_tien_nt.TabIndex = 42;
             // 
@@ -1008,7 +1015,6 @@ namespace GPBH.UI.Forms
             this.txtTt1_tien_nt.Increment = 1D;
             this.txtTt1_tien_nt.Location = new System.Drawing.Point(459, 26);
             this.txtTt1_tien_nt.Name = "txtTt1_tien_nt";
-            this.txtTt1_tien_nt.ShowUpDown = true;
             this.txtTt1_tien_nt.Size = new System.Drawing.Size(99, 20);
             this.txtTt1_tien_nt.TabIndex = 41;
             // 
@@ -1023,7 +1029,6 @@ namespace GPBH.UI.Forms
             this.txtTt3_tien_tt.Increment = 1D;
             this.txtTt3_tien_tt.Location = new System.Drawing.Point(344, 90);
             this.txtTt3_tien_tt.Name = "txtTt3_tien_tt";
-            this.txtTt3_tien_tt.ShowUpDown = true;
             this.txtTt3_tien_tt.Size = new System.Drawing.Size(99, 20);
             this.txtTt3_tien_tt.TabIndex = 40;
             // 
@@ -1038,7 +1043,6 @@ namespace GPBH.UI.Forms
             this.txtTt2_tien_tt.Increment = 1D;
             this.txtTt2_tien_tt.Location = new System.Drawing.Point(344, 59);
             this.txtTt2_tien_tt.Name = "txtTt2_tien_tt";
-            this.txtTt2_tien_tt.ShowUpDown = true;
             this.txtTt2_tien_tt.Size = new System.Drawing.Size(99, 20);
             this.txtTt2_tien_tt.TabIndex = 39;
             // 
@@ -1053,14 +1057,13 @@ namespace GPBH.UI.Forms
             this.txtTt1_tien_tt.Increment = 1D;
             this.txtTt1_tien_tt.Location = new System.Drawing.Point(344, 27);
             this.txtTt1_tien_tt.Name = "txtTt1_tien_tt";
-            this.txtTt1_tien_tt.ShowUpDown = true;
             this.txtTt1_tien_tt.Size = new System.Drawing.Size(99, 20);
             this.txtTt1_tien_tt.TabIndex = 38;
             // 
             // lbTTT
             // 
             this.lbTTT.AutoSize = true;
-            this.lbTTT.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.lbTTT.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -1076,7 +1079,7 @@ namespace GPBH.UI.Forms
             // lbTT3
             // 
             this.lbTT3.AutoSize = true;
-            this.lbTT3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.lbTT3.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -1118,7 +1121,7 @@ namespace GPBH.UI.Forms
             // lbTT2
             // 
             this.lbTT2.AutoSize = true;
-            this.lbTT2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.lbTT2.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -1160,7 +1163,7 @@ namespace GPBH.UI.Forms
             // lbTT1
             // 
             this.lbTT1.AutoSize = true;
-            this.lbTT1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.lbTT1.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -1202,7 +1205,7 @@ namespace GPBH.UI.Forms
             // labelX17
             // 
             this.labelX17.AutoSize = true;
-            this.labelX17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(217)))), ((int)(((byte)(247)))));
+            this.labelX17.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -1217,7 +1220,7 @@ namespace GPBH.UI.Forms
             // labelX16
             // 
             this.labelX16.AutoSize = true;
-            this.labelX16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.labelX16.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -1232,7 +1235,7 @@ namespace GPBH.UI.Forms
             // labelX15
             // 
             this.labelX15.AutoSize = true;
-            this.labelX15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.labelX15.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -1247,7 +1250,7 @@ namespace GPBH.UI.Forms
             // labelX14
             // 
             this.labelX14.AutoSize = true;
-            this.labelX14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.labelX14.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -1277,9 +1280,9 @@ namespace GPBH.UI.Forms
             this.groupPanel6.Controls.Add(this.lbTTH);
             this.groupPanel6.Controls.Add(this.labelX22);
             this.groupPanel6.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel6.Location = new System.Drawing.Point(657, 3);
+            this.groupPanel6.Location = new System.Drawing.Point(656, 3);
             this.groupPanel6.Name = "groupPanel6";
-            this.groupPanel6.Size = new System.Drawing.Size(451, 187);
+            this.groupPanel6.Size = new System.Drawing.Size(449, 187);
             // 
             // 
             // 
@@ -1323,14 +1326,13 @@ namespace GPBH.UI.Forms
             this.txtTQDVND.Increment = 1D;
             this.txtTQDVND.Location = new System.Drawing.Point(243, 123);
             this.txtTQDVND.Name = "txtTQDVND";
-            this.txtTQDVND.ShowUpDown = true;
             this.txtTQDVND.Size = new System.Drawing.Size(99, 20);
             this.txtTQDVND.TabIndex = 48;
             // 
             // labelX28
             // 
             this.labelX28.AutoSize = true;
-            this.labelX28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.labelX28.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -1355,14 +1357,13 @@ namespace GPBH.UI.Forms
             this.txtTong_thu_nt.Increment = 1D;
             this.txtTong_thu_nt.Location = new System.Drawing.Point(243, 95);
             this.txtTong_thu_nt.Name = "txtTong_thu_nt";
-            this.txtTong_thu_nt.ShowUpDown = true;
             this.txtTong_thu_nt.Size = new System.Drawing.Size(99, 20);
             this.txtTong_thu_nt.TabIndex = 47;
             // 
             // labelX29
             // 
             this.labelX29.AutoSize = true;
-            this.labelX29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.labelX29.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -1386,14 +1387,13 @@ namespace GPBH.UI.Forms
             this.txtTong_giam_gia_nt.Increment = 1D;
             this.txtTong_giam_gia_nt.Location = new System.Drawing.Point(243, 65);
             this.txtTong_giam_gia_nt.Name = "txtTong_giam_gia_nt";
-            this.txtTong_giam_gia_nt.ShowUpDown = true;
             this.txtTong_giam_gia_nt.Size = new System.Drawing.Size(99, 20);
             this.txtTong_giam_gia_nt.TabIndex = 46;
             // 
             // lbTongThu
             // 
             this.lbTongThu.AutoSize = true;
-            this.lbTongThu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.lbTongThu.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -1419,14 +1419,13 @@ namespace GPBH.UI.Forms
             this.txtTong_tien_hang_nt.Increment = 1D;
             this.txtTong_tien_hang_nt.Location = new System.Drawing.Point(243, 31);
             this.txtTong_tien_hang_nt.Name = "txtTong_tien_hang_nt";
-            this.txtTong_tien_hang_nt.ShowUpDown = true;
             this.txtTong_tien_hang_nt.Size = new System.Drawing.Size(99, 20);
             this.txtTong_tien_hang_nt.TabIndex = 45;
             // 
             // labelX27
             // 
             this.labelX27.AutoSize = true;
-            this.labelX27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.labelX27.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -1441,7 +1440,7 @@ namespace GPBH.UI.Forms
             // lbGiamGia
             // 
             this.lbGiamGia.AutoSize = true;
-            this.lbGiamGia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.lbGiamGia.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -1457,7 +1456,7 @@ namespace GPBH.UI.Forms
             // labelX25
             // 
             this.labelX25.AutoSize = true;
-            this.labelX25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.labelX25.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -1472,7 +1471,7 @@ namespace GPBH.UI.Forms
             // lbTTH
             // 
             this.lbTTH.AutoSize = true;
-            this.lbTTH.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.lbTTH.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -1488,7 +1487,7 @@ namespace GPBH.UI.Forms
             // labelX22
             // 
             this.labelX22.AutoSize = true;
-            this.labelX22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.labelX22.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -1507,7 +1506,7 @@ namespace GPBH.UI.Forms
             this.groupPanel5.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.groupPanel5.Controls.Add(this.lbQuyDoiTienTe);
             this.groupPanel5.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel5.Location = new System.Drawing.Point(1114, 3);
+            this.groupPanel5.Location = new System.Drawing.Point(1111, 3);
             this.groupPanel5.Name = "groupPanel5";
             this.groupPanel5.Size = new System.Drawing.Size(309, 187);
             // 
@@ -1544,7 +1543,7 @@ namespace GPBH.UI.Forms
             // lbQuyDoiTienTe
             // 
             this.lbQuyDoiTienTe.AutoSize = true;
-            this.lbQuyDoiTienTe.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.lbQuyDoiTienTe.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -1667,6 +1666,7 @@ namespace GPBH.UI.Forms
             // labelX34
             // 
             this.labelX34.AutoSize = true;
+            this.labelX34.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -1682,6 +1682,7 @@ namespace GPBH.UI.Forms
             // lbTraLai
             // 
             this.lbTraLai.AutoSize = true;
+            this.lbTraLai.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -1697,6 +1698,7 @@ namespace GPBH.UI.Forms
             // labelX37
             // 
             this.labelX37.AutoSize = true;
+            this.labelX37.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -1725,6 +1727,7 @@ namespace GPBH.UI.Forms
             // lbTongNhan
             // 
             this.lbTongNhan.AutoSize = true;
+            this.lbTongNhan.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -1764,7 +1767,6 @@ namespace GPBH.UI.Forms
             this.txtTong_nhan.Increment = 1D;
             this.txtTong_nhan.Location = new System.Drawing.Point(125, 777);
             this.txtTong_nhan.Name = "txtTong_nhan";
-            this.txtTong_nhan.ShowUpDown = true;
             this.txtTong_nhan.Size = new System.Drawing.Size(99, 20);
             this.txtTong_nhan.TabIndex = 49;
             // 
@@ -1781,7 +1783,6 @@ namespace GPBH.UI.Forms
             this.txtTra_lai_nt.Increment = 1D;
             this.txtTra_lai_nt.Location = new System.Drawing.Point(342, 777);
             this.txtTra_lai_nt.Name = "txtTra_lai_nt";
-            this.txtTra_lai_nt.ShowUpDown = true;
             this.txtTra_lai_nt.Size = new System.Drawing.Size(99, 20);
             this.txtTra_lai_nt.TabIndex = 50;
             // 
@@ -1798,7 +1799,6 @@ namespace GPBH.UI.Forms
             this.txtTra_lai.Increment = 1D;
             this.txtTra_lai.Location = new System.Drawing.Point(513, 777);
             this.txtTra_lai.Name = "txtTra_lai";
-            this.txtTra_lai.ShowUpDown = true;
             this.txtTra_lai.Size = new System.Drawing.Size(99, 20);
             this.txtTra_lai.TabIndex = 51;
             // 
@@ -1806,7 +1806,7 @@ namespace GPBH.UI.Forms
             // 
             this.ucHangHoa.Location = new System.Drawing.Point(156, 9);
             this.ucHangHoa.Name = "ucHangHoa";
-            this.ucHangHoa.Size = new System.Drawing.Size(151, 24);
+            this.ucHangHoa.Size = new System.Drawing.Size(152, 24);
             this.ucHangHoa.TabIndex = 1;
             // 
             // DonHang
@@ -1832,6 +1832,7 @@ namespace GPBH.UI.Forms
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1444, 885);
+            this.MinimizeBox = false;
             this.Name = "DonHang";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tạo đơn hàng";

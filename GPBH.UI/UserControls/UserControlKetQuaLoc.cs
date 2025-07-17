@@ -69,6 +69,7 @@ namespace GPBH.UI.UserControls
             var colStt = dataGridViewX1.Columns["Stt"];
             colStt.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             colStt.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewX1.Columns["Stt"].Visible = false;
 
             dataGridViewX1.SetDisplayIndex("Stt", 0);
             dataGridViewX1.SetDisplayIndex("So_don_hang", 1);
@@ -87,6 +88,11 @@ namespace GPBH.UI.UserControls
             dataGridViewX1.SetFormat("Thanh_tien", GetFormat("Format_tien_nt"));
             dataGridViewX1.SetFormat("Thanh_tien_vn", GetFormat("Format_gia"));
 
+        }
+
+        private void dataGridViewX1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            dataGridViewX1.SetRowPositionPaint(e);
         }
     }
 }

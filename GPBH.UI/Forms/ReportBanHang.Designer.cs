@@ -39,17 +39,20 @@
             this.crystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crystalReportViewer1.Location = new System.Drawing.Point(0, 0);
             this.crystalReportViewer1.Name = "crystalReportViewer1";
-            this.crystalReportViewer1.Size = new System.Drawing.Size(1471, 814);
+            this.crystalReportViewer1.Size = new System.Drawing.Size(1444, 814);
             this.crystalReportViewer1.TabIndex = 0;
             // 
             // ReportBanHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1471, 814);
+            this.ClientSize = new System.Drawing.Size(1444, 814);
             this.Controls.Add(this.crystalReportViewer1);
+            this.DoubleBuffered = true;
             this.Name = "ReportBanHang";
-            this.Text = "ReportBanHang";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Xem báo cáo";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);
 
         }

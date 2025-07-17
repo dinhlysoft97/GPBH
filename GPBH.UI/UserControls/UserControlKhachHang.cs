@@ -1,5 +1,6 @@
 ﻿using GPBH.Business.Services;
 using GPBH.UI.Constant;
+using GPBH.UI.Extentions;
 using GPBH.UI.Helper;
 using System;
 using System.Data;
@@ -160,6 +161,9 @@ namespace GPBH.UI.UserControls
             DataGridViewFilterHelper.ApplyFilter(dataGridViewX1, filtered);
         }
 
-
+        private void dataGridViewX1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            dataGridViewX1.SetRowPositionPaint(e);
+        }
     }
 }

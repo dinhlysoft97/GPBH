@@ -1,6 +1,7 @@
 ﻿using DevComponents.DotNetBar;
 using GPBH.Business.Services;
 using GPBH.Data.Entities;
+using GPBH.UI.Extentions;
 using GPBH.UI.Helper;
 
 namespace GPBH.UI.Forms
@@ -20,5 +21,9 @@ namespace GPBH.UI.Forms
             DataGridViewFilterHelper.ApplyFilter(dataGridViewX1, caList);
         }
 
+        private void dataGridViewX1_RowPostPaint(object sender, System.Windows.Forms.DataGridViewRowPostPaintEventArgs e)
+        {
+            dataGridViewX1.SetRowPositionPaint(e);
+        }
     }
 }

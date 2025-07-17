@@ -1,5 +1,6 @@
 ﻿using DevComponents.DotNetBar;
 using GPBH.Business.Services;
+using GPBH.UI.Extentions;
 using GPBH.UI.Helper;
 
 namespace GPBH.UI.Forms
@@ -17,6 +18,11 @@ namespace GPBH.UI.Forms
         {
             var quocgiList = _dmQGService.GetAll();
             DataGridViewFilterHelper.ApplyFilter(dataGridViewX1, quocgiList);
+        }
+
+        private void dataGridViewX1_RowPostPaint(object sender, System.Windows.Forms.DataGridViewRowPostPaintEventArgs e)
+        {
+            dataGridViewX1.SetRowPositionPaint(e);
         }
     }
 }

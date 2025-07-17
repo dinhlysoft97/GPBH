@@ -42,17 +42,6 @@
             this.dtTu = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.dataGridViewX2 = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.Ma_hh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ten_hh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.So_luong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Gia_ban_nt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Gia_ban = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Gg_ty_le = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Gg_tien_nt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Gg_tien = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tien_ban_nt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tien_ban = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Stt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.So_chung_tu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ngay_chung_tu = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,6 +53,17 @@
             this.Ty_gia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ma_cua_hang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ma_phieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewX2 = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.Ma_hh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ten_hh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.So_luong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Gia_ban_nt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Gia_ban = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Gg_ty_le = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Gg_tien_nt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Gg_tien = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tien_ban_nt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tien_ban = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -132,7 +132,7 @@
             this.buttonX1.Name = "buttonX1";
             this.buttonX1.Size = new System.Drawing.Size(75, 23);
             this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX1.TabIndex = 10;
+            this.buttonX1.TabIndex = 7;
             this.buttonX1.Text = "Xuất Excel";
             this.buttonX1.Visible = false;
             this.buttonX1.Click += new System.EventHandler(this.buttonX1_Click);
@@ -145,7 +145,7 @@
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 23);
             this.btnXoa.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnXoa.TabIndex = 9;
+            this.btnXoa.TabIndex = 3;
             this.btnXoa.Text = "Xóa";
             // 
             // btnSua
@@ -156,7 +156,7 @@
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 23);
             this.btnSua.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnSua.TabIndex = 8;
+            this.btnSua.TabIndex = 2;
             this.btnSua.Text = "Sửa";
             // 
             // btnThem
@@ -168,7 +168,7 @@
             this.btnThem.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btnThem.Size = new System.Drawing.Size(84, 23);
             this.btnThem.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnThem.TabIndex = 6;
+            this.btnThem.TabIndex = 1;
             this.btnThem.Text = "Thêm mới";
             // 
             // btnTim
@@ -180,7 +180,7 @@
             this.btnTim.Name = "btnTim";
             this.btnTim.Size = new System.Drawing.Size(56, 22);
             this.btnTim.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnTim.TabIndex = 5;
+            this.btnTim.TabIndex = 6;
             this.btnTim.Text = "Tìm kiếm";
             // 
             // dtDen
@@ -226,7 +226,7 @@
             this.dtDen.Name = "dtDen";
             this.dtDen.Size = new System.Drawing.Size(150, 23);
             this.dtDen.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.dtDen.TabIndex = 4;
+            this.dtDen.TabIndex = 5;
             // 
             // labelX2
             // 
@@ -288,7 +288,7 @@
             this.dtTu.Name = "dtTu";
             this.dtTu.Size = new System.Drawing.Size(150, 23);
             this.dtTu.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.dtTu.TabIndex = 2;
+            this.dtTu.TabIndex = 4;
             // 
             // labelX1
             // 
@@ -344,7 +344,79 @@
             this.dataGridViewX1.RowHeadersWidth = 51;
             this.dataGridViewX1.RowTemplate.Height = 24;
             this.dataGridViewX1.Size = new System.Drawing.Size(1339, 313);
-            this.dataGridViewX1.TabIndex = 0;
+            this.dataGridViewX1.TabIndex = 8;
+            this.dataGridViewX1.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridViewX1_RowPostPaint);
+            // 
+            // Stt
+            // 
+            this.Stt.DataPropertyName = "Stt";
+            this.Stt.HeaderText = "Stt";
+            this.Stt.Name = "Stt";
+            this.Stt.ReadOnly = true;
+            // 
+            // So_chung_tu
+            // 
+            this.So_chung_tu.DataPropertyName = "So_chung_tu";
+            this.So_chung_tu.HeaderText = "Số đơn hàng";
+            this.So_chung_tu.MinimumWidth = 6;
+            this.So_chung_tu.Name = "So_chung_tu";
+            // 
+            // Ngay_chung_tu
+            // 
+            this.Ngay_chung_tu.DataPropertyName = "Ngay_chung_tu";
+            this.Ngay_chung_tu.HeaderText = "Ngày";
+            this.Ngay_chung_tu.MinimumWidth = 6;
+            this.Ngay_chung_tu.Name = "Ngay_chung_tu";
+            // 
+            // Passport
+            // 
+            this.Passport.DataPropertyName = "Passport";
+            this.Passport.HeaderText = "Mã khách hàng";
+            this.Passport.Name = "Passport";
+            // 
+            // Ten_khach
+            // 
+            this.Ten_khach.DataPropertyName = "Ten_khach";
+            this.Ten_khach.HeaderText = "Tên khách hàng";
+            this.Ten_khach.Name = "Ten_khach";
+            // 
+            // Tong_tien_hang_nt
+            // 
+            this.Tong_tien_hang_nt.DataPropertyName = "Tong_tien_hang_nt";
+            this.Tong_tien_hang_nt.HeaderText = "Tổng tiền hàng";
+            this.Tong_tien_hang_nt.Name = "Tong_tien_hang_nt";
+            // 
+            // Tong_nhan
+            // 
+            this.Tong_nhan.DataPropertyName = "Tong_nhan";
+            this.Tong_nhan.HeaderText = "Khách trả";
+            this.Tong_nhan.Name = "Tong_nhan";
+            // 
+            // Tra_lai_nt
+            // 
+            this.Tra_lai_nt.DataPropertyName = "Tra_lai_nt";
+            this.Tra_lai_nt.HeaderText = "Trả lại";
+            this.Tra_lai_nt.Name = "Tra_lai_nt";
+            // 
+            // Ty_gia
+            // 
+            this.Ty_gia.DataPropertyName = "Ty_gia";
+            this.Ty_gia.HeaderText = "Tỷ giá";
+            this.Ty_gia.Name = "Ty_gia";
+            // 
+            // Ma_cua_hang
+            // 
+            this.Ma_cua_hang.DataPropertyName = "Ma_cua_hang";
+            this.Ma_cua_hang.HeaderText = "Ma_cua_hang";
+            this.Ma_cua_hang.Name = "Ma_cua_hang";
+            this.Ma_cua_hang.ReadOnly = true;
+            // 
+            // Ma_phieu
+            // 
+            this.Ma_phieu.DataPropertyName = "Ma_phieu";
+            this.Ma_phieu.HeaderText = "Ma_phieu";
+            this.Ma_phieu.Name = "Ma_phieu";
+            this.Ma_phieu.ReadOnly = true;
             // 
             // dataGridViewX2
             // 
@@ -374,13 +446,14 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewX2.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewX2.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.dataGridViewX2.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewX2.Location = new System.Drawing.Point(0, 3);
             this.dataGridViewX2.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewX2.Name = "dataGridViewX2";
             this.dataGridViewX2.RowHeadersWidth = 51;
             this.dataGridViewX2.RowTemplate.Height = 24;
-            this.dataGridViewX2.Size = new System.Drawing.Size(1339, 427);
-            this.dataGridViewX2.TabIndex = 0;
+            this.dataGridViewX2.Size = new System.Drawing.Size(1339, 424);
+            this.dataGridViewX2.TabIndex = 9;
+            this.dataGridViewX2.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridViewX2_RowPostPaint);
             // 
             // Ma_hh
             // 
@@ -458,77 +531,6 @@
             this.Tien_ban.HeaderText = "Tổng tiền VND";
             this.Tien_ban.Name = "Tien_ban";
             this.Tien_ban.ReadOnly = true;
-            // 
-            // Stt
-            // 
-            this.Stt.DataPropertyName = "Stt";
-            this.Stt.HeaderText = "Stt";
-            this.Stt.Name = "Stt";
-            this.Stt.ReadOnly = true;
-            // 
-            // So_chung_tu
-            // 
-            this.So_chung_tu.DataPropertyName = "So_chung_tu";
-            this.So_chung_tu.HeaderText = "Số đơn hàng";
-            this.So_chung_tu.MinimumWidth = 6;
-            this.So_chung_tu.Name = "So_chung_tu";
-            // 
-            // Ngay_chung_tu
-            // 
-            this.Ngay_chung_tu.DataPropertyName = "Ngay_chung_tu";
-            this.Ngay_chung_tu.HeaderText = "Ngày";
-            this.Ngay_chung_tu.MinimumWidth = 6;
-            this.Ngay_chung_tu.Name = "Ngay_chung_tu";
-            // 
-            // Passport
-            // 
-            this.Passport.DataPropertyName = "Passport";
-            this.Passport.HeaderText = "Mã khách hàng";
-            this.Passport.Name = "Passport";
-            // 
-            // Ten_khach
-            // 
-            this.Ten_khach.DataPropertyName = "Ten_khach";
-            this.Ten_khach.HeaderText = "Tên khách hàng";
-            this.Ten_khach.Name = "Ten_khach";
-            // 
-            // Tong_tien_hang_nt
-            // 
-            this.Tong_tien_hang_nt.DataPropertyName = "Tong_tien_hang_nt";
-            this.Tong_tien_hang_nt.HeaderText = "Tổng tiền hàng";
-            this.Tong_tien_hang_nt.Name = "Tong_tien_hang_nt";
-            // 
-            // Tong_nhan
-            // 
-            this.Tong_nhan.DataPropertyName = "Tong_nhan";
-            this.Tong_nhan.HeaderText = "Khách trả";
-            this.Tong_nhan.Name = "Tong_nhan";
-            // 
-            // Tra_lai_nt
-            // 
-            this.Tra_lai_nt.DataPropertyName = "Tra_lai_nt";
-            this.Tra_lai_nt.HeaderText = "Trả lại";
-            this.Tra_lai_nt.Name = "Tra_lai_nt";
-            // 
-            // Ty_gia
-            // 
-            this.Ty_gia.DataPropertyName = "Ty_gia";
-            this.Ty_gia.HeaderText = "Tỷ giá";
-            this.Ty_gia.Name = "Ty_gia";
-            // 
-            // Ma_cua_hang
-            // 
-            this.Ma_cua_hang.DataPropertyName = "Ma_cua_hang";
-            this.Ma_cua_hang.HeaderText = "Ma_cua_hang";
-            this.Ma_cua_hang.Name = "Ma_cua_hang";
-            this.Ma_cua_hang.ReadOnly = true;
-            // 
-            // Ma_phieu
-            // 
-            this.Ma_phieu.DataPropertyName = "Ma_phieu";
-            this.Ma_phieu.HeaderText = "Ma_phieu";
-            this.Ma_phieu.Name = "Ma_phieu";
-            this.Ma_phieu.ReadOnly = true;
             // 
             // UserControlDonHang
             // 

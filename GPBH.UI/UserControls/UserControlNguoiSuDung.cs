@@ -1,4 +1,5 @@
 ﻿using DevComponents.DotNetBar;
+using DevComponents.DotNetBar.Controls;
 using GPBH.Business;
 using GPBH.Business.Dtos;
 using GPBH.UI.Constant;
@@ -105,6 +106,8 @@ namespace GPBH.UI.UserControls
 
             // Canh giữa header
             dataGridViewX1.SetHeaderAlignment("Stt", DataGridViewContentAlignment.MiddleCenter);
+            dataGridViewX1.Columns["Stt"].Visible = false; // Ẩn cột Stt
+
             dataGridViewX1.SetHeaderAlignment("PhanQuyen", DataGridViewContentAlignment.MiddleCenter);
             dataGridViewX1.SetHeaderAlignment("Ksd", DataGridViewContentAlignment.MiddleCenter);
             dataGridViewX1.SetHeaderAlignment("CapLaiQuyen", DataGridViewContentAlignment.MiddleCenter);
@@ -282,5 +285,10 @@ namespace GPBH.UI.UserControls
         }
 
         #endregion
+
+        private void dataGridViewX1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            dataGridViewX1.SetRowPositionPaint(e);
+        }
     }
 }

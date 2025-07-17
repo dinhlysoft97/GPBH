@@ -188,7 +188,7 @@ namespace GPBH.UI.Forms
         private void SetUpUI()
         {
             dataGridViewX1.SetHeaderAlignment("Stt", DataGridViewContentAlignment.MiddleCenter);
-
+            dataGridViewX1.Columns["Stt"].Visible = false; // Ẩn cột Stt
             // hiển thị tiền ngoại tệ
             dataGridViewX1.Columns["Gia_ban_nt"].HeaderText = $"Giá {CuaHang.Ma_nt}";
             dataGridViewX1.Columns["Gg_tien_nt"].HeaderText = $"Tiền giảm {CuaHang.Ma_nt}";
@@ -301,6 +301,7 @@ namespace GPBH.UI.Forms
             lbCa.Text = AppGlobals.MaCa;
             lbMST.Text = CuaHang?.Ma_cqt ?? string.Empty;
             lnSHD.Text = string.Empty;
+            lbNgayHoaDon.Text = "Ngày: " + DateTime.Now.ToString("dd/MM/yyyy");
         }
 
         /// <summary>
@@ -1148,5 +1149,10 @@ namespace GPBH.UI.Forms
             SetFormatThanhToan(cbbTt3_ma_nt, txtTt3_tien_tt);
         }
         #endregion
+
+        private void dataGridViewX1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            dataGridViewX1.SetRowPositionPaint(e);
+        }
     }
 }

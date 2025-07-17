@@ -67,7 +67,7 @@ namespace GPBH.UI
 
             if (string.IsNullOrEmpty(tenDangNhap) || string.IsNullOrEmpty(matKhau))
             {
-                MessageBoxEx.Show("Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBoxEx.Show("Thông tin đăng nhập chưa đúng, vui lòng kiểm tra lại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -88,7 +88,7 @@ namespace GPBH.UI
             else
             {
                 // Đăng nhập thất bại
-                MessageBoxEx.Show("Tên đăng nhập hoặc mật khẩu không đúng, hoặc tài khoản bị khóa!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBoxEx.Show("Thông tin đăng nhập chưa đúng, vui lòng kiểm tra lại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -129,5 +129,10 @@ namespace GPBH.UI
                 cbbCa.SelectedValue = caHienTai.Ma_ca;
         }
         #endregion
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
