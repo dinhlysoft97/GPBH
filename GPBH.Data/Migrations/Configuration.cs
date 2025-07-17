@@ -380,7 +380,10 @@ namespace GPBH.Data.Migrations
             {
                 context.SysMenu.AddOrUpdate(
                     // đơn hàng
-                    new SysMenu { MenuName = "Tạo đơn hàng", Type = SysMenuType.Document, MenuId = "DonHang", Report = false, BasicRight = true, Picture = "", Active = true, Stt = 1 },
+                    new SysMenu { MenuName = "Màn hình chính", Type = SysMenuType.Document, MenuId = "DonHang", Report = false, BasicRight = true, Picture = "", Active = true, Stt = 1 },
+                    new SysMenu { MenuName = "Tạo đơn hàng", Type = SysMenuType.Document, MenuId = "TaoDonHang", Report = false, BasicRight = true, Picture = "", Active = true, Stt = 2 },
+                    new SysMenu { MenuName = "Nhận trả hàng", Type = SysMenuType.Document, MenuId = "NhanTraHang", Report = false, BasicRight = true, Picture = "", Active = true, Stt = 3 },
+                    new SysMenu { MenuName = "Xuất hóa đơn", Type = SysMenuType.Document, MenuId = "XoaHoaDon", Report = false, BasicRight = true, Picture = "", Active = true, Stt = 4 },
 
                     // báo cáo
                     new SysMenu { MenuName = "Bán hàng theo khách hàng", Type = SysMenuType.Report, MenuId = "BanHangTheoKhachHang", Report = false, BasicRight = true, Picture = "", Active = true, Stt = 1 },

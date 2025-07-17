@@ -16,7 +16,7 @@ namespace GPBH.Data.Configurations
             // Properties
             Property(t => t.Passport)
                 .IsRequired()
-                .HasMaxLength(8);
+                .HasMaxLength(20);
 
             Property(t => t.Ho)
                 .HasMaxLength(20);

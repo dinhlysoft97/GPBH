@@ -242,7 +242,14 @@ namespace GPBH.UI.UserControls
             }
 
             var formNew = ActivatorUtilities.CreateInstance<DonHang>(Program.ServiceProvider);
-            formNew.ShowDialog();
+            if (formNew.FormKhachHangIsClose)
+            {
+                formNew.Hide();
+            }
+            else
+            {
+                formNew.ShowDialog();
+            }
             TimKiem(); // Sau khi thêm, load lại dữ liệu
         }
 

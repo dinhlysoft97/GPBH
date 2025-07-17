@@ -1,7 +1,5 @@
 ﻿using DevComponents.DotNetBar.Controls;
-using GPBH.Business.Services;
 using GPBH.Data.Configurations;
-using OfficeOpenXml.FormulaParsing.Excel.Functions.Math;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -24,6 +22,8 @@ namespace GPBH.UI.UserControls
 
         public TextBox Tb { get => tb; set => tb = value; }
         public ToolStripDropDown TsDropDown { get => tsDropDown; set => tsDropDown = value; }
+        public Button Button { get => Button1; set => Button = value; }
+        public bool HasHangHoa { get; set; }
 
         public ucHangHoa()
         {
@@ -32,11 +32,13 @@ namespace GPBH.UI.UserControls
             this.Load += ucTextGrid2_Load;
             Tb.Location = new Point(0, 0);
             Tb.Size = new Size(150, 20);
-            Button1.Text = "Close";
-            Button1.Location = new Point(Tb.Right + 5, Tb.Top);
-            Button1.Size = new Size(60, 23);
+            Button1.Text = "X";
+            Button1.TextAlign = ContentAlignment.MiddleCenter;
+            Button1.Location = new Point(Tb.Right + 5, Tb.Top + 2);
+            Button1.Padding = new Padding(0, 0, 0, 0);
+            Button1.Size = new Size(25, 20);
             this.Controls.Add(Tb);
-            //this.Controls.Add(Button1);
+            this.Controls.Add(Button1);
             this.Size = new Size(600, 50); // Tăng kích thước UserControl
 
             Tb.TextChanged += tb_TextChanged;
@@ -45,6 +47,76 @@ namespace GPBH.UI.UserControls
 
             // Thêm sự kiện click row
             dgv.CellClick += dgv_CellClick;
+            dgv.KeyDown += Tb_KeyDown;
+            TsDropDown.KeyDown += TsDropDown_KeyDown;
+        }
+
+        private void TsDropDown_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                int rowIndex = dgv.CurrentCell?.RowIndex ?? -1;
+                var row = dgv.Rows[rowIndex];
+                string maHH = row.Cells["Ma_hh"].Value?.ToString();
+                string tenHH = row.Cells["Ten_hh"].Value?.ToString();
+                string dvt = row.Cells["Dvt"].Value?.ToString();
+
+                // Gọi event để notify ra ngoài
+                HangHoaSelected?.Invoke(this, new HangHoaSelectedEventArgs
+                {
+                    MaHH = maHH,
+                    TenHH = tenHH,
+                    Dvt = dvt
+                });
+
+                // Đóng dropdown sau khi chọn
+                TsDropDown.Close();
+            }
+            if (e.KeyCode == Keys.Down)
+            {
+                if (dgv.Rows.Count > 0)
+                {
+                    int rowIndex = dgv.CurrentCell?.RowIndex ?? -1;
+                    int nextRow = Math.Min(rowIndex + 1, dgv.Rows.Count - 1);
+                    dgv.CurrentCell = dgv.Rows[nextRow].Cells[0];
+                    dgv.Rows[nextRow].Selected = true;
+
+                }
+                e.Handled = true;
+            }
+            else if (e.KeyCode == Keys.Up)
+            {
+                if (dgv.Rows.Count > 0)
+                {
+                    int rowIndex = dgv.CurrentCell?.RowIndex ?? 0;
+                    int prevRow = Math.Max(rowIndex - 1, 0);
+                    dgv.CurrentCell = dgv.Rows[prevRow].Cells[0];
+                    dgv.Rows[prevRow].Selected = true;
+                }
+                e.Handled = true;
+            }
+        }
+
+        public void Tb_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                var hh = dsHangHoa.FirstOrDefault(x => x.Ma_hh == Tb.Text.Trim());
+                if (hh != null)
+                {
+                    HasHangHoa = true;
+                    HangHoaSelected?.Invoke(this, new HangHoaSelectedEventArgs
+                    {
+                        MaHH = hh.Ma_hh,
+                        TenHH = hh.Ten_hh,
+                        Dvt = hh.Dvt
+                    });
+                }
+                else
+                {
+                    HasHangHoa = false;
+                }
+            }
         }
 
         private void ucTextGrid2_Load(object sender, EventArgs e)
@@ -162,6 +234,8 @@ namespace GPBH.UI.UserControls
 
         private void Button1_Click(object sender, EventArgs e)
         {
+            tb.Text = string.Empty;
+            tb.Focus();
             TsDropDown.Close();
         }
 

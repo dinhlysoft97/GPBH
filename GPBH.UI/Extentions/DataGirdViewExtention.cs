@@ -102,7 +102,14 @@ namespace GPBH.UI.Extentions
         public static void SetFormat(this DataGridViewX grid, string columnName, string format)
         {
             if (grid.Columns.Contains(columnName) && !string.IsNullOrEmpty(format))
+            {
                 grid.Columns[columnName].DefaultCellStyle.Format = format;
+
+                if (grid.Columns.Contains(columnName) && grid.Columns[columnName] is DataGridViewDoubleInputColumn col && !string.IsNullOrEmpty(format))
+                {
+                    col.DisplayFormat = format;
+                }
+            }    
         }
 
         /*======================================================================

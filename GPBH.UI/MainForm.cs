@@ -26,6 +26,12 @@ namespace GPBH.UI
             SetData();
             this.FormClosed += MainForm_FormClosed;
             this.FormClosing += MainForm_FormClosing;
+            this.Load += MainForm_Load;
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            OpenTab("DonHang", "Màn hình chính", ActivatorUtilities.CreateInstance<UserControlDonHang>(Program.ServiceProvider));
         }
 
         private void SetData()
@@ -142,7 +148,9 @@ namespace GPBH.UI
             Form form = null;
             switch (key)
             {
-                case "DonHang":
+                case "TaoDonHang":
+                    form = ActivatorUtilities.CreateInstance<DonHang>(Program.ServiceProvider);
+                    break;   case "DonHang":
                     uc = ActivatorUtilities.CreateInstance<UserControlDonHang>(Program.ServiceProvider);
                     break;
                 case "BanHangTheoKhachHang":

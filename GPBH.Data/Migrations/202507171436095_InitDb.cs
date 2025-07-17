@@ -260,7 +260,7 @@
                 "dbo.DMKH",
                 c => new
                     {
-                        Passport = c.String(nullable: false, maxLength: 8),
+                        Passport = c.String(nullable: false, maxLength: 20),
                         Ho = c.String(maxLength: 20),
                         Ten_dem = c.String(maxLength: 20),
                         Ten = c.String(maxLength: 20),
@@ -404,36 +404,11 @@
                         Ngay_lap = c.DateTime(),
                     })
                 .PrimaryKey(t => new { t.Ma_cua_hang, t.Ma_chung_tu, t.Thang, t.Nam, t.So_phieu });
-
-            Sql(@"
-                CREATE VIEW vw_BaoCaoBanTheoKhachHang AS
-                SELECT 
-                    ph.Ma_cua_hang AS Noi_ban,
-                    LTRIM(RTRIM(kh.Ho + ' ' + kh.Ten_dem + ' ' + kh.Ten)) AS Ten_khachhang,
-                    kh.Passport,
-                    ph.Ngay_chung_tu AS Ngay_ban,
-                    ph.So_chung_tu AS So_don_hang,
-                    ct.Ten_hh AS Ten_hang,
-                    ct.Ma_hh AS Ma_hang,
-                    ct.So_luong AS So_luong,
-                    ph.Ma_nt AS Ma_ngoaite,
-                    ph.Tong_thu_nt AS Thanh_tien,
-                    ph.Tong_thu AS Thanh_tien_vn,
-                    ph.Tong_tien_hang_nt As Tong_tien_hang_nt,
-                    ph.Tong_nhan AS Tong_nhan,
-                    ph.Tra_lai_nt As Tra_lai_nt,
-	                ph.Ma_tra_lai As Ma_tra_lai,
-                    ph.Ty_gia As Ty_gia
-                FROM XPH5 ph
-                INNER JOIN XCT5 ct ON ph.Ma_phieu = ct.Ma_phieu
-                INNER JOIN DMKH kh ON ph.Passport = kh.Passport
-                INNER JOIN DMHH hh ON ct.Ma_hh = hh.Ma_hh
-            ");
+            
         }
         
         public override void Down()
         {
-            Sql("DROP VIEW IF EXISTS vw_BaoCaoBanTheoKhachHang");
             DropForeignKey("dbo.SysPhanQuyen", "MenuId", "dbo.SysMenu");
             DropForeignKey("dbo.SysPhanQuyen", "Ten_dang_nhap", "dbo.SysDMNSD");
             DropForeignKey("dbo.DMKH", "Quoc_gia", "dbo.DMQG");

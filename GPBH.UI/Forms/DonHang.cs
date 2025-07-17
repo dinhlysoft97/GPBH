@@ -46,7 +46,10 @@ namespace GPBH.UI.Forms
             new ThanhToan() { Key = "TM", Value = "Tiền mặt" },
             new ThanhToan() { Key = "CK", Value = "Chuyển khoản" },
             new ThanhToan() { Key = "CT", Value = "Công ty" },
-            new ThanhToan() { Key = "NT", Value = "Ngoại tệ" }
+            new ThanhToan() { Key = "NT", Value = "Ngoại tệ" },
+            new ThanhToan() { Key = "VS", Value = "Visa" },
+            new ThanhToan() { Key = "MM", Value = "Momo" },
+            new ThanhToan() { Key = "ZL", Value = "Zalo" }
         };
 
         private readonly List<DMNT> _dMNTs;
@@ -59,6 +62,8 @@ namespace GPBH.UI.Forms
         private BindingList<XCT5Dto> listChiTiet = new BindingList<XCT5Dto>();
         private List<GirdSysDinhDangFormDto> SysDinhDangs;
         private readonly bool isCurrencyVND;
+
+        public bool FormKhachHangIsClose { get; set; }
         #endregion
 
         #region Constructor
@@ -187,6 +192,8 @@ namespace GPBH.UI.Forms
 
         private void SetUpUI()
         {
+            lbHH.Visible = false;
+
             dataGridViewX1.SetHeaderAlignment("Stt", DataGridViewContentAlignment.MiddleCenter);
             dataGridViewX1.Columns["Stt"].Visible = false; // Ẩn cột Stt
             // hiển thị tiền ngoại tệ
@@ -311,6 +318,13 @@ namespace GPBH.UI.Forms
         {
             // Sử dụng DI để tạo form khách hàng và demo
             var formKhachHang = this.ShowForm<KhachHang>(passport);
+
+            if (formKhachHang.DataKhachHang == null && formKhachHang.IsClose)
+            {
+                FormKhachHangIsClose = true;
+                return;
+            }
+
             if (formKhachHang.DataKhachHang != null)
                 BindDataKhachHang(formKhachHang.DataKhachHang);
         }
@@ -323,7 +337,7 @@ namespace GPBH.UI.Forms
         {
             var quocGia = _dMQGService.GetByMaQuocGia(khachhang.Quoc_gia);
             txtCCCD.Text = khachhang?.Passport?.Trim() ?? "";
-            txtDiaChi.Text = khachhang?.Dia_chi ?? "";
+            txtDiaChi.Text = CuaHang?.Dia_chi ?? "";
             txtQuocTinh.Text = quocGia?.Ten_Quoc_gia ?? "";
             txtTenKhachHang.Text = $"{khachhang?.Ho} {khachhang?.Ten_dem} {khachhang?.Ten}".Trim();
         }
@@ -377,8 +391,14 @@ namespace GPBH.UI.Forms
             {
                 HandlerKeyF2();
             }
+            else if (e.KeyCode == Keys.F3)
+            {
+                this.Hide();
+                var formNew = ActivatorUtilities.CreateInstance<DonHang>(Program.ServiceProvider);
+                formNew.ShowDialog();
+            }
             // xóa dữ liệu chi tiết
-            if ((e.KeyCode == Keys.Delete || e.KeyCode == Keys.F7) && dataGridViewX1.SelectedRows.Count > 0)
+            else if ((e.KeyCode == Keys.Delete || e.KeyCode == Keys.F7) && dataGridViewX1.SelectedRows.Count > 0)
             {
                 // Xác nhận xóa
                 var confirm = MessageBoxEx.Show("Bạn có chắc muốn xóa dòng đã chọn?", "Xóa", MessageBoxButtons.YesNo);
@@ -411,6 +431,28 @@ namespace GPBH.UI.Forms
             else if (e.KeyCode == Keys.F12)
             {
                 HandlerKeyF12();
+            }
+            else if (e.KeyCode == Keys.Enter)
+            {
+                TimHangHang(sender, e);
+            }
+        }
+
+        private void TimHangHang(object sender, KeyEventArgs e)
+        {
+            ucHangHoa.Tb_KeyDown(sender, e);
+            if (!ucHangHoa.HasHangHoa)
+            {
+                lbHH.Visible = true;
+                ucHangHoa.Tb.Focus();
+                return;
+            }
+            else
+            {
+                lbHH.Visible = false;
+                ucHangHoa.Tb.Text = string.Empty;
+                ucHangHoa.Tb.Focus();
+                ucHangHoa.TsDropDown.Close();
             }
         }
 
@@ -1148,11 +1190,16 @@ namespace GPBH.UI.Forms
             HandelChangeThanhToan(cbbTt3_ma_nt, txtTt3_tien_tt, txtTt3_tien_nt);
             SetFormatThanhToan(cbbTt3_ma_nt, txtTt3_tien_tt);
         }
-        #endregion
 
         private void dataGridViewX1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
             dataGridViewX1.SetRowPositionPaint(e);
         }
+
+        private void bthTimHH_Click(object sender, EventArgs e)
+        {
+            TimHangHang(sender, new KeyEventArgs(Keys.Enter));
+        }
+        #endregion
     }
 }

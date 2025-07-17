@@ -35,6 +35,8 @@ namespace GPBH.UI.Forms
         /// </summary>
         public DMKH DataKhachHang { get; set; }
 
+        public bool IsClose { get; set; }
+
         #endregion
 
         #region Nested Classes
@@ -122,7 +124,14 @@ namespace GPBH.UI.Forms
             this.KeyDown += Form_KeyDown;
             txtCCCD.TextChanged += txtCCCD_TextChanged;
             btnChon.Click += btnChon_Click;
+            this.FormClosing += KhachHang_FormClosing;
         }
+
+        private void KhachHang_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            IsClose = true;
+        }
+
 
         /// <summary>
         /// Điền dữ liệu khách hàng đã có lên form.
@@ -318,6 +327,10 @@ namespace GPBH.UI.Forms
             }
             else
             {
+                // validate
+                if (!ValidateRequiredFields())
+                    return;
+
                 this.DialogResult = DialogResult.OK;
                 HandleClick();
                 this.Close();

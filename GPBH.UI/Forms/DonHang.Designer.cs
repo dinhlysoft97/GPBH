@@ -62,19 +62,6 @@ namespace GPBH.UI.Forms
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.groupPanel3 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.Stt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ma_hh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ten_hh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Dvt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.So_luong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Gia_ban_nt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Gia_ban = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Gg_ty_le = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Gg_tien_nt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Gg_tien = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tien_ban_nt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tien_ban = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Gg_ly_do = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bar1 = new DevComponents.DotNetBar.Bar();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -138,7 +125,24 @@ namespace GPBH.UI.Forms
             this.txtTong_nhan = new DevComponents.Editors.DoubleInput();
             this.txtTra_lai_nt = new DevComponents.Editors.DoubleInput();
             this.txtTra_lai = new DevComponents.Editors.DoubleInput();
+            this.lbHH = new DevComponents.DotNetBar.LabelX();
             this.ucHangHoa = new GPBH.UI.UserControls.ucHangHoa();
+            this.bthTimHH = new DevComponents.DotNetBar.ButtonX();
+            this.labelItem5 = new DevComponents.DotNetBar.LabelItem();
+            this.labelItem6 = new DevComponents.DotNetBar.LabelItem();
+            this.Stt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ma_hh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ten_hh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Dvt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.So_luong = new DevComponents.DotNetBar.Controls.DataGridViewDoubleInputColumn();
+            this.Gia_ban_nt = new DevComponents.DotNetBar.Controls.DataGridViewDoubleInputColumn();
+            this.Gia_ban = new DevComponents.DotNetBar.Controls.DataGridViewDoubleInputColumn();
+            this.Gg_ty_le = new DevComponents.DotNetBar.Controls.DataGridViewDoubleInputColumn();
+            this.Gg_tien_nt = new DevComponents.DotNetBar.Controls.DataGridViewDoubleInputColumn();
+            this.Gg_tien = new DevComponents.DotNetBar.Controls.DataGridViewDoubleInputColumn();
+            this.Tien_ban_nt = new DevComponents.DotNetBar.Controls.DataGridViewDoubleInputColumn();
+            this.Tien_ban = new DevComponents.DotNetBar.Controls.DataGridViewDoubleInputColumn();
+            this.Gg_ly_do = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupPanel2.SuspendLayout();
             this.groupPanel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -746,113 +750,12 @@ namespace GPBH.UI.Forms
             this.dataGridViewX1.TabIndex = 1;
             this.dataGridViewX1.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridViewX1_RowPostPaint);
             // 
-            // Stt
-            // 
-            this.Stt.DataPropertyName = "Stt";
-            this.Stt.FillWeight = 0.02895978F;
-            this.Stt.HeaderText = "Stt";
-            this.Stt.Name = "Stt";
-            this.Stt.ReadOnly = true;
-            this.Stt.Width = 50;
-            // 
-            // Ma_hh
-            // 
-            this.Ma_hh.DataPropertyName = "Ma_hh";
-            this.Ma_hh.FillWeight = 0.1175265F;
-            this.Ma_hh.HeaderText = "Mã hàng";
-            this.Ma_hh.MinimumWidth = 6;
-            this.Ma_hh.Name = "Ma_hh";
-            // 
-            // Ten_hh
-            // 
-            this.Ten_hh.DataPropertyName = "Ten_hh";
-            this.Ten_hh.FillWeight = 0.5159575F;
-            this.Ten_hh.HeaderText = "Tên hàng";
-            this.Ten_hh.MinimumWidth = 6;
-            this.Ten_hh.Name = "Ten_hh";
-            this.Ten_hh.ReadOnly = true;
-            this.Ten_hh.Width = 250;
-            // 
-            // Dvt
-            // 
-            this.Dvt.DataPropertyName = "Dvt";
-            this.Dvt.FillWeight = 0.5109541F;
-            this.Dvt.HeaderText = "ĐVT";
-            this.Dvt.Name = "Dvt";
-            this.Dvt.ReadOnly = true;
-            this.Dvt.Width = 80;
-            // 
-            // So_luong
-            // 
-            this.So_luong.DataPropertyName = "So_luong";
-            this.So_luong.FillWeight = 0.8602504F;
-            this.So_luong.HeaderText = "Số lượng";
-            this.So_luong.Name = "So_luong";
-            // 
-            // Gia_ban_nt
-            // 
-            this.Gia_ban_nt.DataPropertyName = "Gia_ban_nt";
-            this.Gia_ban_nt.FillWeight = 1.44838F;
-            this.Gia_ban_nt.HeaderText = "Giá NT";
-            this.Gia_ban_nt.Name = "Gia_ban_nt";
-            // 
-            // Gia_ban
-            // 
-            this.Gia_ban.DataPropertyName = "Gia_ban";
-            this.Gia_ban.FillWeight = 3.676826F;
-            this.Gia_ban.HeaderText = "Giá VNĐ";
-            this.Gia_ban.Name = "Gia_ban";
-            // 
-            // Gg_ty_le
-            // 
-            this.Gg_ty_le.DataPropertyName = "Gg_ty_le";
-            this.Gg_ty_le.FillWeight = 4.952638F;
-            this.Gg_ty_le.HeaderText = "% Giảm";
-            this.Gg_ty_le.Name = "Gg_ty_le";
-            // 
-            // Gg_tien_nt
-            // 
-            this.Gg_tien_nt.DataPropertyName = "Gg_tien_nt";
-            this.Gg_tien_nt.FillWeight = 18.92529F;
-            this.Gg_tien_nt.HeaderText = "Tiền giảm NT";
-            this.Gg_tien_nt.Name = "Gg_tien_nt";
-            this.Gg_tien_nt.Width = 120;
-            // 
-            // Gg_tien
-            // 
-            this.Gg_tien.DataPropertyName = "Gg_tien";
-            this.Gg_tien.FillWeight = 32.00885F;
-            this.Gg_tien.HeaderText = "Tiền giảm";
-            this.Gg_tien.Name = "Gg_tien";
-            // 
-            // Tien_ban_nt
-            // 
-            this.Tien_ban_nt.DataPropertyName = "Tien_ban_nt";
-            this.Tien_ban_nt.FillWeight = 98.25874F;
-            this.Tien_ban_nt.HeaderText = "Thành tiền NT";
-            this.Tien_ban_nt.Name = "Tien_ban_nt";
-            this.Tien_ban_nt.Width = 120;
-            // 
-            // Tien_ban
-            // 
-            this.Tien_ban.DataPropertyName = "Tien_ban";
-            this.Tien_ban.FillWeight = 251.3836F;
-            this.Tien_ban.HeaderText = "Thành tiền VNĐ";
-            this.Tien_ban.Name = "Tien_ban";
-            this.Tien_ban.Width = 120;
-            // 
-            // Gg_ly_do
-            // 
-            this.Gg_ly_do.DataPropertyName = "Gg_ly_do";
-            this.Gg_ly_do.FillWeight = 898.5948F;
-            this.Gg_ly_do.HeaderText = "Lý do giảm";
-            this.Gg_ly_do.Name = "Gg_ly_do";
-            this.Gg_ly_do.Width = 150;
-            // 
             // bar1
             // 
             this.bar1.AntiAlias = true;
             this.bar1.BackColor = System.Drawing.Color.White;
+            this.bar1.Controls.Add(this.bthTimHH);
+            this.bar1.Controls.Add(this.lbHH);
             this.bar1.Controls.Add(this.ucHangHoa);
             this.bar1.Controls.Add(this.labelX4);
             this.bar1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -888,7 +791,7 @@ namespace GPBH.UI.Forms
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 58.89792F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.10208F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 317F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 338F));
             this.tableLayoutPanel2.Controls.Add(this.groupPanel4, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.groupPanel6, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.groupPanel5, 2, 0);
@@ -929,7 +832,7 @@ namespace GPBH.UI.Forms
             this.groupPanel4.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel4.Location = new System.Drawing.Point(3, 3);
             this.groupPanel4.Name = "groupPanel4";
-            this.groupPanel4.Size = new System.Drawing.Size(646, 187);
+            this.groupPanel4.Size = new System.Drawing.Size(634, 187);
             // 
             // 
             // 
@@ -1280,9 +1183,9 @@ namespace GPBH.UI.Forms
             this.groupPanel6.Controls.Add(this.lbTTH);
             this.groupPanel6.Controls.Add(this.labelX22);
             this.groupPanel6.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel6.Location = new System.Drawing.Point(656, 3);
+            this.groupPanel6.Location = new System.Drawing.Point(643, 3);
             this.groupPanel6.Name = "groupPanel6";
-            this.groupPanel6.Size = new System.Drawing.Size(449, 187);
+            this.groupPanel6.Size = new System.Drawing.Size(441, 187);
             // 
             // 
             // 
@@ -1506,7 +1409,7 @@ namespace GPBH.UI.Forms
             this.groupPanel5.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.groupPanel5.Controls.Add(this.lbQuyDoiTienTe);
             this.groupPanel5.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel5.Location = new System.Drawing.Point(1111, 3);
+            this.groupPanel5.Location = new System.Drawing.Point(1090, 3);
             this.groupPanel5.Name = "groupPanel5";
             this.groupPanel5.Size = new System.Drawing.Size(309, 187);
             // 
@@ -1574,7 +1477,9 @@ namespace GPBH.UI.Forms
             this.labelItem12,
             this.labelItem13,
             this.labelItem14,
-            this.labelItem15});
+            this.labelItem15,
+            this.labelItem5,
+            this.labelItem6});
             this.bar2.Location = new System.Drawing.Point(0, 820);
             this.bar2.Name = "bar2";
             this.bar2.Size = new System.Drawing.Size(1426, 19);
@@ -1802,12 +1707,235 @@ namespace GPBH.UI.Forms
             this.txtTra_lai.Size = new System.Drawing.Size(99, 20);
             this.txtTra_lai.TabIndex = 51;
             // 
+            // lbHH
+            // 
+            this.lbHH.AutoSize = true;
+            // 
+            // 
+            // 
+            this.lbHH.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lbHH.ForeColor = System.Drawing.Color.Red;
+            this.lbHH.Location = new System.Drawing.Point(443, 12);
+            this.lbHH.Name = "lbHH";
+            this.lbHH.Size = new System.Drawing.Size(104, 18);
+            this.lbHH.TabIndex = 2;
+            this.lbHH.Text = "Không tìm thấy mã";
+            // 
             // ucHangHoa
             // 
+            this.ucHangHoa.HasHangHoa = false;
             this.ucHangHoa.Location = new System.Drawing.Point(156, 9);
             this.ucHangHoa.Name = "ucHangHoa";
-            this.ucHangHoa.Size = new System.Drawing.Size(152, 24);
+            this.ucHangHoa.Size = new System.Drawing.Size(189, 24);
             this.ucHangHoa.TabIndex = 1;
+            // 
+            // bthTimHH
+            // 
+            this.bthTimHH.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.bthTimHH.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.bthTimHH.Location = new System.Drawing.Point(349, 10);
+            this.bthTimHH.Name = "bthTimHH";
+            this.bthTimHH.Size = new System.Drawing.Size(75, 23);
+            this.bthTimHH.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.bthTimHH.TabIndex = 3;
+            this.bthTimHH.Text = "Tìm mã hàng";
+            this.bthTimHH.Click += new System.EventHandler(this.bthTimHH_Click);
+            // 
+            // labelItem5
+            // 
+            this.labelItem5.ForeColor = System.Drawing.Color.Black;
+            this.labelItem5.Name = "labelItem5";
+            this.labelItem5.Text = " | ";
+            // 
+            // labelItem6
+            // 
+            this.labelItem6.ForeColor = System.Drawing.Color.Black;
+            this.labelItem6.Name = "labelItem6";
+            this.labelItem6.Text = "F3: Tạo mới";
+            // 
+            // Stt
+            // 
+            this.Stt.DataPropertyName = "Stt";
+            this.Stt.FillWeight = 0.02895978F;
+            this.Stt.HeaderText = "Stt";
+            this.Stt.Name = "Stt";
+            this.Stt.ReadOnly = true;
+            this.Stt.Width = 50;
+            // 
+            // Ma_hh
+            // 
+            this.Ma_hh.DataPropertyName = "Ma_hh";
+            this.Ma_hh.FillWeight = 0.1175265F;
+            this.Ma_hh.HeaderText = "Mã hàng";
+            this.Ma_hh.MinimumWidth = 6;
+            this.Ma_hh.Name = "Ma_hh";
+            // 
+            // Ten_hh
+            // 
+            this.Ten_hh.DataPropertyName = "Ten_hh";
+            this.Ten_hh.FillWeight = 0.5159575F;
+            this.Ten_hh.HeaderText = "Tên hàng";
+            this.Ten_hh.MinimumWidth = 6;
+            this.Ten_hh.Name = "Ten_hh";
+            this.Ten_hh.ReadOnly = true;
+            this.Ten_hh.Width = 250;
+            // 
+            // Dvt
+            // 
+            this.Dvt.DataPropertyName = "Dvt";
+            this.Dvt.FillWeight = 0.5109541F;
+            this.Dvt.HeaderText = "ĐVT";
+            this.Dvt.Name = "Dvt";
+            this.Dvt.ReadOnly = true;
+            this.Dvt.Width = 80;
+            // 
+            // So_luong
+            // 
+            // 
+            // 
+            // 
+            this.So_luong.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window;
+            this.So_luong.BackgroundStyle.Class = "DataGridViewNumericBorder";
+            this.So_luong.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.So_luong.BackgroundStyle.TextColor = System.Drawing.SystemColors.ControlText;
+            this.So_luong.DataPropertyName = "So_luong";
+            this.So_luong.DisplayFormat = "#,##0.000";
+            this.So_luong.FillWeight = 0.8602504F;
+            this.So_luong.HeaderText = "Số lượng";
+            this.So_luong.Increment = 1D;
+            this.So_luong.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
+            this.So_luong.Name = "So_luong";
+            this.So_luong.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // Gia_ban_nt
+            // 
+            // 
+            // 
+            // 
+            this.Gia_ban_nt.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window;
+            this.Gia_ban_nt.BackgroundStyle.Class = "DataGridViewNumericBorder";
+            this.Gia_ban_nt.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.Gia_ban_nt.BackgroundStyle.TextColor = System.Drawing.SystemColors.ControlText;
+            this.Gia_ban_nt.DataPropertyName = "Gia_ban_nt";
+            this.Gia_ban_nt.FillWeight = 1.44838F;
+            this.Gia_ban_nt.HeaderText = "Giá NT";
+            this.Gia_ban_nt.Increment = 1D;
+            this.Gia_ban_nt.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
+            this.Gia_ban_nt.Name = "Gia_ban_nt";
+            this.Gia_ban_nt.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // Gia_ban
+            // 
+            // 
+            // 
+            // 
+            this.Gia_ban.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window;
+            this.Gia_ban.BackgroundStyle.Class = "DataGridViewNumericBorder";
+            this.Gia_ban.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.Gia_ban.BackgroundStyle.TextColor = System.Drawing.SystemColors.ControlText;
+            this.Gia_ban.DataPropertyName = "Gia_ban";
+            this.Gia_ban.FillWeight = 3.676826F;
+            this.Gia_ban.HeaderText = "Giá VNĐ";
+            this.Gia_ban.Increment = 1D;
+            this.Gia_ban.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
+            this.Gia_ban.Name = "Gia_ban";
+            this.Gia_ban.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // Gg_ty_le
+            // 
+            // 
+            // 
+            // 
+            this.Gg_ty_le.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window;
+            this.Gg_ty_le.BackgroundStyle.Class = "DataGridViewNumericBorder";
+            this.Gg_ty_le.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.Gg_ty_le.BackgroundStyle.TextColor = System.Drawing.SystemColors.ControlText;
+            this.Gg_ty_le.DataPropertyName = "Gg_ty_le";
+            this.Gg_ty_le.FillWeight = 4.952638F;
+            this.Gg_ty_le.HeaderText = "% Giảm";
+            this.Gg_ty_le.Increment = 1D;
+            this.Gg_ty_le.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
+            this.Gg_ty_le.Name = "Gg_ty_le";
+            this.Gg_ty_le.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // Gg_tien_nt
+            // 
+            // 
+            // 
+            // 
+            this.Gg_tien_nt.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window;
+            this.Gg_tien_nt.BackgroundStyle.Class = "DataGridViewNumericBorder";
+            this.Gg_tien_nt.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.Gg_tien_nt.BackgroundStyle.TextColor = System.Drawing.SystemColors.ControlText;
+            this.Gg_tien_nt.DataPropertyName = "Gg_tien_nt";
+            this.Gg_tien_nt.FillWeight = 18.92529F;
+            this.Gg_tien_nt.HeaderText = "Tiền giảm NT";
+            this.Gg_tien_nt.Increment = 1D;
+            this.Gg_tien_nt.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
+            this.Gg_tien_nt.Name = "Gg_tien_nt";
+            this.Gg_tien_nt.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Gg_tien_nt.Width = 120;
+            // 
+            // Gg_tien
+            // 
+            // 
+            // 
+            // 
+            this.Gg_tien.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window;
+            this.Gg_tien.BackgroundStyle.Class = "DataGridViewNumericBorder";
+            this.Gg_tien.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.Gg_tien.BackgroundStyle.TextColor = System.Drawing.SystemColors.ControlText;
+            this.Gg_tien.DataPropertyName = "Gg_tien";
+            this.Gg_tien.FillWeight = 32.00885F;
+            this.Gg_tien.HeaderText = "Tiền giảm";
+            this.Gg_tien.Increment = 1D;
+            this.Gg_tien.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
+            this.Gg_tien.Name = "Gg_tien";
+            this.Gg_tien.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // Tien_ban_nt
+            // 
+            // 
+            // 
+            // 
+            this.Tien_ban_nt.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window;
+            this.Tien_ban_nt.BackgroundStyle.Class = "DataGridViewNumericBorder";
+            this.Tien_ban_nt.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.Tien_ban_nt.BackgroundStyle.TextColor = System.Drawing.SystemColors.ControlText;
+            this.Tien_ban_nt.DataPropertyName = "Tien_ban_nt";
+            this.Tien_ban_nt.FillWeight = 98.25874F;
+            this.Tien_ban_nt.HeaderText = "Thành tiền NT";
+            this.Tien_ban_nt.Increment = 1D;
+            this.Tien_ban_nt.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
+            this.Tien_ban_nt.Name = "Tien_ban_nt";
+            this.Tien_ban_nt.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Tien_ban_nt.Width = 120;
+            // 
+            // Tien_ban
+            // 
+            // 
+            // 
+            // 
+            this.Tien_ban.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window;
+            this.Tien_ban.BackgroundStyle.Class = "DataGridViewNumericBorder";
+            this.Tien_ban.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.Tien_ban.BackgroundStyle.TextColor = System.Drawing.SystemColors.ControlText;
+            this.Tien_ban.DataPropertyName = "Tien_ban";
+            this.Tien_ban.FillWeight = 251.3836F;
+            this.Tien_ban.HeaderText = "Thành tiền VNĐ";
+            this.Tien_ban.Increment = 1D;
+            this.Tien_ban.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
+            this.Tien_ban.Name = "Tien_ban";
+            this.Tien_ban.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Tien_ban.Width = 120;
+            // 
+            // Gg_ly_do
+            // 
+            this.Gg_ly_do.DataPropertyName = "Gg_ly_do";
+            this.Gg_ly_do.FillWeight = 898.5948F;
+            this.Gg_ly_do.HeaderText = "Lý do giảm";
+            this.Gg_ly_do.Name = "Gg_ly_do";
+            this.Gg_ly_do.Width = 150;
             // 
             // DonHang
             // 
@@ -1847,6 +1975,7 @@ namespace GPBH.UI.Forms
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).EndInit();
             this.bar1.ResumeLayout(false);
+            this.bar1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.groupPanel4.ResumeLayout(false);
             this.groupPanel4.PerformLayout();
@@ -1969,18 +2098,22 @@ namespace GPBH.UI.Forms
         private DevComponents.DotNetBar.LabelX labelX10;
         private DevComponents.Editors.DoubleInput txtTt1_tien_tt;
         private DevComponents.DotNetBar.Controls.ComboBoxEx cbTra_lai;
+        private DevComponents.DotNetBar.LabelX lbHH;
+        private DevComponents.DotNetBar.ButtonX bthTimHH;
+        private DevComponents.DotNetBar.LabelItem labelItem5;
+        private DevComponents.DotNetBar.LabelItem labelItem6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Stt;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ma_hh;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ten_hh;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dvt;
-        private System.Windows.Forms.DataGridViewTextBoxColumn So_luong;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Gia_ban_nt;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Gia_ban;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Gg_ty_le;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Gg_tien_nt;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Gg_tien;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Tien_ban_nt;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Tien_ban;
+        private DevComponents.DotNetBar.Controls.DataGridViewDoubleInputColumn So_luong;
+        private DevComponents.DotNetBar.Controls.DataGridViewDoubleInputColumn Gia_ban_nt;
+        private DevComponents.DotNetBar.Controls.DataGridViewDoubleInputColumn Gia_ban;
+        private DevComponents.DotNetBar.Controls.DataGridViewDoubleInputColumn Gg_ty_le;
+        private DevComponents.DotNetBar.Controls.DataGridViewDoubleInputColumn Gg_tien_nt;
+        private DevComponents.DotNetBar.Controls.DataGridViewDoubleInputColumn Gg_tien;
+        private DevComponents.DotNetBar.Controls.DataGridViewDoubleInputColumn Tien_ban_nt;
+        private DevComponents.DotNetBar.Controls.DataGridViewDoubleInputColumn Tien_ban;
         private System.Windows.Forms.DataGridViewTextBoxColumn Gg_ly_do;
     }
 }

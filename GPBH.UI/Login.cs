@@ -53,6 +53,11 @@ namespace GPBH.UI
             HandleLogin();
         }
 
+        private void Login_Load(object sender, EventArgs e)
+        {
+            cbbCa.DropDownStyle = ComboBoxStyle.DropDownList;
+        }
+
         #endregion
 
         #region Business Logic
@@ -129,10 +134,5 @@ namespace GPBH.UI
                 cbbCa.SelectedValue = caHienTai.Ma_ca;
         }
         #endregion
-
-        private void Login_Load(object sender, EventArgs e)
-        {
-            cbbCa.DropDownStyle = ComboBoxStyle.DropDownList;
-        }
     }
 }
