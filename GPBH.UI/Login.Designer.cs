@@ -109,11 +109,12 @@
             // 
             this.cbbCa.DisplayMember = "Text";
             this.cbbCa.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbbCa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbCa.FormattingEnabled = true;
-            this.cbbCa.ItemHeight = 14;
+            this.cbbCa.ItemHeight = 15;
             this.cbbCa.Location = new System.Drawing.Point(96, 160);
             this.cbbCa.Name = "cbbCa";
-            this.cbbCa.Size = new System.Drawing.Size(173, 20);
+            this.cbbCa.Size = new System.Drawing.Size(173, 21);
             this.cbbCa.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cbbCa.TabIndex = 5;
             // 

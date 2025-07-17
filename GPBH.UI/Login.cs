@@ -132,7 +132,7 @@ namespace GPBH.UI
 
         private void Login_Load(object sender, EventArgs e)
         {
-
+            cbbCa.DropDownStyle = ComboBoxStyle.DropDownList;
         }
     }
 }
