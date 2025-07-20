@@ -184,7 +184,7 @@ namespace GPBH.UI
                     uc = ActivatorUtilities.CreateInstance<UserControlNguoiSuDung>(Program.ServiceProvider);
                     break;
                 case "ThamSo":
-                    form = ActivatorUtilities.CreateInstance<ThamSo>(Program.ServiceProvider);
+                    uc = ActivatorUtilities.CreateInstance<UserControlThamSo>(Program.ServiceProvider);
                     break;
                 case "DoiMatKhau":
                     form = ActivatorUtilities.CreateInstance<DoiMatKhau>(Program.ServiceProvider);

@@ -294,6 +294,12 @@
     <Compile Include="Forms\ThamSo.Designer.cs">
       <DependentUpon>ThamSo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ThamSo2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ThamSo2.Designer.cs">
+      <DependentUpon>ThamSo2.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -437,6 +443,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ThamSo.resx">
       <DependentUpon>ThamSo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ThamSo2.resx">
+      <DependentUpon>ThamSo2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TyGia.resx">
       <DependentUpon>TyGia.cs</DependentUpon>

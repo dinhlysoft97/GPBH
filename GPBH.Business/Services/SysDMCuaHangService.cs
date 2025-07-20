@@ -113,40 +113,44 @@ namespace GPBH.Business.Services
                 var systemSettings = unitOfWork.Repository<SystemSetting>()
                     .Find(s => s.Ma_cua_hang == maCH && listKey.Contains(s.Key))
                     .ToList();
-                if (systemSettings.Any())
-                {
-                    return (systemSettings.Adapt<List<GirdSystemSettingDto>>(), true);
-                }
-                else
-                {
-                    return 
-                        (
-                        new List<GirdSystemSettingDto>()
-                        {
+
+                var cuaHang = unitOfWork.Repository<SysDMCuaHang>()
+                    .Find(s => s.Ma_cua_hang == maCH).FirstOrDefault();
+
+                //if (systemSettings.Any())
+                //{
+                //    return (systemSettings.Adapt<List<GirdSystemSettingDto>>(), true);
+                //}
+                //else
+                //{
+                return
+                    (
+                    new List<GirdSystemSettingDto>()
+                    {
                             new GirdSystemSettingDto
                             {
                                 Key = nameof(SysDMCuaHang.Han_muc_tm),
                                 Ten = "Hạn mức giao dịch tiền mặt",
-                                GiaTri = "15000000",
+                                GiaTri = cuaHang.Han_muc_tm.ToString("0.##"),
                                 Mota = "Là hạn mức áp dụng khi khách hàng thanh toán tiền mặt, quy đổi ra VND",
                             },
                             new GirdSystemSettingDto
                             {
                                 Key = nameof(SysDMCuaHang.Ma_cqt),
                                 Ten = "Mã cơ quan thuế",
-                                GiaTri = "",
+                                GiaTri = cuaHang.Ma_cqt,
                                 Mota = "Mã cơ quan thuế",
                             },
                             new GirdSystemSettingDto
                             {
                                 Key = nameof(SysDMCuaHang.Ma_nt),
                                 Ten = "Loại tiền áp dụng khi bán hàng",
-                                GiaTri = "USD",
+                                GiaTri = cuaHang.Ma_nt,
                                 Mota = "Là mã tiền tệ được áp dụng quy đổi chuẩn khi bán hàng, các loại tiền thanh toán sẽ được quy đổi theo tỷ giá về loại tiền này",
                             }
-                        }, false);
-                }
+                    }, false);
             }
+            //  }
         }
 
         /// <summary>
@@ -190,6 +194,69 @@ namespace GPBH.Business.Services
                         cuaHang.Han_muc_tm = hanMucTm;
                         cuaHang.Ma_cqt = entities.FirstOrDefault(x => x.Key == nameof(SysDMCuaHang.Ma_cqt))?.GiaTri ?? cuaHang.Ma_cqt;
                         cuaHang.Ma_nt = entities.FirstOrDefault(x => x.Key == nameof(SysDMCuaHang.Ma_nt))?.GiaTri ?? cuaHang.Ma_nt;
+                        unitOfWork.Repository<SysDMCuaHang>().Update(cuaHang);
+
+                    }
+                    unitOfWork.SaveChanges();
+                    unitOfWork.Commit();
+                }
+                catch (Exception ex)
+                {
+                    unitOfWork.Rollback();
+                    throw new BadRequestException(ex.Message);
+                }
+
+            }
+        }
+
+        /// <summary>
+        /// Lưu các tham số hệ thống cho cửa hàng.
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="maCH"></param>
+        public void LuuThamSo(GirdSystemSettingDto data, string maCH)
+        {
+            var entity = data.Adapt<SystemSetting>();
+            using (var scope = _serviceProvider.CreateScope())
+            {
+                var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
+                var repo = unitOfWork.Repository<SystemSetting>();
+                try
+                {
+                    unitOfWork.BeginTransaction();
+                    entity.Ma_cua_hang = maCH; // Đảm bảo mã cửa hàng được gán
+                    var existing = repo.Find(x => x.Ma_cua_hang == entity.Ma_cua_hang && x.Key == entity.Key).FirstOrDefault();
+                    if (existing != null)
+                    {
+                        existing.GiaTri = entity.GiaTri;
+                        existing.Mota = entity.Mota;
+                        existing.Ten = entity.Ten;
+                        repo.Update(existing);
+                    }
+                    else
+                    {
+                        repo.Add(entity);
+                    }
+
+                    // Update qua đối tượng SysDMCuaHang
+                    var cuaHang = unitOfWork.Repository<SysDMCuaHang>()
+                        .Find(u => u.Ma_cua_hang == maCH).FirstOrDefault();
+                    if (cuaHang != null)
+                    {
+                        if (entity.Key == nameof(SysDMCuaHang.Han_muc_tm))
+                        {
+                            decimal.TryParse(entity.GiaTri, out decimal hanMucTm);
+                            cuaHang.Han_muc_tm = hanMucTm;
+                        }
+                        if (entity.Key == nameof(SysDMCuaHang.Ma_cqt))
+                        {
+                            cuaHang.Ma_cqt = entity.GiaTri;
+                        }
+                        if (entity.Key == nameof(SysDMCuaHang.Ma_nt))
+                        {
+                            cuaHang.Ma_nt = entity.GiaTri;
+                        }
+
                         unitOfWork.Repository<SysDMCuaHang>().Update(cuaHang);
 
                     }
