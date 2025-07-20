@@ -24,7 +24,7 @@ namespace GPBH.Business.Services
             {
                 var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
                 return unitOfWork.Repository<DMQG>().GetAll()
-                    .Where(z => z.Ksd)
+                    .Where(z => z.Ksd == false)
                     .OrderBy(z => z.Quoc_gia)
                     .Select(z => new GridQuocGia
                     {

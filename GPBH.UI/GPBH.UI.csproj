@@ -358,11 +358,29 @@
     <Compile Include="UserControls\UserControlBanHangTheoKhachHang.Designer.cs">
       <DependentUpon>UserControlBanHangTheoKhachHang.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UserControlCa.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UserControlCa.Designer.cs">
+      <DependentUpon>UserControlCa.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UserControlDonHang.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControls\UserControlDonHang.Designer.cs">
       <DependentUpon>UserControlDonHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UserControlGiaBan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UserControlGiaBan.Designer.cs">
+      <DependentUpon>UserControlGiaBan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UserControlHangHoa.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UserControlHangHoa.Designer.cs">
+      <DependentUpon>UserControlHangHoa.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\UserControlKetQuaLoc.cs">
       <SubType>UserControl</SubType>
@@ -376,17 +394,35 @@
     <Compile Include="UserControls\UserControlKhachHang.Designer.cs">
       <DependentUpon>UserControlKhachHang.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UserControlNgoaiTe.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UserControlNgoaiTe.Designer.cs">
+      <DependentUpon>UserControlNgoaiTe.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UserControlNguoiSuDung.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControls\UserControlNguoiSuDung.Designer.cs">
       <DependentUpon>UserControlNguoiSuDung.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UserControlQuocGia.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UserControlQuocGia.Designer.cs">
+      <DependentUpon>UserControlQuocGia.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UserControlThamSo.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControls\UserControlThamSo.Designer.cs">
       <DependentUpon>UserControlThamSo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UserControlTyGia.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UserControlTyGia.Designer.cs">
+      <DependentUpon>UserControlTyGia.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Demo.resx">
       <DependentUpon>Demo.cs</DependentUpon>
@@ -468,8 +504,17 @@
     <EmbeddedResource Include="UserControls\UserControlBanHangTheoKhachHang.resx">
       <DependentUpon>UserControlBanHangTheoKhachHang.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UserControlCa.resx">
+      <DependentUpon>UserControlCa.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UserControlDonHang.resx">
       <DependentUpon>UserControlDonHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UserControlGiaBan.resx">
+      <DependentUpon>UserControlGiaBan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UserControlHangHoa.resx">
+      <DependentUpon>UserControlHangHoa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UserControlKetQuaLoc.resx">
       <DependentUpon>UserControlKetQuaLoc.cs</DependentUpon>
@@ -477,11 +522,20 @@
     <EmbeddedResource Include="UserControls\UserControlKhachHang.resx">
       <DependentUpon>UserControlKhachHang.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UserControlNgoaiTe.resx">
+      <DependentUpon>UserControlNgoaiTe.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UserControlNguoiSuDung.resx">
       <DependentUpon>UserControlNguoiSuDung.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UserControlQuocGia.resx">
+      <DependentUpon>UserControlQuocGia.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UserControlThamSo.resx">
       <DependentUpon>UserControlThamSo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UserControlTyGia.resx">
+      <DependentUpon>UserControlTyGia.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
