@@ -58,7 +58,8 @@ namespace GPBH.UI.UserControls
             ccbMaNgoaiTe.DataSource = _dmntService.GetAll();
             ccbMaNgoaiTe.DisplayMember = "Mã hàng";
             ccbMaNgoaiTe.ValueMember = "Ma_nt";
-            ccbMaNgoaiTe.SelectedIndex = -1;
+            var useIndex = ngoaiTeList.FindIndex(x => x.Ma_nt == "USD");
+            ccbMaNgoaiTe.SelectedIndex = useIndex >= 0 ? useIndex : -1;
         }
 
         private void btnIn_Click(object sender, System.EventArgs e)

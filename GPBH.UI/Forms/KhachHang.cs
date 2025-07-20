@@ -4,7 +4,6 @@ using GPBH.Data.Entities;
 using GPBH.UI.Helper;
 using System;
 using System.Collections.Generic;
-using System.Net.Sockets;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -61,6 +60,9 @@ namespace GPBH.UI.Forms
             _dmkhService = dmkhService;
             _dMQGService = dMQGService;
             _isSelectMode = isSelectMode;
+
+            LoadData();
+
             if (!string.IsNullOrEmpty(passport))
             {
                 var khachHang = _dmkhService.GetByPassport(passport);
@@ -155,6 +157,10 @@ namespace GPBH.UI.Forms
             txtTongTien.Text = khachHang.Han_muc?.ToString("#,##0") ?? "0";
             cbbGioiTinh.SelectedValue = khachHang.Gioi_tinh;
             cbbQuocTich.SelectedValue = khachHang.Quoc_gia;
+            this.Load += (s, e) =>
+            {
+                cbbQuocTich.SelectedValue = khachHang.Quoc_gia?.Trim();
+            };
         }
 
         /// <summary>
