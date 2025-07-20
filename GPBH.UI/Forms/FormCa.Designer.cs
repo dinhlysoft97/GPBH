@@ -41,6 +41,7 @@
             // 
             this.dataGridViewX1.AllowUserToAddRows = false;
             this.dataGridViewX1.AllowUserToDeleteRows = false;
+            this.dataGridViewX1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Ma_ca,
@@ -77,7 +78,6 @@
             this.Ten_ca.HeaderText = "Tên ca";
             this.Ten_ca.Name = "Ten_ca";
             this.Ten_ca.ReadOnly = true;
-            this.Ten_ca.Width = 300;
             // 
             // Gio_bd
             // 
@@ -85,7 +85,6 @@
             this.Gio_bd.HeaderText = "Giờ bắt đầu";
             this.Gio_bd.Name = "Gio_bd";
             this.Gio_bd.ReadOnly = true;
-            this.Gio_bd.Width = 150;
             // 
             // Gio_kt
             // 
@@ -93,7 +92,6 @@
             this.Gio_kt.HeaderText = "Giờ kết thúc";
             this.Gio_kt.Name = "Gio_kt";
             this.Gio_kt.ReadOnly = true;
-            this.Gio_kt.Width = 150;
             // 
             // FormCa
             // 

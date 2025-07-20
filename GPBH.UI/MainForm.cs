@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Drawing;
 using System.Linq;
+using System.Web.UI.WebControls;
 using System.Windows.Forms;
 
 namespace GPBH.UI
@@ -24,14 +25,21 @@ namespace GPBH.UI
             _sysMenuService = sysMenuService;
             BuildMenu();
             SetData();
+            this.KeyDown += MainForm_KeyDown; ;
             this.FormClosed += MainForm_FormClosed;
             this.FormClosing += MainForm_FormClosing;
             this.Load += MainForm_Load;
         }
 
+        private void MainForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            MessageBox.Show($"aaaaa{e.KeyCode}");
+        }
+
         private void MainForm_Load(object sender, EventArgs e)
         {
             OpenTab("DonHang", "Màn hình chính", ActivatorUtilities.CreateInstance<UserControlDonHang>(Program.ServiceProvider));
+            this.Focus();
         }
 
         private void SetData()
@@ -150,7 +158,20 @@ namespace GPBH.UI
             {
                 case "TaoDonHang":
                     form = ActivatorUtilities.CreateInstance<DonHang>(Program.ServiceProvider);
-                    break;   case "DonHang":
+                    if (form is DonHang formNew)
+                    {
+                        if (formNew.FormKhachHangIsClose)
+                        {
+                            formNew.Hide();
+                        }
+                        else
+                        {
+                            formNew.ShowDialog();
+                        }
+                        return;
+                    }
+                    break;
+                case "DonHang":
                     uc = ActivatorUtilities.CreateInstance<UserControlDonHang>(Program.ServiceProvider);
                     break;
                 case "BanHangTheoKhachHang":
@@ -196,7 +217,7 @@ namespace GPBH.UI
 
             if (form != null)
             {
-                form.Show();
+                form.ShowDialog();
             }
             else
             {
@@ -250,18 +271,30 @@ namespace GPBH.UI
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            // Ví dụ: hỏi người dùng xác nhận trước khi đóng
-            var result = MessageBox.Show("Bạn có chắc muốn thoát?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.No)
+            if (e.CloseReason == CloseReason.UserClosing)
             {
-                e.Cancel = true; // Ngăn không cho đóng form
-            }
-            else
-            {
-                foreach (Form frm in Application.OpenForms.OfType<Form>().ToList())
+                // Kiểm tra nếu ALT+F4
+                if ((ModifierKeys & Keys.Alt) == Keys.Alt)
                 {
-                    if (!(frm is MainForm))
-                        frm.Close();
+                    // Chặn đóng form
+                    e.Cancel = true;
+                }
+                else
+                {
+                    // Ví dụ: hỏi người dùng xác nhận trước khi đóng
+                    var result = MessageBox.Show("Bạn có chắc muốn thoát?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result == DialogResult.No)
+                    {
+                        e.Cancel = true; // Ngăn không cho đóng form
+                    }
+                    else
+                    {
+                        foreach (Form frm in Application.OpenForms.OfType<Form>().ToList())
+                        {
+                            if (!(frm is MainForm))
+                                frm.Close();
+                        }
+                    }
                 }
             }
         }

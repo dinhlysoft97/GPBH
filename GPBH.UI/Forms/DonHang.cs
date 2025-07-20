@@ -288,8 +288,8 @@ namespace GPBH.UI.Forms
         private void LoadDataCombobox()
         {
             ComboBoxHelper.BindData(cbbTt1_loai, _thanhToans, "Value", "Key", true);
-            ComboBoxHelper.BindData(cbbTt2_loai, _thanhToans, "Value", "Key", true);
-            ComboBoxHelper.BindData(cbbTt3_loai, _thanhToans, "Value", "Key", true);
+            ComboBoxHelper.BindData(cbbTt2_loai, new List<ThanhToan>(_thanhToans), "Value", "Key", true);
+            ComboBoxHelper.BindData(cbbTt3_loai, new List<ThanhToan>(_thanhToans), "Value", "Key", true);
 
             ComboBoxHelper.BindData(cbbTt1_ma_nt, _dMNTs, nameof(DMNT.Ma_nt), nameof(DMNT.Ma_nt), true);
             ComboBoxHelper.BindData(cbbTt2_ma_nt, new List<DMNT>(_dMNTs), nameof(DMNT.Ma_nt), nameof(DMNT.Ma_nt), true);
@@ -527,6 +527,8 @@ namespace GPBH.UI.Forms
                     if (item.IsNewRow) continue;
                     var row = item.DataBoundItem as XCT5Dto;
                     var maHang = row.Ma_hh?.ToString().Trim() ?? string.Empty;
+                    var gg_ty_le = row.Gg_ty_le;
+                    var gg_ly_do = row.Gg_ly_do;
                     if (string.IsNullOrEmpty(maHang))
                     {
                         MessageBox.Show("Mã hàng không được để trống!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -534,13 +536,23 @@ namespace GPBH.UI.Forms
                         dataGridView1_EditingControlShowing(null, null);
                         return false;
                     }
+
+                    if (gg_ty_le.HasValue && gg_ty_le.Value > 0)
+                    {
+                        if (string.IsNullOrEmpty(gg_ly_do))
+                        {
+                            MessageBox.Show("Lý do không được để trống!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            dataGridViewX1.CurrentCell = item.Cells["Gg_ly_do"];
+                            return false;
+                        }
+                    }
                 }
             }
 
-            if (txtTra_lai_nt.Value < 0)
+            if (txtTt1_tien_nt.Value == 0 && txtTt2_tien_nt.Value == 0 && txtTt3_tien_nt.Value == 0)
             {
-                MessageBoxEx.Show("Tổng trả đang bị âm!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtTra_lai_nt.Focus();
+                MessageBoxEx.Show("Chưa có nhập tiền thanh toán", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtTt1_tien_nt.Focus();
                 return false;
             }
 
@@ -552,6 +564,13 @@ namespace GPBH.UI.Forms
                 txtTong_nhan.Focus();
                 return false;
             }
+
+            //if (txtTra_lai_nt.Value < 0)
+            //{
+            //    MessageBoxEx.Show("Tổng trả đang bị âm!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    txtTra_lai_nt.Focus();
+            //    return false;
+            //}
 
             return true;
         }

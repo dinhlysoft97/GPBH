@@ -32,12 +32,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.cbbCuaHang = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.Ma_cua_hang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ngay_ap_dung = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ma_hh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Gia_ban = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cbbCuaHang = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.labelX1 = new DevComponents.DotNetBar.LabelX();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,6 +45,7 @@
             // 
             this.dataGridViewX1.AllowUserToAddRows = false;
             this.dataGridViewX1.AllowUserToDeleteRows = false;
+            this.dataGridViewX1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Ma_cua_hang,
@@ -67,6 +68,37 @@
             this.dataGridViewX1.Size = new System.Drawing.Size(1058, 549);
             this.dataGridViewX1.TabIndex = 2;
             this.dataGridViewX1.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridViewX1_RowPostPaint);
+            // 
+            // Ma_cua_hang
+            // 
+            this.Ma_cua_hang.DataPropertyName = "Ma_cua_hang";
+            this.Ma_cua_hang.HeaderText = "Mã cửa hàng";
+            this.Ma_cua_hang.Name = "Ma_cua_hang";
+            this.Ma_cua_hang.ReadOnly = true;
+            // 
+            // Ngay_ap_dung
+            // 
+            this.Ngay_ap_dung.DataPropertyName = "Ngay_ap_dung";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Ngay_ap_dung.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Ngay_ap_dung.HeaderText = "Ngày áp dụng";
+            this.Ngay_ap_dung.Name = "Ngay_ap_dung";
+            this.Ngay_ap_dung.ReadOnly = true;
+            // 
+            // Ma_hh
+            // 
+            this.Ma_hh.DataPropertyName = "Ma_hh";
+            this.Ma_hh.HeaderText = "Mã hàng hóa";
+            this.Ma_hh.Name = "Ma_hh";
+            this.Ma_hh.ReadOnly = true;
+            // 
+            // Gia_ban
+            // 
+            this.Gia_ban.DataPropertyName = "Gia_ban";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Gia_ban.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Gia_ban.HeaderText = "Giá bán";
+            this.Gia_ban.Name = "Gia_ban";
             // 
             // cbbCuaHang
             // 
@@ -93,41 +125,6 @@
             this.labelX1.Size = new System.Drawing.Size(50, 15);
             this.labelX1.TabIndex = 19;
             this.labelX1.Text = "Cửa hàng";
-            // 
-            // Ma_cua_hang
-            // 
-            this.Ma_cua_hang.DataPropertyName = "Ma_cua_hang";
-            this.Ma_cua_hang.HeaderText = "Mã cửa hàng";
-            this.Ma_cua_hang.Name = "Ma_cua_hang";
-            this.Ma_cua_hang.ReadOnly = true;
-            this.Ma_cua_hang.Width = 253;
-            // 
-            // Ngay_ap_dung
-            // 
-            this.Ngay_ap_dung.DataPropertyName = "Ngay_ap_dung";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.Ngay_ap_dung.DefaultCellStyle = dataGridViewCellStyle1;
-            this.Ngay_ap_dung.HeaderText = "Ngày áp dụng";
-            this.Ngay_ap_dung.Name = "Ngay_ap_dung";
-            this.Ngay_ap_dung.ReadOnly = true;
-            this.Ngay_ap_dung.Width = 253;
-            // 
-            // Ma_hh
-            // 
-            this.Ma_hh.DataPropertyName = "Ma_hh";
-            this.Ma_hh.HeaderText = "Mã hàng hóa";
-            this.Ma_hh.Name = "Ma_hh";
-            this.Ma_hh.ReadOnly = true;
-            this.Ma_hh.Width = 254;
-            // 
-            // Gia_ban
-            // 
-            this.Gia_ban.DataPropertyName = "Gia_ban";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.Gia_ban.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Gia_ban.HeaderText = "Giá bán";
-            this.Gia_ban.Name = "Gia_ban";
-            this.Gia_ban.Width = 230;
             // 
             // GiaBan
             // 

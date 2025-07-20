@@ -28,17 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.cbbCuaHang = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.labelX1 = new DevComponents.DotNetBar.LabelX();
+            this.btnLuu = new DevComponents.DotNetBar.ButtonX();
+            this.lbWarning = new DevComponents.DotNetBar.LabelX();
             this.Stt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Key = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ten = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GiaTri = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Mota = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cbbCuaHang = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.labelX1 = new DevComponents.DotNetBar.LabelX();
-            this.btnLuu = new DevComponents.DotNetBar.ButtonX();
-            this.lbWarning = new DevComponents.DotNetBar.LabelX();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -46,21 +46,21 @@
             // 
             this.dataGridViewX1.AllowUserToAddRows = false;
             this.dataGridViewX1.AllowUserToDeleteRows = false;
-            this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewX1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Stt,
             this.Key,
             this.Ten,
             this.GiaTri,
             this.Mota});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataGridViewX1.Location = new System.Drawing.Point(2, 34);
             this.dataGridViewX1.Name = "dataGridViewX1";
@@ -68,44 +68,6 @@
             this.dataGridViewX1.Size = new System.Drawing.Size(1303, 512);
             this.dataGridViewX1.TabIndex = 18;
             this.dataGridViewX1.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridViewX1_RowPostPaint);
-            // 
-            // Stt
-            // 
-            this.Stt.DataPropertyName = "Stt";
-            this.Stt.HeaderText = "Stt";
-            this.Stt.Name = "Stt";
-            this.Stt.ReadOnly = true;
-            this.Stt.Width = 253;
-            // 
-            // Key
-            // 
-            this.Key.DataPropertyName = "Key";
-            this.Key.HeaderText = "Key";
-            this.Key.Name = "Key";
-            this.Key.ReadOnly = true;
-            this.Key.Width = 253;
-            // 
-            // Ten
-            // 
-            this.Ten.DataPropertyName = "Ten";
-            this.Ten.HeaderText = "Tham số";
-            this.Ten.Name = "Ten";
-            this.Ten.ReadOnly = true;
-            this.Ten.Width = 254;
-            // 
-            // GiaTri
-            // 
-            this.GiaTri.DataPropertyName = "GiaTri";
-            this.GiaTri.HeaderText = "Giá trị";
-            this.GiaTri.Name = "GiaTri";
-            this.GiaTri.Width = 253;
-            // 
-            // Mota
-            // 
-            this.Mota.DataPropertyName = "Mota";
-            this.Mota.HeaderText = "Mô tả";
-            this.Mota.Name = "Mota";
-            this.Mota.Width = 253;
             // 
             // cbbCuaHang
             // 
@@ -158,6 +120,40 @@
             this.lbWarning.TabIndex = 22;
             this.lbWarning.Text = " Đây là data mẫu setup, vui lòng bấm cập nhật để lưu lại dữ liệu!";
             // 
+            // Stt
+            // 
+            this.Stt.DataPropertyName = "Stt";
+            this.Stt.HeaderText = "Stt";
+            this.Stt.Name = "Stt";
+            this.Stt.ReadOnly = true;
+            this.Stt.Visible = false;
+            // 
+            // Key
+            // 
+            this.Key.DataPropertyName = "Key";
+            this.Key.HeaderText = "Key";
+            this.Key.Name = "Key";
+            this.Key.ReadOnly = true;
+            // 
+            // Ten
+            // 
+            this.Ten.DataPropertyName = "Ten";
+            this.Ten.HeaderText = "Tham số";
+            this.Ten.Name = "Ten";
+            this.Ten.ReadOnly = true;
+            // 
+            // GiaTri
+            // 
+            this.GiaTri.DataPropertyName = "GiaTri";
+            this.GiaTri.HeaderText = "Giá trị";
+            this.GiaTri.Name = "GiaTri";
+            // 
+            // Mota
+            // 
+            this.Mota.DataPropertyName = "Mota";
+            this.Mota.HeaderText = "Mô tả";
+            this.Mota.Name = "Mota";
+            // 
             // ThamSo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -184,14 +180,14 @@
         #endregion
 
         private DevComponents.DotNetBar.Controls.DataGridViewX dataGridViewX1;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cbbCuaHang;
+        private DevComponents.DotNetBar.LabelX labelX1;
+        private DevComponents.DotNetBar.ButtonX btnLuu;
+        private DevComponents.DotNetBar.LabelX lbWarning;
         private System.Windows.Forms.DataGridViewTextBoxColumn Stt;
         private System.Windows.Forms.DataGridViewTextBoxColumn Key;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ten;
         private System.Windows.Forms.DataGridViewTextBoxColumn GiaTri;
         private System.Windows.Forms.DataGridViewTextBoxColumn Mota;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx cbbCuaHang;
-        private DevComponents.DotNetBar.LabelX labelX1;
-        private DevComponents.DotNetBar.ButtonX btnLuu;
-        private DevComponents.DotNetBar.LabelX lbWarning;
     }
 }
