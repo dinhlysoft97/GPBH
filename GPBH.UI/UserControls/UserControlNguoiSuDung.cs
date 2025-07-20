@@ -258,8 +258,18 @@ namespace GPBH.UI.UserControls
                 }
 
                 var tenDangNhap = dataGridViewX1.Rows[e.RowIndex].Cells["TenDangNhap"].Value?.ToString();
+
                 if (!string.IsNullOrEmpty(tenDangNhap))
-                {
+                {// check phải admin không thì không cho sửa
+
+                    var user = _sysDMNSDService.GetByTenDangNhap(tenDangNhap);
+                    if (user.IsAdmin)
+                    {
+                        // show admin không đc quyền
+                        MessageBoxEx.Show($"Không thể phân quyền cho người dùng {user.TenDangNhap} vì đã là admin!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
                     this.ShowForm<PhanQuyen>(tenDangNhap);
                 }
             }

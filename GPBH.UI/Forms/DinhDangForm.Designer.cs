@@ -207,7 +207,6 @@
             // 
             this.cbbCuaHang.DisplayMember = "Text";
             this.cbbCuaHang.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cbbCuaHang.Enabled = false;
             this.cbbCuaHang.FormattingEnabled = true;
             this.cbbCuaHang.ItemHeight = 14;
             this.cbbCuaHang.Location = new System.Drawing.Point(69, 6);

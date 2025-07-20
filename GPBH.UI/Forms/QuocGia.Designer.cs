@@ -39,6 +39,7 @@
             // 
             this.dataGridViewX1.AllowUserToAddRows = false;
             this.dataGridViewX1.AllowUserToDeleteRows = false;
+            this.dataGridViewX1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Quoc_gia,
@@ -66,7 +67,6 @@
             this.Quoc_gia.HeaderText = "Quốc Gia";
             this.Quoc_gia.Name = "Quoc_gia";
             this.Quoc_gia.ReadOnly = true;
-            this.Quoc_gia.Width = 253;
             // 
             // Ten_Quoc_gia
             // 
@@ -74,7 +74,6 @@
             this.Ten_Quoc_gia.HeaderText = "Tên quốc gia";
             this.Ten_Quoc_gia.Name = "Ten_Quoc_gia";
             this.Ten_Quoc_gia.ReadOnly = true;
-            this.Ten_Quoc_gia.Width = 253;
             // 
             // QuocGia
             // 

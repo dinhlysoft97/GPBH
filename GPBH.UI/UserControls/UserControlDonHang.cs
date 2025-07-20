@@ -60,8 +60,14 @@ namespace GPBH.UI.UserControls
             btnSua.Click += BtnSua_Click;
             btnXoa.Click += BtnXoa_Click;
             btnTim.Click += BtnTim_Click;
+            this.Load += UserControlDonHang_Load;
         }
 
+        private void UserControlDonHang_Load(object sender, EventArgs e)
+        {
+            dataGridViewX1.Focus();
+            dataGridViewX1.TabIndex = 0;
+        }
         #endregion
 
         #region Data Loading & Binding
@@ -225,6 +231,28 @@ namespace GPBH.UI.UserControls
             if (e.KeyCode == Keys.Delete)
             {
                 HandleXoa();
+            }
+            else if(e.KeyCode == Keys.F1)
+            {
+                BtnThem_Click(sender, null);
+            }
+            else if (e.KeyCode == Keys.F2)
+            {
+                BtnSua_Click(sender, null);
+            }
+            else if (e.KeyCode == Keys.F3)
+            {
+                e.Handled = true;
+            }
+            else if (e.KeyData == Keys.F4)
+            {
+                // F4 đơn thuần
+                BtnXoa_Click(sender, null);
+            }
+            else if (e.KeyData == (Keys.Alt | Keys.F4))
+            {
+                // Alt+F4
+                e.Handled = true;
             }
         }
 

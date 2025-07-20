@@ -1,11 +1,12 @@
 ﻿using DevComponents.DotNetBar;
-using DevComponents.DotNetBar.Controls;
 using GPBH.Business;
 using GPBH.Business.Dtos;
 using GPBH.Business.Services;
 using GPBH.UI.Constant;
 using GPBH.UI.Extentions;
+using GPBH.UI.Forms;
 using GPBH.UI.Helper;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Windows.Forms;
 
@@ -44,6 +45,7 @@ namespace GPBH.UI.UserControls
         private void RegisterEvents()
         {
             btnLuu.Click += BtnLuu_Click;
+            dataGridViewX1.CellDoubleClick += DataGridViewX1_CellDoubleClick;
         }
 
         #endregion
@@ -102,6 +104,24 @@ namespace GPBH.UI.UserControls
             var data = dataGridViewX1.GetData<GirdSystemSettingDto>();
             _sysDMCuaHangService.LuuThamSo(data, AppGlobals.MaCH);
             MessageBoxEx.Show("Cập nhật thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void DataGridViewX1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //if (e.RowIndex > 0 && e.ColumnIndex >= 0)
+            //{
+            var row = dataGridViewX1.Rows[e.RowIndex].DataBoundItem as GirdSystemSettingDto;
+            var key = row.Key;
+            var maCH = AppGlobals.MaCH;
+            if (!string.IsNullOrEmpty(key) && !string.IsNullOrEmpty(maCH))
+            {
+                var data = _sysDMCuaHangService.GetThamSo(maCH);
+                var dataKey = data.data.Find(x => x.Key == key);
+                var formNew = ActivatorUtilities.CreateInstance<ThamSo2>(Program.ServiceProvider, dataKey);
+                formNew.ShowDialog();
+                LoadData();
+            }
+            //  }
         }
 
         #endregion

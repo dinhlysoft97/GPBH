@@ -10,6 +10,6 @@ namespace GPBH.Business.Dtos
     {
         public string Quoc_gia { get; set; } // Mã quốc gia 
         public string Ten_Quoc_gia { get; set; } // Ten quốc gia 
-        public bool Ksd { get; set; } // Sử dụng
+        //public bool Ksd { get; set; } // Sử dụng
     }
 }
