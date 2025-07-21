@@ -14,6 +14,10 @@ namespace GPBH.UI.UserControls
             InitializeComponent();
             _dMcaService = dMcaService;
             LoadData();
+            dataGridViewX1.DataBindingComplete += (s, e) =>
+            {
+                dataGridViewX1.SetGirdReadOnly();
+            };
         }
 
         private void LoadData()

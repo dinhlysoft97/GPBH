@@ -33,7 +33,7 @@ namespace GPBH.Business.Dtos
         // Hạn mức
         public decimal? Han_muc { get; set; }
 
-        public string Ho_Ten { get; set; }
+        public string Ho_ten { get; set; }
 
     }
 }

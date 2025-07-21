@@ -23,7 +23,11 @@ namespace GPBH.UI.UserControls
             dataGridViewX1.CellFormatting += dataGridViewX1_CellFormatting;
             dataGridViewX1.CellDoubleClick += dataGridViewX1_CellDoubleClick;
             SepUpUI();
-            LoadData();
+            LoadData(); 
+            dataGridViewX1.DataBindingComplete += (s, e) =>
+            {
+                dataGridViewX1.SetGirdReadOnly();
+            };
         }
 
         private void SepUpUI()
@@ -33,15 +37,29 @@ namespace GPBH.UI.UserControls
             dataGridViewX1.SetFormat("Ngay_sinh", DateFormat);
             dataGridViewX1.SetFormat("Xnc_ngay_cap", DateFormat);
             dataGridViewX1.SetFormat("Xnc_ngay_hh", DateFormat);
+
+
+            // Thiết lập các cột hiển thị trong DataGridViewX
+            //dataGridViewX1.SetDisplayIndex("Passport", 0);
+            //dataGridViewX1.SetDisplayIndex("Ho_ten", 1);
+            //dataGridViewX1.SetDisplayIndex("Ngay_cap", 2);
+            //dataGridViewX1.SetDisplayIndex("Ngay_hh", 3);
+            //dataGridViewX1.SetDisplayIndex("Quoc_gia", 4);
+            //dataGridViewX1.SetDisplayIndex("Gioi_tinh", 5);
+            //dataGridViewX1.SetDisplayIndex("Ngay_sinh", 6);
+            //dataGridViewX1.SetDisplayIndex("Dia_chi", 7);
+            //dataGridViewX1.SetDisplayIndex("Dien_thoai", 8);
+            //dataGridViewX1.SetDisplayIndex("Email", 9);
+            //dataGridViewX1.SetDisplayIndex("Xnc_ngay_cap", 10);
+            //dataGridViewX1.SetDisplayIndex("Xnc_ngay_hh", 11);
+            //dataGridViewX1.SetDisplayIndex("So_hieu", 12);
+            //dataGridViewX1.SetDisplayIndex("Ten_tau_bay", 13);
+            //dataGridViewX1.SetDisplayIndex("Han_muc", 14);
         }
 
         private void LoadData()
         {
             var caList = _dmKHService.GetAll();
-            var col = dataGridViewX1.Columns["Ho_ten"];
-            if (col != null)
-                col.ReadOnly = true;
-
             DataGridViewFilterHelper.ApplyFilter(dataGridViewX1, caList);
         }
 
@@ -166,7 +184,7 @@ namespace GPBH.UI.UserControls
 
             var filtered = allList.Where(x =>
                 (!string.IsNullOrEmpty(x.Passport) && x.Passport.ToLower().Contains(keyword)) ||
-                (!string.IsNullOrEmpty(x.Ho_Ten) && x.Ho_Ten.ToLower().Contains(keyword)) ||
+                (!string.IsNullOrEmpty(x.Ho_ten) && x.Ho_ten.ToLower().Contains(keyword)) ||
                 (!string.IsNullOrEmpty(x.Dien_thoai) && x.Dien_thoai.ToLower().Contains(keyword)) ||
                 (!string.IsNullOrEmpty(x.Email) && x.Email.ToLower().Contains(keyword)) ||
                 (!string.IsNullOrEmpty(x.Dia_chi) && x.Dia_chi.ToLower().Contains(keyword))

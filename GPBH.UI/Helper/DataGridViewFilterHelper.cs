@@ -78,18 +78,41 @@ namespace GPBH.UI.Helper
                 grid.ColumnHeaderMouseClick += Grid_ColumnHeaderMouseClick;
             }
 
+            //private void SetGirdReadOnly()
+            //{
+            //    grid.Rows[0].DefaultCellStyle.BackColor = System.Drawing.Color.LightYellow;
+            //    grid.Rows[0].ReadOnly = false;
+            //    for (int j = 0; j < grid.Columns.Count; j++)
+            //        grid.Rows[0].Cells[0].ReadOnly = false;
+
+            //    for (int i = 1; i < grid.Rows.Count; i++)
+            //        for (int j = 0; j < grid.Columns.Count; j++)
+            //            grid.Rows[i].Cells[j].ReadOnly = true;
+
+            //    // Đặt riêng cell Stt của dòng filter là chỉ đọc
+            //    if (grid.Columns.Contains("Stt"))
+            //    {
+            //        var sttColumnIndex = grid.Columns["Stt"].Index;
+            //        grid.Rows[0].Cells[sttColumnIndex].ReadOnly = true;
+            //    }
+            //}
+
             private void SetGirdReadOnly()
             {
-                grid.Rows[0].DefaultCellStyle.BackColor = System.Drawing.Color.LightYellow;
-                grid.Rows[0].ReadOnly = false;
-                for (int j = 0; j < grid.Columns.Count; j++)
-                    grid.Rows[0].Cells[0].ReadOnly = false;
+                if (grid.Rows.Count == 0)
+                    return;
 
+                // Cho phép edit tất cả cell của dòng đầu tiên (filter row)
+                for (int j = 0; j < grid.Columns.Count; j++)
+                    grid.Rows[0].Cells[j].ReadOnly = false;
+                grid.Rows[0].DefaultCellStyle.BackColor = System.Drawing.Color.LightYellow;
+
+                // Các dòng còn lại: tất cả cell đều ReadOnly
                 for (int i = 1; i < grid.Rows.Count; i++)
                     for (int j = 0; j < grid.Columns.Count; j++)
                         grid.Rows[i].Cells[j].ReadOnly = true;
 
-                // Đặt riêng cell Stt của dòng filter là chỉ đọc
+                // Nếu có cột Stt thì riêng cell Stt của dòng filter là chỉ đọc
                 if (grid.Columns.Contains("Stt"))
                 {
                     var sttColumnIndex = grid.Columns["Stt"].Index;

@@ -12,7 +12,11 @@ namespace GPBH.UI.UserControls
         {
             InitializeComponent();
             _dmNTService = dMNTService;
-            LoadData();
+            LoadData(); 
+            dataGridViewX1.DataBindingComplete += (s, e) =>
+            {
+                dataGridViewX1.SetGirdReadOnly();
+            };
         }
 
         private void LoadData()

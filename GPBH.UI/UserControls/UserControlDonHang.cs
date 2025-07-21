@@ -85,10 +85,13 @@ namespace GPBH.UI.UserControls
             dataGridViewX1.DataBindingComplete += (s, e) =>
             {
                 SetFormRowTheoCuaHang();
+                dataGridViewX1.SetGirdReadOnly();
             };
             dataGridViewX1.Columns["Stt"].Visible = false; // ẩn cột Stt trong lưới detail
+          
         }
 
+       
         /// <summary>
         /// Tìm kiếm theo từ khóa và bind lại dữ liệu.
         /// </summary>

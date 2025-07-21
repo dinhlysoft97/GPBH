@@ -26,6 +26,10 @@ namespace GPBH.UI.UserControls
             SysDinhDangs = _sysDinh_Dang_FormService.GetDinhDang(AppGlobals.MaCH).data;
             SetUpUI();
             LoadData();
+            dataGridViewX1.DataBindingComplete += (s, e) =>
+            {
+                dataGridViewX1.SetGirdReadOnly();
+            };
         }
 
         private void SetUpUI()

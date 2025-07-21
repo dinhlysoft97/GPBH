@@ -40,7 +40,7 @@ namespace GPBH.Business.Services
                         So_hieu = z.So_hieu,
                         Ten_tau_bay = z.Ten_tau_bay,
                         Han_muc = z.Han_muc,
-                        Ho_Ten = $"{z.Ho} {z.Ten_dem} {z.Ten}".Trim()
+                        Ho_ten = $"{z.Ho} {z.Ten_dem} {z.Ten}".Trim()
 
                     })
                     .OrderBy(z => z.Passport)
