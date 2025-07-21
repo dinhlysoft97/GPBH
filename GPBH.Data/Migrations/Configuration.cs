@@ -194,12 +194,12 @@ namespace GPBH.Data.Migrations
             {
                 var fakeNgoaiTeList = new List<DMNT>
                 {
-                    new DMNT { Ma_nt = "VND", Ksd = true },
-                    new DMNT { Ma_nt = "USD", Ksd = true },
-                    new DMNT { Ma_nt = "EUR", Ksd = true },
-                    new DMNT { Ma_nt = "JPY", Ksd = true },
-                    new DMNT { Ma_nt = "THB", Ksd = true },
-                    new DMNT { Ma_nt = "AUD", Ksd = true }
+                    new DMNT { Ma_nt = "VND", Ksd = false },
+                    new DMNT { Ma_nt = "USD", Ksd = false },
+                    new DMNT { Ma_nt = "EUR", Ksd = false },
+                    new DMNT { Ma_nt = "JPY", Ksd = false },
+                    new DMNT { Ma_nt = "THB", Ksd = false },
+                    new DMNT { Ma_nt = "AUD", Ksd = false }
                 };
                 context.DMNT.AddRange(fakeNgoaiTeList);
                 context.SaveChanges();
@@ -242,7 +242,7 @@ namespace GPBH.Data.Migrations
                         Chieu_dai = 20.5m,
                         Trong_luong = 0.25m,
                         Chieu_cao = 5.2m,
-                        Ksd = true
+                        Ksd = false
                     },
                     new DMHH
                     {
@@ -257,7 +257,7 @@ namespace GPBH.Data.Migrations
                         Chieu_dai = 35.0m,
                         Trong_luong = 10.0m,
                         Chieu_cao = 25.0m,
-                        Ksd = true
+                        Ksd = false
                     },
                     new DMHH
                     {
@@ -272,7 +272,7 @@ namespace GPBH.Data.Migrations
                         Chieu_dai = 15.2m,
                         Trong_luong = 3.5m,
                         Chieu_cao = 8.7m,
-                        Ksd = true
+                        Ksd = false
                     },
                     new DMHH
                     {
@@ -287,7 +287,7 @@ namespace GPBH.Data.Migrations
                         Chieu_dai = 40.0m,
                         Trong_luong = 12.0m,
                         Chieu_cao = 30.0m,
-                        Ksd = true
+                        Ksd = false
                     },
                     new DMHH
                     {
@@ -302,7 +302,7 @@ namespace GPBH.Data.Migrations
                         Chieu_dai = 6.5m,
                         Trong_luong = 0.5m,
                         Chieu_cao = 20.0m,
-                        Ksd = true
+                        Ksd = false
                     }
                 };
                 context.DMHH.AddRange(fakeHangHoaList);
@@ -368,7 +368,7 @@ namespace GPBH.Data.Migrations
                 {
                     Quoc_gia = "VN",
                     Ten_Quoc_gia = "Việt Nam",
-                    Ksd = true,
+                    Ksd = false,
                 });
                 context.SaveChanges();
             }

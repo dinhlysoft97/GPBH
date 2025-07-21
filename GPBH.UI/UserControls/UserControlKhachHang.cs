@@ -1,9 +1,12 @@
 ﻿using GPBH.Business.Services;
 using GPBH.UI.Constant;
 using GPBH.UI.Extentions;
+using GPBH.UI.Forms;
 using GPBH.UI.Helper;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -12,13 +15,24 @@ namespace GPBH.UI.UserControls
     public partial class UserControlKhachHang : UserControl
     {
         private readonly DMKHService _dmKHService;
+        private string DateFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern;
         public UserControlKhachHang(DMKHService dMKHService)
         {
             InitializeComponent();
             _dmKHService = dMKHService;
             dataGridViewX1.CellFormatting += dataGridViewX1_CellFormatting;
             dataGridViewX1.CellDoubleClick += dataGridViewX1_CellDoubleClick;
+            SepUpUI();
             LoadData();
+        }
+
+        private void SepUpUI()
+        {
+            dataGridViewX1.SetFormat("Ngay_cap", DateFormat);
+            dataGridViewX1.SetFormat("Ngay_hh", DateFormat);
+            dataGridViewX1.SetFormat("Ngay_sinh", DateFormat);
+            dataGridViewX1.SetFormat("Xnc_ngay_cap", DateFormat);
+            dataGridViewX1.SetFormat("Xnc_ngay_hh", DateFormat);
         }
 
         private void LoadData()
@@ -64,7 +78,7 @@ namespace GPBH.UI.UserControls
             }
 
             // Lấy service quốc gia từ DI nếu cần, hoặc truyền null nếu không dùng
-            var form = new GPBH.UI.Forms.KhachHang(_dmKHService, Program.ServiceProvider.GetService(typeof(DMQGService)) as DMQGService, null, isSelectMode: true);
+            var form = ActivatorUtilities.CreateInstance<KhachHang>(Program.ServiceProvider, null, true);
             if (form.ShowDialog() == DialogResult.OK)
             {
                 LoadData();
@@ -86,7 +100,7 @@ namespace GPBH.UI.UserControls
             var khachHang = _dmKHService.GetByPassport(passport);
             if (khachHang == null) return;
 
-            var form = new GPBH.UI.Forms.KhachHang(_dmKHService, Program.ServiceProvider.GetService(typeof(DMQGService)) as DMQGService, passport, isSelectMode: true);
+            var form = ActivatorUtilities.CreateInstance<KhachHang>(Program.ServiceProvider, passport, true);
             form.DataKhachHang = khachHang;
 
             if (form.ShowDialog() == DialogResult.OK)
@@ -152,7 +166,7 @@ namespace GPBH.UI.UserControls
 
             var filtered = allList.Where(x =>
                 (!string.IsNullOrEmpty(x.Passport) && x.Passport.ToLower().Contains(keyword)) ||
-                (!string.IsNullOrEmpty(x.Ho_Ten) && x.Ho_Ten.ToLower().Contains(keyword)) ||             
+                (!string.IsNullOrEmpty(x.Ho_Ten) && x.Ho_Ten.ToLower().Contains(keyword)) ||
                 (!string.IsNullOrEmpty(x.Dien_thoai) && x.Dien_thoai.ToLower().Contains(keyword)) ||
                 (!string.IsNullOrEmpty(x.Email) && x.Email.ToLower().Contains(keyword)) ||
                 (!string.IsNullOrEmpty(x.Dia_chi) && x.Dia_chi.ToLower().Contains(keyword))

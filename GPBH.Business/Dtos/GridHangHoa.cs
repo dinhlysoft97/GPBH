@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GPBH.Business.Dtos
+﻿namespace GPBH.Business.Dtos
 {
     public class GridHangHoa
     {
@@ -19,6 +13,6 @@ namespace GPBH.Business.Dtos
         public decimal? Chieu_dai { get; set; }       // Chiều dài
         public decimal? Trong_luong { get; set; }     // Trọng lượng
         public decimal? Chieu_cao { get; set; }       // Chiều cao
-        public bool Ksd { get; set; }                 // Không sử dụng
+       // public bool Ksd { get; set; }                 // Không sử dụng
     }
 }

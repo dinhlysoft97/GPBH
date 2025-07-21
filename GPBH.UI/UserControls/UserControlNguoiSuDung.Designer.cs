@@ -204,14 +204,12 @@
             this.TenDangNhap.DataPropertyName = "TenDangNhap";
             this.TenDangNhap.HeaderText = "Tên đăng nhập";
             this.TenDangNhap.Name = "TenDangNhap";
-            this.TenDangNhap.ReadOnly = true;
             // 
             // TenDayDu
             // 
             this.TenDayDu.DataPropertyName = "TenDayDu";
             this.TenDayDu.HeaderText = "Tên đầy đủ";
             this.TenDayDu.Name = "TenDayDu";
-            this.TenDayDu.ReadOnly = true;
             // 
             // Ksd
             // 
@@ -241,28 +239,24 @@
             this.Ngay_sua.DataPropertyName = "Ngay_sua";
             this.Ngay_sua.HeaderText = "Ngày sửa";
             this.Ngay_sua.Name = "Ngay_sua";
-            this.Ngay_sua.ReadOnly = true;
             // 
             // Nguoi_sua
             // 
             this.Nguoi_sua.DataPropertyName = "Nguoi_sua";
             this.Nguoi_sua.HeaderText = "Người sửa";
             this.Nguoi_sua.Name = "Nguoi_sua";
-            this.Nguoi_sua.ReadOnly = true;
             // 
             // Ngay_tao
             // 
             this.Ngay_tao.DataPropertyName = "Ngay_tao";
             this.Ngay_tao.HeaderText = "Ngày tạo";
             this.Ngay_tao.Name = "Ngay_tao";
-            this.Ngay_tao.ReadOnly = true;
             // 
             // Nguoi_tao
             // 
             this.Nguoi_tao.DataPropertyName = "Nguoi_tao";
             this.Nguoi_tao.HeaderText = "Người tạo";
             this.Nguoi_tao.Name = "Nguoi_tao";
-            this.Nguoi_tao.ReadOnly = true;
             // 
             // UserControlNguoiSuDung
             // 

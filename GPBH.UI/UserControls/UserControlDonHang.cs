@@ -1,4 +1,5 @@
 ﻿using DevComponents.DotNetBar;
+using DevComponents.Editors;
 using GPBH.Business;
 using GPBH.Business.Dtos;
 using GPBH.Business.Services;
@@ -10,6 +11,7 @@ using GPBH.UI.Helper;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Windows.Forms;
 
 namespace GPBH.UI.UserControls
@@ -20,6 +22,7 @@ namespace GPBH.UI.UserControls
 
         private readonly DonHangService _donHangService;
         private readonly SysDMCuaHangService _sysDMCuaHangService;
+        private string DateFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern;
         private SysDMCuaHang CuaHang;
         private int _lastRowIndex = -1;
 
@@ -41,8 +44,6 @@ namespace GPBH.UI.UserControls
         /// </summary>
         private void InitializeUI()
         {
-            dtTu.Value = DateTime.Now.Date;
-            dtDen.Value = DateTime.Now.Date;
             SetUpUI();
             RegisterEvents();
             LoadData();
@@ -77,6 +78,8 @@ namespace GPBH.UI.UserControls
         /// </summary>
         private void LoadData()
         {
+            dtTu.Value = DateTime.Now.Date;
+            dtDen.Value = DateTime.Now.Date;
             var donHangs = _donHangService.TiemKiem(dtTu.Value.Date, dtTu.Value.Date, AppGlobals.MaCH);
             DataGridViewFilterHelper.ApplyFilter(dataGridViewX1, donHangs);
             dataGridViewX1.DataBindingComplete += (s, e) =>
@@ -145,6 +148,12 @@ namespace GPBH.UI.UserControls
         /// </summary>
         private void SetUpUI()
         {
+            dtTu.Format = eDateTimePickerFormat.Custom;
+            dtTu.CustomFormat = DateFormat;
+
+            dtDen.Format = eDateTimePickerFormat.Custom;
+            dtDen.CustomFormat = DateFormat;
+
             // Lưới master 
             // Kiểm tra nếu không có cột nào thì không cần làm gì 
             if (dataGridViewX1.Columns.Count == 0) return;
@@ -215,7 +224,7 @@ namespace GPBH.UI.UserControls
             dataGridViewX1.SetCellAlignment("Tra_lai_nt", DataGridViewContentAlignment.MiddleRight);
             dataGridViewX1.SetCellAlignment("Ty_gia", DataGridViewContentAlignment.MiddleRight);
 
-            dataGridViewX1.SetFormat("Ngay_chung_tu", "dd/MM/yyyy");
+            dataGridViewX1.SetFormat("Ngay_chung_tu", DateFormat);
         }
 
 

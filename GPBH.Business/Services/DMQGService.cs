@@ -42,7 +42,7 @@ namespace GPBH.Business.Services
             using (var scope = _serviceProvider.CreateScope())
             {
                 var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
-                return unitOfWork.Repository<DMQG>().Find(z => z.Quoc_gia == quoc_gia && z.Ksd).FirstOrDefault();
+                return unitOfWork.Repository<DMQG>().Find(z => z.Quoc_gia == quoc_gia && !z.Ksd).FirstOrDefault();
             }
         }
     }

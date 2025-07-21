@@ -178,7 +178,7 @@ namespace GPBH.UI
                     uc = ActivatorUtilities.CreateInstance<UserControlBanHangTheoKhachHang>(Program.ServiceProvider);
                     break;
                 case "DinhDangForm":
-                    form = ActivatorUtilities.CreateInstance<DinhDangForm>(Program.ServiceProvider);
+                    uc = ActivatorUtilities.CreateInstance<UserControlDinhDangForm>(Program.ServiceProvider);
                     break;
                 case "NguoiDung":
                     uc = ActivatorUtilities.CreateInstance<UserControlNguoiSuDung>(Program.ServiceProvider);
@@ -190,25 +190,25 @@ namespace GPBH.UI
                     form = ActivatorUtilities.CreateInstance<DoiMatKhau>(Program.ServiceProvider);
                     break;
                 case "Ca":
-                    form = ActivatorUtilities.CreateInstance<FormCa>(Program.ServiceProvider);
+                    uc = ActivatorUtilities.CreateInstance<UserControlCa>(Program.ServiceProvider);
                     break;
                 case "QuocGia":
-                    form = ActivatorUtilities.CreateInstance<QuocGia>(Program.ServiceProvider);
+                    uc = ActivatorUtilities.CreateInstance<UserControlQuocGia>(Program.ServiceProvider);
                     break;
                 case "KhachHang":
                     uc = ActivatorUtilities.CreateInstance<UserControlKhachHang>(Program.ServiceProvider);
                     break;
                 case "HangHoa":
-                    form = ActivatorUtilities.CreateInstance<HangHoa>(Program.ServiceProvider);
+                    uc = ActivatorUtilities.CreateInstance<UserControlHangHoa>(Program.ServiceProvider);
                     break;
                 case "NgoaiTe":
-                    form = ActivatorUtilities.CreateInstance<NgoaiTe>(Program.ServiceProvider);
+                    uc = ActivatorUtilities.CreateInstance<UserControlNgoaiTe>(Program.ServiceProvider);
                     break;
                 case "TyGia":
-                    form = ActivatorUtilities.CreateInstance<TyGia>(Program.ServiceProvider);
+                    uc = ActivatorUtilities.CreateInstance<UserControlTyGia>(Program.ServiceProvider);
                     break;
                 case "GiaBan":
-                    form = ActivatorUtilities.CreateInstance<GiaBan>(Program.ServiceProvider);
+                    uc = ActivatorUtilities.CreateInstance<UserControlGiaBan>(Program.ServiceProvider);
                     break;
                 default:
                     MessageBoxEx.Show("Bạn không có quyền truy cập!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

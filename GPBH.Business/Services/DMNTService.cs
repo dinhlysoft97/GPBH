@@ -23,7 +23,7 @@ namespace GPBH.Business.Services
             using (var scope = _serviceProvider.CreateScope())
             {
                 var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
-                return unitOfWork.Repository<DMNT>().Find(z => z.Ksd).OrderBy(z => z.Ma_nt).ToList();
+                return unitOfWork.Repository<DMNT>().Find(z => !z.Ksd).OrderBy(z => z.Ma_nt).ToList();
             }
         }
 
@@ -33,7 +33,7 @@ namespace GPBH.Business.Services
             using (var scope = _serviceProvider.CreateScope())
             {
                 var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
-                return unitOfWork.Repository<DMNT>().GetAll().Where(z => z.Ksd).OrderBy(z => z.Ma_nt)
+                return unitOfWork.Repository<DMNT>().GetAll().Where(z => !z.Ksd).OrderBy(z => z.Ma_nt)
                                    .Select(z => new GridNgoaiTe
                                    {
                                        Ma_nt = z.Ma_nt,
@@ -47,7 +47,7 @@ namespace GPBH.Business.Services
             using (var scope = _serviceProvider.CreateScope())
             {
                 var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
-                return unitOfWork.Repository<DMNT>().Find(z => z.Ma_nt == maNT && z.Ksd).FirstOrDefault();
+                return unitOfWork.Repository<DMNT>().Find(z => z.Ma_nt == maNT && !z.Ksd).FirstOrDefault();
             }
         }
     }

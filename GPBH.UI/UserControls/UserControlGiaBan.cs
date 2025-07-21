@@ -1,18 +1,17 @@
-﻿using DevComponents.DotNetBar;
-using GPBH.Business.Dtos;
+﻿using GPBH.Business.Dtos;
 using GPBH.Business.Services;
 using GPBH.UI.Extentions;
 using GPBH.UI.Helper;
 using System;
 using System.Windows.Forms;
 
-namespace GPBH.UI.Forms
+namespace GPBH.UI.UserControls
 {
-    public partial class GiaBan : Office2007Form
+    public partial class UserControlGiaBan : UserControl
     {
         private readonly SysDMCuaHangService _sysDMCuaHangService;
 
-        public GiaBan(SysDMCuaHangService sysDMCuaHangService)
+        public UserControlGiaBan(SysDMCuaHangService sysDMCuaHangService)
         {
             InitializeComponent();
             _sysDMCuaHangService = sysDMCuaHangService;

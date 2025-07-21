@@ -1,13 +1,13 @@
-﻿namespace GPBH.UI.Forms
+﻿namespace GPBH.UI.UserControls
 {
-    partial class QuocGia
+    partial class UserControlCa
     {
-        /// <summary>
+        /// <summary> 
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
+        /// <summary> 
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -20,18 +20,20 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
+        #region Component Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
+        /// <summary> 
+        /// Required method for Designer support - do not modify 
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.Quoc_gia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ten_Quoc_gia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ma_ca = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ten_ca = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Gio_bd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Gio_kt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -42,8 +44,10 @@
             this.dataGridViewX1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Quoc_gia,
-            this.Ten_Quoc_gia});
+            this.Ma_ca,
+            this.Ten_ca,
+            this.Gio_bd,
+            this.Gio_kt});
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -52,43 +56,54 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewX1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dataGridViewX1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataGridViewX1.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewX1.Name = "dataGridViewX1";
-            this.dataGridViewX1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataGridViewX1.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.dataGridViewX1.Size = new System.Drawing.Size(553, 534);
-            this.dataGridViewX1.TabIndex = 18;
+            this.dataGridViewX1.Size = new System.Drawing.Size(1445, 795);
+            this.dataGridViewX1.TabIndex = 19;
             this.dataGridViewX1.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridViewX1_RowPostPaint);
             // 
-            // Quoc_gia
+            // Ma_ca
             // 
-            this.Quoc_gia.DataPropertyName = "Quoc_gia";
-            this.Quoc_gia.HeaderText = "Quốc Gia";
-            this.Quoc_gia.Name = "Quoc_gia";
-            this.Quoc_gia.ReadOnly = true;
+            this.Ma_ca.DataPropertyName = "Ma_ca";
+            this.Ma_ca.HeaderText = "Mã ca";
+            this.Ma_ca.Name = "Ma_ca";
+            this.Ma_ca.ReadOnly = true;
+            this.Ma_ca.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
-            // Ten_Quoc_gia
+            // Ten_ca
             // 
-            this.Ten_Quoc_gia.DataPropertyName = "Ten_Quoc_gia";
-            this.Ten_Quoc_gia.HeaderText = "Tên quốc gia";
-            this.Ten_Quoc_gia.Name = "Ten_Quoc_gia";
-            this.Ten_Quoc_gia.ReadOnly = true;
+            this.Ten_ca.DataPropertyName = "Ten_ca";
+            this.Ten_ca.HeaderText = "Tên ca";
+            this.Ten_ca.Name = "Ten_ca";
+            this.Ten_ca.ReadOnly = true;
+            this.Ten_ca.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
-            // QuocGia
+            // Gio_bd
+            // 
+            this.Gio_bd.DataPropertyName = "Gio_bd";
+            this.Gio_bd.HeaderText = "Giờ bắt đầu";
+            this.Gio_bd.Name = "Gio_bd";
+            this.Gio_bd.ReadOnly = true;
+            this.Gio_bd.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // Gio_kt
+            // 
+            this.Gio_kt.DataPropertyName = "Gio_kt";
+            this.Gio_kt.HeaderText = "Giờ kết thúc";
+            this.Gio_kt.Name = "Gio_kt";
+            this.Gio_kt.ReadOnly = true;
+            this.Gio_kt.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // UserControlCa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(553, 533);
             this.Controls.Add(this.dataGridViewX1);
-            this.DoubleBuffered = true;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "QuocGia";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Quốc Gia";
+            this.Name = "UserControlCa";
+            this.Size = new System.Drawing.Size(1445, 795);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
             this.ResumeLayout(false);
 
@@ -96,9 +111,10 @@
 
         #endregion
 
-
         private DevComponents.DotNetBar.Controls.DataGridViewX dataGridViewX1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Quoc_gia;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ten_Quoc_gia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ma_ca;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ten_ca;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Gio_bd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Gio_kt;
     }
 }

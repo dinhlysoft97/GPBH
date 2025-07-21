@@ -123,12 +123,11 @@ namespace GPBH.UI.UserControls
             }
             //  }
         }
-
-        #endregion
-
         private void dataGridViewX1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
             dataGridViewX1.SetRowPositionPaint(e);
         }
+
+        #endregion
     }
 }

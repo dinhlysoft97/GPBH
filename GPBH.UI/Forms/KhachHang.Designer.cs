@@ -48,7 +48,6 @@
             this.txtEmail = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX9 = new DevComponents.DotNetBar.LabelX();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
-            this.txtTongTien = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.txtTauBay = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX14 = new DevComponents.DotNetBar.LabelX();
             this.txPhuongTien = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -63,12 +62,14 @@
             this.cbbGioiTinh = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.txtDiaChi = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX15 = new DevComponents.DotNetBar.LabelX();
+            this.txtTongTien = new DevComponents.Editors.DoubleInput();
             ((System.ComponentModel.ISupportInitialize)(this.dtNgayCap)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtHetHan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtNgaySinh)).BeginInit();
             this.groupPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtTTXNCHetHan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtTTXNCNgayCap)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTongTien)).BeginInit();
             this.SuspendLayout();
             // 
             // labelX1
@@ -461,19 +462,6 @@
             this.groupPanel1.TabIndex = 19;
             this.groupPanel1.Text = "Thông tin xuất nhập cảnh";
             // 
-            // txtTongTien
-            // 
-            // 
-            // 
-            // 
-            this.txtTongTien.Border.Class = "TextBoxBorder";
-            this.txtTongTien.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtTongTien.Location = new System.Drawing.Point(132, 78);
-            this.txtTongTien.Name = "txtTongTien";
-            this.txtTongTien.PreventEnterBeep = true;
-            this.txtTongTien.Size = new System.Drawing.Size(133, 20);
-            this.txtTongTien.TabIndex = 17;
-            // 
             // txtTauBay
             // 
             // 
@@ -524,7 +512,7 @@
             this.labelX13.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX13.Location = new System.Drawing.Point(19, 78);
             this.labelX13.Name = "labelX13";
-            this.labelX13.Size = new System.Drawing.Size(107, 29);
+            this.labelX13.Size = new System.Drawing.Size(152, 15);
             this.labelX13.TabIndex = 25;
             this.labelX13.Text = "Tổng tiền mua/hạn mức còn lại";
             this.labelX13.WordWrap = true;
@@ -720,6 +708,20 @@
             this.labelX15.TabIndex = 23;
             this.labelX15.Text = "Địa chỉ";
             // 
+            // txtTongTien
+            // 
+            // 
+            // 
+            // 
+            this.txtTongTien.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.txtTongTien.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtTongTien.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.txtTongTien.Increment = 1D;
+            this.txtTongTien.Location = new System.Drawing.Point(177, 78);
+            this.txtTongTien.Name = "txtTongTien";
+            this.txtTongTien.Size = new System.Drawing.Size(204, 20);
+            this.txtTongTien.TabIndex = 28;
+            // 
             // KhachHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -766,6 +768,7 @@
             this.groupPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtTTXNCHetHan)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtTTXNCNgayCap)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTongTien)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -793,7 +796,6 @@
         private DevComponents.DotNetBar.Controls.TextBoxX txtEmail;
         private DevComponents.DotNetBar.LabelX labelX9;
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanel1;
-        private DevComponents.DotNetBar.Controls.TextBoxX txtTongTien;
         private DevComponents.DotNetBar.Controls.TextBoxX txtTauBay;
         private DevComponents.DotNetBar.LabelX labelX14;
         private DevComponents.DotNetBar.Controls.TextBoxX txPhuongTien;
@@ -808,5 +810,6 @@
         private DevComponents.DotNetBar.Controls.ComboBoxEx cbbGioiTinh;
         private DevComponents.DotNetBar.Controls.TextBoxX txtDiaChi;
         private DevComponents.DotNetBar.LabelX labelX15;
+        private DevComponents.Editors.DoubleInput txtTongTien;
     }
 }

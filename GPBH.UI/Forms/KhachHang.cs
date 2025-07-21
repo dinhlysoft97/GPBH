@@ -1,9 +1,15 @@
 ﻿using DevComponents.DotNetBar;
+using DevComponents.Editors;
+using GPBH.Business;
+using GPBH.Business.Dtos;
 using GPBH.Business.Services;
 using GPBH.Data.Entities;
+using GPBH.UI.Extentions;
 using GPBH.UI.Helper;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -18,6 +24,9 @@ namespace GPBH.UI.Forms
         private bool isKhachHangSelected = false;
         private readonly bool _isSelectMode;
         private readonly bool _isEditMode;
+        private List<GirdSysDinhDangFormDto> SysDinhDangs;
+        private string DateFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern;
+        private SysDinh_dang_formService _sysDinh_Dang_FormService;
         private readonly List<GioiTinh> GioiTinhs = new List<GioiTinh>
         {
             new GioiTinh() { Key ="M" ,Value = "Nam" },
@@ -53,14 +62,16 @@ namespace GPBH.UI.Forms
 
         #region Constructor
 
-        public KhachHang(DMKHService dmkhService, DMQGService dMQGService, string passport, bool isSelectMode = false)
+        public KhachHang(DMKHService dmkhService, DMQGService dMQGService, SysDinh_dang_formService sysDinh_Dang_FormService, string passport, bool isSelectMode = false)
         {
             InitializeComponent();
             this.KeyPreview = true; // Cho phép bắt phím Enter trên toàn form
             _dmkhService = dmkhService;
             _dMQGService = dMQGService;
             _isSelectMode = isSelectMode;
-
+            _sysDinh_Dang_FormService = sysDinh_Dang_FormService;
+            SysDinhDangs = _sysDinh_Dang_FormService.GetDinhDang(AppGlobals.MaCH).data;
+            SetUpUI();
             LoadData();
 
             if (!string.IsNullOrEmpty(passport))
@@ -83,7 +94,6 @@ namespace GPBH.UI.Forms
                 _isEditMode = false;
             }
 
-            LoadData();
             RegisterEvents();
 
             if (!string.IsNullOrEmpty(passport))
@@ -95,9 +105,37 @@ namespace GPBH.UI.Forms
                 btnChon.Text = "Chọn(Enter)";
         }
 
+        private void SetUpUI()
+        {
+            dtNgayCap.Format = eDateTimePickerFormat.Custom;
+            dtNgayCap.CustomFormat = DateFormat;
+            
+            dtHetHan.Format = eDateTimePickerFormat.Custom;
+            dtHetHan.CustomFormat = DateFormat;
+
+            dtNgaySinh.Format = eDateTimePickerFormat.Custom;
+            dtNgaySinh.CustomFormat = DateFormat;
+
+            dtTTXNCNgayCap.Format = eDateTimePickerFormat.Custom;
+            dtTTXNCNgayCap.CustomFormat = DateFormat;
+
+            dtTTXNCHetHan.Format = eDateTimePickerFormat.Custom;
+            dtTTXNCHetHan.CustomFormat = DateFormat;
+
+
+            txtTongTien.DisplayFormat(GetFormat("Format_tien"));
+        }
+
         #endregion
 
         #region Private Methods
+        private string GetFormat(string column)
+        {
+            var dinhDang = SysDinhDangs.FirstOrDefault(z => z.Field_name == column);
+            if (dinhDang != null)
+                return dinhDang.Field_format;
+            return string.Empty;
+        }
 
         /// <summary>
         /// Load dữ liệu cho các combobox giới tính, quốc tịch.
@@ -173,12 +211,12 @@ namespace GPBH.UI.Forms
             txtTenDem.Text = "";
             txtDiaChi.Text = "";
             txtSDT.Text = "";
-            dtNgayCap.IsEmpty = true;
-            dtHetHan.IsEmpty = true;
-            dtNgaySinh.IsEmpty = true;
+            //dtNgayCap.IsEmpty = true;
+            //dtHetHan.IsEmpty = true;
+            //dtNgaySinh.IsEmpty = true;
             txtEmail.Text = "";
-            dtTTXNCNgayCap.IsEmpty = true;
-            dtTTXNCHetHan.IsEmpty = true;
+            //dtTTXNCNgayCap.IsEmpty = true;
+            //dtTTXNCHetHan.IsEmpty = true;
             txPhuongTien.Text = "";
             txtTauBay.Text = "";
             txtTongTien.Text = "0";

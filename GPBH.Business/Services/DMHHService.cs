@@ -24,7 +24,7 @@ namespace GPBH.Business.Services
             using (var scope = _serviceProvider.CreateScope())
             {
                 var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
-                return unitOfWork.Repository<DMHH>().Find(z => z.Ksd).OrderBy(z => z.Ma_hh).ToList();
+                return unitOfWork.Repository<DMHH>().Find(z => !z.Ksd).OrderBy(z => z.Ma_hh).ToList();
             }
         }
 
@@ -34,7 +34,7 @@ namespace GPBH.Business.Services
             {
                 var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
 
-                return unitOfWork.Repository<DMHH>().GetAll().Where(z => z.Ksd).OrderBy(z => z.Ma_hh)
+                return unitOfWork.Repository<DMHH>().GetAll().Where(z => !z.Ksd).OrderBy(z => z.Ma_hh)
                     .Select(z => new GridHangHoa
                     {
                         Ma_hh = z.Ma_hh,
@@ -59,7 +59,7 @@ namespace GPBH.Business.Services
             using (var scope = _serviceProvider.CreateScope())
             {
                 var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
-                var hangHoa = unitOfWork.Repository<DMHH>().Find(z => z.Ma_hh == maHangHoa && z.Ksd).FirstOrDefault();
+                var hangHoa = unitOfWork.Repository<DMHH>().Find(z => z.Ma_hh == maHangHoa && !z.Ksd).FirstOrDefault();
                 if (hangHoa == null) return null;
 
                 // Get trong giá bàn ra nhỏ hơn hoặc bằng ngày hiện tại và order by theo ngày gần nhất.
