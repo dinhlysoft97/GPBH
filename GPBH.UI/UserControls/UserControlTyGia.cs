@@ -30,7 +30,7 @@ namespace GPBH.UI.UserControls
         {
             // Format cột
             dataGridViewX1.SetFormat("Ty_gia", GetFormat("Format_tien"));
-            dataGridViewX1.SetFormat("Ty_gia", DateFormat);
+            dataGridViewX1.SetFormat("Ngay_ap_dung", "dd/MM/yy");
         }
 
         private string GetFormat(string column)
