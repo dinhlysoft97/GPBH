@@ -15,6 +15,7 @@ namespace GPBH.UI.UserControls
         {
             InitializeComponent();
             _sysDMCuaHangService = sysDMCuaHangService;
+            dataGridViewX1.AutoGenerateColumns = false;
             LoadData();
             cbbCuaHang.SelectedIndexChanged += CbbCuaHang_SelectedIndexChanged;
         }
@@ -23,6 +24,11 @@ namespace GPBH.UI.UserControls
         {
             ComboBoxHelper.BindData(cbbCuaHang, _sysDMCuaHangService.GetAll(), "Ten_cua_hang", "Ma_cua_hang");
             dataGridViewX1.BindData(_sysDMCuaHangService.GetGiaBanByCuaHang(cbbCuaHang.SelectedValue.ToString()));
+            if (dataGridViewX1.Columns.Contains("Ngay_ap_dung"))
+            {
+                var colNgayApDung = dataGridViewX1.Columns["Ngay_ap_dung"];
+                colNgayApDung.DefaultCellStyle.Format = "dd/MM/yy";
+            }
         }
 
         private void CbbCuaHang_SelectedIndexChanged(object sender, EventArgs e)
