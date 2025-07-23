@@ -829,7 +829,7 @@ namespace GPBH.UI.Forms
             groupPanel5.Click += HideUcHangHoaOnClick;
             groupPanel6.Click += HideUcHangHoaOnClick;
             bar1.Click += HideUcHangHoaOnClick;
-            ucHangHoa.Tb.Click += UcHangHoaOnClick;
+            //ucHangHoa.Tb.Click += UcHangHoaOnClick;
             dataGridViewX1.Scroll += HideUcHangHoaOnScrollOrResize;
             dataGridViewX1.Resize += HideUcHangHoaOnScrollOrResize;
         }
