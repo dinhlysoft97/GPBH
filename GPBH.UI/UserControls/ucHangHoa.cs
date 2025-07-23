@@ -47,7 +47,7 @@ namespace GPBH.UI.UserControls
 
             // Thêm sự kiện click row
             dgv.CellClick += dgv_CellClick;
-            dgv.KeyDown += Tb_KeyDown;
+            dgv.KeyDown += TsDropDown_KeyDown;
             TsDropDown.KeyDown += TsDropDown_KeyDown;
         }
 
