@@ -1,4 +1,5 @@
-﻿using GPBH.Business.Services;
+﻿using GPBH.Business;
+using GPBH.Business.Services;
 using GPBH.UI.Extentions;
 using GPBH.UI.UserControls;
 using System;
@@ -37,8 +38,9 @@ namespace GPBH.UI.Forms
             string passport = ccbPassport.Text;
             DateTime tuNgay = dtpTuNgay.Value;
             DateTime denNgay = dtpDenNgay.Value;
+            string noiBan = AppGlobals.MaCH;
 
-            var dt = ReportBanHangService.GetBaoCaoBanTheoKhachHang(passport, maHangHoa, maNgoaiTe, maKhachHang, tuNgay, denNgay);
+            var dt = ReportBanHangService.GetBaoCaoBanTheoKhachHang(passport, maHangHoa, maNgoaiTe, maKhachHang, tuNgay, denNgay, noiBan);
 
             var uc = new UserControlKetQuaLoc(dt, tuNgay, denNgay, maNgoaiTe);
             var frm = new Form

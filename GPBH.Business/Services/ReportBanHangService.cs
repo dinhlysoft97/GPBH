@@ -11,7 +11,7 @@ namespace GPBH.Business.Services
 {
     public static class ReportBanHangService
     {
-        public static DataTable GetBaoCaoBanTheoKhachHang(string passport, string maHang, string maNgoaiTe, string maKhachHang, DateTime tuNgay, DateTime denNgay)
+        public static DataTable GetBaoCaoBanTheoKhachHang(string passport, string maHang, string maNgoaiTe, string maKhachHang, DateTime tuNgay, DateTime denNgay, string noiBan)
         {
             var dt = new DataTable();
             string connectionString = ConfigurationManager.ConnectionStrings["AppDbContext"].ConnectionString;
@@ -19,21 +19,16 @@ namespace GPBH.Business.Services
             using (var conn = new SqlConnection(connectionString))
             {
                 string query = @"
-                ;WITH cte AS (
-                SELECT  v.*,
-                        ROW_NUMBER() OVER(PARTITION BY So_don_hang ORDER BY Ngay_ban) AS rn 
-                        FROM    vw_BaoCaoBanTheoKhachHang v
-                        WHERE   (@Passport      IS NULL OR Passport      = @Passport)
-                          AND   (@Ma_hang       IS NULL OR Ma_hang       = @Ma_hang)
-                          AND   (@Ten_khachhang IS NULL OR Ten_khachhang LIKE '%'+@Ten_khachhang+'%')
-                          AND   (@Ma_ngoaite    IS NULL OR Ma_tra_lai    = @Ma_ngoaite)
-                          AND   (@TuNgay        IS NULL OR Ngay_ban      >= @TuNgay)
-                          AND   (@DenNgay       IS NULL OR Ngay_ban      <= @DenNgay)
-                )
-                SELECT *
-                FROM   cte
-                WHERE  rn = 1  
-                ORDER  BY So_don_hang";
+                SELECT *  FROM vw_BaoCaoBanTheoKhachHang
+                WHERE 
+                    (@Passport IS NULL OR Passport = @Passport)
+                    AND (@Ma_hang IS NULL OR Ma_hang = @Ma_hang)
+                    AND (@Ten_khachhang IS NULL OR Ten_khachhang LIKE '%' + @Ten_khachhang + '%')
+                    AND (@Ma_ngoaite IS NULL OR Ma_tra_lai = @Ma_ngoaite)
+                    AND (@TuNgay IS NULL OR Ngay_ban >= @TuNgay)
+                    AND (@DenNgay IS NULL OR Ngay_ban <= @DenNgay)
+                    AND (@Noi_ban IS NULL OR Noi_ban = @Noi_ban)
+                ORDER BY Ma_hang ASC";
 
                 using (var cmd = new SqlCommand(query, conn))
                 {
@@ -43,7 +38,8 @@ namespace GPBH.Business.Services
                     cmd.Parameters.AddWithValue("@Ma_ngoaite", string.IsNullOrEmpty(maNgoaiTe) ? (object)DBNull.Value : maNgoaiTe);
                     cmd.Parameters.AddWithValue("@DenNgay", denNgay == DateTime.MinValue ? (object)DBNull.Value : denNgay.Date);
                     cmd.Parameters.AddWithValue("@TuNgay", tuNgay == DateTime.MinValue ? (object)DBNull.Value : tuNgay.Date);
-                    
+                    cmd.Parameters.AddWithValue("@Noi_ban", string.IsNullOrEmpty(noiBan) ? (object)DBNull.Value : noiBan);
+
                     using (var da = new SqlDataAdapter(cmd))
                     {
                         da.Fill(dt);

@@ -30,6 +30,10 @@ namespace GPBH.UI.UserControls
             LoadDataCbb();
             SetUpUI();
             dataGridViewX1.DataBindingComplete += DataGridViewX1_DataBindingComplete;
+            foreach (DataGridViewColumn column in dataGridViewX1.Columns)
+            {
+                column.Resizable = DataGridViewTriState.True;
+            }
         }
 
         private void LoadDataCbb()
@@ -132,6 +136,14 @@ namespace GPBH.UI.UserControls
             dataGridViewX1.SetFormat("Tong_tien_hang_nt", GetFormat("Format_tien_nt"));
             dataGridViewX1.SetFormat("Thanh_tien_vn", GetFormat("Format_tien"));
 
+            dtpTuNgay.Format = DevComponents.Editors.eDateTimePickerFormat.Custom;
+            dtpTuNgay.CustomFormat = "dd/MM/yyyy";
+
+            dtpDenNgay.Format = DevComponents.Editors.eDateTimePickerFormat.Custom;
+            dtpDenNgay.CustomFormat = "dd/MM/yyyy";
+
+            var colNgayBan = dataGridViewX1.Columns["Ngay_ban"];
+            colNgayBan.DefaultCellStyle.Format = "dd/MM/yyyy";
         }
 
         private void buttonLoc_Click(object sender, EventArgs e)
@@ -149,7 +161,8 @@ namespace GPBH.UI.UserControls
             string passport = ccbPassport.SelectedValue?.ToString() ?? string.Empty;
             DateTime tuNgay = dtpTuNgay.Value;
             DateTime denNgay = dtpDenNgay.Value;
-            return ReportBanHangService.GetBaoCaoBanTheoKhachHang(passport, maHangHoa, maNgoaiTe, maKhachHang, tuNgay, denNgay);
+            string noiBan = AppGlobals.MaCH;
+            return ReportBanHangService.GetBaoCaoBanTheoKhachHang(passport, maHangHoa, maNgoaiTe, maKhachHang, tuNgay, denNgay, noiBan);
         }
 
         private void dataGridViewX1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
