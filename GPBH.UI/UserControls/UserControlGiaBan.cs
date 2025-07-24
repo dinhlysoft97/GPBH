@@ -27,12 +27,11 @@ namespace GPBH.UI.UserControls
             InitializeComponent();
             _sysDinh_Dang_FormService = sysDinh_Dang_FormService;
             _sysDMCuaHangService = sysDMCuaHangService;
+            SysDinhDangs = sysDinh_Dang_FormService.GetDinhDang(AppGlobals.MaCH).data;
             dataGridViewX1.AutoGenerateColumns = false;
             SysDinhDangs = _sysDinh_Dang_FormService.GetDinhDang(AppGlobals.MaCH).data;
             LoadData();
             cbbCuaHang.SelectedIndexChanged += CbbCuaHang_SelectedIndexChanged;
-
-            dataGridViewX1.SetFormat("Gia_ban", GetFormat("Format_gia_nt"));
         }
 
         private void LoadData()
@@ -44,6 +43,7 @@ namespace GPBH.UI.UserControls
                 var colNgayApDung = dataGridViewX1.Columns["Ngay_ap_dung"];
                 colNgayApDung.DefaultCellStyle.Format = DateFormat;
             }
+            dataGridViewX1.SetFormat("Gia_ban", GetFormat("Format_gia_nt"));
         }
 
         private void CbbCuaHang_SelectedIndexChanged(object sender, EventArgs e)
