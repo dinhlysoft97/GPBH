@@ -115,7 +115,6 @@ namespace GPBH.Business.Services
                         while (daTonTai);
 
                         entity.So_chung_tu = soChungTuMoi;
-
                         TinhTonKho(unitOfWork, entity);
                     }
 
@@ -174,11 +173,17 @@ namespace GPBH.Business.Services
                         while (daTonTai);
 
                         entity.So_chung_tu = soChungTuMoi;
+                        entity.Trang_thai = TrangThaiDonHang.Confirmed;
                         TinhTonKho(unitOfWork, entity);
                     }
+                    else if (donhang.Trang_thai == TrangThaiDonHang.Confirmed)
+                    {
+                        // cập nhật lại tồn kho
 
-                    // Update đơn hàng
-                    unitOfWork.Repository<XPH5>().Update(entity);
+                    }    
+
+                        // Update đơn hàng
+                        unitOfWork.Repository<XPH5>().Update(entity);
                     unitOfWork.SaveChanges();
                     unitOfWork.Commit();
 

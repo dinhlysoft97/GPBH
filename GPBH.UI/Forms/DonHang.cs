@@ -472,7 +472,7 @@ namespace GPBH.UI.Forms
             {
                 if (_data.Trang_thai == TrangThaiDonHang.Confirmed)
                 {
-                    MessageBoxEx.Show("Đơn hàng đã xuất kho không được cập nhật!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBoxEx.Show("Đơn hàng đã xuất kho không được lưu nháp!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
                 var validator = ValidatorData();
@@ -689,7 +689,8 @@ namespace GPBH.UI.Forms
             var listDonHang = dataGridViewX1.DataSource as BindingList<XCT5Dto>;
             if (listDonHang != null)
             {
-                donHangDto.XCT5s = listDonHang.ToList();
+                var list = listDonHang.Where(z => !string.IsNullOrEmpty(z.Ma_hh)).ToList();
+                donHangDto.XCT5s = list;
             }
             donHangDto.Tong_so_luong = donHangDto.XCT5s.Sum(x => x.So_luong);
 
@@ -829,7 +830,7 @@ namespace GPBH.UI.Forms
             groupPanel5.Click += HideUcHangHoaOnClick;
             groupPanel6.Click += HideUcHangHoaOnClick;
             bar1.Click += HideUcHangHoaOnClick;
-            //ucHangHoa.Tb.Click += UcHangHoaOnClick;
+            ucHangHoa.Tb.Click += UcHangHoaOnClick;
             dataGridViewX1.Scroll += HideUcHangHoaOnScrollOrResize;
             dataGridViewX1.Resize += HideUcHangHoaOnScrollOrResize;
         }
@@ -854,34 +855,60 @@ namespace GPBH.UI.Forms
         /// <param name="e">Event args chứa thông tin hàng hóa</param>
         private void AddOrUpdateHangHoaToGrid(HangHoaSelectedEventArgs e)
         {
-            // Tìm xem mã hàng đã có trong list chưa
-            var existed = listChiTiet.FirstOrDefault(x => x.Ma_hh == e.MaHH);
-            if (existed != null)
+            var aa = dataGridViewX1.SelectedRows.Count == 1;
+            DataGridViewRow row = dataGridViewX1.SelectedRows[0];
+            var item = row.DataBoundItem as XCT5Dto;
+            // check nếu mã mới # mã cũ của dòng có data thì update mã 
+            if (item != null && !string.IsNullOrEmpty(item.Ma_hh) && item.Ma_hh != e.MaHH)
             {
-                existed.So_luong += 1;
-                TinhToanRow(existed);
-            }
-            else if (listChiTiet.Any(z => z.Ma_hh == null))
-            {
-                var rowNull = listChiTiet.FirstOrDefault(x => x.Ma_hh == null);
-                rowNull.Ma_hh = e.MaHH;
-                TinhToanRow(rowNull);
+                var rowData = listChiTiet.FirstOrDefault(x => x.Ma_hh == e.MaHH);
+
+                if (rowData != null)
+                {
+                    rowData.Ma_hh = e.MaHH;
+                    TinhToanRow(rowData);
+                }
+                else
+                {
+                    var oldData = listChiTiet.FirstOrDefault(x => x.Ma_hh == item.Ma_hh);
+                    oldData.Ma_hh = e.MaHH;
+                    TinhToanRow(oldData);
+                }
+
+                TinhTongCong();
+                UpdateSTT();
             }
             else
             {
-                var newItem = new XCT5Dto
+                // Tìm xem mã hàng đã có trong list chưa
+                var existed = listChiTiet.FirstOrDefault(x => x.Ma_hh == e.MaHH);
+                if (existed != null)
                 {
-                    Ma_hh = e.MaHH,
-                    Ten_hh = e.TenHH,
-                    Dvt = e.Dvt,
-                    So_luong = 1,
-                    Gg_ty_le = 0 // gán mặc định nếu có
-                };
-                TinhToanRow(newItem);
-                listChiTiet.Add(newItem);
+                    existed.So_luong += 1;
+                    TinhToanRow(existed);
+                }
+                else if (listChiTiet.Any(z => z.Ma_hh == null))
+                {
+                    var rowNull = listChiTiet.FirstOrDefault(x => x.Ma_hh == null);
+                    rowNull.Ma_hh = e.MaHH;
+                    TinhToanRow(rowNull);
+                }
+                else
+                {
+                    var newItem = new XCT5Dto
+                    {
+                        Ma_hh = e.MaHH,
+                        Ten_hh = e.TenHH,
+                        Dvt = e.Dvt,
+                        So_luong = 1,
+                        Gg_ty_le = 0 // gán mặc định nếu có
+                    };
+                    TinhToanRow(newItem);
+                    listChiTiet.Add(newItem);
+                }
+                TinhTongCong();
+                UpdateSTT();
             }
-            TinhTongCong();
-            UpdateSTT();
         }
 
         /// <summary>
@@ -1037,8 +1064,9 @@ namespace GPBH.UI.Forms
         /// </summary>
         private void UcHangHoaOnClick(object sender, EventArgs e)
         {
-            //if (!string.IsNullOrEmpty(ucHangHoa.Tb.Text))
-            ucHangHoa.ShowDropDown();
+            // if (!string.IsNullOrEmpty(ucHangHoa.Tb.Text))
+            // ucHangHoa.ShowDropDown();
+            HideUcHangHoaPopup();
         }
 
         /// <summary>
@@ -1217,7 +1245,13 @@ namespace GPBH.UI.Forms
 
         private void bthTimHH_Click(object sender, EventArgs e)
         {
-            TimHangHang(sender, new KeyEventArgs(Keys.Enter));
+            ucHangHoa.ShowDropDown();
+            lbHH.Visible = false;
+            if (ucHangHoaPopup.Visible)
+            {
+                ucHangHoaPopup.Visible = false;
+                ucHangHoaPopup.TsDropDown.Close();
+            }
         }
         #endregion
     }
