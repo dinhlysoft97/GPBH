@@ -1,4 +1,5 @@
-﻿using GPBH.Business;
+﻿using DevComponents.DotNetBar.Controls;
+using GPBH.Business;
 using GPBH.Business.Dtos;
 using GPBH.Business.Services;
 using GPBH.UI.Extentions;
@@ -128,6 +129,10 @@ namespace GPBH.UI.UserControls
             dataGridViewX1.SetDisplayIndex("Thanh_tien", 7);
             dataGridViewX1.SetDisplayIndex("Thanh_tien_vn", 8);
 
+            dataGridViewX1.SetCellAlignment("So_luong", DataGridViewContentAlignment.MiddleRight);
+            dataGridViewX1.SetCellAlignment("Thanh_tien", DataGridViewContentAlignment.MiddleRight);
+            dataGridViewX1.SetCellAlignment("Thanh_tien_vn", DataGridViewContentAlignment.MiddleRight);
+
             // Format các cột tiền
             dataGridViewX1.SetFormat("Ty_gia", GetFormat("Format_gia"));
             dataGridViewX1.SetFormat("Tra_lai_nt", GetFormat("Format_tien_nt"));
@@ -135,6 +140,7 @@ namespace GPBH.UI.UserControls
             dataGridViewX1.SetFormat("Thanh_tien", GetFormat("Format_tien_nt"));
             dataGridViewX1.SetFormat("Tong_tien_hang_nt", GetFormat("Format_tien_nt"));
             dataGridViewX1.SetFormat("Thanh_tien_vn", GetFormat("Format_tien"));
+            dataGridViewX1.SetFormat("So_luong", GetFormat("Format_so_luong"));
 
             dtpTuNgay.Format = DevComponents.Editors.eDateTimePickerFormat.Custom;
             dtpTuNgay.CustomFormat = "dd/MM/yyyy";
