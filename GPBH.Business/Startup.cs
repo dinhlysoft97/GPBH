@@ -26,6 +26,7 @@ namespace GPBH.Business
             services.AddScoped<DonHangService>();
             services.AddScoped<SysDinh_dang_formService>();
             services.AddScoped<DMcaService>();
+            services.AddScoped<ReportBanHangService>();
         }
     }
 }

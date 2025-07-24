@@ -17,6 +17,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using static GPBH.UI.UserControls.ucHangHoa;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace GPBH.UI.Forms
 {
@@ -58,6 +59,7 @@ namespace GPBH.UI.Forms
         private bool _isChangeTien = false;
         private bool _isEdit = false;
         private XPH5Dto _data;
+        private bool _isView = false;
 
         private BindingList<XCT5Dto> listChiTiet = new BindingList<XCT5Dto>();
         private List<GirdSysDinhDangFormDto> SysDinhDangs;
@@ -80,7 +82,8 @@ namespace GPBH.UI.Forms
             DonHangService donHangService,
             DMKHService dMKHService,
             SysDinh_dang_formService sysDinh_Dang_FormService,
-            XPH5Dto data = null)
+            XPH5Dto data = null,
+            bool isView = false)
         {
             InitializeComponent();
 
@@ -101,6 +104,7 @@ namespace GPBH.UI.Forms
             isCurrencyVND = CuaHang.Ma_nt == GPBHConstant.CurrencyVND;
             _data = data;
             _isEdit = data != null;
+            _isView = isView;
             SetUpUI();
             if (!_isEdit)
                 LoadData();
@@ -386,6 +390,7 @@ namespace GPBH.UI.Forms
         // Xử lý sự kiện KeyDown
         private void Form_KeyDown(object sender, KeyEventArgs e)
         {
+            if (_isView) return;
             // Lưu và in
             if (e.KeyCode == Keys.F2)
             {

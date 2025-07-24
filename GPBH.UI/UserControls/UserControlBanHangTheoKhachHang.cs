@@ -3,11 +3,13 @@ using GPBH.Business.Dtos;
 using GPBH.Business.Services;
 using GPBH.UI.Extentions;
 using GPBH.UI.Forms;
+using GPBH.UI.Helper;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
+using static GPBH.UI.UserControls.UserControlDonHang;
 
 namespace GPBH.UI.UserControls
 {
@@ -17,14 +19,24 @@ namespace GPBH.UI.UserControls
         private readonly DMKHService _dmkhService;
         private readonly DMHHService _dmhhService;
         private readonly DMNTService _dmntService;
+        private readonly ReportBanHangService _reportBanHangService;
+        private readonly SysDinh_dang_formService _sysDinh_Dang_FormService;
 
-        public UserControlBanHangTheoKhachHang(SysDinh_dang_formService sysDinh_Dang_FormService, DMKHService dmkhService, DMHHService dmhhService, DMNTService dmntService)
+        public UserControlBanHangTheoKhachHang
+            (
+                SysDinh_dang_formService sysDinh_Dang_FormService,
+                DMKHService dmkhService, DMHHService dmhhService,
+                DMNTService dmntService,
+                ReportBanHangService reportBanHangService
+            )
         {
             InitializeComponent();
 
             _dmkhService = dmkhService;
             _dmhhService = dmhhService;
             _dmntService = dmntService;
+            _reportBanHangService = reportBanHangService;
+            _sysDinh_Dang_FormService = sysDinh_Dang_FormService;
             SysDinhDangs = sysDinh_Dang_FormService.GetDinhDang(AppGlobals.MaCH).data;
             dataGridViewX1.AutoGenerateColumns = false;
             LoadDataCbb();
@@ -74,6 +86,38 @@ namespace GPBH.UI.UserControls
             var data = GetData();
             var frm = new ReportBanHang(data, tuNgay, denNgay, maNgoaiTe);
             frm.ShowDialog();
+        }
+
+        private void btnExcel_Click(object sender, EventArgs e)
+        {
+            //var data = new List<MyData>
+            //{
+            //    new MyData { Ten = "Bút bi", SoLuong = 100, Gia = 3500, NgayTao = new DateTime(2025, 6, 1) },
+            //    new MyData { Ten = "Sách toán", SoLuong = 50, Gia = 22000, NgayTao = new DateTime(2025, 6, 2) },
+            //    new MyData { Ten = "Vở kẻ ngang", SoLuong = 200, Gia = 8000, NgayTao = new DateTime(2025, 6, 3) },
+            //    new MyData { Ten = "Thước kẻ", SoLuong = 75, Gia = 6000, NgayTao = new DateTime(2025, 6, 4) }
+            //};
+
+            // Lấy điều kiện lọc từ các control
+            string maKhachHang = ccbKhachHang.SelectedValue?.ToString() ?? string.Empty;
+            string maHangHoa = ccbMaHang.SelectedValue?.ToString() ?? string.Empty;
+            string maNgoaiTe = ccbMaNgoaiTe.SelectedValue?.ToString() ?? string.Empty;
+            string passport = ccbPassport.SelectedValue?.ToString() ?? string.Empty;
+            DateTime tuNgay = dtpTuNgay.Value;
+            DateTime denNgay = dtpDenNgay.Value;
+            string noiBan = AppGlobals.MaCH;
+
+            var data = _reportBanHangService.GetViewBaoCaoBanTheoKhachHang(passport, maHangHoa, maNgoaiTe, maKhachHang, tuNgay, denNgay, noiBan);
+            var fields = _sysDinh_Dang_FormService.GetDinhDang(AppGlobals.MaCH, "BanHangTheoKhachHang").data.Where(z => !z.Field_hide).ToList();
+            //var fields = new[]
+            //{
+            //    new { Property = "Ten", Header = "Tên", Width = 20d, Format = "" },
+            //    new { Property = "SoLuong", Header = "Số lượng", Width = 12d, Format = "#,##0" },
+            //    new { Property = "Gia", Header = "Giá", Width = 15d, Format = "#,##0.00" },
+            //    new { Property = "NgayTao", Header = "Ngày tạo", Width = 18d, Format = "dd/MM/yyyy" }
+            //};
+
+            ExportHelper.ExportToExcel(data, fields);
         }
 
         private void DataGridViewX1_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
@@ -162,7 +206,9 @@ namespace GPBH.UI.UserControls
             DateTime tuNgay = dtpTuNgay.Value;
             DateTime denNgay = dtpDenNgay.Value;
             string noiBan = AppGlobals.MaCH;
-            return ReportBanHangService.GetBaoCaoBanTheoKhachHang(passport, maHangHoa, maNgoaiTe, maKhachHang, tuNgay, denNgay, noiBan);
+
+            var data = _reportBanHangService.GetViewBaoCaoBanTheoKhachHang(passport, maHangHoa, maNgoaiTe, maKhachHang, tuNgay, denNgay, noiBan);
+            return _reportBanHangService.ToDataTable(data);
         }
 
         private void dataGridViewX1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)

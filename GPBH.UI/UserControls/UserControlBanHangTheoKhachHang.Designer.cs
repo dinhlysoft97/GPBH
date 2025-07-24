@@ -28,8 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.Stt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Noi_ban = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.So_chung_tu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ngay_ban = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Passport = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ten_khach = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tong_tien_hang_nt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ma_hang = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.So_luong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Thanh_tien = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Thanh_tien_vn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnIn = new DevComponents.DotNetBar.ButtonX();
             this.buttonLamMoi = new DevComponents.DotNetBar.ButtonX();
             this.ccbMaNgoaiTe = new DevComponents.DotNetBar.Controls.ComboBoxEx();
@@ -45,17 +56,7 @@
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.dtpDenNgay = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.dtpTuNgay = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
-            this.Stt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Noi_ban = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.So_chung_tu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ngay_ban = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Passport = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ten_khach = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tong_tien_hang_nt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ma_hang = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.So_luong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Thanh_tien = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Thanh_tien_vn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnExcel = new DevComponents.DotNetBar.ButtonX();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpDenNgay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpTuNgay)).BeginInit();
@@ -83,14 +84,14 @@
             this.So_luong,
             this.Thanh_tien,
             this.Thanh_tien_vn});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataGridViewX1.Location = new System.Drawing.Point(2, 104);
             this.dataGridViewX1.Margin = new System.Windows.Forms.Padding(2);
@@ -101,11 +102,90 @@
             this.dataGridViewX1.TabIndex = 10;
             this.dataGridViewX1.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridViewX1_RowPostPaint);
             // 
+            // Stt
+            // 
+            this.Stt.DataPropertyName = "Stt";
+            this.Stt.HeaderText = "Stt";
+            this.Stt.Name = "Stt";
+            this.Stt.ReadOnly = true;
+            // 
+            // Noi_ban
+            // 
+            this.Noi_ban.DataPropertyName = "Noi_ban";
+            this.Noi_ban.HeaderText = "Nơi bán";
+            this.Noi_ban.Name = "Noi_ban";
+            this.Noi_ban.ReadOnly = true;
+            // 
+            // So_chung_tu
+            // 
+            this.So_chung_tu.DataPropertyName = "So_don_hang";
+            this.So_chung_tu.HeaderText = "Số đơn hàng";
+            this.So_chung_tu.MinimumWidth = 6;
+            this.So_chung_tu.Name = "So_chung_tu";
+            this.So_chung_tu.ReadOnly = true;
+            // 
+            // Ngay_ban
+            // 
+            this.Ngay_ban.DataPropertyName = "Ngay_ban";
+            this.Ngay_ban.HeaderText = "Ngày bán";
+            this.Ngay_ban.MinimumWidth = 6;
+            this.Ngay_ban.Name = "Ngay_ban";
+            this.Ngay_ban.ReadOnly = true;
+            // 
+            // Passport
+            // 
+            this.Passport.DataPropertyName = "Passport";
+            this.Passport.HeaderText = "Hộ chiếu";
+            this.Passport.Name = "Passport";
+            this.Passport.ReadOnly = true;
+            // 
+            // Ten_khach
+            // 
+            this.Ten_khach.DataPropertyName = "Ten_khachhang";
+            this.Ten_khach.HeaderText = "Tên khách hàng";
+            this.Ten_khach.Name = "Ten_khach";
+            this.Ten_khach.ReadOnly = true;
+            // 
+            // Tong_tien_hang_nt
+            // 
+            this.Tong_tien_hang_nt.DataPropertyName = "Ten_hang";
+            this.Tong_tien_hang_nt.HeaderText = "Tên hàng";
+            this.Tong_tien_hang_nt.Name = "Tong_tien_hang_nt";
+            this.Tong_tien_hang_nt.ReadOnly = true;
+            // 
+            // Ma_hang
+            // 
+            this.Ma_hang.DataPropertyName = "Ma_hang";
+            this.Ma_hang.HeaderText = "Mã hàng";
+            this.Ma_hang.Name = "Ma_hang";
+            this.Ma_hang.ReadOnly = true;
+            // 
+            // So_luong
+            // 
+            this.So_luong.DataPropertyName = "So_luong";
+            this.So_luong.HeaderText = "Số lượng";
+            this.So_luong.Name = "So_luong";
+            this.So_luong.ReadOnly = true;
+            // 
+            // Thanh_tien
+            // 
+            this.Thanh_tien.DataPropertyName = "Thanh_tien";
+            this.Thanh_tien.HeaderText = "Thành tiền";
+            this.Thanh_tien.Name = "Thanh_tien";
+            this.Thanh_tien.ReadOnly = true;
+            // 
+            // Thanh_tien_vn
+            // 
+            this.Thanh_tien_vn.DataPropertyName = "Thanh_tien_vn";
+            this.Thanh_tien_vn.HeaderText = "Thành tiền VND";
+            this.Thanh_tien_vn.Name = "Thanh_tien_vn";
+            this.Thanh_tien_vn.ReadOnly = true;
+            // 
             // btnIn
             // 
             this.btnIn.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnIn.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnIn.Location = new System.Drawing.Point(555, 61);
+            this.btnIn.Location = new System.Drawing.Point(649, 10);
             this.btnIn.Name = "btnIn";
             this.btnIn.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btnIn.Size = new System.Drawing.Size(81, 23);
@@ -366,90 +446,24 @@
             this.dtpTuNgay.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.dtpTuNgay.TabIndex = 1;
             // 
-            // Stt
+            // btnExcel
             // 
-            this.Stt.DataPropertyName = "Stt";
-            this.Stt.HeaderText = "Stt";
-            this.Stt.Name = "Stt";
-            this.Stt.ReadOnly = true;
-            // 
-            // Noi_ban
-            // 
-            this.Noi_ban.DataPropertyName = "Noi_ban";
-            this.Noi_ban.HeaderText = "Nơi bán";
-            this.Noi_ban.Name = "Noi_ban";
-            this.Noi_ban.ReadOnly = true;
-            // 
-            // So_chung_tu
-            // 
-            this.So_chung_tu.DataPropertyName = "So_don_hang";
-            this.So_chung_tu.HeaderText = "Số đơn hàng";
-            this.So_chung_tu.MinimumWidth = 6;
-            this.So_chung_tu.Name = "So_chung_tu";
-            this.So_chung_tu.ReadOnly = true;
-            // 
-            // Ngay_ban
-            // 
-            this.Ngay_ban.DataPropertyName = "Ngay_ban";
-            this.Ngay_ban.HeaderText = "Ngày bán";
-            this.Ngay_ban.MinimumWidth = 6;
-            this.Ngay_ban.Name = "Ngay_ban";
-            this.Ngay_ban.ReadOnly = true;
-            // 
-            // Passport
-            // 
-            this.Passport.DataPropertyName = "Passport";
-            this.Passport.HeaderText = "Hộ chiếu";
-            this.Passport.Name = "Passport";
-            this.Passport.ReadOnly = true;
-            // 
-            // Ten_khach
-            // 
-            this.Ten_khach.DataPropertyName = "Ten_khachhang";
-            this.Ten_khach.HeaderText = "Tên khách hàng";
-            this.Ten_khach.Name = "Ten_khach";
-            this.Ten_khach.ReadOnly = true;
-            // 
-            // Tong_tien_hang_nt
-            // 
-            this.Tong_tien_hang_nt.DataPropertyName = "Ten_hang";
-            this.Tong_tien_hang_nt.HeaderText = "Tên hàng";
-            this.Tong_tien_hang_nt.Name = "Tong_tien_hang_nt";
-            this.Tong_tien_hang_nt.ReadOnly = true;
-            // 
-            // Ma_hang
-            // 
-            this.Ma_hang.DataPropertyName = "Ma_hang";
-            this.Ma_hang.HeaderText = "Mã hàng";
-            this.Ma_hang.Name = "Ma_hang";
-            this.Ma_hang.ReadOnly = true;
-            // 
-            // So_luong
-            // 
-            this.So_luong.DataPropertyName = "So_luong";
-            this.So_luong.HeaderText = "Số lượng";
-            this.So_luong.Name = "So_luong";
-            this.So_luong.ReadOnly = true;
-            // 
-            // Thanh_tien
-            // 
-            this.Thanh_tien.DataPropertyName = "Thanh_tien";
-            this.Thanh_tien.HeaderText = "Thành tiền";
-            this.Thanh_tien.Name = "Thanh_tien";
-            this.Thanh_tien.ReadOnly = true;
-            // 
-            // Thanh_tien_vn
-            // 
-            this.Thanh_tien_vn.DataPropertyName = "Thanh_tien_vn";
-            this.Thanh_tien_vn.HeaderText = "Thành tiền VND";
-            this.Thanh_tien_vn.Name = "Thanh_tien_vn";
-            this.Thanh_tien_vn.ReadOnly = true;
+            this.btnExcel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnExcel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnExcel.Location = new System.Drawing.Point(649, 35);
+            this.btnExcel.Name = "btnExcel";
+            this.btnExcel.Size = new System.Drawing.Size(81, 23);
+            this.btnExcel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnExcel.TabIndex = 41;
+            this.btnExcel.Text = "Xuất excel";
+            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
             // 
             // UserControlBanHangTheoKhachHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.btnExcel);
             this.Controls.Add(this.buttonLamMoi);
             this.Controls.Add(this.ccbMaNgoaiTe);
             this.Controls.Add(this.ccbMaHang);
@@ -505,5 +519,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn So_luong;
         private System.Windows.Forms.DataGridViewTextBoxColumn Thanh_tien;
         private System.Windows.Forms.DataGridViewTextBoxColumn Thanh_tien_vn;
+        private DevComponents.DotNetBar.ButtonX btnExcel;
     }
 }

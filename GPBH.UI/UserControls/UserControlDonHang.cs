@@ -356,7 +356,7 @@ namespace GPBH.UI.UserControls
                 if (!string.IsNullOrEmpty(maPhieu))
                 {
                     var data = _donHangService.GetDonHang(maPhieu);
-                    var formNew = ActivatorUtilities.CreateInstance<DonHang>(Program.ServiceProvider, data);
+                    var formNew = ActivatorUtilities.CreateInstance<DonHang>(Program.ServiceProvider, data, true);
                     formNew.ShowDialog();
                 }
             }
@@ -414,6 +414,7 @@ namespace GPBH.UI.UserControls
         private void buttonX1_Click(object sender, EventArgs e)
         {
             SetFormRowTheoCuaHang();
+
             var data = new List<MyData>
             {
                 new MyData { Ten = "Bút bi", SoLuong = 100, Gia = 3500, NgayTao = new DateTime(2025, 6, 1) },

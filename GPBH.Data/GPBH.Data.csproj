@@ -102,12 +102,17 @@
     <Compile Include="Entities\SysSoChungTu.cs" />
     <Compile Include="Entities\SystemSetting.cs" />
     <Compile Include="Entities\TokhaiHH.cs" />
+    <Compile Include="Entities\ViewBaoCaoKhacHang.cs" />
     <Compile Include="Entities\XCT5.cs" />
     <Compile Include="Entities\XPH5.cs" />
     <Compile Include="Helper\MigrationHelper.cs" />
     <Compile Include="Migrations\202507171436095_InitDb.cs" />
     <Compile Include="Migrations\202507171436095_InitDb.Designer.cs">
       <DependentUpon>202507171436095_InitDb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202507241727196_add-ViewBaoCaoKhacHang.cs" />
+    <Compile Include="Migrations\202507241727196_add-ViewBaoCaoKhacHang.Designer.cs">
+      <DependentUpon>202507241727196_add-ViewBaoCaoKhacHang.cs</DependentUpon>
     </Compile>
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Startup.cs" />
@@ -123,6 +128,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202507171436095_InitDb.resx">
       <DependentUpon>202507171436095_InitDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202507241727196_add-ViewBaoCaoKhacHang.resx">
+      <DependentUpon>202507241727196_add-ViewBaoCaoKhacHang.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

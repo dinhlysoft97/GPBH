@@ -82,10 +82,17 @@ namespace GPBH.UI
                 if (hasPermission && menu.Type == SysMenuType.Setting) nodeCaiDat.SubItems.Add(subMenu);
             }
 
-            group.SubItems.Add(nodeBanHang);
-            group.SubItems.Add(nodeBaoCao);
-            group.SubItems.Add(nodeDanhMuc);
-            group.SubItems.Add(nodeCaiDat);
+            if (nodeBanHang.SubItems.Count > 0)
+                group.SubItems.Add(nodeBanHang);
+
+            if (nodeBaoCao.SubItems.Count > 0)
+                group.SubItems.Add(nodeBaoCao);
+
+            if (nodeDanhMuc.SubItems.Count > 0)
+                group.SubItems.Add(nodeDanhMuc);
+
+            if (nodeCaiDat.SubItems.Count > 0)
+                group.SubItems.Add(nodeCaiDat);
             sideBar1.Panels.Add(group);
 
             // Gắn event click cho toàn bộ menu

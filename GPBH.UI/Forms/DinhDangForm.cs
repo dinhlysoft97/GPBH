@@ -8,6 +8,7 @@ using GPBH.UI.Constant;
 using GPBH.UI.Extentions;
 using GPBH.UI.Helper;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -17,6 +18,20 @@ namespace GPBH.UI.Forms
     {
         private readonly SysDinh_dang_formService _sysDinh_dang_formService;
         private readonly SysDMCuaHangService _sysDMCuaHangService;
+
+        sealed class DropDown
+        {
+            public string Key { get; set; }
+            public string Value { get; set; }
+        }
+
+        private readonly List<DropDown> _thanhToans = new List<DropDown>
+        {
+            new DropDown() { Key = "X05", Value = "Đơn hàng" },
+            new DropDown() { Key = "BanHangTheoKhachHang", Value = "Báo cáo khách hàng" }
+        };
+
+
         public DinhDangForm(SysDinh_dang_formService sysDinh_Dang_FormService, SysDMCuaHangService sysDMCuaHangService)
         {
             InitializeComponent();
@@ -31,12 +46,19 @@ namespace GPBH.UI.Forms
         {
             btnLuu.Click += BtnLuu_Click;
             cbbCuaHang.SelectedIndexChanged += CbbCuaHang_SelectedIndexChanged;
+            cbbCode.SelectedIndexChanged += CbbCode_SelectedIndexChanged; ;
             dataGridViewX1.CellClick += dataGridViewX1_CellClick;
+        }
+
+        private void CbbCode_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var resuft = _sysDinh_dang_formService.GetDinhDang(cbbCuaHang.SelectedValue.ToString(), cbbCode.SelectedValue.ToString());
+            dataGridViewX1.BindData(resuft.data);
         }
 
         private void CbbCuaHang_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var resuft = _sysDinh_dang_formService.GetDinhDang(cbbCuaHang.SelectedValue.ToString());
+            var resuft = _sysDinh_dang_formService.GetDinhDang(cbbCuaHang.SelectedValue.ToString(), cbbCode.SelectedValue.ToString());
             dataGridViewX1.BindData(resuft.data);
         }
 
@@ -57,9 +79,11 @@ namespace GPBH.UI.Forms
 
         private void LoadData()
         {
+            ComboBoxHelper.BindData(cbbCode, _thanhToans, "Value", "Key");
             ComboBoxHelper.BindData(cbbCuaHang, _sysDMCuaHangService.GetAll(), "Ten_cua_hang", "Ma_cua_hang");
             cbbCuaHang.SelectedValue = AppGlobals.MaCH;
-            var result = _sysDinh_dang_formService.GetDinhDang(cbbCuaHang.SelectedValue.ToString());
+            cbbCuaHang.SelectedValue = _thanhToans[0].Key;
+            var result = _sysDinh_dang_formService.GetDinhDang(cbbCuaHang.SelectedValue.ToString(), cbbCode.SelectedValue.ToString());
             dataGridViewX1.BindData(result.data);
             if (result.hasSave)
             {

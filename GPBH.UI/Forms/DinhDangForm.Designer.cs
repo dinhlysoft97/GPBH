@@ -47,6 +47,8 @@
             this.cbbCuaHang = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.btnLuu = new DevComponents.DotNetBar.ButtonX();
             this.lbWarning = new DevComponents.DotNetBar.LabelX();
+            this.cbbCode = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.labelX2 = new DevComponents.DotNetBar.LabelX();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -240,11 +242,38 @@
             this.lbWarning.TabIndex = 23;
             this.lbWarning.Text = " Đây là data mẫu setup, vui lòng bấm cập nhật để lưu lại dữ liệu!";
             // 
+            // cbbCode
+            // 
+            this.cbbCode.DisplayMember = "Text";
+            this.cbbCode.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbbCode.FormattingEnabled = true;
+            this.cbbCode.ItemHeight = 14;
+            this.cbbCode.Location = new System.Drawing.Point(377, 6);
+            this.cbbCode.Name = "cbbCode";
+            this.cbbCode.Size = new System.Drawing.Size(221, 20);
+            this.cbbCode.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbbCode.TabIndex = 26;
+            // 
+            // labelX2
+            // 
+            this.labelX2.AutoSize = true;
+            // 
+            // 
+            // 
+            this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX2.Location = new System.Drawing.Point(296, 8);
+            this.labelX2.Name = "labelX2";
+            this.labelX2.Size = new System.Drawing.Size(75, 15);
+            this.labelX2.TabIndex = 25;
+            this.labelX2.Text = "Loại định dạng";
+            // 
             // DinhDangForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1032, 656);
+            this.Controls.Add(this.cbbCode);
+            this.Controls.Add(this.labelX2);
             this.Controls.Add(this.lbWarning);
             this.Controls.Add(this.btnLuu);
             this.Controls.Add(this.cbbCuaHang);
@@ -283,5 +312,7 @@
         private DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn Default_sort;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ten_ban;
         private DevComponents.DotNetBar.LabelX lbWarning;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cbbCode;
+        private DevComponents.DotNetBar.LabelX labelX2;
     }
 }
