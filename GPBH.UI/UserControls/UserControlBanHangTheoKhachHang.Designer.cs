@@ -46,14 +46,14 @@
             this.dtpDenNgay = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.dtpTuNgay = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.Stt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Noi_ban = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.So_chung_tu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ngay_chung_tu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ngay_ban = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Passport = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ten_khach = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tong_tien_hang_nt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tong_nhan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tra_lai_nt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ty_gia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ma_hang = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.So_luong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Thanh_tien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Thanh_tien_vn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
@@ -73,14 +73,14 @@
             this.dataGridViewX1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Stt,
+            this.Noi_ban,
             this.So_chung_tu,
-            this.Ngay_chung_tu,
+            this.Ngay_ban,
             this.Passport,
             this.Ten_khach,
             this.Tong_tien_hang_nt,
-            this.Tong_nhan,
-            this.Tra_lai_nt,
-            this.Ty_gia,
+            this.Ma_hang,
+            this.So_luong,
             this.Thanh_tien,
             this.Thanh_tien_vn});
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -373,6 +373,13 @@
             this.Stt.Name = "Stt";
             this.Stt.ReadOnly = true;
             // 
+            // Noi_ban
+            // 
+            this.Noi_ban.DataPropertyName = "Noi_ban";
+            this.Noi_ban.HeaderText = "Nơi bán";
+            this.Noi_ban.Name = "Noi_ban";
+            this.Noi_ban.ReadOnly = true;
+            // 
             // So_chung_tu
             // 
             this.So_chung_tu.DataPropertyName = "So_don_hang";
@@ -381,18 +388,18 @@
             this.So_chung_tu.Name = "So_chung_tu";
             this.So_chung_tu.ReadOnly = true;
             // 
-            // Ngay_chung_tu
+            // Ngay_ban
             // 
-            this.Ngay_chung_tu.DataPropertyName = "Ngay_ban";
-            this.Ngay_chung_tu.HeaderText = "Ngày";
-            this.Ngay_chung_tu.MinimumWidth = 6;
-            this.Ngay_chung_tu.Name = "Ngay_chung_tu";
-            this.Ngay_chung_tu.ReadOnly = true;
+            this.Ngay_ban.DataPropertyName = "Ngay_ban";
+            this.Ngay_ban.HeaderText = "Ngày bán";
+            this.Ngay_ban.MinimumWidth = 6;
+            this.Ngay_ban.Name = "Ngay_ban";
+            this.Ngay_ban.ReadOnly = true;
             // 
             // Passport
             // 
             this.Passport.DataPropertyName = "Passport";
-            this.Passport.HeaderText = "Mã khách hàng";
+            this.Passport.HeaderText = "Hộ chiếu";
             this.Passport.Name = "Passport";
             this.Passport.ReadOnly = true;
             // 
@@ -405,31 +412,24 @@
             // 
             // Tong_tien_hang_nt
             // 
-            this.Tong_tien_hang_nt.DataPropertyName = "Tong_tien_hang_nt";
-            this.Tong_tien_hang_nt.HeaderText = "Tổng tiền hàng";
+            this.Tong_tien_hang_nt.DataPropertyName = "Ten_hang";
+            this.Tong_tien_hang_nt.HeaderText = "Tên hàng";
             this.Tong_tien_hang_nt.Name = "Tong_tien_hang_nt";
             this.Tong_tien_hang_nt.ReadOnly = true;
             // 
-            // Tong_nhan
+            // Ma_hang
             // 
-            this.Tong_nhan.DataPropertyName = "Tong_nhan";
-            this.Tong_nhan.HeaderText = "Khách trả";
-            this.Tong_nhan.Name = "Tong_nhan";
-            this.Tong_nhan.ReadOnly = true;
+            this.Ma_hang.DataPropertyName = "Ma_hang";
+            this.Ma_hang.HeaderText = "Mã hàng";
+            this.Ma_hang.Name = "Ma_hang";
+            this.Ma_hang.ReadOnly = true;
             // 
-            // Tra_lai_nt
+            // So_luong
             // 
-            this.Tra_lai_nt.DataPropertyName = "Tra_lai_nt";
-            this.Tra_lai_nt.HeaderText = "Trả lại";
-            this.Tra_lai_nt.Name = "Tra_lai_nt";
-            this.Tra_lai_nt.ReadOnly = true;
-            // 
-            // Ty_gia
-            // 
-            this.Ty_gia.DataPropertyName = "Ty_gia";
-            this.Ty_gia.HeaderText = "Tỷ giá";
-            this.Ty_gia.Name = "Ty_gia";
-            this.Ty_gia.ReadOnly = true;
+            this.So_luong.DataPropertyName = "So_luong";
+            this.So_luong.HeaderText = "Số lượng";
+            this.So_luong.Name = "So_luong";
+            this.So_luong.ReadOnly = true;
             // 
             // Thanh_tien
             // 
@@ -495,14 +495,14 @@
         private DevComponents.Editors.DateTimeAdv.DateTimeInput dtpDenNgay;
         private DevComponents.Editors.DateTimeAdv.DateTimeInput dtpTuNgay;
         private System.Windows.Forms.DataGridViewTextBoxColumn Stt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Noi_ban;
         private System.Windows.Forms.DataGridViewTextBoxColumn So_chung_tu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ngay_chung_tu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ngay_ban;
         private System.Windows.Forms.DataGridViewTextBoxColumn Passport;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ten_khach;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tong_tien_hang_nt;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Tong_nhan;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Tra_lai_nt;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ty_gia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ma_hang;
+        private System.Windows.Forms.DataGridViewTextBoxColumn So_luong;
         private System.Windows.Forms.DataGridViewTextBoxColumn Thanh_tien;
         private System.Windows.Forms.DataGridViewTextBoxColumn Thanh_tien_vn;
     }
