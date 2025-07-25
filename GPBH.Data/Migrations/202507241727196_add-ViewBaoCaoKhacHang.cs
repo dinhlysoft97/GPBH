@@ -8,8 +8,6 @@
         public override void Up()
         {
             Sql(@"
-                IF OBJECT_ID('vw_BaoCaoBanTheoKhachHang', 'V') IS NOT NULL
-                DROP VIEW vw_BaoCaoBanTheoKhachHang;
                 CREATE VIEW vw_BaoCaoBanTheoKhachHang AS
                 SELECT 
                     ph.Ma_cua_hang AS Noi_ban,

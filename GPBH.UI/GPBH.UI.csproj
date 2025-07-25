@@ -210,12 +210,6 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormDieuKienLoc.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FormDieuKienLoc.Designer.cs">
-      <DependentUpon>FormDieuKienLoc.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\DoiMatKhau.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -394,12 +388,6 @@
     <Compile Include="UserControls\UserControlHangHoa.Designer.cs">
       <DependentUpon>UserControlHangHoa.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\UserControlKetQuaLoc.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\UserControlKetQuaLoc.Designer.cs">
-      <DependentUpon>UserControlKetQuaLoc.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\UserControlKhachHang.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -455,9 +443,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DinhDangForm.resx">
       <DependentUpon>DinhDangForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormDieuKienLoc.resx">
-      <DependentUpon>FormDieuKienLoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\GiaBan.resx">
       <DependentUpon>GiaBan.cs</DependentUpon>
@@ -533,9 +518,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UserControlHangHoa.resx">
       <DependentUpon>UserControlHangHoa.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\UserControlKetQuaLoc.resx">
-      <DependentUpon>UserControlKetQuaLoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UserControlKhachHang.resx">
       <DependentUpon>UserControlKhachHang.cs</DependentUpon>

@@ -83,7 +83,7 @@ namespace GPBH.UI.UserControls
             DateTime denNgay = dtpDenNgay.Value;
             string maNgoaiTe = ccbMaNgoaiTe.SelectedValue?.ToString() ?? string.Empty;
             var data = GetData();
-            var frm = new ReportBanHang(data, tuNgay, denNgay, maNgoaiTe);
+            var frm = new ReportBanHang(data, tuNgay, denNgay, maNgoaiTe, SysDinhDangs);
             frm.ShowDialog();
         }
 
