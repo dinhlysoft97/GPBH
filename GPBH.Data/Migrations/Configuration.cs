@@ -60,7 +60,7 @@ namespace GPBH.Data.Migrations
                         Ma_kho = "KHO01",
                         So_to_khai = "123",
                         Ngay_nhap = new DateTime(2025, 6, 1),
-                        Ma_hh = "HH001",
+                        Ma_hh = "SP0001",
                         So_luong = 10,
                         Da_xuat = 0,
                         Con_lai = 10
@@ -71,7 +71,7 @@ namespace GPBH.Data.Migrations
                         Ma_kho = "KHO01",
                         So_to_khai = "456",
                         Ngay_nhap = new DateTime(2025, 6, 2),
-                        Ma_hh = "HH001",
+                        Ma_hh = "SP0001",
                         So_luong = 10,
                         Da_xuat = 0,
                         Con_lai = 10
@@ -82,7 +82,7 @@ namespace GPBH.Data.Migrations
                         Ma_kho = "KHO01",
                         So_to_khai = "123",
                         Ngay_nhap = new DateTime(2025, 6, 1),
-                        Ma_hh = "HH002",
+                        Ma_hh = "ABC123",
                         So_luong = 5,
                         Da_xuat = 0,
                         Con_lai = 5
@@ -93,7 +93,7 @@ namespace GPBH.Data.Migrations
                         Ma_kho = "KHO01",
                         So_to_khai = "456",
                         Ngay_nhap = new DateTime(2025, 6, 2),
-                        Ma_hh = "HH002",
+                        Ma_hh = "ABC123",
                         So_luong = 10,
                         Da_xuat = 0,
                         Con_lai = 10
@@ -158,28 +158,28 @@ namespace GPBH.Data.Migrations
                     {
                         Ma_cua_hang = "CH01",
                         Ngay_ap_dung = new DateTime(2025, 6, 1),
-                        Ma_hh = "HH001",
+                        Ma_hh = "SP0001",
                         Gia_ban = 5
                     },
                     new DMGB
                     {
                         Ma_cua_hang = "CH01",
                         Ngay_ap_dung = new DateTime(2025, 6, 10),
-                        Ma_hh = "HH002",
+                        Ma_hh = "ABC123",
                         Gia_ban = 6
                     },
                     new DMGB
                     {
                         Ma_cua_hang = "CH01",
                         Ngay_ap_dung = new DateTime(2025, 6, 1),
-                        Ma_hh = "HH002",
+                        Ma_hh = "ABC123",
                         Gia_ban = 6
                     },
                     new DMGB
                     {
                         Ma_cua_hang = "CH01",
                         Ngay_ap_dung = new DateTime(2025, 6, 1),
-                        Ma_hh = "HH003",
+                        Ma_hh = "X12YZ",
                         Gia_ban = 7
                     }
                 };
@@ -231,77 +231,77 @@ namespace GPBH.Data.Migrations
                 {
                     new DMHH
                     {
-                        Ma_hh = "HH001",
-                        Ten_hh = "Bánh quy AFC",
+                        Ma_hh = "SP0001",
+                        Ten_hh = "Trà xanh Lipton",
                         Dvt = "Hộp",
-                        Ma_nhom_hh = "NH01",
-                        Thuong_hieu = "Kinh Đô",
-                        Ma_nsx = "NSX01",
-                        Ten_nsx = "Công ty Kinh Đô",
+                        Ma_nhom_hh = "NH10",
+                        Thuong_hieu = "Lipton",
+                        Ma_nsx = "NSX11",
+                        Ten_nsx = "Lipton Việt Nam",
                         Nuoc_sx = "Việt Nam",
-                        Chieu_dai = 20.5m,
-                        Trong_luong = 0.25m,
-                        Chieu_cao = 5.2m,
+                        Chieu_dai = 18.0m,
+                        Trong_luong = 0.18m,
+                        Chieu_cao = 4.5m,
                         Ksd = false
                     },
                     new DMHH
                     {
-                        Ma_hh = "HH002",
-                        Ten_hh = "Sữa tươi Vinamilk",
-                        Dvt = "Thùng",
-                        Ma_nhom_hh = "NH02",
-                        Thuong_hieu = "Vinamilk",
-                        Ma_nsx = "NSX02",
-                        Ten_nsx = "Công ty Vinamilk",
+                        Ma_hh = "ABC123",
+                        Ten_hh = "Cà phê Trung Nguyên",
+                        Dvt = "Gói",
+                        Ma_nhom_hh = "NH11",
+                        Thuong_hieu = "Trung Nguyên",
+                        Ma_nsx = "NSX12",
+                        Ten_nsx = "Trung Nguyên Legend",
                         Nuoc_sx = "Việt Nam",
-                        Chieu_dai = 35.0m,
-                        Trong_luong = 10.0m,
-                        Chieu_cao = 25.0m,
-                        Ksd = false
-                    },
-                    new DMHH
-                    {
-                        Ma_hh = "HH003",
-                        Ten_hh = "Bột giặt Omo",
-                        Dvt = "Túi",
-                        Ma_nhom_hh = "NH03",
-                        Thuong_hieu = "Unilever",
-                        Ma_nsx = "NSX03",
-                        Ten_nsx = "Unilever Việt Nam",
-                        Nuoc_sx = "Việt Nam",
-                        Chieu_dai = 15.2m,
-                        Trong_luong = 3.5m,
-                        Chieu_cao = 8.7m,
-                        Ksd = false
-                    },
-                    new DMHH
-                    {
-                        Ma_hh = "HH004",
-                        Ten_hh = "Mì Hảo Hảo",
-                        Dvt = "Thùng",
-                        Ma_nhom_hh = "NH01",
-                        Thuong_hieu = "Acecook",
-                        Ma_nsx = "NSX04",
-                        Ten_nsx = "Acecook Việt Nam",
-                        Nuoc_sx = "Việt Nam",
-                        Chieu_dai = 40.0m,
-                        Trong_luong = 12.0m,
-                        Chieu_cao = 30.0m,
-                        Ksd = false
-                    },
-                    new DMHH
-                    {
-                        Ma_hh = "HH005",
-                        Ten_hh = "Nước suối Lavie",
-                        Dvt = "Chai",
-                        Ma_nhom_hh = "NH04",
-                        Thuong_hieu = "Lavie",
-                        Ma_nsx = "NSX05",
-                        Ten_nsx = "Nestlé Waters",
-                        Nuoc_sx = "Pháp",
-                        Chieu_dai = 6.5m,
+                        Chieu_dai = 11.0m,
                         Trong_luong = 0.5m,
-                        Chieu_cao = 20.0m,
+                        Chieu_cao = 8.0m,
+                        Ksd = false
+                    },
+                    new DMHH
+                    {
+                        Ma_hh = "X12YZ",
+                        Ten_hh = "Nước ép Vfresh",
+                        Dvt = "Chai",
+                        Ma_nhom_hh = "NH12",
+                        Thuong_hieu = "Vfresh",
+                        Ma_nsx = "NSX13",
+                        Ten_nsx = "Vinamilk",
+                        Nuoc_sx = "Việt Nam",
+                        Chieu_dai = 7.0m,
+                        Trong_luong = 0.35m,
+                        Chieu_cao = 17.0m,
+                        Ksd = false
+                    },
+                    new DMHH
+                    {
+                        Ma_hh = "QWERTY",
+                        Ten_hh = "Kem Wall's",
+                        Dvt = "Hộp",
+                        Ma_nhom_hh = "NH13",
+                        Thuong_hieu = "Wall's",
+                        Ma_nsx = "NSX14",
+                        Ten_nsx = "Unilever",
+                        Nuoc_sx = "Thái Lan",
+                        Chieu_dai = 10.0m,
+                        Trong_luong = 0.6m,
+                        Chieu_cao = 6.0m,
+                        Ksd = false
+                    },
+                    new DMHH
+                    {
+                        Ma_hh = "987ZYX",
+                        Ten_hh = "Yến sào Khánh Hoà",
+                        Dvt = "Hộp",
+                        Ma_nhom_hh = "NH14",
+                        Thuong_hieu = "Yến sào Khánh Hoà",
+                        Ma_nsx = "NSX15",
+                        Ten_nsx = "Công ty Yến sào Khánh Hoà",
+                        Nuoc_sx = "Việt Nam",
+                        Chieu_dai = 16.0m,
+                        Trong_luong = 0.25m,
+                        Chieu_cao = 5.0m,
                         Ksd = false
                     }
                 };

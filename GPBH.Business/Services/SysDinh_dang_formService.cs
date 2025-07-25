@@ -19,12 +19,12 @@ namespace GPBH.Business.Services
             _serviceProvider = serviceProvider;
         }
 
-        public (List<GirdSysDinhDangFormDto> data, bool hasSave) GetDinhDang(string maCH)
+        public (List<GirdSysDinhDangFormDto> data, bool hasSave) GetDinhDang(string maCH, string codeName = "X05")
         {
             using (var scope = _serviceProvider.CreateScope())
             {
                 var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
-                var sysDinhDangs = unitOfWork.Repository<SysDinh_dang_form>().Find(s => s.Ma_cua_hang == maCH)
+                var sysDinhDangs = unitOfWork.Repository<SysDinh_dang_form>().Find(s => s.Ma_cua_hang == maCH && s.Code_name == codeName)
                     .OrderBy(z => z.Stt).ToList();
 
                 if (sysDinhDangs != null && sysDinhDangs.Any())
@@ -52,83 +52,130 @@ namespace GPBH.Business.Services
                 else
                 {
                     var result = new List<GirdSysDinhDangFormDto>();
-                    var menu = unitOfWork.Repository<SysMenu>().Find(s => s.MenuId == "DonHang").FirstOrDefault();
-
-                    result.Add(new GirdSysDinhDangFormDto
+                    if (codeName == "X05") // đơn hàng
                     {
-                        Code_name = "X05",
-                        MenuId = menu.MenuId,
-                        MenuName = menu.MenuName,
-                        Field_name = "Format_so_luong",
-                        Field_type = "String",
-                        Field_title = "Format số lượng",
-                        Field_order = 0,
-                        Field_hide = false,
-                        Field_width = 0,
-                        Field_format = "#,##0",
-                        Default_sort = Sort.None,
-                    });
+                        var menu = unitOfWork.Repository<SysMenu>().Find(s => s.MenuId == "DonHang").FirstOrDefault();
+                        result.Add(new GirdSysDinhDangFormDto
+                        {
+                            Code_name = "X05",
+                            MenuId = menu.MenuId,
+                            MenuName = menu.MenuName,
+                            Field_name = "Format_so_luong",
+                            Field_type = "String",
+                            Field_title = "Format số lượng",
+                            Field_order = 0,
+                            Field_hide = false,
+                            Field_width = 0,
+                            Field_format = "#,##0",
+                            Default_sort = Sort.None,
+                        });
 
-                    result.Add(new GirdSysDinhDangFormDto
+                        result.Add(new GirdSysDinhDangFormDto
+                        {
+                            Code_name = "X05",
+                            MenuId = menu.MenuId,
+                            MenuName = menu.MenuName,
+                            Field_name = "Format_gia_nt",
+                            Field_type = "String",
+                            Field_title = "Format giá ngoại tệ",
+                            Field_order = 0,
+                            Field_hide = false,
+                            Field_width = 0,
+                            Field_format = "#,##0.00",
+                            Default_sort = Sort.None,
+                        });
+
+                        result.Add(new GirdSysDinhDangFormDto
+                        {
+                            Code_name = "X05",
+                            MenuId = menu.MenuId,
+                            MenuName = menu.MenuName,
+                            Field_name = "Format_gia",
+                            Field_type = "String",
+                            Field_title = "Format Giá",
+                            Field_order = 0,
+                            Field_hide = false,
+                            Field_width = 0,
+                            Field_format = "#,##0",
+                            Default_sort = Sort.None,
+                        });
+
+                        result.Add(new GirdSysDinhDangFormDto
+                        {
+                            Code_name = "X05",
+                            MenuId = menu.MenuId,
+                            MenuName = menu.MenuName,
+                            Field_name = "Format_tien_nt",
+                            Field_type = "String",
+                            Field_title = "Format tiền ngoại tệ",
+                            Field_order = 0,
+                            Field_hide = false,
+                            Field_width = 0,
+                            Field_format = "#,##0.000",
+                            Default_sort = Sort.None,
+                        });
+
+                        result.Add(new GirdSysDinhDangFormDto
+                        {
+                            Code_name = "X05",
+                            MenuId = menu.MenuId,
+                            MenuName = menu.MenuName,
+                            Field_name = "Format_tien",
+                            Field_type = "String",
+                            Field_title = "Format tiền",
+                            Field_order = 0,
+                            Field_hide = false,
+                            Field_width = 0,
+                            Field_format = "#,##0",
+                            Default_sort = Sort.None,
+                        });
+                    }
+                    else if (codeName == "BanHangTheoKhachHang")
                     {
-                        Code_name = "X05",
-                        MenuId = menu.MenuId,
-                        MenuName = menu.MenuName,
-                        Field_name = "Format_gia_nt",
-                        Field_type = "String",
-                        Field_title = "Format giá ngoại tệ",
-                        Field_order = 0,
-                        Field_hide = false,
-                        Field_width = 0,
-                        Field_format = "#,##0.00",
-                        Default_sort = Sort.None,
-                    });
+                        var menu = unitOfWork.Repository<SysMenu>().Find(s => s.MenuId == "BanHangTheoKhachHang").FirstOrDefault();
+                        var type = typeof(ViewBaoCaoKhacHang);
+                        int order = 0;
+                        foreach (var prop in type.GetProperties())
+                        {
+                            // Xác định kiểu dữ liệu cho Field_type và Field_format
+                            string fieldType;
+                            string fieldFormat;
+                            switch (Type.GetTypeCode(prop.PropertyType))
+                            {
+                                case TypeCode.Decimal:
+                                case TypeCode.Double:
+                                case TypeCode.Single:
+                                case TypeCode.Int32:
+                                case TypeCode.Int64:
+                                    fieldType = "Decimal";
+                                    fieldFormat = "#,##0.00";
+                                    break;
+                                case TypeCode.DateTime:
+                                    fieldType = "DateTime";
+                                    fieldFormat = "dd/MM/yyyy";
+                                    break;
+                                default:
+                                    fieldType = "String";
+                                    fieldFormat = "";
+                                    break;
+                            }
 
-                    result.Add(new GirdSysDinhDangFormDto
-                    {
-                        Code_name = "X05",
-                        MenuId = menu.MenuId,
-                        MenuName = menu.MenuName,
-                        Field_name = "Format_gia",
-                        Field_type = "String",
-                        Field_title = "Format Giá",
-                        Field_order = 0,
-                        Field_hide = false,
-                        Field_width = 0,
-                        Field_format = "#,##0",
-                        Default_sort = Sort.None,
-                    });
-
-                    result.Add(new GirdSysDinhDangFormDto
-                    {
-                        Code_name = "X05",
-                        MenuId = menu.MenuId,
-                        MenuName = menu.MenuName,
-                        Field_name = "Format_tien_nt",
-                        Field_type = "String",
-                        Field_title = "Format tiền ngoại tệ",
-                        Field_order = 0,
-                        Field_hide = false,
-                        Field_width = 0,
-                        Field_format = "#,##0.000",
-                        Default_sort = Sort.None,
-                    });
-
-                    result.Add(new GirdSysDinhDangFormDto
-                    {
-                        Code_name = "X05",
-                        MenuId = menu.MenuId,
-                        MenuName = menu.MenuName,
-                        Field_name = "Format_tien",
-                        Field_type = "String",
-                        Field_title = "Format tiền",
-                        Field_order = 0,
-                        Field_hide = false,
-                        Field_width = 0,
-                        Field_format = "#,##0",
-                        Default_sort = Sort.None,
-                    });
-
+                            result.Add(new GirdSysDinhDangFormDto
+                            {
+                                Code_name = "BanHangTheoKhachHang",
+                                MenuId = menu.MenuId,
+                                MenuName = menu.MenuName,
+                                Field_name = prop.Name,
+                                Field_type = fieldType,
+                                Field_title = prop.Name,
+                                Field_order = order++,
+                                Field_hide = false,
+                                Field_width = 0,
+                                Field_format = fieldFormat,
+                                Default_sort = Sort.None,
+                            });
+                        }
+                    }
                     return (result, false);
                 }
             }

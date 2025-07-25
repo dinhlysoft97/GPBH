@@ -404,7 +404,7 @@
                         Ngay_lap = c.DateTime(),
                     })
                 .PrimaryKey(t => new { t.Ma_cua_hang, t.Ma_chung_tu, t.Thang, t.Nam, t.So_phieu });
-            
+
         }
         
         public override void Down()

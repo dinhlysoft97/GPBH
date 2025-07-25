@@ -3,13 +3,6 @@ using GPBH.Business.Services;
 using GPBH.UI.Extentions;
 using GPBH.UI.UserControls;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GPBH.UI.Forms
@@ -19,13 +12,20 @@ namespace GPBH.UI.Forms
         private readonly DMKHService _dmkhService;
         private readonly DMHHService _dmhhService;
         private readonly DMNTService _dmntService;
-        public FormDieuKienLoc(DMKHService dmkhService, DMHHService dmhhService, DMNTService dmntService)
+        private readonly ReportBanHangService _reportBanHangService;
+
+        public FormDieuKienLoc(
+            DMKHService dmkhService,
+            DMHHService dmhhService,
+            DMNTService dmntService,
+            ReportBanHangService reportBanHangService)
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
             _dmkhService = dmkhService;
             _dmhhService = dmhhService;
             _dmntService = dmntService;
+            _reportBanHangService = reportBanHangService;
             this.Load += FormDieuKienLoc_Load;
         }
 
@@ -40,8 +40,8 @@ namespace GPBH.UI.Forms
             DateTime denNgay = dtpDenNgay.Value;
             string noiBan = AppGlobals.MaCH;
 
-            var dt = ReportBanHangService.GetBaoCaoBanTheoKhachHang(passport, maHangHoa, maNgoaiTe, maKhachHang, tuNgay, denNgay, noiBan);
-
+            var data = _reportBanHangService.GetViewBaoCaoBanTheoKhachHang(passport, maHangHoa, maNgoaiTe, maKhachHang, tuNgay, denNgay, noiBan);
+            var dt = _reportBanHangService.ToDataTable(data);
             var uc = new UserControlKetQuaLoc(dt, tuNgay, denNgay, maNgoaiTe);
             var frm = new Form
             {

@@ -383,6 +383,7 @@ namespace GPBH.Business.Services
                         throw new BadRequestException($"Không đủ hàng trong kho {donhang.Ma_kho} cho mặt hàng {item.Ma_hh}. Số lượng tồn kho hiện tại: {tongTonKho}");
                     }
 
+                    var listToKhai = new HashSet<string>();
                     // Xuất hàng theo từng lô nhập (FIFO)
                     foreach (var kho in khoList)
                     {
@@ -396,10 +397,11 @@ namespace GPBH.Business.Services
 
                         // Gán số tờ khai cho item, chỉ lấy tờ khai đầu tiên (nếu cần tất cả thì lưu dạng danh sách)
                         if (item.So_to_khai == null)
-                            item.So_to_khai = kho.So_to_khai;
-
+                            listToKhai.Add(kho.So_to_khai);
                         soLuongCanXuat -= soLuongXuat;
                     }
+
+                    item.So_to_khai = string.Join(",", listToKhai);
                 }
             }
         }

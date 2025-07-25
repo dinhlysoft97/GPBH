@@ -8,9 +8,11 @@ using GPBH.UI.Constant;
 using GPBH.UI.Extentions;
 using GPBH.UI.Helper;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Menu;
 
 namespace GPBH.UI.UserControls
 {
@@ -18,6 +20,18 @@ namespace GPBH.UI.UserControls
     {
         private readonly SysDinh_dang_formService _sysDinh_dang_formService;
         private readonly SysDMCuaHangService _sysDMCuaHangService;
+
+        sealed class DropDown
+        {
+            public string Key { get; set; }
+            public string Value { get; set; }
+        }
+
+        private readonly List<DropDown> _thanhToans = new List<DropDown>
+        {
+            new DropDown() { Key = "X05", Value = "Đơn hàng" },
+            new DropDown() { Key = "BanHangTheoKhachHang", Value = "Báo cáo khách hàng" }
+        };
 
         public UserControlDinhDangForm(SysDinh_dang_formService sysDinh_Dang_FormService, SysDMCuaHangService sysDMCuaHangService)
         {
@@ -34,12 +48,28 @@ namespace GPBH.UI.UserControls
         {
             btnLuu.Click += BtnLuu_Click;
             cbbCuaHang.SelectedIndexChanged += CbbCuaHang_SelectedIndexChanged;
+            cbbCode.SelectedIndexChanged += CbbCode_SelectedIndexChanged;
             dataGridViewX1.CellClick += dataGridViewX1_CellClick;
         }
 
         private void CbbCuaHang_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var resuft = _sysDinh_dang_formService.GetDinhDang(cbbCuaHang.SelectedValue.ToString());
+            var resuft = _sysDinh_dang_formService.GetDinhDang(cbbCuaHang.SelectedValue.ToString(), cbbCode.SelectedValue.ToString());
+            if (resuft.hasSave)
+            {
+                lbWarning.Visible = false;
+            }
+            else
+            {
+                lbWarning.Visible = true;
+            }
+
+            dataGridViewX1.BindData(resuft.data);
+        }
+
+        private void CbbCode_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var resuft = _sysDinh_dang_formService.GetDinhDang(cbbCuaHang.SelectedValue.ToString(), cbbCode.SelectedValue.ToString());
             if (resuft.hasSave)
             {
                 lbWarning.Visible = false;
@@ -69,9 +99,11 @@ namespace GPBH.UI.UserControls
 
         private void LoadData()
         {
+            ComboBoxHelper.BindData(cbbCode, _thanhToans, "Value", "Key");
             ComboBoxHelper.BindData(cbbCuaHang, _sysDMCuaHangService.GetAll(), "Ten_cua_hang", "Ma_cua_hang");
             cbbCuaHang.SelectedValue = AppGlobals.MaCH;
-            var result = _sysDinh_dang_formService.GetDinhDang(cbbCuaHang.SelectedValue.ToString());
+            cbbCode.SelectedValue = _thanhToans[0].Key;
+            var result = _sysDinh_dang_formService.GetDinhDang(cbbCuaHang.SelectedValue.ToString(), cbbCode.SelectedValue.ToString());
             dataGridViewX1.BindData(result.data);
             if (result.hasSave)
             {
