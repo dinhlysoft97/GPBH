@@ -196,6 +196,11 @@ namespace GPBH.UI.Forms
 
         private void SetUpUI()
         {
+            if (_isView)
+            {
+                dataGridViewX1.ReadOnly = true;
+                //dataGridViewX1.Columns["Ma_hh"].ReadOnly = true;
+            }
             lbHH.Visible = false;
 
             dataGridViewX1.SetHeaderAlignment("Stt", DataGridViewContentAlignment.MiddleCenter);
@@ -445,7 +450,7 @@ namespace GPBH.UI.Forms
 
         private void TimHangHang(object sender, KeyEventArgs e)
         {
-            ucHangHoa.Tb_KeyDown(sender, e);
+            ucHangHoa.Tb_KeyDown_Enter(sender, e);
             if (!ucHangHoa.HasHangHoa)
             {
                 lbHH.Visible = true;
@@ -499,7 +504,8 @@ namespace GPBH.UI.Forms
             }
             else
             {
-                if (_data != null && string.IsNullOrEmpty(_data.So_chung_tu))
+                //if (_data != null && string.IsNullOrEmpty(_data.So_chung_tu))
+                if (_data != null)
                     UpdateSoChungTuTinhTonKho(TrangThaiDonHang.Confirmed);
             }
         }
@@ -860,44 +866,45 @@ namespace GPBH.UI.Forms
         /// <param name="e">Event args chứa thông tin hàng hóa</param>
         private void AddOrUpdateHangHoaToGrid(HangHoaSelectedEventArgs e)
         {
-            var aa = dataGridViewX1.SelectedRows.Count == 1;
-            DataGridViewRow row = dataGridViewX1.SelectedRows[0];
-            var item = row.DataBoundItem as XCT5Dto;
-            // check nếu mã mới # mã cũ của dòng có data thì update mã 
-            if (item != null && !string.IsNullOrEmpty(item.Ma_hh) && item.Ma_hh != e.MaHH)
+            // Tìm xem mã hàng đã có trong list chưa
+            var existed = listChiTiet.FirstOrDefault(x => x.Ma_hh == e.MaHH);
+            if (existed != null)
             {
-                var rowData = listChiTiet.FirstOrDefault(x => x.Ma_hh == e.MaHH);
-
-                if (rowData != null)
-                {
-                    rowData.Ma_hh = e.MaHH;
-                    TinhToanRow(rowData);
-                }
-                else
-                {
-                    var oldData = listChiTiet.FirstOrDefault(x => x.Ma_hh == item.Ma_hh);
-                    oldData.Ma_hh = e.MaHH;
-                    TinhToanRow(oldData);
-                }
-
-                TinhTongCong();
-                UpdateSTT();
+                existed.So_luong += 1;
+                TinhToanRow(existed);
             }
-            else
+            else if (listChiTiet.Any(z => z.Ma_hh == null))
             {
-                // Tìm xem mã hàng đã có trong list chưa
-                var existed = listChiTiet.FirstOrDefault(x => x.Ma_hh == e.MaHH);
-                if (existed != null)
+                var rowNull = listChiTiet.FirstOrDefault(x => x.Ma_hh == null);
+                rowNull.Ma_hh = e.MaHH;
+                TinhToanRow(rowNull);
+            }
+            // update mã mặt hàng
+            // check nếu mã mới # mã cũ của dòng có data thì update mã 
+            else if (dataGridViewX1.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = dataGridViewX1.SelectedRows[0];
+                if (!row.IsNewRow)
                 {
-                    existed.So_luong += 1;
-                    TinhToanRow(existed);
+                    var item = row.DataBoundItem == null ? null : row.DataBoundItem as XCT5Dto;
+                    if (item != null && !string.IsNullOrEmpty(item.Ma_hh) && item.Ma_hh != e.MaHH)
+                    {
+                        var rowData = listChiTiet.FirstOrDefault(x => x.Ma_hh == e.MaHH);
+
+                        if (rowData != null)
+                        {
+                            rowData.Ma_hh = e.MaHH;
+                            TinhToanRow(rowData);
+                        }
+                        else
+                        {
+                            var oldData = listChiTiet.FirstOrDefault(x => x.Ma_hh == item.Ma_hh);
+                            oldData.Ma_hh = e.MaHH;
+                            TinhToanRow(oldData);
+                        }
+                    }
                 }
-                else if (listChiTiet.Any(z => z.Ma_hh == null))
-                {
-                    var rowNull = listChiTiet.FirstOrDefault(x => x.Ma_hh == null);
-                    rowNull.Ma_hh = e.MaHH;
-                    TinhToanRow(rowNull);
-                }
+                // add mới 
                 else
                 {
                     var newItem = new XCT5Dto
@@ -911,9 +918,22 @@ namespace GPBH.UI.Forms
                     TinhToanRow(newItem);
                     listChiTiet.Add(newItem);
                 }
-                TinhTongCong();
-                UpdateSTT();
             }
+            else
+            {
+                var newItem = new XCT5Dto
+                {
+                    Ma_hh = e.MaHH,
+                    Ten_hh = e.TenHH,
+                    Dvt = e.Dvt,
+                    So_luong = 1,
+                    Gg_ty_le = 0 // gán mặc định nếu có
+                };
+                TinhToanRow(newItem);
+                listChiTiet.Add(newItem);
+            }
+            TinhTongCong();
+            UpdateSTT();
         }
 
         /// <summary>
@@ -936,6 +956,7 @@ namespace GPBH.UI.Forms
         /// <param name="rowIndex">Chỉ số dòng</param>
         private void ShowUcHangHoaPopupAtCell(int colIndex, int rowIndex)
         {
+            if (_isView) return;
             // Lấy vị trí cell trên màn hình
             Rectangle cellRect = dataGridViewX1.GetCellDisplayRectangle(colIndex, rowIndex, true);
             Point locationOnForm = dataGridViewX1.PointToScreen(cellRect.Location);

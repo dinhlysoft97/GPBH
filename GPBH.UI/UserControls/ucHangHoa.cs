@@ -42,6 +42,7 @@ namespace GPBH.UI.UserControls
             this.Size = new Size(600, 50); // Tăng kích thước UserControl
 
             Tb.TextChanged += tb_TextChanged;
+            Tb.KeyDown += Tb_KeyDown_DownUp;
             Button1.Click += Button1_Click;
             LoadDataCombox();
 
@@ -56,6 +57,7 @@ namespace GPBH.UI.UserControls
             if (e.KeyCode == Keys.Enter)
             {
                 int rowIndex = dgv.CurrentCell?.RowIndex ?? -1;
+                if (rowIndex == -1) return;
                 var row = dgv.Rows[rowIndex];
                 string maHH = row.Cells["Ma_hh"].Value?.ToString();
                 string tenHH = row.Cells["Ten_hh"].Value?.ToString();
@@ -97,25 +99,71 @@ namespace GPBH.UI.UserControls
             }
         }
 
-        public void Tb_KeyDown(object sender, KeyEventArgs e)
+        public void Tb_KeyDown_DownUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down)
+            {
+                if (dgv.Rows.Count > 0)
+                {
+                    int rowIndex = dgv.CurrentCell?.RowIndex ?? -1;
+                    int nextRow = Math.Min(rowIndex + 1, dgv.Rows.Count - 1);
+                    dgv.CurrentCell = dgv.Rows[nextRow].Cells[0];
+                    dgv.Rows[nextRow].Selected = true;
+
+                }
+                e.Handled = true;
+            }
+            else if (e.KeyCode == Keys.Up)
+            {
+                if (dgv.Rows.Count > 0)
+                {
+                    int rowIndex = dgv.CurrentCell?.RowIndex ?? 0;
+                    int prevRow = Math.Max(rowIndex - 1, 0);
+                    dgv.CurrentCell = dgv.Rows[prevRow].Cells[0];
+                    dgv.Rows[prevRow].Selected = true;
+                }
+                e.Handled = true;
+            }
+        }
+
+        public void Tb_KeyDown_Enter(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                var hh = dsHangHoa.FirstOrDefault(x => x.Ma_hh == Tb.Text.Trim());
-                if (hh != null)
+                HasHangHoa = false;
+                int rowIndex = dgv.CurrentCell?.RowIndex ?? -1;
+                if (rowIndex == -1) return;
+                var row = dgv.Rows[rowIndex];
+                string maHH = row.Cells["Ma_hh"].Value?.ToString();
+                string tenHH = row.Cells["Ten_hh"].Value?.ToString();
+                string dvt = row.Cells["Dvt"].Value?.ToString();
+
+                // Gọi event để notify ra ngoài
+                HangHoaSelected?.Invoke(this, new HangHoaSelectedEventArgs
                 {
-                    HasHangHoa = true;
-                    HangHoaSelected?.Invoke(this, new HangHoaSelectedEventArgs
-                    {
-                        MaHH = hh.Ma_hh,
-                        TenHH = hh.Ten_hh,
-                        Dvt = hh.Dvt
-                    });
-                }
-                else
-                {
-                    HasHangHoa = false;
-                }
+                    MaHH = maHH,
+                    TenHH = tenHH,
+                    Dvt = dvt
+                });
+                HasHangHoa = true;
+                // Đóng dropdown sau khi chọn
+                TsDropDown.Close();
+
+                //var hh = dsHangHoa.FirstOrDefault(x => x.Ma_hh == Tb.Text.Trim());
+                //if (hh != null)
+                //{
+                //    HasHangHoa = true;
+                //    HangHoaSelected?.Invoke(this, new HangHoaSelectedEventArgs
+                //    {
+                //        MaHH = hh.Ma_hh,
+                //        TenHH = hh.Ten_hh,
+                //        Dvt = hh.Dvt
+                //    });
+                //}
+                //else
+                //{
+                //    HasHangHoa = false;
+                //}
             }
         }
 

@@ -70,11 +70,22 @@ namespace GPBH.Data.Migrations
                         Ma_cua_hang = "CH01",
                         Ma_kho = "KHO01",
                         So_to_khai = "456",
-                        Ngay_nhap = new DateTime(2025, 6, 2),
+                        Ngay_nhap = new DateTime(2025, 6, 3),
                         Ma_hh = "SP0001",
                         So_luong = 10,
                         Da_xuat = 0,
                         Con_lai = 10
+                    },
+                    new TokhaiHH
+                    {
+                        Ma_cua_hang = "CH01",
+                        Ma_kho = "KHO01",
+                        So_to_khai = "789",
+                        Ngay_nhap = new DateTime(2025, 6, 5),
+                        Ma_hh = "SP0001",
+                        So_luong = 5,
+                        Da_xuat = 0,
+                        Con_lai = 5
                     },
                     new TokhaiHH
                     {
@@ -92,11 +103,22 @@ namespace GPBH.Data.Migrations
                         Ma_cua_hang = "CH01",
                         Ma_kho = "KHO01",
                         So_to_khai = "456",
-                        Ngay_nhap = new DateTime(2025, 6, 2),
+                        Ngay_nhap = new DateTime(2025, 6, 3),
                         Ma_hh = "ABC123",
                         So_luong = 10,
                         Da_xuat = 0,
                         Con_lai = 10
+                    },
+                    new TokhaiHH
+                    {
+                        Ma_cua_hang = "CH01",
+                        Ma_kho = "KHO01",
+                        So_to_khai = "789",
+                        Ngay_nhap = new DateTime(2025, 6, 8),
+                        Ma_hh = "ABC123",
+                        So_luong = 5,
+                        Da_xuat = 0,
+                        Con_lai = 5
                     },
                 };
                 context.TokhaiHH.AddRange(toKhaiList);

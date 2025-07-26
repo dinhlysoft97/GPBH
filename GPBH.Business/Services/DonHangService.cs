@@ -142,17 +142,20 @@ namespace GPBH.Business.Services
                 {
                     unitOfWork.BeginTransaction();
 
-                    var entity = unitOfWork.Repository<XPH5>()
+                    var entityCu = unitOfWork.Repository<XPH5>()
                         .Find(x => x.Ma_phieu == donhang.Ma_phieu)
-                        .FirstOrDefault();
+                        .FirstOrDefault() ?? throw new BadRequestException("Không tìm thấy đơn hàng để cập nhật!");
+
+                    // Clone entity cũ để giữ dữ liệu chi tiết trước update (nên dùng phương thức clone sâu, hoặc map sang DTO rồi lại sang entity)
+                    var entityCuClone = CloneXPH5(entityCu);
 
                     // Update chi tiết
-                    UpdatDonHang(entity, donhang);
+                    UpdatDonHang(entityCu, donhang);
 
                     // Update chi tiết
-                    UpdateChiTietDonHang(entity, donhang);
+                    UpdateChiTietDonHang(entityCu, donhang);
 
-                    if (entity.Trang_thai == TrangThaiDonHang.Draft && donhang.Trang_thai == TrangThaiDonHang.Confirmed)
+                    if (entityCuClone.Trang_thai == TrangThaiDonHang.Draft && donhang.Trang_thai == TrangThaiDonHang.Confirmed)
                     {
                         var soPhieuGenerator = scope.ServiceProvider.GetRequiredService<SoPhieuGeneratorService>();
                         string soChungTuMoi;
@@ -172,22 +175,25 @@ namespace GPBH.Business.Services
                         }
                         while (daTonTai);
 
-                        entity.So_chung_tu = soChungTuMoi;
-                        entity.Trang_thai = TrangThaiDonHang.Confirmed;
-                        TinhTonKho(unitOfWork, entity);
+                        entityCu.So_chung_tu = soChungTuMoi;
+                        entityCu.Trang_thai = TrangThaiDonHang.Confirmed;
+                        TinhTonKho(unitOfWork, entityCu);
                     }
                     else if (donhang.Trang_thai == TrangThaiDonHang.Confirmed)
                     {
-                        // cập nhật lại tồn kho
 
-                    }    
+                        // **Gọi hàm cập nhật lại tồn kho khi update**
+                        // entityCu: đơn hàng đã được update theo dữ liệu mới
+                        // entityCuClone: đơn hàng cũ trước khi update
+                        UpdateTonKho(unitOfWork, entityCu, entityCuClone);
+                    }
 
-                        // Update đơn hàng
-                        unitOfWork.Repository<XPH5>().Update(entity);
+                    // Update đơn hàng
+                    unitOfWork.Repository<XPH5>().Update(entityCu);
                     unitOfWork.SaveChanges();
                     unitOfWork.Commit();
 
-                    return (entity.Adapt<XPH5Dto>(), true);
+                    return (entityCu.Adapt<XPH5Dto>(), true);
                 }
                 catch (Exception ex)
                 {
@@ -253,6 +259,89 @@ namespace GPBH.Business.Services
             entity.Ma_doi_tuong = donhang.Ma_doi_tuong;
         }
 
+        /// <summary>
+        /// Sao chép một đối tượng XPH5 để tạo đơn hàng mới
+        /// </summary>
+        /// <param name="entityCu"></param>
+        /// <returns></returns>
+        public static XPH5 CloneXPH5(XPH5 entityCu)
+        {
+            if (entityCu == null) return null;
+
+            var clone = new XPH5
+            {
+                Ma_cua_hang = entityCu.Ma_cua_hang,
+                Ma_phieu = entityCu.Ma_phieu,
+                Ma_chung_tu = entityCu.Ma_chung_tu,
+                So_chung_tu = entityCu.So_chung_tu,
+                Ngay_chung_tu = entityCu.Ngay_chung_tu,
+                Ma_nt = entityCu.Ma_nt,
+                Ty_gia = entityCu.Ty_gia,
+                Ma_quay = entityCu.Ma_quay,
+                Ma_cqt = entityCu.Ma_cqt,
+                Xuat_hddt = entityCu.Xuat_hddt,
+                So_hddt = entityCu.So_hddt,
+                Xuat_hq = entityCu.Xuat_hq,
+                Ma_kho = entityCu.Ma_kho,
+                Passport = entityCu.Passport,
+                Ten_khach = entityCu.Ten_khach,
+                Tt1_loai = entityCu.Tt1_loai,
+                Tt1_ma_nt = entityCu.Tt1_ma_nt,
+                Tt1_tien_tt = entityCu.Tt1_tien_tt,
+                Tt1_tien_nt = entityCu.Tt1_tien_nt,
+                Tt2_loai = entityCu.Tt2_loai,
+                Tt2_ma_nt = entityCu.Tt2_ma_nt,
+                Tt2_tien_tt = entityCu.Tt2_tien_tt,
+                Tt2_tien_nt = entityCu.Tt2_tien_nt,
+                Tt3_loai = entityCu.Tt3_loai,
+                Tt3_ma_nt = entityCu.Tt3_ma_nt,
+                Tt3_tien_tt = entityCu.Tt3_tien_tt,
+                Tt3_tien_nt = entityCu.Tt3_tien_nt,
+                Tt_tong = entityCu.Tt_tong,
+                Tong_nhan = entityCu.Tong_nhan,
+                Tra_lai = entityCu.Tra_lai,
+                Ma_tra_lai = entityCu.Ma_tra_lai,
+                Tra_lai_nt = entityCu.Tra_lai_nt,
+                Tong_tien_hang = entityCu.Tong_tien_hang,
+                Tong_tien_hang_nt = entityCu.Tong_tien_hang_nt,
+                Tong_giam_gia = entityCu.Tong_giam_gia,
+                Tong_giam_gia_nt = entityCu.Tong_giam_gia_nt,
+                Tong_thu = entityCu.Tong_thu,
+                Tong_thu_nt = entityCu.Tong_thu_nt,
+                Tong_so_luong = entityCu.Tong_so_luong,
+                Xnc_ngay_cap = entityCu.Xnc_ngay_cap,
+                Xnc_ngay_hh = entityCu.Xnc_ngay_hh,
+                So_hieu = entityCu.So_hieu,
+                Ten_tau_bay = entityCu.Ten_tau_bay,
+                Han_muc = entityCu.Han_muc,
+                Ma_nhom_kh = entityCu.Ma_nhom_kh,
+                Ma_loai_hinh = entityCu.Ma_loai_hinh,
+                Ma_doi_tuong = entityCu.Ma_doi_tuong,
+                Trang_thai = entityCu.Trang_thai,
+                // Không map các property kiểu navigation, virtual (SysDMCuaHang, DMNT, ...)
+                XCT5s = entityCu.XCT5s?.Select(x => new XCT5
+                {
+                    Ma_phieu = x.Ma_phieu,
+                    Stt = x.Stt,
+                    Ma_hh = x.Ma_hh,
+                    Ten_hh = x.Ten_hh,
+                    Dvt = x.Dvt,
+                    So_luong = x.So_luong,
+                    Gia_ban = x.Gia_ban,
+                    Gia_ban_nt = x.Gia_ban_nt,
+                    Gg_ty_le = x.Gg_ty_le,
+                    Gg_tien = x.Gg_tien,
+                    Gg_tien_nt = x.Gg_tien_nt,
+                    Tien_ban = x.Tien_ban,
+                    Tien_ban_nt = x.Tien_ban_nt,
+                    Gg_ly_do = x.Gg_ly_do,
+                    So_to_khai = x.So_to_khai,
+                    // Không map XPH5, DMHH
+                }).ToList()
+            };
+
+            return clone;
+        }
 
         /// <summary>
         /// Sinh mã phiếu mới theo định dạng: ma_dv + ma_chung_tu + 12 số tăng dần
@@ -403,6 +492,158 @@ namespace GPBH.Business.Services
 
                     item.So_to_khai = string.Join(",", listToKhai);
                 }
+            }
+        }
+
+        /// <summary>
+        /// Cập nhật lại tồn kho khi update đơn hàng: hoàn trả hoặc xuất bổ sung theo thay đổi số lượng chi tiết
+        /// </summary>
+        private static void UpdateTonKho(IUnitOfWork unitOfWork, XPH5 donhangMoi, XPH5 donhangCu)
+        {
+            // Map chi tiết cũ theo Ma_hh
+            var chiTietCuDict = donhangCu.XCT5s.ToDictionary(x => x.Ma_hh, x => x);
+
+            foreach (var itemMoi in donhangMoi.XCT5s)
+            {
+                var maHH = itemMoi.Ma_hh;
+                var soLuongMoi = itemMoi.So_luong ?? 0;
+                // Tìm chi tiết cũ (nếu có)
+                chiTietCuDict.TryGetValue(maHH, out var itemCu);
+                var soLuongCu = itemCu?.So_luong ?? 0;
+
+                // Nếu chi tiết mới, chưa từng xuất => xuất bổ sung
+                if (itemCu == null && soLuongMoi > 0)
+                {
+                    // Xuất bổ sung như thêm đơn hàng mới
+                    XuatTonKho(unitOfWork, donhangMoi, itemMoi, soLuongMoi);
+                }
+                // Nếu đã tồn tại, so sánh số lượng
+                else if (itemCu != null)
+                {
+                    var delta = soLuongMoi - soLuongCu;
+                    if (delta > 0)
+                    {
+                        // Xuất bổ sung phần tăng thêm
+                        XuatTonKho(unitOfWork, donhangMoi, itemMoi, delta);
+                    }
+                    else if (delta < 0)
+                    {
+                        // Hoàn trả phần giảm đi về các lô đã xuất trước đó (theo số tờ khai đã lưu)
+                        HoanTonKho(unitOfWork, donhangMoi, itemMoi, itemCu, Math.Abs(delta));
+                    }
+                    // Nếu delta == 0 thì không cần xử lý
+                }
+            }
+
+            // Xử lý các mặt hàng bị xóa khỏi đơn mới (hoàn trả toàn bộ về kho)
+            var maHHMoiSet = donhangMoi.XCT5s.Select(x => x.Ma_hh).ToHashSet();
+            var xoaItems = donhangCu.XCT5s.Where(x => !maHHMoiSet.Contains(x.Ma_hh));
+            foreach (var itemCu in xoaItems)
+            {
+                // Hoàn trả toàn bộ về kho
+                HoanTonKho(unitOfWork, donhangMoi, null, itemCu, itemCu.So_luong ?? 0);
+            }
+        }
+
+        /// <summary>
+        /// Xuất hàng từ kho theo FIFO, cập nhật lại số tờ khai đã xuất cho item (bổ sung thêm nếu đã có)
+        /// </summary>
+        private static void XuatTonKho(IUnitOfWork unitOfWork, XPH5 donhang, XCT5 item, decimal soLuongCanXuat)
+        {
+            if (soLuongCanXuat <= 0) return;
+
+            var khoList = unitOfWork.Repository<TokhaiHH>()
+                .Find(x => x.Ma_cua_hang == donhang.Ma_cua_hang
+                        && x.Ma_kho == donhang.Ma_kho
+                        && x.Ma_hh == item.Ma_hh
+                        && x.Con_lai > 0)
+                .OrderBy(x => x.Ngay_nhap)
+                .ToList();
+
+            var tongTonKho = khoList.Sum(x => x.Con_lai ?? 0);
+            if (tongTonKho < soLuongCanXuat)
+            {
+                throw new BadRequestException($"Không đủ hàng trong kho {donhang.Ma_kho} cho mặt hàng {item.Ma_hh}. Số lượng tồn kho hiện tại: {tongTonKho}");
+            }
+
+            var listToKhai = new HashSet<string>();
+            // Nếu item đã có số tờ khai, bổ sung vào set
+            if (!string.IsNullOrEmpty(item.So_to_khai))
+            {
+                foreach (var tk in item.So_to_khai.Split(','))
+                    listToKhai.Add(tk.Trim());
+            }
+            // Xuất hàng theo từng lô nhập (FIFO)
+            foreach (var kho in khoList)
+            {
+                if (soLuongCanXuat <= 0) break;
+
+                var soLuongXuat = Math.Min(kho.Con_lai ?? 0, soLuongCanXuat);
+
+                kho.Da_xuat += soLuongXuat;
+                kho.Con_lai -= soLuongXuat;
+                unitOfWork.Repository<TokhaiHH>().Update(kho);
+
+                listToKhai.Add(kho.So_to_khai);
+                soLuongCanXuat -= soLuongXuat;
+            }
+
+            item.So_to_khai = string.Join(",", listToKhai);
+        }
+
+
+        /// <summary>
+        /// Hoàn trả hàng về kho theo các lô đã xuất (dựa vào số tờ khai đã lưu trong chi tiết cũ), ưu tiên hoàn theo thứ tự số tờ khai
+        /// </summary>
+        private static void HoanTonKho(IUnitOfWork unitOfWork, XPH5 donhang, XCT5 itemMoi, XCT5 itemCu, decimal soLuongHoan)
+        {
+            if (soLuongHoan <= 0) return;
+            if (itemCu == null || string.IsNullOrEmpty(itemCu.So_to_khai)) return;
+
+            // Lấy danh sách số tờ khai đã xuất trước đó, order ngược lại để hoàn trả lô nhập sau trước
+            var toKhaiArr = itemCu.So_to_khai.Split(',').Select(x => x.Trim()).Reverse().ToList();
+            var listToKhai = new List<string>(toKhaiArr);
+
+            foreach (var soToKhai in toKhaiArr)
+            {
+                if (soLuongHoan <= 0) break;
+                var tokhai = unitOfWork.Repository<TokhaiHH>()
+                    .Find(x => x.Ma_cua_hang == donhang.Ma_cua_hang
+                            && x.Ma_kho == donhang.Ma_kho
+                            && x.Ma_hh == itemCu.Ma_hh
+                            && x.So_to_khai == soToKhai)
+                    .FirstOrDefault();
+                if (tokhai != null)
+                {
+                    // Xác định có thể hoàn trả tối đa bao nhiêu (không vượt quá đã xuất)
+                    var maxHoan = Math.Min(tokhai.Da_xuat ?? 0, soLuongHoan);
+                    if (maxHoan > 0)
+                    {
+                        tokhai.Da_xuat -= maxHoan;
+                        tokhai.Con_lai += maxHoan;
+                        // nếu còn lại = với số lượng thì remove số tờ khai
+                        if (tokhai.Con_lai == tokhai.So_luong)
+                            listToKhai.Remove(tokhai.So_to_khai);
+                        unitOfWork.Repository<TokhaiHH>().Update(tokhai);
+                        soLuongHoan -= maxHoan;
+                    }
+                }
+            }
+
+            // Nếu có itemMoi, cập nhật lại số tờ khai còn lại cho chi tiết
+            if (itemMoi != null)
+            {
+                // Nếu sau hoàn kho, số lượng còn lại = 0 thì xóa số tờ khai
+                if ((itemMoi.So_luong ?? 0) == 0)
+                    itemMoi.So_to_khai = string.Empty;
+                else
+                {
+                    // Lấy lại danh sách số tờ khai đang còn xuất cho mặt hàng
+
+                    listToKhai.Reverse();
+                    itemMoi.So_to_khai = listToKhai.Count > 0 ? string.Join(",", listToKhai) : string.Empty;
+                }
+                // Nếu giảm số lượng, có thể giữ lại số tờ khai, hoặc tính lại nếu cần
             }
         }
 
