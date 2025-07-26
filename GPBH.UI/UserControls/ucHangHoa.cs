@@ -1,5 +1,6 @@
 ﻿using DevComponents.DotNetBar.Controls;
 using GPBH.Data.Configurations;
+using GPBH.UI.Extentions;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -49,6 +50,7 @@ namespace GPBH.UI.UserControls
             // Thêm sự kiện click row
             dgv.CellClick += dgv_CellClick;
             dgv.KeyDown += TsDropDown_KeyDown;
+            dgv.RowPostPaint += dataGridViewX1_RowPostPaint;
             TsDropDown.KeyDown += TsDropDown_KeyDown;
         }
 
@@ -356,6 +358,11 @@ namespace GPBH.UI.UserControls
             this.Name = "ucTextGrid2";
             this.Size = new System.Drawing.Size(324, 26);
             this.ResumeLayout(false);
+        }
+
+        private void dataGridViewX1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            dgv.SetRowPositionPaint(e);
         }
 
         public class HangHoaSelectedEventArgs : EventArgs

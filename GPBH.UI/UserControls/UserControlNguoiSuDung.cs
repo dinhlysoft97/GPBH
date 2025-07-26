@@ -182,6 +182,13 @@ namespace GPBH.UI.UserControls
 
         private void BtnSua_Click(object sender, EventArgs e)
         {
+            var hasPermission = CheckPermissionHelper.HasPerrmission("NguoiDung", GPBHConstant.Action.Sua);
+            if (!hasPermission)
+            {
+                CheckPermissionHelper.ShowMessage();
+                return;
+            }
+
             var item = GetSelectedUser();
             if (item != null)
             {
@@ -202,6 +209,13 @@ namespace GPBH.UI.UserControls
         /// </summary>
         private void HandleXoa()
         {
+            var hasPermission = CheckPermissionHelper.HasPerrmission("NguoiDung", GPBHConstant.Action.Xoa);
+            if (!hasPermission)
+            {
+                CheckPermissionHelper.ShowMessage();
+                return;
+            }
+
             var item = GetSelectedUser();
             if (item == null) return;
 
@@ -234,6 +248,13 @@ namespace GPBH.UI.UserControls
         /// </summary>
         private void DataGridViewX1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            var hasPermission = CheckPermissionHelper.HasPerrmission("NguoiDung", GPBHConstant.Action.Sua);
+            if (!hasPermission)
+            {
+                CheckPermissionHelper.ShowMessage();
+                return;
+            }
+
             if (e.RowIndex > 0 && e.ColumnIndex >= 0)
             {
                 var row = dataGridViewX1.Rows[e.RowIndex];
@@ -246,7 +267,7 @@ namespace GPBH.UI.UserControls
                         MessageBoxEx.Show($"Không thể sửa thông tin người dùng {GPBHConstant.SuperAdmin}!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
-                    this.ShowForm<NguoiSuDung>(data);
+                    this.ShowForm<NguoiSuDung>(data, true);
                 }
             }
         }

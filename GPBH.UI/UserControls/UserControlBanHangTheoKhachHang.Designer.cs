@@ -192,7 +192,7 @@
             this.btnIn.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnIn.TabIndex = 9;
             this.btnIn.Text = "In báo cáo";
-            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
+            this.btnIn.Click += new System.EventHandler(this.BtnIn_Click);
             // 
             // buttonLamMoi
             // 
@@ -456,7 +456,7 @@
             this.btnExcel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnExcel.TabIndex = 41;
             this.btnExcel.Text = "Xuất excel";
-            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
+            this.btnExcel.Click += new System.EventHandler(this.BtnExcel_Click);
             // 
             // UserControlBanHangTheoKhachHang
             // 

@@ -23,7 +23,7 @@ namespace GPBH.UI.UserControls
             dataGridViewX1.CellFormatting += dataGridViewX1_CellFormatting;
             dataGridViewX1.CellDoubleClick += dataGridViewX1_CellDoubleClick;
             SepUpUI();
-            LoadData(); 
+            LoadData();
             dataGridViewX1.DataBindingComplete += (s, e) =>
             {
                 dataGridViewX1.SetGirdReadOnly();
@@ -96,7 +96,7 @@ namespace GPBH.UI.UserControls
             }
 
             // Lấy service quốc gia từ DI nếu cần, hoặc truyền null nếu không dùng
-            var form = ActivatorUtilities.CreateInstance<KhachHang>(Program.ServiceProvider, null, true);
+            var form = ActivatorUtilities.CreateInstance<KhachHang>(Program.ServiceProvider, null, true, false);
             if (form.ShowDialog() == DialogResult.OK)
             {
                 LoadData();
@@ -118,7 +118,7 @@ namespace GPBH.UI.UserControls
             var khachHang = _dmKHService.GetByPassport(passport);
             if (khachHang == null) return;
 
-            var form = ActivatorUtilities.CreateInstance<KhachHang>(Program.ServiceProvider, passport, true);
+            var form = ActivatorUtilities.CreateInstance<KhachHang>(Program.ServiceProvider, passport, true, false);
             form.DataKhachHang = khachHang;
 
             if (form.ShowDialog() == DialogResult.OK)
@@ -130,7 +130,30 @@ namespace GPBH.UI.UserControls
         }
         private void dataGridViewX1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            btnSua_Click(sender, EventArgs.Empty);
+            // btnSua_Click(sender, EventArgs.Empty);
+
+            var hasPermission = CheckPermissionHelper.HasPerrmission("KhachHang", GPBHConstant.Action.Sua);
+            if (!hasPermission)
+            {
+                CheckPermissionHelper.ShowMessage();
+                return;
+            }
+
+            var passport = dataGridViewX1.CurrentRow?.Cells["Passport"].Value?.ToString();
+            if (string.IsNullOrEmpty(passport)) return;
+
+            var khachHang = _dmKHService.GetByPassport(passport);
+            if (khachHang == null) return;
+
+            var form = ActivatorUtilities.CreateInstance<KhachHang>(Program.ServiceProvider, passport, true, true);
+            form.DataKhachHang = khachHang;
+
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                var khachHangMoi = form.GetCustomerFromForm();
+                _dmKHService.EditCustomer(khachHangMoi);
+                LoadData();
+            }
         }
 
         private void btnXoa_Click(object sender, EventArgs e)

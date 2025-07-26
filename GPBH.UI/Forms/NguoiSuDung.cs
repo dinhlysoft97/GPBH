@@ -14,13 +14,15 @@ namespace GPBH.UI.Forms
         private readonly SysDMNSDService _sysDMNSDService;
         private SysDMNSD _data;
         private bool _isEdit = false;
+        private bool _isView = false;
 
-        public NguoiSuDung(SysDMNSDService sysDMNSDService, SysDMNSD data = null)
+        public NguoiSuDung(SysDMNSDService sysDMNSDService, SysDMNSD data = null, bool isView = false)
         {
             InitializeComponent();
             _sysDMNSDService = sysDMNSDService;
             _data = data;
             _isEdit = data != null;
+            _isView = isView;
 
             InitializeForm();
         }
@@ -38,6 +40,12 @@ namespace GPBH.UI.Forms
                 LoadDataEdit();
 
             RegisterEvents();
+
+            if (_isView)
+            {
+                btnLuu.Enabled = false;
+                this.Text = "Xem người dùng: " + _data.TenDayDu;
+            } 
         }
 
         /// <summary>

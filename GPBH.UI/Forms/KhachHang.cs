@@ -24,6 +24,7 @@ namespace GPBH.UI.Forms
         private bool isKhachHangSelected = false;
         private readonly bool _isSelectMode;
         private readonly bool _isEditMode;
+        private readonly bool _isView;
         private List<GirdSysDinhDangFormDto> SysDinhDangs;
         private string DateFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern;
         private SysDinh_dang_formService _sysDinh_Dang_FormService;
@@ -62,13 +63,20 @@ namespace GPBH.UI.Forms
 
         #region Constructor
 
-        public KhachHang(DMKHService dmkhService, DMQGService dMQGService, SysDinh_dang_formService sysDinh_Dang_FormService, string passport, bool isSelectMode = false)
+        public KhachHang(
+            DMKHService dmkhService,
+            DMQGService dMQGService,
+            SysDinh_dang_formService sysDinh_Dang_FormService, 
+            string passport, 
+            bool isSelectMode = false, 
+            bool isView = false)
         {
             InitializeComponent();
             this.KeyPreview = true; // Cho phép bắt phím Enter trên toàn form
             _dmkhService = dmkhService;
             _dMQGService = dMQGService;
             _isSelectMode = isSelectMode;
+            _isView = isView;
             _sysDinh_Dang_FormService = sysDinh_Dang_FormService;
             SysDinhDangs = _sysDinh_Dang_FormService.GetDinhDang(AppGlobals.MaCH).data;
             SetUpUI();
@@ -99,7 +107,7 @@ namespace GPBH.UI.Forms
             if (!string.IsNullOrEmpty(passport))
                 txtCCCD.Text = passport;
 
-            if (_isSelectMode)
+            if (_isSelectMode || _isView)
                 btnChon.Text = "Lưu(Enter)";
             else
                 btnChon.Text = "Chọn(Enter)";
@@ -109,7 +117,7 @@ namespace GPBH.UI.Forms
         {
             dtNgayCap.Format = eDateTimePickerFormat.Custom;
             dtNgayCap.CustomFormat = DateFormat;
-            
+
             dtHetHan.Format = eDateTimePickerFormat.Custom;
             dtHetHan.CustomFormat = DateFormat;
 
@@ -124,6 +132,9 @@ namespace GPBH.UI.Forms
 
 
             txtTongTien.DisplayFormat(GetFormat("Format_tien"));
+
+            if (_isView)
+                btnChon.Enabled = false;
         }
 
         #endregion

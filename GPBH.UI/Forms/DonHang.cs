@@ -144,7 +144,8 @@ namespace GPBH.UI.Forms
                     Ty_gia = _data.Ty_gia.Value
                 };
 
-                this.Text = "Sửa đơn hàng";
+                if (_isEdit && !_isView)
+                    this.Text = "Sửa đơn hàng";
                 listChiTiet = new BindingList<XCT5Dto>(_data.XCT5s);
                 LoadDataCombobox();
                 BindDataKhachHang(_dMKHService.GetByPassport(_data.Passport));
@@ -199,6 +200,7 @@ namespace GPBH.UI.Forms
             if (_isView)
             {
                 dataGridViewX1.ReadOnly = true;
+                this.Text = "Xem đơn hàng";
                 //dataGridViewX1.Columns["Ma_hh"].ReadOnly = true;
             }
             lbHH.Visible = false;

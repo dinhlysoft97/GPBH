@@ -1,6 +1,7 @@
 ﻿using GPBH.Business;
 using GPBH.Business.Dtos;
 using GPBH.Business.Services;
+using GPBH.UI.Constant;
 using GPBH.UI.Extentions;
 using GPBH.UI.Forms;
 using GPBH.UI.Helper;
@@ -77,8 +78,15 @@ namespace GPBH.UI.UserControls
             ccbMaNgoaiTe.SelectedIndex = useIndex >= 0 ? useIndex : -1;
         }
 
-        private void btnIn_Click(object sender, System.EventArgs e)
+        private void BtnIn_Click(object sender, System.EventArgs e)
         {
+            var hasPermission = CheckPermissionHelper.HasPerrmission("BanHangTheoKhachHang", GPBHConstant.Action.In);
+            if (!hasPermission)
+            {
+                CheckPermissionHelper.ShowMessage();
+                return;
+            }
+
             DateTime tuNgay = dtpTuNgay.Value;
             DateTime denNgay = dtpDenNgay.Value;
             string maNgoaiTe = ccbMaNgoaiTe.SelectedValue?.ToString() ?? string.Empty;
@@ -87,8 +95,15 @@ namespace GPBH.UI.UserControls
             frm.ShowDialog();
         }
 
-        private void btnExcel_Click(object sender, EventArgs e)
+        private void BtnExcel_Click(object sender, EventArgs e)
         {
+            var hasPermission = CheckPermissionHelper.HasPerrmission("BanHangTheoKhachHang", GPBHConstant.Action.Excel);
+            if (!hasPermission)
+            {
+                CheckPermissionHelper.ShowMessage();
+                return;
+            }
+
             //var data = new List<MyData>
             //{
             //    new MyData { Ten = "Bút bi", SoLuong = 100, Gia = 3500, NgayTao = new DateTime(2025, 6, 1) },
