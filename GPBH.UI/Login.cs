@@ -28,6 +28,24 @@ namespace GPBH.UI
             _dmcaService = dmcaService;
 
             LoadCa();
+
+            // Tải hình ảnh đăng nhập nếu có
+            try
+            {
+                var imagePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Images", "logo.jpg");
+                if (System.IO.File.Exists(imagePath))
+                {
+                    pictureBox1.Image = System.Drawing.Image.FromFile(imagePath);
+                }
+                else
+                {
+                    pictureBox1.Image = null;
+                }
+            }
+            catch
+            {
+                pictureBox1.Image = null;
+            }
         }
 
         #endregion
