@@ -250,7 +250,7 @@
             this.MinimizeBox = false;
             this.Name = "NguoiSuDung";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Người sửa dụng";
+            this.Text = "Người sử dụng";
             this.ResumeLayout(false);
             this.PerformLayout();
 

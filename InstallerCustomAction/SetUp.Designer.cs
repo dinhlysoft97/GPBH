@@ -46,9 +46,9 @@
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX1.Location = new System.Drawing.Point(13, 19);
             this.labelX1.Name = "labelX1";
-            this.labelX1.Size = new System.Drawing.Size(64, 15);
+            this.labelX1.Size = new System.Drawing.Size(70, 15);
             this.labelX1.TabIndex = 1;
-            this.labelX1.Text = "Mã cử hàng*";
+            this.labelX1.Text = "Mã cửa hàng*";
             // 
             // labelX2
             // 
@@ -61,7 +61,7 @@
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(49, 15);
             this.labelX2.TabIndex = 2;
-            this.labelX2.Text = "Mã quày*";
+            this.labelX2.Text = "Mã quầy*";
             // 
             // labelX3
             // 
@@ -83,7 +83,7 @@
             // 
             this.txtMaQuay.Border.Class = "TextBoxBorder";
             this.txtMaQuay.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtMaQuay.Location = new System.Drawing.Point(79, 48);
+            this.txtMaQuay.Location = new System.Drawing.Point(84, 48);
             this.txtMaQuay.Name = "txtMaQuay";
             this.txtMaQuay.PreventEnterBeep = true;
             this.txtMaQuay.Size = new System.Drawing.Size(121, 20);
@@ -96,7 +96,7 @@
             // 
             this.txtMaKho.Border.Class = "TextBoxBorder";
             this.txtMaKho.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtMaKho.Location = new System.Drawing.Point(79, 78);
+            this.txtMaKho.Location = new System.Drawing.Point(84, 78);
             this.txtMaKho.Name = "txtMaKho";
             this.txtMaKho.PreventEnterBeep = true;
             this.txtMaKho.Size = new System.Drawing.Size(121, 20);
@@ -121,7 +121,7 @@
             // 
             this.txtCuaHang.Border.Class = "TextBoxBorder";
             this.txtCuaHang.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtCuaHang.Location = new System.Drawing.Point(79, 19);
+            this.txtCuaHang.Location = new System.Drawing.Point(84, 19);
             this.txtCuaHang.Name = "txtCuaHang";
             this.txtCuaHang.PreventEnterBeep = true;
             this.txtCuaHang.Size = new System.Drawing.Size(121, 20);
@@ -145,7 +145,7 @@
             this.MinimizeBox = false;
             this.Name = "SetUp";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SetUp";
+            this.Text = "Cấu hình thông tin";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -30,6 +30,8 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.btnDong = new DevComponents.DotNetBar.ButtonX();
+            this.btnLuu = new DevComponents.DotNetBar.ButtonX();
             this.Stt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MenuId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MenuName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -39,8 +41,6 @@
             this.Xoa = new DevComponents.DotNetBar.Controls.DataGridViewCheckBoxXColumn();
             this.In = new DevComponents.DotNetBar.Controls.DataGridViewCheckBoxXColumn();
             this.Excel = new DevComponents.DotNetBar.Controls.DataGridViewCheckBoxXColumn();
-            this.btnDong = new DevComponents.DotNetBar.ButtonX();
-            this.btnLuu = new DevComponents.DotNetBar.ButtonX();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,6 +76,28 @@
             this.dataGridViewX1.Size = new System.Drawing.Size(1071, 412);
             this.dataGridViewX1.TabIndex = 0;
             this.dataGridViewX1.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridViewX1_RowPostPaint);
+            // 
+            // btnDong
+            // 
+            this.btnDong.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnDong.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnDong.Location = new System.Drawing.Point(94, 418);
+            this.btnDong.Name = "btnDong";
+            this.btnDong.Size = new System.Drawing.Size(75, 23);
+            this.btnDong.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnDong.TabIndex = 14;
+            this.btnDong.Text = "Đóng";
+            // 
+            // btnLuu
+            // 
+            this.btnLuu.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnLuu.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnLuu.Location = new System.Drawing.Point(4, 418);
+            this.btnLuu.Name = "btnLuu";
+            this.btnLuu.Size = new System.Drawing.Size(75, 23);
+            this.btnLuu.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnLuu.TabIndex = 13;
+            this.btnLuu.Text = "Lưu";
             // 
             // Stt
             // 
@@ -115,7 +137,7 @@
             this.Them.CheckState = System.Windows.Forms.CheckState.Indeterminate;
             this.Them.CheckValue = null;
             this.Them.DataPropertyName = "Them";
-            this.Them.HeaderText = "Them";
+            this.Them.HeaderText = "Thêm";
             this.Them.Name = "Them";
             // 
             // Sua
@@ -153,28 +175,6 @@
             this.Excel.DataPropertyName = "Excel";
             this.Excel.HeaderText = "Excel";
             this.Excel.Name = "Excel";
-            // 
-            // btnDong
-            // 
-            this.btnDong.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnDong.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnDong.Location = new System.Drawing.Point(94, 418);
-            this.btnDong.Name = "btnDong";
-            this.btnDong.Size = new System.Drawing.Size(75, 23);
-            this.btnDong.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnDong.TabIndex = 14;
-            this.btnDong.Text = "Đóng";
-            // 
-            // btnLuu
-            // 
-            this.btnLuu.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnLuu.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnLuu.Location = new System.Drawing.Point(4, 418);
-            this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(75, 23);
-            this.btnLuu.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnLuu.TabIndex = 13;
-            this.btnLuu.Text = "Lưu";
             // 
             // PhanQuyen
             // 

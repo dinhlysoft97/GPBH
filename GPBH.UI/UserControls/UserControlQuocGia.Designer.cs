@@ -65,7 +65,7 @@
             // Quoc_gia
             // 
             this.Quoc_gia.DataPropertyName = "Quoc_gia";
-            this.Quoc_gia.HeaderText = "Quốc Gia";
+            this.Quoc_gia.HeaderText = "Quốc gia";
             this.Quoc_gia.Name = "Quoc_gia";
             this.Quoc_gia.ReadOnly = true;
             // 
