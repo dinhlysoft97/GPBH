@@ -518,12 +518,12 @@ namespace GPBH.UI.Report {
                         string Ma_hang, 
                         string So_luong, 
                         string Ma_ngoaite, 
-                        decimal Thanh_tien, 
+                        string Thanh_tien, 
                         decimal Tong_tien_hang_nt, 
                         decimal Tong_nhan, 
                         decimal Tra_lai_nt, 
                         string So_don_hang, 
-                        decimal Thanh_tien_vn, 
+                        string Thanh_tien_vn, 
                         string Ma_tra_lai, 
                         decimal Ty_gia) {
                 vw_BaoCaoBanTheoKhachHangRow rowvw_BaoCaoBanTheoKhachHangRow = ((vw_BaoCaoBanTheoKhachHangRow)(this.NewRow()));
@@ -603,7 +603,7 @@ namespace GPBH.UI.Report {
                 base.Columns.Add(this.columnSo_luong);
                 this.columnMa_ngoaite = new global::System.Data.DataColumn("Ma_ngoaite", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMa_ngoaite);
-                this.columnThanh_tien = new global::System.Data.DataColumn("Thanh_tien", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columnThanh_tien = new global::System.Data.DataColumn("Thanh_tien", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnThanh_tien);
                 this.columnTong_tien_hang_nt = new global::System.Data.DataColumn("Tong_tien_hang_nt", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTong_tien_hang_nt);
@@ -613,7 +613,7 @@ namespace GPBH.UI.Report {
                 base.Columns.Add(this.columnTra_lai_nt);
                 this.columnSo_don_hang = new global::System.Data.DataColumn("So_don_hang", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSo_don_hang);
-                this.columnThanh_tien_vn = new global::System.Data.DataColumn("Thanh_tien_vn", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columnThanh_tien_vn = new global::System.Data.DataColumn("Thanh_tien_vn", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnThanh_tien_vn);
                 this.columnMa_tra_lai = new global::System.Data.DataColumn("Ma_tra_lai", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMa_tra_lai);
@@ -891,10 +891,10 @@ namespace GPBH.UI.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public decimal Thanh_tien {
+            public string Thanh_tien {
                 get {
                     try {
-                        return ((decimal)(this[this.tablevw_BaoCaoBanTheoKhachHang.Thanh_tienColumn]));
+                        return ((string)(this[this.tablevw_BaoCaoBanTheoKhachHang.Thanh_tienColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'Thanh_tien\' in table \'vw_BaoCaoBanTheoKhachHang\' is DBNull." +
@@ -975,10 +975,10 @@ namespace GPBH.UI.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public decimal Thanh_tien_vn {
+            public string Thanh_tien_vn {
                 get {
                     try {
-                        return ((decimal)(this[this.tablevw_BaoCaoBanTheoKhachHang.Thanh_tien_vnColumn]));
+                        return ((string)(this[this.tablevw_BaoCaoBanTheoKhachHang.Thanh_tien_vnColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'Thanh_tien_vn\' in table \'vw_BaoCaoBanTheoKhachHang\' is DBNu" +

@@ -24,18 +24,57 @@ namespace GPBH.UI.Forms
             var formatTienNt = GetFormat("Format_tien_nt");
             var formatSoLuong = GetFormat("Format_so_luong");
 
+            DataTable dtDisplay = data.Clone();
+            dtDisplay.Columns["So_luong"].DataType = typeof(string);
+            dtDisplay.Columns["Thanh_tien_vn"].DataType = typeof(string);
+            dtDisplay.Columns["Thanh_tien"].DataType = typeof(string);
+
+            foreach (DataRow row in data.Rows)
+            {
+                var newRow = dtDisplay.NewRow();
+                foreach (DataColumn col in data.Columns)
+                {
+                    if (col.ColumnName == "So_luong" && row["So_luong"] != DBNull.Value)
+                    {
+                        decimal value;
+                        if (decimal.TryParse(row["So_luong"].ToString(), out value))
+                            newRow["So_luong"] = value.ToString(formatSoLuong);
+                        else
+                            newRow["So_luong"] = row["So_luong"];
+                    }
+                    else if (col.ColumnName == "Thanh_tien_vn" && row["Thanh_tien_vn"] != DBNull.Value)
+                    {
+                        decimal value;
+                        if (decimal.TryParse(row["Thanh_tien_vn"].ToString(), out value))
+                            newRow["Thanh_tien_vn"] = value.ToString(formatTien);
+                        else
+                            newRow["Thanh_tien_vn"] = row["Thanh_tien_vn"];
+                    }
+                    else if (col.ColumnName == "Thanh_tien" && row["Thanh_tien"] != DBNull.Value)
+                    {
+                        decimal value;
+                        if (decimal.TryParse(row["Thanh_tien"].ToString(), out value))
+                            newRow["Thanh_tien"] = value.ToString(formatTienNt);
+                        else
+                            newRow["Thanh_tien"] = row["Thanh_tien"];
+                    }
+                    else
+                    {
+                        newRow[col.ColumnName] = row[col.ColumnName];
+                    }
+                }
+                dtDisplay.Rows.Add(newRow);
+            }
+
             // Tạo instance của report
             var report = new BanHangTheoKhachHangReport();
 
             // Gán dữ liệu cho report
-            report.SetDataSource(data);
+            report.SetDataSource(dtDisplay);
 
             report.SetParameterValue("TuNgay", tuNgay.ToString("dd/MM/yyyy"));
             report.SetParameterValue("DenNgay", denNgay.ToString("dd/MM/yyyy"));
             report.SetParameterValue("MaNgoaite", maNgoaiTe.ToString());
-            report.SetParameterValue("FormatTien", formatTien);
-            report.SetParameterValue("FormatTienNt", formatTienNt);
-            report.SetParameterValue("FormatSoLuong", formatSoLuong);
 
             // Gán report cho viewer
             crystalReportViewer1.ReportSource = report;
