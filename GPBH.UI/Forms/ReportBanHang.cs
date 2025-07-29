@@ -1,5 +1,7 @@
 ﻿using DevComponents.DotNetBar;
+using GPBH.Business;
 using GPBH.Business.Dtos;
+using GPBH.Business.Services;
 using GPBH.UI.Report;
 using System;
 using System.Collections.Generic;
@@ -12,13 +14,11 @@ namespace GPBH.UI.Forms
     public partial class ReportBanHang : Office2007Form
     {
         private List<GirdSysDinhDangFormDto> SysDinhDangs = new List<GirdSysDinhDangFormDto>();
-        public ReportBanHang(DataTable data, DateTime tuNgay, DateTime denNgay, string maNgoaiTe, List<GirdSysDinhDangFormDto> sysDinhDangs)
+        public ReportBanHang(SysDinh_dang_formService sysDinh_Dang_FormService, DataTable data, DateTime tuNgay, DateTime denNgay, string maNgoaiTe)
         {
             InitializeComponent();
+            SysDinhDangs = sysDinh_Dang_FormService.GetDinhDang(AppGlobals.MaCH).data;
             this.StartPosition = FormStartPosition.CenterScreen;
-
-            if (sysDinhDangs != null)
-                SysDinhDangs = sysDinhDangs;
 
             var formatTien = GetFormat("Format_tien");
             var formatTienNt = GetFormat("Format_tien_nt");

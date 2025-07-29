@@ -5,6 +5,7 @@ using GPBH.UI.Constant;
 using GPBH.UI.Extentions;
 using GPBH.UI.Forms;
 using GPBH.UI.Helper;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -91,7 +92,7 @@ namespace GPBH.UI.UserControls
             DateTime denNgay = dtpDenNgay.Value;
             string maNgoaiTe = ccbMaNgoaiTe.SelectedValue?.ToString() ?? string.Empty;
             var data = GetData();
-            var frm = new ReportBanHang(data, tuNgay, denNgay, maNgoaiTe, SysDinhDangs);
+            var frm = ActivatorUtilities.CreateInstance<ReportBanHang>(Program.ServiceProvider, data, tuNgay, denNgay, maNgoaiTe);
             frm.ShowDialog();
         }
 
