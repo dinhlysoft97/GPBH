@@ -35,6 +35,7 @@ namespace GPBH.UI.Forms
         private DonHangService _donHangService;
         private DMKHService _dMKHService;
         private SysDinh_dang_formService _sysDinh_Dang_FormService;
+        private bool _isClickCell = false;
 
         sealed class ThanhToan
         {
@@ -200,6 +201,8 @@ namespace GPBH.UI.Forms
             if (_isView)
             {
                 dataGridViewX1.ReadOnly = true;
+                ucHangHoa.Enabled = false;
+                bthTimHH.Enabled = false;
                 this.Text = "Xem đơn hàng";
                 //dataGridViewX1.Columns["Ma_hh"].ReadOnly = true;
             }
@@ -886,7 +889,7 @@ namespace GPBH.UI.Forms
             else if (dataGridViewX1.SelectedRows.Count > 0)
             {
                 DataGridViewRow row = dataGridViewX1.SelectedRows[0];
-                if (!row.IsNewRow)
+                if (!row.IsNewRow && _isClickCell)
                 {
                     var item = row.DataBoundItem == null ? null : row.DataBoundItem as XCT5Dto;
                     if (item != null && !string.IsNullOrEmpty(item.Ma_hh) && item.Ma_hh != e.MaHH)
@@ -959,6 +962,8 @@ namespace GPBH.UI.Forms
         private void ShowUcHangHoaPopupAtCell(int colIndex, int rowIndex)
         {
             if (_isView) return;
+
+            _isClickCell = true;
             // Lấy vị trí cell trên màn hình
             Rectangle cellRect = dataGridViewX1.GetCellDisplayRectangle(colIndex, rowIndex, true);
             Point locationOnForm = dataGridViewX1.PointToScreen(cellRect.Location);
@@ -1068,6 +1073,7 @@ namespace GPBH.UI.Forms
         {
             AddOrUpdateHangHoaToGrid(e);
             HideUcHangHoaPopup();
+            _isClickCell = false;
         }
 
         /// <summary>
