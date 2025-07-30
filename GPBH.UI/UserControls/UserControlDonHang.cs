@@ -281,7 +281,8 @@ namespace GPBH.UI.UserControls
                 return;
             }
 
-            var formNew = ActivatorUtilities.CreateInstance<DonHang>(Program.ServiceProvider);
+            //var formNew = ActivatorUtilities.CreateInstance<DonHang>(Program.ServiceProvider);
+            var formNew = ActivatorUtilities.CreateInstance<DonHang1>(Program.ServiceProvider);
             if (formNew.FormKhachHangIsClose)
             {
                 formNew.Hide();
@@ -306,7 +307,8 @@ namespace GPBH.UI.UserControls
             if (item != null)
             {
                 var data = _donHangService.GetDonHang(item.Ma_phieu);
-                var formNew = ActivatorUtilities.CreateInstance<DonHang>(Program.ServiceProvider, data);
+                //var formNew = ActivatorUtilities.CreateInstance<DonHang>(Program.ServiceProvider, data);
+                var formNew = ActivatorUtilities.CreateInstance<DonHang1>(Program.ServiceProvider, data);
                 formNew.ShowDialog();
             }
         }
@@ -357,7 +359,9 @@ namespace GPBH.UI.UserControls
                 {
                     var data = _donHangService.GetDonHang(maPhieu);
                     var formNew = ActivatorUtilities.CreateInstance<DonHang>(Program.ServiceProvider, data, true);
+                    var formNew1 = ActivatorUtilities.CreateInstance<DonHang1>(Program.ServiceProvider, data, true);
                     formNew.ShowDialog();
+                    formNew1.ShowDialog();
                 }
             }
         }
