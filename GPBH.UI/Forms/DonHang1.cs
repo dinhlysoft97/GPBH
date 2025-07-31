@@ -314,7 +314,7 @@ namespace GPBH.UI.Forms
         private void LoadInfoDonHang()
         {
             lbTenDangNhap.Text = $"Người dùng:{AppGlobals.CurrentUser?.TenDangNhap}";
-            lbQuay.Text = $"Quầy: {_data.Ma_quay}";
+            lbQuay.Text = $"Quầy: {AppGlobals.MaQuay}";
             lbCa.Text = $"Ca: {AppGlobals.MaCa}";
             lbMST.Text = CuaHang?.Ma_cqt ?? string.Empty;
             lnSHD.Text = string.Empty;

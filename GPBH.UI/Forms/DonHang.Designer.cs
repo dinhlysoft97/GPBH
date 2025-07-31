@@ -242,8 +242,9 @@ namespace GPBH.UI.Forms
             this.lbMaPhieu.Location = new System.Drawing.Point(413, 57);
             this.lbMaPhieu.Margin = new System.Windows.Forms.Padding(2);
             this.lbMaPhieu.Name = "lbMaPhieu";
-            this.lbMaPhieu.Size = new System.Drawing.Size(0, 0);
+            this.lbMaPhieu.Size = new System.Drawing.Size(39, 15);
             this.lbMaPhieu.TabIndex = 31;
+            this.lbMaPhieu.Text = "123123";
             // 
             // labelX10
             // 
@@ -273,8 +274,9 @@ namespace GPBH.UI.Forms
             this.lbSoChungTu.Location = new System.Drawing.Point(413, 30);
             this.lbSoChungTu.Margin = new System.Windows.Forms.Padding(2);
             this.lbSoChungTu.Name = "lbSoChungTu";
-            this.lbSoChungTu.Size = new System.Drawing.Size(0, 0);
+            this.lbSoChungTu.Size = new System.Drawing.Size(39, 15);
             this.lbSoChungTu.TabIndex = 29;
+            this.lbSoChungTu.Text = "123123";
             // 
             // lbTGNT
             // 
@@ -1009,7 +1011,7 @@ namespace GPBH.UI.Forms
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 58.89792F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.10208F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 384F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 385F));
             this.tableLayoutPanel2.Controls.Add(this.groupPanel4, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.groupPanel6, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.groupPanel5, 2, 0);
@@ -1403,7 +1405,7 @@ namespace GPBH.UI.Forms
             this.groupPanel6.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel6.Location = new System.Drawing.Point(616, 3);
             this.groupPanel6.Name = "groupPanel6";
-            this.groupPanel6.Size = new System.Drawing.Size(422, 187);
+            this.groupPanel6.Size = new System.Drawing.Size(421, 187);
             // 
             // 
             // 
@@ -1627,7 +1629,7 @@ namespace GPBH.UI.Forms
             this.groupPanel5.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.groupPanel5.Controls.Add(this.lbQuyDoiTienTe);
             this.groupPanel5.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel5.Location = new System.Drawing.Point(1044, 3);
+            this.groupPanel5.Location = new System.Drawing.Point(1043, 3);
             this.groupPanel5.Name = "groupPanel5";
             this.groupPanel5.Size = new System.Drawing.Size(309, 187);
             // 
