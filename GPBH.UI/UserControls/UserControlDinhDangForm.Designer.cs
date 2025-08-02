@@ -34,6 +34,8 @@
             this.lbWarning = new DevComponents.DotNetBar.LabelX();
             this.btnLuu = new DevComponents.DotNetBar.ButtonX();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.cbbCode = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.cbbCuaHang = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
@@ -50,8 +52,6 @@
             this.Field_format = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Default_sort = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
             this.Ten_ban = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cbbCode = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -120,6 +120,31 @@
             this.panel2.Size = new System.Drawing.Size(612, 36);
             this.panel2.TabIndex = 1;
             // 
+            // cbbCode
+            // 
+            this.cbbCode.DisplayMember = "Text";
+            this.cbbCode.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbbCode.FormattingEnabled = true;
+            this.cbbCode.ItemHeight = 14;
+            this.cbbCode.Location = new System.Drawing.Point(376, 8);
+            this.cbbCode.Name = "cbbCode";
+            this.cbbCode.Size = new System.Drawing.Size(221, 20);
+            this.cbbCode.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbbCode.TabIndex = 28;
+            // 
+            // labelX2
+            // 
+            this.labelX2.AutoSize = true;
+            // 
+            // 
+            // 
+            this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX2.Location = new System.Drawing.Point(295, 11);
+            this.labelX2.Name = "labelX2";
+            this.labelX2.Size = new System.Drawing.Size(75, 15);
+            this.labelX2.TabIndex = 27;
+            this.labelX2.Text = "Loại định dạng";
+            // 
             // cbbCuaHang
             // 
             this.cbbCuaHang.DisplayMember = "Text";
@@ -150,7 +175,7 @@
             this.dataGridViewX1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridViewX1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewX1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Stt,
@@ -187,6 +212,7 @@
             this.Stt.HeaderText = "Stt";
             this.Stt.Name = "Stt";
             this.Stt.ReadOnly = true;
+            this.Stt.Width = 45;
             // 
             // Code_name
             // 
@@ -194,6 +220,7 @@
             this.Code_name.HeaderText = "Mã chức năng";
             this.Code_name.Name = "Code_name";
             this.Code_name.ReadOnly = true;
+            this.Code_name.Width = 93;
             // 
             // MenuId
             // 
@@ -201,6 +228,7 @@
             this.MenuId.HeaderText = "MenuId";
             this.MenuId.Name = "MenuId";
             this.MenuId.ReadOnly = true;
+            this.MenuId.Width = 68;
             // 
             // MenuName
             // 
@@ -208,6 +236,7 @@
             this.MenuName.HeaderText = "Tên menu";
             this.MenuName.Name = "MenuName";
             this.MenuName.ReadOnly = true;
+            this.MenuName.Width = 74;
             // 
             // Field_name
             // 
@@ -215,6 +244,7 @@
             this.Field_name.HeaderText = "Tên trường";
             this.Field_name.Name = "Field_name";
             this.Field_name.ReadOnly = true;
+            this.Field_name.Width = 78;
             // 
             // Field_type
             // 
@@ -222,18 +252,21 @@
             this.Field_type.HeaderText = "Kiểu dữ liệu hiển thị";
             this.Field_type.Name = "Field_type";
             this.Field_type.ReadOnly = true;
+            this.Field_type.Width = 104;
             // 
             // Field_title
             // 
             this.Field_title.DataPropertyName = "Field_title";
             this.Field_title.HeaderText = "Tiêu đề trường";
             this.Field_title.Name = "Field_title";
+            this.Field_title.Width = 94;
             // 
             // Field_order
             // 
             this.Field_order.DataPropertyName = "Field_order";
             this.Field_order.HeaderText = "Thứ tự sắp xếp";
             this.Field_order.Name = "Field_order";
+            this.Field_order.Width = 79;
             // 
             // Field_hide
             // 
@@ -243,6 +276,7 @@
             this.Field_hide.DataPropertyName = "Field_hide";
             this.Field_hide.HeaderText = "Không hiển thị";
             this.Field_hide.Name = "Field_hide";
+            this.Field_hide.Width = 63;
             // 
             // Field_width
             // 
@@ -258,12 +292,14 @@
             this.Field_width.Increment = 1D;
             this.Field_width.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
             this.Field_width.Name = "Field_width";
+            this.Field_width.Width = 81;
             // 
             // Field_format
             // 
             this.Field_format.DataPropertyName = "Field_format";
             this.Field_format.HeaderText = "Định dạng hiển thị";
             this.Field_format.Name = "Field_format";
+            this.Field_format.Width = 98;
             // 
             // Default_sort
             // 
@@ -278,37 +314,14 @@
             this.Default_sort.ItemHeight = 15;
             this.Default_sort.Name = "Default_sort";
             this.Default_sort.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.Default_sort.Width = 51;
             // 
             // Ten_ban
             // 
             this.Ten_ban.DataPropertyName = "Ten_ban";
             this.Ten_ban.HeaderText = "Tên bảng";
             this.Ten_ban.Name = "Ten_ban";
-            // 
-            // cbbCode
-            // 
-            this.cbbCode.DisplayMember = "Text";
-            this.cbbCode.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cbbCode.FormattingEnabled = true;
-            this.cbbCode.ItemHeight = 14;
-            this.cbbCode.Location = new System.Drawing.Point(376, 8);
-            this.cbbCode.Name = "cbbCode";
-            this.cbbCode.Size = new System.Drawing.Size(221, 20);
-            this.cbbCode.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cbbCode.TabIndex = 28;
-            // 
-            // labelX2
-            // 
-            this.labelX2.AutoSize = true;
-            // 
-            // 
-            // 
-            this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(295, 11);
-            this.labelX2.Name = "labelX2";
-            this.labelX2.Size = new System.Drawing.Size(75, 15);
-            this.labelX2.TabIndex = 27;
-            this.labelX2.Text = "Loại định dạng";
+            this.Ten_ban.Width = 72;
             // 
             // UserControlDinhDangForm
             // 

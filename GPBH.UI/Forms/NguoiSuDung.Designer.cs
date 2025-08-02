@@ -40,7 +40,6 @@
             this.checkAdmin = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.checkKSD = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.btnLuu = new DevComponents.DotNetBar.ButtonX();
-            this.btnDong = new DevComponents.DotNetBar.ButtonX();
             this.lbError = new DevComponents.DotNetBar.LabelX();
             this.SuspendLayout();
             // 
@@ -196,23 +195,12 @@
             // 
             this.btnLuu.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnLuu.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnLuu.Location = new System.Drawing.Point(141, 216);
+            this.btnLuu.Location = new System.Drawing.Point(231, 218);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(75, 23);
             this.btnLuu.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnLuu.TabIndex = 11;
             this.btnLuu.Text = "Lưu";
-            // 
-            // btnDong
-            // 
-            this.btnDong.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnDong.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnDong.Location = new System.Drawing.Point(231, 216);
-            this.btnDong.Name = "btnDong";
-            this.btnDong.Size = new System.Drawing.Size(75, 23);
-            this.btnDong.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnDong.TabIndex = 12;
-            this.btnDong.Text = "Đóng";
             // 
             // lbError
             // 
@@ -231,7 +219,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(353, 244);
             this.Controls.Add(this.lbError);
-            this.Controls.Add(this.btnDong);
             this.Controls.Add(this.btnLuu);
             this.Controls.Add(this.checkKSD);
             this.Controls.Add(this.checkAdmin);
@@ -270,7 +257,6 @@
         private DevComponents.DotNetBar.Controls.CheckBoxX checkAdmin;
         private DevComponents.DotNetBar.Controls.CheckBoxX checkKSD;
         private DevComponents.DotNetBar.ButtonX btnLuu;
-        private DevComponents.DotNetBar.ButtonX btnDong;
         private DevComponents.DotNetBar.LabelX lbError;
     }
 }

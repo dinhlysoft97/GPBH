@@ -51,7 +51,7 @@
             // 
             this.dataGridViewX1.AllowUserToAddRows = false;
             this.dataGridViewX1.AllowUserToDeleteRows = false;
-            this.dataGridViewX1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewX1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Ma_hh,
@@ -88,6 +88,7 @@
             this.Ma_hh.HeaderText = "Mã hàng";
             this.Ma_hh.Name = "Ma_hh";
             this.Ma_hh.ReadOnly = true;
+            this.Ma_hh.Width = 74;
             // 
             // Ten_hh
             // 
@@ -95,6 +96,7 @@
             this.Ten_hh.HeaderText = "Tên hàng";
             this.Ten_hh.Name = "Ten_hh";
             this.Ten_hh.ReadOnly = true;
+            this.Ten_hh.Width = 78;
             // 
             // Dvt
             // 
@@ -102,6 +104,7 @@
             this.Dvt.HeaderText = "Đơn vị tính";
             this.Dvt.Name = "Dvt";
             this.Dvt.ReadOnly = true;
+            this.Dvt.Width = 85;
             // 
             // Ma_nhom_hh
             // 
@@ -109,6 +112,7 @@
             this.Ma_nhom_hh.HeaderText = "Nhóm hàng";
             this.Ma_nhom_hh.Name = "Ma_nhom_hh";
             this.Ma_nhom_hh.ReadOnly = true;
+            this.Ma_nhom_hh.Width = 87;
             // 
             // Thuong_hieu
             // 
@@ -116,6 +120,7 @@
             this.Thuong_hieu.HeaderText = "Thương hiệu";
             this.Thuong_hieu.Name = "Thuong_hieu";
             this.Thuong_hieu.ReadOnly = true;
+            this.Thuong_hieu.Width = 92;
             // 
             // Ma_nsx
             // 
@@ -123,6 +128,7 @@
             this.Ma_nsx.HeaderText = "Mã nhà sản xuất";
             this.Ma_nsx.Name = "Ma_nsx";
             this.Ma_nsx.ReadOnly = true;
+            this.Ma_nsx.Width = 111;
             // 
             // Ten_nsx
             // 
@@ -130,6 +136,7 @@
             this.Ten_nsx.HeaderText = "Tên nhà sản xuất";
             this.Ten_nsx.Name = "Ten_nsx";
             this.Ten_nsx.ReadOnly = true;
+            this.Ten_nsx.Width = 115;
             // 
             // Nuoc_sx
             // 
@@ -137,6 +144,7 @@
             this.Nuoc_sx.HeaderText = "Nước sản xuất";
             this.Nuoc_sx.Name = "Nuoc_sx";
             this.Nuoc_sx.ReadOnly = true;
+            this.Nuoc_sx.Width = 101;
             // 
             // Chieu_dai
             // 
@@ -146,6 +154,7 @@
             this.Chieu_dai.HeaderText = "Chiều dài";
             this.Chieu_dai.Name = "Chieu_dai";
             this.Chieu_dai.ReadOnly = true;
+            this.Chieu_dai.Width = 76;
             // 
             // Trong_luong
             // 
@@ -155,6 +164,7 @@
             this.Trong_luong.HeaderText = "Trọng lượng";
             this.Trong_luong.Name = "Trong_luong";
             this.Trong_luong.ReadOnly = true;
+            this.Trong_luong.Width = 89;
             // 
             // Chieu_cao
             // 
@@ -164,6 +174,7 @@
             this.Chieu_cao.HeaderText = "Chiều cao";
             this.Chieu_cao.Name = "Chieu_cao";
             this.Chieu_cao.ReadOnly = true;
+            this.Chieu_cao.Width = 80;
             // 
             // UserControlHangHoa
             // 

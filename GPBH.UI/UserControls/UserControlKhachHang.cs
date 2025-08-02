@@ -96,7 +96,7 @@ namespace GPBH.UI.UserControls
             }
 
             // Lấy service quốc gia từ DI nếu cần, hoặc truyền null nếu không dùng
-            var form = ActivatorUtilities.CreateInstance<KhachHang>(Program.ServiceProvider, null, true, false);
+            var form = ActivatorUtilities.CreateInstance<KhachHang>(Program.ServiceProvider, string.Empty, true, false);
             if (form.ShowDialog() == DialogResult.OK)
             {
                 LoadData();

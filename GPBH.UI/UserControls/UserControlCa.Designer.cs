@@ -41,7 +41,7 @@
             // 
             this.dataGridViewX1.AllowUserToAddRows = false;
             this.dataGridViewX1.AllowUserToDeleteRows = false;
-            this.dataGridViewX1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewX1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Ma_ca,
@@ -72,6 +72,7 @@
             this.Ma_ca.Name = "Ma_ca";
             this.Ma_ca.ReadOnly = true;
             this.Ma_ca.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Ma_ca.Width = 62;
             // 
             // Ten_ca
             // 
@@ -80,6 +81,7 @@
             this.Ten_ca.Name = "Ten_ca";
             this.Ten_ca.ReadOnly = true;
             this.Ten_ca.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Ten_ca.Width = 66;
             // 
             // Gio_bd
             // 
@@ -88,6 +90,7 @@
             this.Gio_bd.Name = "Gio_bd";
             this.Gio_bd.ReadOnly = true;
             this.Gio_bd.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Gio_bd.Width = 88;
             // 
             // Gio_kt
             // 
@@ -96,6 +99,7 @@
             this.Gio_kt.Name = "Gio_kt";
             this.Gio_kt.ReadOnly = true;
             this.Gio_kt.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Gio_kt.Width = 90;
             // 
             // UserControlCa
             // 
