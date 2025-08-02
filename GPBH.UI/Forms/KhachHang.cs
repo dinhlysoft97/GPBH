@@ -90,6 +90,7 @@ namespace GPBH.UI.Forms
                     _isEditMode = true;
                     DataKhachHang = khachHang;
                     FillCustomerData(khachHang);
+                    txtCCCD.Enabled = false;
                 }
                 else
                 {
@@ -134,7 +135,25 @@ namespace GPBH.UI.Forms
             txtTongTien.DisplayFormat(GetFormat("Format_tien"));
 
             if (_isView)
+            {
+                cbbQuocTich.Enabled = false;
+                cbbGioiTinh.Enabled = false;
+                txtHo.Enabled = false;
+                txtTen.Enabled = false;
+                txtTenDem.Enabled = false;
+                txtSDT.Enabled = false;
+                txtDiaChi.Enabled = false;
+                dtNgayCap.Enabled = false;
+                dtHetHan.Enabled = false;
+                dtNgaySinh.Enabled = false;
+                txtEmail.Enabled = false;
+                dtTTXNCNgayCap.Enabled = false;
+                dtTTXNCHetHan.Enabled = false;
+                txPhuongTien.Enabled = false;
+                txtTauBay.Enabled = false;
+                txtTongTien.Enabled = false;
                 btnChon.Enabled = false;
+            } 
         }
 
         #endregion

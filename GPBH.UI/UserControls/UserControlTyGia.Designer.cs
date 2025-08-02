@@ -42,7 +42,7 @@
             // 
             this.dataGridViewX1.AllowUserToAddRows = false;
             this.dataGridViewX1.AllowUserToDeleteRows = false;
-            this.dataGridViewX1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewX1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
             this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Ma_nt,
@@ -71,6 +71,7 @@
             this.Ma_nt.HeaderText = "Mã ngoại tệ";
             this.Ma_nt.Name = "Ma_nt";
             this.Ma_nt.ReadOnly = true;
+            this.Ma_nt.Width = 88;
             // 
             // Ngay_ap_dung
             // 
@@ -80,6 +81,7 @@
             this.Ngay_ap_dung.HeaderText = "Ngày áp dụng";
             this.Ngay_ap_dung.Name = "Ngay_ap_dung";
             this.Ngay_ap_dung.ReadOnly = true;
+            this.Ngay_ap_dung.Width = 99;
             // 
             // Ty_gia
             // 
@@ -89,6 +91,7 @@
             this.Ty_gia.HeaderText = "Tỷ giá";
             this.Ty_gia.Name = "Ty_gia";
             this.Ty_gia.ReadOnly = true;
+            this.Ty_gia.Width = 61;
             // 
             // UserControlTyGia
             // 

@@ -1,4 +1,5 @@
 ﻿using DevComponents.DotNetBar;
+using DevComponents.DotNetBar.Controls;
 using DevComponents.Editors;
 using GPBH.Business;
 using GPBH.Business.Dtos;
@@ -88,10 +89,10 @@ namespace GPBH.UI.UserControls
                 dataGridViewX1.SetGirdReadOnly();
             };
             dataGridViewX1.Columns["Stt"].Visible = false; // ẩn cột Stt trong lưới detail
-          
+
         }
 
-       
+
         /// <summary>
         /// Tìm kiếm theo từ khóa và bind lại dữ liệu.
         /// </summary>
@@ -244,7 +245,7 @@ namespace GPBH.UI.UserControls
             {
                 HandleXoa();
             }
-            else if(e.KeyCode == Keys.F1)
+            else if (e.KeyCode == Keys.F1)
             {
                 BtnThem_Click(sender, null);
             }
@@ -295,6 +296,7 @@ namespace GPBH.UI.UserControls
 
         private void BtnSua_Click(object sender, EventArgs e)
         {
+            var selectedRowIndex = dataGridViewX1.CurrentCell.RowIndex;
             var hasPermission = CheckPermissionHelper.HasPerrmission("DonHang", GPBHConstant.Action.Sua);
             if (!hasPermission)
             {
@@ -308,6 +310,32 @@ namespace GPBH.UI.UserControls
                 var data = _donHangService.GetDonHang(item.Ma_phieu);
                 var formNew = ActivatorUtilities.CreateInstance<DonHang>(Program.ServiceProvider, data);
                 formNew.ShowDialog();
+                TimKiem(); // Sau khi edit, load lại dữ liệu
+
+                // 3. Sau khi form đóng, set lại SelectedRow
+                if (selectedRowIndex >= 0 &&
+                 selectedRowIndex < dataGridViewX1.Rows.Count &&
+                 dataGridViewX1.Rows[selectedRowIndex].Visible)
+                {
+                    // Tìm cell đầu tiên còn dataGridViewX1 trên dòng đó
+                    DataGridViewRow row = dataGridViewX1.Rows[selectedRowIndex];
+                    DataGridViewCell firstVisibleCell = null;
+                    foreach (DataGridViewCell cell in row.Cells)
+                    {
+                        if (cell.Visible && cell.OwningColumn.Visible)
+                        {
+                            firstVisibleCell = cell;
+                            break;
+                        }
+                    }
+                    if (firstVisibleCell != null)
+                    {
+                        dataGridViewX1.CurrentCell = firstVisibleCell;
+                        dataGridViewX1.Rows[selectedRowIndex].Selected = true;
+                    }
+                }
+                dataGridViewX2.BindData(_donHangService.GetDonHangChiTiet(item.Ma_phieu));
+                SetFormRowChiTietTheoCuaHang(item.Ma_cua_hang);
             }
         }
         private void BtnXoa_Click(object sender, EventArgs e) => HandleXoa();
@@ -372,7 +400,10 @@ namespace GPBH.UI.UserControls
             var curRow = dataGridViewX1.CurrentRow;
             // Bỏ qua dòng filter (dòng đầu), và những trường hợp không hợp lệ
             if (curRow == null || curRow.IsNewRow || curRow.Index == 0)
+            {
+                dataGridViewX2.BindData(new List<GirdDonHangChiTietDto>());
                 return;
+            }
             if (_lastRowIndex == curRow.Index)
                 return; // Không chuyển row, bỏ qua
 

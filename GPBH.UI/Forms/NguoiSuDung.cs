@@ -44,6 +44,10 @@ namespace GPBH.UI.Forms
             if (_isView)
             {
                 btnLuu.Enabled = false;
+                txtTenDayDu.Enabled = false;
+                checkKSD.Enabled = false;
+                checkAdmin.Enabled = false;
+                checkCapLaiQuyen.Enabled = false;
                 this.Text = "Xem người dùng: " + _data.TenDayDu;
             } 
         }
@@ -54,7 +58,6 @@ namespace GPBH.UI.Forms
         private void RegisterEvents()
         {
             btnLuu.Click += BtnLuu_Click;
-            btnDong.Click += BtnDong_Click;
         }
 
         #endregion
@@ -112,19 +115,8 @@ namespace GPBH.UI.Forms
                 }
                 var data = _sysDMNSDService.TaoMoi(user);
                 MessageBoxEx.Show("Tạo người dùng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // Hiển thị lại form để sửa ngay nếu muốn
-                this.Hide();
-                this.ShowForm<NguoiSuDung>(data);
             }
-        }
-
-        /// <summary>
-        /// Sự kiện click nút Đóng.
-        /// </summary>
-        private void BtnDong_Click(object sender, EventArgs e)
-        {
-            this.ColseForm();
+            this.Close();
         }
 
         #endregion

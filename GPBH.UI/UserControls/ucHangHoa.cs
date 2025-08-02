@@ -126,6 +126,26 @@ namespace GPBH.UI.UserControls
                 }
                 e.Handled = true;
             }
+            else if (e.KeyCode == Keys.Enter)
+            {
+                int rowIndex = dgv.CurrentCell?.RowIndex ?? -1;
+                if (rowIndex == -1) return;
+                var row = dgv.Rows[rowIndex];
+                string maHH = row.Cells["Ma_hh"].Value?.ToString();
+                string tenHH = row.Cells["Ten_hh"].Value?.ToString();
+                string dvt = row.Cells["Dvt"].Value?.ToString();
+
+                // Gọi event để notify ra ngoài
+                HangHoaSelected?.Invoke(this, new HangHoaSelectedEventArgs
+                {
+                    MaHH = maHH,
+                    TenHH = tenHH,
+                    Dvt = dvt
+                });
+
+                // Đóng dropdown sau khi chọn
+                TsDropDown.Close();
+            }
         }
 
         public void Tb_KeyDown_Enter(object sender, KeyEventArgs e)
