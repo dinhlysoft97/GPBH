@@ -282,7 +282,8 @@ namespace GPBH.UI.UserControls
                 return;
             }
 
-            var formNew = ActivatorUtilities.CreateInstance<DonHang>(Program.ServiceProvider);
+            //var formNew = ActivatorUtilities.CreateInstance<DonHang>(Program.ServiceProvider);
+            var formNew = ActivatorUtilities.CreateInstance<DonHang1>(Program.ServiceProvider);
             if (formNew.FormKhachHangIsClose)
             {
                 formNew.Hide();
@@ -308,7 +309,8 @@ namespace GPBH.UI.UserControls
             if (item != null)
             {
                 var data = _donHangService.GetDonHang(item.Ma_phieu);
-                var formNew = ActivatorUtilities.CreateInstance<DonHang>(Program.ServiceProvider, data);
+                //var formNew = ActivatorUtilities.CreateInstance<DonHang>(Program.ServiceProvider, data);
+                var formNew = ActivatorUtilities.CreateInstance<DonHang1>(Program.ServiceProvider, data);
                 formNew.ShowDialog();
                 TimKiem(); // Sau khi edit, load lại dữ liệu
 
@@ -384,7 +386,8 @@ namespace GPBH.UI.UserControls
                 if (!string.IsNullOrEmpty(maPhieu))
                 {
                     var data = _donHangService.GetDonHang(maPhieu);
-                    var formNew = ActivatorUtilities.CreateInstance<DonHang>(Program.ServiceProvider, data, true);
+                    //var formNew = ActivatorUtilities.CreateInstance<DonHang>(Program.ServiceProvider, data, true);
+                    var formNew = ActivatorUtilities.CreateInstance<DonHang1>(Program.ServiceProvider, data, true);
                     formNew.ShowDialog();
                 }
             }

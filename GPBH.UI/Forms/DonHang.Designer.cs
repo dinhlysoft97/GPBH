@@ -31,11 +31,11 @@ namespace GPBH.UI.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.txtSoChungTu = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.lbMaPhieu = new DevComponents.DotNetBar.LabelX();
             this.labelX10 = new DevComponents.DotNetBar.LabelX();
-            this.lbSoChungTu = new DevComponents.DotNetBar.LabelX();
             this.lbTGNT = new DevComponents.DotNetBar.LabelX();
             this.lbNgayHoaDon = new DevComponents.DotNetBar.LabelX();
             this.lbSCT = new DevComponents.DotNetBar.LabelX();
@@ -78,6 +78,7 @@ namespace GPBH.UI.Forms
             this.bar1 = new DevComponents.DotNetBar.Bar();
             this.bthTimHH = new DevComponents.DotNetBar.ButtonX();
             this.lbHH = new DevComponents.DotNetBar.LabelX();
+            this.ucHangHoa = new GPBH.UI.UserControls.ucHangHoa();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.groupPanel4 = new DevComponents.DotNetBar.Controls.GroupPanel();
@@ -116,7 +117,13 @@ namespace GPBH.UI.Forms
             this.lbTTH = new DevComponents.DotNetBar.LabelX();
             this.labelX22 = new DevComponents.DotNetBar.LabelX();
             this.groupPanel5 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.txtTt3_tien_nt_str = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.txtTt3_tien_tt_str = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.txtTt2_tien_nt_str = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.txtTt2_tien_tt_str = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.txtTt1_tien_nt_str = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.lbQuyDoiTienTe = new DevComponents.DotNetBar.LabelX();
+            this.txtTt1_tien_tt_str = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.bar2 = new DevComponents.DotNetBar.Bar();
             this.labelItem1 = new DevComponents.DotNetBar.LabelItem();
             this.labelItem2 = new DevComponents.DotNetBar.LabelItem();
@@ -142,14 +149,6 @@ namespace GPBH.UI.Forms
             this.txtTong_nhan = new DevComponents.Editors.DoubleInput();
             this.txtTra_lai_nt = new DevComponents.Editors.DoubleInput();
             this.txtTra_lai = new DevComponents.Editors.DoubleInput();
-            this.txtTt1_tien_tt_str = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.txtTt1_tien_nt_str = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.txtTt2_tien_nt_str = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.txtTt2_tien_tt_str = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.txtTt3_tien_nt_str = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.txtTt3_tien_tt_str = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.txtSoChungTu = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.ucHangHoa = new GPBH.UI.UserControls.ucHangHoa();
             this.groupPanel2.SuspendLayout();
             this.groupPanel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -189,7 +188,6 @@ namespace GPBH.UI.Forms
             this.groupPanel2.Controls.Add(this.txtSoChungTu);
             this.groupPanel2.Controls.Add(this.lbMaPhieu);
             this.groupPanel2.Controls.Add(this.labelX10);
-            this.groupPanel2.Controls.Add(this.lbSoChungTu);
             this.groupPanel2.Controls.Add(this.lbTGNT);
             this.groupPanel2.Controls.Add(this.lbNgayHoaDon);
             this.groupPanel2.Controls.Add(this.lbSCT);
@@ -238,6 +236,20 @@ namespace GPBH.UI.Forms
             this.groupPanel2.TabIndex = 1;
             this.groupPanel2.Text = "Thông tin đơn hàng";
             // 
+            // txtSoChungTu
+            // 
+            // 
+            // 
+            // 
+            this.txtSoChungTu.Border.Class = "TextBoxBorder";
+            this.txtSoChungTu.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtSoChungTu.Location = new System.Drawing.Point(299, 26);
+            this.txtSoChungTu.Name = "txtSoChungTu";
+            this.txtSoChungTu.PreventEnterBeep = true;
+            this.txtSoChungTu.ReadOnly = true;
+            this.txtSoChungTu.Size = new System.Drawing.Size(137, 20);
+            this.txtSoChungTu.TabIndex = 32;
+            // 
             // lbMaPhieu
             // 
             this.lbMaPhieu.AutoSize = true;
@@ -250,9 +262,8 @@ namespace GPBH.UI.Forms
             this.lbMaPhieu.Location = new System.Drawing.Point(299, 57);
             this.lbMaPhieu.Margin = new System.Windows.Forms.Padding(2);
             this.lbMaPhieu.Name = "lbMaPhieu";
-            this.lbMaPhieu.Size = new System.Drawing.Size(39, 15);
+            this.lbMaPhieu.Size = new System.Drawing.Size(137, 15);
             this.lbMaPhieu.TabIndex = 31;
-            this.lbMaPhieu.Text = "123123";
             // 
             // labelX10
             // 
@@ -269,23 +280,6 @@ namespace GPBH.UI.Forms
             this.labelX10.Size = new System.Drawing.Size(51, 15);
             this.labelX10.TabIndex = 30;
             this.labelX10.Text = "Mã phiếu:";
-            // 
-            // lbSoChungTu
-            // 
-            this.lbSoChungTu.AutoSize = true;
-            this.lbSoChungTu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            // 
-            // 
-            // 
-            this.lbSoChungTu.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lbSoChungTu.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbSoChungTu.Location = new System.Drawing.Point(299, 76);
-            this.lbSoChungTu.Margin = new System.Windows.Forms.Padding(2);
-            this.lbSoChungTu.Name = "lbSoChungTu";
-            this.lbSoChungTu.Size = new System.Drawing.Size(39, 15);
-            this.lbSoChungTu.TabIndex = 29;
-            this.lbSoChungTu.Text = "123123";
-            this.lbSoChungTu.Visible = false;
             // 
             // lbTGNT
             // 
@@ -743,14 +737,14 @@ namespace GPBH.UI.Forms
             this.Tien_ban_nt,
             this.Tien_ban,
             this.Gg_ly_do});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewX1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataGridViewX1.Location = new System.Drawing.Point(0, 40);
@@ -991,6 +985,14 @@ namespace GPBH.UI.Forms
             this.lbHH.Size = new System.Drawing.Size(104, 18);
             this.lbHH.TabIndex = 2;
             this.lbHH.Text = "Không tìm thấy mã";
+            // 
+            // ucHangHoa
+            // 
+            this.ucHangHoa.HasHangHoa = false;
+            this.ucHangHoa.Location = new System.Drawing.Point(156, 9);
+            this.ucHangHoa.Name = "ucHangHoa";
+            this.ucHangHoa.Size = new System.Drawing.Size(189, 24);
+            this.ucHangHoa.TabIndex = 1;
             // 
             // labelX4
             // 
@@ -1670,6 +1672,81 @@ namespace GPBH.UI.Forms
             this.groupPanel5.TabIndex = 2;
             this.groupPanel5.Text = "Quy đổi tiền tệ";
             // 
+            // txtTt3_tien_nt_str
+            // 
+            // 
+            // 
+            // 
+            this.txtTt3_tien_nt_str.Border.Class = "TextBoxBorder";
+            this.txtTt3_tien_nt_str.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtTt3_tien_nt_str.Location = new System.Drawing.Point(118, 101);
+            this.txtTt3_tien_nt_str.Name = "txtTt3_tien_nt_str";
+            this.txtTt3_tien_nt_str.PreventEnterBeep = true;
+            this.txtTt3_tien_nt_str.Size = new System.Drawing.Size(100, 20);
+            this.txtTt3_tien_nt_str.TabIndex = 52;
+            this.txtTt3_tien_nt_str.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtTt3_tien_nt_str.Visible = false;
+            // 
+            // txtTt3_tien_tt_str
+            // 
+            // 
+            // 
+            // 
+            this.txtTt3_tien_tt_str.Border.Class = "TextBoxBorder";
+            this.txtTt3_tien_tt_str.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtTt3_tien_tt_str.Location = new System.Drawing.Point(13, 101);
+            this.txtTt3_tien_tt_str.Name = "txtTt3_tien_tt_str";
+            this.txtTt3_tien_tt_str.PreventEnterBeep = true;
+            this.txtTt3_tien_tt_str.Size = new System.Drawing.Size(99, 20);
+            this.txtTt3_tien_tt_str.TabIndex = 51;
+            this.txtTt3_tien_tt_str.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtTt3_tien_tt_str.Visible = false;
+            // 
+            // txtTt2_tien_nt_str
+            // 
+            // 
+            // 
+            // 
+            this.txtTt2_tien_nt_str.Border.Class = "TextBoxBorder";
+            this.txtTt2_tien_nt_str.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtTt2_tien_nt_str.Location = new System.Drawing.Point(118, 78);
+            this.txtTt2_tien_nt_str.Name = "txtTt2_tien_nt_str";
+            this.txtTt2_tien_nt_str.PreventEnterBeep = true;
+            this.txtTt2_tien_nt_str.Size = new System.Drawing.Size(100, 20);
+            this.txtTt2_tien_nt_str.TabIndex = 50;
+            this.txtTt2_tien_nt_str.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtTt2_tien_nt_str.Visible = false;
+            // 
+            // txtTt2_tien_tt_str
+            // 
+            // 
+            // 
+            // 
+            this.txtTt2_tien_tt_str.Border.Class = "TextBoxBorder";
+            this.txtTt2_tien_tt_str.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtTt2_tien_tt_str.Location = new System.Drawing.Point(13, 78);
+            this.txtTt2_tien_tt_str.Name = "txtTt2_tien_tt_str";
+            this.txtTt2_tien_tt_str.PreventEnterBeep = true;
+            this.txtTt2_tien_tt_str.Size = new System.Drawing.Size(99, 20);
+            this.txtTt2_tien_tt_str.TabIndex = 49;
+            this.txtTt2_tien_tt_str.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtTt2_tien_tt_str.Visible = false;
+            // 
+            // txtTt1_tien_nt_str
+            // 
+            // 
+            // 
+            // 
+            this.txtTt1_tien_nt_str.Border.Class = "TextBoxBorder";
+            this.txtTt1_tien_nt_str.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtTt1_tien_nt_str.Location = new System.Drawing.Point(118, 55);
+            this.txtTt1_tien_nt_str.Name = "txtTt1_tien_nt_str";
+            this.txtTt1_tien_nt_str.PreventEnterBeep = true;
+            this.txtTt1_tien_nt_str.Size = new System.Drawing.Size(100, 20);
+            this.txtTt1_tien_nt_str.TabIndex = 47;
+            this.txtTt1_tien_nt_str.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtTt1_tien_nt_str.Visible = false;
+            // 
             // lbQuyDoiTienTe
             // 
             this.lbQuyDoiTienTe.AutoSize = true;
@@ -1684,6 +1761,21 @@ namespace GPBH.UI.Forms
             this.lbQuyDoiTienTe.Size = new System.Drawing.Size(62, 15);
             this.lbQuyDoiTienTe.TabIndex = 48;
             this.lbQuyDoiTienTe.Text = "Tiền quy đổi";
+            // 
+            // txtTt1_tien_tt_str
+            // 
+            // 
+            // 
+            // 
+            this.txtTt1_tien_tt_str.Border.Class = "TextBoxBorder";
+            this.txtTt1_tien_tt_str.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtTt1_tien_tt_str.Location = new System.Drawing.Point(13, 55);
+            this.txtTt1_tien_tt_str.Name = "txtTt1_tien_tt_str";
+            this.txtTt1_tien_tt_str.PreventEnterBeep = true;
+            this.txtTt1_tien_tt_str.Size = new System.Drawing.Size(99, 20);
+            this.txtTt1_tien_tt_str.TabIndex = 46;
+            this.txtTt1_tien_tt_str.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtTt1_tien_tt_str.Visible = false;
             // 
             // bar2
             // 
@@ -1946,118 +2038,6 @@ namespace GPBH.UI.Forms
             this.txtTra_lai.Size = new System.Drawing.Size(99, 20);
             this.txtTra_lai.TabIndex = 51;
             // 
-            // txtTt1_tien_tt_str
-            // 
-            // 
-            // 
-            // 
-            this.txtTt1_tien_tt_str.Border.Class = "TextBoxBorder";
-            this.txtTt1_tien_tt_str.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtTt1_tien_tt_str.Location = new System.Drawing.Point(13, 55);
-            this.txtTt1_tien_tt_str.Name = "txtTt1_tien_tt_str";
-            this.txtTt1_tien_tt_str.PreventEnterBeep = true;
-            this.txtTt1_tien_tt_str.Size = new System.Drawing.Size(99, 20);
-            this.txtTt1_tien_tt_str.TabIndex = 46;
-            this.txtTt1_tien_tt_str.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtTt1_tien_tt_str.Visible = false;
-            // 
-            // txtTt1_tien_nt_str
-            // 
-            // 
-            // 
-            // 
-            this.txtTt1_tien_nt_str.Border.Class = "TextBoxBorder";
-            this.txtTt1_tien_nt_str.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtTt1_tien_nt_str.Location = new System.Drawing.Point(118, 55);
-            this.txtTt1_tien_nt_str.Name = "txtTt1_tien_nt_str";
-            this.txtTt1_tien_nt_str.PreventEnterBeep = true;
-            this.txtTt1_tien_nt_str.Size = new System.Drawing.Size(100, 20);
-            this.txtTt1_tien_nt_str.TabIndex = 47;
-            this.txtTt1_tien_nt_str.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtTt1_tien_nt_str.Visible = false;
-            // 
-            // txtTt2_tien_nt_str
-            // 
-            // 
-            // 
-            // 
-            this.txtTt2_tien_nt_str.Border.Class = "TextBoxBorder";
-            this.txtTt2_tien_nt_str.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtTt2_tien_nt_str.Location = new System.Drawing.Point(118, 78);
-            this.txtTt2_tien_nt_str.Name = "txtTt2_tien_nt_str";
-            this.txtTt2_tien_nt_str.PreventEnterBeep = true;
-            this.txtTt2_tien_nt_str.Size = new System.Drawing.Size(100, 20);
-            this.txtTt2_tien_nt_str.TabIndex = 50;
-            this.txtTt2_tien_nt_str.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtTt2_tien_nt_str.Visible = false;
-            // 
-            // txtTt2_tien_tt_str
-            // 
-            // 
-            // 
-            // 
-            this.txtTt2_tien_tt_str.Border.Class = "TextBoxBorder";
-            this.txtTt2_tien_tt_str.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtTt2_tien_tt_str.Location = new System.Drawing.Point(13, 78);
-            this.txtTt2_tien_tt_str.Name = "txtTt2_tien_tt_str";
-            this.txtTt2_tien_tt_str.PreventEnterBeep = true;
-            this.txtTt2_tien_tt_str.Size = new System.Drawing.Size(99, 20);
-            this.txtTt2_tien_tt_str.TabIndex = 49;
-            this.txtTt2_tien_tt_str.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtTt2_tien_tt_str.Visible = false;
-            // 
-            // txtTt3_tien_nt_str
-            // 
-            // 
-            // 
-            // 
-            this.txtTt3_tien_nt_str.Border.Class = "TextBoxBorder";
-            this.txtTt3_tien_nt_str.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtTt3_tien_nt_str.Location = new System.Drawing.Point(118, 101);
-            this.txtTt3_tien_nt_str.Name = "txtTt3_tien_nt_str";
-            this.txtTt3_tien_nt_str.PreventEnterBeep = true;
-            this.txtTt3_tien_nt_str.Size = new System.Drawing.Size(100, 20);
-            this.txtTt3_tien_nt_str.TabIndex = 52;
-            this.txtTt3_tien_nt_str.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtTt3_tien_nt_str.Visible = false;
-            // 
-            // txtTt3_tien_tt_str
-            // 
-            // 
-            // 
-            // 
-            this.txtTt3_tien_tt_str.Border.Class = "TextBoxBorder";
-            this.txtTt3_tien_tt_str.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtTt3_tien_tt_str.Location = new System.Drawing.Point(13, 101);
-            this.txtTt3_tien_tt_str.Name = "txtTt3_tien_tt_str";
-            this.txtTt3_tien_tt_str.PreventEnterBeep = true;
-            this.txtTt3_tien_tt_str.Size = new System.Drawing.Size(99, 20);
-            this.txtTt3_tien_tt_str.TabIndex = 51;
-            this.txtTt3_tien_tt_str.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtTt3_tien_tt_str.Visible = false;
-            // 
-            // txtSoChungTu
-            // 
-            // 
-            // 
-            // 
-            this.txtSoChungTu.Border.Class = "TextBoxBorder";
-            this.txtSoChungTu.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtSoChungTu.Location = new System.Drawing.Point(299, 26);
-            this.txtSoChungTu.Name = "txtSoChungTu";
-            this.txtSoChungTu.PreventEnterBeep = true;
-            this.txtSoChungTu.ReadOnly = true;
-            this.txtSoChungTu.Size = new System.Drawing.Size(137, 20);
-            this.txtSoChungTu.TabIndex = 32;
-            // 
-            // ucHangHoa
-            // 
-            this.ucHangHoa.HasHangHoa = false;
-            this.ucHangHoa.Location = new System.Drawing.Point(156, 9);
-            this.ucHangHoa.Name = "ucHangHoa";
-            this.ucHangHoa.Size = new System.Drawing.Size(189, 24);
-            this.ucHangHoa.TabIndex = 1;
-            // 
             // DonHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2214,7 +2194,6 @@ namespace GPBH.UI.Forms
         private DevComponents.DotNetBar.LabelX lbNgayHoaDon;
         private DevComponents.DotNetBar.LabelItem labelItem14;
         private DevComponents.DotNetBar.LabelItem labelItem15;
-        private DevComponents.DotNetBar.LabelX lbSoChungTu;
         private DevComponents.DotNetBar.LabelX lbMaPhieu;
         private DevComponents.DotNetBar.LabelX labelX10;
         private DevComponents.Editors.DoubleInput txtTt1_tien_tt;

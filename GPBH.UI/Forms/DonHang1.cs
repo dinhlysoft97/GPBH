@@ -1,26 +1,26 @@
 ﻿using DevComponents.DotNetBar;
 using DevComponents.DotNetBar.Controls;
 using DevComponents.Editors;
-using GPBH.Business;
 using GPBH.Business.Dtos;
 using GPBH.Business.Services;
+using GPBH.Business;
 using GPBH.Data.Entities;
 using GPBH.UI.Constant;
 using GPBH.UI.Extentions;
 using GPBH.UI.Helper;
 using GPBH.UI.UserControls;
 using Microsoft.Extensions.DependencyInjection;
-using System;
+using static GPBH.UI.UserControls.ucHangHoa;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
-using static GPBH.UI.UserControls.ucHangHoa;
+using System;
+using System.Linq;
 
 namespace GPBH.UI.Forms
 {
-    public partial class DonHang : Office2007Form
+    public partial class DonHang1 : Office2007Form
     {
         #region Private Fields
 
@@ -73,7 +73,7 @@ namespace GPBH.UI.Forms
         /// <summary>
         /// Khởi tạo form Đơn Hàng, load thông tin khách hàng và khởi tạo popup hàng hóa.
         /// </summary>
-        public DonHang(
+        public DonHang1(
             DMQGService dMQGService,
             DMNTService dMMTService,
             DMHHService dMHHService,
@@ -173,6 +173,7 @@ namespace GPBH.UI.Forms
 
                 txtSoChungTu.Text = _data.So_chung_tu;
                 lbMaPhieu.Text = _data.Ma_phieu;
+                lbNgayHoaDon.Text = "Ngày: " + _data.Ngay_chung_tu.ToString("dd/MM/yyyy");
 
                 cbbTt1_loai.SelectedValue = _data.Tt1_loai;
                 cbbTt1_ma_nt.SelectedValue = _data.Tt1_ma_nt;

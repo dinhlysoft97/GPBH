@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lbWarning = new DevComponents.DotNetBar.LabelX();
@@ -175,7 +175,7 @@
             this.dataGridViewX1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridViewX1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            this.dataGridViewX1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Stt,
@@ -191,14 +191,14 @@
             this.Field_format,
             this.Default_sort,
             this.Ten_ban});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataGridViewX1.Location = new System.Drawing.Point(3, 45);
             this.dataGridViewX1.Name = "dataGridViewX1";
@@ -220,7 +220,7 @@
             this.Code_name.HeaderText = "Mã chức năng";
             this.Code_name.Name = "Code_name";
             this.Code_name.ReadOnly = true;
-            this.Code_name.Width = 101;
+            this.Code_name.Width = 93;
             // 
             // MenuId
             // 
@@ -236,7 +236,7 @@
             this.MenuName.HeaderText = "Tên menu";
             this.MenuName.Name = "MenuName";
             this.MenuName.ReadOnly = true;
-            this.MenuName.Width = 80;
+            this.MenuName.Width = 74;
             // 
             // Field_name
             // 
@@ -244,7 +244,7 @@
             this.Field_name.HeaderText = "Tên trường";
             this.Field_name.Name = "Field_name";
             this.Field_name.ReadOnly = true;
-            this.Field_name.Width = 84;
+            this.Field_name.Width = 78;
             // 
             // Field_type
             // 
@@ -252,21 +252,21 @@
             this.Field_type.HeaderText = "Kiểu dữ liệu hiển thị";
             this.Field_type.Name = "Field_type";
             this.Field_type.ReadOnly = true;
-            this.Field_type.Width = 124;
+            this.Field_type.Width = 104;
             // 
             // Field_title
             // 
             this.Field_title.DataPropertyName = "Field_title";
             this.Field_title.HeaderText = "Tiêu đề trường";
             this.Field_title.Name = "Field_title";
-            this.Field_title.Width = 102;
+            this.Field_title.Width = 94;
             // 
             // Field_order
             // 
             this.Field_order.DataPropertyName = "Field_order";
             this.Field_order.HeaderText = "Thứ tự sắp xếp";
             this.Field_order.Name = "Field_order";
-            this.Field_order.Width = 103;
+            this.Field_order.Width = 79;
             // 
             // Field_hide
             // 
@@ -276,7 +276,7 @@
             this.Field_hide.DataPropertyName = "Field_hide";
             this.Field_hide.HeaderText = "Không hiển thị";
             this.Field_hide.Name = "Field_hide";
-            this.Field_hide.Width = 81;
+            this.Field_hide.Width = 63;
             // 
             // Field_width
             // 
@@ -292,14 +292,14 @@
             this.Field_width.Increment = 1D;
             this.Field_width.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
             this.Field_width.Name = "Field_width";
-            this.Field_width.Width = 88;
+            this.Field_width.Width = 81;
             // 
             // Field_format
             // 
             this.Field_format.DataPropertyName = "Field_format";
             this.Field_format.HeaderText = "Định dạng hiển thị";
             this.Field_format.Name = "Field_format";
-            this.Field_format.Width = 118;
+            this.Field_format.Width = 98;
             // 
             // Default_sort
             // 
@@ -314,14 +314,14 @@
             this.Default_sort.ItemHeight = 15;
             this.Default_sort.Name = "Default_sort";
             this.Default_sort.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Default_sort.Width = 71;
+            this.Default_sort.Width = 51;
             // 
             // Ten_ban
             // 
             this.Ten_ban.DataPropertyName = "Ten_ban";
             this.Ten_ban.HeaderText = "Tên bảng";
             this.Ten_ban.Name = "Ten_ban";
-            this.Ten_ban.Width = 78;
+            this.Ten_ban.Width = 72;
             // 
             // UserControlDinhDangForm
             // 

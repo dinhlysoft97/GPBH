@@ -164,8 +164,9 @@ namespace GPBH.UI
             switch (key)
             {
                 case "TaoDonHang":
-                    form = ActivatorUtilities.CreateInstance<DonHang>(Program.ServiceProvider);
-                    if (form is DonHang formNew)
+                    //form = ActivatorUtilities.CreateInstance<DonHang>(Program.ServiceProvider);
+                    form = ActivatorUtilities.CreateInstance<DonHang1>(Program.ServiceProvider);
+                    if (form is DonHang1 formNew)
                     {
                         if (formNew.FormKhachHangIsClose)
                         {

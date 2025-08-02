@@ -1,4 +1,5 @@
 ﻿using GPBH.Business;
+using GPBH.UI.Forms;
 using GPBH.UI.Helper;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
@@ -90,6 +91,7 @@ namespace GPBH.UI
             services.AddScoped<Demo>();
             services.AddScoped<Login>();
             services.AddScoped<MainForm>();
+            services.AddScoped<DonHang1>();
         }
 
         // Bắt lỗi trên thread UI (WinForms)
