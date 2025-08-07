@@ -66,9 +66,9 @@ namespace GPBH.UI.Forms
         public KhachHang(
             DMKHService dmkhService,
             DMQGService dMQGService,
-            SysDinh_dang_formService sysDinh_Dang_FormService, 
-            string passport, 
-            bool isSelectMode = false, 
+            SysDinh_dang_formService sysDinh_Dang_FormService,
+            string passport,
+            bool isSelectMode = false,
             bool isView = false)
         {
             InitializeComponent();
@@ -153,7 +153,7 @@ namespace GPBH.UI.Forms
                 txtTauBay.Enabled = false;
                 txtTongTien.Enabled = false;
                 btnChon.Enabled = false;
-            } 
+            }
         }
 
         #endregion
@@ -358,18 +358,21 @@ namespace GPBH.UI.Forms
         /// </summary>
         private void txtCCCD_TextChanged(object sender, EventArgs e)
         {
-            var khachHang = _dmkhService.GetByPassport(txtCCCD.Text.Trim());
-            if (khachHang != null)
+            if (!_isSelectMode)
             {
-                DataKhachHang = khachHang;
-                FillCustomerData(khachHang);
-                isKhachHangSelected = true;
-                ClearMessage();
-            }
-            else
-            {
-                ClearCustomerFields();
-                isKhachHangSelected = false;
+                var khachHang = _dmkhService.GetByPassport(txtCCCD.Text.Trim());
+                if (khachHang != null)
+                {
+                    DataKhachHang = khachHang;
+                    FillCustomerData(khachHang);
+                    isKhachHangSelected = true;
+                    ClearMessage();
+                }
+                else
+                {
+                    ClearCustomerFields();
+                    isKhachHangSelected = false;
+                }
             }
         }
 

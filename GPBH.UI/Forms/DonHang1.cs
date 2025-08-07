@@ -17,6 +17,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System;
 using System.Linq;
+using OfficeOpenXml.FormulaParsing.Excel.Functions.Math;
 
 namespace GPBH.UI.Forms
 {
@@ -35,6 +36,7 @@ namespace GPBH.UI.Forms
         private DMKHService _dMKHService;
         private SysDinh_dang_formService _sysDinh_Dang_FormService;
         private bool _isClickCell = false;
+        private int _currentIndexRowSelect = 0;
 
         sealed class ThanhToan
         {
@@ -311,6 +313,16 @@ namespace GPBH.UI.Forms
             txtTt_tong.DisplayFormat(GetFormat("Format_tien_nt"));
             txtTong_nhan.DisplayFormat(GetFormat("Format_tien_nt"));
             txtTra_lai_nt.DisplayFormat(GetFormat("Format_tien_nt"));
+
+            // Canh giữa header
+            dataGridViewX1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            // Font in đậm cho header (và có thể tăng size hoặc chọn font nếu muốn)
+            dataGridViewX1.ColumnHeadersDefaultCellStyle.Font = new Font(
+                dataGridViewX1.Font.FontFamily,   // Giữ nguyên font hiện tại
+                dataGridViewX1.Font.Size,         // Kích thước như font mặc định
+                FontStyle.Bold                   // Chỉ cần in đậm
+                );
         }
 
         /// <summary>
@@ -561,35 +573,36 @@ namespace GPBH.UI.Forms
         // Xử lý sự kiện KeyDown
         private void Form_KeyDown(object sender, KeyEventArgs e)
         {
+            DataGridViewRow selectedRow = dataGridViewX1.Rows[_currentIndexRowSelect];
             if (_isView) return;
             // Lưu và in
             if (e.KeyCode == Keys.F2)
             {
                 HandlerKeyF2();
             }
-            else if (e.KeyCode == Keys.F3)
-            {
-                if (_isEdit) return;
-                this.Hide();
-                var formNew = ActivatorUtilities.CreateInstance<DonHang>(Program.ServiceProvider);
-                formNew.ShowDialog();
-            }
+            //else if (e.KeyCode == Keys.F3)
+            //{
+            //    if (_isEdit) return;
+            //    this.Hide();
+            //    var formNew = ActivatorUtilities.CreateInstance<DonHang>(Program.ServiceProvider);
+            //    formNew.ShowDialog();
+            //}
             // xóa dữ liệu chi tiết
-            else if ((e.KeyCode == Keys.Delete || e.KeyCode == Keys.F7) && dataGridViewX1.SelectedRows.Count > 0)
+            else if ((e.KeyCode == Keys.Delete || e.KeyCode == Keys.F7) && selectedRow != null)
             {
+                HideUcHangHoaPopup();
                 // Xác nhận xóa
                 var confirm = MessageBoxEx.Show("Bạn có chắc muốn xóa dòng đã chọn?", "Xóa", MessageBoxButtons.YesNo);
                 if (confirm == DialogResult.Yes)
                 {
-                    foreach (DataGridViewRow row in dataGridViewX1.SelectedRows)
+                    if (selectedRow.IsNewRow)
                     {
-                        if (!row.IsNewRow)
-                        {
-                            var item = row.DataBoundItem as XCT5Dto;
-                            if (item != null) listChiTiet.Remove(item);
-                            TinhTongCong();
-                        }
+                        return;
                     }
+
+                    var item = selectedRow.DataBoundItem as XCT5Dto;
+                    if (item != null) listChiTiet.Remove(item);
+                    TinhTongCong();
                 }
             }
             else if (e.KeyCode == Keys.F8)
@@ -598,6 +611,7 @@ namespace GPBH.UI.Forms
                 if (confirm == DialogResult.Yes)
                 {
                     dataGridViewX1.Rows.Clear();
+                    _currentIndexRowSelect = 0;
                 }
             }
             else if (e.KeyCode == Keys.F9)
@@ -736,6 +750,7 @@ namespace GPBH.UI.Forms
             {
                 MessageBoxEx.Show("Chưa có nhập tiền thanh toán", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtTt1_tien_nt.Focus();
+                HideUcHangHoaPopup();
                 return false;
             }
 
@@ -1039,12 +1054,27 @@ namespace GPBH.UI.Forms
         /// <param name="e">Event args chứa thông tin hàng hóa</param>
         private void AddOrUpdateHangHoaToGrid(HangHoaSelectedEventArgs e)
         {
+            DataGridViewRow selectedRow = dataGridViewX1.Rows[_currentIndexRowSelect];
             // Tìm xem mã hàng đã có trong list chưa
             var existed = listChiTiet.FirstOrDefault(x => x.Ma_hh == e.MaHH);
             if (existed != null)
             {
                 existed.So_luong += 1;
                 TinhToanRow(existed);
+                int i = listChiTiet.IndexOf(existed); // Lấy index của item trong BindingList
+                if (i >= 0)
+                {
+                    dataGridViewX1.ClearSelection();
+                    dataGridViewX1.Rows[i].Selected = true;
+                    for (int col = 0; col < dataGridViewX1.Columns.Count; col++)
+                    {
+                        if (dataGridViewX1.Columns[col].Visible)
+                        {
+                            dataGridViewX1.CurrentCell = dataGridViewX1.Rows[i].Cells[col];
+                            break;
+                        }
+                    }
+                }
             }
             else if (listChiTiet.Any(z => z.Ma_hh == null))
             {
@@ -1054,12 +1084,11 @@ namespace GPBH.UI.Forms
             }
             // update mã mặt hàng
             // check nếu mã mới # mã cũ của dòng có data thì update mã 
-            else if (dataGridViewX1.SelectedRows.Count > 0)
+            else if (selectedRow != null)
             {
-                DataGridViewRow row = dataGridViewX1.SelectedRows[0];
-                if (!row.IsNewRow && _isClickCell)
+                if (!selectedRow.IsNewRow && _isClickCell)
                 {
-                    var item = row.DataBoundItem == null ? null : row.DataBoundItem as XCT5Dto;
+                    var item = selectedRow.DataBoundItem == null ? null : selectedRow.DataBoundItem as XCT5Dto;
                     if (item != null && !string.IsNullOrEmpty(item.Ma_hh) && item.Ma_hh != e.MaHH)
                     {
                         var rowData = listChiTiet.FirstOrDefault(x => x.Ma_hh == e.MaHH);
@@ -1157,14 +1186,14 @@ namespace GPBH.UI.Forms
             decimal giaVND = 0;
             if (isEdit)
             {
-                //giaNT = item.Gia_ban_nt ?? 0;
+                giaNT = item.Gia_ban_nt ?? 0;
                 //giaVND = item.Gia_ban ?? 0;
-                //giaVND = giaNT * TyGiaGanNhat?.Ty_gia ?? 0;
+                giaVND = giaNT * TyGiaGanNhat?.Ty_gia ?? 0;
 
-                //if(colName == "Gia_ban_nt")
-                //{
-                //    item.Gia_ban = giaVND;
-                //}
+                if (colName == "Gia_ban_nt")
+                {
+                    item.Gia_ban = giaVND;
+                }
                 //else if(colName == "Gia_ban")
                 //{
                 //    item.Gia_ban_nt = item.Gia_ban / TyGiaGanNhat?.Ty_gia;
@@ -1272,6 +1301,7 @@ namespace GPBH.UI.Forms
         {
             int colIndex = dataGridViewX1.CurrentCell.ColumnIndex;
             int rowIndex = dataGridViewX1.CurrentCell.RowIndex;
+            _currentIndexRowSelect = rowIndex;
             if (dataGridViewX1.Columns[colIndex].Name == "Ma_hh")
             {
                 ShowUcHangHoaPopupAtCell(colIndex, rowIndex);

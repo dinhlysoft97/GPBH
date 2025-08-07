@@ -407,10 +407,10 @@ namespace GPBH.UI.UserControls
                 dataGridViewX2.BindData(new List<GirdDonHangChiTietDto>());
                 return;
             }
-            if (_lastRowIndex == curRow.Index)
-                return; // Không chuyển row, bỏ qua
+            //if (_lastRowIndex == curRow.Index)
+            //    return; // Không chuyển row, bỏ qua
 
-            _lastRowIndex = curRow.Index; // Cập nhật index
+            //_lastRowIndex = curRow.Index; // Cập nhật index
 
             var row = curRow.DataBoundItem as GirdDonHangDto;
             if (row == null) return;

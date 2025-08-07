@@ -47,6 +47,8 @@ namespace GPBH.UI.UserControls
             {
                 column.Resizable = DataGridViewTriState.True;
             }
+
+            buttonLoc_Click(null, null);
         }
 
         private void LoadDataCbb()

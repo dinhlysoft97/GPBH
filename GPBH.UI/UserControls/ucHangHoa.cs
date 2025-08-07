@@ -72,7 +72,7 @@ namespace GPBH.UI.UserControls
                     TenHH = tenHH,
                     Dvt = dvt
                 });
-
+                tb.Text = string.Empty;
                 // Đóng dropdown sau khi chọn
                 TsDropDown.Close();
             }
@@ -142,7 +142,7 @@ namespace GPBH.UI.UserControls
                     TenHH = tenHH,
                     Dvt = dvt
                 });
-
+                tb.Text = string.Empty;
                 // Đóng dropdown sau khi chọn
                 TsDropDown.Close();
             }

@@ -37,7 +37,17 @@ namespace GPBH.UI.UserControls
         private void LoadData()
         {
             ComboBoxHelper.BindData(cbbCuaHang, _sysDMCuaHangService.GetAll(), "Ten_cua_hang", "Ma_cua_hang");
-            dataGridViewX1.BindData(_sysDMCuaHangService.GetGiaBanByCuaHang(cbbCuaHang.SelectedValue.ToString()));
+            //dataGridViewX1.BindData(_sysDMCuaHangService.GetGiaBanByCuaHang(cbbCuaHang.SelectedValue.ToString()));
+            var data = _sysDMCuaHangService.GetGiaBanByCuaHang(cbbCuaHang.SelectedValue.ToString());
+            var dataGrid = data.Select(z => new GirdGiaBanDto()
+            {
+                Ma_cua_hang = z.Ma_cua_hang,
+                Ngay_ap_dung = z.Ngay_ap_dung,
+                Ma_hh = z.Ma_hh,
+                Gia_ban = z.Gia_ban
+            }).ToList();
+
+            DataGridViewFilterHelper.ApplyFilter(dataGridViewX1, dataGrid);
             if (dataGridViewX1.Columns.Contains("Ngay_ap_dung"))
             {
                 var colNgayApDung = dataGridViewX1.Columns["Ngay_ap_dung"];
@@ -50,8 +60,16 @@ namespace GPBH.UI.UserControls
         {
             var selected = cbbCuaHang.SelectedItem as CuaHangDto;
             if (selected == null) return;
-            dataGridViewX1.BindData(_sysDMCuaHangService.GetGiaBanByCuaHang(selected.Ma_cua_hang));
-
+            // dataGridViewX1.BindData(_sysDMCuaHangService.GetGiaBanByCuaHang(selected.Ma_cua_hang));
+            var data = _sysDMCuaHangService.GetGiaBanByCuaHang(selected.Ma_cua_hang);
+            var dataGrid = data.Select(z => new GirdGiaBanDto()
+            {
+                Ma_cua_hang = z.Ma_cua_hang,
+                Ngay_ap_dung = z.Ngay_ap_dung,
+                Ma_hh = z.Ma_hh,
+                Gia_ban = z.Gia_ban
+            }).ToList();
+            DataGridViewFilterHelper.ApplyFilter(dataGridViewX1, dataGrid);
         }
 
         private void dataGridViewX1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
