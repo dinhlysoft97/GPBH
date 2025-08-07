@@ -22,6 +22,7 @@ namespace GPBH.UI.UserControls
             _dmKHService = dMKHService;
             dataGridViewX1.CellFormatting += dataGridViewX1_CellFormatting;
             dataGridViewX1.CellDoubleClick += dataGridViewX1_CellDoubleClick;
+            dataGridViewX1.KeyDown += DataGridViewX1_KeyDown;
             SepUpUI();
             LoadData();
             dataGridViewX1.DataBindingComplete += (s, e) =>
@@ -214,6 +215,14 @@ namespace GPBH.UI.UserControls
             ).ToList();
 
             DataGridViewFilterHelper.ApplyFilter(dataGridViewX1, filtered);
+        }
+        private void DataGridViewX1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F3)
+            {
+                e.Handled = true;
+                e.SuppressKeyPress = true; // Chặn luôn không cho đi tiếp
+            }
         }
 
         private void dataGridViewX1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)

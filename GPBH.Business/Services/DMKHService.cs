@@ -1,4 +1,5 @@
 ﻿using GPBH.Business.Dtos;
+using GPBH.Business.Exceptions;
 using GPBH.Data.Entities;
 using GPBH.Data.UnitOfWorks;
 using Microsoft.Extensions.DependencyInjection;
@@ -115,15 +116,22 @@ namespace GPBH.Business.Services
         public void DeleteCustomer(string passport)
         {
             if (string.IsNullOrWhiteSpace(passport))
-                throw new ArgumentException("Hộ chiếu không hợp lệ.");
+                throw new BadRequestException("Hộ chiếu không hợp lệ.");
 
             using (var scope = _serviceProvider.CreateScope())
             {
                 var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
+                // check khách hàng đã phát sinh đơn hàng chưa
+                var repoDonHang = unitOfWork.Repository<XPH5>();
+                var donHangs = repoDonHang.Find(z => z.Passport == passport);
+
+                if (donHangs.Any())
+                    throw new BadRequestException("Khách hàng đã phát sinh đơn hàng, không thể xóa.");
+
                 var repo = unitOfWork.Repository<DMKH>();
                 var existing = repo.Find(x => x.Passport == passport).FirstOrDefault();
                 if (existing == null)
-                    throw new InvalidOperationException("Không tìm thấy khách hàng.");
+                    throw new BadRequestException("Không tìm thấy khách hàng.");
 
                 repo.Remove(existing);
                 unitOfWork.SaveChanges();

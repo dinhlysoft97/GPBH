@@ -95,6 +95,7 @@
     <Compile Include="Dtos\GiaBanHangHoa.cs" />
     <Compile Include="Dtos\GirdDonHangChiTietDto.cs" />
     <Compile Include="Dtos\GirdDonHangDto.cs" />
+    <Compile Include="Dtos\GirdGiaBanDto.cs" />
     <Compile Include="Dtos\GirdNguoiSuDungDto.cs" />
     <Compile Include="Dtos\GirdPhanQuyenDto.cs" />
     <Compile Include="Dtos\GirdSysDinhDangFormDto.cs" />
