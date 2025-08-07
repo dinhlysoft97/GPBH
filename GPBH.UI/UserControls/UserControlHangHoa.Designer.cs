@@ -51,6 +51,9 @@
             // 
             this.dataGridViewX1.AllowUserToAddRows = false;
             this.dataGridViewX1.AllowUserToDeleteRows = false;
+            this.dataGridViewX1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewX1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -73,12 +76,11 @@
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridViewX1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.dataGridViewX1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewX1.Location = new System.Drawing.Point(3, 3);
             this.dataGridViewX1.Name = "dataGridViewX1";
-            this.dataGridViewX1.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.dataGridViewX1.Size = new System.Drawing.Size(1309, 780);
+            this.dataGridViewX1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewX1.Size = new System.Drawing.Size(1303, 774);
             this.dataGridViewX1.TabIndex = 19;
             this.dataGridViewX1.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridViewX1_RowPostPaint);
             // 
@@ -88,7 +90,7 @@
             this.Ma_hh.HeaderText = "Mã hàng";
             this.Ma_hh.Name = "Ma_hh";
             this.Ma_hh.ReadOnly = true;
-            this.Ma_hh.Width = 74;
+            this.Ma_hh.Width = 69;
             // 
             // Ten_hh
             // 
@@ -96,7 +98,7 @@
             this.Ten_hh.HeaderText = "Tên hàng";
             this.Ten_hh.Name = "Ten_hh";
             this.Ten_hh.ReadOnly = true;
-            this.Ten_hh.Width = 78;
+            this.Ten_hh.Width = 72;
             // 
             // Dvt
             // 
@@ -104,7 +106,7 @@
             this.Dvt.HeaderText = "Đơn vị tính";
             this.Dvt.Name = "Dvt";
             this.Dvt.ReadOnly = true;
-            this.Dvt.Width = 85;
+            this.Dvt.Width = 79;
             // 
             // Ma_nhom_hh
             // 
@@ -112,7 +114,7 @@
             this.Ma_nhom_hh.HeaderText = "Nhóm hàng";
             this.Ma_nhom_hh.Name = "Ma_nhom_hh";
             this.Ma_nhom_hh.ReadOnly = true;
-            this.Ma_nhom_hh.Width = 87;
+            this.Ma_nhom_hh.Width = 80;
             // 
             // Thuong_hieu
             // 
@@ -120,7 +122,7 @@
             this.Thuong_hieu.HeaderText = "Thương hiệu";
             this.Thuong_hieu.Name = "Thuong_hieu";
             this.Thuong_hieu.ReadOnly = true;
-            this.Thuong_hieu.Width = 92;
+            this.Thuong_hieu.Width = 85;
             // 
             // Ma_nsx
             // 
@@ -128,7 +130,7 @@
             this.Ma_nsx.HeaderText = "Mã nhà sản xuất";
             this.Ma_nsx.Name = "Ma_nsx";
             this.Ma_nsx.ReadOnly = true;
-            this.Ma_nsx.Width = 111;
+            this.Ma_nsx.Width = 84;
             // 
             // Ten_nsx
             // 
@@ -136,7 +138,7 @@
             this.Ten_nsx.HeaderText = "Tên nhà sản xuất";
             this.Ten_nsx.Name = "Ten_nsx";
             this.Ten_nsx.ReadOnly = true;
-            this.Ten_nsx.Width = 115;
+            this.Ten_nsx.Width = 88;
             // 
             // Nuoc_sx
             // 
@@ -144,7 +146,7 @@
             this.Nuoc_sx.HeaderText = "Nước sản xuất";
             this.Nuoc_sx.Name = "Nuoc_sx";
             this.Nuoc_sx.ReadOnly = true;
-            this.Nuoc_sx.Width = 101;
+            this.Nuoc_sx.Width = 75;
             // 
             // Chieu_dai
             // 
@@ -154,7 +156,7 @@
             this.Chieu_dai.HeaderText = "Chiều dài";
             this.Chieu_dai.Name = "Chieu_dai";
             this.Chieu_dai.ReadOnly = true;
-            this.Chieu_dai.Width = 76;
+            this.Chieu_dai.Width = 70;
             // 
             // Trong_luong
             // 
@@ -164,7 +166,7 @@
             this.Trong_luong.HeaderText = "Trọng lượng";
             this.Trong_luong.Name = "Trong_luong";
             this.Trong_luong.ReadOnly = true;
-            this.Trong_luong.Width = 89;
+            this.Trong_luong.Width = 82;
             // 
             // Chieu_cao
             // 
@@ -174,7 +176,7 @@
             this.Chieu_cao.HeaderText = "Chiều cao";
             this.Chieu_cao.Name = "Chieu_cao";
             this.Chieu_cao.ReadOnly = true;
-            this.Chieu_cao.Width = 80;
+            this.Chieu_cao.Width = 74;
             // 
             // UserControlHangHoa
             // 
