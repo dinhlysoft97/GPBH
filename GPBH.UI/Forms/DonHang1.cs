@@ -36,7 +36,8 @@ namespace GPBH.UI.Forms
         private DMKHService _dMKHService;
         private SysDinh_dang_formService _sysDinh_Dang_FormService;
         private bool _isClickCell = false;
-        private int _currentIndexRowSelect = 0;
+        private int _currentIndexRowSelect = 0; 
+        private DateTime _formOpenedTime;
 
         sealed class ThanhToan
         {
@@ -446,6 +447,7 @@ namespace GPBH.UI.Forms
             bthTimHH.Click += bthTimHH_Click;
             KeyDown += Form_KeyDown;
             Resize += DonHang_Resize;
+            Load += DonHang1_Load;
 
             //txtTt1_tien_tt_str.KeyPress += TxtTt_tien_tt_str_KeyPress;
             //txtTt2_tien_tt_str.KeyPress += TxtTt_tien_tt_str_KeyPress;
@@ -463,6 +465,11 @@ namespace GPBH.UI.Forms
             //txtTt3_tien_nt_str.TextChanged += TxtTt3_tien_nt_str_TextChanged;
 
             RegisterHideUcHangHoaEvents();
+        }
+
+        private void DonHang1_Load(object sender, EventArgs e)
+        {
+            _formOpenedTime = DateTime.Now;
         }
 
         private void DonHang_Resize(object sender, EventArgs e)
@@ -576,7 +583,8 @@ namespace GPBH.UI.Forms
             DataGridViewRow selectedRow = dataGridViewX1.Rows[_currentIndexRowSelect];
             if (_isView) return;
             // Lưu và in
-            if (e.KeyCode == Keys.F2)
+            // Chỉ xử lý F2 nếu form đã mở > 200ms
+            if (e.KeyCode == Keys.F2 && (DateTime.Now - _formOpenedTime).TotalMilliseconds > 200)
             {
                 HandlerKeyF2();
             }
