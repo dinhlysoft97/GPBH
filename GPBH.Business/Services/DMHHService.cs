@@ -18,6 +18,16 @@ namespace GPBH.Business.Services
             _serviceProvider = serviceProvider;
         }
 
+        public DMHH GetByMaHH(string mahh)
+        {
+            // Tạo scope mới, lấy UnitOfWork mới mỗi lần gọi
+            using (var scope = _serviceProvider.CreateScope())
+            {
+                var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
+                return unitOfWork.Repository<DMHH>().Find(z => !z.Ksd && z.Ma_hh == mahh).OrderBy(z => z.Ma_hh).FirstOrDefault();
+            }
+        }
+
         public List<DMHH> GetAll()
         {
             // Tạo scope mới, lấy UnitOfWork mới mỗi lần gọi

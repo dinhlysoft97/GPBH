@@ -17,21 +17,6 @@ namespace GPBH.Data.Entities
         public string Dia_chi { get; set; }          // Địa chỉ
         public string Dien_thoai { get; set; }       // Điện thoại
         public string Email { get; set; }            // Email
-
-       // Ngày cấp (xuất nhập cảnh)
-        public DateTime? Xnc_ngay_cap { get; set; }
-
-        // Ngày hết hạn (xuất nhập cảnh)
-        public DateTime? Xnc_ngay_hh { get; set; }
-
-        // Số hiệu
-        public string So_hieu { get; set; }
-
-        // Tên tàu bay
-        public string Ten_tau_bay { get; set; }
-
-        // Hạn mức
-        public decimal? Han_muc { get; set; }
         public DMQG DMQG { get; set; }       // Người tạo
     }
 }

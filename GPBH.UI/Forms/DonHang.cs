@@ -878,12 +878,12 @@ namespace GPBH.UI.Forms
             donHangDto.Tong_so_luong = donHangDto.XCT5s.Sum(x => x.So_luong);
 
             // khách hàng
-            var khachHang = _dMKHService.GetByPassport(txtCCCD.Text.Trim());
-            donHangDto.Xnc_ngay_cap = khachHang.Xnc_ngay_cap;
-            donHangDto.Xnc_ngay_hh = khachHang.Xnc_ngay_hh;
-            donHangDto.So_hieu = khachHang.So_hieu;
-            donHangDto.Ten_tau_bay = khachHang.Ten_tau_bay;
-            donHangDto.Han_muc = khachHang.Han_muc;
+            //var khachHang = _dMKHService.GetByPassport(txtCCCD.Text.Trim());
+            //donHangDto.Xnc_ngay_cap = khachHang.Xnc_ngay_cap;
+            //donHangDto.Xnc_ngay_hh = khachHang.Xnc_ngay_hh;
+            //donHangDto.So_hieu = khachHang.So_hieu;
+            //donHangDto.Ten_tau_bay = khachHang.Ten_tau_bay;
+            //donHangDto.Han_muc = khachHang.Han_muc;
 
             // Cửa hàng
             donHangDto.Ma_nhom_kh = CuaHang.Ma_nhom_kh;

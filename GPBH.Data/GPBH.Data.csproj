@@ -114,6 +114,10 @@
     <Compile Include="Migrations\202507241727196_add-ViewBaoCaoKhacHang.Designer.cs">
       <DependentUpon>202507241727196_add-ViewBaoCaoKhacHang.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202508090911468_Alter-DMKH.cs" />
+    <Compile Include="Migrations\202508090911468_Alter-DMKH.Designer.cs">
+      <DependentUpon>202508090911468_Alter-DMKH.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="UnitOfWorks\IUnitOfWork.cs" />
@@ -131,6 +135,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202507241727196_add-ViewBaoCaoKhacHang.resx">
       <DependentUpon>202507241727196_add-ViewBaoCaoKhacHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202508090911468_Alter-DMKH.resx">
+      <DependentUpon>202508090911468_Alter-DMKH.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

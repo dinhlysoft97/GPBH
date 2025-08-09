@@ -18,6 +18,7 @@ using System.Windows.Forms;
 using System;
 using System.Linq;
 using OfficeOpenXml.FormulaParsing.Excel.Functions.Math;
+using GPBH.Data.Configurations;
 
 namespace GPBH.UI.Forms
 {
@@ -36,7 +37,7 @@ namespace GPBH.UI.Forms
         private DMKHService _dMKHService;
         private SysDinh_dang_formService _sysDinh_Dang_FormService;
         private bool _isClickCell = false;
-        private int _currentIndexRowSelect = 0; 
+        private int _currentIndexRowSelect = 0;
         private DateTime _formOpenedTime;
 
         sealed class ThanhToan
@@ -161,7 +162,6 @@ namespace GPBH.UI.Forms
                 {
                     BindDataKhachHang(khachHang);
                 }
-
 
                 ucHangHoa.SetData(_dMHHService.GetAll());
 
@@ -626,6 +626,10 @@ namespace GPBH.UI.Forms
             {
                 LoadFormKhachHang(txtCCCD.Text);
             }
+            else if (e.KeyCode == Keys.F10)
+            {
+                LoadMaVach();
+            }
             // Lưu tạo đơn hàng
             else if (e.KeyCode == Keys.F12)
             {
@@ -635,6 +639,63 @@ namespace GPBH.UI.Forms
             {
                 //TimHangHang(sender, e);
             }
+        }
+
+        private void LoadMaVach()
+        {
+            var formNew = ActivatorUtilities.CreateInstance<QuetMaVach>(Program.ServiceProvider);
+            formNew.ShowDialog();
+
+            string mahh = formNew.MaHH;
+            double soLuong = formNew.SoLuong;
+            if (string.IsNullOrWhiteSpace(mahh))
+                return;
+
+            var hh = _dMHHService.GetByMaHH(mahh);
+            DataGridViewRow selectedRow = dataGridViewX1.Rows[_currentIndexRowSelect];
+            // Tìm xem mã hàng đã có trong list chưa
+            var existed = listChiTiet.FirstOrDefault(x => x.Ma_hh == mahh);
+            if (existed != null)
+            {
+                existed.So_luong = (decimal)soLuong;
+                TinhToanRow(existed);
+                int i = listChiTiet.IndexOf(existed); // Lấy index của item trong BindingList
+                if (i >= 0)
+                {
+                    dataGridViewX1.ClearSelection();
+                    dataGridViewX1.Rows[i].Selected = true;
+                    for (int col = 0; col < dataGridViewX1.Columns.Count; col++)
+                    {
+                        if (dataGridViewX1.Columns[col].Visible)
+                        {
+                            dataGridViewX1.CurrentCell = dataGridViewX1.Rows[i].Cells[col];
+                            break;
+                        }
+                    }
+                }
+            }
+            else if (listChiTiet.Any(z => z.Ma_hh == null))
+            {
+                var rowNull = listChiTiet.FirstOrDefault(x => x.Ma_hh == null);
+                rowNull.Ma_hh = mahh;
+                TinhToanRow(rowNull);
+            }
+            else
+            {
+                var newItem = new XCT5Dto
+                {
+                    Ma_hh = hh.Ma_hh,
+                    Ten_hh = hh.Ten_hh,
+                    Dvt = hh.Dvt,
+                    So_luong = (decimal)soLuong,
+                    Gg_ty_le = 0 // gán mặc định nếu có
+                };
+                TinhToanRow(newItem);
+                listChiTiet.Add(newItem);
+            }
+            TinhTongCong();
+            UpdateSTT();
+
         }
 
         private void TimHangHang(object sender, KeyEventArgs e)
@@ -902,12 +963,12 @@ namespace GPBH.UI.Forms
             donHangDto.Tong_so_luong = donHangDto.XCT5s.Sum(x => x.So_luong);
 
             // khách hàng
-            var khachHang = _dMKHService.GetByPassport(txtCCCD.Text.Trim());
-            donHangDto.Xnc_ngay_cap = khachHang.Xnc_ngay_cap;
-            donHangDto.Xnc_ngay_hh = khachHang.Xnc_ngay_hh;
-            donHangDto.So_hieu = khachHang.So_hieu;
-            donHangDto.Ten_tau_bay = khachHang.Ten_tau_bay;
-            donHangDto.Han_muc = khachHang.Han_muc;
+            //var khachHang = _dMKHService.GetByPassport(txtCCCD.Text.Trim());
+            //donHangDto.Xnc_ngay_cap = khachHang.Xnc_ngay_cap;
+            //donHangDto.Xnc_ngay_hh = khachHang.Xnc_ngay_hh;
+            //donHangDto.So_hieu = khachHang.So_hieu;
+            //donHangDto.Ten_tau_bay = khachHang.Ten_tau_bay;
+            //donHangDto.Han_muc = khachHang.Han_muc;
 
             // Cửa hàng
             donHangDto.Ma_nhom_kh = CuaHang.Ma_nhom_kh;

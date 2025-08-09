@@ -36,11 +36,6 @@ namespace GPBH.Business.Services
                         Dia_chi = z.Dia_chi,
                         Dien_thoai = z.Dien_thoai,
                         Email = z.Email,
-                        Xnc_ngay_cap = z.Xnc_ngay_cap,
-                        Xnc_ngay_hh = z.Xnc_ngay_hh,
-                        So_hieu = z.So_hieu,
-                        Ten_tau_bay = z.Ten_tau_bay,
-                        Han_muc = z.Han_muc,
                         Ho_ten = $"{z.Ho} {z.Ten_dem} {z.Ten}".Trim()
 
                     })
@@ -98,11 +93,6 @@ namespace GPBH.Business.Services
                 existing.Dia_chi = entity.Dia_chi;
                 existing.Dien_thoai = entity.Dien_thoai;
                 existing.Email = entity.Email;
-                existing.Xnc_ngay_cap = entity.Xnc_ngay_cap;
-                existing.Xnc_ngay_hh = entity.Xnc_ngay_hh;
-                existing.So_hieu = entity.So_hieu;
-                existing.Ten_tau_bay = entity.Ten_tau_bay;
-                existing.Han_muc = entity.Han_muc;
 
                 existing.Nguoi_sua = entity.Nguoi_sua;
                 existing.Ngay_sua = DateTime.Now;
