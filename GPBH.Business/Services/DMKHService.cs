@@ -24,7 +24,7 @@ namespace GPBH.Business.Services
             {
                 var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
 
-                return unitOfWork.Repository<DMKH>().GetAll()
+                var data = unitOfWork.Repository<DMKH>().GetAll()
                     .Select(z => new GridKhachHang
                     {
                         Passport = z.Passport,
@@ -37,10 +37,28 @@ namespace GPBH.Business.Services
                         Dien_thoai = z.Dien_thoai,
                         Email = z.Email,
                         Ho_ten = $"{z.Ho} {z.Ten_dem} {z.Ten}".Trim()
-
                     })
                     .OrderBy(z => z.Passport)
                     .ToList();
+
+                // get tổng tiền mua
+                var repoDonHang = unitOfWork.Repository<XPH5>();
+                var donhangs = repoDonHang.GetAll()
+                    .GroupBy(x => x.Passport)
+                    .Select(g => new
+                    {
+                        Passport = g.Key,
+                        TongTienMua = g.Sum(x => x.Tong_tien_hang)
+                    });
+
+                // join với danh sách khách hàng
+                foreach (var kh in data)
+                {
+                    var tongTien = donhangs.FirstOrDefault(x => x.Passport == kh.Passport)?.TongTienMua ?? 0;
+                    kh.Tong_tien_hang = tongTien;
+                }
+
+                return data;
             }
         }
 

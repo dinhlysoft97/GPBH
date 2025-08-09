@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GPBH.Business.Dtos
 {
@@ -18,5 +14,6 @@ namespace GPBH.Business.Dtos
         public string Dien_thoai { get; set; }       // Điện thoại
         public string Email { get; set; }            // Email
         public string Ho_ten { get; set; }
+        public decimal? Tong_tien_hang { get; set; }
     }
 }

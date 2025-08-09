@@ -48,6 +48,7 @@ namespace GPBH.UI.UserControls
             this.Dia_chi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Dien_thoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tong_tien_hang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bubbleBar1)).BeginInit();
             this.SuspendLayout();
@@ -71,7 +72,8 @@ namespace GPBH.UI.UserControls
             this.Ngay_sinh,
             this.Dia_chi,
             this.Dien_thoai,
-            this.Email});
+            this.Email,
+            this.Tong_tien_hang});
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -269,6 +271,14 @@ namespace GPBH.UI.UserControls
             this.Email.ReadOnly = true;
             this.Email.Width = 57;
             // 
+            // Tong_tien_hang
+            // 
+            this.Tong_tien_hang.DataPropertyName = "Tong_tien_hang";
+            this.Tong_tien_hang.HeaderText = "Tổng tiền mua";
+            this.Tong_tien_hang.Name = "Tong_tien_hang";
+            this.Tong_tien_hang.ReadOnly = true;
+            this.Tong_tien_hang.Width = 74;
+            // 
             // UserControlKhachHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -306,5 +316,6 @@ namespace GPBH.UI.UserControls
         private DataGridViewTextBoxColumn Dia_chi;
         private DataGridViewTextBoxColumn Dien_thoai;
         private DataGridViewTextBoxColumn Email;
+        private DataGridViewTextBoxColumn Tong_tien_hang;
     }
 }

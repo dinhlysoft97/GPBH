@@ -1,10 +1,13 @@
-﻿using GPBH.Business.Services;
+﻿using GPBH.Business;
+using GPBH.Business.Dtos;
+using GPBH.Business.Services;
 using GPBH.UI.Constant;
 using GPBH.UI.Extentions;
 using GPBH.UI.Forms;
 using GPBH.UI.Helper;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
 using System.Linq;
@@ -15,11 +18,15 @@ namespace GPBH.UI.UserControls
     public partial class UserControlKhachHang : UserControl
     {
         private readonly DMKHService _dmKHService;
+        private readonly SysDinh_dang_formService _sysDinh_Dang_FormService;
+        private List<GirdSysDinhDangFormDto> SysDinhDangs;
         private string DateFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern;
-        public UserControlKhachHang(DMKHService dMKHService)
+        public UserControlKhachHang(DMKHService dMKHService, SysDinh_dang_formService sysDinh_Dang_FormService)
         {
             InitializeComponent();
             _dmKHService = dMKHService;
+            _sysDinh_Dang_FormService = sysDinh_Dang_FormService;
+            SysDinhDangs = _sysDinh_Dang_FormService.GetDinhDang(AppGlobals.MaCH).data;
             dataGridViewX1.CellFormatting += dataGridViewX1_CellFormatting;
             dataGridViewX1.CellDoubleClick += dataGridViewX1_CellDoubleClick;
             dataGridViewX1.KeyDown += DataGridViewX1_KeyDown;
@@ -38,6 +45,8 @@ namespace GPBH.UI.UserControls
             dataGridViewX1.SetFormat("Ngay_sinh", DateFormat);
             dataGridViewX1.SetFormat("Xnc_ngay_cap", DateFormat);
             dataGridViewX1.SetFormat("Xnc_ngay_hh", DateFormat);
+
+            dataGridViewX1.SetFormat("Tong_tien_hang", GetFormat("Format_tien"));
 
 
             // Thiết lập các cột hiển thị trong DataGridViewX
@@ -228,6 +237,14 @@ namespace GPBH.UI.UserControls
         private void dataGridViewX1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
             dataGridViewX1.SetRowPositionPaint(e);
+        }
+
+        private string GetFormat(string column)
+        {
+            var dinhDang = SysDinhDangs.FirstOrDefault(z => z.Field_name == column);
+            if (dinhDang != null)
+                return dinhDang.Field_format;
+            return string.Empty;
         }
     }
 }
