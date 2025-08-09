@@ -434,7 +434,7 @@
             this.dataGridViewX1.Location = new System.Drawing.Point(3, 44);
             this.dataGridViewX1.Name = "dataGridViewX1";
             this.dataGridViewX1.RowHeadersWidth = 51;
-            this.dataGridViewX1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dataGridViewX1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewX1.Size = new System.Drawing.Size(1211, 370);
             this.dataGridViewX1.TabIndex = 2;
             // 
