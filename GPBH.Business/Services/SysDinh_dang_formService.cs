@@ -1,6 +1,5 @@
 ﻿using GPBH.Business.Dtos;
 using GPBH.Business.Exceptions;
-using GPBH.Data.Audit;
 using GPBH.Data.Entities;
 using GPBH.Data.UnitOfWorks;
 using Microsoft.Extensions.DependencyInjection;
@@ -308,10 +307,12 @@ namespace GPBH.Business.Services
             using (var scope = _serviceProvider.CreateScope())
             {
                 var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
-                var sysDinhDangRepo = unitOfWork.Repository<SysDinh_dang_form>();
+                var sysDinhDangRepo = unitOfWork.Repository<SysDinh_dang_form>(); 
+                var menuRepo = unitOfWork.Repository<SysMenu>();
                 try
                 {
                     unitOfWork.BeginTransaction();
+                    var index = 1;
                     foreach (var dto in dinhDangDtos)
                     {
                         var existing = sysDinhDangRepo
@@ -335,10 +336,15 @@ namespace GPBH.Business.Services
                         }
                         else
                         {
+                            if (string.IsNullOrWhiteSpace(dto.MenuId))
+                            {
+                                var menu = menuRepo.Find(z => z.MenuName == dto.MenuName).FirstOrDefault();
+                                dto.MenuId = menu?.MenuId;
+                            }
                             // Insert new
                             var entity = new SysDinh_dang_form
                             {
-                                Stt = dto.Stt,
+                                Stt = index,
                                 Ma_cua_hang = maCH,
                                 Code_name = dto.Code_name,
                                 MenuId = dto.MenuId,
@@ -379,6 +385,7 @@ namespace GPBH.Business.Services
                             }
                             sysDMCuaHangRepo.Update(sysDMCuaHang);
                         }
+                        index++;
                     }
 
 

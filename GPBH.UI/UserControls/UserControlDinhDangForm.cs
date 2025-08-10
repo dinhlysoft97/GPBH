@@ -92,7 +92,7 @@ namespace GPBH.UI.UserControls
             }
 
             var data = dataGridViewX1.GetData<GirdSysDinhDangFormDto>();
-            _sysDinh_dang_formService.LuuDinhDang(data, AppGlobals.MaCH);
+            _sysDinh_dang_formService.LuuDinhDang(data, cbbCuaHang.SelectedValue.ToString());
             lbWarning.Visible = false;
             MessageBoxEx.Show("Cập nhật thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
