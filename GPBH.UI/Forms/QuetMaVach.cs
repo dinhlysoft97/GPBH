@@ -32,7 +32,11 @@ namespace GPBH.UI.Forms
 
         private void QuetMaVach_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.F1)
+            {
+                this.ShowForm<HuongDanSuDung>();
+            }
+            else if (e.KeyCode == Keys.Enter)
             {
                 var maVach = this.txtMaVach.Text.Trim();
                 var hh = _dMHHService.GetByMaHH(maVach);

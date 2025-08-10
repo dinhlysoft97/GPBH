@@ -118,6 +118,10 @@
     <Compile Include="Migrations\202508090911468_Alter-DMKH.Designer.cs">
       <DependentUpon>202508090911468_Alter-DMKH.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202508100830576_Alter-XCT5.cs" />
+    <Compile Include="Migrations\202508100830576_Alter-XCT5.Designer.cs">
+      <DependentUpon>202508100830576_Alter-XCT5.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="UnitOfWorks\IUnitOfWork.cs" />
@@ -138,6 +142,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202508090911468_Alter-DMKH.resx">
       <DependentUpon>202508090911468_Alter-DMKH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202508100830576_Alter-XCT5.resx">
+      <DependentUpon>202508100830576_Alter-XCT5.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
