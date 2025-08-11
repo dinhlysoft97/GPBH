@@ -99,7 +99,7 @@ namespace GPBH.UI.Forms
 
             // Đặt thuộc tính KeyPreview của Form là true trong Designer hoặc trong code
             this.KeyPreview = true;
-
+            HandlerKeyF1();
             _dMQGService = dMQGService;
             _dMMTService = dMMTService;
             _dMHHService = dMHHService;
