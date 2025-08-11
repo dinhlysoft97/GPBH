@@ -9,6 +9,7 @@ x86/
 build/
 [Bb]in/
 [Oo]bj/
+packages/
 
 /.vs/
 /GPBH.UI/.vs/GPBH.UI.csproj.dtbcache.json
