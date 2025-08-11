@@ -128,7 +128,7 @@ namespace GPBH.UI.UserControls
             var khachHang = _dmKHService.GetByPassport(passport);
             if (khachHang == null) return;
 
-            var form = ActivatorUtilities.CreateInstance<KhachHang>(Program.ServiceProvider, passport, true, false);
+            var form = ActivatorUtilities.CreateInstance<KhachHang>(Program.ServiceProvider, passport, true, true, false);
             form.DataKhachHang = khachHang;
 
             if (form.ShowDialog() == DialogResult.OK)
@@ -155,7 +155,7 @@ namespace GPBH.UI.UserControls
             var khachHang = _dmKHService.GetByPassport(passport);
             if (khachHang == null) return;
 
-            var form = ActivatorUtilities.CreateInstance<KhachHang>(Program.ServiceProvider, passport, true, true);
+            var form = ActivatorUtilities.CreateInstance<KhachHang>(Program.ServiceProvider, passport, true, false, true);
             form.DataKhachHang = khachHang;
 
             if (form.ShowDialog() == DialogResult.OK)

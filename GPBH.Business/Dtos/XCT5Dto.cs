@@ -40,5 +40,7 @@
 
         // Lý do giảm giá
         public string Gg_ly_do { get; set; }
+
+        public string So_to_khai { get; set; }
     }
 }

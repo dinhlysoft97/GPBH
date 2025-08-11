@@ -57,6 +57,12 @@ namespace GPBH.UI.Forms
             new ThanhToan() { Key = "ZL", Value = "Zalo" }
         };
 
+        private DateTime? _ngayCap { get; set; }
+        private DateTime? _hetHan { get; set; }
+        private string _soHieu { get; set; }
+        private string _tauBay { get; set; }
+
+
         private readonly List<DMNT> _dMNTs;
         private TyGiaNT TyGiaGanNhat;
         private SysDMCuaHang CuaHang;
@@ -582,11 +588,39 @@ namespace GPBH.UI.Forms
         {
             //DataGridViewRow selectedRow = dataGridViewX1.Rows[_currentIndexRowSelect];
             if (_isView) return;
+
+            if (e.KeyCode == Keys.F1)
+            {
+                HandlerKeyF1();
+            }
+
             // Lưu và in
             // Chỉ xử lý F2 nếu form đã mở > 200ms
-            if (e.KeyCode == Keys.F2 && (DateTime.Now - _formOpenedTime).TotalMilliseconds > 200)
+            else if (e.KeyCode == Keys.F2 && (DateTime.Now - _formOpenedTime).TotalMilliseconds > 200)
             {
+                var dgv = dataGridViewX1;
+                if (dgv.Focused || dgv.ContainsFocus)
+                {
+                    // Kiểm tra đang ở cột mã hàng
+                    var cell = dgv.CurrentCell;
+                    int colIndex = dataGridViewX1.CurrentCell.ColumnIndex;
+                    int rowIndex = dataGridViewX1.CurrentCell.RowIndex;
+                    //_currentIndexRowSelect = rowIndex;
+                    if (cell != null && dataGridViewX1.Columns[colIndex].Name == "Ma_hh")
+                    {
+                        // Di chuyển sang cell bên phải (cell +1)
+                        int nextCol = cell.ColumnIndex + 1;
+                        if (nextCol < dgv.ColumnCount)
+                        {
+                            dgv.CurrentCell = dgv.Rows[cell.RowIndex].Cells[nextCol];
+                        }
+                        e.Handled = true; // Đã xử lý F2
+                        //return;
+                    }
+                }
+
                 HandlerKeyF2();
+                e.Handled = true;
             }
             //else if (e.KeyCode == Keys.F3)
             //{
@@ -623,7 +657,7 @@ namespace GPBH.UI.Forms
             //    }
             //}
 
-            else if ((e.KeyCode == Keys.Delete || e.KeyCode == Keys.F7) &&  dataGridViewX1.SelectedRows.Count > 0)
+            else if ((e.KeyCode == Keys.Delete || e.KeyCode == Keys.F7) && dataGridViewX1.SelectedRows.Count > 0)
             {
                 HideUcHangHoaPopup();
                 // Xác nhận xóa
@@ -660,12 +694,38 @@ namespace GPBH.UI.Forms
             // Lưu tạo đơn hàng
             else if (e.KeyCode == Keys.F12)
             {
+                var dgv = dataGridViewX1;
+                if (dgv.Focused || dgv.ContainsFocus)
+                {
+                    // Kiểm tra đang ở cột mã hàng
+                    var cell = dgv.CurrentCell;
+                    int colIndex = dataGridViewX1.CurrentCell.ColumnIndex;
+                    int rowIndex = dataGridViewX1.CurrentCell.RowIndex;
+                    //_currentIndexRowSelect = rowIndex;
+                    if (cell != null && dataGridViewX1.Columns[colIndex].Name == "Ma_hh")
+                    {
+                        // Di chuyển sang cell bên phải (cell +1)
+                        int nextCol = cell.ColumnIndex + 1;
+                        if (nextCol < dgv.ColumnCount)
+                        {
+                            dgv.CurrentCell = dgv.Rows[cell.RowIndex].Cells[nextCol];
+                        }
+                        e.Handled = true; // Đã xử lý F2
+                        //return;
+                    }
+                }
                 HandlerKeyF12();
+                e.Handled = true;
             }
             else if (e.KeyCode == Keys.Enter)
             {
                 //TimHangHang(sender, e);
             }
+        }
+
+        private void HandlerKeyF1()
+        {
+            this.ShowForm<HuongDanSuDung>();
         }
 
         private void LoadMaVach()
@@ -740,7 +800,22 @@ namespace GPBH.UI.Forms
                 var validator = ValidatorData();
                 // Tạo nháp đơn hàng
                 if (validator)
+                {
+                    // check có nhập thêm thông tin xuất nhập cảnh không?
+                    if (CuaHang.Nhap_ttxnc)
+                    {
+                        // show form nhập thông tin xuất nhập cảnh
+                        var formTtxnc = this.ShowForm<ThongTinXuatCanh>();
+                        _ngayCap = formTtxnc.NgayCap;
+                        _hetHan = formTtxnc.HetHan;
+                        _soHieu = formTtxnc.SoHieu;
+                        _tauBay = formTtxnc.TauBay;
+
+                        if (!formTtxnc.IsValidator)
+                            return;
+                    }
                     TaoDonHang(TrangThaiDonHang.Draft);
+                }
             }
             else
             {
@@ -763,8 +838,24 @@ namespace GPBH.UI.Forms
             if (!_isEdit) // tạo mới
             {
                 var validator = ValidatorData();
+
                 if (validator)
+                {
+                    // check có nhập thêm thông tin xuất nhập cảnh không?
+                    if (CuaHang.Nhap_ttxnc)
+                    {
+                        // show form nhập thông tin xuất nhập cảnh
+                        var formTtxnc = this.ShowForm<ThongTinXuatCanh>();
+                        _ngayCap = formTtxnc.NgayCap;
+                        _hetHan = formTtxnc.HetHan;
+                        _soHieu = formTtxnc.SoHieu;
+                        _tauBay = formTtxnc.TauBay;
+
+                        if (!formTtxnc.IsValidator)
+                            return;
+                    }
                     TaoDonHang(TrangThaiDonHang.Confirmed);
+                }
             }
             else
             {
@@ -978,10 +1069,10 @@ namespace GPBH.UI.Forms
 
             // khách hàng
             //var khachHang = _dMKHService.GetByPassport(txtCCCD.Text.Trim());
-            //donHangDto.Xnc_ngay_cap = khachHang.Xnc_ngay_cap;
-            //donHangDto.Xnc_ngay_hh = khachHang.Xnc_ngay_hh;
-            //donHangDto.So_hieu = khachHang.So_hieu;
-            //donHangDto.Ten_tau_bay = khachHang.Ten_tau_bay;
+            donHangDto.Xnc_ngay_cap = _ngayCap;
+            donHangDto.Xnc_ngay_hh = _hetHan;
+            donHangDto.So_hieu = _soHieu;
+            donHangDto.Ten_tau_bay = _tauBay;
             //donHangDto.Han_muc = khachHang.Han_muc;
 
             // Cửa hàng

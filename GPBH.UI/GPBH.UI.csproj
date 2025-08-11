@@ -147,6 +147,15 @@
     <Reference Include="Microsoft.IO.RecyclableMemoryStream, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.IO.RecyclableMemoryStream.3.0.1\lib\netstandard2.0\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Web.WebView2.Core, Version=1.0.3351.48, Culture=neutral, PublicKeyToken=2a8ab48044d2601e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.WebView2.1.0.3351.48\lib\net462\Microsoft.Web.WebView2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.WebView2.WinForms, Version=1.0.3351.48, Culture=neutral, PublicKeyToken=2a8ab48044d2601e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.WebView2.1.0.3351.48\lib\net462\Microsoft.Web.WebView2.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.WebView2.Wpf, Version=1.0.3351.48, Culture=neutral, PublicKeyToken=2a8ab48044d2601e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.WebView2.1.0.3351.48\lib\net462\Microsoft.Web.WebView2.Wpf.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -252,6 +261,12 @@
     <Compile Include="Forms\HangHoa.Designer.cs">
       <DependentUpon>HangHoa.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\HuongDanSuDung.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HuongDanSuDung.Designer.cs">
+      <DependentUpon>HuongDanSuDung.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\KhachHang.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -305,6 +320,12 @@
     </Compile>
     <Compile Include="Forms\ThamSo2.Designer.cs">
       <DependentUpon>ThamSo2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ThongTinXuatCanh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ThongTinXuatCanh.Designer.cs">
+      <DependentUpon>ThongTinXuatCanh.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
@@ -465,6 +486,9 @@
     <EmbeddedResource Include="Forms\HangHoa.resx">
       <DependentUpon>HangHoa.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\HuongDanSuDung.resx">
+      <DependentUpon>HuongDanSuDung.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\KhachHang.resx">
       <DependentUpon>KhachHang.cs</DependentUpon>
     </EmbeddedResource>
@@ -491,6 +515,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ThamSo2.resx">
       <DependentUpon>ThamSo2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ThongTinXuatCanh.resx">
+      <DependentUpon>ThongTinXuatCanh.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TyGia.resx">
       <DependentUpon>TyGia.cs</DependentUpon>
@@ -588,10 +615,6 @@
       <Project>{0D342A52-B701-4D80-B3B5-D29912ADA641}</Project>
       <Name>GPBH.Business</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GPBH.Data\GPBH.Data.csproj">
-      <Project>{e2531c10-8536-4b1e-ac0e-46b0822d5f80}</Project>
-      <Name>GPBH.Data</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="C:\Windows\assembly\GAC_MSIL\DevComponents.DotNetBar.SuperGrid\14.1.0.37__7eb7c3a35b91de04\DevComponents.DotNetBar.SuperGrid.dll" />
@@ -620,6 +643,8 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.props'))" />
     <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Web.WebView2.1.0.3351.48\build\Microsoft.Web.WebView2.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Web.WebView2.1.0.3351.48\build\Microsoft.Web.WebView2.targets'))" />
   </Target>
   <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" />
+  <Import Project="..\packages\Microsoft.Web.WebView2.1.0.3351.48\build\Microsoft.Web.WebView2.targets" Condition="Exists('..\packages\Microsoft.Web.WebView2.1.0.3351.48\build\Microsoft.Web.WebView2.targets')" />
 </Project>

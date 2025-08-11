@@ -11,7 +11,7 @@ namespace GPBH.Data.Configurations
             ToTable("XCT5");
 
             // Primary Key (Ma_phieu + Stt)
-            HasKey(t => new { t.Ma_phieu, t.Stt });
+            HasKey(t => new { t.Ma_phieu, t.Ma_hh, t.So_to_khai });
 
             // Properties
             Property(t => t.Ma_phieu)

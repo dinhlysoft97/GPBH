@@ -70,6 +70,7 @@ namespace GPBH.UI.Forms
             SysDinh_dang_formService sysDinh_Dang_FormService,
             string passport,
             bool isSelectMode = false,
+            bool isEditMode = false,
             bool isView = false)
         {
             InitializeComponent();
@@ -77,6 +78,7 @@ namespace GPBH.UI.Forms
             _dmkhService = dmkhService;
             _dMQGService = dMQGService;
             _isSelectMode = isSelectMode;
+            _isEditMode = isEditMode;
             _isView = isView;
             _sysDinh_Dang_FormService = sysDinh_Dang_FormService;
             SysDinhDangs = _sysDinh_Dang_FormService.GetDinhDang(AppGlobals.MaCH).data;
@@ -88,10 +90,10 @@ namespace GPBH.UI.Forms
                 var khachHang = _dmkhService.GetByPassport(passport);
                 if (khachHang != null)
                 {
-                    _isEditMode = true;
                     DataKhachHang = khachHang;
                     FillCustomerData(khachHang);
-                    txtCCCD.Enabled = false;
+                    if (_isEditMode)
+                        txtCCCD.Enabled = false;
                 }
                 else
                 {
