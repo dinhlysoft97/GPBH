@@ -62,7 +62,5 @@
         }
 
         #endregion
-
-        private Microsoft.Web.WebView2.WinForms.WebView2 webView21;
     }
 }
