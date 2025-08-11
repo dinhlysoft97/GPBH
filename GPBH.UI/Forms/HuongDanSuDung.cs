@@ -10,7 +10,7 @@ namespace GPBH.UI.Forms
         {
             InitializeComponent();
 
-            //var path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Files", "hdsd.pdf");
+            var path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Files", "hdsd.pdf");
             //if (System.IO.File.Exists(path))
             //{ 
             //    webView21.Source = new Uri($"file:///{path.Replace("\\", "/")}");
@@ -19,6 +19,11 @@ namespace GPBH.UI.Forms
             //{
             //    MessageBox.Show("File hướng dẫn sử dụng không tồn tại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             //}
+
+            var pdfViewer = new PdfiumViewer.PdfViewer();
+            pdfViewer.Document = PdfiumViewer.PdfDocument.Load(path);
+            this.Controls.Add(pdfViewer);
+            pdfViewer.Dock = DockStyle.Fill;
         }
     }
 }
