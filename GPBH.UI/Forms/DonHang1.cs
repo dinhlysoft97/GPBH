@@ -19,6 +19,7 @@ using System;
 using System.Linq;
 using OfficeOpenXml.FormulaParsing.Excel.Functions.Math;
 using GPBH.Data.Configurations;
+using DevComponents.AdvTree;
 
 namespace GPBH.UI.Forms
 {
@@ -99,7 +100,6 @@ namespace GPBH.UI.Forms
 
             // Đặt thuộc tính KeyPreview của Form là true trong Designer hoặc trong code
             this.KeyPreview = true;
-
             _dMQGService = dMQGService;
             _dMMTService = dMMTService;
             _dMHHService = dMHHService;
@@ -603,19 +603,22 @@ namespace GPBH.UI.Forms
                 {
                     // Kiểm tra đang ở cột mã hàng
                     var cell = dgv.CurrentCell;
-                    int colIndex = dataGridViewX1.CurrentCell.ColumnIndex;
-                    int rowIndex = dataGridViewX1.CurrentCell.RowIndex;
-                    //_currentIndexRowSelect = rowIndex;
-                    if (cell != null && dataGridViewX1.Columns[colIndex].Name == "Ma_hh")
+                    if (cell != null)
                     {
-                        // Di chuyển sang cell bên phải (cell +1)
-                        int nextCol = cell.ColumnIndex + 1;
-                        if (nextCol < dgv.ColumnCount)
+                        int colIndex = dataGridViewX1.CurrentCell.ColumnIndex;
+                        int rowIndex = dataGridViewX1.CurrentCell.RowIndex;
+                        //_currentIndexRowSelect = rowIndex;
+                        if (cell != null && dataGridViewX1.Columns[colIndex].Name == "Ma_hh")
                         {
-                            dgv.CurrentCell = dgv.Rows[cell.RowIndex].Cells[nextCol];
+                            // Di chuyển sang cell bên phải (cell +1)
+                            int nextCol = cell.ColumnIndex + 1;
+                            if (nextCol < dgv.ColumnCount)
+                            {
+                                dgv.CurrentCell = dgv.Rows[cell.RowIndex].Cells[nextCol];
+                            }
+                            e.Handled = true; // Đã xử lý F2
+                                              //return;
                         }
-                        e.Handled = true; // Đã xử lý F2
-                        //return;
                     }
                 }
 
@@ -698,20 +701,22 @@ namespace GPBH.UI.Forms
                 if (dgv.Focused || dgv.ContainsFocus)
                 {
                     // Kiểm tra đang ở cột mã hàng
-                    var cell = dgv.CurrentCell;
-                    int colIndex = dataGridViewX1.CurrentCell.ColumnIndex;
-                    int rowIndex = dataGridViewX1.CurrentCell.RowIndex;
-                    //_currentIndexRowSelect = rowIndex;
-                    if (cell != null && dataGridViewX1.Columns[colIndex].Name == "Ma_hh")
+                    var cell = dgv.CurrentCell; if (cell != null)
                     {
-                        // Di chuyển sang cell bên phải (cell +1)
-                        int nextCol = cell.ColumnIndex + 1;
-                        if (nextCol < dgv.ColumnCount)
+                        int colIndex = dataGridViewX1.CurrentCell.ColumnIndex;
+                        int rowIndex = dataGridViewX1.CurrentCell.RowIndex;
+                        //_currentIndexRowSelect = rowIndex;
+                        if (cell != null && dataGridViewX1.Columns[colIndex].Name == "Ma_hh")
                         {
-                            dgv.CurrentCell = dgv.Rows[cell.RowIndex].Cells[nextCol];
+                            // Di chuyển sang cell bên phải (cell +1)
+                            int nextCol = cell.ColumnIndex + 1;
+                            if (nextCol < dgv.ColumnCount)
+                            {
+                                dgv.CurrentCell = dgv.Rows[cell.RowIndex].Cells[nextCol];
+                            }
+                            e.Handled = true; // Đã xử lý F2
+                                              //return;
                         }
-                        e.Handled = true; // Đã xử lý F2
-                        //return;
                     }
                 }
                 HandlerKeyF12();
