@@ -112,7 +112,8 @@ namespace GPBH.Business.Services
                     Tong_nhan = row["Tong_nhan"] != DBNull.Value ? Convert.ToDecimal(row["Tong_nhan"]) : 0,
                     Tra_lai_nt = row["Tra_lai_nt"] != DBNull.Value ? Convert.ToDecimal(row["Tra_lai_nt"]) : 0,
                     Ma_tra_lai = row.Table.Columns.Contains("Ma_tra_lai") ? row["Ma_tra_lai"]?.ToString() : null,
-                    Ty_gia = row["Ty_gia"] != DBNull.Value ? Convert.ToDecimal(row["Ty_gia"]) : 0
+                    Ty_gia = row["Ty_gia"] != DBNull.Value ? Convert.ToDecimal(row["Ty_gia"]) : 0,
+                    Ma_hs = row["Ma_hs"]?.ToString()
                 };
                 list.Add(item);
             }
@@ -141,6 +142,7 @@ namespace GPBH.Business.Services
             dt.Columns.Add(nameof(ViewBaoCaoKhacHang.Tra_lai_nt), typeof(decimal));
             dt.Columns.Add(nameof(ViewBaoCaoKhacHang.Ma_tra_lai), typeof(string));
             dt.Columns.Add(nameof(ViewBaoCaoKhacHang.Ty_gia), typeof(decimal));
+            dt.Columns.Add(nameof(ViewBaoCaoKhacHang.Ma_hs), typeof(string));
 
             // Thêm dữ liệu
             foreach (var item in list)
@@ -161,7 +163,8 @@ namespace GPBH.Business.Services
                     item.Tong_nhan,
                     item.Tra_lai_nt,
                     item.Ma_tra_lai,
-                    item.Ty_gia
+                    item.Ty_gia,
+                    item.Ma_hs
                 );
             }
 
