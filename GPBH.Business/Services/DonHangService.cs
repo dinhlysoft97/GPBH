@@ -154,7 +154,7 @@ namespace GPBH.Business.Services
                     // Clone entity cũ để giữ dữ liệu chi tiết trước update (nên dùng phương thức clone sâu, hoặc map sang DTO rồi lại sang entity)
                     var entityCuClone = CloneXPH5(entityCu);
 
-                    // Update chi tiết
+                    // Update đơn hàng
                     UpdatDonHang(entityCu, donhang);
 
                     // Update chi tiết
@@ -219,7 +219,7 @@ namespace GPBH.Business.Services
             entity.Ma_phieu = donhang.Ma_phieu;
             entity.Ma_chung_tu = donhang.Ma_chung_tu;
             //entity.So_chung_tu = donhang.So_chung_tu;
-            entity.Ngay_chung_tu = donhang.Ngay_chung_tu;
+            //entity.Ngay_chung_tu = donhang.Ngay_chung_tu;
             entity.Ma_nt = donhang.Ma_nt;
             entity.Ty_gia = donhang.Ty_gia;
             entity.Ma_quay = donhang.Ma_quay;
