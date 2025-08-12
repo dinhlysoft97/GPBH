@@ -20,7 +20,7 @@ namespace GPBH.UI.Forms
             }
             else
             {
-                MessageBox.Show("File hướng dẫn sử dụng không tồn tại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show($"File hướng dẫn sử dụng '{path}' không tồn tại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }
