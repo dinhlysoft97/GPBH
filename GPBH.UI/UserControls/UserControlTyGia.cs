@@ -1,10 +1,12 @@
 ﻿using GPBH.Business;
 using GPBH.Business.Dtos;
 using GPBH.Business.Services;
+using GPBH.UI.Constant;
 using GPBH.UI.Extentions;
 using GPBH.UI.Helper;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
@@ -31,7 +33,7 @@ namespace GPBH.UI.UserControls
         {
             // Format cột
             dataGridViewX1.SetFormat("Ty_gia", GetFormat("Format_tien"));
-            dataGridViewX1.SetFormat("Ngay_ap_dung", "dd/MM/yy");
+            dataGridViewX1.SetFormat("Ngay_ap_dung", DateFormat);
         }
 
         private string GetFormat(string column)
@@ -55,7 +57,17 @@ namespace GPBH.UI.UserControls
 
         private void btnXuatExcel_Click(object sender, System.EventArgs e)
         {
-            ExportHelper.ExportGridToExcel(dataGridViewX1, "TyGia_" + DateTime.Now.ToString("yyyyMMdd_HHmmss"));
+            string menuName = "TyGia";
+            var hasPermission = CheckPermissionHelper.HasPerrmission(menuName, GPBHConstant.Action.Excel);
+            if (!hasPermission)
+            {
+                CheckPermissionHelper.ShowMessage();
+                return;
+            }
+
+            var fields = _sysDinh_Dang_FormService.GetDinhDang(AppGlobals.MaCH, menuName).data.Where(z => !z.Field_hide).OrderBy(z => z.Field_order).ToList();
+            var data = dataGridViewX1.DataSource as BindingList<GridTyGia>;
+            ExportHelper.ExportToExcel(data, fields, $"{menuName}_" + DateTime.Now.ToString("yyyyMMdd_HHmmss"));
         }
     }
 }

@@ -125,7 +125,7 @@ namespace GPBH.UI.UserControls
             string noiBan = AppGlobals.MaCH;
 
             var data = _reportBanHangService.GetViewBaoCaoBanTheoKhachHang(passport, maHangHoa, maNgoaiTe, maKhachHang, tuNgay, denNgay, noiBan);
-            var fields = _sysDinh_Dang_FormService.GetDinhDang(AppGlobals.MaCH, "BanHangTheoKhachHang").data.Where(z => !z.Field_hide).ToList();
+            var fields = _sysDinh_Dang_FormService.GetDinhDang(AppGlobals.MaCH, "BanHangTheoKhachHang").data.Where(z => !z.Field_hide).OrderBy(z => z.Field_order).ToList();
             //var fields = new[]
             //{
             //    new { Property = "Ten", Header = "Tên", Width = 20d, Format = "" },

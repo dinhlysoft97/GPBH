@@ -1,17 +1,26 @@
-﻿using GPBH.Business.Services;
+﻿using GPBH.Business.Dtos;
+using GPBH.Business;
+using GPBH.Business.Services;
+using GPBH.UI.Constant;
 using GPBH.UI.Extentions;
 using GPBH.UI.Helper;
+using System.ComponentModel;
+using System;
 using System.Windows.Forms;
+using System.Linq;
+using GPBH.Data.Entities;
 
 namespace GPBH.UI.UserControls
 {
     public partial class UserControlNgoaiTe : UserControl
     {
         private readonly DMNTService _dmNTService;
-        public UserControlNgoaiTe(DMNTService dMNTService)
+        private readonly SysDinh_dang_formService _sysDinh_Dang_FormService;
+        public UserControlNgoaiTe(DMNTService dMNTService, SysDinh_dang_formService sysDinh_Dang_FormService)
         {
             InitializeComponent();
             _dmNTService = dMNTService;
+            _sysDinh_Dang_FormService = sysDinh_Dang_FormService;
             LoadData(); 
             dataGridViewX1.DataBindingComplete += (s, e) =>
             {
@@ -28,6 +37,21 @@ namespace GPBH.UI.UserControls
         private void dataGridViewX1_RowPostPaint(object sender, System.Windows.Forms.DataGridViewRowPostPaintEventArgs e)
         {
             dataGridViewX1.SetRowPositionPaint(e);
+        }
+
+        private void btnXuatExcel_Click(object sender, System.EventArgs e)
+        {
+            string menuName = "NgoaiTe";
+            var hasPermission = CheckPermissionHelper.HasPerrmission(menuName, GPBHConstant.Action.Excel);
+            if (!hasPermission)
+            {
+                CheckPermissionHelper.ShowMessage();
+                return;
+            }
+
+            var fields = _sysDinh_Dang_FormService.GetDinhDang(AppGlobals.MaCH, menuName).data.Where(z => !z.Field_hide).OrderBy(z => z.Field_order).ToList();
+            var data = dataGridViewX1.DataSource as BindingList<GridNgoaiTe>;
+            ExportHelper.ExportToExcel(data, fields, $"{menuName}_" + DateTime.Now.ToString("yyyyMMdd_HHmmss"));
         }
     }
 }

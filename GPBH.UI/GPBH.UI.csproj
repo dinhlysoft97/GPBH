@@ -582,7 +582,9 @@
     <Analyzer Include="C:\Windows\assembly\GAC_MSIL\DevComponents.DotNetBar.SuperGrid\14.1.0.37__7eb7c3a35b91de04\DevComponents.DotNetBar.SuperGrid.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Images\empty.png" />
+    <Content Include="Images\empty.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\Login.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

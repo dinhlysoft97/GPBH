@@ -8,6 +8,7 @@ using GPBH.UI.Helper;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Globalization;
 using System.Linq;
@@ -249,7 +250,17 @@ namespace GPBH.UI.UserControls
 
         private void btnXuatExcel_Click(object sender, EventArgs e)
         {
-            ExportHelper.ExportGridToExcel(dataGridViewX1, "KhachHang_" + DateTime.Now.ToString("yyyyMMdd_HHmmss"));
+            string menuName = "KhachHang";
+            var hasPermission = CheckPermissionHelper.HasPerrmission(menuName, GPBHConstant.Action.Excel);
+            if (!hasPermission)
+            {
+                CheckPermissionHelper.ShowMessage();
+                return;
+            }
+
+            var fields = _sysDinh_Dang_FormService.GetDinhDang(AppGlobals.MaCH, menuName).data.Where(z => !z.Field_hide).OrderBy(z => z.Field_order).ToList();
+            var data = dataGridViewX1.DataSource as BindingList<GridKhachHang>;
+            ExportHelper.ExportToExcel(data, fields, $"{menuName}_" + DateTime.Now.ToString("yyyyMMdd_HHmmss"));
         }
     }
 }

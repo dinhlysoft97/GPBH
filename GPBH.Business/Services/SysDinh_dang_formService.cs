@@ -1,5 +1,6 @@
 ﻿using GPBH.Business.Dtos;
 using GPBH.Business.Exceptions;
+using GPBH.Data.Configurations;
 using GPBH.Data.Entities;
 using GPBH.Data.UnitOfWorks;
 using Microsoft.Extensions.DependencyInjection;
@@ -175,6 +176,374 @@ namespace GPBH.Business.Services
                             });
                         }
                     }
+                    else if (codeName == "Ca")
+                    {
+                        var menu = unitOfWork.Repository<SysMenu>().Find(s => s.MenuId == "Ca").FirstOrDefault();
+                        var type = typeof(DMca);
+                        int order = 0;
+                        foreach (var prop in type.GetProperties())
+                        {
+                            // Xác định kiểu dữ liệu cho Field_type và Field_format
+                            string fieldType;
+                            string fieldFormat;
+                            switch (Type.GetTypeCode(prop.PropertyType))
+                            {
+                                case TypeCode.Decimal:
+                                case TypeCode.Double:
+                                case TypeCode.Single:
+                                case TypeCode.Int32:
+                                case TypeCode.Int64:
+                                    fieldType = "Decimal";
+                                    fieldFormat = "#,##0.00";
+                                    break;
+                                case TypeCode.DateTime:
+                                    fieldType = "DateTime";
+                                    fieldFormat = "dd/MM/yyyy";
+                                    break;
+                                default:
+                                    fieldType = "String";
+                                    fieldFormat = "";
+                                    break;
+                            }
+
+                            result.Add(new GirdSysDinhDangFormDto
+                            {
+                                Code_name = "Ca",
+                                MenuId = menu.MenuId,
+                                MenuName = menu.MenuName,
+                                Field_name = prop.Name,
+                                Field_type = fieldType,
+                                Field_title = prop.Name,
+                                Field_order = order++,
+                                Field_hide = false,
+                                Field_width = 0,
+                                Field_format = fieldFormat,
+                                Default_sort = Sort.None,
+                            });
+                        }
+                    }
+                    else if (codeName == "QuocGia")
+                    {
+                        var menu = unitOfWork.Repository<SysMenu>().Find(s => s.MenuId == "QuocGia").FirstOrDefault();
+                        var type = typeof(DMQG);
+                        int order = 0;
+                        foreach (var prop in type.GetProperties())
+                        {
+                            // Xác định kiểu dữ liệu cho Field_type và Field_format
+                            string fieldType;
+                            string fieldFormat;
+                            switch (Type.GetTypeCode(prop.PropertyType))
+                            {
+                                case TypeCode.Decimal:
+                                case TypeCode.Double:
+                                case TypeCode.Single:
+                                case TypeCode.Int32:
+                                case TypeCode.Int64:
+                                    fieldType = "Decimal";
+                                    fieldFormat = "#,##0.00";
+                                    break;
+                                case TypeCode.DateTime:
+                                    fieldType = "DateTime";
+                                    fieldFormat = "dd/MM/yyyy";
+                                    break;
+                                default:
+                                    fieldType = "String";
+                                    fieldFormat = "";
+                                    break;
+                            }
+
+                            result.Add(new GirdSysDinhDangFormDto
+                            {
+                                Code_name = "QuocGia",
+                                MenuId = menu.MenuId,
+                                MenuName = menu.MenuName,
+                                Field_name = prop.Name,
+                                Field_type = fieldType,
+                                Field_title = prop.Name,
+                                Field_order = order++,
+                                Field_hide = false,
+                                Field_width = 0,
+                                Field_format = fieldFormat,
+                                Default_sort = Sort.None,
+                            });
+                        }
+                    }
+                    else if (codeName == "KhachHang")
+                    {
+                        var menu = unitOfWork.Repository<SysMenu>().Find(s => s.MenuId == "KhachHang").FirstOrDefault();
+                        var type = typeof(DMKH);
+                        int order = 0;
+                        foreach (var prop in type.GetProperties())
+                        {
+                            // Xác định kiểu dữ liệu cho Field_type và Field_format
+                            string fieldType;
+                            string fieldFormat;
+                            switch (Type.GetTypeCode(prop.PropertyType))
+                            {
+                                case TypeCode.Decimal:
+                                case TypeCode.Double:
+                                case TypeCode.Single:
+                                case TypeCode.Int32:
+                                case TypeCode.Int64:
+                                    fieldType = "Decimal";
+                                    fieldFormat = "#,##0.00";
+                                    break;
+                                case TypeCode.DateTime:
+                                    fieldType = "DateTime";
+                                    fieldFormat = "dd/MM/yyyy";
+                                    break;
+                                default:
+                                    fieldType = "String";
+                                    fieldFormat = "";
+                                    break;
+                            }
+
+                            result.Add(new GirdSysDinhDangFormDto
+                            {
+                                Code_name = "KhachHang",
+                                MenuId = menu.MenuId,
+                                MenuName = menu.MenuName,
+                                Field_name = prop.Name,
+                                Field_type = fieldType,
+                                Field_title = prop.Name,
+                                Field_order = order++,
+                                Field_hide = false,
+                                Field_width = 0,
+                                Field_format = fieldFormat,
+                                Default_sort = Sort.None,
+                            });
+                        }
+                    }
+                    else if (codeName == "NgoaiTe")
+                    {
+                        var menu = unitOfWork.Repository<SysMenu>().Find(s => s.MenuId == "NgoaiTe").FirstOrDefault();
+                        var type = typeof(DMNT);
+                        int order = 0;
+                        foreach (var prop in type.GetProperties())
+                        {
+                            // Xác định kiểu dữ liệu cho Field_type và Field_format
+                            string fieldType;
+                            string fieldFormat;
+                            switch (Type.GetTypeCode(prop.PropertyType))
+                            {
+                                case TypeCode.Decimal:
+                                case TypeCode.Double:
+                                case TypeCode.Single:
+                                case TypeCode.Int32:
+                                case TypeCode.Int64:
+                                    fieldType = "Decimal";
+                                    fieldFormat = "#,##0.00";
+                                    break;
+                                case TypeCode.DateTime:
+                                    fieldType = "DateTime";
+                                    fieldFormat = "dd/MM/yyyy";
+                                    break;
+                                default:
+                                    fieldType = "String";
+                                    fieldFormat = "";
+                                    break;
+                            }
+
+                            result.Add(new GirdSysDinhDangFormDto
+                            {
+                                Code_name = "NgoaiTe",
+                                MenuId = menu.MenuId,
+                                MenuName = menu.MenuName,
+                                Field_name = prop.Name,
+                                Field_type = fieldType,
+                                Field_title = prop.Name,
+                                Field_order = order++,
+                                Field_hide = false,
+                                Field_width = 0,
+                                Field_format = fieldFormat,
+                                Default_sort = Sort.None,
+                            });
+                        }
+                    }
+                    else if (codeName == "TyGia")
+                    {
+                        var menu = unitOfWork.Repository<SysMenu>().Find(s => s.MenuId == "TyGia").FirstOrDefault();
+                        var type = typeof(DMTG);
+                        int order = 0;
+                        foreach (var prop in type.GetProperties())
+                        {
+                            // Xác định kiểu dữ liệu cho Field_type và Field_format
+                            string fieldType;
+                            string fieldFormat;
+                            switch (Type.GetTypeCode(prop.PropertyType))
+                            {
+                                case TypeCode.Decimal:
+                                case TypeCode.Double:
+                                case TypeCode.Single:
+                                case TypeCode.Int32:
+                                case TypeCode.Int64:
+                                    fieldType = "Decimal";
+                                    fieldFormat = "#,##0.00";
+                                    break;
+                                case TypeCode.DateTime:
+                                    fieldType = "DateTime";
+                                    fieldFormat = "dd/MM/yyyy";
+                                    break;
+                                default:
+                                    fieldType = "String";
+                                    fieldFormat = "";
+                                    break;
+                            }
+
+                            result.Add(new GirdSysDinhDangFormDto
+                            {
+                                Code_name = "TyGia",
+                                MenuId = menu.MenuId,
+                                MenuName = menu.MenuName,
+                                Field_name = prop.Name,
+                                Field_type = fieldType,
+                                Field_title = prop.Name,
+                                Field_order = order++,
+                                Field_hide = false,
+                                Field_width = 0,
+                                Field_format = fieldFormat,
+                                Default_sort = Sort.None,
+                            });
+                        }
+                    }
+                    else if (codeName == "HangHoa")
+                    {
+                        var menu = unitOfWork.Repository<SysMenu>().Find(s => s.MenuId == "HangHoa").FirstOrDefault();
+                        var type = typeof(DMHH);
+                        int order = 0;
+                        foreach (var prop in type.GetProperties())
+                        {
+                            // Xác định kiểu dữ liệu cho Field_type và Field_format
+                            string fieldType;
+                            string fieldFormat;
+                            switch (Type.GetTypeCode(prop.PropertyType))
+                            {
+                                case TypeCode.Decimal:
+                                case TypeCode.Double:
+                                case TypeCode.Single:
+                                case TypeCode.Int32:
+                                case TypeCode.Int64:
+                                    fieldType = "Decimal";
+                                    fieldFormat = "#,##0.00";
+                                    break;
+                                case TypeCode.DateTime:
+                                    fieldType = "DateTime";
+                                    fieldFormat = "dd/MM/yyyy";
+                                    break;
+                                default:
+                                    fieldType = "String";
+                                    fieldFormat = "";
+                                    break;
+                            }
+
+                            result.Add(new GirdSysDinhDangFormDto
+                            {
+                                Code_name = "HangHoa",
+                                MenuId = menu.MenuId,
+                                MenuName = menu.MenuName,
+                                Field_name = prop.Name,
+                                Field_type = fieldType,
+                                Field_title = prop.Name,
+                                Field_order = order++,
+                                Field_hide = false,
+                                Field_width = 0,
+                                Field_format = fieldFormat,
+                                Default_sort = Sort.None,
+                            });
+                        }
+                    }
+                    else if (codeName == "GiaBan")
+                    {
+                        var menu = unitOfWork.Repository<SysMenu>().Find(s => s.MenuId == "GiaBan").FirstOrDefault();
+                        var type = typeof(DMGB);
+                        int order = 0;
+                        foreach (var prop in type.GetProperties())
+                        {
+                            // Xác định kiểu dữ liệu cho Field_type và Field_format
+                            string fieldType;
+                            string fieldFormat;
+                            switch (Type.GetTypeCode(prop.PropertyType))
+                            {
+                                case TypeCode.Decimal:
+                                case TypeCode.Double:
+                                case TypeCode.Single:
+                                case TypeCode.Int32:
+                                case TypeCode.Int64:
+                                    fieldType = "Decimal";
+                                    fieldFormat = "#,##0.00";
+                                    break;
+                                case TypeCode.DateTime:
+                                    fieldType = "DateTime";
+                                    fieldFormat = "dd/MM/yyyy";
+                                    break;
+                                default:
+                                    fieldType = "String";
+                                    fieldFormat = "";
+                                    break;
+                            }
+
+                            result.Add(new GirdSysDinhDangFormDto
+                            {
+                                Code_name = "GiaBan",
+                                MenuId = menu.MenuId,
+                                MenuName = menu.MenuName,
+                                Field_name = prop.Name,
+                                Field_type = fieldType,
+                                Field_title = prop.Name,
+                                Field_order = order++,
+                                Field_hide = false,
+                                Field_width = 0,
+                                Field_format = fieldFormat,
+                                Default_sort = Sort.None,
+                            });
+                        }
+                    }
+                    else if (codeName == "DinhDangForm")
+                    {
+                        var menu = unitOfWork.Repository<SysMenu>().Find(s => s.MenuId == "DinhDangForm").FirstOrDefault();
+                        var type = typeof(DMGB);
+                        int order = 0;
+                        foreach (var prop in type.GetProperties())
+                        {
+                            // Xác định kiểu dữ liệu cho Field_type và Field_format
+                            string fieldType;
+                            string fieldFormat;
+                            switch (Type.GetTypeCode(prop.PropertyType))
+                            {
+                                case TypeCode.Decimal:
+                                case TypeCode.Double:
+                                case TypeCode.Single:
+                                case TypeCode.Int32:
+                                case TypeCode.Int64:
+                                    fieldType = "Decimal";
+                                    fieldFormat = "#,##0.00";
+                                    break;
+                                case TypeCode.DateTime:
+                                    fieldType = "DateTime";
+                                    fieldFormat = "dd/MM/yyyy";
+                                    break;
+                                default:
+                                    fieldType = "String";
+                                    fieldFormat = "";
+                                    break;
+                            }
+
+                            result.Add(new GirdSysDinhDangFormDto
+                            {
+                                Code_name = "DinhDangForm",
+                                MenuId = menu.MenuId,
+                                MenuName = menu.MenuName,
+                                Field_name = prop.Name,
+                                Field_type = fieldType,
+                                Field_title = prop.Name,
+                                Field_order = order++,
+                                Field_hide = false,
+                                Field_width = 0,
+                                Field_format = fieldFormat,
+                                Default_sort = Sort.None,
+                            });
+                        }
+                    }
                     return (result, false);
                 }
             }
@@ -307,7 +676,7 @@ namespace GPBH.Business.Services
             using (var scope = _serviceProvider.CreateScope())
             {
                 var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
-                var sysDinhDangRepo = unitOfWork.Repository<SysDinh_dang_form>(); 
+                var sysDinhDangRepo = unitOfWork.Repository<SysDinh_dang_form>();
                 var menuRepo = unitOfWork.Repository<SysMenu>();
                 try
                 {

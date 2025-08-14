@@ -1,7 +1,12 @@
-﻿using GPBH.Business.Services;
+﻿using GPBH.Business;
+using GPBH.Business.Services;
+using GPBH.Data.Entities;
+using GPBH.UI.Constant;
 using GPBH.UI.Extentions;
 using GPBH.UI.Helper;
 using System;
+using System.ComponentModel;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace GPBH.UI.UserControls
@@ -9,10 +14,12 @@ namespace GPBH.UI.UserControls
     public partial class UserControlCa : UserControl
     {
         private readonly DMcaService _dMcaService;
-        public UserControlCa(DMcaService dMcaService)
+        private readonly SysDinh_dang_formService _sysDinh_dang_formService;
+        public UserControlCa(DMcaService dMcaService, SysDinh_dang_formService sysDinh_dang_formService)
         {
             InitializeComponent();
             _dMcaService = dMcaService;
+            _sysDinh_dang_formService = sysDinh_dang_formService;
             LoadData();
             dataGridViewX1.DataBindingComplete += (s, e) =>
             {
@@ -33,7 +40,18 @@ namespace GPBH.UI.UserControls
 
         private void btnXuatExcel_Click(object sender, EventArgs e)
         {
-            ExportHelper.ExportGridToExcel(dataGridViewX1, "Ca_" + DateTime.Now.ToString("yyyyMMdd_HHmmss"));
+            string menuName = "Ca";
+            var hasPermission = CheckPermissionHelper.HasPerrmission(menuName, GPBHConstant.Action.Excel);
+            if (!hasPermission)
+            {
+                CheckPermissionHelper.ShowMessage();
+                return;
+            }
+
+            var fields = _sysDinh_dang_formService.GetDinhDang(AppGlobals.MaCH, menuName).data.Where(z => !z.Field_hide).OrderBy(z => z.Field_order).ToList();
+            var data = dataGridViewX1.DataSource as BindingList<DMca>;
+            ExportHelper.ExportToExcel(data, fields, $"{menuName}_" + DateTime.Now.ToString("yyyyMMdd_HHmmss"));
+
         }
     }
 }

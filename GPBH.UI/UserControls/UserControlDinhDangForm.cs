@@ -9,10 +9,10 @@ using GPBH.UI.Extentions;
 using GPBH.UI.Helper;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Menu;
 
 namespace GPBH.UI.UserControls
 {
@@ -30,7 +30,15 @@ namespace GPBH.UI.UserControls
         private readonly List<DropDown> _thanhToans = new List<DropDown>
         {
             new DropDown() { Key = "X05", Value = "Đơn hàng" },
-            new DropDown() { Key = "BanHangTheoKhachHang", Value = "Báo cáo khách hàng" }
+            new DropDown() { Key = "BanHangTheoKhachHang", Value = "Báo cáo khách hàng" },
+            new DropDown() { Key = "Ca", Value = "Quốc gia" },
+            new DropDown() { Key = "QuocGia", Value = "Danh mục ca" },
+            new DropDown() { Key = "KhachHang", Value = "Khách hàng" },
+            new DropDown() { Key = "NgoaiTe", Value = "Ngoại tệ" },
+            new DropDown() { Key = "TyGia", Value = "Tỷ giá" },
+            new DropDown() { Key = "HangHoa", Value = "Hành hóa" },
+            new DropDown() { Key = "GiaBan", Value = "Giá bán" },
+            new DropDown() { Key = "DinhDangForm", Value = "Định dạng form" },
         };
 
         public UserControlDinhDangForm(SysDinh_dang_formService sysDinh_Dang_FormService, SysDMCuaHangService sysDMCuaHangService)
@@ -182,7 +190,17 @@ namespace GPBH.UI.UserControls
 
         private void btnXuatExcel_Click(object sender, EventArgs e)
         {
-            ExportHelper.ExportGridToExcel(dataGridViewX1, "DinhDangForm_" + DateTime.Now.ToString("yyyyMMdd_HHmmss"));
+            string menuName = "DinhDangForm";
+            var hasPermission = CheckPermissionHelper.HasPerrmission(menuName, GPBHConstant.Action.Excel);
+            if (!hasPermission)
+            {
+                CheckPermissionHelper.ShowMessage();
+                return;
+            }
+
+            var fields = _sysDinh_dang_formService.GetDinhDang(AppGlobals.MaCH, menuName).data.Where(z => !z.Field_hide).OrderBy(z => z.Field_order).ToList();
+            var data = dataGridViewX1.DataSource as BindingList<GirdSysDinhDangFormDto>;
+            ExportHelper.ExportToExcel(data, fields, $"{menuName}_" + DateTime.Now.ToString("yyyyMMdd_HHmmss"));
         }
     }
 }

@@ -926,6 +926,13 @@ namespace GPBH.UI.Forms
                 return false;
             }
 
+            if (txtTra_lai_nt.Value < 0)
+            {
+                MessageBoxEx.Show("Tiền nhận phải lớn hơn hoặc bằng tổng tiền!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.txtTong_nhan.Focus();
+                return false;
+            }
+
             // check hạn mức
             var tongTienThanhToan = (decimal)txtTt_tong.Value * (_data != null ? _data.Ty_gia : TyGiaGanNhat.Ty_gia);
             if (tongTienThanhToan > CuaHang.Han_muc_tm)
