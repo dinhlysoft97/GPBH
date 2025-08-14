@@ -311,8 +311,6 @@ namespace GPBH.UI.Report {
             
             private global::System.Data.DataColumn columnTy_gia;
             
-            private global::System.Data.DataColumn columnMa_hs;
-            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public vw_BaoCaoBanTheoKhachHangDataTable() {
@@ -476,14 +474,6 @@ namespace GPBH.UI.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn Ma_hsColumn {
-                get {
-                    return this.columnMa_hs;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -535,8 +525,7 @@ namespace GPBH.UI.Report {
                         string So_don_hang, 
                         string Thanh_tien_vn, 
                         string Ma_tra_lai, 
-                        decimal Ty_gia, 
-                        string Ma_hs) {
+                        decimal Ty_gia) {
                 vw_BaoCaoBanTheoKhachHangRow rowvw_BaoCaoBanTheoKhachHangRow = ((vw_BaoCaoBanTheoKhachHangRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Noi_ban,
@@ -554,8 +543,7 @@ namespace GPBH.UI.Report {
                         So_don_hang,
                         Thanh_tien_vn,
                         Ma_tra_lai,
-                        Ty_gia,
-                        Ma_hs};
+                        Ty_gia};
                 rowvw_BaoCaoBanTheoKhachHangRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowvw_BaoCaoBanTheoKhachHangRow);
                 return rowvw_BaoCaoBanTheoKhachHangRow;
@@ -594,7 +582,6 @@ namespace GPBH.UI.Report {
                 this.columnThanh_tien_vn = base.Columns["Thanh_tien_vn"];
                 this.columnMa_tra_lai = base.Columns["Ma_tra_lai"];
                 this.columnTy_gia = base.Columns["Ty_gia"];
-                this.columnMa_hs = base.Columns["Ma_hs"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -632,8 +619,6 @@ namespace GPBH.UI.Report {
                 base.Columns.Add(this.columnMa_tra_lai);
                 this.columnTy_gia = new global::System.Data.DataColumn("Ty_gia", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTy_gia);
-                this.columnMa_hs = new global::System.Data.DataColumn("Ma_hs", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnMa_hs);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1040,22 +1025,6 @@ namespace GPBH.UI.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Ma_hs {
-                get {
-                    try {
-                        return ((string)(this[this.tablevw_BaoCaoBanTheoKhachHang.Ma_hsColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Ma_hs\' in table \'vw_BaoCaoBanTheoKhachHang\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablevw_BaoCaoBanTheoKhachHang.Ma_hsColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsNoi_banNull() {
                 return this.IsNull(this.tablevw_BaoCaoBanTheoKhachHang.Noi_banColumn);
             }
@@ -1244,18 +1213,6 @@ namespace GPBH.UI.Report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetTy_giaNull() {
                 this[this.tablevw_BaoCaoBanTheoKhachHang.Ty_giaColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsMa_hsNull() {
-                return this.IsNull(this.tablevw_BaoCaoBanTheoKhachHang.Ma_hsColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetMa_hsNull() {
-                this[this.tablevw_BaoCaoBanTheoKhachHang.Ma_hsColumn] = global::System.Convert.DBNull;
             }
         }
         

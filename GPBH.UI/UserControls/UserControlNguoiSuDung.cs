@@ -6,7 +6,6 @@ using GPBH.UI.Constant;
 using GPBH.UI.Extentions;
 using GPBH.UI.Forms;
 using GPBH.UI.Helper;
-using OfficeOpenXml.FormulaParsing.Excel.Functions.DateTime;
 using System;
 using System.Drawing;
 using System.IO;
@@ -326,6 +325,11 @@ namespace GPBH.UI.UserControls
         private void dataGridViewX1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
             dataGridViewX1.SetRowPositionPaint(e);
+        }
+
+        private void btnXuatExcel_Click(object sender, EventArgs e)
+        {
+            ExportHelper.ExportGridToExcel(dataGridViewX1, "NguoiDung_" + DateTime.Now.ToString("yyyyMMdd_HHmmss"));
         }
     }
 }

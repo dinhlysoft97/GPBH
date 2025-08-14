@@ -29,6 +29,7 @@ namespace GPBH.UI.UserControls
             _sysDMCuaHangService = sysDMCuaHangService;
             SysDinhDangs = sysDinh_Dang_FormService.GetDinhDang(AppGlobals.MaCH).data;
             dataGridViewX1.AutoGenerateColumns = false;
+            dataGridViewX1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             SysDinhDangs = _sysDinh_Dang_FormService.GetDinhDang(AppGlobals.MaCH).data;
             LoadData();
             cbbCuaHang.SelectedIndexChanged += CbbCuaHang_SelectedIndexChanged;
@@ -83,6 +84,11 @@ namespace GPBH.UI.UserControls
             if (dinhDang != null)
                 return dinhDang.Field_format;
             return string.Empty;
+        }
+
+        private void btnXuatExcel_Click(object sender, EventArgs e)
+        {
+            ExportHelper.ExportGridToExcel(dataGridViewX1, "GiaBan_" + DateTime.Now.ToString("yyyyMMdd_HHmmss"));
         }
     }
 }

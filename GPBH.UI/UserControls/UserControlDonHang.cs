@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Web.Services.Description;
 using System.Windows.Forms;
 
 namespace GPBH.UI.UserControls
@@ -25,7 +26,7 @@ namespace GPBH.UI.UserControls
         private readonly SysDMCuaHangService _sysDMCuaHangService;
         private string DateFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern;
         private SysDMCuaHang CuaHang;
-        private int _lastRowIndex = -1;
+        //private int _lastRowIndex = -1;
 
         public UserControlDonHang(DonHangService donHangService, SysDMCuaHangService sysDMCuaHangService)
         {
@@ -45,7 +46,16 @@ namespace GPBH.UI.UserControls
         /// </summary>
         private void InitializeUI()
         {
+            bool bXem = CheckPermissionHelper.HasPerrmission(this.Tag.ToString(), GPBHConstant.Action.Xem);
+            btnTim.Enabled = bXem;
+            btnThem.Enabled = CheckPermissionHelper.HasPerrmission(this.Tag.ToString(), GPBHConstant.Action.Them);
+            btnSua.Enabled = CheckPermissionHelper.HasPerrmission(this.Tag.ToString(), GPBHConstant.Action.Sua);
+            btnXoa.Enabled = CheckPermissionHelper.HasPerrmission(this.Tag.ToString(), GPBHConstant.Action.Xoa);
+            btnXuatExcel.Enabled = CheckPermissionHelper.HasPerrmission(this.Tag.ToString(), GPBHConstant.Action.Excel);
             SetUpUI();
+            if (!bXem)
+                return;
+            // Nếu không có quyền xem thì ẩn các nút chức năng
             RegisterEvents();
             LoadData();
         }
@@ -297,6 +307,11 @@ namespace GPBH.UI.UserControls
 
         private void BtnSua_Click(object sender, EventArgs e)
         {
+            if (dataGridViewX1.CurrentCell is null)
+            {
+                MessageBoxEx.Show("Vui lòng chọn đơn hàng trước khi sửa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             var selectedRowIndex = dataGridViewX1.CurrentCell.RowIndex;
             var hasPermission = CheckPermissionHelper.HasPerrmission("DonHang", GPBHConstant.Action.Sua);
             if (!hasPermission)
@@ -379,6 +394,7 @@ namespace GPBH.UI.UserControls
         /// </summary>
         private void DataGridViewX1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (!btnSua.Enabled) return;
             if (e.RowIndex > 0 && e.ColumnIndex >= 0)
             {
                 var row = dataGridViewX1.Rows[e.RowIndex].DataBoundItem as GirdDonHangDto;
@@ -400,6 +416,7 @@ namespace GPBH.UI.UserControls
         /// <param name="e"></param>
         private void DataGridViewX1_SelectionChanged(object sender, EventArgs e)
         {
+            if (!btnSua.Enabled) return;
             var curRow = dataGridViewX1.CurrentRow;
             // Bỏ qua dòng filter (dòng đầu), và những trường hợp không hợp lệ
             if (curRow == null || curRow.IsNewRow || curRow.Index == 0)

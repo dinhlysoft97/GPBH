@@ -1,5 +1,4 @@
 ﻿using DevComponents.DotNetBar;
-using DevComponents.DotNetBar.Controls;
 using DevComponents.Editors;
 using GPBH.Business;
 using GPBH.Business.Dtos;
@@ -44,7 +43,10 @@ namespace GPBH.UI.Forms
         /// Dữ liệu khách hàng được chọn hoặc vừa thêm.
         /// </summary>
         public DMKH DataKhachHang { get; set; }
-
+        /// <summary>
+        /// Thông tin xuất nhập cảnh.
+        /// </summary>
+        public ThongTinXNCDto DataXuatNhapCanh { get; set; }
         public bool IsClose { get; set; }
 
         #endregion
@@ -63,7 +65,6 @@ namespace GPBH.UI.Forms
         #endregion
 
         #region Constructor
-
         public KhachHang(
             DMKHService dmkhService,
             DMQGService dMQGService,
@@ -92,7 +93,7 @@ namespace GPBH.UI.Forms
                 {
                     DataKhachHang = khachHang;
                     FillCustomerData(khachHang);
-                    if (_isEditMode)
+                    if (_isEditMode || _isView)
                         txtCCCD.Enabled = false;
                 }
                 else
@@ -112,9 +113,21 @@ namespace GPBH.UI.Forms
                 txtCCCD.Text = passport;
 
             if (_isSelectMode || _isView)
+            {
+                this.MinimumSize = new System.Drawing.Size(this.Width, 325);
+                this.Size = new System.Drawing.Size(this.Width, 325);
                 btnChon.Text = "Lưu(Enter)";
+                btnChon.Top = btnChon.Top - gpXuatNhapCanh.Height;
+                lbMessage.Top = lbMessage.Top - gpXuatNhapCanh.Height;
+                gpXuatNhapCanh.Visible = false;
+                this.ResumeLayout(true);
+            }
             else
+            {
+                gpXuatNhapCanh.Visible = true;
+                this.Height = 450;
                 btnChon.Text = "Chọn(Enter)";
+            }
         }
 
         private void SetUpUI()
@@ -127,6 +140,15 @@ namespace GPBH.UI.Forms
 
             dtNgaySinh.Format = eDateTimePickerFormat.Custom;
             dtNgaySinh.CustomFormat = DateFormat;
+
+            dtTTXNCNgayCap.Format = eDateTimePickerFormat.Custom;
+            dtTTXNCNgayCap.CustomFormat = DateFormat;
+
+            dtTTXNCHetHan.Format = eDateTimePickerFormat.Custom;
+            dtTTXNCHetHan.CustomFormat = DateFormat;
+
+
+            txtTongTien.DisplayFormat(GetFormat("Format_tien"));
 
             if (_isView)
             {
@@ -141,6 +163,11 @@ namespace GPBH.UI.Forms
                 dtHetHan.Enabled = false;
                 dtNgaySinh.Enabled = false;
                 txtEmail.Enabled = false;
+                dtTTXNCNgayCap.Enabled = false;
+                dtTTXNCHetHan.Enabled = false;
+                txPhuongTien.Enabled = false;
+                txtTauBay.Enabled = false;
+                txtTongTien.Enabled = false;
                 btnChon.Enabled = false;
             }
         }
@@ -164,6 +191,8 @@ namespace GPBH.UI.Forms
             dtNgaySinh.Value = DateTime.Now;
             dtNgayCap.Value = DateTime.Now;
             dtHetHan.Value = DateTime.Now;
+            dtTTXNCHetHan.Value = DateTime.Now;
+            dtTTXNCNgayCap.Value = DateTime.Now;
             dtHetHan.Value = DateTime.Now;
             ComboBoxHelper.BindData(cbbGioiTinh, GioiTinhs, "Value", "Key", true);
             var dataQD = _dMQGService.GetAll();
@@ -175,6 +204,8 @@ namespace GPBH.UI.Forms
         /// </summary>
         private void RegisterEvents()
         {
+            txtTongTien.KeyPress += txtSoTien_KeyPress;
+            txtTongTien.Leave += txtSoTien_Leave;
             txtEmail.Leave += txtEmail_Leave;
             this.KeyDown += Form_KeyDown;
             txtCCCD.TextChanged += txtCCCD_TextChanged;
@@ -203,6 +234,11 @@ namespace GPBH.UI.Forms
             dtHetHan.Value = khachHang.Ngay_hh ?? DateTime.Now;
             dtNgaySinh.Value = khachHang.Ngay_sinh ?? DateTime.Now;
             txtEmail.Text = khachHang.Email ?? "";
+            dtTTXNCNgayCap.Value = DateTime.Now;
+            dtTTXNCHetHan.Value = DateTime.Now;
+            txPhuongTien.Text = "";
+            txtTauBay.Text = "";
+            txtTongTien.Text = "0";
             cbbGioiTinh.SelectedValue = khachHang.Gioi_tinh;
             cbbQuocTich.SelectedValue = khachHang.Quoc_gia;
             this.Load += (s, e) =>
@@ -227,6 +263,9 @@ namespace GPBH.UI.Forms
             txtEmail.Text = "";
             //dtTTXNCNgayCap.IsEmpty = true;
             //dtTTXNCHetHan.IsEmpty = true;
+            txPhuongTien.Text = "";
+            txtTauBay.Text = "";
+            txtTongTien.Text = "0";
         }
 
         /// <summary>
@@ -287,7 +326,12 @@ namespace GPBH.UI.Forms
                 Gioi_tinh = cbbGioiTinh.SelectedValue?.ToString(),
                 Dia_chi = txtDiaChi.Text.Trim(),
                 Dien_thoai = txtSDT.Text.Trim(),
-                Email = txtEmail.Text.Trim(),
+                Email = txtEmail.Text.Trim()
+                //Xnc_ngay_cap = dtTTXNCNgayCap.IsEmpty ? (DateTime?)null : dtTTXNCNgayCap.Value,
+                //Xnc_ngay_hh = dtTTXNCHetHan.IsEmpty ? (DateTime?)null : dtTTXNCHetHan.Value,
+                //Han_muc = decimal.TryParse(txtTongTien.Text.Replace(",", "").Replace(".", ""), out var hanMuc) ? hanMuc : (decimal?)null,
+                //So_hieu = txPhuongTien.Text.Trim(),
+                //Ten_tau_bay = txtTauBay.Text.Trim()
             };
         }
 
@@ -321,7 +365,7 @@ namespace GPBH.UI.Forms
         {
             if (e.KeyCode == Keys.Enter)
             {
-                btnChon_Click(null, null);
+                HandleClick();
             }
         }
 
@@ -330,21 +374,18 @@ namespace GPBH.UI.Forms
         /// </summary>
         private void txtCCCD_TextChanged(object sender, EventArgs e)
         {
-            if (!_isSelectMode)
+            var khachHang = _dmkhService.GetByPassport(txtCCCD.Text.Trim());
+            if (khachHang != null)
             {
-                var khachHang = _dmkhService.GetByPassport(txtCCCD.Text.Trim());
-                if (khachHang != null)
-                {
-                    DataKhachHang = khachHang;
-                    FillCustomerData(khachHang);
-                    isKhachHangSelected = true;
-                    ClearMessage();
-                }
-                else
-                {
-                    ClearCustomerFields();
-                    isKhachHangSelected = false;
-                }
+                DataKhachHang = khachHang;
+                FillCustomerData(khachHang);
+                isKhachHangSelected = true;
+                ClearMessage();
+            }
+            else
+            {
+                ClearCustomerFields();
+                isKhachHangSelected = false;
             }
         }
 
@@ -393,6 +434,12 @@ namespace GPBH.UI.Forms
         {
             if (isKhachHangSelected)
             {
+                DataXuatNhapCanh = new ThongTinXNCDto();
+                DataXuatNhapCanh.TauBay = txtTauBay.Text.Trim();
+                DataXuatNhapCanh.SoHieu = txPhuongTien.Text.Trim();
+                DataXuatNhapCanh.NgayCap = dtTTXNCNgayCap.IsEmpty ? (DateTime?)null : dtTTXNCNgayCap.Value;
+                DataXuatNhapCanh.HetHan = dtTTXNCHetHan.IsEmpty ? (DateTime?)null : dtTTXNCHetHan.Value;
+                DataXuatNhapCanh.Han_muc = (decimal?)txtTongTien.Value;
                 this.Close();
             }
             else
@@ -409,6 +456,35 @@ namespace GPBH.UI.Forms
                 var khDto = GetCustomerFromForm();
                 DataKhachHang = _dmkhService.AddCustomer(khDto);
                 this.Close();
+            }
+        }
+
+        /// <summary>
+        /// Chỉ cho nhập số tiền, dấu phân cách.
+        /// </summary>
+        private void txtSoTien_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)
+                && e.KeyChar != ',' && e.KeyChar != '.')
+            {
+                e.Handled = true;
+            }
+            TextBox txt = sender as TextBox;
+            if ((e.KeyChar == ',' || e.KeyChar == '.') && (txt.Text.Contains(",") || txt.Text.Contains(".")))
+            {
+                e.Handled = true;
+            }
+        }
+
+        /// <summary>
+        /// Định dạng lại số tiền khi rời khỏi textbox.
+        /// </summary>
+        private void txtSoTien_Leave(object sender, EventArgs e)
+        {
+            decimal value;
+            if (decimal.TryParse(txtTongTien.Text.Replace(",", "").Replace(".", ""), out value))
+            {
+                txtTongTien.Text = value.ToString("#,##0");
             }
         }
 

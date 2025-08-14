@@ -45,7 +45,7 @@ namespace GPBH.UI.UserControls
         private void RegisterEvents()
         {
             btnLuu.Click += BtnLuu_Click;
-            dataGridViewX1.CellDoubleClick += DataGridViewX1_CellDoubleClick;
+            dgThamSo.CellDoubleClick += dgThamSo_CellDoubleClick;
         }
 
         #endregion
@@ -57,7 +57,7 @@ namespace GPBH.UI.UserControls
         /// </summary>
         private void LoadData()
         {
-            dataGridViewX1.BindData(_sysDMCuaHangService.GetThamSo(AppGlobals.MaCH).data);
+            dgThamSo.BindData(_sysDMCuaHangService.GetThamSo(AppGlobals.MaCH).data);
         }
 
         #endregion
@@ -69,20 +69,20 @@ namespace GPBH.UI.UserControls
         /// </summary>
         private void SetUpUI()
         {
-            if (dataGridViewX1.Columns.Count == 0) return;
+            if (dgThamSo.Columns.Count == 0) return;
 
             // Canh giữa header cho cột STT
-            dataGridViewX1.SetHeaderAlignment("Stt", DataGridViewContentAlignment.MiddleCenter);
-            dataGridViewX1.Columns["Stt"].Visible = false; // Ẩn cột STT
+            dgThamSo.SetHeaderAlignment("Stt", DataGridViewContentAlignment.MiddleCenter);
+            dgThamSo.Columns["Stt"].Visible = false; // Ẩn cột STT
             // Sắp xếp vị trí các cột
-            dataGridViewX1.SetDisplayIndex("Stt", 0);
-            dataGridViewX1.SetDisplayIndex("Key", 1);
-            dataGridViewX1.SetDisplayIndex("Ten", 2);
-            dataGridViewX1.SetDisplayIndex("GiaTri", 3);
-            dataGridViewX1.SetDisplayIndex("Mota", 4);
+            dgThamSo.SetDisplayIndex("Stt", 0);
+            dgThamSo.SetDisplayIndex("Key", 1);
+            dgThamSo.SetDisplayIndex("Ten", 2);
+            dgThamSo.SetDisplayIndex("GiaTri", 3);
+            dgThamSo.SetDisplayIndex("Mota", 4);
 
             // Căn chỉnh dữ liệu trong cột STT
-            dataGridViewX1.SetCellAlignment("Stt", DataGridViewContentAlignment.MiddleCenter);
+            dgThamSo.SetCellAlignment("Stt", DataGridViewContentAlignment.MiddleCenter);
         }
 
         #endregion
@@ -101,16 +101,16 @@ namespace GPBH.UI.UserControls
                 return;
             }
 
-            var data = dataGridViewX1.GetData<GirdSystemSettingDto>();
+            var data = dgThamSo.GetData<GirdSystemSettingDto>();
             _sysDMCuaHangService.LuuThamSo(data, AppGlobals.MaCH);
             MessageBoxEx.Show("Cập nhật thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void DataGridViewX1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dgThamSo_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             //if (e.RowIndex > 0 && e.ColumnIndex >= 0)
             //{
-            var row = dataGridViewX1.Rows[e.RowIndex].DataBoundItem as GirdSystemSettingDto;
+            var row = dgThamSo.Rows[e.RowIndex].DataBoundItem as GirdSystemSettingDto;
             var key = row.Key;
             var maCH = AppGlobals.MaCH;
             if (!string.IsNullOrEmpty(key) && !string.IsNullOrEmpty(maCH))
@@ -123,11 +123,16 @@ namespace GPBH.UI.UserControls
             }
             //  }
         }
-        private void dataGridViewX1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        private void dgThamSo_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
-            dataGridViewX1.SetRowPositionPaint(e);
+            dgThamSo.SetRowPositionPaint(e);
         }
 
         #endregion
+
+        private void btnXuatExcel_Click(object sender, EventArgs e)
+        {
+            ExportHelper.ExportGridToExcel(dgThamSo, "ThamSo_" + DateTime.Now.ToString("yyyyMMdd_HHmmss"));
+        }
     }
 }

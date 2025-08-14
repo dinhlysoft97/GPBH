@@ -29,13 +29,8 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.btnThem = new DevComponents.DotNetBar.ButtonX();
-            this.bubbleBar1 = new DevComponents.DotNetBar.BubbleBar();
-            this.btnSua = new DevComponents.DotNetBar.ButtonX();
-            this.btnXoa = new DevComponents.DotNetBar.ButtonX();
-            this.txtSearch = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.btnTim = new DevComponents.DotNetBar.ButtonX();
             this.Stt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PhanQuyen = new System.Windows.Forms.DataGridViewImageColumn();
             this.TenDangNhap = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,6 +41,13 @@
             this.Nguoi_sua = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ngay_tao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nguoi_tao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnThem = new DevComponents.DotNetBar.ButtonX();
+            this.bubbleBar1 = new DevComponents.DotNetBar.BubbleBar();
+            this.btnSua = new DevComponents.DotNetBar.ButtonX();
+            this.btnXoa = new DevComponents.DotNetBar.ButtonX();
+            this.txtSearch = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.btnTim = new DevComponents.DotNetBar.ButtonX();
+            this.btnXuatExcel = new DevComponents.DotNetBar.ButtonX();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bubbleBar1)).BeginInit();
             this.SuspendLayout();
@@ -57,7 +59,14 @@
             this.dataGridViewX1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridViewX1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewX1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Stt,
@@ -70,14 +79,14 @@
             this.Nguoi_sua,
             this.Ngay_tao,
             this.Nguoi_tao});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataGridViewX1.Location = new System.Drawing.Point(0, 38);
             this.dataGridViewX1.Margin = new System.Windows.Forms.Padding(2);
@@ -87,6 +96,93 @@
             this.dataGridViewX1.Size = new System.Drawing.Size(1339, 736);
             this.dataGridViewX1.TabIndex = 3;
             this.dataGridViewX1.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridViewX1_RowPostPaint);
+            // 
+            // Stt
+            // 
+            this.Stt.DataPropertyName = "Stt";
+            this.Stt.HeaderText = "Stt";
+            this.Stt.MinimumWidth = 6;
+            this.Stt.Name = "Stt";
+            this.Stt.ReadOnly = true;
+            this.Stt.Width = 129;
+            // 
+            // PhanQuyen
+            // 
+            this.PhanQuyen.DataPropertyName = "PhanQuyen";
+            this.PhanQuyen.HeaderText = "Phân quyền";
+            this.PhanQuyen.MinimumWidth = 6;
+            this.PhanQuyen.Name = "PhanQuyen";
+            this.PhanQuyen.ReadOnly = true;
+            this.PhanQuyen.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.PhanQuyen.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.PhanQuyen.Width = 128;
+            // 
+            // TenDangNhap
+            // 
+            this.TenDangNhap.DataPropertyName = "TenDangNhap";
+            this.TenDangNhap.HeaderText = "Tên đăng nhập";
+            this.TenDangNhap.Name = "TenDangNhap";
+            this.TenDangNhap.Width = 129;
+            // 
+            // TenDayDu
+            // 
+            this.TenDayDu.DataPropertyName = "TenDayDu";
+            this.TenDayDu.HeaderText = "Tên đầy đủ";
+            this.TenDayDu.Name = "TenDayDu";
+            this.TenDayDu.Width = 128;
+            // 
+            // Ksd
+            // 
+            this.Ksd.Checked = true;
+            this.Ksd.CheckState = System.Windows.Forms.CheckState.Indeterminate;
+            this.Ksd.CheckValue = "N";
+            this.Ksd.DataPropertyName = "Ksd";
+            this.Ksd.HeaderText = "KSD";
+            this.Ksd.Name = "Ksd";
+            this.Ksd.ReadOnly = true;
+            this.Ksd.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Ksd.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Ksd.Width = 129;
+            // 
+            // CapLaiQuyen
+            // 
+            this.CapLaiQuyen.Checked = true;
+            this.CapLaiQuyen.CheckState = System.Windows.Forms.CheckState.Indeterminate;
+            this.CapLaiQuyen.CheckValue = "N";
+            this.CapLaiQuyen.DataPropertyName = "CapLaiQuyen";
+            this.CapLaiQuyen.HeaderText = "Cấp lại quyền";
+            this.CapLaiQuyen.Name = "CapLaiQuyen";
+            this.CapLaiQuyen.ReadOnly = true;
+            this.CapLaiQuyen.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.CapLaiQuyen.Width = 129;
+            // 
+            // Ngay_sua
+            // 
+            this.Ngay_sua.DataPropertyName = "Ngay_sua";
+            this.Ngay_sua.HeaderText = "Ngày sửa";
+            this.Ngay_sua.Name = "Ngay_sua";
+            this.Ngay_sua.Width = 128;
+            // 
+            // Nguoi_sua
+            // 
+            this.Nguoi_sua.DataPropertyName = "Nguoi_sua";
+            this.Nguoi_sua.HeaderText = "Người sửa";
+            this.Nguoi_sua.Name = "Nguoi_sua";
+            this.Nguoi_sua.Width = 129;
+            // 
+            // Ngay_tao
+            // 
+            this.Ngay_tao.DataPropertyName = "Ngay_tao";
+            this.Ngay_tao.HeaderText = "Ngày tạo";
+            this.Ngay_tao.Name = "Ngay_tao";
+            this.Ngay_tao.Width = 128;
+            // 
+            // Nguoi_tao
+            // 
+            this.Nguoi_tao.DataPropertyName = "Nguoi_tao";
+            this.Nguoi_tao.HeaderText = "Người tạo";
+            this.Nguoi_tao.Name = "Nguoi_tao";
+            this.Nguoi_tao.Width = 129;
             // 
             // btnThem
             // 
@@ -181,87 +277,23 @@
             this.btnTim.TabIndex = 9;
             this.btnTim.Text = "Tìm kiếm";
             // 
-            // Stt
+            // btnXuatExcel
             // 
-            this.Stt.DataPropertyName = "Stt";
-            this.Stt.HeaderText = "Stt";
-            this.Stt.MinimumWidth = 6;
-            this.Stt.Name = "Stt";
-            this.Stt.ReadOnly = true;
-            // 
-            // PhanQuyen
-            // 
-            this.PhanQuyen.DataPropertyName = "PhanQuyen";
-            this.PhanQuyen.HeaderText = "Phân quyền";
-            this.PhanQuyen.MinimumWidth = 6;
-            this.PhanQuyen.Name = "PhanQuyen";
-            this.PhanQuyen.ReadOnly = true;
-            this.PhanQuyen.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.PhanQuyen.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // TenDangNhap
-            // 
-            this.TenDangNhap.DataPropertyName = "TenDangNhap";
-            this.TenDangNhap.HeaderText = "Tên đăng nhập";
-            this.TenDangNhap.Name = "TenDangNhap";
-            // 
-            // TenDayDu
-            // 
-            this.TenDayDu.DataPropertyName = "TenDayDu";
-            this.TenDayDu.HeaderText = "Tên đầy đủ";
-            this.TenDayDu.Name = "TenDayDu";
-            // 
-            // Ksd
-            // 
-            this.Ksd.Checked = true;
-            this.Ksd.CheckState = System.Windows.Forms.CheckState.Indeterminate;
-            this.Ksd.CheckValue = "N";
-            this.Ksd.DataPropertyName = "Ksd";
-            this.Ksd.HeaderText = "KSD";
-            this.Ksd.Name = "Ksd";
-            this.Ksd.ReadOnly = true;
-            this.Ksd.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Ksd.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // CapLaiQuyen
-            // 
-            this.CapLaiQuyen.Checked = true;
-            this.CapLaiQuyen.CheckState = System.Windows.Forms.CheckState.Indeterminate;
-            this.CapLaiQuyen.CheckValue = "N";
-            this.CapLaiQuyen.DataPropertyName = "CapLaiQuyen";
-            this.CapLaiQuyen.HeaderText = "Cấp lại quyền";
-            this.CapLaiQuyen.Name = "CapLaiQuyen";
-            this.CapLaiQuyen.ReadOnly = true;
-            this.CapLaiQuyen.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // Ngay_sua
-            // 
-            this.Ngay_sua.DataPropertyName = "Ngay_sua";
-            this.Ngay_sua.HeaderText = "Ngày sửa";
-            this.Ngay_sua.Name = "Ngay_sua";
-            // 
-            // Nguoi_sua
-            // 
-            this.Nguoi_sua.DataPropertyName = "Nguoi_sua";
-            this.Nguoi_sua.HeaderText = "Người sửa";
-            this.Nguoi_sua.Name = "Nguoi_sua";
-            // 
-            // Ngay_tao
-            // 
-            this.Ngay_tao.DataPropertyName = "Ngay_tao";
-            this.Ngay_tao.HeaderText = "Ngày tạo";
-            this.Ngay_tao.Name = "Ngay_tao";
-            // 
-            // Nguoi_tao
-            // 
-            this.Nguoi_tao.DataPropertyName = "Nguoi_tao";
-            this.Nguoi_tao.HeaderText = "Người tạo";
-            this.Nguoi_tao.Name = "Nguoi_tao";
+            this.btnXuatExcel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnXuatExcel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnXuatExcel.Location = new System.Drawing.Point(646, 10);
+            this.btnXuatExcel.Name = "btnXuatExcel";
+            this.btnXuatExcel.Size = new System.Drawing.Size(75, 23);
+            this.btnXuatExcel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnXuatExcel.TabIndex = 10;
+            this.btnXuatExcel.Text = "Xuất Excel";
+            this.btnXuatExcel.Click += new System.EventHandler(this.btnXuatExcel_Click);
             // 
             // UserControlNguoiSuDung
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnXuatExcel);
             this.Controls.Add(this.btnTim);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.btnXoa);
@@ -295,5 +327,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Nguoi_sua;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ngay_tao;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nguoi_tao;
+        private DevComponents.DotNetBar.ButtonX btnXuatExcel;
     }
 }

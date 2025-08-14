@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.Ma_cua_hang = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -38,6 +39,7 @@
             this.Ma_hh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Gia_ban = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnXuatExcel = new DevComponents.DotNetBar.ButtonX();
             this.cbbCuaHang = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.tableLayoutPanel1.SuspendLayout();
@@ -65,26 +67,32 @@
             // 
             this.dataGridViewX1.AllowUserToAddRows = false;
             this.dataGridViewX1.AllowUserToDeleteRows = false;
-            this.dataGridViewX1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewX1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Ma_cua_hang,
             this.Ngay_ap_dung,
             this.Ma_hh,
             this.Gia_ban});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewX1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataGridViewX1.Location = new System.Drawing.Point(3, 42);
             this.dataGridViewX1.Name = "dataGridViewX1";
-            this.dataGridViewX1.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dataGridViewX1.Size = new System.Drawing.Size(1215, 712);
             this.dataGridViewX1.TabIndex = 3;
             this.dataGridViewX1.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridViewX1_RowPostPaint);
@@ -100,8 +108,8 @@
             // Ngay_ap_dung
             // 
             this.Ngay_ap_dung.DataPropertyName = "Ngay_ap_dung";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.Ngay_ap_dung.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Ngay_ap_dung.DefaultCellStyle = dataGridViewCellStyle2;
             this.Ngay_ap_dung.HeaderText = "Ngày áp dụng";
             this.Ngay_ap_dung.Name = "Ngay_ap_dung";
             this.Ngay_ap_dung.ReadOnly = true;
@@ -118,8 +126,8 @@
             // Gia_ban
             // 
             this.Gia_ban.DataPropertyName = "Gia_ban";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.Gia_ban.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Gia_ban.DefaultCellStyle = dataGridViewCellStyle3;
             this.Gia_ban.HeaderText = "Giá bán";
             this.Gia_ban.Name = "Gia_ban";
             this.Gia_ban.ReadOnly = true;
@@ -127,12 +135,26 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.btnXuatExcel);
             this.panel2.Controls.Add(this.cbbCuaHang);
             this.panel2.Controls.Add(this.labelX1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(297, 31);
+            this.panel2.Size = new System.Drawing.Size(1215, 31);
             this.panel2.TabIndex = 1;
+            // 
+            // btnXuatExcel
+            // 
+            this.btnXuatExcel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnXuatExcel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnXuatExcel.Location = new System.Drawing.Point(303, 4);
+            this.btnXuatExcel.Name = "btnXuatExcel";
+            this.btnXuatExcel.Size = new System.Drawing.Size(75, 23);
+            this.btnXuatExcel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnXuatExcel.TabIndex = 2;
+            this.btnXuatExcel.Text = "Xuất Excel";
+            this.btnXuatExcel.Click += new System.EventHandler(this.btnXuatExcel_Click);
             // 
             // cbbCuaHang
             // 
@@ -140,11 +162,11 @@
             this.cbbCuaHang.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cbbCuaHang.FormattingEnabled = true;
             this.cbbCuaHang.ItemHeight = 14;
-            this.cbbCuaHang.Location = new System.Drawing.Point(68, 9);
+            this.cbbCuaHang.Location = new System.Drawing.Point(70, 6);
             this.cbbCuaHang.Name = "cbbCuaHang";
             this.cbbCuaHang.Size = new System.Drawing.Size(221, 20);
             this.cbbCuaHang.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cbbCuaHang.TabIndex = 6;
+            this.cbbCuaHang.TabIndex = 1;
             // 
             // labelX1
             // 
@@ -153,7 +175,7 @@
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(7, 11);
+            this.labelX1.Location = new System.Drawing.Point(9, 8);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(50, 15);
             this.labelX1.TabIndex = 5;
@@ -185,5 +207,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Ngay_ap_dung;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ma_hh;
         private System.Windows.Forms.DataGridViewTextBoxColumn Gia_ban;
+        private DevComponents.DotNetBar.ButtonX btnXuatExcel;
     }
 }

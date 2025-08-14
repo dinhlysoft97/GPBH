@@ -17,6 +17,7 @@ namespace GPBH.Data.Entities
         public string Dia_chi { get; set; }          // Địa chỉ
         public string Dien_thoai { get; set; }       // Điện thoại
         public string Email { get; set; }            // Email
+
         public DMQG DMQG { get; set; }       // Người tạo
     }
 }

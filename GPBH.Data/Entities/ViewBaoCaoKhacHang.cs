@@ -21,6 +21,5 @@ namespace GPBH.Data.Entities
         public decimal Tra_lai_nt { get; set; }                    // ph.Tra_lai_nt
         public string Ma_tra_lai { get; set; }                     // ph.Ma_tra_lai
         public decimal Ty_gia { get; set; }                        // ph.Ty_gia
-        public string Ma_hs { get; set; }                          // ct.So_to_khai
     }
 }

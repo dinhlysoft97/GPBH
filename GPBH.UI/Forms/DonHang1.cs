@@ -17,9 +17,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System;
 using System.Linq;
-using OfficeOpenXml.FormulaParsing.Excel.Functions.Math;
 using GPBH.Data.Configurations;
-using DevComponents.AdvTree;
 
 namespace GPBH.UI.Forms
 {
@@ -40,6 +38,7 @@ namespace GPBH.UI.Forms
         private bool _isClickCell = false;
         //private int _currentIndexRowSelect = 0;
         private DateTime _formOpenedTime;
+        private ThongTinXNCDto _thongTinXNC;
 
         sealed class ThanhToan
         {
@@ -100,6 +99,7 @@ namespace GPBH.UI.Forms
 
             // Đặt thuộc tính KeyPreview của Form là true trong Designer hoặc trong code
             this.KeyPreview = true;
+
             _dMQGService = dMQGService;
             _dMMTService = dMMTService;
             _dMHHService = dMHHService;
@@ -395,20 +395,22 @@ namespace GPBH.UI.Forms
             }
 
             if (formKhachHang.DataKhachHang != null)
-                BindDataKhachHang(formKhachHang.DataKhachHang);
+                BindDataKhachHang(formKhachHang.DataKhachHang, formKhachHang.DataXuatNhapCanh);
         }
 
         /// <summary>
         /// Bind dữ liệu khách hàng lên các control trên form.
         /// </summary>
         /// <param name="khachhang">Đối tượng khách hàng</param>
-        private void BindDataKhachHang(DMKH khachhang)
+        private void BindDataKhachHang(DMKH khachhang, ThongTinXNCDto thongTinXNC = null)
         {
             var quocGia = _dMQGService.GetByMaQuocGia(khachhang.Quoc_gia);
             txtCCCD.Text = khachhang?.Passport?.Trim() ?? "";
             txtDiaChi.Text = CuaHang?.Dia_chi ?? "";
             txtQuocTinh.Text = quocGia?.Ten_Quoc_gia ?? "";
             txtTenKhachHang.Text = $"{khachhang?.Ho} {khachhang?.Ten_dem} {khachhang?.Ten}".Trim();
+
+            _thongTinXNC = thongTinXNC ?? new ThongTinXNCDto();
         }
 
         /// <summary>
@@ -603,22 +605,19 @@ namespace GPBH.UI.Forms
                 {
                     // Kiểm tra đang ở cột mã hàng
                     var cell = dgv.CurrentCell;
-                    if (cell != null)
+                    int colIndex = dataGridViewX1.CurrentCell.ColumnIndex;
+                    int rowIndex = dataGridViewX1.CurrentCell.RowIndex;
+                    //_currentIndexRowSelect = rowIndex;
+                    if (cell != null && dataGridViewX1.Columns[colIndex].Name == "Ma_hh")
                     {
-                        int colIndex = dataGridViewX1.CurrentCell.ColumnIndex;
-                        int rowIndex = dataGridViewX1.CurrentCell.RowIndex;
-                        //_currentIndexRowSelect = rowIndex;
-                        if (cell != null && dataGridViewX1.Columns[colIndex].Name == "Ma_hh")
+                        // Di chuyển sang cell bên phải (cell +1)
+                        int nextCol = cell.ColumnIndex + 1;
+                        if (nextCol < dgv.ColumnCount)
                         {
-                            // Di chuyển sang cell bên phải (cell +1)
-                            int nextCol = cell.ColumnIndex + 1;
-                            if (nextCol < dgv.ColumnCount)
-                            {
-                                dgv.CurrentCell = dgv.Rows[cell.RowIndex].Cells[nextCol];
-                            }
-                            e.Handled = true; // Đã xử lý F2
-                                              //return;
+                            dgv.CurrentCell = dgv.Rows[cell.RowIndex].Cells[nextCol];
                         }
+                        e.Handled = true; // Đã xử lý F2
+                        //return;
                     }
                 }
 
@@ -701,22 +700,20 @@ namespace GPBH.UI.Forms
                 if (dgv.Focused || dgv.ContainsFocus)
                 {
                     // Kiểm tra đang ở cột mã hàng
-                    var cell = dgv.CurrentCell; if (cell != null)
+                    var cell = dgv.CurrentCell;
+                    int colIndex = dataGridViewX1.CurrentCell.ColumnIndex;
+                    int rowIndex = dataGridViewX1.CurrentCell.RowIndex;
+                    //_currentIndexRowSelect = rowIndex;
+                    if (cell != null && dataGridViewX1.Columns[colIndex].Name == "Ma_hh")
                     {
-                        int colIndex = dataGridViewX1.CurrentCell.ColumnIndex;
-                        int rowIndex = dataGridViewX1.CurrentCell.RowIndex;
-                        //_currentIndexRowSelect = rowIndex;
-                        if (cell != null && dataGridViewX1.Columns[colIndex].Name == "Ma_hh")
+                        // Di chuyển sang cell bên phải (cell +1)
+                        int nextCol = cell.ColumnIndex + 1;
+                        if (nextCol < dgv.ColumnCount)
                         {
-                            // Di chuyển sang cell bên phải (cell +1)
-                            int nextCol = cell.ColumnIndex + 1;
-                            if (nextCol < dgv.ColumnCount)
-                            {
-                                dgv.CurrentCell = dgv.Rows[cell.RowIndex].Cells[nextCol];
-                            }
-                            e.Handled = true; // Đã xử lý F2
-                                              //return;
+                            dgv.CurrentCell = dgv.Rows[cell.RowIndex].Cells[nextCol];
                         }
+                        e.Handled = true; // Đã xử lý F2
+                        //return;
                     }
                 }
                 HandlerKeyF12();
@@ -810,14 +807,10 @@ namespace GPBH.UI.Forms
                     if (CuaHang.Nhap_ttxnc)
                     {
                         // show form nhập thông tin xuất nhập cảnh
-                        var formTtxnc = this.ShowForm<ThongTinXuatCanh>();
-                        _ngayCap = formTtxnc.NgayCap;
-                        _hetHan = formTtxnc.HetHan;
-                        _soHieu = formTtxnc.SoHieu;
-                        _tauBay = formTtxnc.TauBay;
-
-                        if (!formTtxnc.IsValidator)
-                            return;
+                        _ngayCap = _thongTinXNC.NgayCap;
+                        _hetHan = _thongTinXNC.HetHan;
+                        _soHieu = _thongTinXNC.SoHieu;
+                        _tauBay = _thongTinXNC.TauBay;
                     }
                     TaoDonHang(TrangThaiDonHang.Draft);
                 }
@@ -850,14 +843,14 @@ namespace GPBH.UI.Forms
                     if (CuaHang.Nhap_ttxnc)
                     {
                         // show form nhập thông tin xuất nhập cảnh
-                        var formTtxnc = this.ShowForm<ThongTinXuatCanh>();
-                        _ngayCap = formTtxnc.NgayCap;
-                        _hetHan = formTtxnc.HetHan;
-                        _soHieu = formTtxnc.SoHieu;
-                        _tauBay = formTtxnc.TauBay;
+                        //var formTtxnc =  this.ShowForm<ThongTinXuatCanh>();
+                        _ngayCap = _thongTinXNC.NgayCap;
+                        _hetHan = _thongTinXNC.HetHan;
+                        _soHieu = _thongTinXNC.SoHieu;
+                        _tauBay = _thongTinXNC.TauBay;
 
-                        if (!formTtxnc.IsValidator)
-                            return;
+                        //if (!formTtxnc.IsValidator)
+                        //    return;
                     }
                     TaoDonHang(TrangThaiDonHang.Confirmed);
                 }
@@ -888,7 +881,7 @@ namespace GPBH.UI.Forms
                 return false;
             }
 
-            if (listChiTiet.Count == 0)
+            if (listChiTiet.Count == 0 || dataGridViewX1.Rows.Count <= 1)
             {
                 MessageBoxEx.Show("Vui lòng thêm ít nhất một mặt hàng trước khi lưu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 if (!string.IsNullOrEmpty(ucHangHoa.Tb.Text))

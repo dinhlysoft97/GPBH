@@ -1,6 +1,7 @@
 ﻿using GPBH.Business.Services;
 using GPBH.UI.Extentions;
 using GPBH.UI.Helper;
+using System;
 using System.Windows.Forms;
 
 namespace GPBH.UI.UserControls
@@ -27,6 +28,11 @@ namespace GPBH.UI.UserControls
         private void dataGridViewX1_RowPostPaint(object sender, System.Windows.Forms.DataGridViewRowPostPaintEventArgs e)
         {
             dataGridViewX1.SetRowPositionPaint(e);
+        }
+
+        private void btnXuatExcel_Click(object sender, System.EventArgs e)
+        {
+            ExportHelper.ExportGridToExcel(dataGridViewX1, "QuocGia_" + DateTime.Now.ToString("yyyyMMdd_HHmmss"));
         }
     }
 }

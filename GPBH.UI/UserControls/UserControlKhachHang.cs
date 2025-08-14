@@ -246,5 +246,10 @@ namespace GPBH.UI.UserControls
                 return dinhDang.Field_format;
             return string.Empty;
         }
+
+        private void btnXuatExcel_Click(object sender, EventArgs e)
+        {
+            ExportHelper.ExportGridToExcel(dataGridViewX1, "KhachHang_" + DateTime.Now.ToString("yyyyMMdd_HHmmss"));
+        }
     }
 }

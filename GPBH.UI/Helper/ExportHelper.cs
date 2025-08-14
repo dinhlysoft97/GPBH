@@ -1,7 +1,11 @@
-﻿using GPBH.Business.Dtos;
+﻿using DevComponents.DotNetBar.Controls;
+using GPBH.Business.Dtos;
 using OfficeOpenXml;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
+using System.Reflection;
 using System.Windows.Forms;
 
 
@@ -28,7 +32,7 @@ namespace GPBH.UI.Helper
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     // Lưu file tại dialog.FileName
-
+                    ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
                     using (var package = new ExcelPackage())
                     {
                         var ws = package.Workbook.Worksheets.Add(sheetName);
@@ -88,7 +92,7 @@ namespace GPBH.UI.Helper
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     // Lưu file tại dialog.FileName
-
+                    ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
                     using (var package = new ExcelPackage())
                     {
                         var ws = package.Workbook.Worksheets.Add(sheetName);
@@ -118,6 +122,72 @@ namespace GPBH.UI.Helper
                         // AutoFit nếu muốn (bỏ comment dòng dưới)
                         ws.Cells[ws.Dimension.Address].AutoFitColumns();
 
+                        var fileBytes = package.GetAsByteArray();
+
+                        // Ghi file ra ổ cứng hoặc trả về response file cho client tùy nhu cầu
+                        File.WriteAllBytes(dialog.FileName, fileBytes);
+                        MessageBox.Show("Đã xuất file Excel thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+        }
+        /// <summary>
+        /// Xuất dữ liệu ra file Excel với định dạng động từ mảng fields.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="data"></param>
+        /// <param name="fields"></param>
+        /// <param name="sheetName"></param>
+        /// <param name="fileName"></param>
+        public static void ExportGridToExcel(DataGridViewX dataGridViewX, string sheetName = "Report", string fileName = "report.xlsx")
+        {
+
+            using (var dialog = new SaveFileDialog())
+            {
+                dialog.Title = "Chọn nơi lưu file Excel";
+                dialog.Filter = "Excel files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
+                dialog.FileName = fileName;
+
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
+                    using (var package = new ExcelPackage())
+                    {
+                        var ws = package.Workbook.Worksheets.Add(sheetName);
+
+                        // Header
+                        for (int i = 0; i < dataGridViewX.ColumnCount; i++)
+                        {
+                            if (dataGridViewX.Columns[i].Visible)
+                            {
+                                ws.Cells[1, i + 1].Value = dataGridViewX.Columns[i].HeaderText;
+
+                                if (!string.IsNullOrEmpty(dataGridViewX.Columns[i].DefaultCellStyle.Format))
+                                    ws.Column(i + 1).Style.Numberformat.Format = dataGridViewX.Columns[i].DefaultCellStyle.Format;
+                            }
+                        }
+
+                        // Data
+                        int row = 2;
+                        foreach (DataGridViewRow item in dataGridViewX.Rows)
+                        {
+                            if (item.Cells[1].Value != null)
+                            {
+                                for (int col = 0; col < dataGridViewX.Columns.Count; col++)
+                                {
+                                    if(!dataGridViewX.Columns[col].Visible) continue;
+                                    ws.Cells[row, col + 1].Value = item.Cells[col].Value;
+                                }
+                                row++;
+                            }
+                        }
+
+                        // AutoFit nếu muốn (bỏ comment dòng dưới)
+                        if (ws.Dimension != null) // tránh NullReference khi sheet còn trống
+                        {
+                            var end = ws.Dimension.End;
+                            ws.Cells[1, 1, end.Row, end.Column].AutoFitColumns(); // ổn định hơn so với dùng Address
+                        }
                         var fileBytes = package.GetAsByteArray();
 
                         // Ghi file ra ổ cứng hoặc trả về response file cho client tùy nhu cầu

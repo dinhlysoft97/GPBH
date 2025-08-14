@@ -34,6 +34,7 @@ namespace GPBH.UI.Extentions
                 data.Insert(0, new T());
             }
             grid.DataSource = new BindingList<T>(data);
+            grid.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             //grid.Columns[0].Visible = false; // Luôn ân cột đầu tiên (Stt) nếu có
             foreach (DataGridViewColumn col in grid.Columns)
             {
@@ -67,6 +68,8 @@ namespace GPBH.UI.Extentions
         {
             if (grid.Columns.Contains(columnName))
                 grid.Columns[columnName].HeaderCell.Style.Alignment = alignment;
+            else
+                grid.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
 
         /// <summary>

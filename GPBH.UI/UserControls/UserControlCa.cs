@@ -30,5 +30,10 @@ namespace GPBH.UI.UserControls
         {
             dataGridViewX1.SetRowPositionPaint(e);
         }
+
+        private void btnXuatExcel_Click(object sender, EventArgs e)
+        {
+            ExportHelper.ExportGridToExcel(dataGridViewX1, "Ca_" + DateTime.Now.ToString("yyyyMMdd_HHmmss"));
+        }
     }
 }

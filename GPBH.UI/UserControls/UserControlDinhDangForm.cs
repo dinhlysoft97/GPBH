@@ -69,6 +69,7 @@ namespace GPBH.UI.UserControls
 
         private void CbbCode_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (cbbCuaHang.SelectedValue is null || cbbCode.SelectedValue is null) return;
             var resuft = _sysDinh_dang_formService.GetDinhDang(cbbCuaHang.SelectedValue.ToString(), cbbCode.SelectedValue.ToString());
             if (resuft.hasSave)
             {
@@ -177,6 +178,11 @@ namespace GPBH.UI.UserControls
         private void dataGridViewX1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
             dataGridViewX1.SetRowPositionPaint(e);
+        }
+
+        private void btnXuatExcel_Click(object sender, EventArgs e)
+        {
+            ExportHelper.ExportGridToExcel(dataGridViewX1, "DinhDangForm_" + DateTime.Now.ToString("yyyyMMdd_HHmmss"));
         }
     }
 }

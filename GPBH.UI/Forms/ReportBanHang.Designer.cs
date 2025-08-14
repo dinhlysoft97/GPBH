@@ -1,4 +1,6 @@
-﻿namespace GPBH.UI.Forms
+﻿using CrystalDecisions.Windows.Forms;
+
+namespace GPBH.UI.Forms
 {
     partial class ReportBanHang
     {
@@ -28,7 +30,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.crystalReportViewer1 = new CrystalReportViewer();
             this.SuspendLayout();
             // 
             // crystalReportViewer1

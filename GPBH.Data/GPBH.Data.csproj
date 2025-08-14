@@ -122,10 +122,6 @@
     <Compile Include="Migrations\202508100830576_Alter-XCT5.Designer.cs">
       <DependentUpon>202508100830576_Alter-XCT5.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202508111659004_Update_View_vw_BaoCaoBanTheoKhachHang.cs" />
-    <Compile Include="Migrations\202508111659004_Update_View_vw_BaoCaoBanTheoKhachHang.Designer.cs">
-      <DependentUpon>202508111659004_Update_View_vw_BaoCaoBanTheoKhachHang.cs</DependentUpon>
-    </Compile>
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="UnitOfWorks\IUnitOfWork.cs" />
@@ -150,12 +146,6 @@
     <EmbeddedResource Include="Migrations\202508100830576_Alter-XCT5.resx">
       <DependentUpon>202508100830576_Alter-XCT5.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202508111659004_Update_View_vw_BaoCaoBanTheoKhachHang.resx">
-      <DependentUpon>202508111659004_Update_View_vw_BaoCaoBanTheoKhachHang.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -29,24 +29,35 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HuongDanSuDung));
+            this.pdfGuide = new PdfiumViewer.PdfViewer();
             this.SuspendLayout();
-            
+            // 
+            // pdfGuide
+            // 
+            this.pdfGuide.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pdfGuide.Location = new System.Drawing.Point(0, 0);
+            this.pdfGuide.Name = "pdfGuide";
+            this.pdfGuide.Size = new System.Drawing.Size(912, 660);
+            this.pdfGuide.TabIndex = 0;
             // 
             // HuongDanSuDung
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(912, 660);
+            this.Controls.Add(this.pdfGuide);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "HuongDanSuDung";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Hướng dẫn nhập liệu";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
+        private PdfiumViewer.PdfViewer pdfGuide;
     }
 }

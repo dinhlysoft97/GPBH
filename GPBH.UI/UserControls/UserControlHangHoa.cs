@@ -3,6 +3,7 @@ using GPBH.Business.Dtos;
 using GPBH.Business.Services;
 using GPBH.UI.Extentions;
 using GPBH.UI.Helper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
@@ -30,6 +31,7 @@ namespace GPBH.UI.UserControls
             {
                 dataGridViewX1.SetGirdReadOnly();
             };
+            dataGridViewX1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
 
         private void SetUpUI()
@@ -57,6 +59,11 @@ namespace GPBH.UI.UserControls
         private void dataGridViewX1_RowPostPaint(object sender, System.Windows.Forms.DataGridViewRowPostPaintEventArgs e)
         {
             dataGridViewX1.SetRowPositionPaint(e);
+        }
+
+        private void btnXuatExcel_Click(object sender, System.EventArgs e)
+        {
+            ExportHelper.ExportGridToExcel(dataGridViewX1, "HangHoa_" + DateTime.Now.ToString("yyyyMMdd_HHmmss"));
         }
     }
 }

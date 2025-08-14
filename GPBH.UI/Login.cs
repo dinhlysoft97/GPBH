@@ -104,7 +104,7 @@ namespace GPBH.UI
                 AppGlobals.MaCa = cbbCa.SelectedValue?.ToString() ?? string.Empty;
 
                 // Khởi tạo và show MainForm bằng DI
-                var main = ActivatorUtilities.CreateInstance<MainForm>(Program.ServiceProvider);
+                var main = ActivatorUtilities.CreateInstance<frmMain>(Program.ServiceProvider);
                 main.Show();
                 this.Hide();
             }
