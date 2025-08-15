@@ -4,8 +4,6 @@ namespace GPBH.Business.Dtos
 {
     public class GirdSysDinhDangFormDto
     {
-        public int Stt { get; set; }
-
         /// <summary>
         /// Mã chức năng. Đối với danh mục là tên cột mã (ví dụ: Khách hàng là Passport),
         /// đối với chứng từ là mã chứng từ (ví dụ: Đơn hàng là X05).

@@ -25,7 +25,7 @@ namespace GPBH.Business.Services
             {
                 var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
                 var sysDinhDangs = unitOfWork.Repository<SysDinh_dang_form>().Find(s => s.Ma_cua_hang == maCH && s.Code_name == codeName)
-                    .OrderBy(z => z.Stt).ToList();
+                    .OrderBy(z => z.Field_order).ToList();
 
                 if (sysDinhDangs != null && sysDinhDangs.Any())
                 {
@@ -134,7 +134,7 @@ namespace GPBH.Business.Services
                     {
                         var menu = unitOfWork.Repository<SysMenu>().Find(s => s.MenuId == "BanHangTheoKhachHang").FirstOrDefault();
                         var type = typeof(ViewBaoCaoKhacHang);
-                        int order = 0;
+                        int order = 1;
                         foreach (var prop in type.GetProperties())
                         {
                             // Xác định kiểu dữ liệu cho Field_type và Field_format
@@ -180,7 +180,7 @@ namespace GPBH.Business.Services
                     {
                         var menu = unitOfWork.Repository<SysMenu>().Find(s => s.MenuId == "Ca").FirstOrDefault();
                         var type = typeof(DMca);
-                        int order = 0;
+                        int order = 1;
                         foreach (var prop in type.GetProperties())
                         {
                             // Xác định kiểu dữ liệu cho Field_type và Field_format
@@ -225,8 +225,8 @@ namespace GPBH.Business.Services
                     else if (codeName == "QuocGia")
                     {
                         var menu = unitOfWork.Repository<SysMenu>().Find(s => s.MenuId == "QuocGia").FirstOrDefault();
-                        var type = typeof(DMQG);
-                        int order = 0;
+                        var type = typeof(GridQuocGia);
+                        int order = 1;
                         foreach (var prop in type.GetProperties())
                         {
                             // Xác định kiểu dữ liệu cho Field_type và Field_format
@@ -271,8 +271,8 @@ namespace GPBH.Business.Services
                     else if (codeName == "KhachHang")
                     {
                         var menu = unitOfWork.Repository<SysMenu>().Find(s => s.MenuId == "KhachHang").FirstOrDefault();
-                        var type = typeof(DMKH);
-                        int order = 0;
+                        var type = typeof(GridKhachHang);
+                        int order = 1;
                         foreach (var prop in type.GetProperties())
                         {
                             // Xác định kiểu dữ liệu cho Field_type và Field_format
@@ -317,8 +317,8 @@ namespace GPBH.Business.Services
                     else if (codeName == "NgoaiTe")
                     {
                         var menu = unitOfWork.Repository<SysMenu>().Find(s => s.MenuId == "NgoaiTe").FirstOrDefault();
-                        var type = typeof(DMNT);
-                        int order = 0;
+                        var type = typeof(GridNgoaiTe);
+                        int order = 1;
                         foreach (var prop in type.GetProperties())
                         {
                             // Xác định kiểu dữ liệu cho Field_type và Field_format
@@ -363,8 +363,8 @@ namespace GPBH.Business.Services
                     else if (codeName == "TyGia")
                     {
                         var menu = unitOfWork.Repository<SysMenu>().Find(s => s.MenuId == "TyGia").FirstOrDefault();
-                        var type = typeof(DMTG);
-                        int order = 0;
+                        var type = typeof(GridTyGia);
+                        int order = 1;
                         foreach (var prop in type.GetProperties())
                         {
                             // Xác định kiểu dữ liệu cho Field_type và Field_format
@@ -409,8 +409,8 @@ namespace GPBH.Business.Services
                     else if (codeName == "HangHoa")
                     {
                         var menu = unitOfWork.Repository<SysMenu>().Find(s => s.MenuId == "HangHoa").FirstOrDefault();
-                        var type = typeof(DMHH);
-                        int order = 0;
+                        var type = typeof(GridHangHoa);
+                        int order = 1;
                         foreach (var prop in type.GetProperties())
                         {
                             // Xác định kiểu dữ liệu cho Field_type và Field_format
@@ -455,8 +455,8 @@ namespace GPBH.Business.Services
                     else if (codeName == "GiaBan")
                     {
                         var menu = unitOfWork.Repository<SysMenu>().Find(s => s.MenuId == "GiaBan").FirstOrDefault();
-                        var type = typeof(DMGB);
-                        int order = 0;
+                        var type = typeof(GirdGiaBanDto);
+                        int order = 1;
                         foreach (var prop in type.GetProperties())
                         {
                             // Xác định kiểu dữ liệu cho Field_type và Field_format
@@ -501,8 +501,8 @@ namespace GPBH.Business.Services
                     else if (codeName == "DinhDangForm")
                     {
                         var menu = unitOfWork.Repository<SysMenu>().Find(s => s.MenuId == "DinhDangForm").FirstOrDefault();
-                        var type = typeof(DMGB);
-                        int order = 0;
+                        var type = typeof(GirdSysDinhDangFormDto);
+                        int order = 1;
                         foreach (var prop in type.GetProperties())
                         {
                             // Xác định kiểu dữ liệu cho Field_type và Field_format
