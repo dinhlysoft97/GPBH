@@ -219,7 +219,7 @@ namespace GPBH.Business.Services
             entity.Ma_phieu = donhang.Ma_phieu;
             entity.Ma_chung_tu = donhang.Ma_chung_tu;
             //entity.So_chung_tu = donhang.So_chung_tu;
-            entity.Ngay_chung_tu = donhang.Ngay_chung_tu;
+            //entity.Ngay_chung_tu = donhang.Ngay_chung_tu;
             entity.Ma_nt = donhang.Ma_nt;
             entity.Ty_gia = donhang.Ty_gia;
             entity.Ma_quay = donhang.Ma_quay;
