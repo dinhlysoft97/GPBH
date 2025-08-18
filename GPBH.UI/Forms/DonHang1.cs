@@ -253,6 +253,8 @@ namespace GPBH.UI.Forms
             }
             lbHH.Visible = false;
 
+            dataGridViewX1.Columns["Stt"].Visible = false; // Ẩn cột Stt
+
             // hiển thị tiền ngoại tệ
             dataGridViewX1.Columns["Gia_ban_nt"].HeaderText = $"Giá {CuaHang.Ma_nt}";
             dataGridViewX1.Columns["Gg_tien_nt"].HeaderText = $"Tiền giảm {CuaHang.Ma_nt}";
@@ -261,18 +263,19 @@ namespace GPBH.UI.Forms
             lbTT1.Text = lbTT2.Text = lbTT3.Text = lbTTH.Text = lbTTT.Text = lbGiamGia.Text = lbTongThu.Text = lbTraLai.Text = $"({CuaHang.Ma_nt})";
 
             // Thiết lập các cột hiển thị trong DataGridViewX
-            dataGridViewX1.SetDisplayIndex("Ma_hh", 0);
-            dataGridViewX1.SetDisplayIndex("Dvt", 1);
-            dataGridViewX1.SetDisplayIndex("Ten_hh", 2);
-            dataGridViewX1.SetDisplayIndex("So_luong", 3);
-            dataGridViewX1.SetDisplayIndex("Gia_ban_nt", 4);
-            dataGridViewX1.SetDisplayIndex("Gia_ban", 5);
-            dataGridViewX1.SetDisplayIndex("Gg_ty_le", 6);
-            dataGridViewX1.SetDisplayIndex("Gg_tien_nt", 7);
-            dataGridViewX1.SetDisplayIndex("Gg_tien", 8);
-            dataGridViewX1.SetDisplayIndex("Tien_ban_nt", 9);
-            dataGridViewX1.SetDisplayIndex("Tien_ban", 10);
-            dataGridViewX1.SetDisplayIndex("Gg_ly_do", 11);
+            dataGridViewX1.SetDisplayIndex("Stt", 0);
+            dataGridViewX1.SetDisplayIndex("Ma_hh", 1);
+            dataGridViewX1.SetDisplayIndex("Dvt", 2);
+            dataGridViewX1.SetDisplayIndex("Ten_hh", 3);
+            dataGridViewX1.SetDisplayIndex("So_luong", 4);
+            dataGridViewX1.SetDisplayIndex("Gia_ban_nt", 5);
+            dataGridViewX1.SetDisplayIndex("Gia_ban", 6);
+            dataGridViewX1.SetDisplayIndex("Gg_ty_le", 7);
+            dataGridViewX1.SetDisplayIndex("Gg_tien_nt", 8);
+            dataGridViewX1.SetDisplayIndex("Gg_tien", 9);
+            dataGridViewX1.SetDisplayIndex("Tien_ban_nt", 10);
+            dataGridViewX1.SetDisplayIndex("Tien_ban", 11);
+            dataGridViewX1.SetDisplayIndex("Gg_ly_do", 12);
 
             if (isCurrencyVND)
             {
