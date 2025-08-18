@@ -113,26 +113,23 @@ namespace GPBH.UI.Forms
         {
             if (dataGridViewX1.Columns.Count == 0) return;
 
-            // Canh giữa header cho cột STT
-            dataGridViewX1.SetHeaderAlignment("Stt", DataGridViewContentAlignment.MiddleCenter);
+            // Canh giữa header
             dataGridViewX1.Columns["MenuId"].Visible = false;
 
             // Sắp xếp vị trí các cột
-            dataGridViewX1.SetDisplayIndex("Stt", 0);
-            dataGridViewX1.SetDisplayIndex("Code_name", 1);
-            dataGridViewX1.SetDisplayIndex("MenuName", 2);
-            dataGridViewX1.SetDisplayIndex("Field_name", 3);
-            dataGridViewX1.SetDisplayIndex("Field_type", 4);
-            dataGridViewX1.SetDisplayIndex("Field_title", 5);
-            dataGridViewX1.SetDisplayIndex("Field_order", 6);
-            dataGridViewX1.SetDisplayIndex("Field_hide", 7);
-            dataGridViewX1.SetDisplayIndex("Field_width", 8);
-            dataGridViewX1.SetDisplayIndex("Field_format", 9);
-            dataGridViewX1.SetDisplayIndex("Default_sort", 10);
-            dataGridViewX1.SetDisplayIndex("Ten_ban", 11);
+            dataGridViewX1.SetDisplayIndex("Code_name", 0);
+            dataGridViewX1.SetDisplayIndex("MenuName", 1);
+            dataGridViewX1.SetDisplayIndex("Field_name", 2);
+            dataGridViewX1.SetDisplayIndex("Field_type", 3);
+            dataGridViewX1.SetDisplayIndex("Field_title", 4);
+            dataGridViewX1.SetDisplayIndex("Field_order", 5);
+            dataGridViewX1.SetDisplayIndex("Field_hide", 6);
+            dataGridViewX1.SetDisplayIndex("Field_width", 7);
+            dataGridViewX1.SetDisplayIndex("Field_format", 8);
+            dataGridViewX1.SetDisplayIndex("Default_sort", 9);
+            dataGridViewX1.SetDisplayIndex("Ten_ban", 10);
 
-            // Căn chỉnh dữ liệu trong cột STT
-            dataGridViewX1.SetCellAlignment("Stt", DataGridViewContentAlignment.MiddleCenter);
+            // Căn chỉnh dữ liệu
             dataGridViewX1.SetCellAlignment("Field_order", DataGridViewContentAlignment.MiddleRight);
             dataGridViewX1.SetCellAlignment("Field_hide", DataGridViewContentAlignment.MiddleCenter);
         }

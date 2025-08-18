@@ -34,7 +34,6 @@
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.btnLuu = new DevComponents.DotNetBar.ButtonX();
             this.lbWarning = new DevComponents.DotNetBar.LabelX();
-            this.Stt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Key = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ten = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GiaTri = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,7 +47,6 @@
             this.dataGridViewX1.AllowUserToDeleteRows = false;
             this.dataGridViewX1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Stt,
             this.Key,
             this.Ten,
             this.GiaTri,
@@ -120,14 +118,6 @@
             this.lbWarning.TabIndex = 22;
             this.lbWarning.Text = " Đây là data mẫu setup, vui lòng bấm cập nhật để lưu lại dữ liệu!";
             // 
-            // Stt
-            // 
-            this.Stt.DataPropertyName = "Stt";
-            this.Stt.HeaderText = "Stt";
-            this.Stt.Name = "Stt";
-            this.Stt.ReadOnly = true;
-            this.Stt.Visible = false;
-            // 
             // Key
             // 
             this.Key.DataPropertyName = "Key";
@@ -184,7 +174,6 @@
         private DevComponents.DotNetBar.LabelX labelX1;
         private DevComponents.DotNetBar.ButtonX btnLuu;
         private DevComponents.DotNetBar.LabelX lbWarning;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Stt;
         private System.Windows.Forms.DataGridViewTextBoxColumn Key;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ten;
         private System.Windows.Forms.DataGridViewTextBoxColumn GiaTri;

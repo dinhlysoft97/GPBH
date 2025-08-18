@@ -2,13 +2,16 @@
 using DevComponents.DotNetBar.Controls;
 using GPBH.Business;
 using GPBH.Business.Dtos;
+using GPBH.Business.Services;
 using GPBH.UI.Constant;
 using GPBH.UI.Extentions;
 using GPBH.UI.Forms;
 using GPBH.UI.Helper;
 using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace GPBH.UI.UserControls
@@ -18,10 +21,12 @@ namespace GPBH.UI.UserControls
         #region Fields & Constructor
 
         private readonly SysDMNSDService _sysDMNSDService;
+        private readonly SysDinh_dang_formService _sysDinh_Dang_FormService;
 
-        public UserControlNguoiSuDung(SysDMNSDService sysDMNSDService)
+        public UserControlNguoiSuDung(SysDMNSDService sysDMNSDService, SysDinh_dang_formService sysDinh_Dang_FormService)
         {
             _sysDMNSDService = sysDMNSDService;
+            _sysDinh_Dang_FormService = sysDinh_Dang_FormService;
             InitializeComponent();
             InitializeUI();
         }
@@ -110,9 +115,6 @@ namespace GPBH.UI.UserControls
             if (dataGridViewX1.Columns.Count == 0) return;
 
             // Canh giữa header
-            dataGridViewX1.SetHeaderAlignment("Stt", DataGridViewContentAlignment.MiddleCenter);
-            dataGridViewX1.Columns["Stt"].Visible = false; // Ẩn cột Stt
-
             dataGridViewX1.SetHeaderAlignment("PhanQuyen", DataGridViewContentAlignment.MiddleCenter);
             dataGridViewX1.SetHeaderAlignment("Ksd", DataGridViewContentAlignment.MiddleCenter);
             dataGridViewX1.SetHeaderAlignment("CapLaiQuyen", DataGridViewContentAlignment.MiddleCenter);
@@ -129,16 +131,15 @@ namespace GPBH.UI.UserControls
         /// </summary>
         private void SetColumnDisplayIndex()
         {
-            dataGridViewX1.SetDisplayIndex("Stt", 0);
-            dataGridViewX1.SetDisplayIndex("PhanQuyen", 1);
-            dataGridViewX1.SetDisplayIndex("TenDangNhap", 2);
-            dataGridViewX1.SetDisplayIndex("TenDayDu", 3);
-            dataGridViewX1.SetDisplayIndex("Ksd", 4);
-            dataGridViewX1.SetDisplayIndex("CapLaiQuyen", 5);
-            dataGridViewX1.SetDisplayIndex("Ngay_sua", 6);
-            dataGridViewX1.SetDisplayIndex("Nguoi_sua", 7);
-            dataGridViewX1.SetDisplayIndex("Ngay_tao", 8);
-            dataGridViewX1.SetDisplayIndex("Nguoi_tao", 9);
+            dataGridViewX1.SetDisplayIndex("PhanQuyen", 0);
+            dataGridViewX1.SetDisplayIndex("TenDangNhap", 1);
+            dataGridViewX1.SetDisplayIndex("TenDayDu", 2);
+            dataGridViewX1.SetDisplayIndex("Ksd", 3);
+            dataGridViewX1.SetDisplayIndex("CapLaiQuyen", 4);
+            dataGridViewX1.SetDisplayIndex("Ngay_sua", 5);
+            dataGridViewX1.SetDisplayIndex("Nguoi_sua", 6);
+            dataGridViewX1.SetDisplayIndex("Ngay_tao", 7);
+            dataGridViewX1.SetDisplayIndex("Nguoi_tao", 8);
         }
 
         /// <summary>
@@ -146,7 +147,6 @@ namespace GPBH.UI.UserControls
         /// </summary>
         private void SetColumnFormatting()
         {
-            dataGridViewX1.SetCellAlignment("Stt", DataGridViewContentAlignment.MiddleCenter);
             dataGridViewX1.SetCellAlignment("Ksd", DataGridViewContentAlignment.MiddleCenter);
             dataGridViewX1.SetCellAlignment("CapLaiQuyen", DataGridViewContentAlignment.MiddleCenter);
             dataGridViewX1.SetFormat("Ngay_sua", "dd/MM/yyyy");
@@ -329,7 +329,17 @@ namespace GPBH.UI.UserControls
 
         private void btnXuatExcel_Click(object sender, EventArgs e)
         {
-            ExportHelper.ExportGridToExcel(dataGridViewX1, "NguoiDung_" + DateTime.Now.ToString("yyyyMMdd_HHmmss"));
+            string menuName = "NguoiDung";
+            var hasPermission = CheckPermissionHelper.HasPerrmission(menuName, GPBHConstant.Action.Excel);
+            if (!hasPermission)
+            {
+                CheckPermissionHelper.ShowMessage();
+                return;
+            }
+
+            var fields = _sysDinh_Dang_FormService.GetDinhDang(AppGlobals.MaCH, menuName).data.Where(z => !z.Field_hide).OrderBy(z => z.Field_order).ToList();
+            var data = dataGridViewX1.DataSource as BindingList<GirdNguoiSuDungDto>;
+            ExportHelper.ExportToExcel(data, fields, $"{menuName}_" + DateTime.Now.ToString("yyyyMMdd_HHmmss"), isIgnoreRowFirst: true);
         }
     }
 }

@@ -10,8 +10,6 @@ namespace GPBH.Business.Dtos
         // mã phiếu
         public string Ma_phieu { get; set; }
 
-        public int Stt { get; set; }
-
         // Số chứng từ
         public string So_chung_tu { get; set; }
 

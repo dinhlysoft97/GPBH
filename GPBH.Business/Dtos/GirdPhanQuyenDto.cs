@@ -2,8 +2,6 @@
 {
     public class GirdPhanQuyenDto
     {
-        public int Stt { get; set; }
-
         // ID menu (PK)
         public string MenuId { get; set; }
 

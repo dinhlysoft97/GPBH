@@ -1,5 +1,4 @@
 ﻿using DevComponents.DotNetBar;
-using DevComponents.DotNetBar.Controls;
 using DevComponents.Editors;
 using GPBH.Business;
 using GPBH.Business.Dtos;
@@ -13,7 +12,6 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Web.Services.Description;
 using System.Windows.Forms;
 
 namespace GPBH.UI.UserControls
@@ -98,8 +96,6 @@ namespace GPBH.UI.UserControls
                 SetFormRowTheoCuaHang();
                 dataGridViewX1.SetGirdReadOnly();
             };
-            dataGridViewX1.Columns["Stt"].Visible = false; // ẩn cột Stt trong lưới detail
-
         }
 
 
@@ -177,7 +173,6 @@ namespace GPBH.UI.UserControls
             dataGridViewX2.Columns["Tien_ban_nt"].HeaderText = $"Thành tiền {CuaHang.Ma_nt}";
 
             // Canh giữa header
-            dataGridViewX1.SetHeaderAlignment("Stt", DataGridViewContentAlignment.MiddleCenter);
 
             // Sắp xếp vị trí các cột
             SetColumnDisplayIndex();
@@ -214,17 +209,16 @@ namespace GPBH.UI.UserControls
         /// </summary>
         private void SetColumnDisplayIndex()
         {
-            dataGridViewX1.SetDisplayIndex("Stt", 0);
-            dataGridViewX1.SetDisplayIndex("So_chung_tu", 1);
-            dataGridViewX1.SetDisplayIndex("Ngay_chung_tu", 2);
-            dataGridViewX1.SetDisplayIndex("Passport", 3);
-            dataGridViewX1.SetDisplayIndex("Ten_khach", 4);
-            dataGridViewX1.SetDisplayIndex("Tong_tien_hang_nt", 5);
-            dataGridViewX1.SetDisplayIndex("Tong_nhan", 6);
-            dataGridViewX1.SetDisplayIndex("Tra_lai_nt", 7);
-            dataGridViewX1.SetDisplayIndex("Ty_gia", 8);
-            dataGridViewX1.SetDisplayIndex("Ma_cua_hang", 9);
-            dataGridViewX1.SetDisplayIndex("Ma_Phieu", 10);
+            dataGridViewX1.SetDisplayIndex("So_chung_tu", 0);
+            dataGridViewX1.SetDisplayIndex("Ngay_chung_tu", 1);
+            dataGridViewX1.SetDisplayIndex("Passport", 2);
+            dataGridViewX1.SetDisplayIndex("Ten_khach", 3);
+            dataGridViewX1.SetDisplayIndex("Tong_tien_hang_nt", 4);
+            dataGridViewX1.SetDisplayIndex("Tong_nhan", 5);
+            dataGridViewX1.SetDisplayIndex("Tra_lai_nt", 6);
+            dataGridViewX1.SetDisplayIndex("Ty_gia", 7);
+            dataGridViewX1.SetDisplayIndex("Ma_cua_hang", 8);
+            dataGridViewX1.SetDisplayIndex("Ma_Phieu", 9);
         }
 
         /// <summary>
@@ -232,7 +226,6 @@ namespace GPBH.UI.UserControls
         /// </summary>
         private void SetColumnFormatting()
         {
-            dataGridViewX1.SetCellAlignment("Stt", DataGridViewContentAlignment.MiddleCenter);
             dataGridViewX1.SetCellAlignment("Tong_tien_hang_nt", DataGridViewContentAlignment.MiddleRight);
             dataGridViewX1.SetCellAlignment("Tong_nhan", DataGridViewContentAlignment.MiddleRight);
             dataGridViewX1.SetCellAlignment("Tra_lai_nt", DataGridViewContentAlignment.MiddleRight);

@@ -1,13 +1,13 @@
-﻿using GPBH.Business.Dtos;
-using GPBH.Business;
+﻿using GPBH.Business;
+using GPBH.Business.Dtos;
 using GPBH.Business.Services;
 using GPBH.UI.Constant;
 using GPBH.UI.Extentions;
 using GPBH.UI.Helper;
 using System;
 using System.ComponentModel;
-using System.Windows.Forms;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace GPBH.UI.UserControls
 {
@@ -49,7 +49,7 @@ namespace GPBH.UI.UserControls
 
             var fields = _sysDinh_Dang_FormService.GetDinhDang(AppGlobals.MaCH, menuName).data.Where(z => !z.Field_hide).OrderBy(z => z.Field_order).ToList();
             var data = dataGridViewX1.DataSource as BindingList<GridQuocGia>;
-            ExportHelper.ExportToExcel(data, fields, $"{menuName}_" + DateTime.Now.ToString("yyyyMMdd_HHmmss"));
+            ExportHelper.ExportToExcel(data, fields, $"{menuName}_" + DateTime.Now.ToString("yyyyMMdd_HHmmss"), isIgnoreRowFirst: true);
         }
     }
 }

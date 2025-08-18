@@ -50,7 +50,7 @@ namespace GPBH.UI.UserControls
 
             var fields = _sysDinh_dang_formService.GetDinhDang(AppGlobals.MaCH, menuName).data.Where(z => !z.Field_hide).OrderBy(z => z.Field_order).ToList();
             var data = dataGridViewX1.DataSource as BindingList<DMca>;
-            ExportHelper.ExportToExcel(data, fields, $"{menuName}_" + DateTime.Now.ToString("yyyyMMdd_HHmmss"));
+            ExportHelper.ExportToExcel(data, fields, $"{menuName}_" + DateTime.Now.ToString("yyyyMMdd_HHmmss"), isIgnoreRowFirst: false);
 
         }
     }

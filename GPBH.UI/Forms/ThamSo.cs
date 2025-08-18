@@ -79,18 +79,11 @@ namespace GPBH.UI.Forms
         {
             if (dataGridViewX1.Columns.Count == 0) return;
 
-            // Canh giữa header cho cột STT
-            dataGridViewX1.SetHeaderAlignment("Stt", DataGridViewContentAlignment.MiddleRight);
-
             // Sắp xếp vị trí các cột
-            dataGridViewX1.SetDisplayIndex("Stt", 0);
-            dataGridViewX1.SetDisplayIndex("Key", 1);
-            dataGridViewX1.SetDisplayIndex("Ten", 2);
-            dataGridViewX1.SetDisplayIndex("GiaTri", 3);
-            dataGridViewX1.SetDisplayIndex("Mota", 4);
-
-            // Căn chỉnh dữ liệu trong cột STT
-            dataGridViewX1.SetCellAlignment("Stt", DataGridViewContentAlignment.MiddleRight);
+            dataGridViewX1.SetDisplayIndex("Key", 0);
+            dataGridViewX1.SetDisplayIndex("Ten", 1);
+            dataGridViewX1.SetDisplayIndex("GiaTri", 2);
+            dataGridViewX1.SetDisplayIndex("Mota", 3);
         }
 
         #endregion

@@ -34,7 +34,6 @@
             this.btnXuatExcel = new DevComponents.DotNetBar.ButtonX();
             this.btnLuu = new DevComponents.DotNetBar.ButtonX();
             this.dgThamSo = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.Stt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Key = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ten = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GiaTri = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -100,7 +99,6 @@
             this.dgThamSo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgThamSo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgThamSo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Stt,
             this.Key,
             this.Ten,
             this.GiaTri,
@@ -120,14 +118,6 @@
             this.dgThamSo.Size = new System.Drawing.Size(1086, 565);
             this.dgThamSo.TabIndex = 1;
             this.dgThamSo.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgThamSo_RowPostPaint);
-            // 
-            // Stt
-            // 
-            this.Stt.DataPropertyName = "Stt";
-            this.Stt.HeaderText = "Stt";
-            this.Stt.Name = "Stt";
-            this.Stt.ReadOnly = true;
-            this.Stt.Width = 207;
             // 
             // Key
             // 
@@ -178,7 +168,6 @@
         private DevComponents.DotNetBar.ButtonX btnXuatExcel;
         private DevComponents.DotNetBar.ButtonX btnLuu;
         private DevComponents.DotNetBar.Controls.DataGridViewX dgThamSo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Stt;
         private System.Windows.Forms.DataGridViewTextBoxColumn Key;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ten;
         private System.Windows.Forms.DataGridViewTextBoxColumn GiaTri;

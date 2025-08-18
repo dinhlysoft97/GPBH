@@ -48,7 +48,6 @@
             this.dtpTuNgay = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.btnIn = new DevComponents.DotNetBar.ButtonX();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.Stt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Noi_ban = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.So_chung_tu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ngay_ban = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -389,7 +388,6 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewX1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Stt,
             this.Noi_ban,
             this.So_chung_tu,
             this.Ngay_ban,
@@ -418,16 +416,7 @@
             this.dataGridViewX1.ScrollBarAppearance = DevComponents.DotNetBar.eScrollBarAppearance.Default;
             this.dataGridViewX1.Size = new System.Drawing.Size(1199, 581);
             this.dataGridViewX1.TabIndex = 46;
-            this.dataGridViewX1.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.DataGridViewX1_DataBindingComplete);
             this.dataGridViewX1.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridViewX1_RowPostPaint);
-            // 
-            // Stt
-            // 
-            this.Stt.DataPropertyName = "Stt";
-            this.Stt.HeaderText = "Stt";
-            this.Stt.Name = "Stt";
-            this.Stt.ReadOnly = true;
-            this.Stt.Width = 104;
             // 
             // Noi_ban
             // 
@@ -548,7 +537,6 @@
         private DevComponents.Editors.DateTimeAdv.DateTimeInput dtpTuNgay;
         private DevComponents.DotNetBar.ButtonX btnIn;
         private DevComponents.DotNetBar.Controls.DataGridViewX dataGridViewX1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Stt;
         private System.Windows.Forms.DataGridViewTextBoxColumn Noi_ban;
         private System.Windows.Forms.DataGridViewTextBoxColumn So_chung_tu;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ngay_ban;

@@ -64,7 +64,6 @@ namespace GPBH.UI.Forms
         private void SetUpUI()
         {
             // Canh giữa header
-            dataGridViewX1.Columns["Stt"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewX1.Columns["Them"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewX1.Columns["Xem"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewX1.Columns["Sua"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -74,17 +73,15 @@ namespace GPBH.UI.Forms
             dataGridViewX1.Columns["MenuId"].Visible = false;
 
             // Số thứ tự các cột
-            dataGridViewX1.Columns["Stt"].DisplayIndex = 1;
-            dataGridViewX1.Columns["MenuId"].DisplayIndex = 2;
-            dataGridViewX1.Columns["MenuName"].DisplayIndex = 3;
-            dataGridViewX1.Columns["Xem"].DisplayIndex = 4;
-            dataGridViewX1.Columns["Sua"].DisplayIndex = 5;
-            dataGridViewX1.Columns["Xoa"].DisplayIndex = 6;
-            dataGridViewX1.Columns["In"].DisplayIndex = 7;
-            dataGridViewX1.Columns["Excel"].DisplayIndex = 8;
+            dataGridViewX1.Columns["MenuId"].DisplayIndex = 1;
+            dataGridViewX1.Columns["MenuName"].DisplayIndex = 2;
+            dataGridViewX1.Columns["Xem"].DisplayIndex = 3;
+            dataGridViewX1.Columns["Sua"].DisplayIndex = 4;
+            dataGridViewX1.Columns["Xoa"].DisplayIndex = 5;
+            dataGridViewX1.Columns["In"].DisplayIndex = 6;
+            dataGridViewX1.Columns["Excel"].DisplayIndex = 7;
 
             // Foramt columns
-            dataGridViewX1.Columns["Stt"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewX1.Columns["Them"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewX1.Columns["Xem"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewX1.Columns["Sua"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;

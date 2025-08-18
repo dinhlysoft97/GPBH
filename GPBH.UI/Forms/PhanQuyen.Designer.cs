@@ -32,7 +32,6 @@
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.btnDong = new DevComponents.DotNetBar.ButtonX();
             this.btnLuu = new DevComponents.DotNetBar.ButtonX();
-            this.Stt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MenuId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MenuName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Xem = new DevComponents.DotNetBar.Controls.DataGridViewCheckBoxXColumn();
@@ -52,7 +51,6 @@
             this.dataGridViewX1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Stt,
             this.MenuId,
             this.MenuName,
             this.Xem,
@@ -98,13 +96,6 @@
             this.btnLuu.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnLuu.TabIndex = 13;
             this.btnLuu.Text = "Lưu";
-            // 
-            // Stt
-            // 
-            this.Stt.DataPropertyName = "Stt";
-            this.Stt.HeaderText = "Stt";
-            this.Stt.Name = "Stt";
-            this.Stt.ReadOnly = true;
             // 
             // MenuId
             // 
@@ -201,7 +192,6 @@
         private DevComponents.DotNetBar.Controls.DataGridViewX dataGridViewX1;
         private DevComponents.DotNetBar.ButtonX btnDong;
         private DevComponents.DotNetBar.ButtonX btnLuu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Stt;
         private System.Windows.Forms.DataGridViewTextBoxColumn MenuId;
         private System.Windows.Forms.DataGridViewTextBoxColumn MenuName;
         private DevComponents.DotNetBar.Controls.DataGridViewCheckBoxXColumn Xem;

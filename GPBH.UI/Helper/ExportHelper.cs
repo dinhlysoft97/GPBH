@@ -21,7 +21,7 @@ namespace GPBH.UI.Helper
         /// <param name="fields"></param>
         /// <param name="sheetName"></param>
         /// <param name="fileName"></param>
-        public static void ExportToExcel<T>(IEnumerable<T> data, List<GirdSysDinhDangFormDto> fields, string sheetName = "Report", string fileName = "report.xlsx")
+        public static void ExportToExcel<T>(IEnumerable<T> data, List<GirdSysDinhDangFormDto> fields, string sheetName = "Report", string fileName = "report.xlsx", bool isIgnoreRowFirst = false)
         {
             using (var dialog = new SaveFileDialog())
             {
@@ -49,13 +49,18 @@ namespace GPBH.UI.Helper
 
                         // Data
                         int row = 2;
+                        int index = 0;
                         foreach (var item in data)
                         {
+                            index++;
+                            // isIgnoreRowFirst = true thì bỏ dòng đầu tiên
+                            if (isIgnoreRowFirst && index == 1) continue;
                             for (int col = 0; col < fields.Count; col++)
                             {
                                 var prop = item.GetType().GetProperty(fields[col].Field_name);
                                 ws.Cells[row, col + 1].Value = prop?.GetValue(item);
                             }
+
                             row++;
                         }
 
@@ -175,7 +180,7 @@ namespace GPBH.UI.Helper
                             {
                                 for (int col = 0; col < dataGridViewX.Columns.Count; col++)
                                 {
-                                    if(!dataGridViewX.Columns[col].Visible) continue;
+                                    if (!dataGridViewX.Columns[col].Visible) continue;
                                     ws.Cells[row, col + 1].Value = item.Cells[col].Value;
                                 }
                                 row++;

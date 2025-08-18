@@ -1,4 +1,5 @@
 ﻿using DevComponents.DotNetBar;
+using DevComponents.DotNetBar.Controls;
 using GPBH.Business;
 using GPBH.Business.Dtos;
 using GPBH.Business.Services;
@@ -8,6 +9,8 @@ using GPBH.UI.Forms;
 using GPBH.UI.Helper;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.ComponentModel;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace GPBH.UI.UserControls
@@ -17,11 +20,13 @@ namespace GPBH.UI.UserControls
         #region Fields & Constructor
 
         private readonly SysDMCuaHangService _sysDMCuaHangService;
+        private readonly SysDinh_dang_formService _sysDinh_Dang_FormService;
 
-        public UserControlThamSo(SysDMCuaHangService sysDMCuaHangService)
+        public UserControlThamSo(SysDMCuaHangService sysDMCuaHangService, SysDinh_dang_formService sysDinh_Dang_FormService)
         {
             InitializeComponent();
             _sysDMCuaHangService = sysDMCuaHangService;
+            _sysDinh_Dang_FormService = sysDinh_Dang_FormService;
             InitializeUI();
         }
 
@@ -71,18 +76,15 @@ namespace GPBH.UI.UserControls
         {
             if (dgThamSo.Columns.Count == 0) return;
 
-            // Canh giữa header cho cột STT
-            dgThamSo.SetHeaderAlignment("Stt", DataGridViewContentAlignment.MiddleCenter);
-            dgThamSo.Columns["Stt"].Visible = false; // Ẩn cột STT
-            // Sắp xếp vị trí các cột
-            dgThamSo.SetDisplayIndex("Stt", 0);
-            dgThamSo.SetDisplayIndex("Key", 1);
-            dgThamSo.SetDisplayIndex("Ten", 2);
-            dgThamSo.SetDisplayIndex("GiaTri", 3);
-            dgThamSo.SetDisplayIndex("Mota", 4);
+            // Canh giữa header
 
-            // Căn chỉnh dữ liệu trong cột STT
-            dgThamSo.SetCellAlignment("Stt", DataGridViewContentAlignment.MiddleCenter);
+            // Sắp xếp vị trí các cột
+            dgThamSo.SetDisplayIndex("Key", 0);
+            dgThamSo.SetDisplayIndex("Ten", 1);
+            dgThamSo.SetDisplayIndex("GiaTri", 2);
+            dgThamSo.SetDisplayIndex("Mota", 3);
+
+            // Căn chỉnh dữ liệu
         }
 
         #endregion
@@ -132,7 +134,17 @@ namespace GPBH.UI.UserControls
 
         private void btnXuatExcel_Click(object sender, EventArgs e)
         {
-            ExportHelper.ExportGridToExcel(dgThamSo, "ThamSo_" + DateTime.Now.ToString("yyyyMMdd_HHmmss"));
+            string menuName = "ThamSo";
+            var hasPermission = CheckPermissionHelper.HasPerrmission(menuName, GPBHConstant.Action.Excel);
+            if (!hasPermission)
+            {
+                CheckPermissionHelper.ShowMessage();
+                return;
+            }
+
+            var fields = _sysDinh_Dang_FormService.GetDinhDang(AppGlobals.MaCH, menuName).data.Where(z => !z.Field_hide).OrderBy(z => z.Field_order).ToList();
+            var data = dgThamSo.DataSource as BindingList<GirdSystemSettingDto>;
+            ExportHelper.ExportToExcel(data, fields, $"{menuName}_" + DateTime.Now.ToString("yyyyMMdd_HHmmss"), isIgnoreRowFirst: true);
         }
     }
 }

@@ -42,7 +42,6 @@ namespace GPBH.UI.UserControls
             dataGridViewX1.AutoGenerateColumns = false;
             LoadDataCbb();
             SetUpUI();
-            dataGridViewX1.DataBindingComplete += DataGridViewX1_DataBindingComplete;
             foreach (DataGridViewColumn column in dataGridViewX1.Columns)
             {
                 column.Resizable = DataGridViewTriState.True;
@@ -137,18 +136,6 @@ namespace GPBH.UI.UserControls
             ExportHelper.ExportToExcel(data, fields);
         }
 
-        private void DataGridViewX1_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
-        {
-            for (int i = 0; i < dataGridViewX1.Rows.Count; i++)
-            {
-                var row = dataGridViewX1.Rows[i];
-                if (row.IsNewRow) continue;
-
-                row.Cells["Stt"].Value = i + 1;
-                row.Cells["Stt"].ReadOnly = true;
-            }
-        }
-
         private void buttonLamMoi_Click(object sender, EventArgs e)
         {
             ccbKhachHang.SelectedIndex = -1;
@@ -174,20 +161,14 @@ namespace GPBH.UI.UserControls
 
         private void SetUpUI()
         {
-            var colStt = dataGridViewX1.Columns["Stt"];
-            colStt.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            colStt.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            colStt.Visible = false;
-
-            dataGridViewX1.SetDisplayIndex("Stt", 0);
-            dataGridViewX1.SetDisplayIndex("So_don_hang", 1);
-            dataGridViewX1.SetDisplayIndex("Ngay_ban", 2);
-            dataGridViewX1.SetDisplayIndex("Passport", 3);
-            dataGridViewX1.SetDisplayIndex("Ten_khachhang", 4);
-            dataGridViewX1.SetDisplayIndex("Tong_nhan", 5);
-            dataGridViewX1.SetDisplayIndex("Tra_lai_nt", 6);
-            dataGridViewX1.SetDisplayIndex("Thanh_tien", 7);
-            dataGridViewX1.SetDisplayIndex("Thanh_tien_vn", 8);
+            dataGridViewX1.SetDisplayIndex("So_don_hang", 0);
+            dataGridViewX1.SetDisplayIndex("Ngay_ban", 1);
+            dataGridViewX1.SetDisplayIndex("Passport", 2);
+            dataGridViewX1.SetDisplayIndex("Ten_khachhang", 3);
+            dataGridViewX1.SetDisplayIndex("Tong_nhan", 4);
+            dataGridViewX1.SetDisplayIndex("Tra_lai_nt", 5);
+            dataGridViewX1.SetDisplayIndex("Thanh_tien", 6);
+            dataGridViewX1.SetDisplayIndex("Thanh_tien_vn", 7);
 
             dataGridViewX1.SetCellAlignment("So_luong", DataGridViewContentAlignment.MiddleRight);
             dataGridViewX1.SetCellAlignment("Thanh_tien", DataGridViewContentAlignment.MiddleRight);

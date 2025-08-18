@@ -42,7 +42,6 @@
             this.lbWarning = new DevComponents.DotNetBar.LabelX();
             this.btnLuu = new DevComponents.DotNetBar.ButtonX();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.Stt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Code_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MenuId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MenuName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -186,7 +185,6 @@
             this.dataGridViewX1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Stt,
             this.Code_name,
             this.MenuId,
             this.MenuName,
@@ -221,14 +219,6 @@
             this.dataGridViewX1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewX1.Size = new System.Drawing.Size(1685, 774);
             this.dataGridViewX1.TabIndex = 4;
-            // 
-            // Stt
-            // 
-            this.Stt.DataPropertyName = "Stt";
-            this.Stt.HeaderText = "Stt";
-            this.Stt.Name = "Stt";
-            this.Stt.ReadOnly = true;
-            this.Stt.Width = 45;
             // 
             // Code_name
             // 
@@ -366,7 +356,6 @@
         private DevComponents.DotNetBar.LabelX lbWarning;
         private DevComponents.DotNetBar.ButtonX btnLuu;
         private DevComponents.DotNetBar.Controls.DataGridViewX dataGridViewX1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Stt;
         private System.Windows.Forms.DataGridViewTextBoxColumn Code_name;
         private System.Windows.Forms.DataGridViewTextBoxColumn MenuId;
         private System.Windows.Forms.DataGridViewTextBoxColumn MenuName;

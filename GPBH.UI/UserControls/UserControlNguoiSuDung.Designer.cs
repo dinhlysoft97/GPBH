@@ -31,7 +31,13 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.Stt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnThem = new DevComponents.DotNetBar.ButtonX();
+            this.bubbleBar1 = new DevComponents.DotNetBar.BubbleBar();
+            this.btnSua = new DevComponents.DotNetBar.ButtonX();
+            this.btnXoa = new DevComponents.DotNetBar.ButtonX();
+            this.txtSearch = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.btnTim = new DevComponents.DotNetBar.ButtonX();
+            this.btnXuatExcel = new DevComponents.DotNetBar.ButtonX();
             this.PhanQuyen = new System.Windows.Forms.DataGridViewImageColumn();
             this.TenDangNhap = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenDayDu = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,13 +47,6 @@
             this.Nguoi_sua = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ngay_tao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nguoi_tao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnThem = new DevComponents.DotNetBar.ButtonX();
-            this.bubbleBar1 = new DevComponents.DotNetBar.BubbleBar();
-            this.btnSua = new DevComponents.DotNetBar.ButtonX();
-            this.btnXoa = new DevComponents.DotNetBar.ButtonX();
-            this.txtSearch = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.btnTim = new DevComponents.DotNetBar.ButtonX();
-            this.btnXuatExcel = new DevComponents.DotNetBar.ButtonX();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bubbleBar1)).BeginInit();
             this.SuspendLayout();
@@ -69,7 +68,6 @@
             this.dataGridViewX1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Stt,
             this.PhanQuyen,
             this.TenDangNhap,
             this.TenDayDu,
@@ -96,93 +94,6 @@
             this.dataGridViewX1.Size = new System.Drawing.Size(1339, 736);
             this.dataGridViewX1.TabIndex = 3;
             this.dataGridViewX1.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridViewX1_RowPostPaint);
-            // 
-            // Stt
-            // 
-            this.Stt.DataPropertyName = "Stt";
-            this.Stt.HeaderText = "Stt";
-            this.Stt.MinimumWidth = 6;
-            this.Stt.Name = "Stt";
-            this.Stt.ReadOnly = true;
-            this.Stt.Width = 129;
-            // 
-            // PhanQuyen
-            // 
-            this.PhanQuyen.DataPropertyName = "PhanQuyen";
-            this.PhanQuyen.HeaderText = "Phân quyền";
-            this.PhanQuyen.MinimumWidth = 6;
-            this.PhanQuyen.Name = "PhanQuyen";
-            this.PhanQuyen.ReadOnly = true;
-            this.PhanQuyen.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.PhanQuyen.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.PhanQuyen.Width = 128;
-            // 
-            // TenDangNhap
-            // 
-            this.TenDangNhap.DataPropertyName = "TenDangNhap";
-            this.TenDangNhap.HeaderText = "Tên đăng nhập";
-            this.TenDangNhap.Name = "TenDangNhap";
-            this.TenDangNhap.Width = 129;
-            // 
-            // TenDayDu
-            // 
-            this.TenDayDu.DataPropertyName = "TenDayDu";
-            this.TenDayDu.HeaderText = "Tên đầy đủ";
-            this.TenDayDu.Name = "TenDayDu";
-            this.TenDayDu.Width = 128;
-            // 
-            // Ksd
-            // 
-            this.Ksd.Checked = true;
-            this.Ksd.CheckState = System.Windows.Forms.CheckState.Indeterminate;
-            this.Ksd.CheckValue = "N";
-            this.Ksd.DataPropertyName = "Ksd";
-            this.Ksd.HeaderText = "KSD";
-            this.Ksd.Name = "Ksd";
-            this.Ksd.ReadOnly = true;
-            this.Ksd.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Ksd.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Ksd.Width = 129;
-            // 
-            // CapLaiQuyen
-            // 
-            this.CapLaiQuyen.Checked = true;
-            this.CapLaiQuyen.CheckState = System.Windows.Forms.CheckState.Indeterminate;
-            this.CapLaiQuyen.CheckValue = "N";
-            this.CapLaiQuyen.DataPropertyName = "CapLaiQuyen";
-            this.CapLaiQuyen.HeaderText = "Cấp lại quyền";
-            this.CapLaiQuyen.Name = "CapLaiQuyen";
-            this.CapLaiQuyen.ReadOnly = true;
-            this.CapLaiQuyen.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.CapLaiQuyen.Width = 129;
-            // 
-            // Ngay_sua
-            // 
-            this.Ngay_sua.DataPropertyName = "Ngay_sua";
-            this.Ngay_sua.HeaderText = "Ngày sửa";
-            this.Ngay_sua.Name = "Ngay_sua";
-            this.Ngay_sua.Width = 128;
-            // 
-            // Nguoi_sua
-            // 
-            this.Nguoi_sua.DataPropertyName = "Nguoi_sua";
-            this.Nguoi_sua.HeaderText = "Người sửa";
-            this.Nguoi_sua.Name = "Nguoi_sua";
-            this.Nguoi_sua.Width = 129;
-            // 
-            // Ngay_tao
-            // 
-            this.Ngay_tao.DataPropertyName = "Ngay_tao";
-            this.Ngay_tao.HeaderText = "Ngày tạo";
-            this.Ngay_tao.Name = "Ngay_tao";
-            this.Ngay_tao.Width = 128;
-            // 
-            // Nguoi_tao
-            // 
-            this.Nguoi_tao.DataPropertyName = "Nguoi_tao";
-            this.Nguoi_tao.HeaderText = "Người tạo";
-            this.Nguoi_tao.Name = "Nguoi_tao";
-            this.Nguoi_tao.Width = 129;
             // 
             // btnThem
             // 
@@ -289,6 +200,84 @@
             this.btnXuatExcel.Text = "Xuất Excel";
             this.btnXuatExcel.Click += new System.EventHandler(this.btnXuatExcel_Click);
             // 
+            // PhanQuyen
+            // 
+            this.PhanQuyen.DataPropertyName = "PhanQuyen";
+            this.PhanQuyen.HeaderText = "Phân quyền";
+            this.PhanQuyen.MinimumWidth = 6;
+            this.PhanQuyen.Name = "PhanQuyen";
+            this.PhanQuyen.ReadOnly = true;
+            this.PhanQuyen.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.PhanQuyen.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.PhanQuyen.Width = 128;
+            // 
+            // TenDangNhap
+            // 
+            this.TenDangNhap.DataPropertyName = "TenDangNhap";
+            this.TenDangNhap.HeaderText = "Tên đăng nhập";
+            this.TenDangNhap.Name = "TenDangNhap";
+            this.TenDangNhap.Width = 129;
+            // 
+            // TenDayDu
+            // 
+            this.TenDayDu.DataPropertyName = "TenDayDu";
+            this.TenDayDu.HeaderText = "Tên đầy đủ";
+            this.TenDayDu.Name = "TenDayDu";
+            this.TenDayDu.Width = 128;
+            // 
+            // Ksd
+            // 
+            this.Ksd.Checked = true;
+            this.Ksd.CheckState = System.Windows.Forms.CheckState.Indeterminate;
+            this.Ksd.CheckValue = "N";
+            this.Ksd.DataPropertyName = "Ksd";
+            this.Ksd.HeaderText = "KSD";
+            this.Ksd.Name = "Ksd";
+            this.Ksd.ReadOnly = true;
+            this.Ksd.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Ksd.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Ksd.Width = 129;
+            // 
+            // CapLaiQuyen
+            // 
+            this.CapLaiQuyen.Checked = true;
+            this.CapLaiQuyen.CheckState = System.Windows.Forms.CheckState.Indeterminate;
+            this.CapLaiQuyen.CheckValue = "N";
+            this.CapLaiQuyen.DataPropertyName = "CapLaiQuyen";
+            this.CapLaiQuyen.HeaderText = "Cấp lại quyền";
+            this.CapLaiQuyen.Name = "CapLaiQuyen";
+            this.CapLaiQuyen.ReadOnly = true;
+            this.CapLaiQuyen.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.CapLaiQuyen.Width = 129;
+            // 
+            // Ngay_sua
+            // 
+            this.Ngay_sua.DataPropertyName = "Ngay_sua";
+            this.Ngay_sua.HeaderText = "Ngày sửa";
+            this.Ngay_sua.Name = "Ngay_sua";
+            this.Ngay_sua.Width = 128;
+            // 
+            // Nguoi_sua
+            // 
+            this.Nguoi_sua.DataPropertyName = "Nguoi_sua";
+            this.Nguoi_sua.HeaderText = "Người sửa";
+            this.Nguoi_sua.Name = "Nguoi_sua";
+            this.Nguoi_sua.Width = 129;
+            // 
+            // Ngay_tao
+            // 
+            this.Ngay_tao.DataPropertyName = "Ngay_tao";
+            this.Ngay_tao.HeaderText = "Ngày tạo";
+            this.Ngay_tao.Name = "Ngay_tao";
+            this.Ngay_tao.Width = 128;
+            // 
+            // Nguoi_tao
+            // 
+            this.Nguoi_tao.DataPropertyName = "Nguoi_tao";
+            this.Nguoi_tao.HeaderText = "Người tạo";
+            this.Nguoi_tao.Name = "Nguoi_tao";
+            this.Nguoi_tao.Width = 129;
+            // 
             // UserControlNguoiSuDung
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -317,7 +306,7 @@
         private DevComponents.DotNetBar.ButtonX btnXoa;
         private DevComponents.DotNetBar.Controls.TextBoxX txtSearch;
         private DevComponents.DotNetBar.ButtonX btnTim;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Stt;
+        private DevComponents.DotNetBar.ButtonX btnXuatExcel;
         private System.Windows.Forms.DataGridViewImageColumn PhanQuyen;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenDangNhap;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenDayDu;
@@ -327,6 +316,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Nguoi_sua;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ngay_tao;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nguoi_tao;
-        private DevComponents.DotNetBar.ButtonX btnXuatExcel;
     }
 }

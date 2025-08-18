@@ -5,9 +5,6 @@ namespace GPBH.Business.Dtos
 {
     public class GirdNguoiSuDungDto
     { 
-        // Số thứ tự
-        public int Stt { get; set; }
-
         public Image PhanQuyen { get; set; }
         // Tên đăng nhập (Primary Key)
         public string TenDangNhap { get; set; } = string.Empty;

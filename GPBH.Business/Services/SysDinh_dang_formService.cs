@@ -543,6 +543,98 @@ namespace GPBH.Business.Services
                                 Default_sort = Sort.None,
                             });
                         }
+                    } 
+                    else if (codeName == "NguoiDung")
+                    {
+                        var menu = unitOfWork.Repository<SysMenu>().Find(s => s.MenuId == "NguoiDung").FirstOrDefault();
+                        var type = typeof(GirdNguoiSuDungDto);
+                        int order = 1;
+                        foreach (var prop in type.GetProperties())
+                        {
+                            // Xác định kiểu dữ liệu cho Field_type và Field_format
+                            string fieldType;
+                            string fieldFormat;
+                            switch (Type.GetTypeCode(prop.PropertyType))
+                            {
+                                case TypeCode.Decimal:
+                                case TypeCode.Double:
+                                case TypeCode.Single:
+                                case TypeCode.Int32:
+                                case TypeCode.Int64:
+                                    fieldType = "Decimal";
+                                    fieldFormat = "#,##0.00";
+                                    break;
+                                case TypeCode.DateTime:
+                                    fieldType = "DateTime";
+                                    fieldFormat = "dd/MM/yyyy";
+                                    break;
+                                default:
+                                    fieldType = "String";
+                                    fieldFormat = "";
+                                    break;
+                            }
+
+                            result.Add(new GirdSysDinhDangFormDto
+                            {
+                                Code_name = "NguoiDung",
+                                MenuId = menu.MenuId,
+                                MenuName = menu.MenuName,
+                                Field_name = prop.Name,
+                                Field_type = fieldType,
+                                Field_title = prop.Name,
+                                Field_order = order++,
+                                Field_hide = false,
+                                Field_width = 0,
+                                Field_format = fieldFormat,
+                                Default_sort = Sort.None,
+                            });
+                        }
+                    }
+                    else if (codeName == "ThamSo")
+                    {
+                        var menu = unitOfWork.Repository<SysMenu>().Find(s => s.MenuId == "ThamSo").FirstOrDefault();
+                        var type = typeof(GirdSystemSettingDto);
+                        int order = 1;
+                        foreach (var prop in type.GetProperties())
+                        {
+                            // Xác định kiểu dữ liệu cho Field_type và Field_format
+                            string fieldType;
+                            string fieldFormat;
+                            switch (Type.GetTypeCode(prop.PropertyType))
+                            {
+                                case TypeCode.Decimal:
+                                case TypeCode.Double:
+                                case TypeCode.Single:
+                                case TypeCode.Int32:
+                                case TypeCode.Int64:
+                                    fieldType = "Decimal";
+                                    fieldFormat = "#,##0.00";
+                                    break;
+                                case TypeCode.DateTime:
+                                    fieldType = "DateTime";
+                                    fieldFormat = "dd/MM/yyyy";
+                                    break;
+                                default:
+                                    fieldType = "String";
+                                    fieldFormat = "";
+                                    break;
+                            }
+
+                            result.Add(new GirdSysDinhDangFormDto
+                            {
+                                Code_name = "ThamSo",
+                                MenuId = menu.MenuId,
+                                MenuName = menu.MenuName,
+                                Field_name = prop.Name,
+                                Field_type = fieldType,
+                                Field_title = prop.Name,
+                                Field_order = order++,
+                                Field_hide = false,
+                                Field_width = 0,
+                                Field_format = fieldFormat,
+                                Default_sort = Sort.None,
+                            });
+                        }
                     }
                     return (result, false);
                 }

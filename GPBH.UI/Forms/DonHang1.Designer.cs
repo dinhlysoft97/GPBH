@@ -50,7 +50,6 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.Stt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ma_hh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ten_hh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Dvt = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -409,7 +408,6 @@
             this.dataGridViewX1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Stt,
             this.Ma_hh,
             this.Ten_hh,
             this.Dvt,
@@ -439,14 +437,6 @@
             this.dataGridViewX1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewX1.Size = new System.Drawing.Size(1211, 370);
             this.dataGridViewX1.TabIndex = 2;
-            // 
-            // Stt
-            // 
-            this.Stt.DataPropertyName = "Stt";
-            this.Stt.FillWeight = 26.94619F;
-            this.Stt.HeaderText = "Stt";
-            this.Stt.Name = "Stt";
-            this.Stt.ReadOnly = true;
             // 
             // Ma_hh
             // 
@@ -2825,7 +2815,6 @@
         private DevComponents.DotNetBar.LabelX lbTGNT;
         private DevComponents.DotNetBar.LabelX lbNgayHoaDon;
         private DevComponents.DotNetBar.Controls.TextBoxX txtSoChungTu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Stt;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ma_hh;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ten_hh;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dvt;
