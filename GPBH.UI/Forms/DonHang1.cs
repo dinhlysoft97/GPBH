@@ -601,7 +601,7 @@ namespace GPBH.UI.Forms
             else if (e.KeyCode == Keys.F2 && (DateTime.Now - _formOpenedTime).TotalMilliseconds > 200)
             {
                 var dgv = dataGridViewX1;
-                if (dgv.Focused || dgv.ContainsFocus)
+                if (dgv.RowCount > 1 && (dgv.Focused || dgv.ContainsFocus))
                 {
                     // Kiểm tra đang ở cột mã hàng
                     var cell = dgv.CurrentCell;
@@ -697,7 +697,7 @@ namespace GPBH.UI.Forms
             else if (e.KeyCode == Keys.F12)
             {
                 var dgv = dataGridViewX1;
-                if (dgv.Focused || dgv.ContainsFocus)
+                if (dgv.RowCount > 1 && (dgv.Focused || dgv.ContainsFocus))
                 {
                     // Kiểm tra đang ở cột mã hàng
                     var cell = dgv.CurrentCell;
