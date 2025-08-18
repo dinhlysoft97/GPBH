@@ -58,6 +58,7 @@
             this.So_luong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Thanh_tien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Thanh_tien_vn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ma_hs = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelEx1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtpDenNgay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpTuNgay)).BeginInit();
@@ -397,7 +398,8 @@
             this.Ma_hang,
             this.So_luong,
             this.Thanh_tien,
-            this.Thanh_tien_vn});
+            this.Thanh_tien_vn,
+            this.Ma_hs});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -500,6 +502,12 @@
             this.Thanh_tien_vn.ReadOnly = true;
             this.Thanh_tien_vn.Width = 104;
             // 
+            // Ma_hs
+            // 
+            this.Ma_hs.DataPropertyName = "Ma_hs";
+            this.Ma_hs.HeaderText = "Mã HS";
+            this.Ma_hs.Name = "Ma_hs";
+            // 
             // UserControlBanHangTheoKhachHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -547,5 +555,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn So_luong;
         private System.Windows.Forms.DataGridViewTextBoxColumn Thanh_tien;
         private System.Windows.Forms.DataGridViewTextBoxColumn Thanh_tien_vn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ma_hs;
     }
 }
