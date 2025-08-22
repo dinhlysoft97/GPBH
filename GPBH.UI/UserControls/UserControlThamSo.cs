@@ -1,5 +1,4 @@
 ﻿using DevComponents.DotNetBar;
-using DevComponents.DotNetBar.Controls;
 using GPBH.Business;
 using GPBH.Business.Dtos;
 using GPBH.Business.Services;
@@ -9,7 +8,6 @@ using GPBH.UI.Forms;
 using GPBH.UI.Helper;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -74,17 +72,8 @@ namespace GPBH.UI.UserControls
         /// </summary>
         private void SetUpUI()
         {
-            if (dgThamSo.Columns.Count == 0) return;
-
-            // Canh giữa header
-
-            // Sắp xếp vị trí các cột
-            dgThamSo.SetDisplayIndex("Key", 0);
-            dgThamSo.SetDisplayIndex("Ten", 1);
-            dgThamSo.SetDisplayIndex("GiaTri", 2);
-            dgThamSo.SetDisplayIndex("Mota", 3);
-
-            // Căn chỉnh dữ liệu
+            var fields = _sysDinh_Dang_FormService.GetDinhDang(AppGlobals.MaCH, "ThamSo").data.ToList();
+            dgThamSo.ApplyColumnConfig(fields);
         }
 
         #endregion
@@ -110,8 +99,7 @@ namespace GPBH.UI.UserControls
 
         private void dgThamSo_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            //if (e.RowIndex > 0 && e.ColumnIndex >= 0)
-            //{
+           
             var row = dgThamSo.Rows[e.RowIndex].DataBoundItem as GirdSystemSettingDto;
             var key = row.Key;
             var maCH = AppGlobals.MaCH;
@@ -123,7 +111,6 @@ namespace GPBH.UI.UserControls
                 formNew.ShowDialog();
                 LoadData();
             }
-            //  }
         }
         private void dgThamSo_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
@@ -142,9 +129,7 @@ namespace GPBH.UI.UserControls
                 return;
             }
 
-            var fields = _sysDinh_Dang_FormService.GetDinhDang(AppGlobals.MaCH, menuName).data.Where(z => !z.Field_hide).OrderBy(z => z.Field_order).ToList();
-            var data = dgThamSo.DataSource as BindingList<GirdSystemSettingDto>;
-            ExportHelper.ExportToExcel(data, fields, $"{menuName}_" + DateTime.Now.ToString("yyyyMMdd_HHmmss"), isIgnoreRowFirst: true);
+            ExportHelper.ExportGridToExcel(dgThamSo, $"{menuName}_" + DateTime.Now.ToString("yyyyMMdd_HHmmss"));
         }
     }
 }

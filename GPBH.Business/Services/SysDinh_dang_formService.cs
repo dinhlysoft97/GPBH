@@ -1,6 +1,5 @@
 ﻿using GPBH.Business.Dtos;
 using GPBH.Business.Exceptions;
-using GPBH.Data.Configurations;
 using GPBH.Data.Entities;
 using GPBH.Data.UnitOfWorks;
 using Microsoft.Extensions.DependencyInjection;
@@ -134,7 +133,7 @@ namespace GPBH.Business.Services
                     {
                         var menu = unitOfWork.Repository<SysMenu>().Find(s => s.MenuId == "BanHangTheoKhachHang").FirstOrDefault();
                         var type = typeof(ViewBaoCaoKhacHang);
-                        int order = 1;
+                        int order = 0;
                         foreach (var prop in type.GetProperties())
                         {
                             // Xác định kiểu dữ liệu cho Field_type và Field_format
@@ -153,6 +152,10 @@ namespace GPBH.Business.Services
                                 case TypeCode.DateTime:
                                     fieldType = "DateTime";
                                     fieldFormat = "dd/MM/yyyy";
+                                    break;
+                                case TypeCode.Boolean:
+                                    fieldType = "Bool";
+                                    fieldFormat = "";
                                     break;
                                 default:
                                     fieldType = "String";
@@ -180,7 +183,7 @@ namespace GPBH.Business.Services
                     {
                         var menu = unitOfWork.Repository<SysMenu>().Find(s => s.MenuId == "Ca").FirstOrDefault();
                         var type = typeof(DMca);
-                        int order = 1;
+                        int order = 0;
                         foreach (var prop in type.GetProperties())
                         {
                             // Xác định kiểu dữ liệu cho Field_type và Field_format
@@ -199,6 +202,10 @@ namespace GPBH.Business.Services
                                 case TypeCode.DateTime:
                                     fieldType = "DateTime";
                                     fieldFormat = "dd/MM/yyyy";
+                                    break;
+                                case TypeCode.Boolean:
+                                    fieldType = "Bool";
+                                    fieldFormat = "";
                                     break;
                                 default:
                                     fieldType = "String";
@@ -226,7 +233,7 @@ namespace GPBH.Business.Services
                     {
                         var menu = unitOfWork.Repository<SysMenu>().Find(s => s.MenuId == "QuocGia").FirstOrDefault();
                         var type = typeof(GridQuocGia);
-                        int order = 1;
+                        int order = 0;
                         foreach (var prop in type.GetProperties())
                         {
                             // Xác định kiểu dữ liệu cho Field_type và Field_format
@@ -245,6 +252,10 @@ namespace GPBH.Business.Services
                                 case TypeCode.DateTime:
                                     fieldType = "DateTime";
                                     fieldFormat = "dd/MM/yyyy";
+                                    break;
+                                case TypeCode.Boolean:
+                                    fieldType = "Bool";
+                                    fieldFormat = "";
                                     break;
                                 default:
                                     fieldType = "String";
@@ -272,7 +283,7 @@ namespace GPBH.Business.Services
                     {
                         var menu = unitOfWork.Repository<SysMenu>().Find(s => s.MenuId == "KhachHang").FirstOrDefault();
                         var type = typeof(GridKhachHang);
-                        int order = 1;
+                        int order = 0;
                         foreach (var prop in type.GetProperties())
                         {
                             // Xác định kiểu dữ liệu cho Field_type và Field_format
@@ -291,6 +302,10 @@ namespace GPBH.Business.Services
                                 case TypeCode.DateTime:
                                     fieldType = "DateTime";
                                     fieldFormat = "dd/MM/yyyy";
+                                    break;
+                                case TypeCode.Boolean:
+                                    fieldType = "Bool";
+                                    fieldFormat = "";
                                     break;
                                 default:
                                     fieldType = "String";
@@ -318,7 +333,7 @@ namespace GPBH.Business.Services
                     {
                         var menu = unitOfWork.Repository<SysMenu>().Find(s => s.MenuId == "NgoaiTe").FirstOrDefault();
                         var type = typeof(GridNgoaiTe);
-                        int order = 1;
+                        int order = 0;
                         foreach (var prop in type.GetProperties())
                         {
                             // Xác định kiểu dữ liệu cho Field_type và Field_format
@@ -337,6 +352,10 @@ namespace GPBH.Business.Services
                                 case TypeCode.DateTime:
                                     fieldType = "DateTime";
                                     fieldFormat = "dd/MM/yyyy";
+                                    break;
+                                case TypeCode.Boolean:
+                                    fieldType = "Bool";
+                                    fieldFormat = "";
                                     break;
                                 default:
                                     fieldType = "String";
@@ -364,7 +383,7 @@ namespace GPBH.Business.Services
                     {
                         var menu = unitOfWork.Repository<SysMenu>().Find(s => s.MenuId == "TyGia").FirstOrDefault();
                         var type = typeof(GridTyGia);
-                        int order = 1;
+                        int order = 0;
                         foreach (var prop in type.GetProperties())
                         {
                             // Xác định kiểu dữ liệu cho Field_type và Field_format
@@ -383,6 +402,10 @@ namespace GPBH.Business.Services
                                 case TypeCode.DateTime:
                                     fieldType = "DateTime";
                                     fieldFormat = "dd/MM/yyyy";
+                                    break;
+                                case TypeCode.Boolean:
+                                    fieldType = "Bool";
+                                    fieldFormat = "";
                                     break;
                                 default:
                                     fieldType = "String";
@@ -410,7 +433,7 @@ namespace GPBH.Business.Services
                     {
                         var menu = unitOfWork.Repository<SysMenu>().Find(s => s.MenuId == "HangHoa").FirstOrDefault();
                         var type = typeof(GridHangHoa);
-                        int order = 1;
+                        int order = 0;
                         foreach (var prop in type.GetProperties())
                         {
                             // Xác định kiểu dữ liệu cho Field_type và Field_format
@@ -429,6 +452,10 @@ namespace GPBH.Business.Services
                                 case TypeCode.DateTime:
                                     fieldType = "DateTime";
                                     fieldFormat = "dd/MM/yyyy";
+                                    break;
+                                case TypeCode.Boolean:
+                                    fieldType = "Bool";
+                                    fieldFormat = "";
                                     break;
                                 default:
                                     fieldType = "String";
@@ -456,7 +483,7 @@ namespace GPBH.Business.Services
                     {
                         var menu = unitOfWork.Repository<SysMenu>().Find(s => s.MenuId == "GiaBan").FirstOrDefault();
                         var type = typeof(GirdGiaBanDto);
-                        int order = 1;
+                        int order = 0;
                         foreach (var prop in type.GetProperties())
                         {
                             // Xác định kiểu dữ liệu cho Field_type và Field_format
@@ -475,6 +502,10 @@ namespace GPBH.Business.Services
                                 case TypeCode.DateTime:
                                     fieldType = "DateTime";
                                     fieldFormat = "dd/MM/yyyy";
+                                    break;
+                                case TypeCode.Boolean:
+                                    fieldType = "Bool";
+                                    fieldFormat = "";
                                     break;
                                 default:
                                     fieldType = "String";
@@ -502,53 +533,77 @@ namespace GPBH.Business.Services
                     {
                         var menu = unitOfWork.Repository<SysMenu>().Find(s => s.MenuId == "DinhDangForm").FirstOrDefault();
                         var type = typeof(GirdSysDinhDangFormDto);
-                        int order = 1;
+                        int order = 0;
                         foreach (var prop in type.GetProperties())
                         {
                             // Xác định kiểu dữ liệu cho Field_type và Field_format
                             string fieldType;
                             string fieldFormat;
-                            switch (Type.GetTypeCode(prop.PropertyType))
+                            if(prop.PropertyType.FullName.Contains(nameof(Sort)))
                             {
-                                case TypeCode.Decimal:
-                                case TypeCode.Double:
-                                case TypeCode.Single:
-                                case TypeCode.Int32:
-                                case TypeCode.Int64:
-                                    fieldType = "Decimal";
-                                    fieldFormat = "#,##0.00";
-                                    break;
-                                case TypeCode.DateTime:
-                                    fieldType = "DateTime";
-                                    fieldFormat = "dd/MM/yyyy";
-                                    break;
-                                default:
-                                    fieldType = "String";
-                                    fieldFormat = "";
-                                    break;
+                                result.Add(new GirdSysDinhDangFormDto
+                                {
+                                    Code_name = "DinhDangForm",
+                                    MenuId = menu.MenuId,
+                                    MenuName = menu.MenuName,
+                                    Field_name = prop.Name,
+                                    Field_type = "Combobox",
+                                    Field_title = prop.Name,
+                                    Field_order = order++,
+                                    Field_hide = false,
+                                    Field_width = 0,
+                                    Field_format = "",
+                                    Default_sort = Sort.None,
+                                });
                             }
-
-                            result.Add(new GirdSysDinhDangFormDto
+                            else
                             {
-                                Code_name = "DinhDangForm",
-                                MenuId = menu.MenuId,
-                                MenuName = menu.MenuName,
-                                Field_name = prop.Name,
-                                Field_type = fieldType,
-                                Field_title = prop.Name,
-                                Field_order = order++,
-                                Field_hide = false,
-                                Field_width = 0,
-                                Field_format = fieldFormat,
-                                Default_sort = Sort.None,
-                            });
+                                switch (Type.GetTypeCode(prop.PropertyType))
+                                {
+                                    case TypeCode.Decimal:
+                                    case TypeCode.Double:
+                                    case TypeCode.Single:
+                                    case TypeCode.Int32:
+                                    case TypeCode.Int64:
+                                        fieldType = "Decimal";
+                                        fieldFormat = "#,##0.00";
+                                        break;
+                                    case TypeCode.DateTime:
+                                        fieldType = "DateTime";
+                                        fieldFormat = "dd/MM/yyyy";
+                                        break;
+                                    case TypeCode.Boolean:
+                                        fieldType = "Bool";
+                                        fieldFormat = "";
+                                        break;
+                                    default:
+                                        fieldType = "String";
+                                        fieldFormat = "";
+                                        break;
+                                }
+
+                                result.Add(new GirdSysDinhDangFormDto
+                                {
+                                    Code_name = "DinhDangForm",
+                                    MenuId = menu.MenuId,
+                                    MenuName = menu.MenuName,
+                                    Field_name = prop.Name,
+                                    Field_type = fieldType,
+                                    Field_title = prop.Name,
+                                    Field_order = order++,
+                                    Field_hide = false,
+                                    Field_width = 0,
+                                    Field_format = fieldFormat,
+                                    Default_sort = Sort.None,
+                                });
+                            }
                         }
                     } 
                     else if (codeName == "NguoiDung")
                     {
                         var menu = unitOfWork.Repository<SysMenu>().Find(s => s.MenuId == "NguoiDung").FirstOrDefault();
                         var type = typeof(GirdNguoiSuDungDto);
-                        int order = 1;
+                        int order = 0;
                         foreach (var prop in type.GetProperties())
                         {
                             // Xác định kiểu dữ liệu cho Field_type và Field_format
@@ -567,6 +622,10 @@ namespace GPBH.Business.Services
                                 case TypeCode.DateTime:
                                     fieldType = "DateTime";
                                     fieldFormat = "dd/MM/yyyy";
+                                    break;
+                                case TypeCode.Boolean:
+                                    fieldType = "Bool";
+                                    fieldFormat = "";
                                     break;
                                 default:
                                     fieldType = "String";
@@ -594,7 +653,7 @@ namespace GPBH.Business.Services
                     {
                         var menu = unitOfWork.Repository<SysMenu>().Find(s => s.MenuId == "ThamSo").FirstOrDefault();
                         var type = typeof(GirdSystemSettingDto);
-                        int order = 1;
+                        int order = 0;
                         foreach (var prop in type.GetProperties())
                         {
                             // Xác định kiểu dữ liệu cho Field_type và Field_format
@@ -613,6 +672,10 @@ namespace GPBH.Business.Services
                                 case TypeCode.DateTime:
                                     fieldType = "DateTime";
                                     fieldFormat = "dd/MM/yyyy";
+                                    break;
+                                case TypeCode.Boolean:
+                                    fieldType = "Bool";
+                                    fieldFormat = "";
                                     break;
                                 default:
                                     fieldType = "String";

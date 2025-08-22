@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 
@@ -136,6 +137,7 @@ namespace GPBH.UI.Helper
                 }
             }
         }
+
         /// <summary>
         /// Xuất dữ liệu ra file Excel với định dạng động từ mảng fields.
         /// </summary>
@@ -144,9 +146,8 @@ namespace GPBH.UI.Helper
         /// <param name="fields"></param>
         /// <param name="sheetName"></param>
         /// <param name="fileName"></param>
-        public static void ExportGridToExcel(DataGridViewX dataGridViewX, string sheetName = "Report", string fileName = "report.xlsx")
+        public static void ExportGridToExcel(DataGridViewX dataGridViewX, string sheetName = "Report", string fileName = "report.xlsx",bool isIgnoreRowFirst = false)
         {
-
             using (var dialog = new SaveFileDialog())
             {
                 dialog.Title = "Chọn nơi lưu file Excel";
@@ -160,43 +161,47 @@ namespace GPBH.UI.Helper
                     {
                         var ws = package.Workbook.Worksheets.Add(sheetName);
 
-                        // Header
-                        for (int i = 0; i < dataGridViewX.ColumnCount; i++)
-                        {
-                            if (dataGridViewX.Columns[i].Visible)
-                            {
-                                ws.Cells[1, i + 1].Value = dataGridViewX.Columns[i].HeaderText;
+                        // Lấy danh sách cột đang Visible
+                        var visibleColumns = dataGridViewX.Columns
+                            .Cast<DataGridViewColumn>()
+                            .Where(col => col.Visible)
+                            .OrderBy(col => col.DisplayIndex)
+                            .ToList();
 
-                                if (!string.IsNullOrEmpty(dataGridViewX.Columns[i].DefaultCellStyle.Format))
-                                    ws.Column(i + 1).Style.Numberformat.Format = dataGridViewX.Columns[i].DefaultCellStyle.Format;
-                            }
+                        // Header
+                        for (int i = 0; i < visibleColumns.Count; i++)
+                        {
+                            ws.Cells[1, i + 1].Value = visibleColumns[i].HeaderText;
+                            if (!string.IsNullOrEmpty(visibleColumns[i].DefaultCellStyle.Format))
+                                ws.Column(i + 1).Style.Numberformat.Format = visibleColumns[i].DefaultCellStyle.Format;
                         }
 
                         // Data
                         int row = 2;
+                        int index = 0;
                         foreach (DataGridViewRow item in dataGridViewX.Rows)
                         {
-                            if (item.Cells[1].Value != null)
+                            index++;
+                            // isIgnoreRowFirst = true thì bỏ dòng đầu tiên
+                            if (isIgnoreRowFirst && index == 1) continue;
+                            if (item.IsNewRow) continue; // bỏ dòng trống cuối grid
+                            for (int col = 0; col < visibleColumns.Count; col++)
                             {
-                                for (int col = 0; col < dataGridViewX.Columns.Count; col++)
-                                {
-                                    if (!dataGridViewX.Columns[col].Visible) continue;
-                                    ws.Cells[row, col + 1].Value = item.Cells[col].Value;
-                                }
-                                row++;
+                                var colName = visibleColumns[col].Name;
+                                item.Cells[colName].ErrorText = ""; // Clear error nếu có
+                                ws.Cells[row, col + 1].Value = item.Cells[colName].Value;
                             }
+                            row++;
                         }
 
-                        // AutoFit nếu muốn (bỏ comment dòng dưới)
-                        if (ws.Dimension != null) // tránh NullReference khi sheet còn trống
+                        // AutoFit
+                        if (ws.Dimension != null)
                         {
                             var end = ws.Dimension.End;
-                            ws.Cells[1, 1, end.Row, end.Column].AutoFitColumns(); // ổn định hơn so với dùng Address
+                            ws.Cells[1, 1, end.Row, end.Column].AutoFitColumns();
                         }
-                        var fileBytes = package.GetAsByteArray();
 
-                        // Ghi file ra ổ cứng hoặc trả về response file cho client tùy nhu cầu
-                        File.WriteAllBytes(dialog.FileName, fileBytes);
+                        File.WriteAllBytes(dialog.FileName, package.GetAsByteArray());
                         MessageBox.Show("Đã xuất file Excel thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }

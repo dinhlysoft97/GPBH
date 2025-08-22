@@ -1,4 +1,7 @@
 ﻿using DevComponents.DotNetBar.Controls;
+using GPBH.Business.Dtos;
+using GPBH.Data.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -171,5 +174,76 @@ namespace GPBH.UI.Extentions
             }
         }
 
+        public static void ApplyColumnConfig(this DataGridViewX grid, List<GirdSysDinhDangFormDto> configs)
+        {
+            if (configs == null || grid == null)
+                return;
+
+            var orderedConfigs = configs.OrderBy(x => x.Field_order).ToList();
+
+            foreach (var config in orderedConfigs)
+            {
+                DataGridViewColumn col = grid.Columns.Cast<DataGridViewColumn>()
+                    .FirstOrDefault(c => c.Name == config.Field_name);
+
+                // Nếu chưa có cột, tạo mới
+                if (col == null)
+                {
+                    // Xác định kiểu cột dựa vào Field_type, mặc định là DataGridViewTextBoxColumn
+                    col = CreateColumn(config);
+                    grid.Columns.Add(col);
+                }
+
+                col.Visible = !config.Field_hide;
+                col.HeaderText = config.Field_title ?? config.Field_name;
+                col.Width = config.Field_width > 0 ? config.Field_width : col.Width;
+                col.DisplayIndex = config.Field_order;
+                col.Name = config.Field_name;
+                col.DataPropertyName = config.Field_name;
+
+                // Format
+                if (!string.IsNullOrEmpty(config.Field_format))
+                {
+                    col.DefaultCellStyle.Format = config.Field_format;
+                }
+            }
+
+            // Sắp xếp mặc định
+            var defaultSort = orderedConfigs.FirstOrDefault(x => x.Default_sort != Sort.None);
+            if (defaultSort != null)
+            {
+                var col = grid.Columns[defaultSort.Field_name];
+                if (col != null && col.Visible)
+                {
+                    ListSortDirection dir = defaultSort.Default_sort == Sort.Ascending ? ListSortDirection.Ascending : ListSortDirection.Descending;
+                    grid.Sort(col, dir);
+                }
+            }
+        }
+
+        // Hàm tạo cột mới dựa vào Field_type
+        private static DataGridViewColumn CreateColumn(GirdSysDinhDangFormDto config)
+        {
+            DataGridViewColumn col;
+            switch ((config.Field_type ?? "").ToLower())
+            {
+                case "combobox":
+                    col = new DataGridViewDoubleInputColumn();
+                    break;
+                case "decimal":
+                    col = new DataGridViewDoubleInputColumn();
+                    break;
+                case "bool":
+                case "boolean":
+                    col = new DataGridViewCheckBoxXColumn();
+                    break;
+                default:
+                    col = new DataGridViewTextBoxColumn();
+                    break;
+            }
+            col.Name = config.Field_name;
+            col.DataPropertyName = config.Field_name;
+            return col;
+        }
     }
 }

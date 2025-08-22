@@ -416,7 +416,7 @@ namespace GPBH.Data.Migrations
                     new SysMenu { MenuName = "Khách hàng", MenuId = "KhachHang", Type = SysMenuType.Category, Report = false, BasicRight = true, Picture = "", Active = true, Stt = 3 },
                     new SysMenu { MenuName = "Ngoại tệ", MenuId = "NgoaiTe", Type = SysMenuType.Category, Report = false, BasicRight = true, Picture = "", Active = true, Stt = 4 },
                     new SysMenu { MenuName = "Tỷ giá", MenuId = "TyGia", Type = SysMenuType.Category, Report = false, BasicRight = true, Picture = "", Active = true, Stt = 5 },
-                    new SysMenu { MenuName = "Hành hóa", MenuId = "HangHoa", Type = SysMenuType.Category, Report = false, BasicRight = true, Picture = "", Active = true, Stt = 6 },
+                    new SysMenu { MenuName = "Hàng hóa", MenuId = "HangHoa", Type = SysMenuType.Category, Report = false, BasicRight = true, Picture = "", Active = true, Stt = 6 },
                     new SysMenu { MenuName = "Giá bán", MenuId = "GiaBan", Type = SysMenuType.Category, Report = false, BasicRight = true, Picture = "", Active = true, Stt = 7 },
                     new SysMenu { MenuName = "Định dạng form", MenuId = "DinhDangForm", Type = SysMenuType.Category, Report = false, BasicRight = true, Picture = "", Active = true, Stt = 8 },
 

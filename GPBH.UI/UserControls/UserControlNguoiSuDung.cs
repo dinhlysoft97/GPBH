@@ -1,5 +1,4 @@
 ﻿using DevComponents.DotNetBar;
-using DevComponents.DotNetBar.Controls;
 using GPBH.Business;
 using GPBH.Business.Dtos;
 using GPBH.Business.Services;
@@ -8,7 +7,6 @@ using GPBH.UI.Extentions;
 using GPBH.UI.Forms;
 using GPBH.UI.Helper;
 using System;
-using System.ComponentModel;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -112,45 +110,8 @@ namespace GPBH.UI.UserControls
         /// </summary>
         private void SetUpUI()
         {
-            if (dataGridViewX1.Columns.Count == 0) return;
-
-            // Canh giữa header
-            dataGridViewX1.SetHeaderAlignment("PhanQuyen", DataGridViewContentAlignment.MiddleCenter);
-            dataGridViewX1.SetHeaderAlignment("Ksd", DataGridViewContentAlignment.MiddleCenter);
-            dataGridViewX1.SetHeaderAlignment("CapLaiQuyen", DataGridViewContentAlignment.MiddleCenter);
-
-            // Sắp xếp vị trí các cột
-            SetColumnDisplayIndex();
-
-            // Căn chỉnh và format dữ liệu
-            SetColumnFormatting();
-        }
-
-        /// <summary>
-        /// Đặt lại vị trí các cột theo yêu cầu.
-        /// </summary>
-        private void SetColumnDisplayIndex()
-        {
-            dataGridViewX1.SetDisplayIndex("PhanQuyen", 0);
-            dataGridViewX1.SetDisplayIndex("TenDangNhap", 1);
-            dataGridViewX1.SetDisplayIndex("TenDayDu", 2);
-            dataGridViewX1.SetDisplayIndex("Ksd", 3);
-            dataGridViewX1.SetDisplayIndex("CapLaiQuyen", 4);
-            dataGridViewX1.SetDisplayIndex("Ngay_sua", 5);
-            dataGridViewX1.SetDisplayIndex("Nguoi_sua", 6);
-            dataGridViewX1.SetDisplayIndex("Ngay_tao", 7);
-            dataGridViewX1.SetDisplayIndex("Nguoi_tao", 8);
-        }
-
-        /// <summary>
-        /// Căn chỉnh và format cho các cột dữ liệu.
-        /// </summary>
-        private void SetColumnFormatting()
-        {
-            dataGridViewX1.SetCellAlignment("Ksd", DataGridViewContentAlignment.MiddleCenter);
-            dataGridViewX1.SetCellAlignment("CapLaiQuyen", DataGridViewContentAlignment.MiddleCenter);
-            dataGridViewX1.SetFormat("Ngay_sua", "dd/MM/yyyy");
-            dataGridViewX1.SetFormat("Ngay_tao", "dd/MM/yyyy");
+            var fields = _sysDinh_Dang_FormService.GetDinhDang(AppGlobals.MaCH, "NguoiDung").data.ToList();
+            dataGridViewX1.ApplyColumnConfig(fields);
         }
 
 
@@ -337,9 +298,7 @@ namespace GPBH.UI.UserControls
                 return;
             }
 
-            var fields = _sysDinh_Dang_FormService.GetDinhDang(AppGlobals.MaCH, menuName).data.Where(z => !z.Field_hide).OrderBy(z => z.Field_order).ToList();
-            var data = dataGridViewX1.DataSource as BindingList<GirdNguoiSuDungDto>;
-            ExportHelper.ExportToExcel(data, fields, $"{menuName}_" + DateTime.Now.ToString("yyyyMMdd_HHmmss"), isIgnoreRowFirst: true);
+            ExportHelper.ExportGridToExcel(dataGridViewX1, $"{menuName}_" + DateTime.Now.ToString("yyyyMMdd_HHmmss"), isIgnoreRowFirst: true);
         }
     }
 }

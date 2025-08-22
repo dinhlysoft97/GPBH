@@ -8,7 +8,6 @@ using GPBH.UI.Helper;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Globalization;
 using System.Linq;
@@ -21,7 +20,6 @@ namespace GPBH.UI.UserControls
         private readonly DMKHService _dmKHService;
         private readonly SysDinh_dang_formService _sysDinh_Dang_FormService;
         private List<GirdSysDinhDangFormDto> SysDinhDangs;
-        private string DateFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern;
         public UserControlKhachHang(DMKHService dMKHService, SysDinh_dang_formService sysDinh_Dang_FormService)
         {
             InitializeComponent();
@@ -41,31 +39,8 @@ namespace GPBH.UI.UserControls
 
         private void SepUpUI()
         {
-            dataGridViewX1.SetFormat("Ngay_cap", DateFormat);
-            dataGridViewX1.SetFormat("Ngay_hh", DateFormat);
-            dataGridViewX1.SetFormat("Ngay_sinh", DateFormat);
-            dataGridViewX1.SetFormat("Xnc_ngay_cap", DateFormat);
-            dataGridViewX1.SetFormat("Xnc_ngay_hh", DateFormat);
-
-            dataGridViewX1.SetFormat("Tong_tien_hang", GetFormat("Format_tien"));
-
-
-            // Thiết lập các cột hiển thị trong DataGridViewX
-            //dataGridViewX1.SetDisplayIndex("Passport", 0);
-            //dataGridViewX1.SetDisplayIndex("Ho_ten", 1);
-            //dataGridViewX1.SetDisplayIndex("Ngay_cap", 2);
-            //dataGridViewX1.SetDisplayIndex("Ngay_hh", 3);
-            //dataGridViewX1.SetDisplayIndex("Quoc_gia", 4);
-            //dataGridViewX1.SetDisplayIndex("Gioi_tinh", 5);
-            //dataGridViewX1.SetDisplayIndex("Ngay_sinh", 6);
-            //dataGridViewX1.SetDisplayIndex("Dia_chi", 7);
-            //dataGridViewX1.SetDisplayIndex("Dien_thoai", 8);
-            //dataGridViewX1.SetDisplayIndex("Email", 9);
-            //dataGridViewX1.SetDisplayIndex("Xnc_ngay_cap", 10);
-            //dataGridViewX1.SetDisplayIndex("Xnc_ngay_hh", 11);
-            //dataGridViewX1.SetDisplayIndex("So_hieu", 12);
-            //dataGridViewX1.SetDisplayIndex("Ten_tau_bay", 13);
-            //dataGridViewX1.SetDisplayIndex("Han_muc", 14);
+            var fields = _sysDinh_Dang_FormService.GetDinhDang(AppGlobals.MaCH, "KhachHang").data.ToList();
+            dataGridViewX1.ApplyColumnConfig(fields);
         }
 
         private void LoadData()
@@ -240,14 +215,6 @@ namespace GPBH.UI.UserControls
             dataGridViewX1.SetRowPositionPaint(e);
         }
 
-        private string GetFormat(string column)
-        {
-            var dinhDang = SysDinhDangs.FirstOrDefault(z => z.Field_name == column);
-            if (dinhDang != null)
-                return dinhDang.Field_format;
-            return string.Empty;
-        }
-
         private void btnXuatExcel_Click(object sender, EventArgs e)
         {
             string menuName = "KhachHang";
@@ -258,9 +225,8 @@ namespace GPBH.UI.UserControls
                 return;
             }
 
-            var fields = _sysDinh_Dang_FormService.GetDinhDang(AppGlobals.MaCH, menuName).data.Where(z => !z.Field_hide).OrderBy(z => z.Field_order).ToList();
-            var data = dataGridViewX1.DataSource as BindingList<GridKhachHang>;
-            ExportHelper.ExportToExcel(data, fields, $"{menuName}_" + DateTime.Now.ToString("yyyyMMdd_HHmmss"), isIgnoreRowFirst: true);
+
+            ExportHelper.ExportGridToExcel(dataGridViewX1, $"{menuName}_" + DateTime.Now.ToString("yyyyMMdd_HHmmss"), isIgnoreRowFirst: true);
         }
     }
 }

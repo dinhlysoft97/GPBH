@@ -1230,7 +1230,13 @@ namespace GPBH.UI.Forms
             {
                 var rowNull = listChiTiet.FirstOrDefault(x => x.Ma_hh == null);
                 rowNull.Ma_hh = e.MaHH;
+                rowNull.Ten_hh = e.TenHH;
+                rowNull.Dvt = e.Dvt;
+                rowNull.So_luong = 1;
+                rowNull.Gg_ty_le = 0; // gán mặc định nếu có
                 TinhToanRow(rowNull);
+                listChiTiet.Add(rowNull);
+                SelectGird(rowNull);
             }
             // update mã mặt hàng
             // check nếu mã mới # mã cũ của dòng có data thì update mã 

@@ -49,10 +49,10 @@
             this.btnIn = new DevComponents.DotNetBar.ButtonX();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.Noi_ban = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.So_chung_tu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.So_don_hang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ngay_ban = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Passport = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ten_khach = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ten_khachhang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tong_tien_hang_nt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ma_hang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.So_luong = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -390,10 +390,10 @@
             this.dataGridViewX1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Noi_ban,
-            this.So_chung_tu,
+            this.So_don_hang,
             this.Ngay_ban,
             this.Passport,
-            this.Ten_khach,
+            this.Ten_khachhang,
             this.Tong_tien_hang_nt,
             this.Ma_hang,
             this.So_luong,
@@ -428,14 +428,14 @@
             this.Noi_ban.ReadOnly = true;
             this.Noi_ban.Width = 104;
             // 
-            // So_chung_tu
+            // So_don_hang
             // 
-            this.So_chung_tu.DataPropertyName = "So_don_hang";
-            this.So_chung_tu.HeaderText = "Số đơn hàng";
-            this.So_chung_tu.MinimumWidth = 6;
-            this.So_chung_tu.Name = "So_chung_tu";
-            this.So_chung_tu.ReadOnly = true;
-            this.So_chung_tu.Width = 105;
+            this.So_don_hang.DataPropertyName = "So_don_hang";
+            this.So_don_hang.HeaderText = "Số đơn hàng";
+            this.So_don_hang.MinimumWidth = 6;
+            this.So_don_hang.Name = "So_don_hang";
+            this.So_don_hang.ReadOnly = true;
+            this.So_don_hang.Width = 105;
             // 
             // Ngay_ban
             // 
@@ -454,13 +454,13 @@
             this.Passport.ReadOnly = true;
             this.Passport.Width = 104;
             // 
-            // Ten_khach
+            // Ten_khachhang
             // 
-            this.Ten_khach.DataPropertyName = "Ten_khachhang";
-            this.Ten_khach.HeaderText = "Tên khách hàng";
-            this.Ten_khach.Name = "Ten_khach";
-            this.Ten_khach.ReadOnly = true;
-            this.Ten_khach.Width = 104;
+            this.Ten_khachhang.DataPropertyName = "Ten_khachhang";
+            this.Ten_khachhang.HeaderText = "Tên khách hàng";
+            this.Ten_khachhang.Name = "Ten_khachhang";
+            this.Ten_khachhang.ReadOnly = true;
+            this.Ten_khachhang.Width = 104;
             // 
             // Tong_tien_hang_nt
             // 
@@ -546,10 +546,10 @@
         private DevComponents.DotNetBar.ButtonX btnIn;
         private DevComponents.DotNetBar.Controls.DataGridViewX dataGridViewX1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Noi_ban;
-        private System.Windows.Forms.DataGridViewTextBoxColumn So_chung_tu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn So_don_hang;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ngay_ban;
         private System.Windows.Forms.DataGridViewTextBoxColumn Passport;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ten_khach;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ten_khachhang;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tong_tien_hang_nt;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ma_hang;
         private System.Windows.Forms.DataGridViewTextBoxColumn So_luong;

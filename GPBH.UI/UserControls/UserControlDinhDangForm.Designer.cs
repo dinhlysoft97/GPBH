@@ -53,7 +53,6 @@
             this.Field_width = new DevComponents.DotNetBar.Controls.DataGridViewDoubleInputColumn();
             this.Field_format = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Default_sort = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
-            this.Ten_ban = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
@@ -195,8 +194,7 @@
             this.Field_hide,
             this.Field_width,
             this.Field_format,
-            this.Default_sort,
-            this.Ten_ban});
+            this.Default_sort});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -319,13 +317,6 @@
             this.Default_sort.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Default_sort.Width = 51;
             // 
-            // Ten_ban
-            // 
-            this.Ten_ban.DataPropertyName = "Ten_ban";
-            this.Ten_ban.HeaderText = "Tên bảng";
-            this.Ten_ban.Name = "Ten_ban";
-            this.Ten_ban.Width = 120;
-            // 
             // UserControlDinhDangForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -367,6 +358,5 @@
         private DevComponents.DotNetBar.Controls.DataGridViewDoubleInputColumn Field_width;
         private System.Windows.Forms.DataGridViewTextBoxColumn Field_format;
         private DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn Default_sort;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ten_ban;
     }
 }

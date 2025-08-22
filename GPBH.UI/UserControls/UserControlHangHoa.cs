@@ -38,24 +38,14 @@ namespace GPBH.UI.UserControls
 
         private void SetUpUI()
         {
-            // Format cột
-            //dataGridViewX1.SetFormat("Chieu_dai", GetFormat("Format_so_luong"));
-            //dataGridViewX1.SetFormat("Trong_luong", GetFormat("Format_so_luong"));
-            //dataGridViewX1.SetFormat("Chieu_cao", GetFormat("Format_so_luong"));
+            var fields = _sysDinh_Dang_FormService.GetDinhDang(AppGlobals.MaCH, "HangHoa").data.ToList();
+            dataGridViewX1.ApplyColumnConfig(fields);
         }
 
         private void LoadData()
         {
             var hhList = _dmHHService.GetAllGrid();
             DataGridViewFilterHelper.ApplyFilter(dataGridViewX1, hhList);
-        }
-
-        private string GetFormat(string column)
-        {
-            var dinhDang = SysDinhDangs.FirstOrDefault(z => z.Field_name == column);
-            if (dinhDang != null)
-                return dinhDang.Field_format;
-            return string.Empty;
         }
 
         private void dataGridViewX1_RowPostPaint(object sender, System.Windows.Forms.DataGridViewRowPostPaintEventArgs e)
@@ -73,9 +63,7 @@ namespace GPBH.UI.UserControls
                 return;
             }
 
-            var fields = _sysDinh_Dang_FormService.GetDinhDang(AppGlobals.MaCH, menuName).data.Where(z => !z.Field_hide).OrderBy(z => z.Field_order).ToList();
-            var data = dataGridViewX1.DataSource as BindingList<GridHangHoa>;
-            ExportHelper.ExportToExcel(data, fields, $"{menuName}_" + DateTime.Now.ToString("yyyyMMdd_HHmmss"), isIgnoreRowFirst: true);
+            ExportHelper.ExportGridToExcel(dataGridViewX1, "HangHoa_" + DateTime.Now.ToString("yyyyMMdd_HHmmss"), isIgnoreRowFirst: true);
         }
     }
 }

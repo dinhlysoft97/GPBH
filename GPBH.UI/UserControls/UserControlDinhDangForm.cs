@@ -9,7 +9,6 @@ using GPBH.UI.Extentions;
 using GPBH.UI.Helper;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
@@ -142,27 +141,8 @@ namespace GPBH.UI.UserControls
 
         private void SetUpUI()
         {
-            if (dataGridViewX1.Columns.Count == 0) return;
-
-            // Canh giữa header
-            dataGridViewX1.Columns["MenuId"].Visible = false;
-
-            // Sắp xếp vị trí các cột
-            dataGridViewX1.SetDisplayIndex("Code_name", 0);
-            dataGridViewX1.SetDisplayIndex("MenuName", 1);
-            dataGridViewX1.SetDisplayIndex("Field_name", 2);
-            dataGridViewX1.SetDisplayIndex("Field_type", 3);
-            dataGridViewX1.SetDisplayIndex("Field_title", 4);
-            dataGridViewX1.SetDisplayIndex("Field_order", 5);
-            dataGridViewX1.SetDisplayIndex("Field_hide", 6);
-            dataGridViewX1.SetDisplayIndex("Field_width", 7);
-            dataGridViewX1.SetDisplayIndex("Field_format", 8);
-            dataGridViewX1.SetDisplayIndex("Default_sort", 9);
-            dataGridViewX1.SetDisplayIndex("Ten_ban", 10);
-
-            // Căn chỉnh dữ liệu
-            dataGridViewX1.SetCellAlignment("Field_order", DataGridViewContentAlignment.MiddleRight);
-            dataGridViewX1.SetCellAlignment("Field_hide", DataGridViewContentAlignment.MiddleCenter);
+            var fields = _sysDinh_dang_formService.GetDinhDang(AppGlobals.MaCH, "DinhDangForm").data.ToList();
+            dataGridViewX1.ApplyColumnConfig(fields);
         }
 
         private void dataGridViewX1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -197,9 +177,7 @@ namespace GPBH.UI.UserControls
                 return;
             }
 
-            var fields = _sysDinh_dang_formService.GetDinhDang(AppGlobals.MaCH, menuName).data.Where(z => !z.Field_hide).OrderBy(z => z.Field_order).ToList();
-            var data = dataGridViewX1.DataSource as BindingList<GirdSysDinhDangFormDto>;
-            ExportHelper.ExportToExcel(data, fields, $"{menuName}_" + DateTime.Now.ToString("yyyyMMdd_HHmmss"), isIgnoreRowFirst: true);
+            ExportHelper.ExportGridToExcel(dataGridViewX1, $"{menuName}_" + DateTime.Now.ToString("yyyyMMdd_HHmmss"));
         }
     }
 }

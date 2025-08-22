@@ -21,11 +21,17 @@ namespace GPBH.UI.UserControls
             InitializeComponent();
             _dmNTService = dMNTService;
             _sysDinh_Dang_FormService = sysDinh_Dang_FormService;
+            SetUpUI();
             LoadData(); 
             dataGridViewX1.DataBindingComplete += (s, e) =>
             {
                 dataGridViewX1.SetGirdReadOnly();
             };
+        }
+        private void SetUpUI()
+        {
+            var fields = _sysDinh_Dang_FormService.GetDinhDang(AppGlobals.MaCH, "NgoaiTe").data.ToList();
+            dataGridViewX1.ApplyColumnConfig(fields);
         }
 
         private void LoadData()
@@ -49,9 +55,7 @@ namespace GPBH.UI.UserControls
                 return;
             }
 
-            var fields = _sysDinh_Dang_FormService.GetDinhDang(AppGlobals.MaCH, menuName).data.Where(z => !z.Field_hide).OrderBy(z => z.Field_order).ToList();
-            var data = dataGridViewX1.DataSource as BindingList<GridNgoaiTe>;
-            ExportHelper.ExportToExcel(data, fields, $"{menuName}_" + DateTime.Now.ToString("yyyyMMdd_HHmmss"), isIgnoreRowFirst: true);
+            ExportHelper.ExportGridToExcel(dataGridViewX1, $"{menuName}_" + DateTime.Now.ToString("yyyyMMdd_HHmmss"), isIgnoreRowFirst: true);
         }
     }
 }
