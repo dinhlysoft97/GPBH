@@ -37,13 +37,11 @@ namespace GPBH.UI.UserControls
             _sysDinh_Dang_FormService = sysDinh_Dang_FormService;
             dataGridViewX1.AutoGenerateColumns = false;
             LoadDataCbb();
-            SetUpUI();
-            foreach (DataGridViewColumn column in dataGridViewX1.Columns)
-            {
-                column.Resizable = DataGridViewTriState.True;
-            }
-
             buttonLoc_Click(null, null);
+            dataGridViewX1.DataBindingComplete += (s, e) =>
+            {
+                SetUpUI();
+            };
         }
 
         private void LoadDataCbb()

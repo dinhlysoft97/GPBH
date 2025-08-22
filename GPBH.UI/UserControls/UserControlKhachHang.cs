@@ -1,5 +1,4 @@
 ﻿using GPBH.Business;
-using GPBH.Business.Dtos;
 using GPBH.Business.Services;
 using GPBH.UI.Constant;
 using GPBH.UI.Extentions;
@@ -7,9 +6,7 @@ using GPBH.UI.Forms;
 using GPBH.UI.Helper;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -19,25 +16,23 @@ namespace GPBH.UI.UserControls
     {
         private readonly DMKHService _dmKHService;
         private readonly SysDinh_dang_formService _sysDinh_Dang_FormService;
-        private List<GirdSysDinhDangFormDto> SysDinhDangs;
         public UserControlKhachHang(DMKHService dMKHService, SysDinh_dang_formService sysDinh_Dang_FormService)
         {
             InitializeComponent();
             _dmKHService = dMKHService;
             _sysDinh_Dang_FormService = sysDinh_Dang_FormService;
-            SysDinhDangs = _sysDinh_Dang_FormService.GetDinhDang(AppGlobals.MaCH).data;
             dataGridViewX1.CellFormatting += dataGridViewX1_CellFormatting;
             dataGridViewX1.CellDoubleClick += dataGridViewX1_CellDoubleClick;
             dataGridViewX1.KeyDown += DataGridViewX1_KeyDown;
-            SepUpUI();
             LoadData();
             dataGridViewX1.DataBindingComplete += (s, e) =>
             {
-                dataGridViewX1.SetGirdReadOnly();
+                SetUpUI();
             };
+            dataGridViewX1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
 
-        private void SepUpUI()
+        private void SetUpUI()
         {
             var fields = _sysDinh_Dang_FormService.GetDinhDang(AppGlobals.MaCH, "KhachHang").data.ToList();
             dataGridViewX1.ApplyColumnConfig(fields);

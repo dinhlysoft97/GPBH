@@ -1,4 +1,5 @@
 ﻿using DevComponents.DotNetBar;
+using DevComponents.DotNetBar.Controls;
 using GPBH.Business;
 using GPBH.Business.Dtos;
 using GPBH.Business.Services;
@@ -26,6 +27,10 @@ namespace GPBH.UI.UserControls
             _sysDMCuaHangService = sysDMCuaHangService;
             _sysDinh_Dang_FormService = sysDinh_Dang_FormService;
             InitializeUI();
+            dgThamSo.DataBindingComplete += (s, e) =>
+            {
+                SetUpUI();
+            };
         }
 
         #endregion
@@ -37,7 +42,6 @@ namespace GPBH.UI.UserControls
         /// </summary>
         private void InitializeUI()
         {
-            SetUpUI();
             LoadData();
             RegisterEvents();
         }

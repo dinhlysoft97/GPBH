@@ -35,7 +35,7 @@ namespace GPBH.UI.UserControls
             new DropDown() { Key = "KhachHang", Value = "Khách hàng" },
             new DropDown() { Key = "NgoaiTe", Value = "Ngoại tệ" },
             new DropDown() { Key = "TyGia", Value = "Tỷ giá" },
-            new DropDown() { Key = "HangHoa", Value = "Hành hóa" },
+            new DropDown() { Key = "HangHoa", Value = "Hàng hóa" },
             new DropDown() { Key = "GiaBan", Value = "Giá bán" },
             new DropDown() { Key = "DinhDangForm", Value = "Định dạng form" },
             new DropDown() { Key = "ThamSo", Value = "Tham số" },
@@ -47,9 +47,12 @@ namespace GPBH.UI.UserControls
             InitializeComponent();
             _sysDinh_dang_formService = sysDinh_Dang_FormService;
             _sysDMCuaHangService = sysDMCuaHangService;
-            SetUpUI();
             LoadData();
             RegisterEvents();
+            dataGridViewX1.DataBindingComplete += (s, e) =>
+            {
+                SetUpUI();
+            };
         }
 
 

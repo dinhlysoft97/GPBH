@@ -43,9 +43,7 @@ namespace GPBH.UI.UserControls
             LoadData();
             dataGridViewX1.DataBindingComplete += (s, e) =>
             {
-                dataGridViewX1.SetGirdReadOnly();
-                dataGridViewX1.Rows[0].Cells[4].ReadOnly = true;
-                dataGridViewX1.Rows[0].Cells[5].ReadOnly = true;
+                SetUpUI();
             };
         }
 

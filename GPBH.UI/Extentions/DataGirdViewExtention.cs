@@ -201,6 +201,9 @@ namespace GPBH.UI.Extentions
                 col.Name = config.Field_name;
                 col.DataPropertyName = config.Field_name;
 
+                // Field_width
+                if (config.Field_width > 0) col.Width = config.Field_width;
+
                 // Format
                 if (!string.IsNullOrEmpty(config.Field_format))
                 {
@@ -219,6 +222,8 @@ namespace GPBH.UI.Extentions
                     grid.Sort(col, dir);
                 }
             }
+
+            grid.Refresh();
         }
 
         // Hàm tạo cột mới dựa vào Field_type
@@ -243,6 +248,8 @@ namespace GPBH.UI.Extentions
             }
             col.Name = config.Field_name;
             col.DataPropertyName = config.Field_name;
+            // Field_width
+            if (config.Field_width > 0) col.Width = config.Field_width;
             return col;
         }
     }

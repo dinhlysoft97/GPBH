@@ -26,9 +26,12 @@ namespace GPBH.UI.UserControls
             _sysDMCuaHangService = sysDMCuaHangService;
             dataGridViewX1.AutoGenerateColumns = false;
             dataGridViewX1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            SetUpUI();
             LoadData();
             cbbCuaHang.SelectedIndexChanged += CbbCuaHang_SelectedIndexChanged;
+            dataGridViewX1.DataBindingComplete += (s, e) =>
+            {
+                SetUpUI();
+            };
         }
 
         private void SetUpUI()

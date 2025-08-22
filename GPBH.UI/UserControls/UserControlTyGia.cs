@@ -18,8 +18,11 @@ namespace GPBH.UI.UserControls
             InitializeComponent();
             _dmTGService = dMTGService;
             _sysDinh_Dang_FormService = sysDinh_Dang_FormService;
-            SetUpUI();
             LoadData();
+            dataGridViewX1.DataBindingComplete += (s, e) =>
+            {
+                SetUpUI();
+            };
         }
 
         private void SetUpUI()

@@ -27,11 +27,10 @@ namespace GPBH.UI.UserControls
             _dmHHService = dmHHService;
             _sysDinh_Dang_FormService = sysDinh_Dang_FormService;
             SysDinhDangs = _sysDinh_Dang_FormService.GetDinhDang(AppGlobals.MaCH).data;
-            SetUpUI();
             LoadData();
             dataGridViewX1.DataBindingComplete += (s, e) =>
             {
-                dataGridViewX1.SetGirdReadOnly();
+                SetUpUI();
             };
             dataGridViewX1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }

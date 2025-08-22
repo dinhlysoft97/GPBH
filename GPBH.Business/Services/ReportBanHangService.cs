@@ -130,6 +130,7 @@ namespace GPBH.Business.Services
             dt.Columns.Add(nameof(ViewBaoCaoKhacHang.Ten_khachhang), typeof(string));
             dt.Columns.Add(nameof(ViewBaoCaoKhacHang.Passport), typeof(string));
             dt.Columns.Add(nameof(ViewBaoCaoKhacHang.Ngay_ban), typeof(DateTime));
+            dt.Columns.Add(nameof(ViewBaoCaoKhacHang.Ma_phieu), typeof(string));
             dt.Columns.Add(nameof(ViewBaoCaoKhacHang.So_don_hang), typeof(string));
             dt.Columns.Add(nameof(ViewBaoCaoKhacHang.Ten_hang), typeof(string));
             dt.Columns.Add(nameof(ViewBaoCaoKhacHang.Ma_hang), typeof(string));
@@ -152,6 +153,7 @@ namespace GPBH.Business.Services
                     item.Ten_khachhang,
                     item.Passport,
                     item.Ngay_ban,
+                    item.Ma_phieu,
                     item.So_don_hang,
                     item.Ten_hang,
                     item.Ma_hang,
