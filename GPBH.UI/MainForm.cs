@@ -33,7 +33,6 @@ namespace GPBH.UI
 
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
         {
-            MessageBox.Show($"aaaaa{e.KeyCode}");
         }
 
         private void MainForm_Load(object sender, EventArgs e)

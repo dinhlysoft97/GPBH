@@ -40,13 +40,12 @@ namespace GPBH.UI
         }
         private void frmMain_KeyDown(object sender, KeyEventArgs e)
         {
-            MessageBox.Show($"aaaaa{e.KeyCode}");
         }
 
         private void frmMain_Load(object sender, EventArgs e)
         {
             bool bXem = CheckPermissionHelper.HasPerrmission("Donhang", GPBHConstant.Action.Xem);
-            if(bXem)
+            if (bXem)
             {
                 OpenTab("DonHang", "Màn hình chính", ActivatorUtilities.CreateInstance<UserControlDonHang>(Program.ServiceProvider));
                 this.Focus();
@@ -155,7 +154,7 @@ namespace GPBH.UI
             foreach (var ob in subMenu)
             {
                 var hasPermission = CheckPermissionHelper.HasPerrmission(ob.MenuId, GPBHConstant.Action.Xem);
-                if (hasPermission && (int) ob.Type == tabIndex)
+                if (hasPermission && (int)ob.Type == tabIndex)
                 {
                     ButtonItem buttonItem = new ButtonItem();
                     buttonItem.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
@@ -175,7 +174,7 @@ namespace GPBH.UI
                     ipSubMenuContain.Items.Add(buttonItem, ipSubMenuContain.Items.Count);
                 }
             }
-            if(ipSubMenuContain.Items.Count == 0)
+            if (ipSubMenuContain.Items.Count == 0)
             {
                 // Nếu không có menu con nào thì không cần tạo ExpandablePanel
                 return;
@@ -183,7 +182,7 @@ namespace GPBH.UI
             expandablePanel2.Controls.Add(ipSubMenuContain);
             epMenu.Controls.Add(expandablePanel2);
             expandablePanel2.Dock = System.Windows.Forms.DockStyle.Top;
-            if(tabIndex==1)
+            if (tabIndex == 1)
             {
                 expandablePanel2.Expanded = true; // Mặc định mở rộng menu Bán hàng
             }
