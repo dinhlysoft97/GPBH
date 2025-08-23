@@ -1322,6 +1322,7 @@ namespace GPBH.UI.Forms
         private void ShowUcHangHoaPopupAtCell(int colIndex, int rowIndex)
         {
             if (_isView) return;
+            if (ucHangHoaPopup == null || ucHangHoaPopup.IsDisposed) return; // kiểm tra popup
 
             _isClickCell = true;
             // Lấy vị trí cell trên màn hình
