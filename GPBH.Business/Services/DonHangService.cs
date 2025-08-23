@@ -410,8 +410,7 @@ namespace GPBH.Business.Services
         {
             // 1. Thêm các dòng mới (trong dto nhưng chưa có trong entity)
             var addDtos = dto.XCT5s
-                .Where(d => d.Stt > 0
-                    && !entity.XCT5s.Any(e => e.Ma_hh == d.Ma_hh && e.So_to_khai == d.So_to_khai))
+                .Where(d => !entity.XCT5s.Any(e => e.Ma_hh == d.Ma_hh && e.So_to_khai == d.So_to_khai))
                 .ToList();
             if (addDtos.Any())
                 entity.XCT5s.AddRange(addDtos.Adapt<List<XCT5>>());

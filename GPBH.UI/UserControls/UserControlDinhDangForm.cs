@@ -30,8 +30,8 @@ namespace GPBH.UI.UserControls
         {
             new DropDown() { Key = "X05", Value = "Đơn hàng" },
             new DropDown() { Key = "BanHangTheoKhachHang", Value = "Báo cáo khách hàng" },
-            new DropDown() { Key = "Ca", Value = "Quốc gia" },
-            new DropDown() { Key = "QuocGia", Value = "Danh mục ca" },
+            new DropDown() { Key = "QuocGia", Value = "Quốc gia" },
+            new DropDown() { Key = "Ca", Value = "Danh mục ca" },
             new DropDown() { Key = "KhachHang", Value = "Khách hàng" },
             new DropDown() { Key = "NgoaiTe", Value = "Ngoại tệ" },
             new DropDown() { Key = "TyGia", Value = "Tỷ giá" },
@@ -62,6 +62,7 @@ namespace GPBH.UI.UserControls
             cbbCuaHang.SelectedIndexChanged += CbbCuaHang_SelectedIndexChanged;
             cbbCode.SelectedIndexChanged += CbbCode_SelectedIndexChanged;
             dataGridViewX1.CellClick += dataGridViewX1_CellClick;
+            dataGridViewX1.RowPostPaint += dataGridViewX1_RowPostPaint;
         }
 
         private void CbbCuaHang_SelectedIndexChanged(object sender, EventArgs e)

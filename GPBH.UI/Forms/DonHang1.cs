@@ -344,11 +344,12 @@ namespace GPBH.UI.Forms
             ucHangHoa.SetData(_dMHHService.GetAll());
 
             var tyGia = _sysDMCuaHangService.GetTyGiaByMaCuaHang(AppGlobals.MaCH);
-            cbbTt1_ma_nt.SelectedValue = tyGia.Ma_nt;
-            cbbTt2_ma_nt.SelectedValue = tyGia.Ma_nt;
-            cbbTt3_ma_nt.SelectedValue = tyGia.Ma_nt;
-            cbTra_lai.SelectedValue = tyGia.Ma_nt;
-            TyGiaGanNhat = tyGia;
+            var selectedVaule = cbbTt1_ma_nt.SelectedValue;
+            cbbTt1_ma_nt.SelectedValue = tyGia?.Ma_nt ?? selectedVaule;
+            cbbTt2_ma_nt.SelectedValue = tyGia?.Ma_nt ?? selectedVaule;
+            cbbTt3_ma_nt.SelectedValue = tyGia?.Ma_nt ?? selectedVaule;
+            cbTra_lai.SelectedValue = tyGia?.Ma_nt ?? selectedVaule;
+            TyGiaGanNhat = tyGia ?? new TyGiaNT();
 
             lbTGNT.Text = $"{TyGiaGanNhat.Ma_nt}: {TyGiaGanNhat.Ty_gia.ToString(GetFormat("Format_tien"))}";
             dataGridViewX1.DataSource = listChiTiet;
@@ -747,12 +748,6 @@ namespace GPBH.UI.Forms
                 existed.So_luong = (decimal)soLuong;
                 TinhToanRow(existed);
                 SelectGird(existed);
-            }
-            else if (listChiTiet.Any(z => z.Ma_hh == null))
-            {
-                var rowNull = listChiTiet.FirstOrDefault(x => x.Ma_hh == null);
-                rowNull.Ma_hh = mahh;
-                TinhToanRow(rowNull);
             }
             else
             {
@@ -1226,62 +1221,6 @@ namespace GPBH.UI.Forms
                 TinhToanRow(existed);
                 SelectGird(existed);
             }
-            else if (listChiTiet.Any(z => z.Ma_hh == null))
-            {
-                var rowNull = listChiTiet.FirstOrDefault(x => x.Ma_hh == null);
-                rowNull.Ma_hh = e.MaHH;
-                rowNull.Ten_hh = e.TenHH;
-                rowNull.Dvt = e.Dvt;
-                rowNull.So_luong = 1;
-                rowNull.Gg_ty_le = 0; // gán mặc định nếu có
-                TinhToanRow(rowNull);
-                listChiTiet.Add(rowNull);
-                SelectGird(rowNull);
-            }
-            // update mã mặt hàng
-            // check nếu mã mới # mã cũ của dòng có data thì update mã 
-            //else if (selectedRow != null)
-            //{
-            //    if (!selectedRow.IsNewRow && _isClickCell)
-            //    {
-            //        var item = selectedRow.DataBoundItem == null ? null : selectedRow.DataBoundItem as XCT5Dto;
-            //        if (item != null && !string.IsNullOrEmpty(item.Ma_hh) && item.Ma_hh != e.MaHH)
-            //        {
-            //            var rowData = listChiTiet.FirstOrDefault(x => x.Ma_hh == e.MaHH);
-
-            //            if (rowData != null)
-            //            {
-            //                rowData.Ma_hh = e.MaHH;
-            //                TinhToanRow(rowData);
-            //                SelectGird(rowData);
-            //            }
-            //            else
-            //            {
-            //                var oldData = listChiTiet.FirstOrDefault(x => x.Ma_hh == item.Ma_hh);
-            //                oldData.Ma_hh = e.MaHH;
-            //                oldData.Ten_hh = e.TenHH;
-            //                oldData.Dvt = e.Dvt;
-            //                TinhToanRow(oldData);
-            //                SelectGird(oldData);
-            //            }
-            //        }
-            //    }
-            //    // add mới 
-            //    else
-            //    {
-            //        var newItem = new XCT5Dto
-            //        {
-            //            Ma_hh = e.MaHH,
-            //            Ten_hh = e.TenHH,
-            //            Dvt = e.Dvt,
-            //            So_luong = 1,
-            //            Gg_ty_le = 0 // gán mặc định nếu có
-            //        };
-            //        TinhToanRow(newItem);
-            //        listChiTiet.Add(newItem);
-            //        SelectGird(newItem);
-            //    }
-            //}
             // update mã mặt hàng
             // check nếu mã mới # mã cũ của dòng có data thì update mã 
             else if (dataGridViewX1.SelectedRows.Count > 0)

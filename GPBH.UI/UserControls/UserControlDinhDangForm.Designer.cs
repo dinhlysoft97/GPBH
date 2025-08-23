@@ -169,7 +169,6 @@
             this.btnLuu.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnLuu.TabIndex = 5;
             this.btnLuu.Text = "Cập nhật";
-            this.btnLuu.Click += new System.EventHandler(this.BtnLuu_Click);
             // 
             // dataGridViewX1
             // 
