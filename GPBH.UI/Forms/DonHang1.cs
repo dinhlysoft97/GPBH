@@ -759,8 +759,8 @@ namespace GPBH.UI.Forms
                     So_luong = (decimal)soLuong,
                     Gg_ty_le = 0 // gán mặc định nếu có
                 };
-                TinhToanRow(newItem);
                 listChiTiet.Add(newItem);
+                TinhToanRow(newItem);
                 SelectGird(newItem);
             }
             TinhTongCong();
@@ -1261,8 +1261,8 @@ namespace GPBH.UI.Forms
                         So_luong = 1,
                         Gg_ty_le = 0 // gán mặc định nếu có
                     };
-                    TinhToanRow(newItem);
                     listChiTiet.Add(newItem);
+                    TinhToanRow(newItem);
                     SelectGird(newItem);
                 }
             }
@@ -1276,8 +1276,8 @@ namespace GPBH.UI.Forms
                     So_luong = 1,
                     Gg_ty_le = 0 // gán mặc định nếu có
                 };
-                TinhToanRow(newItem);
                 listChiTiet.Add(newItem);
+                TinhToanRow(newItem);
                 SelectGird(newItem);
             }
             TinhTongCong();
