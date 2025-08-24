@@ -33,7 +33,10 @@ namespace GPBH.UI.Helper
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     // Lưu file tại dialog.FileName
+
+                    // EPPlus 5.x trở lên mới bắt buộc set LicenseContext
                     //ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+
                     using (var package = new ExcelPackage())
                     {
                         var ws = package.Workbook.Worksheets.Add(sheetName);
@@ -98,7 +101,10 @@ namespace GPBH.UI.Helper
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     // Lưu file tại dialog.FileName
+
+                    // EPPlus 5.x trở lên mới bắt buộc set LicenseContext
                     //ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+
                     using (var package = new ExcelPackage())
                     {
                         var ws = package.Workbook.Worksheets.Add(sheetName);
@@ -146,7 +152,7 @@ namespace GPBH.UI.Helper
         /// <param name="fields"></param>
         /// <param name="sheetName"></param>
         /// <param name="fileName"></param>
-        public static void ExportGridToExcel(DataGridViewX dataGridViewX, string sheetName = "Report", string fileName = "report.xlsx",bool isIgnoreRowFirst = false)
+        public static void ExportGridToExcel(DataGridViewX dataGridViewX, string sheetName = "Report", string fileName = "report.xlsx", bool isIgnoreRowFirst = false)
         {
             using (var dialog = new SaveFileDialog())
             {
@@ -156,7 +162,9 @@ namespace GPBH.UI.Helper
 
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
+                    // EPPlus 5.x trở lên mới bắt buộc set LicenseContext
                     //ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
+
                     using (var package = new ExcelPackage())
                     {
                         var ws = package.Workbook.Worksheets.Add(sheetName);
