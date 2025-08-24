@@ -33,7 +33,7 @@ namespace GPBH.UI.Helper
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     // Lưu file tại dialog.FileName
-                    ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+                    //ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
                     using (var package = new ExcelPackage())
                     {
                         var ws = package.Workbook.Worksheets.Add(sheetName);
@@ -98,7 +98,7 @@ namespace GPBH.UI.Helper
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     // Lưu file tại dialog.FileName
-                    ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+                    //ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
                     using (var package = new ExcelPackage())
                     {
                         var ws = package.Workbook.Worksheets.Add(sheetName);
@@ -156,7 +156,7 @@ namespace GPBH.UI.Helper
 
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
+                    //ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
                     using (var package = new ExcelPackage())
                     {
                         var ws = package.Workbook.Worksheets.Add(sheetName);
