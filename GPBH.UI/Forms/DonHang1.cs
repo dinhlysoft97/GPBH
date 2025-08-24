@@ -1219,19 +1219,38 @@ namespace GPBH.UI.Forms
         /// <param name="e">Event args chứa thông tin hàng hóa</param>
         private void AddOrUpdateHangHoaToGrid(HangHoaSelectedEventArgs e)
         {
+            var isNull = false;
+
+            // remove ma hh null 
+            var listClone = new List<XCT5Dto>(listChiTiet);
+            isNull = listClone.RemoveAll(z => z.Ma_hh == null) > 0;
+
+            // nếu null delete ma hh null set lại dataGridViewX1
+            if (isNull)
+            {
+                listChiTiet = new BindingList<XCT5Dto>(listClone);
+                dataGridViewX1.DataSource = listChiTiet;
+            }
+
             //DataGridViewRow selectedRow = dataGridViewX1.Rows[_currentIndexRowSelect];
             // Tìm xem mã hàng đã có trong list chưa
             var existed = listChiTiet.FirstOrDefault(x => x.Ma_hh == e.MaHH);
             if (existed != null)
             {
-                existed.So_luong += 1;
+                // có trên lưới nên set số lượng lại là 1
+                if (isNull)
+                    existed.So_luong = 1;
+                else
+                    existed.So_luong += 1;
+
                 TinhToanRow(existed);
                 SelectGird(existed);
             }
-            // update mã mặt hàng
-            // check nếu mã mới # mã cũ của dòng có data thì update mã 
             else if (dataGridViewX1.SelectedRows.Count > 0)
             {
+                // update mã mặt hàng
+                // check nếu mã mới # mã cũ của dòng có data thì update mã 
+
                 DataGridViewRow row = dataGridViewX1.SelectedRows[0];
                 if (!row.IsNewRow && _isClickCell)
                 {
@@ -1257,12 +1276,12 @@ namespace GPBH.UI.Forms
                         }
                     }
                 }
-                // add mới 
                 else
                 {
-                    var oldData = listChiTiet.FirstOrDefault(x => x.Ma_hh == e.MaHH);
+                    // add mới
 
                     // check nếu chưa có trong list thì mới add
+                    var oldData = listChiTiet.FirstOrDefault(x => x.Ma_hh == e.MaHH);
                     if (oldData == null)
                     {
                         var newItem = new XCT5Dto
@@ -1281,9 +1300,10 @@ namespace GPBH.UI.Forms
             }
             else
             {
-                var oldData = listChiTiet.FirstOrDefault(x => x.Ma_hh == e.MaHH);
+                // add mới, case nhấn nút "Tìm mã hàng"
 
                 // check nếu chưa có trong list thì mới add
+                var oldData = listChiTiet.FirstOrDefault(x => x.Ma_hh == e.MaHH);
                 if (oldData == null)
                 {
                     var newItem = new XCT5Dto
@@ -1302,6 +1322,10 @@ namespace GPBH.UI.Forms
             TinhTongCong();
         }
 
+        /// <summary>
+        /// Select gird
+        /// </summary>
+        /// <param name="existed"></param>
         private void SelectGird(XCT5Dto existed)
         {
             int i = listChiTiet.IndexOf(existed); // Lấy index của item trong BindingList
