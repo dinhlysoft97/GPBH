@@ -435,7 +435,7 @@ namespace GPBH.UI.Forms
             ucHangHoaPopup.HangHoaSelected += UcHangHoaPopup_HangHoaSelected;
             ucHangHoa.HangHoaSelected += UcHangHoaPopup_HangHoaSelected;
             ucHangHoa.TbChange += TbHH_Change;
-            dataGridViewX1.CellEndEdit += new DataGridViewCellEventHandler(dataGridViewX1_CellEndEdit);
+            dataGridViewX1.CellEndEdit += dataGridViewX1_CellEndEdit;
             dataGridViewX1.KeyDown += DataGridViewX1_KeyDown;
 
             cbbTt1_ma_nt.SelectedIndexChanged += ThanhToan1_TextChanged;
@@ -1321,21 +1321,29 @@ namespace GPBH.UI.Forms
         /// <param name="rowIndex">Chỉ số dòng</param>
         private void ShowUcHangHoaPopupAtCell(int colIndex, int rowIndex)
         {
-            if (_isView) return;
-            if (ucHangHoaPopup == null || ucHangHoaPopup.IsDisposed) return; // kiểm tra popup
+            try
+            {
 
-            _isClickCell = true;
-            // Lấy vị trí cell trên màn hình
-            Rectangle cellRect = dataGridViewX1.GetCellDisplayRectangle(colIndex, rowIndex, true);
-            Point locationOnForm = dataGridViewX1.PointToScreen(cellRect.Location);
-            Point locationOnParent = this.PointToClient(locationOnForm);
+                if (_isView) return;
+                if (ucHangHoaPopup == null || ucHangHoaPopup.IsDisposed) return; // kiểm tra popup
 
-            // Hiển thị ucHangHoa ngay dưới cell Ma_hh
-            ucHangHoaPopup.Location = new Point(locationOnParent.X, locationOnParent.Y + cellRect.Height);
-            ucHangHoaPopup.Visible = true;
-            ucHangHoaPopup.Tb.TabIndex = 0;
-            ucHangHoaPopup.Tb.Focus();
-            ucHangHoaPopup.ShowDropDown();
+                _isClickCell = true;
+                // Lấy vị trí cell trên màn hình
+                Rectangle cellRect = dataGridViewX1.GetCellDisplayRectangle(colIndex, rowIndex, true);
+                Point locationOnForm = dataGridViewX1.PointToScreen(cellRect.Location);
+                Point locationOnParent = this.PointToClient(locationOnForm);
+
+                // Hiển thị ucHangHoa ngay dưới cell Ma_hh
+                ucHangHoaPopup.Location = new Point(locationOnParent.X, locationOnParent.Y + cellRect.Height);
+                ucHangHoaPopup.Visible = true;
+                ucHangHoaPopup.Tb.TabIndex = 0;
+                ucHangHoaPopup.Tb.Focus();
+                ucHangHoaPopup.ShowDropDown();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ShowUcHangHoaPopupAtCell Exception: " + ex.ToString());
+            }
         }
 
         /// <summary>
@@ -1396,6 +1404,7 @@ namespace GPBH.UI.Forms
                 item.Tien_ban_nt = thanhTienNT;
                 item.Tien_ban = thanhTienNT * TyGiaGanNhat?.Ty_gia ?? 0;
             }
+
             dataGridViewX1.Refresh();
         }
 
@@ -1514,20 +1523,28 @@ namespace GPBH.UI.Forms
         /// </summary>
         private void dataGridViewX1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            var item = dataGridViewX1.Rows[e.RowIndex].DataBoundItem as XCT5Dto;
-            if (item == null) return;
-
-            var col = dataGridViewX1.Columns[e.ColumnIndex];
-            var columnsFormatNumber = new List<string> { "So_luong", "Gia_ban_nt", "Gia_ban", "Gg_ty_le", "Gg_tien", "Tien_ban", "Gg_tien_nt", "Tien_ban_nt" };
-            if (columnsFormatNumber.Contains(col.Name))
+            try
             {
-                // Nếu Gg_ty_le nhập ngoài khoảng 1-99 thì về 1
-                if (col.Name == "Gg_ty_le" && (item.Gg_ty_le < 1 || item.Gg_ty_le > 99))
-                    item.Gg_ty_le = 0;
+                if (e.RowIndex < 0 || e.RowIndex >= dataGridViewX1.Rows.Count) return;
+                var item = dataGridViewX1.Rows[e.RowIndex].DataBoundItem as XCT5Dto;
+                if (item == null) return;
 
-                // Tính toán lại dòng và tổng
-                TinhToanRow(item, true, col.Name);
-                TinhTongCong();
+                var col = dataGridViewX1.Columns[e.ColumnIndex];
+                var columnsFormatNumber = new List<string> { "So_luong", "Gia_ban_nt", "Gia_ban", "Gg_ty_le", "Gg_tien", "Tien_ban", "Gg_tien_nt", "Tien_ban_nt" };
+                if (columnsFormatNumber.Contains(col.Name))
+                {
+                    // Nếu Gg_ty_le nhập ngoài khoảng 1-99 thì về 1
+                    if (col.Name == "Gg_ty_le" && (item.Gg_ty_le < 1 || item.Gg_ty_le > 99))
+                        item.Gg_ty_le = 0;
+
+                    // Tính toán lại dòng và tổng
+                    TinhToanRow(item, true, col.Name);
+                    TinhTongCong();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("CellEndEdit Exception: " + ex.ToString());
             }
         }
 
