@@ -751,17 +751,24 @@ namespace GPBH.UI.Forms
             }
             else
             {
-                var newItem = new XCT5Dto
+                var oldData = listChiTiet.FirstOrDefault(x => x.Ma_hh == hh.Ma_hh);
+
+                // check nếu chưa có trong list thì mới add
+                if (oldData == null)
                 {
-                    Ma_hh = hh.Ma_hh,
-                    Ten_hh = hh.Ten_hh,
-                    Dvt = hh.Dvt,
-                    So_luong = (decimal)soLuong,
-                    Gg_ty_le = 0 // gán mặc định nếu có
-                };
-                listChiTiet.Add(newItem);
-                TinhToanRow(newItem);
-                SelectGird(newItem);
+                    // check nếu chưa có trong list thì mới add
+                    var newItem = new XCT5Dto
+                    {
+                        Ma_hh = hh.Ma_hh,
+                        Ten_hh = hh.Ten_hh,
+                        Dvt = hh.Dvt,
+                        So_luong = (decimal)soLuong,
+                        Gg_ty_le = 0 // gán mặc định nếu có
+                    };
+                    listChiTiet.Add(newItem);
+                    TinhToanRow(newItem);
+                    SelectGird(newItem);
+                }
             }
             TinhTongCong();
 
@@ -1253,6 +1260,32 @@ namespace GPBH.UI.Forms
                 // add mới 
                 else
                 {
+                    var oldData = listChiTiet.FirstOrDefault(x => x.Ma_hh == e.MaHH);
+
+                    // check nếu chưa có trong list thì mới add
+                    if (oldData == null)
+                    {
+                        var newItem = new XCT5Dto
+                        {
+                            Ma_hh = e.MaHH,
+                            Ten_hh = e.TenHH,
+                            Dvt = e.Dvt,
+                            So_luong = 1,
+                            Gg_ty_le = 0 // gán mặc định nếu có
+                        };
+                        listChiTiet.Add(newItem);
+                        TinhToanRow(newItem);
+                        SelectGird(newItem);
+                    }
+                }
+            }
+            else
+            {
+                var oldData = listChiTiet.FirstOrDefault(x => x.Ma_hh == e.MaHH);
+
+                // check nếu chưa có trong list thì mới add
+                if (oldData == null)
+                {
                     var newItem = new XCT5Dto
                     {
                         Ma_hh = e.MaHH,
@@ -1265,20 +1298,6 @@ namespace GPBH.UI.Forms
                     TinhToanRow(newItem);
                     SelectGird(newItem);
                 }
-            }
-            else
-            {
-                var newItem = new XCT5Dto
-                {
-                    Ma_hh = e.MaHH,
-                    Ten_hh = e.TenHH,
-                    Dvt = e.Dvt,
-                    So_luong = 1,
-                    Gg_ty_le = 0 // gán mặc định nếu có
-                };
-                listChiTiet.Add(newItem);
-                TinhToanRow(newItem);
-                SelectGird(newItem);
             }
             TinhTongCong();
         }
