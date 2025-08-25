@@ -1,11 +1,13 @@
 ﻿using GPBH.Business;
 using GPBH.Business.Services;
+using GPBH.Data.Entities;
 using GPBH.UI.Constant;
 using GPBH.UI.Extentions;
 using GPBH.UI.Forms;
 using GPBH.UI.Helper;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
@@ -101,20 +103,6 @@ namespace GPBH.UI.UserControls
                 return;
             }
 
-            // Lấy điều kiện lọc từ các control
-            //string maKhachHang = ccbKhachHang.SelectedValue?.ToString() ?? string.Empty;
-            //string maHangHoa = ccbMaHang.SelectedValue?.ToString() ?? string.Empty;
-            //string maNgoaiTe = ccbMaNgoaiTe.SelectedValue?.ToString() ?? string.Empty;
-            //string passport = ccbPassport.SelectedValue?.ToString() ?? string.Empty;
-            //DateTime tuNgay = dtpTuNgay.Value;
-            //DateTime denNgay = dtpDenNgay.Value;
-            //string noiBan = AppGlobals.MaCH;
-
-            //var data = _reportBanHangService.GetViewBaoCaoBanTheoKhachHang(passport, maHangHoa, maNgoaiTe, maKhachHang, tuNgay, denNgay, noiBan);
-            //var fields = _sysDinh_Dang_FormService.GetDinhDang(AppGlobals.MaCH, "BanHangTheoKhachHang").data.Where(z => !z.Field_hide).OrderBy(z => z.Field_order).ToList();
-
-            //ExportHelper.ExportToExcel(data, fields);
-
             ExportHelper.ExportGridToExcel(dataGridViewX1, $"{menuName}_" + DateTime.Now.ToString("yyyyMMdd_HHmmss"));
         }
 
@@ -139,11 +127,13 @@ namespace GPBH.UI.UserControls
 
         private void buttonLoc_Click(object sender, EventArgs e)
         {
-            var data = GetData();
-            dataGridViewX1.DataSource = data;
+            List<ViewBaoCaoKhacHang> data = GetDataView();
+            var fields = _sysDinh_Dang_FormService.GetDinhDang(AppGlobals.MaCH, "BanHangTheoKhachHang").data.ToList();
+            var dataSort = data.ApplySortSystemDinhDang(fields);
+            DataGridViewFilterHelperV2.ApplyFilter(dataGridViewX1, dataSort, fields);
         }
 
-        public DataTable GetData()
+        private List<ViewBaoCaoKhacHang> GetDataView()
         {
             // Lấy điều kiện lọc từ các control
             string maKhachHang = ccbKhachHang.SelectedValue?.ToString() ?? string.Empty;
@@ -155,7 +145,12 @@ namespace GPBH.UI.UserControls
             string noiBan = AppGlobals.MaCH;
 
             var data = _reportBanHangService.GetViewBaoCaoBanTheoKhachHang(passport, maHangHoa, maNgoaiTe, maKhachHang, tuNgay, denNgay, noiBan);
+            return data;
+        }
 
+        public DataTable GetData()
+        {
+            List<ViewBaoCaoKhacHang> data = GetDataView();
             var fields = _sysDinh_Dang_FormService.GetDinhDang(AppGlobals.MaCH, "BanHangTheoKhachHang").data.ToList();
             var dataSort = data.ApplySortSystemDinhDang(fields);
             return _reportBanHangService.ToDataTable(dataSort);

@@ -1,14 +1,13 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Windows.Forms;
-using System;
-using DevComponents.DotNetBar.Controls;
-using DevComponents.AdvTree;
-using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
-using System.Drawing;
+﻿using DevComponents.DotNetBar.Controls;
 using GPBH.Business.Dtos;
 using GPBH.Data.Entities;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
+using System.Drawing;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace GPBH.UI.Helper
 {
@@ -83,26 +82,6 @@ namespace GPBH.UI.Helper
                 //grid.CurrentCellDirtyStateChanged += Grid_CurrentCellDirtyStateChanged;
                 grid.ColumnHeaderMouseClick += Grid_ColumnHeaderMouseClick;
             }
-
-            //private void SetGirdReadOnly()
-            //{
-            //    grid.Rows[0].DefaultCellStyle.BackColor = System.Drawing.Color.LightYellow;
-            //    grid.Rows[0].ReadOnly = false;
-            //    for (int j = 0; j < grid.Columns.Count; j++)
-            //        grid.Rows[0].Cells[0].ReadOnly = false;
-
-            //    for (int i = 1; i < grid.Rows.Count; i++)
-            //        for (int j = 0; j < grid.Columns.Count; j++)
-            //            grid.Rows[i].Cells[j].ReadOnly = true;
-
-            //    // Đặt riêng cell Stt của dòng filter là chỉ đọc
-            //    if (grid.Columns.Contains("Stt"))
-            //    {
-            //        var sttColumnIndex = grid.Columns["Stt"].Index;
-            //        grid.Rows[0].Cells[sttColumnIndex].ReadOnly = true;
-            //    }
-            //}
-
             private void SetGirdReadOnly()
             {
                 if (grid.Rows.Count == 0)
@@ -125,7 +104,6 @@ namespace GPBH.UI.Helper
                     grid.Rows[0].Cells[sttColumnIndex].ReadOnly = true;
                 }
             }
-
             private void Grid_CurrentCellDirtyStateChanged(object sender, EventArgs e)
             {
                 if (grid.CurrentCell.RowIndex == 0 && grid.IsCurrentCellDirty)
@@ -144,26 +122,34 @@ namespace GPBH.UI.Helper
 
             private void Grid_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
             {
-
                 if (e.ColumnIndex >= 0)
                 {
-                    string prop = propertyNames[e.ColumnIndex];
+                    // Lấy đúng property theo cột hiện tại (nên dùng DataPropertyName nếu Field_name là tên property)
+                    string prop = grid.Columns[e.ColumnIndex].DataPropertyName;
+                    // Nếu Field_name của bạn là Name của cột thì đổi lại:
+                    // string prop = grid.Columns[e.ColumnIndex].Name;
 
-                    // Nếu đã có trong list, đảo chiều sort
                     var exist = sortColumns.FirstOrDefault(x => x.Field_name == prop);
                     if (exist != null)
                     {
-                        exist.Default_sort = exist.Default_sort == Sort.Ascending ? Sort.Descending : Sort.Ascending;
-                        // Ưu tiên lên đầu
+                        if (exist.Default_sort == Sort.Ascending)
+                            exist.Default_sort = Sort.Descending;
+                        else if (exist.Default_sort == Sort.Descending)
+                            exist.Default_sort = Sort.None;
+                        else if (exist.Default_sort == Sort.None)
+                            exist.Default_sort = Sort.Ascending;
+
+                        var index = sortColumns.IndexOf(exist);
                         sortColumns.Remove(exist);
-                        sortColumns.Insert(0, exist);
+                        sortColumns.Insert(index, exist);
                     }
                     else
                     {
-                        sortColumns.Insert(0, new GirdSysDinhDangFormDto { Field_name = prop, Default_sort = Sort.Ascending });
+                        // Nếu chưa có, thêm mới vào sortColumns (tùy logic bạn muốn)
+                        sortColumns.Add(new GirdSysDinhDangFormDto { Field_name = prop, Default_sort = Sort.Ascending });
                     }
 
-                    sortColumns = sortColumns.Take(3).ToList().OrderBy(z => z.Field_order).ToList();
+                    sortColumns = sortColumns.OrderBy(z => z.Field_order).ToList();
                     ApplyFilterAndRestoreSort();
                 }
             }
@@ -173,10 +159,20 @@ namespace GPBH.UI.Helper
                 isFiltering = true;
 
                 var filterValues = new Dictionary<string, object>();
-                for (int i = 0; i < propertyNames.Count; i++)
+                // Lặp theo từng cột thật sự trên grid
+                for (int i = 0; i < grid.Columns.Count; i++)
                 {
-                    var val = grid.Rows[0].Cells[i].Value;
-                    filterValues[propertyNames[i]] = val ?? "";
+                    var col = grid.Columns[i];
+                    // Nên dùng DataPropertyName để map đúng property model (nếu bạn để Name thì đổi lại cho đồng bộ)
+                    string propName = col.DataPropertyName; // hoặc col.Name nếu Name mới là Field_name
+                    if (string.IsNullOrEmpty(propName))
+                        continue;
+
+                    // Cột ẩn thì bỏ qua nếu muốn
+                    // if (!col.Visible) continue;
+
+                    var val = grid.Rows[0].Cells[col.Index].Value;
+                    filterValues[propName] = val ?? "";
                 }
 
                 List<T> filtered;
@@ -184,21 +180,13 @@ namespace GPBH.UI.Helper
                 HandleFilter(filterValues, out filtered, out filterRow);
                 var displayList = new List<T> { filterRow };
                 displayList.AddRange(filtered);
-
-                //grid.CellValueChanged -= Grid_CellValueChanged;
-                //grid.CurrentCellDirtyStateChanged -= Grid_CurrentCellDirtyStateChanged;
-                //grid.ColumnHeaderMouseClick -= Grid_ColumnHeaderMouseClick;
-
                 SaveColumnStates();
                 grid.DataSource = null;
                 grid.DataSource = new BindingList<T>(displayList);
                 RestoreColumnStates();
-                //grid.CellValueChanged += Grid_CellValueChanged;
-                //grid.CurrentCellDirtyStateChanged += Grid_CurrentCellDirtyStateChanged;
-                //grid.ColumnHeaderMouseClick += Grid_ColumnHeaderMouseClick;
 
-                SetSortGlyph();
                 SetGirdReadOnly();
+                SetSortGlyph();
                 isFiltering = false;
             }
 
@@ -298,24 +286,27 @@ namespace GPBH.UI.Helper
                 // Multi-sort
                 if (sortColumns != null && sortColumns.Count > 0)
                 {
+                    // Lọc ra những cột cần sort (Default_sort khác Sort.None)
+                    var realSortColumns = sortColumns.Where(z => z.Default_sort != Sort.None).ToList();
                     IOrderedEnumerable<T> ordered = null;
-                    for (int i = 0; i < sortColumns.Count; i++)
+                    foreach (var sort in realSortColumns)
                     {
-                        var sort = sortColumns[i];
                         var prop = typeof(T).GetProperty(sort.Field_name);
                         if (prop == null) continue;
 
-                        if (i == 0)
+                        Func<T, object> keySelector = x => prop.GetValue(x, null);
+
+                        if (ordered == null)
                         {
-                            ordered = sort.Default_sort == Sort.Ascending
-                                ? filtered.OrderBy(x => prop.GetValue(x, null))
-                                : filtered.OrderByDescending(x => prop.GetValue(x, null));
+                            ordered = (sort.Default_sort == Sort.Ascending)
+                                ? filtered.OrderBy(keySelector)
+                                : filtered.OrderByDescending(keySelector);
                         }
                         else
                         {
-                            ordered = sort.Default_sort == Sort.Ascending
-                                ? ordered.ThenBy(x => prop.GetValue(x, null))
-                                : ordered.ThenByDescending(x => prop.GetValue(x, null));
+                            ordered = (sort.Default_sort == Sort.Ascending)
+                                ? ordered.ThenBy(keySelector)
+                                : ordered.ThenByDescending(keySelector);
                         }
                     }
                     if (ordered != null)
@@ -436,8 +427,11 @@ namespace GPBH.UI.Helper
                         if (col == null) continue;
                         if (col.SortMode != DataGridViewColumnSortMode.NotSortable)
                         {
-                            col.HeaderCell.SortGlyphDirection =
-                                sort.Default_sort == Sort.Ascending ? SortOrder.Ascending : SortOrder.Descending;
+                            if (sort.Default_sort == Sort.Ascending)
+                                col.HeaderCell.SortGlyphDirection = SortOrder.Ascending;
+                            else if (sort.Default_sort == Sort.Descending)
+                                col.HeaderCell.SortGlyphDirection = SortOrder.Descending;
+
                             // Optionally: bạn có thể custom vẽ thêm thứ tự (1,2,3) lên header nếu muốn!
                         }
                     }

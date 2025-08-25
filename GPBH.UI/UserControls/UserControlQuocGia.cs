@@ -36,7 +36,7 @@ namespace GPBH.UI.UserControls
             var fields = _sysDinh_Dang_FormService.GetDinhDang(AppGlobals.MaCH, "QuocGia").data.ToList();
             var quocgiList = _dmQGService.GetAll();
             var dataSort = quocgiList.ApplySortSystemDinhDang(fields);
-            DataGridViewFilterHelper.ApplyFilter(dataGridViewX1, dataSort);
+            DataGridViewFilterHelperV2.ApplyFilter(dataGridViewX1, dataSort, fields);
         }
 
         private void dataGridViewX1_RowPostPaint(object sender, System.Windows.Forms.DataGridViewRowPostPaintEventArgs e)
