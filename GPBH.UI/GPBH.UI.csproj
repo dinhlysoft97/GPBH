@@ -304,6 +304,7 @@
     <Compile Include="Helper\ComboBoxExUseGirdViewHelper.cs" />
     <Compile Include="Helper\ComboBoxHelper.cs" />
     <Compile Include="Extentions\FormExtention.cs" />
+    <Compile Include="Helper\DataGridViewFilterHelperV2.cs" />
     <Compile Include="Helper\DataGridViewFilterHelper.cs" />
     <Compile Include="Helper\ExportHelper.cs" />
     <Compile Include="MainForm.cs">

@@ -1,6 +1,7 @@
 ﻿using DevComponents.DotNetBar.Controls;
 using GPBH.Business.Dtos;
 using GPBH.Data.Entities;
+using OfficeOpenXml.FormulaParsing.Excel.Functions.Text;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -211,19 +212,45 @@ namespace GPBH.UI.Extentions
                 }
             }
 
-            // Sắp xếp mặc định
-            var defaultSort = orderedConfigs.FirstOrDefault(x => x.Default_sort != Sort.None);
-            if (defaultSort != null)
+            grid.Refresh();
+        }
+
+        /// <summary>
+        /// Áp dụng sắp xếp dữ liệu theo cấu hình định dạng cột.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="data"></param>
+        /// <param name="fields"></param>
+        public static List<T> ApplySortSystemDinhDang<T>(this List<T> data, List<GirdSysDinhDangFormDto> fields) where T : class
+        {
+            // Multi-sort
+            if (fields != null && fields.Count > 0)
             {
-                var col = grid.Columns[defaultSort.Field_name];
-                if (col != null && col.Visible)
+                IOrderedEnumerable<T> ordered = null;
+                for (int i = 0; i < fields.Count; i++)
                 {
-                    ListSortDirection dir = defaultSort.Default_sort == Sort.Ascending ? ListSortDirection.Ascending : ListSortDirection.Descending;
-                    grid.Sort(col, dir);
+                    var sort = fields[i];
+                    var prop = typeof(T).GetProperty(sort.Field_name);
+                    if (prop == null) continue;
+
+                    if (i == 0)
+                    {
+                        ordered = sort.Default_sort == Sort.Ascending
+                            ? data.OrderBy(x => prop.GetValue(x, null))
+                            : data.OrderByDescending(x => prop.GetValue(x, null));
+                    }
+                    else
+                    {
+                        ordered = sort.Default_sort == Sort.Ascending
+                            ? ordered.ThenBy(x => prop.GetValue(x, null))
+                            : ordered.ThenByDescending(x => prop.GetValue(x, null));
+                    }
                 }
+                if (ordered != null)
+                    data = ordered.ToList();
             }
 
-            grid.Refresh();
+            return data;
         }
 
         // Hàm tạo cột mới dựa vào Field_type
