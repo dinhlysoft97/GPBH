@@ -1,4 +1,5 @@
-﻿using GPBH.Business;
+﻿using CrystalDecisions.ReportAppServer.DataDefModel;
+using GPBH.Business;
 using GPBH.Business.Services;
 using GPBH.UI.Constant;
 using GPBH.UI.Extentions;
@@ -33,8 +34,10 @@ namespace GPBH.UI.UserControls
 
         private void LoadData()
         {
+            var fields = _sysDinh_dang_formService.GetDinhDang(AppGlobals.MaCH, "Ca").data.ToList();
             var caList = _dMcaService.GetAll();
-            DataGridViewFilterHelper.ApplyFilter(dataGridViewX1, caList);
+            var dataSort = caList.ApplySortSystemDinhDang(fields);
+            DataGridViewFilterHelper.ApplyFilter(dataGridViewX1, dataSort);
         }
 
         private void dataGridViewX1_RowPostPaint(object sender, System.Windows.Forms.DataGridViewRowPostPaintEventArgs e)

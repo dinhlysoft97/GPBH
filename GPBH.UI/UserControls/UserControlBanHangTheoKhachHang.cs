@@ -155,7 +155,10 @@ namespace GPBH.UI.UserControls
             string noiBan = AppGlobals.MaCH;
 
             var data = _reportBanHangService.GetViewBaoCaoBanTheoKhachHang(passport, maHangHoa, maNgoaiTe, maKhachHang, tuNgay, denNgay, noiBan);
-            return _reportBanHangService.ToDataTable(data);
+
+            var fields = _sysDinh_Dang_FormService.GetDinhDang(AppGlobals.MaCH, "BanHangTheoKhachHang").data.ToList();
+            var dataSort = data.ApplySortSystemDinhDang(fields);
+            return _reportBanHangService.ToDataTable(dataSort);
         }
 
         private void dataGridViewX1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
