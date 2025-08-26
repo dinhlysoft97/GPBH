@@ -1219,29 +1219,16 @@ namespace GPBH.UI.Forms
         /// <param name="e">Event args chứa thông tin hàng hóa</param>
         private void AddOrUpdateHangHoaToGrid(HangHoaSelectedEventArgs e)
         {
-            var isNull = false;
-
-            // remove ma hh null 
-            var listClone = new List<XCT5Dto>(listChiTiet);
-            isNull = listClone.RemoveAll(z => z.Ma_hh == null) > 0;
-
-            // nếu null delete ma hh null set lại dataGridViewX1
-            if (isNull)
-            {
-                listChiTiet = new BindingList<XCT5Dto>(listClone);
-                dataGridViewX1.DataSource = listChiTiet;
-            }
-
             //DataGridViewRow selectedRow = dataGridViewX1.Rows[_currentIndexRowSelect];
             // Tìm xem mã hàng đã có trong list chưa
             var existed = listChiTiet.FirstOrDefault(x => x.Ma_hh == e.MaHH);
             if (existed != null)
             {
                 // có trên lưới nên set số lượng lại là 1
-                if (isNull)
-                    existed.So_luong = 1;
-                else
-                    existed.So_luong += 1;
+                //if (isNull)
+                //    existed.So_luong = 1;
+                //else
+                existed.So_luong += 1;
 
                 TinhToanRow(existed);
                 SelectGird(existed);
@@ -1262,6 +1249,8 @@ namespace GPBH.UI.Forms
                         if (rowData != null)
                         {
                             rowData.Ma_hh = e.MaHH;
+                            rowData.Ten_hh = e.TenHH;
+                            rowData.Dvt = e.Dvt;
                             TinhToanRow(rowData);
                             SelectGird(rowData);
                         }
@@ -1275,6 +1264,44 @@ namespace GPBH.UI.Forms
                             SelectGird(oldData);
                         }
                     }
+                }
+                // case lưới add dòng null trước
+                else if (listChiTiet.Any(z => z.Ma_hh == null))
+                {
+                    // Nếu lưới không tự refresh, có thể set lại DataSource:
+                    //dataGridViewX1.DataSource = null;
+                    //dataGridViewX1.DataSource = listChiTiet;
+
+                    //var newItem = new XCT5Dto
+                    //{
+                    //    Ma_hh = e.MaHH,
+                    //    Ten_hh = e.TenHH,
+                    //    Dvt = e.Dvt,
+                    //    So_luong = 1,
+                    //    Gg_ty_le = 0 // gán mặc định nếu có
+                    //};
+                    //listChiTiet.Add(newItem);
+                    //TinhToanRow(newItem);
+                    //SelectGird(newItem);
+                    //SetUpUI();
+                    //dataGridViewX1.Refresh();
+
+                    var listClone = new List<XCT5Dto>(listChiTiet);
+                    listClone.RemoveAll(z => z.Ma_hh == null);
+                    listChiTiet = new BindingList<XCT5Dto>(listClone);
+
+                    var newItem = new XCT5Dto
+                    {
+                        Ma_hh = e.MaHH,
+                        Ten_hh = e.TenHH,
+                        Dvt = e.Dvt,
+                        So_luong = 1,
+                        Gg_ty_le = 0 // gán mặc định nếu có
+                    };
+                    listChiTiet.Add(newItem);
+                    dataGridViewX1.DataSource = listChiTiet;
+                    TinhToanRow(newItem);
+                    SelectGird(newItem);
                 }
                 else
                 {
@@ -1319,6 +1346,7 @@ namespace GPBH.UI.Forms
                     SelectGird(newItem);
                 }
             }
+
             TinhTongCong();
         }
 

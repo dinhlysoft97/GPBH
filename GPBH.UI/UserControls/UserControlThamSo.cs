@@ -1,5 +1,4 @@
 ﻿using DevComponents.DotNetBar;
-using DevComponents.DotNetBar.Controls;
 using GPBH.Business;
 using GPBH.Business.Dtos;
 using GPBH.Business.Services;
@@ -9,6 +8,7 @@ using GPBH.UI.Forms;
 using GPBH.UI.Helper;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -20,12 +20,14 @@ namespace GPBH.UI.UserControls
 
         private readonly SysDMCuaHangService _sysDMCuaHangService;
         private readonly SysDinh_dang_formService _sysDinh_Dang_FormService;
+        private List<GirdSysDinhDangFormDto> _girdSysDinhDangForms;
 
         public UserControlThamSo(SysDMCuaHangService sysDMCuaHangService, SysDinh_dang_formService sysDinh_Dang_FormService)
         {
             InitializeComponent();
             _sysDMCuaHangService = sysDMCuaHangService;
             _sysDinh_Dang_FormService = sysDinh_Dang_FormService;
+            _girdSysDinhDangForms = _sysDinh_Dang_FormService.GetDinhDang(AppGlobals.MaCH, "ThamSo").data.ToList();
             InitializeUI();
             dgThamSo.DataBindingComplete += (s, e) =>
             {
@@ -64,7 +66,9 @@ namespace GPBH.UI.UserControls
         /// </summary>
         private void LoadData()
         {
-            dgThamSo.BindData(_sysDMCuaHangService.GetThamSo(AppGlobals.MaCH).data);
+            var data = _sysDMCuaHangService.GetThamSo(AppGlobals.MaCH).data;
+            var dataSort = data.ApplySortSystemDinhDang(_girdSysDinhDangForms);
+            DataGridViewFilterHelperV2.ApplyFilter(dgThamSo, dataSort, _girdSysDinhDangForms);
         }
 
         #endregion
@@ -76,8 +80,7 @@ namespace GPBH.UI.UserControls
         /// </summary>
         private void SetUpUI()
         {
-            var fields = _sysDinh_Dang_FormService.GetDinhDang(AppGlobals.MaCH, "ThamSo").data.ToList();
-            dgThamSo.ApplyColumnConfig(fields);
+            dgThamSo.ApplyColumnConfig(_girdSysDinhDangForms);
         }
 
         #endregion

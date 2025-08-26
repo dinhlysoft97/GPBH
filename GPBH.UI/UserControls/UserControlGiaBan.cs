@@ -5,6 +5,7 @@ using GPBH.UI.Constant;
 using GPBH.UI.Extentions;
 using GPBH.UI.Helper;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -14,6 +15,7 @@ namespace GPBH.UI.UserControls
     {
         private readonly SysDMCuaHangService _sysDMCuaHangService;
         private SysDinh_dang_formService _sysDinh_Dang_FormService;
+        private List<GirdSysDinhDangFormDto> _girdSysDinhDangForms;
 
         public UserControlGiaBan
             (
@@ -25,6 +27,7 @@ namespace GPBH.UI.UserControls
             _sysDinh_Dang_FormService = sysDinh_Dang_FormService;
             _sysDMCuaHangService = sysDMCuaHangService;
             dataGridViewX1.AutoGenerateColumns = false;
+            _girdSysDinhDangForms = _sysDinh_Dang_FormService.GetDinhDang(AppGlobals.MaCH, "GiaBan").data.ToList();
             dataGridViewX1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             LoadData();
             cbbCuaHang.SelectedIndexChanged += CbbCuaHang_SelectedIndexChanged;
@@ -36,8 +39,7 @@ namespace GPBH.UI.UserControls
 
         private void SetUpUI()
         {
-            var fields = _sysDinh_Dang_FormService.GetDinhDang(AppGlobals.MaCH, "GiaBan").data.ToList();
-            dataGridViewX1.ApplyColumnConfig(fields);
+            dataGridViewX1.ApplyColumnConfig(_girdSysDinhDangForms);
         }
 
         private void LoadData()
@@ -52,7 +54,8 @@ namespace GPBH.UI.UserControls
                 Gia_ban = z.Gia_ban
             }).ToList();
 
-            DataGridViewFilterHelper.ApplyFilter(dataGridViewX1, dataGrid);
+            var dataSort = dataGrid.ApplySortSystemDinhDang(_girdSysDinhDangForms);
+            DataGridViewFilterHelperV2.ApplyFilter(dataGridViewX1, dataSort, _girdSysDinhDangForms);
         }
 
         private void CbbCuaHang_SelectedIndexChanged(object sender, EventArgs e)
@@ -67,7 +70,9 @@ namespace GPBH.UI.UserControls
                 Ma_hh = z.Ma_hh,
                 Gia_ban = z.Gia_ban
             }).ToList();
-            DataGridViewFilterHelper.ApplyFilter(dataGridViewX1, dataGrid);
+
+            var dataSort = dataGrid.ApplySortSystemDinhDang(_girdSysDinhDangForms);
+            DataGridViewFilterHelperV2.ApplyFilter(dataGridViewX1, dataSort, _girdSysDinhDangForms);
         }
 
         private void dataGridViewX1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)

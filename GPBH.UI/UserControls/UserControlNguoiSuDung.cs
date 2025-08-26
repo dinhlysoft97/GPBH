@@ -7,6 +7,7 @@ using GPBH.UI.Extentions;
 using GPBH.UI.Forms;
 using GPBH.UI.Helper;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -20,11 +21,13 @@ namespace GPBH.UI.UserControls
 
         private readonly SysDMNSDService _sysDMNSDService;
         private readonly SysDinh_dang_formService _sysDinh_Dang_FormService;
+        private List<GirdSysDinhDangFormDto> _girdSysDinhDangForms;
 
         public UserControlNguoiSuDung(SysDMNSDService sysDMNSDService, SysDinh_dang_formService sysDinh_Dang_FormService)
         {
             _sysDMNSDService = sysDMNSDService;
             _sysDinh_Dang_FormService = sysDinh_Dang_FormService;
+            _girdSysDinhDangForms = _sysDinh_Dang_FormService.GetDinhDang(AppGlobals.MaCH, "NguoiDung").data.ToList();
             InitializeComponent();
             InitializeUI();
         }
@@ -73,7 +76,8 @@ namespace GPBH.UI.UserControls
         {
             var users = _sysDMNSDService.GellAll();
             SetImageForUsers(users);
-            DataGridViewFilterHelper.ApplyFilter(dataGridViewX1, users);
+            var dataSort = users.ApplySortSystemDinhDang(_girdSysDinhDangForms);
+            DataGridViewFilterHelperV2.ApplyFilter(dataGridViewX1, dataSort, _girdSysDinhDangForms);
         }
 
         /// <summary>
@@ -108,8 +112,7 @@ namespace GPBH.UI.UserControls
         /// </summary>
         private void SetUpUI()
         {
-            var fields = _sysDinh_Dang_FormService.GetDinhDang(AppGlobals.MaCH, "NguoiDung").data.ToList();
-            dataGridViewX1.ApplyColumnConfig(fields);
+            dataGridViewX1.ApplyColumnConfig(_girdSysDinhDangForms);
         }
 
 

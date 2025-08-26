@@ -6,7 +6,6 @@ using GPBH.UI.Extentions;
 using GPBH.UI.Helper;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -15,8 +14,8 @@ namespace GPBH.UI.UserControls
     public partial class UserControlHangHoa : UserControl
     {
         private readonly DMHHService _dmHHService;
-        private List<GirdSysDinhDangFormDto> SysDinhDangs;
         private SysDinh_dang_formService _sysDinh_Dang_FormService;
+        private List<GirdSysDinhDangFormDto> _girdSysDinhDangForms;
         public UserControlHangHoa
             (
             DMHHService dmHHService,
@@ -26,7 +25,7 @@ namespace GPBH.UI.UserControls
             InitializeComponent();
             _dmHHService = dmHHService;
             _sysDinh_Dang_FormService = sysDinh_Dang_FormService;
-            SysDinhDangs = _sysDinh_Dang_FormService.GetDinhDang(AppGlobals.MaCH).data;
+            _girdSysDinhDangForms = _sysDinh_Dang_FormService.GetDinhDang(AppGlobals.MaCH, "HangHoa").data.ToList();
             LoadData();
             dataGridViewX1.DataBindingComplete += (s, e) =>
             {
@@ -37,14 +36,14 @@ namespace GPBH.UI.UserControls
 
         private void SetUpUI()
         {
-            var fields = _sysDinh_Dang_FormService.GetDinhDang(AppGlobals.MaCH, "HangHoa").data.ToList();
-            dataGridViewX1.ApplyColumnConfig(fields);
+            dataGridViewX1.ApplyColumnConfig(_girdSysDinhDangForms);
         }
 
         private void LoadData()
         {
             var hhList = _dmHHService.GetAllGrid();
-            DataGridViewFilterHelper.ApplyFilter(dataGridViewX1, hhList);
+            var dataSort = hhList.ApplySortSystemDinhDang(_girdSysDinhDangForms);
+            DataGridViewFilterHelperV2.ApplyFilter(dataGridViewX1, dataSort, _girdSysDinhDangForms);
         }
 
         private void dataGridViewX1_RowPostPaint(object sender, System.Windows.Forms.DataGridViewRowPostPaintEventArgs e)

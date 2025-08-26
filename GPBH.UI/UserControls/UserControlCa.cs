@@ -1,10 +1,11 @@
-﻿using CrystalDecisions.ReportAppServer.DataDefModel;
-using GPBH.Business;
+﻿using GPBH.Business;
+using GPBH.Business.Dtos;
 using GPBH.Business.Services;
 using GPBH.UI.Constant;
 using GPBH.UI.Extentions;
 using GPBH.UI.Helper;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -14,11 +15,13 @@ namespace GPBH.UI.UserControls
     {
         private readonly DMcaService _dMcaService;
         private readonly SysDinh_dang_formService _sysDinh_dang_formService;
+        private List<GirdSysDinhDangFormDto> _girdSysDinhDangForms;
         public UserControlCa(DMcaService dMcaService, SysDinh_dang_formService sysDinh_dang_formService)
         {
             InitializeComponent();
             _dMcaService = dMcaService;
             _sysDinh_dang_formService = sysDinh_dang_formService;
+            _girdSysDinhDangForms = _sysDinh_dang_formService.GetDinhDang(AppGlobals.MaCH, "Ca").data.ToList();
             LoadData();
             dataGridViewX1.DataBindingComplete += (s, e) =>
             {
@@ -28,19 +31,17 @@ namespace GPBH.UI.UserControls
 
         private void SetUpUI()
         {
-            var fields = _sysDinh_dang_formService.GetDinhDang(AppGlobals.MaCH, "Ca").data.ToList();
-            dataGridViewX1.ApplyColumnConfig(fields);
+            dataGridViewX1.ApplyColumnConfig(_girdSysDinhDangForms);
         }
 
         private void LoadData()
         {
-            var fields = _sysDinh_dang_formService.GetDinhDang(AppGlobals.MaCH, "Ca").data.ToList();
             var caList = _dMcaService.GetAll();
-            var dataSort = caList.ApplySortSystemDinhDang(fields);
-            DataGridViewFilterHelper.ApplyFilter(dataGridViewX1, dataSort);
+            var dataSort = caList.ApplySortSystemDinhDang(_girdSysDinhDangForms);
+            DataGridViewFilterHelperV2.ApplyFilter(dataGridViewX1, dataSort, _girdSysDinhDangForms);
         }
 
-        private void dataGridViewX1_RowPostPaint(object sender, System.Windows.Forms.DataGridViewRowPostPaintEventArgs e)
+        private void dataGridViewX1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
             dataGridViewX1.SetRowPositionPaint(e);
         }

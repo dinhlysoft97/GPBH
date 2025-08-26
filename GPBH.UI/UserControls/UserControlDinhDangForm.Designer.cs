@@ -314,7 +314,6 @@
             this.Default_sort.ItemHeight = 15;
             this.Default_sort.Name = "Default_sort";
             this.Default_sort.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Default_sort.Width = 51;
             // 
             // UserControlDinhDangForm
             // 

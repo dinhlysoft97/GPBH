@@ -35,8 +35,6 @@ namespace GPBH.UI.Helper
             private readonly IList<T> sourceData;
             private bool isFiltering = false;
             private readonly List<string> propertyNames;
-            private int lastSortColumn = -1;
-            private ListSortDirection lastSortDirection = ListSortDirection.Ascending;
             private Dictionary<string, ColumnState> states = new Dictionary<string, ColumnState>();
             private readonly List<GirdSysDinhDangFormDto> initialSortColumns;
             private List<GirdSysDinhDangFormDto> sortColumns; // Danh sách cột & chiều sort hiện tại
@@ -56,14 +54,12 @@ namespace GPBH.UI.Helper
 
                 this.sourceData = data;
                 this.propertyNames = typeof(T).GetProperties().Select(p => p.Name).ToList();
-                this.initialSortColumns = sortColumns != null ? new List<GirdSysDinhDangFormDto>(sortColumns).OrderBy(z => z.Field_order).ToList() : new List<GirdSysDinhDangFormDto>();
-                this.sortColumns = new List<GirdSysDinhDangFormDto>(this.initialSortColumns).OrderBy(z => z.Field_order).ToList();
+                this.sortColumns = sortColumns != null ? new List<GirdSysDinhDangFormDto>(sortColumns).OrderBy(z => z.Field_order).ToList() : new List<GirdSysDinhDangFormDto>();
             }
 
             public void Initialize()
             {
                 grid.CellValueChanged -= Grid_CellValueChanged;
-                //grid.CurrentCellDirtyStateChanged -= Grid_CurrentCellDirtyStateChanged;
                 grid.ColumnHeaderMouseClick -= Grid_ColumnHeaderMouseClick;
 
                 SaveColumnStates();
@@ -79,7 +75,6 @@ namespace GPBH.UI.Helper
                 SetSortGlyph();
 
                 grid.CellValueChanged += Grid_CellValueChanged;
-                //grid.CurrentCellDirtyStateChanged += Grid_CurrentCellDirtyStateChanged;
                 grid.ColumnHeaderMouseClick += Grid_ColumnHeaderMouseClick;
             }
             private void SetGirdReadOnly()
@@ -126,8 +121,6 @@ namespace GPBH.UI.Helper
                 {
                     // Lấy đúng property theo cột hiện tại (nên dùng DataPropertyName nếu Field_name là tên property)
                     string prop = grid.Columns[e.ColumnIndex].DataPropertyName;
-                    // Nếu Field_name của bạn là Name của cột thì đổi lại:
-                    // string prop = grid.Columns[e.ColumnIndex].Name;
 
                     var exist = sortColumns.FirstOrDefault(x => x.Field_name == prop);
                     if (exist != null)
@@ -164,7 +157,7 @@ namespace GPBH.UI.Helper
                 {
                     var col = grid.Columns[i];
                     // Nên dùng DataPropertyName để map đúng property model (nếu bạn để Name thì đổi lại cho đồng bộ)
-                    string propName = col.DataPropertyName; // hoặc col.Name nếu Name mới là Field_name
+                    string propName = col.DataPropertyName;
                     if (string.IsNullOrEmpty(propName))
                         continue;
 
