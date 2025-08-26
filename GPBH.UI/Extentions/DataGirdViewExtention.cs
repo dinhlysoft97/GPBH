@@ -212,7 +212,7 @@ namespace GPBH.UI.Extentions
                 }
             }
 
-            grid.Refresh();
+            SetSortGlyph(grid, orderedConfigs.Where(x => x.Default_sort != Sort.None).ToList());
         }
 
         /// <summary>
@@ -224,6 +224,7 @@ namespace GPBH.UI.Extentions
         public static List<T> ApplySortSystemDinhDang<T>(this List<T> data, List<GirdSysDinhDangFormDto> fields) where T : class
         {
             // Multi-sort
+            fields = fields.Where(x => x.Default_sort != Sort.None).ToList();
             if (fields != null && fields.Count > 0)
             {
                 IOrderedEnumerable<T> ordered = null;
@@ -235,15 +236,19 @@ namespace GPBH.UI.Extentions
 
                     if (i == 0)
                     {
-                        ordered = sort.Default_sort == Sort.Ascending
-                            ? data.OrderBy(x => prop.GetValue(x, null))
-                            : data.OrderByDescending(x => prop.GetValue(x, null));
+                        if (sort.Default_sort == Sort.Ascending)
+                            ordered = data.OrderBy(x => prop.GetValue(x, null));
+                        else if (sort.Default_sort == Sort.Descending)
+                            ordered = data.OrderByDescending(x => prop.GetValue(x, null));
                     }
                     else
                     {
-                        ordered = sort.Default_sort == Sort.Ascending
-                            ? ordered.ThenBy(x => prop.GetValue(x, null))
-                            : ordered.ThenByDescending(x => prop.GetValue(x, null));
+
+                        if (sort.Default_sort == Sort.Ascending)
+                            ordered = ordered.ThenBy(x => prop.GetValue(x, null));
+                        else if (sort.Default_sort == Sort.Descending)
+                            ordered = ordered.ThenByDescending(x => prop.GetValue(x, null));
+
                     }
                 }
                 if (ordered != null)
@@ -251,6 +256,33 @@ namespace GPBH.UI.Extentions
             }
 
             return data;
+        }
+
+        private static void SetSortGlyph(DataGridViewX grid, List<GirdSysDinhDangFormDto> configs)
+        {
+            foreach (DataGridViewColumn col in grid.Columns)
+            {
+                // Đảm bảo sort mode đúng để sort glyph hiện
+                if (col.SortMode != DataGridViewColumnSortMode.Programmatic)
+                    col.SortMode = DataGridViewColumnSortMode.Programmatic;
+
+                col.HeaderCell.SortGlyphDirection = SortOrder.None;
+            }
+
+            if (configs != null)
+            {
+                for (int i = 0; i < configs.Count; i++)
+                {
+                    var sort = configs[i];
+                    var col = grid.Columns[sort.Field_name];
+                    if (col == null) continue;
+
+                    if (sort.Default_sort == Sort.Ascending)
+                        col.HeaderCell.SortGlyphDirection = SortOrder.Ascending;
+                    else if (sort.Default_sort == Sort.Descending)
+                        col.HeaderCell.SortGlyphDirection = SortOrder.Descending;
+                }
+            }
         }
 
         // Hàm tạo cột mới dựa vào Field_type

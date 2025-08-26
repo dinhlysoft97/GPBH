@@ -182,6 +182,10 @@ namespace GPBH.UI.Helper
                             ws.Cells[1, i + 1].Value = visibleColumns[i].HeaderText;
                             if (!string.IsNullOrEmpty(visibleColumns[i].DefaultCellStyle.Format))
                                 ws.Column(i + 1).Style.Numberformat.Format = visibleColumns[i].DefaultCellStyle.Format;
+
+                            // Set width giống DataGridView (quy đổi ~7px = 1 excel col)
+                            double excelWidth = Math.Round(visibleColumns[i].Width / 7.0, 2);
+                            ws.Column(i + 1).Width = excelWidth;
                         }
 
                         // Data
@@ -203,11 +207,11 @@ namespace GPBH.UI.Helper
                         }
 
                         // AutoFit
-                        if (ws.Dimension != null)
-                        {
-                            var end = ws.Dimension.End;
-                            ws.Cells[1, 1, end.Row, end.Column].AutoFitColumns();
-                        }
+                        //if (ws.Dimension != null)
+                        //{
+                        //    var end = ws.Dimension.End;
+                        //    ws.Cells[1, 1, end.Row, end.Column].AutoFitColumns();
+                        //}
 
                         File.WriteAllBytes(dialog.FileName, package.GetAsByteArray());
                         MessageBox.Show("Đã xuất file Excel thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

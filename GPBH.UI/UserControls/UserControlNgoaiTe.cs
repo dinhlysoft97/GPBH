@@ -1,14 +1,14 @@
-﻿using GPBH.Business.Dtos;
-using GPBH.Business;
+﻿using GPBH.Business;
+using GPBH.Business.Dtos;
 using GPBH.Business.Services;
 using GPBH.UI.Constant;
 using GPBH.UI.Extentions;
 using GPBH.UI.Helper;
-using System.ComponentModel;
 using System;
-using System.Windows.Forms;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
-using GPBH.Data.Entities;
+using System.Windows.Forms;
 
 namespace GPBH.UI.UserControls
 {
@@ -16,11 +16,13 @@ namespace GPBH.UI.UserControls
     {
         private readonly DMNTService _dmNTService;
         private readonly SysDinh_dang_formService _sysDinh_Dang_FormService;
+        private List<GirdSysDinhDangFormDto> _girdSysDinhDangForms;
         public UserControlNgoaiTe(DMNTService dMNTService, SysDinh_dang_formService sysDinh_Dang_FormService)
         {
             InitializeComponent();
             _dmNTService = dMNTService;
             _sysDinh_Dang_FormService = sysDinh_Dang_FormService;
+            _girdSysDinhDangForms = _sysDinh_Dang_FormService.GetDinhDang(AppGlobals.MaCH, "NgoaiTe").data.ToList();
             LoadData();
             dataGridViewX1.DataBindingComplete += (s, e) =>
             {
@@ -29,14 +31,14 @@ namespace GPBH.UI.UserControls
         }
         private void SetUpUI()
         {
-            var fields = _sysDinh_Dang_FormService.GetDinhDang(AppGlobals.MaCH, "NgoaiTe").data.ToList();
-            dataGridViewX1.ApplyColumnConfig(fields);
+            dataGridViewX1.ApplyColumnConfig(_girdSysDinhDangForms);
         }
 
         private void LoadData()
         {
             var ngoaiteList = _dmNTService.GetAllGrid();
-            DataGridViewFilterHelper.ApplyFilter(dataGridViewX1, ngoaiteList);
+            var dataSort = ngoaiteList.ApplySortSystemDinhDang(_girdSysDinhDangForms);
+            DataGridViewFilterHelperV2.ApplyFilter(dataGridViewX1, dataSort, _girdSysDinhDangForms);
         }
 
         private void dataGridViewX1_RowPostPaint(object sender, System.Windows.Forms.DataGridViewRowPostPaintEventArgs e)
